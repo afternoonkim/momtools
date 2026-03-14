@@ -18,7 +18,6 @@ const routes = [
   "/content/blog",
   "/content/youtube",
   "/items/essential",
-  "/items/support",
   "/faq",
   "/contact",
   "/privacy",
