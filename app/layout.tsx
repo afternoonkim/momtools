@@ -9,6 +9,9 @@ export const metadata: Metadata = {
   description:
     "육아 계산기, 육아 정보, 준비 체크리스트, 추천 콘텐츠를 한곳에서 보는 밝고 실용적인 육아 도구 사이트 MomTools",
   robots: { index: true, follow: true },
+  other: {
+    "google-adsense-account": "ca-pub-5706989796325741",
+  },
   openGraph: {
     title: "MomTools",
     description:
