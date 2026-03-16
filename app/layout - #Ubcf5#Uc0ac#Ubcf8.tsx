@@ -1,0 +1,45 @@
+import { Analytics } from "@vercel/analytics/react";
+import type { Metadata } from "next";
+import "./globals.css";
+import ClientLayout from "@/components/layout/ClientLayout";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://bluedino.kr"),
+  verification: {
+    google: "v6lak7MNUZ5kKMsNH1T_ErDNqFl35Jgm3-GVAZ-M1qc",
+    other: {
+      "naver-site-verification": "7105657ffc86bbf65301008e5ca5a4c6f09a3fb0"
+    }
+  },
+  title: { default: "BlueDino", template: "%s | BlueDino" },
+  description:
+    "투자 계산기와 데이터 기반 투자 정보 플랫폼 BlueDino. 배당, FIRE, 양도세, 절세계좌 정보를 한곳에서 쉽게 확인하세요.",
+  robots: { index: true, follow: true },
+  other: {
+    "google-adsense-account": "ca-pub-5407950462485150",
+  },
+  openGraph: {
+    title: "BlueDino 투자 계산기 플랫폼",
+    description:
+      "복리 계산기, 배당 계산기, FIRE 계산기, 양도세 계산 등 투자 계산을 쉽게 할 수 있는 플랫폼",
+    url: "https://bluedino.kr",
+    siteName: "BlueDino",
+    locale: "ko_KR",
+    type: "website",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="ko" suppressHydrationWarning>
+      <body>
+        <ClientLayout>{children}</ClientLayout>
+        <Analytics />
+      </body>
+    </html>
+  );
+}

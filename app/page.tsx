@@ -264,7 +264,7 @@ export default function HomePage() {
           />
         </section>
 
-        <AdBlock label="홈 상단 광고 영역" format="horizontal" />
+        <AdBlock placement="homeTop" label="홈 상단 광고 영역" format="horizontal" />
 
         <section className="mt-card p-8 md:p-10">
           <SectionHeader
@@ -356,7 +356,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <AdBlock label="홈 중단 광고 영역" format="rectangle" />
+        <AdBlock placement="homeMiddle" label="홈 중단 광고 영역" format="rectangle" />
 
         <section className="mt-card p-8 md:p-10">
           <SectionHeader
@@ -455,7 +455,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <AdBlock label="홈 하단 광고 영역" format="horizontal" />
+        <AdBlock placement="homeBottom" label="홈 하단 광고 영역" format="horizontal" />
       </div>
     </div>
   );

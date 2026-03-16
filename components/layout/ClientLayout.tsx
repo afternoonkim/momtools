@@ -4,6 +4,7 @@ import { useState } from "react";
 import Sidebar from "@/components/layout/Sidebar";
 import Topbar from "@/components/layout/Topbar";
 import SiteFooter from "@/components/layout/SiteFooter";
+import GlobalFooterAd from "@/components/ad/GlobalFooterAd";
 
 export default function ClientLayout({
   children,
@@ -23,6 +24,7 @@ export default function ClientLayout({
       >
         <Topbar />
         <main className="flex-1">{children}</main>
+        <GlobalFooterAd />
         <SiteFooter />
       </div>
     </div>

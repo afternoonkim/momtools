@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import AdBlock from "@/components/ad/AdBlock";
 
 export const metadata: Metadata = {
   title: "이용약관",
@@ -121,8 +122,11 @@ export default function TermsPage() {
           </div>
         </section>
 
-        {sections.map((section) => (
-          <section key={section.title} className="mt-card p-8 md:p-10">
+        <AdBlock placement="legalInline" label="이용약관 상단 광고 영역" format="horizontal" />
+
+        {sections.map((section, index) => (
+          <div key={section.title}>
+          <section className="mt-card p-8 md:p-10">
             <h2 className="text-xl font-bold text-slate-800 md:text-2xl">
               {section.title}
             </h2>
@@ -146,7 +150,13 @@ export default function TermsPage() {
               )}
             </div>
           </section>
+          {index === 4 ? (
+            <AdBlock placement="legalInline" label="이용약관 중단 광고 영역" format="rectangle" />
+          ) : null}
+          </div>
         ))}
+
+        <AdBlock placement="legalInline" label="이용약관 하단 광고 영역" format="horizontal" />
 
         <section className="mt-card-soft p-6 md:p-8">
           <h2 className="text-xl font-bold text-slate-800">추가 안내</h2>

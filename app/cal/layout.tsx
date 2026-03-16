@@ -19,9 +19,9 @@ export default function CalLayout({ children }: { children: React.ReactNode }) {
         </section>
 
         <PageContextHero />
-        <AdBlock label="육아 계산기 상단 광고 영역" format="horizontal" />
+        <AdBlock placement="calculatorTop" label="육아 계산기 상단 광고 영역" format="horizontal" />
         {children}
-        <AdBlock label="육아 계산기 하단 광고 영역" format="rectangle" />
+        <AdBlock placement="calculatorBottom" label="육아 계산기 하단 광고 영역" format="rectangle" />
       </div>
     </div>
   );

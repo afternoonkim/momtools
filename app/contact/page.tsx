@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import AdBlock from "@/components/ad/AdBlock";
 
 export const metadata: Metadata = {
   title: "문의하기",
@@ -105,6 +106,8 @@ export default function ContactPage() {
           </div>
         </section>
 
+        <AdBlock placement="legalInline" label="문의하기 상단 광고 영역" format="horizontal" />
+
         <section className="mt-card p-8 md:p-10">
           <h2 className="text-2xl font-bold tracking-tight text-slate-800">
             어떤 문의를 받을 수 있나요?
@@ -190,6 +193,8 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
+
+        <AdBlock placement="legalInline" label="문의하기 하단 광고 영역" format="rectangle" />
 
         <section className="mt-card-soft p-8 md:p-10">
           <h2 className="text-xl font-bold text-slate-800">개인정보 안내</h2>

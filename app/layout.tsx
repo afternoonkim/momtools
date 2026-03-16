@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import ClientLayout from "@/components/layout/ClientLayout";
+import AdSenseScript from "@/components/ad/AdSenseScript";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://momtools.kr"),
@@ -38,6 +39,7 @@ export default function RootLayout({
   return (
     <html lang="ko" suppressHydrationWarning>
       <body>
+        <AdSenseScript />
         <ClientLayout>{children}</ClientLayout>
         <Analytics />
       </body>
