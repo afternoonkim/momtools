@@ -33,7 +33,7 @@ export default function BlogPage() {
             </p>
           </div>
         </section>
-
+        <br/>
         <section className="mt-card-soft p-6 md:p-8">
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">
             관련 페이지

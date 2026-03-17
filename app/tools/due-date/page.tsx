@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import DueDateCalculatorClient from "@/app/cal/due-date/DueDateCalculatorClient";
+import Link from "next/link";
+import AdBlock from "@/components/ad/AdBlock";
+export const metadata: Metadata = { title: "출산 예정일 계산기", description: "마지막 생리 시작일을 기준으로 출산 예정일과 임신 주수를 확인하는 MomTools 계산기입니다.", alternates: { canonical: "https://momtools.kr/tools/due-date" } };
+export default function Page(){ return <div className="mt-page"><div className="mt-container-narrow space-y-8"><DueDateCalculatorClient /><AdBlock placement="contentInline" format="rectangle" label="출산 예정일 계산기 광고 영역" /><section className="mt-card-soft p-6 md:p-8"><div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">관련 메뉴</div><div className="mt-4 grid gap-4 md:grid-cols-2"><Link href="/checklists/birth" className="mt-list-card"><div className="font-semibold text-slate-800">출산 준비 체크리스트</div><div className="mt-2 text-sm text-slate-500">예정일을 확인했다면 바로 준비물 점검으로 이어가 보세요.</div></Link><Link href="/qna/health" className="mt-list-card"><div className="font-semibold text-slate-800">아이 건강 Q&A</div><div className="mt-2 text-sm text-slate-500">출산 직후 자주 찾는 건강 질문도 함께 확인할 수 있습니다.</div></Link></div></section></div></div>; }

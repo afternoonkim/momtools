@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import VaccineScheduleCalculatorClient from "@/app/cal/vaccine-schedule/VaccineScheduleCalculatorClient";
+import Link from "next/link";
+import AdBlock from "@/components/ad/AdBlock";
+export const metadata: Metadata = { title: "예방접종 일정 계산기", description: "월령 기준 예방접종 시기를 참고용으로 확인하는 MomTools 계산기입니다.", alternates: { canonical: "https://momtools.kr/tools/vaccine-schedule" } };
+export default function Page(){ return <div className="mt-page"><div className="mt-container-narrow space-y-8"><VaccineScheduleCalculatorClient /><AdBlock placement="contentInline" format="rectangle" label="예방접종 일정 계산기 광고 영역" /><section className="mt-card-soft p-6 md:p-8"><div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">관련 정보</div><div className="mt-4 grid gap-4 md:grid-cols-2"><Link href="/qna/health" className="mt-list-card"><div className="font-semibold text-slate-800">아이 건강 질문 80개</div><div className="mt-2 text-sm text-slate-500">열, 발진, 접종 후 반응처럼 자주 묻는 질문을 함께 정리했습니다.</div></Link><Link href="/checklists/newborn" className="mt-list-card"><div className="font-semibold text-slate-800">신생아 준비 체크리스트</div><div className="mt-2 text-sm text-slate-500">초기 육아 준비물을 함께 점검할 수 있습니다.</div></Link></div></section></div></div>; }

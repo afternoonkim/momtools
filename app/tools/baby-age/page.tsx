@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import BabyAgeCalculatorClient from "@/app/cal/baby-age/BabyAgeCalculatorClient";
+import Link from "next/link";
+import AdBlock from "@/components/ad/AdBlock";
+export const metadata: Metadata = { title: "아기 개월수 계산기", description: "생년월일을 기준으로 아기 개월수와 일수를 계산하는 MomTools 계산기입니다.", alternates: { canonical: "https://momtools.kr/tools/baby-age" } };
+export default function Page(){ return <div className="mt-page"><div className="mt-container-narrow space-y-8"><BabyAgeCalculatorClient /><AdBlock placement="contentInline" format="rectangle" label="아기 개월수 계산기 광고 영역" /><section className="mt-card-soft p-6 md:p-8"><div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">함께 보기</div><div className="mt-4 grid gap-4 md:grid-cols-2"><Link href="/tools/vaccine-schedule" className="mt-list-card"><div className="font-semibold text-slate-800">예방접종 일정 계산기</div><div className="mt-2 text-sm text-slate-500">개월수 계산 뒤 바로 접종 흐름을 이어서 확인하기 좋습니다.</div></Link><Link href="/baby-food/early" className="mt-list-card"><div className="font-semibold text-slate-800">초기 이유식 메뉴</div><div className="mt-2 text-sm text-slate-500">개월수에 맞춰 이유식 준비 메뉴도 연결해 두었습니다.</div></Link></div></section></div></div>; }

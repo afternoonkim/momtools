@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import WeaningStartCalculatorClient from "@/app/cal/weaning-start/WeaningStartCalculatorClient";
+import Link from "next/link";
+import AdBlock from "@/components/ad/AdBlock";
+export const metadata: Metadata = { title: "이유식 시작 계산기", description: "생년월일을 기준으로 이유식 시작 권장 시기를 확인하는 MomTools 계산기입니다.", alternates: { canonical: "https://momtools.kr/tools/weaning-start" } };
+export default function Page(){ return <div className="mt-page"><div className="mt-container-narrow space-y-8"><WeaningStartCalculatorClient /><AdBlock placement="contentInline" format="rectangle" label="이유식 시작 계산기 광고 영역" /><section className="mt-card-soft p-6 md:p-8"><div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">이어서 보기</div><div className="mt-4 grid gap-4 md:grid-cols-2"><Link href="/baby-food/early" className="mt-list-card"><div className="font-semibold text-slate-800">초기 이유식 레시피 20개</div><div className="mt-2 text-sm text-slate-500">베이스죽, 과일토핑, 단백질 메뉴를 바로 검색할 수 있습니다.</div></Link><Link href="/checklists/weaning" className="mt-list-card"><div className="font-semibold text-slate-800">이유식 준비 체크리스트</div><div className="mt-2 text-sm text-slate-500">조리도구와 진행 순서를 실제 준비 항목으로 정리했습니다.</div></Link></div></section></div></div>; }

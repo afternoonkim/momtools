@@ -1,0 +1,6 @@
+import type { Metadata } from "next";
+import GrowthPercentileCalculatorClient from "@/app/cal/growth-percentile/GrowthPercentileCalculatorClient";
+import Link from "next/link";
+import AdBlock from "@/components/ad/AdBlock";
+export const metadata: Metadata = { title: "성장 백분위 계산기", description: "키와 몸무게를 기준으로 현재 성장 위치를 참고용으로 확인하는 MomTools 계산기입니다.", alternates: { canonical: "https://momtools.kr/tools/growth-percentile" } };
+export default function Page(){ return <div className="mt-page"><div className="mt-container-narrow space-y-8"><GrowthPercentileCalculatorClient /><AdBlock placement="contentInline" format="rectangle" label="성장 백분위 계산기 광고 영역" /><section className="mt-card-soft p-6 md:p-8"><div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">관련 메뉴</div><div className="mt-4 grid gap-4 md:grid-cols-2"><Link href="/qna/growth" className="mt-list-card"><div className="font-semibold text-slate-800">아이 성장 질문 80개</div><div className="mt-2 text-sm text-slate-500">뒤집기, 걷기, 언어 발달 같은 성장 질문을 한 번에 볼 수 있습니다.</div></Link><Link href="/baby-names" className="mt-list-card"><div className="font-semibold text-slate-800">아이 이름 짓기 메뉴</div><div className="mt-2 text-sm text-slate-500">사이트 체류시간을 높이기 위한 이름 생성 메뉴도 함께 연결했습니다.</div></Link></div></section></div></div>; }
