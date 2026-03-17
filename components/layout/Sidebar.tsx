@@ -87,22 +87,6 @@ export default function Sidebar({
           </div>
 
           <div onClick={closeMobileSidebar}>
-            <SidebarGroup title="아이 이름 짓기" collapsed={collapsed}>
-              <SidebarItem href="/baby-names/generator" label="이름 생성기" icon={Tags} collapsed={collapsed} />
-              <SidebarItem href="/baby-names/rankings/2025" label="인기 이름 순위" icon={Tags} collapsed={collapsed} />
-              <SidebarItem href="/baby-names/meanings" label="한글 이름 뜻 모음" icon={BookOpen} collapsed={collapsed} />
-            </SidebarGroup>
-          </div>
-
-          <div onClick={closeMobileSidebar}>
-            <SidebarGroup title="이유식 메뉴" collapsed={collapsed}>
-              <SidebarItem href="/baby-food/early" label="초기 이유식" icon={UtensilsCrossed} collapsed={collapsed} />
-              <SidebarItem href="/baby-food/middle" label="중기 이유식" icon={UtensilsCrossed} collapsed={collapsed} />
-              <SidebarItem href="/baby-food/late" label="후기 이유식" icon={UtensilsCrossed} collapsed={collapsed} />
-            </SidebarGroup>
-          </div>
-
-          <div onClick={closeMobileSidebar}>
             <SidebarGroup title="육아 Q&A" collapsed={collapsed}>
               <SidebarItem href="/qna/health" label="아이 건강" icon={HeartPulse} collapsed={collapsed} />
               <SidebarItem href="/qna/growth" label="아이 성장" icon={Baby} collapsed={collapsed} />
@@ -123,6 +107,22 @@ export default function Sidebar({
             <SidebarGroup title="콘텐츠" collapsed={collapsed}>
               <SidebarItem href="/content/blog" label="육아 블로그" icon={Rss} collapsed={collapsed} />
               <SidebarItem href="/content/youtube" label="추천 유튜브" icon={PlaySquare} collapsed={collapsed} />
+            </SidebarGroup>
+          </div>
+
+          <div onClick={closeMobileSidebar}>
+            <SidebarGroup title="이유식 메뉴" collapsed={collapsed}>
+              <SidebarItem href="/baby-food/early" label="초기 이유식" icon={UtensilsCrossed} collapsed={collapsed} />
+              <SidebarItem href="/baby-food/middle" label="중기 이유식" icon={UtensilsCrossed} collapsed={collapsed} />
+              <SidebarItem href="/baby-food/late" label="후기 이유식" icon={UtensilsCrossed} collapsed={collapsed} />
+            </SidebarGroup>
+          </div>
+
+          <div onClick={closeMobileSidebar}>
+            <SidebarGroup title="아이 이름 짓기" collapsed={collapsed}>
+              <SidebarItem href="/baby-names/generator" label="이름 생성기" icon={Tags} collapsed={collapsed} />
+              <SidebarItem href="/baby-names/rankings/2025" label="인기 이름 순위" icon={Tags} collapsed={collapsed} />
+              <SidebarItem href="/baby-names/meanings" label="한글 이름 뜻 모음" icon={BookOpen} collapsed={collapsed} />
             </SidebarGroup>
           </div>
 
