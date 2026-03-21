@@ -74,12 +74,12 @@ export default function PregnancyPage() {
           </div>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             <RelatedLink
-              href="/cal/due-date"
+              href="/tools/due-date"
               title="출산 예정일 계산기"
               description="예정일과 임신 주수 흐름을 먼저 확인하고 이 페이지를 보면 준비 순서를 잡기 쉬워요."
             />
             <RelatedLink
-              href="/checklists/birth-prep"
+              href="/checklists/birth"
               title="출산 준비 체크리스트"
               description="임신 후기에는 실제 준비물을 체크리스트와 함께 정리하면 훨씬 편합니다."
             />

@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     "MomTools",
   ],
   alternates: {
-    canonical: "https://momtools.kr/checklists/daycare-prep",
+    canonical: "https://momtools.kr/checklists/daycare",
   },
   openGraph: {
     title: "어린이집 준비 체크리스트 | MomTools",
     description:
       "여벌옷, 낮잠 이불, 이름 스티커, 개인 위생용품, 비상연락처, 등원 루틴까지 한눈에 정리해보세요.",
-    url: "https://momtools.kr/checklists/daycare-prep",
+    url: "https://momtools.kr/checklists/daycare",
     siteName: "MomTools",
     locale: "ko_KR",
     type: "website",

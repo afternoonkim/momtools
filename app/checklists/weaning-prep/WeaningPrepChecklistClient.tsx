@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import PersistentChecklist from "@/components/common/PersistentChecklist";
 
 const checklistSections = [
   {
@@ -98,6 +99,8 @@ const faqItems = [
   },
 ];
 
+const pageStorageKey = "app-checklists-weaning-prep-WeaningPrepChecklistClient";
+
 export default function WeaningPrepChecklistClient() {
   return (
     <div className="mt-page">
@@ -126,7 +129,7 @@ export default function WeaningPrepChecklistClient() {
               <p className="mt-2">
                 이유식 시기를 먼저 확인하고 싶다면{" "}
                 <Link
-                  href="/cal/weaning-start"
+                  href="/tools/weaning-start"
                   className="font-semibold text-sky-700 underline underline-offset-4"
                 >
                   이유식 시작 계산기
@@ -197,20 +200,7 @@ export default function WeaningPrepChecklistClient() {
                 </div>
               </div>
 
-              <div className="mt-5 grid gap-3">
-                {section.items.map((item) => (
-                  <label
-                    key={item}
-                    className="flex items-start gap-3 rounded-2xl border border-slate-100 bg-white px-4 py-4 text-sm leading-7 text-slate-700 shadow-[0_8px_30px_rgba(15,23,42,0.04)]"
-                  >
-                    <input
-                      type="checkbox"
-                      className="mt-1 h-4 w-4 rounded border-slate-300 text-orange-500 focus:ring-orange-200"
-                    />
-                    <span>{item}</span>
-                  </label>
-                ))}
-              </div>
+              <PersistentChecklist storageKey={`${pageStorageKey}-${section.title}`} items={section.items} accent={section.tone as "emerald" | "sky" | "amber" | "rose" | "violet" | "orange"} />
             </section>
           ))}
         </section>
@@ -257,7 +247,7 @@ export default function WeaningPrepChecklistClient() {
               </h2>
               <div className="mt-4 space-y-3">
                 <Link
-                  href="/cal/weaning-start"
+                  href="/tools/weaning-start"
                   className="block rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700"
                 >
                   이유식 시작 계산기
@@ -269,7 +259,7 @@ export default function WeaningPrepChecklistClient() {
                   이유식 정보
                 </Link>
                 <Link
-                  href="/cal/baby-age"
+                  href="/tools/baby-age"
                   className="block rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700"
                 >
                   아기 개월수 계산기

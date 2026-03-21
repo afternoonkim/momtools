@@ -90,12 +90,12 @@ export default function EssentialItemsPage() {
 
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             <CategoryLink
-              href="/checklists/newborn-prep"
+              href="/checklists/newborn"
               title="신생아 준비 체크리스트"
               description="수유용품, 위생용품, 수면용품처럼 실제로 먼저 챙기게 되는 준비물을 함께 확인할 수 있어요."
             />
             <CategoryLink
-              href="/checklists/weaning-prep"
+              href="/checklists/weaning"
               title="이유식 준비 체크리스트"
               description="이유식 스푼, 식기, 의자, 보관용기처럼 시기별로 필요한 품목을 이어서 점검할 수 있어요."
             />

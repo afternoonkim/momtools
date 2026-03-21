@@ -479,13 +479,13 @@ export default function EssentialItemsClient() {
                 </h2>
                 <div className="mt-4 grid gap-3 sm:grid-cols-2">
                   <Link
-                    href="/checklists/newborn-prep"
+                    href="/checklists/newborn"
                     className="rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4 text-sm font-medium text-slate-700 transition hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700"
                   >
                     신생아 준비 체크리스트
                   </Link>
                   <Link
-                    href="/checklists/weaning-prep"
+                    href="/checklists/weaning"
                     className="rounded-2xl border border-slate-100 bg-slate-50 px-4 py-4 text-sm font-medium text-slate-700 transition hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700"
                   >
                     이유식 준비 체크리스트

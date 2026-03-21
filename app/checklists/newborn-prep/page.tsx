@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     "MomTools",
   ],
   alternates: {
-    canonical: "https://momtools.kr/checklists/newborn-prep",
+    canonical: "https://momtools.kr/checklists/newborn",
   },
   openGraph: {
     title: "신생아 준비 체크리스트 | MomTools",
     description:
       "기저귀, 수유용품, 위생용품, 수면용품, 외출 준비물까지 한눈에 정리해보세요.",
-    url: "https://momtools.kr/checklists/newborn-prep",
+    url: "https://momtools.kr/checklists/newborn",
     siteName: "MomTools",
     locale: "ko_KR",
     type: "website",
@@ -74,12 +74,12 @@ export default function NewbornPrepPage() {
               description="수유, 수면, 체중, 예방접종 흐름까지 함께 이해하면 준비가 더 쉬워져요."
             />
             <RelatedLink
-              href="/cal/baby-age"
+              href="/tools/baby-age"
               title="아기 개월수 계산기"
               description="출산 후 월령 기준으로 육아 흐름을 이어서 확인할 수 있어요."
             />
             <RelatedLink
-              href="/cal/vaccine-schedule"
+              href="/tools/vaccine-schedule"
               title="예방접종 일정 계산기"
               description="출생 직후부터 주요 접종 시기를 월령 기준으로 참고할 수 있어요."
             />

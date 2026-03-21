@@ -111,7 +111,7 @@ export default function WeaningInfoClient() {
               <p className="mt-2">
                 이유식 시기를 먼저 확인하고 싶다면{" "}
                 <Link
-                  href="/cal/weaning-start"
+                  href="/tools/weaning-start"
                   className="font-semibold text-sky-700 underline underline-offset-4"
                 >
                   이유식 시작 계산기
@@ -237,13 +237,13 @@ export default function WeaningInfoClient() {
               </h2>
               <div className="mt-4 space-y-3">
                 <Link
-                  href="/cal/weaning-start"
+                  href="/tools/weaning-start"
                   className="block rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700"
                 >
                   이유식 시작 계산기
                 </Link>
                 <Link
-                  href="/cal/baby-age"
+                  href="/tools/baby-age"
                   className="block rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700"
                 >
                   아기 개월수 계산기

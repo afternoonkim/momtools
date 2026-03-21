@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { getLocaleFromPath, withLocalePath } from "@/lib/site-locale";
 
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
@@ -11,6 +13,10 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
 }
 
 export default function SiteFooter() {
+  const pathname = usePathname() || "/";
+  const locale = getLocaleFromPath(pathname);
+  const href = (path: string) => withLocalePath(path, locale);
+
   return (
     <footer className="border-t border-amber-100 bg-white/80">
       <div className="mx-auto max-w-7xl px-6 py-8">
@@ -18,19 +24,30 @@ export default function SiteFooter() {
           <div>
             <div className="flex items-center gap-2">
               <span className="font-semibold text-slate-800">MomTools</span>
-              <span className="text-xs text-slate-400">육아 도구 · 정보 · 체크리스트</span>
+              <span className="text-xs text-slate-400">
+                {locale === "ko" ? "육아 도구 · 정보 · 체크리스트" : "tools · guides · checklists for parents"}
+              </span>
             </div>
             <p className="mt-2 max-w-2xl text-xs leading-relaxed text-slate-500">
-              본 사이트의 계산 결과와 정보는 육아 계획을 돕기 위한 참고용입니다.<br/>
-              실제 진료, 접종, 성장 판단은 의료진 안내와 공공기관 기준을 우선해 주세요.
+              {locale === "ko" ? (
+                <>
+                  본 사이트의 계산 결과와 정보는 육아 계획을 돕기 위한 참고용입니다.<br />
+                  실제 진료, 접종, 성장 판단은 의료진 안내와 공공기관 기준을 우선해 주세요.
+                </>
+              ) : (
+                <>
+                  Results and guides on this site are for planning and educational use.<br />
+                  For diagnosis, vaccines, and growth decisions, follow your clinician and official guidance first.
+                </>
+              )}
             </p>
           </div>
 
           <div className="flex flex-wrap gap-x-5 gap-y-2">
-            <FooterLink href="/faq">FAQ</FooterLink>
-            <FooterLink href="/contact">문의하기</FooterLink>
-            <FooterLink href="/privacy">개인정보처리방침</FooterLink>
-            <FooterLink href="/terms">이용약관</FooterLink>
+            <FooterLink href={href("/faq")}>FAQ</FooterLink>
+            <FooterLink href={href("/contact")}>{locale === "ko" ? "문의하기" : "Contact"}</FooterLink>
+            <FooterLink href={href("/privacy")}>{locale === "ko" ? "개인정보처리방침" : "Privacy"}</FooterLink>
+            <FooterLink href={href("/terms")}>{locale === "ko" ? "이용약관" : "Terms"}</FooterLink>
           </div>
         </div>
 

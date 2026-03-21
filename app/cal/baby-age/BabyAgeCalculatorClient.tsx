@@ -171,14 +171,14 @@ export default function BabyAgeCalculatorClient() {
             <p className="mt-2">
               아기 개월수를 확인했다면 다음으로{" "}
               <Link
-                href="/cal/vaccine-schedule"
+                href="/tools/vaccine-schedule"
                 className="font-semibold text-sky-700 underline underline-offset-4"
               >
                 예방접종 일정 계산기
               </Link>
               나{" "}
               <Link
-                href="/cal/weaning-start"
+                href="/tools/weaning-start"
                 className="font-semibold text-sky-700 underline underline-offset-4"
               >
                 이유식 시작 계산기
@@ -405,13 +405,13 @@ export default function BabyAgeCalculatorClient() {
               </h2>
               <div className="mt-4 space-y-3">
                 <Link
-                  href="/cal/vaccine-schedule"
+                  href="/tools/vaccine-schedule"
                   className="block rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700"
                 >
                   예방접종 일정 계산기
                 </Link>
                 <Link
-                  href="/cal/weaning-start"
+                  href="/tools/weaning-start"
                   className="block rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700"
                 >
                   이유식 시작 계산기

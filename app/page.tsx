@@ -1,110 +1,179 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Sparkles, HeartHandshake, BookOpenCheck, CheckSquare2 } from "lucide-react";
 import AdBlock from "@/components/ad/AdBlock";
 
 export const metadata: Metadata = {
-  title: "MomTools",
-  description: "육아 계산기, 아이 이름 짓기, 이유식 메뉴, 질문형 육아 정보, 체크리스트까지 한곳에서 보는 MomTools 홈입니다.",
-  alternates: { canonical: "https://momtools.kr/" },
+  title: "육아 계산기와 체크리스트 한곳에 | MomTools",
+  description:
+    "출산 예정일, 아기 개월수, 예방접종 일정, 이유식 시작 시기, 성장 백분위와 함께 임신·신생아·이유식·유아 정보를 한 번에 정리하는 MomTools 홈",
+  keywords: [
+    "육아 계산기",
+    "출산 예정일 계산기",
+    "아기 개월수 계산기",
+    "예방접종 일정",
+    "이유식 시작 시기",
+    "성장 백분위",
+    "육아 체크리스트",
+  ],
 };
 
-const sections = [
+const quickActions = [
   {
-    title: "육아 계산기",
-    desc: "출산 예정일, 개월수, 예방접종, 이유식 시작, 성장 백분위까지 가장 자주 찾는 계산기를 한곳에 모았습니다.",
-    href: "/tools",
+    title: "출산 예정일 계산기",
+    description: "예정일과 현재 주차를 빠르게 확인하고 준비 시점을 잡아보세요.",
+    href: "/tools/due-date",
   },
   {
-    title: "아이 이름 짓기",
-    desc: "이름 생성기, 연도별 인기 이름 순위, 한글 이름 뜻 모음을 분리해 간단하게 사용할 수 있습니다.",
-    href: "/baby-names",
+    title: "아기 개월수 계산기",
+    description: "개월수와 일수를 한 번에 보고 수유, 수면, 접종 기준을 확인해요.",
+    href: "/tools/baby-age",
   },
   {
-    title: "이유식 메뉴",
-    desc: "초기, 중기, 후기 단계별로 20개씩 메뉴를 구성하고 분류와 검색까지 지원합니다.",
-    href: "/baby-food",
+    title: "예방접종 일정 계산기",
+    description: "월령 기준으로 접종 흐름을 먼저 파악하고 병원 일정 정리에 활용해요.",
+    href: "/tools/vaccine-schedule",
   },
   {
-    title: "육아 Q&A",
-    desc: "아이 건강, 성장, 행동으로 나눈 질문형 정보 240개를 상세 페이지 구조로 제공합니다.",
-    href: "/qna",
+    title: "이유식 시작 계산기",
+    description: "언제부터 준비하고 어떤 순서로 시작할지 감을 잡기 좋습니다.",
+    href: "/tools/weaning-start",
   },
   {
-    title: "체크리스트",
-    desc: "출산, 신생아, 이유식, 어린이집 준비를 실제 사용 흐름에 맞춰 정리했습니다.",
-    href: "/checklists",
+    title: "성장 백분위 계산기",
+    description: "우리 아기의 현재 성장 위치를 참고용으로 확인해 보세요.",
+    href: "/tools/growth-percentile",
   },
   {
-    title: "육아용품 목록",
-    desc: "필수 육아용품 카드를 통해 준비물 탐색 흐름을 이어갈 수 있습니다.",
-    href: "/items/essential",
+    title: "한글 이름 뜻 모음",
+    description: "남아·여아 이름 뜻을 자연스럽고 보기 쉽게 모아두었습니다.",
+    href: "/baby-names/meanings",
   },
 ];
 
-const quickLinks = [
-  ["출산 예정일 계산기", "/tools/due-date"],
-  ["2025 인기 이름 순위", "/baby-names/rankings/2025"],
-  ["초기 이유식 20개", "/baby-food/early"],
-  ["아이 건강 질문 80개", "/qna/health"],
+const guideCards = [
+  {
+    title: "임신 정보",
+    description: "임신 초기 증상, 주차별 체크 포인트, 준비 흐름을 한눈에 정리합니다.",
+    href: "/info/pregnancy",
+    icon: Sparkles,
+  },
+  {
+    title: "신생아 정보",
+    description: "수유, 수면, 체온, 배변처럼 처음 육아에서 자주 찾는 내용을 모았습니다.",
+    href: "/info/newborn",
+    icon: HeartHandshake,
+  },
+  {
+    title: "이유식 정보",
+    description: "시작 시기, 단계별 진행, 준비 도구와 음식 흐름을 쉽게 확인할 수 있어요.",
+    href: "/info/weaning",
+    icon: BookOpenCheck,
+  },
+  {
+    title: "체크리스트 모음",
+    description: "출산 전부터 어린이집 준비까지 실제로 챙겨야 할 항목을 체크해 보세요.",
+    href: "/checklists/birth",
+    icon: CheckSquare2,
+  },
+];
+
+const searchIntent = [
+  "출산 예정일 계산은 어떻게 할까",
+  "아기 개월수는 왜 정확히 봐야 할까",
+  "예방접종 일정은 월령 기준으로 어떻게 정리할까",
+  "이유식은 언제 시작하면 좋을까",
+  "성장 백분위는 어떻게 해석하면 될까",
+  "신생아 준비물은 무엇부터 챙겨야 할까",
 ];
 
 export default function HomePage() {
   return (
     <div className="mt-page">
-      <div className="mt-container space-y-10">
+      <div className="mt-container space-y-8">
         <section className="mt-card overflow-hidden p-8 md:p-10 lg:p-12">
           <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:items-center">
             <div>
-              <span className="mt-badge">MomTools · 네이버 중심 육아 정보 구조</span>
-              <h1 className="mt-title-xl mt-5">계산기와 질문형 정보를
-                <br />한 흐름으로 연결한 육아 도구 사이트</h1>
+              <span className="mt-badge">MomTools · 육아 계산기 & 정보 홈</span>
+              <h1 className="mt-title-xl mt-5">
+                육아할 때 자주 찾는 정보,
+                <br />
+                헤매지 않게 한곳에 모았습니다
+              </h1>
               <p className="mt-text-main mt-5 max-w-3xl">
-                MomTools는 검색 유입이 많은 육아 질문형 정보와 실제 사용성이 높은 계산기, 이유식 메뉴,
-                아이 이름 짓기, 체크리스트를 한 흐름으로 묶어 둔 사이트입니다. 각 페이지는 사이트 테마와
-                통일감을 유지하면서도 애드센스 광고가 자연스럽게 들어갈 수 있도록 카드형 구조로 설계했습니다.
+                MomTools는 계산기만 모아둔 사이트가 아니라, 계산 결과를 본 뒤 바로 이어서
+                필요한 정보와 체크리스트까지 볼 수 있도록 구성한 육아 도구 홈입니다. 지금
+                필요한 계산을 먼저 확인하고, 다음에 해야 할 준비까지 자연스럽게 이어서 볼 수
+                있게 만들었습니다.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Link href="/tools" className="mt-button-primary">대표 메뉴 시작하기</Link>
-                <Link href="/qna" className="mt-button-secondary">질문형 정보 보기</Link>
+                <Link href="/tools/due-date" className="mt-button-primary">바로 시작하기</Link>
+                <Link href="/checklists/birth" className="mt-button-secondary">체크리스트 보기</Link>
               </div>
             </div>
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-              {quickLinks.map(([label, href], index) => (
-                <Link key={href} href={href} className="rounded-[24px] border border-amber-100 bg-white p-5 shadow-[0_12px_28px_rgba(245,158,11,0.08)]">
-                  <div className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-600">Quick {index + 1}</div>
-                  <div className="mt-3 text-lg font-bold text-slate-800">{label}</div>
-                </Link>
-              ))}
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div className="mt-card-soft p-5">
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">Pregnancy</div>
+                <div className="mt-3 text-xl font-bold text-slate-800">예정일과 주차</div>
+                <p className="mt-2 text-sm leading-6 text-slate-600">출산 준비는 시기를 먼저 아는 것부터 시작됩니다.</p>
+              </div>
+              <div className="mt-card-soft p-5">
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">Baby</div>
+                <div className="mt-3 text-xl font-bold text-slate-800">개월수와 발달 흐름</div>
+                <p className="mt-2 text-sm leading-6 text-slate-600">개월수 기준으로 수면, 수유, 접종, 놀이 기준을 보세요.</p>
+              </div>
+              <div className="mt-card-soft p-5">
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">Feeding</div>
+                <div className="mt-3 text-xl font-bold text-slate-800">이유식 시작</div>
+                <p className="mt-2 text-sm leading-6 text-slate-600">언제부터 준비하고 어떤 순서로 진행할지 쉽게 정리합니다.</p>
+              </div>
+              <div className="mt-card-soft p-5">
+                <div className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">Checklist</div>
+                <div className="mt-3 text-xl font-bold text-slate-800">준비 항목 관리</div>
+                <p className="mt-2 text-sm leading-6 text-slate-600">준비물을 빠뜨리지 않게 체크박스로 하나씩 확인할 수 있어요.</p>
+              </div>
             </div>
           </div>
         </section>
 
-        <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-          {sections.map((section) => (
-            <Link key={section.href} href={section.href} className="mt-card p-6 transition hover:-translate-y-0.5">
-              <h2 className="text-xl font-bold text-slate-800">{section.title}</h2>
-              <p className="mt-3 text-sm leading-7 text-slate-500">{section.desc}</p>
+        <AdBlock slot="home-top" />
+
+        <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+          {quickActions.map((item) => (
+            <Link key={item.href} href={item.href} className="mt-card p-5 transition hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(245,158,11,0.12)]">
+              <div className="text-lg font-bold text-slate-800">{item.title}</div>
+              <p className="mt-2 text-sm leading-6 text-slate-600">{item.description}</p>
+              <div className="mt-4 text-sm font-semibold text-amber-700">바로 보기 →</div>
             </Link>
           ))}
         </section>
 
-        <AdBlock placement="contentInline" format="horizontal" label="홈 중단 광고 영역" />
+        <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="mt-card p-6 md:p-8">
+            <h2 className="mt-title-lg">육아 흐름에 맞춘 정보 연결</h2>
+            <p className="mt-text-main mt-3">계산 결과만 보고 끝내지 않고, 그 다음에 궁금해지는 내용을 바로 이어서 볼 수 있게 구성했습니다.</p>
+            <div className="mt-6 grid gap-4 md:grid-cols-2">
+              {guideCards.map((card) => {
+                const Icon = card.icon;
+                return (
+                  <Link key={card.href} href={card.href} className="rounded-3xl border border-amber-100 bg-white p-5 transition hover:bg-amber-50/60">
+                    <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-amber-100 text-amber-700"><Icon size={20} /></div>
+                    <div className="mt-4 text-lg font-bold text-slate-800">{card.title}</div>
+                    <p className="mt-2 text-sm leading-6 text-slate-600">{card.description}</p>
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
 
-        <section className="mt-card-soft p-6 md:p-8">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">운영 방향</div>
-          <div className="mt-4 grid gap-4 md:grid-cols-3">
-            <article className="rounded-3xl bg-white p-5 shadow-sm">
-              <h3 className="text-lg font-bold text-slate-800">네이버 SEO 중심</h3>
-              <p className="mt-3 text-sm leading-7 text-slate-500">질문형 상세 페이지, 단계별 이유식, 이름 뜻 페이지처럼 롱테일 검색 구조를 우선 반영했습니다.</p>
-            </article>
-            <article className="rounded-3xl bg-white p-5 shadow-sm">
-              <h3 className="text-lg font-bold text-slate-800">광고 친화적 레이아웃</h3>
-              <p className="mt-3 text-sm leading-7 text-slate-500">상단 소개, 본문, 관련 링크 사이에 광고가 무리 없이 배치될 수 있도록 구성했습니다.</p>
-            </article>
-            <article className="rounded-3xl bg-white p-5 shadow-sm">
-              <h3 className="text-lg font-bold text-slate-800">내부링크 강화</h3>
-              <p className="mt-3 text-sm leading-7 text-slate-500">계산기에서 체크리스트로, 질문에서 관련 질문으로 이어지는 내부링크를 강화했습니다.</p>
-            </article>
+          <div className="mt-card p-6 md:p-8">
+            <h2 className="mt-title-lg">많이 찾는 질문 흐름</h2>
+            <p className="mt-text-main mt-3">실제 부모가 검색하는 흐름을 고려해 홈에서 자주 찾는 질문 출발점을 먼저 정리했습니다.</p>
+            <ul className="mt-6 space-y-3">
+              {searchIntent.map((item) => (
+                <li key={item} className="rounded-2xl border border-amber-100 bg-amber-50/70 px-4 py-3 text-sm font-medium text-slate-700">{item}</li>
+              ))}
+            </ul>
           </div>
         </section>
       </div>

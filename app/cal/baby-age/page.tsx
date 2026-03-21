@@ -79,12 +79,12 @@ export default function BabyAgePage() {
               description="개월수에 따라 수유 간격과 수면 흐름이 달라지기 때문에 함께 보면 좋아요."
             />
             <RelatedLink
-              href="/cal/vaccine-schedule"
+              href="/tools/vaccine-schedule"
               title="예방접종 일정 계산기"
               description="접종은 월령 기준으로 많이 확인하므로 개월수 계산기와 같이 활용하기 좋습니다."
             />
             <RelatedLink
-              href="/cal/weaning-start"
+              href="/tools/weaning-start"
               title="이유식 시작 계산기"
               description="이유식 시작 시점도 생후 개월수를 기준으로 많이 판단합니다."
             />

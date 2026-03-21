@@ -3,15 +3,30 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   async redirects() {
     return [
+      { source: "/cal", destination: "/tools", permanent: true },
       { source: "/cal/due-date", destination: "/tools/due-date", permanent: true },
       { source: "/cal/baby-age", destination: "/tools/baby-age", permanent: true },
       { source: "/cal/vaccine-schedule", destination: "/tools/vaccine-schedule", permanent: true },
       { source: "/cal/weaning-start", destination: "/tools/weaning-start", permanent: true },
       { source: "/cal/growth-percentile", destination: "/tools/growth-percentile", permanent: true },
+
+      { source: "/en/tools", destination: "/en/cal", permanent: true },
+      { source: "/en/tools/due-date", destination: "/en/cal/due-date", permanent: true },
+      { source: "/en/tools/baby-age", destination: "/en/cal/baby-age", permanent: true },
+      { source: "/en/tools/vaccine-schedule", destination: "/en/cal/vaccine-schedule", permanent: true },
+      { source: "/en/tools/weaning-start", destination: "/en/cal/weaning-start", permanent: true },
+      { source: "/en/tools/growth-percentile", destination: "/en/cal/growth-percentile", permanent: true },
+
       { source: "/checklists/birth-prep", destination: "/checklists/birth", permanent: true },
       { source: "/checklists/newborn-prep", destination: "/checklists/newborn", permanent: true },
       { source: "/checklists/weaning-prep", destination: "/checklists/weaning", permanent: true },
       { source: "/checklists/daycare-prep", destination: "/checklists/daycare", permanent: true },
+
+      { source: "/en/checklists/birth-prep", destination: "/en/checklists/birth", permanent: true },
+      { source: "/en/checklists/newborn-prep", destination: "/en/checklists/newborn", permanent: true },
+      { source: "/en/checklists/weaning-prep", destination: "/en/checklists/weaning", permanent: true },
+      { source: "/en/checklists/daycare-prep", destination: "/en/checklists/daycare", permanent: true },
+
       { source: "/baby-names/rankings", destination: "/baby-names/rankings/2025", permanent: true },
       { source: "/cal/cal/calculator", destination: "/cal/calculator", permanent: true },
       { source: "/cal/cal/fire", destination: "/cal/fire", permanent: true },

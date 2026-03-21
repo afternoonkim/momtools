@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import PersistentChecklist from "@/components/common/PersistentChecklist";
 
 const checklistSections = [
   {
@@ -98,6 +99,8 @@ const faqItems = [
   },
 ];
 
+const pageStorageKey = "app-checklists-birth-prep-BirthPrepChecklistClient";
+
 export default function BirthPrepChecklistClient() {
   return (
     <div className="mt-page">
@@ -125,7 +128,7 @@ export default function BirthPrepChecklistClient() {
               <p className="mt-2">
                 출산 시기를 먼저 확인하고 싶다면{" "}
                 <Link
-                  href="/cal/due-date"
+                  href="/tools/due-date"
                   className="font-semibold text-sky-700 underline underline-offset-4"
                 >
                   출산 예정일 계산기
@@ -197,20 +200,7 @@ export default function BirthPrepChecklistClient() {
                 </div>
               </div>
 
-              <div className="mt-5 grid gap-3">
-                {section.items.map((item) => (
-                  <label
-                    key={item}
-                    className="flex items-start gap-3 rounded-2xl border border-slate-100 bg-white px-4 py-4 text-sm leading-7 text-slate-700 shadow-[0_8px_30px_rgba(15,23,42,0.04)]"
-                  >
-                    <input
-                      type="checkbox"
-                      className="mt-1 h-4 w-4 rounded border-slate-300 text-rose-500 focus:ring-rose-200"
-                    />
-                    <span>{item}</span>
-                  </label>
-                ))}
-              </div>
+              <PersistentChecklist storageKey={`${pageStorageKey}-${section.title}`} items={section.items} accent={section.tone as "emerald" | "sky" | "amber" | "rose" | "violet" | "orange"} />
             </section>
           ))}
         </section>
@@ -257,7 +247,7 @@ export default function BirthPrepChecklistClient() {
               </h2>
               <div className="mt-4 space-y-3">
                 <Link
-                  href="/cal/due-date"
+                  href="/tools/due-date"
                   className="block rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700"
                 >
                   출산 예정일 계산기

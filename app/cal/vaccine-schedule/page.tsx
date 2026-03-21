@@ -79,7 +79,7 @@ export default function VaccineSchedulePage() {
               description="수유, 수면, 황달, 병원 방문 기준과 함께 보면 초기 육아 흐름을 이해하기 좋아요."
             />
             <RelatedLink
-              href="/cal/baby-age"
+              href="/tools/baby-age"
               title="아기 개월수 계산기"
               description="예방접종은 월령 기준으로 확인하는 경우가 많아 함께 활용하기 좋습니다."
             />

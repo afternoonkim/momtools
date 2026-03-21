@@ -97,7 +97,7 @@ export default function PregnancyInfoClient() {
               <p className="mt-2">
                 일정이 궁금하다면{" "}
                 <Link
-                  href="/cal/due-date"
+                  href="/tools/due-date"
                   className="font-semibold text-sky-700 underline underline-offset-4"
                 >
                   출산 예정일 계산기
@@ -226,7 +226,7 @@ export default function PregnancyInfoClient() {
               </h2>
               <div className="mt-4 space-y-3">
                 <Link
-                  href="/cal/due-date"
+                  href="/tools/due-date"
                   className="block rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700"
                 >
                   출산 예정일 계산기

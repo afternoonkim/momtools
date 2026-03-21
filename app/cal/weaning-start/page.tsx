@@ -80,12 +80,12 @@ export default function WeaningStartPage() {
               description="단계별 이유식 진행 흐름과 준비 포인트를 함께 확인할 수 있어요."
             />
             <RelatedLink
-              href="/cal/baby-age"
+              href="/tools/baby-age"
               title="아기 개월수 계산기"
               description="이유식은 월령 기준으로 많이 보기 때문에 개월수 계산기와 함께 활용하기 좋습니다."
             />
             <RelatedLink
-              href="/checklists/weaning-prep"
+              href="/checklists/weaning"
               title="이유식 준비 체크리스트"
               description="스푼, 의자, 턱받이, 이유식 용기처럼 실제 준비물도 함께 정리해보세요."
             />

@@ -74,17 +74,17 @@ export default function NewbornPage() {
           </div>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             <RelatedLink
-              href="/cal/baby-age"
+              href="/tools/baby-age"
               title="아기 개월수 계산기"
               description="신생아 월령 기준 흐름을 확인할 때 함께 쓰기 좋은 기본 계산기예요."
             />
             <RelatedLink
-              href="/cal/vaccine-schedule"
+              href="/tools/vaccine-schedule"
               title="예방접종 일정 계산기"
               description="출생 직후부터 주요 접종 시기를 월령 기준으로 참고할 수 있어요."
             />
             <RelatedLink
-              href="/checklists/newborn-prep"
+              href="/checklists/newborn"
               title="신생아 준비 체크리스트"
               description="집으로 아기를 맞이하기 전에 필요한 준비물을 실제로 점검할 수 있어요."
             />

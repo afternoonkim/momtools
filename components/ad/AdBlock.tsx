@@ -22,7 +22,6 @@ export default function AdBlock({
   placement = "default",
   format = "auto",
   className = "",
-  label = "AdSense 광고 영역",
 }: AdBlockProps) {
   const rawId = useId();
   const insId = `ad-${rawId.replace(/[^a-zA-Z0-9_-]/g, "")}`;
@@ -53,18 +52,7 @@ export default function AdBlock({
       : "min-h-[120px]";
 
   if (!canRenderAd) {
-    return (
-      <div className={`my-10 w-full ${className}`}>
-        <div
-          className={`flex w-full flex-col items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-4 text-center text-sm text-slate-500 ${formatClass}`}
-        >
-          <span>{label}</span>
-          <span className="mt-1 text-xs text-slate-400">
-            개발 환경 또는 애드센스 미설정 상태
-          </span>
-        </div>
-      </div>
-    );
+    return <div className={`my-10 w-full rounded-2xl bg-transparent ${formatClass} ${className}`} aria-hidden="true" />;
   }
 
   return (

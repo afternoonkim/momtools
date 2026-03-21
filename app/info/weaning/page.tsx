@@ -74,17 +74,17 @@ export default function WeaningPage() {
           </div>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             <RelatedLink
-              href="/cal/weaning-start"
+              href="/tools/weaning-start"
               title="이유식 시작 계산기"
               description="아기 생년월일 기준으로 이유식 준비 시점을 빠르게 참고할 수 있어요."
             />
             <RelatedLink
-              href="/cal/baby-age"
+              href="/tools/baby-age"
               title="아기 개월수 계산기"
               description="이유식은 월령 기준으로 자주 보기 때문에 함께 활용하면 좋아요."
             />
             <RelatedLink
-              href="/checklists/weaning-prep"
+              href="/checklists/weaning"
               title="이유식 준비 체크리스트"
               description="스푼, 식기, 의자, 보관용기 등 실제 준비물을 점검할 수 있어요."
             />

@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     "MomTools",
   ],
   alternates: {
-    canonical: "https://momtools.kr/checklists/birth-prep",
+    canonical: "https://momtools.kr/checklists/birth",
   },
   openGraph: {
     title: "출산 준비 체크리스트 | MomTools",
     description:
       "산모 준비물, 아기 준비물, 보호자 준비물, 퇴원 전 체크까지 한눈에 정리해보세요.",
-    url: "https://momtools.kr/checklists/birth-prep",
+    url: "https://momtools.kr/checklists/birth",
     siteName: "MomTools",
     locale: "ko_KR",
     type: "website",
@@ -70,7 +70,7 @@ export default function BirthPrepPage() {
           </div>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             <RelatedLink
-              href="/cal/due-date"
+              href="/tools/due-date"
               title="출산 예정일 계산기"
               description="예정일과 임신 주수 흐름을 확인하고 준비 시점을 잡기 좋아요."
             />
@@ -80,7 +80,7 @@ export default function BirthPrepPage() {
               description="임신 후기 체크포인트와 출산 전 생활 흐름을 함께 정리할 수 있어요."
             />
             <RelatedLink
-              href="/checklists/newborn-prep"
+              href="/checklists/newborn"
               title="신생아 준비 체크리스트"
               description="출산 직후 집에서 바로 필요한 준비물을 이어서 점검해보세요."
             />

@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import AdBlock from "@/components/ad/AdBlock";
 
-const HIDE_ON_PATHS = ["/contact", "/privacy", "/terms"];
+const HIDE_ON_PATHS = ["/contact", "/privacy", "/terms", "/en/contact", "/en/privacy", "/en/terms"];
 
 export default function GlobalFooterAd() {
   const pathname = usePathname();

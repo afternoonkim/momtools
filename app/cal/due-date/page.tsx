@@ -80,7 +80,7 @@ export default function DueDatePage() {
               description="임신 초기, 중기, 후기 흐름을 함께 보면 예정일을 더 이해하기 쉬워요."
             />
             <RelatedLink
-              href="/checklists/birth-prep"
+              href="/checklists/birth"
               title="출산 준비 체크리스트"
               description="예정일이 보이면 입원 가방과 출산 준비물을 실제로 정리하기 쉬워집니다."
             />
@@ -90,7 +90,7 @@ export default function DueDatePage() {
               description="MomTools 계산기 결과 활용 기준과 참고 범위를 FAQ에서 확인할 수 있어요."
             />
             <RelatedLink
-              href="/cal/baby-age"
+              href="/tools/baby-age"
               title="출산 후에는 아기 개월수 계산기 활용"
               description="출산 이후에는 개월수 기준으로 접종, 이유식, 성장 정보를 이어서 확인할 수 있어요."
             />

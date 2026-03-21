@@ -16,13 +16,13 @@ export const metadata: Metadata = {
     "MomTools",
   ],
   alternates: {
-    canonical: "https://momtools.kr/checklists/weaning-prep",
+    canonical: "https://momtools.kr/checklists/weaning",
   },
   openGraph: {
     title: "이유식 준비 체크리스트 | MomTools",
     description:
       "식기, 조리도구, 보관 용기, 알레르기 체크까지 이유식 준비물을 한눈에 정리해보세요.",
-    url: "https://momtools.kr/checklists/weaning-prep",
+    url: "https://momtools.kr/checklists/weaning",
     siteName: "MomTools",
     locale: "ko_KR",
     type: "website",
@@ -75,12 +75,12 @@ export default function WeaningPrepPage() {
               description="시작 신호와 단계별 흐름을 함께 이해하면 준비가 더 쉬워져요."
             />
             <RelatedLink
-              href="/cal/weaning-start"
+              href="/tools/weaning-start"
               title="이유식 시작 계산기"
               description="아기 생년월일 기준으로 이유식 준비 시점을 참고할 수 있어요."
             />
             <RelatedLink
-              href="/cal/baby-age"
+              href="/tools/baby-age"
               title="아기 개월수 계산기"
               description="이유식은 월령 기준으로 많이 보기 때문에 함께 쓰기 좋습니다."
             />

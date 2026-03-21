@@ -85,7 +85,7 @@ export default function GrowthPercentilePage() {
               description="이유식 시기의 식사 변화는 키와 몸무게 흐름과도 함께 보는 것이 좋습니다."
             />
             <RelatedLink
-              href="/cal/baby-age"
+              href="/tools/baby-age"
               title="아기 개월수 계산기"
               description="성장 백분위는 월령 기준으로 해석하므로 개월수 계산기와 함께 활용해 보세요."
             />

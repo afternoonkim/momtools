@@ -75,7 +75,7 @@ export default function ToddlerPage() {
           </div>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             <RelatedLink
-              href="/checklists/daycare-prep"
+              href="/checklists/daycare"
               title="어린이집 준비 체크리스트"
               description="등원 준비물과 적응 전 체크 포인트를 실제로 정리할 수 있어요."
             />
