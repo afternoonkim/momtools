@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { allPureKoreanNames, getKoreanNameBySlug } from "@/data/koreanNames";
+import { meaningPureKoreanNames, getKoreanNameBySlug } from "@/data/koreanNames";
 
 export function generateStaticParams() {
-  return allPureKoreanNames.map((item) => ({ slug: item.slug }));
+  return meaningPureKoreanNames.map((item) => ({ slug: item.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -21,7 +21,7 @@ export default async function KoreanNameMeaningDetailPage({ params }: { params: 
   const { slug } = await params;
   const item = getKoreanNameBySlug(slug);
   if (!item) notFound();
-  const related = allPureKoreanNames.filter((name) => name.gender === item.gender && name.slug !== item.slug).slice(0, 6);
+  const related = meaningPureKoreanNames.filter((name) => name.slug !== item.slug).slice(0, 6);
   return (
     <div className="mt-page">
       <div className="mt-container space-y-8">
@@ -32,10 +32,10 @@ export default async function KoreanNameMeaningDetailPage({ params }: { params: 
         </nav>
 
         <section className="mt-card p-8 md:p-10">
-          <span className="mt-badge">{item.gender === "boy" ? "남아 이름" : "여아 이름"}</span>
+          <span className="mt-badge">순우리말 이름</span>
           <h1 className="mt-title-xl mt-5">{item.name}</h1>
           <p className="mt-text-main mt-5 max-w-3xl">
-            {item.name}은(는) {item.meaning.replace(/라는 뜻$/, "")}의 이미지를 담은 {item.gender === "boy" ? "남아" : "여아"} 순우리말 이름입니다.
+            {item.name}은(는) {item.meaning.replace(/라는 뜻$/, "")}의 이미지를 담은 순우리말 이름입니다.
             이름을 볼 때는 뜻뿐 아니라 실제로 자주 불렀을 때의 발음, 성과 붙였을 때의 자연스러움, 가족이 느끼는 인상까지 함께 살펴보는 것이 좋습니다.
           </p>
         </section>
@@ -48,7 +48,8 @@ export default async function KoreanNameMeaningDetailPage({ params }: { params: 
         <section className="mt-card p-6 md:p-8">
           <h2 className="mt-title-md">이 이름이 주는 느낌</h2>
           <p className="mt-text-sub mt-4 leading-8">
-            순우리말 이름은 한글 그대로 읽었을 때의 소리감과 분위기가 중요한 편입니다. {item.name}은(는) 비교적 부드럽게 불리고, 자연스럽고 따뜻한 이미지를 주는 이름으로 참고하기 좋습니다.
+            순우리말 이름은 한글 그대로 읽었을 때의 소리감과 분위기가 중요한 편입니다. {item.name}은(는) 비교적 부드럽게 불리고,
+            자연스럽고 따뜻한 이미지를 주는 이름으로 참고하기 좋습니다.
           </p>
         </section>
 
