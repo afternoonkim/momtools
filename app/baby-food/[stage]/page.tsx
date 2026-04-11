@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { getRecipeCategories, getRecipesByStage, stageGuides, stageLabels, type BabyFoodStage } from "@/data/babyFood";
 import RecipeExplorerClient from "@/components/baby-food/RecipeExplorerClient";
 import { notFound } from "next/navigation";
-import AdBlock from "@/components/ad/AdBlock";
 
 const stages: BabyFoodStage[] = ["early", "middle", "late"];
 
@@ -52,7 +51,6 @@ export default async function BabyFoodStagePage({ params }: { params: Promise<{ 
         </section>
 
         <RecipeExplorerClient recipes={recipes} categories={categories} stage={typedStage} />
-        <AdBlock placement="contentInline" format="horizontal" label="단계별 이유식 광고 영역" />
       </div>
     </div>
   );

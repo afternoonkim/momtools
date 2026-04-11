@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import AdBlock from "@/components/ad/AdBlock";
 import WeaningPrepChecklistClient from "./WeaningPrepChecklistClient";
+import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import RelatedContent from "@/components/common/RelatedContent";
 
 export const metadata: Metadata = {
   title: "이유식 준비 체크리스트 | 식기 재료 보관 준비물 정리 | MomTools",
@@ -44,8 +45,9 @@ export default function WeaningPrepPage() {
     <div className="space-y-8">
       <WeaningPrepChecklistClient />
 
+      <ContentUpdateNote publishedOn="2026-04-09" updatedOn="2026-04-09" />
+
       <div className="mt-container-narrow space-y-8">
-        <AdBlock label="이유식 준비 체크리스트 하단 광고 영역" format="rectangle" />
 
         <section className="mt-card p-6 md:p-8">
           <span className="mt-badge">추가 안내</span>
@@ -91,6 +93,19 @@ export default function WeaningPrepPage() {
             />
           </div>
         </section>
+      
+
+        <RelatedContent
+          locale="ko"
+          title="함께 보면 좋은 페이지"
+          description="관련 계산기, 정보, 체크리스트를 같이 보면 한 가지 질문을 더 쉽게 정리할 수 있어요."
+          items={[
+            { href: "/info/weaning", title: "이유식 정보", description: "시작 시기와 기본 흐름을 함께 이해하기 좋습니다." },
+            { href: "/tools/weaning-start", title: "이유식 시작 시기 계산기", description: "개월수 기준으로 준비 시점을 다시 확인할 수 있어요." },
+            { href: "/baby-food", title: "이유식 메뉴", description: "메뉴 아이디어와 재료 조합을 함께 살펴보세요." },
+            { href: "/qna/growth", title: "성장 Q&A", description: "식사량과 성장 흐름을 함께 볼 때 도움이 됩니다." }
+          ]}
+        />
       </div>
     </div>
   );

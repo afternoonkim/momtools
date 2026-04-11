@@ -2,43 +2,82 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Baby guides for everyday parenting decisions",
-  description: "Straightforward, practical guidance for pregnancy, newborn care, baby food, and toddler routines.",
+  title: "Baby and toddler guides for everyday parenting decisions | MomTools English",
+  description:
+    "Browse stage-based parenting guides for pregnancy, newborn care, starting solids, and toddler routines with simpler explanations and useful next-step links.",
+  alternates: { canonical: "https://momtools.kr/en/info" },
 };
+
+const guideCards = [
+  {
+    title: "Pregnancy",
+    href: "/en/info/pregnancy",
+    description: "Start here for due date planning, trimester priorities, visit questions, and what usually matters before birth.",
+  },
+  {
+    title: "Newborn",
+    href: "/en/info/newborn",
+    description: "Focus on feeding patterns, diaper output, safe sleep, newborn routines, and the questions that feel biggest in the first weeks.",
+  },
+  {
+    title: "Starting solids",
+    href: "/en/info/weaning",
+    description: "Readiness signs, first foods, texture progression, and how to keep early meals simple and realistic.",
+  },
+  {
+    title: "Toddler",
+    href: "/en/info/toddler",
+    description: "Daily routines, picky eating, big feelings, daycare transitions, and everyday behavior questions.",
+  },
+];
+
+const whyThisHubWorks = [
+  "Each guide is written as a stage-based entry point, so parents can start with the season they are in now.",
+  "The pages connect directly to calculators, Q&A topics, and checklists instead of leaving parents with a dead end.",
+  "The writing aims to reduce noise and help parents decide what to look at next, not to overwhelm them with every possible detail.",
+];
 
 export default function Page() {
   return (
     <div className="mt-page">
-      <div className="mt-container-narrow space-y-6">
+      <div className="mt-container-narrow space-y-8">
         <section className="mt-card p-8 md:p-10">
-          <span className="mt-badge">MomTools English</span>
-          <h1 className="mt-title-lg mt-4">Baby guides for everyday parenting decisions</h1>
-          <p className="mt-text-main mt-4">Straightforward, practical guidance for pregnancy, newborn care, baby food, and toddler routines.</p>
+          <span className="mt-badge">Guide hub</span>
+          <h1 className="mt-title-lg mt-4">Stage-based parenting guides for everyday decisions</h1>
+          <p className="mt-text-main mt-4">
+            This section is built for parents who do not just want an answer. They want context. Open the stage that matches your life now,
+            then use the related calculator, checklist, or Q&amp;A page that helps the next question make more sense.
+          </p>
         </section>
-        <section className="grid gap-4">
-          <div className="rounded-3xl border border-amber-100 bg-white p-5">
-            <h2 className="text-xl font-bold text-slate-800">Pregnancy</h2>
-            <p className="mt-2 text-sm leading-7 text-slate-600">Use this section when you want a simpler starting point for due date planning, timing questions, and prep decisions.</p>
-          </div>
-          <div className="rounded-3xl border border-amber-100 bg-white p-5">
-            <h2 className="text-xl font-bold text-slate-800">Newborn</h2>
-            <p className="mt-2 text-sm leading-7 text-slate-600">Focus on feeding, sleep, temperature, diapers, and the small daily questions that feel big in the first weeks.</p>
-          </div>
-          <div className="rounded-3xl border border-amber-100 bg-white p-5">
-            <h2 className="text-xl font-bold text-slate-800">Baby food</h2>
-            <p className="mt-2 text-sm leading-7 text-slate-600">Learn when to start solids, what to offer first, and how to build variety without overcomplicating meals.</p>
-          </div>
-          <div className="rounded-3xl border border-amber-100 bg-white p-5">
-            <h2 className="text-xl font-bold text-slate-800">Toddler</h2>
-            <p className="mt-2 text-sm leading-7 text-slate-600">Find practical help for routines, transitions, daily habits, and common behavior questions.</p>
+
+        <section className="grid gap-5 md:grid-cols-2">
+          {guideCards.map((item) => (
+            <Link key={item.href} href={item.href} className="mt-card p-6 transition hover:-translate-y-0.5">
+              <h2 className="text-xl font-bold text-slate-800">{item.title}</h2>
+              <p className="mt-3 text-sm leading-7 text-slate-600">{item.description}</p>
+              <div className="mt-5 text-sm font-semibold text-sky-700">Open guide</div>
+            </Link>
+          ))}
+        </section>
+
+        <section className="mt-card-soft p-6 md:p-8">
+          <h2 className="text-xl font-bold text-slate-800">Why this hub matters</h2>
+          <div className="mt-5 space-y-3 text-sm leading-8 text-slate-600 md:text-base">
+            {whyThisHubWorks.map((item) => (
+              <div key={item} className="rounded-2xl border border-slate-100 bg-white px-5 py-4">
+                {item}
+              </div>
+            ))}
           </div>
         </section>
-        <section className="mt-card p-6">
-          <h2 className="text-lg font-bold text-slate-800">Helpful next step</h2>
-          <div className="mt-4 flex flex-wrap gap-3">
-            <Link href="/en" className="mt-button-secondary">English home</Link>
-            <Link href="/en/info" className="mt-button-secondary">Guide hub</Link>
-            <Link href="/en/faq" className="mt-button-secondary">FAQ</Link>
+
+        <section className="mt-card p-6 md:p-8">
+          <h2 className="text-xl font-bold text-slate-800">Helpful next pages</h2>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link href="/en/cal" className="mt-button-secondary">Open calculator hub</Link>
+            <Link href="/en/checklists" className="mt-button-secondary">Open checklists</Link>
+            <Link href="/en/qna" className="mt-button-secondary">Browse parent Q&amp;A</Link>
+            <Link href="/en/faq" className="mt-button-secondary">Read FAQ</Link>
           </div>
         </section>
       </div>

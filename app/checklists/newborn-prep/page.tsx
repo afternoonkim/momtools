@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import AdBlock from "@/components/ad/AdBlock";
 import NewbornPrepChecklistClient from "./NewbornPrepChecklistClient";
+import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import RelatedContent from "@/components/common/RelatedContent";
 
 export const metadata: Metadata = {
   title: "신생아 준비 체크리스트 | 수유 수면 위생 준비물 정리 | MomTools",
@@ -44,8 +45,9 @@ export default function NewbornPrepPage() {
     <div className="space-y-8">
       <NewbornPrepChecklistClient />
 
+      <ContentUpdateNote publishedOn="2026-04-09" updatedOn="2026-04-09" />
+
       <div className="mt-container-narrow space-y-8">
-        <AdBlock label="신생아 준비 체크리스트 하단 광고 영역" format="rectangle" />
 
         <section className="mt-card p-6 md:p-8">
           <span className="mt-badge">추가 안내</span>
@@ -90,6 +92,19 @@ export default function NewbornPrepPage() {
             />
           </div>
         </section>
+      
+
+        <RelatedContent
+          locale="ko"
+          title="함께 보면 좋은 페이지"
+          description="관련 계산기, 정보, 체크리스트를 같이 보면 한 가지 질문을 더 쉽게 정리할 수 있어요."
+          items={[
+            { href: "/info/newborn", title: "신생아 정보", description: "수유와 수면, 체온처럼 처음 집에서 보게 되는 기준을 함께 확인해 보세요." },
+            { href: "/tools/baby-age", title: "아기 개월수 계산기", description: "개월 수 기준으로 필요한 준비를 이어서 살펴보기 좋아요." },
+            { href: "/qna/health", title: "건강 Q&A", description: "배변, 수유, 체온 질문을 함께 찾아보기 좋습니다." },
+            { href: "/checklists/weaning", title: "이유식 준비 체크리스트", description: "다음 단계 준비를 차근차근 이어갈 수 있어요." }
+          ]}
+        />
       </div>
     </div>
   );

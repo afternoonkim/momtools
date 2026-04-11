@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PersistentChecklist from "@/components/common/PersistentChecklist";
+import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import RelatedContent from "@/components/common/RelatedContent";
 
 export const metadata: Metadata = {
   title: "Newborn Checklist | Safe Sleep, Feeding, Diapers, and Daily Basics",
@@ -102,6 +104,8 @@ export default function Page() {
           </p>
         </section>
 
+        <ContentUpdateNote publishedOn="2026-04-09" updatedOn="2026-04-09" locale="en" />
+
         <section className="space-y-5">
           {sections.map((section) => (
             <article key={section.title} className="mt-card p-6 md:p-8">
@@ -142,6 +146,19 @@ export default function Page() {
             ))}
           </div>
         </section>
+      
+
+        <RelatedContent
+          locale="en"
+          title="Helpful next pages"
+          description="Use the related tools, guides, and checklists below to turn one answer into a clearer next step."
+          items={[
+            { href: "/en/info/newborn", title: "Newborn guide", description: "Pair the home setup checklist with feeding, sleep, and first-week basics." },
+            { href: "/en/cal/baby-age", title: "Baby age calculator", description: "Exact age helps when newborn routines start to shift week by week." },
+            { href: "/en/qna/health", title: "Health Q&A", description: "Open practical questions about diaper counts, temperature, and feeding." },
+            { href: "/en/checklists/weaning", title: "Solids checklist", description: "Keep the next stage in view once the newborn setup feels steady." }
+          ]}
+        />
       </div>
     </div>
   );

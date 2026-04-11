@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import AdBlock from "@/components/ad/AdBlock";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "FAQ",
   description:
-    "MomTools 자주 묻는 질문 페이지입니다. 계산기 결과, 정확도, 문의 방법, 제휴 링크, 개인정보와 이용 정책 관련 내용을 확인할 수 있습니다.",
+    "MomTools 자주 묻는 질문 페이지입니다. 계산기 활용 범위, 정보 콘텐츠의 성격, 외부 링크와 제휴, 문의 방법, 개인정보와 정책 페이지 관련 내용을 확인할 수 있습니다.",
 };
 
 const faqSections = [
@@ -19,7 +19,7 @@ const faqSections = [
       {
         question: "MomTools 계산기는 무료인가요?",
         answer:
-          "네. MomTools에서 제공하는 계산기와 기본 정보 페이지는 무료로 이용할 수 있도록 구성되어 있습니다. 다만 사이트 구조, 기능, 운영 정책은 추후 변경될 수 있습니다.",
+          "네. MomTools에서 제공하는 계산기와 기본 정보 페이지는 무료로 이용할 수 있습니다. 다만 제공 범위나 안내 방식은 필요에 따라 달라질 수 있습니다.",
       },
       {
         question: "출산 예정일 계산기는 어떤 용도로 보면 되나요?",
@@ -41,11 +41,6 @@ const faqSections = [
         answer:
           "아니요. 성장 백분위는 참고용 지표일 뿐이며, 아이의 성장 속도, 출생 이력, 건강 상태, 진료 기록 등을 함께 봐야 합니다. 지속적으로 걱정되는 경우 소아청소년과 상담이 필요합니다.",
       },
-      {
-        question: "모바일에서도 사용할 수 있나요?",
-        answer:
-          "네. MomTools는 모바일과 PC 환경 모두에서 사용할 수 있도록 구성되어 있습니다. 다만 기기 환경에 따라 화면 배치가 조금 다르게 보일 수 있습니다.",
-      },
     ],
   },
   {
@@ -59,12 +54,7 @@ const faqSections = [
       {
         question: "임신, 신생아, 이유식, 유아 정보는 누구에게 도움이 되나요?",
         answer:
-          "초보 부모, 출산 준비 중인 가정, 육아 정보를 빠르게 정리하고 싶은 사용자에게 특히 도움이 되도록 구성했습니다. 긴 글보다는 핵심 흐름과 체크 포인트를 빠르게 보는 데 초점을 두고 있습니다.",
-      },
-      {
-        question: "육아 정보는 어디서 확인할 수 있나요?",
-        answer:
-          "MomTools 상단 메뉴 또는 홈 화면의 육아 정보 섹션에서 임신, 신생아, 이유식, 유아 관련 페이지를 확인할 수 있습니다. 계산기 사용 후 관련 정보 페이지로 함께 이동해 보면 더 이해하기 쉽습니다.",
+          "초보 부모, 출산 준비 중인 가정, 육아 흐름을 빠르게 정리하고 싶은 사용자에게 특히 도움이 되도록 구성했습니다. 긴 논문형 설명보다는 실제로 자주 궁금해하는 내용을 이해하기 쉽게 정리하는 데 초점을 두고 있습니다.",
       },
       {
         question: "체크리스트는 그대로 사용해도 되나요?",
@@ -74,52 +64,62 @@ const faqSections = [
       {
         question: "블로그 글이나 유튜브 콘텐츠는 계속 추가되나요?",
         answer:
-          "프로젝트 구조상 콘텐츠 확장이 가능한 형태로 구성되어 있습니다. 실제 운영 시 API 또는 수동 업데이트 방식에 따라 블로그와 유튜브 콘텐츠를 계속 보강할 수 있습니다.",
+          "필요한 주제는 순차적으로 더 보강될 수 있습니다. 새 글이나 영상이 추가되면 부모가 이해하기 쉬운 흐름으로 다시 정리해 소개할 수 있습니다.",
       },
     ],
   },
   {
-    title: "육아용품 / 외부 링크 / 제휴 관련",
+    title: "외부 링크 및 안내 관련",
     items: [
       {
         question: "육아용품 페이지의 링크는 어떤 성격인가요?",
         answer:
-          "운영 방식에 따라 일반 정보 링크일 수도 있고, 제휴 링크일 수도 있습니다. 제휴 링크가 포함될 경우 관련 법령과 플랫폼 정책에 따라 광고 또는 제휴 고지 문구를 명확히 표시하는 것이 좋습니다.",
+          "육아용품 페이지의 링크는 부모가 제품 정보를 더 쉽게 확인하도록 연결한 외부 안내 링크입니다. 일부 링크에는 별도 안내가 함께 표시될 수 있으며, 실제 조건은 연결된 판매처 페이지를 기준으로 확인해 주세요.",
       },
       {
         question: "제휴 링크가 있으면 사용자에게 불이익이 있나요?",
         answer:
-          "일반적으로 사용자가 추가 비용을 부담하는 구조는 아니지만, 구매처 정책이나 가격은 수시로 바뀔 수 있습니다. 구매 전에는 실제 상품 페이지의 가격, 배송, 교환, 환불 조건을 다시 확인해 주세요.",
+          "일반적으로 사용자가 별도 비용을 더 부담하는 구조는 아니지만, 실제 가격과 혜택은 판매처 정책에 따라 달라질 수 있습니다. 구매 전에는 판매처의 최신 상품 페이지를 반드시 확인해 주세요.",
       },
       {
         question: "MomTools가 특정 상품의 품질을 보증하나요?",
         answer:
           "아니요. MomTools는 육아용품 탐색 편의를 위한 정보 연결 역할을 할 수 있으나, 특정 상품의 성능, 안전성, 만족도를 보증하지 않습니다. 최종 선택은 상품 상세정보와 후기, 판매처 정책을 충분히 확인한 뒤 진행해 주세요.",
       },
+      {
+        question: "화면에 외부 안내가 보이면 사이트 추천으로 봐도 되나요?",
+        answer:
+          "아닙니다. 화면에 외부 안내나 소개가 보이더라도, 그것만으로 MomTools가 해당 상품이나 서비스를 품질 보증하거나 최종 추천한다는 뜻은 아닙니다.",
+      },
     ],
   },
   {
-    title: "문의 / 개인정보 / 운영 정책 관련",
+    title: "문의 / 개인정보 / 정책 관련",
     items: [
       {
         question: "문의는 어떻게 보내면 되나요?",
         answer:
-          "문의하기 페이지에서 운영자가 안내한 이메일 또는 문의 채널을 통해 전달하면 됩니다. 오류 제보의 경우 사용 기기, 화면, 문제 발생 경로를 함께 남기면 확인에 도움이 됩니다.",
+          "문의하기 페이지에 안내된 이메일 또는 문의 채널을 이용하면 됩니다. 오류 제보의 경우 사용 기기, 브라우저, 페이지 주소, 오류 발생 순서를 함께 남기면 확인에 도움이 됩니다.",
       },
       {
         question: "개인정보를 많이 입력해야 하나요?",
         answer:
-          "MomTools는 기본적으로 회원가입 없이 이용하는 구조를 지향합니다. 문의 기능을 운영하는 경우에도 가능한 한 최소한의 정보만 수집하는 방향을 권장합니다.",
+          "아니요. MomTools는 기본적으로 회원가입 없이 이용할 수 있습니다. 문의가 필요한 경우에도 가능한 한 꼭 필요한 정보만 남기는 것을 권장합니다.",
+      },
+      {
+        question: "아이의 건강 상태를 자세히 적어 문의해도 되나요?",
+        answer:
+          "권장하지 않습니다. 아이 실명, 전체 생년월일, 상세 진료기록, 사진, 검사 결과처럼 민감한 정보는 가능한 한 보내지 말아 주세요. 건강 문제는 반드시 의료기관에 직접 문의해야 합니다.",
       },
       {
         question: "개인정보처리방침과 이용약관은 왜 필요한가요?",
         answer:
-          "사이트가 정보를 제공하고 문의를 받으며 외부 서비스, 광고, 분석 도구를 연동할 수 있기 때문에 이용자에게 운영 기준을 명확히 안내하기 위한 기본 페이지가 필요합니다.",
+          "사이트가 정보를 제공하고 외부 서비스와 연결될 수 있기 때문에, 이용자가 참고 범위와 정보 처리 원칙을 쉽게 확인할 수 있도록 기본 정책 페이지를 두고 있습니다.",
       },
       {
         question: "정책 내용은 변경될 수 있나요?",
         answer:
-          "네. 서비스 구조, 외부 서비스 연동, 법령 변화, 운영 정책 변경에 따라 개인정보처리방침과 이용약관은 수정될 수 있습니다. 중요한 변경이 있을 경우 페이지 내 공지 또는 개정일 갱신 형태로 반영하는 것이 좋습니다.",
+          "네. 외부 서비스 연결 방식이나 관련 기준이 달라지면 개인정보처리방침과 이용약관도 함께 수정될 수 있습니다. 중요한 변경이 있을 경우 페이지의 개정일을 함께 갱신합니다.",
       },
     ],
   },
@@ -133,19 +133,32 @@ export default function FAQPage() {
           <span className="mt-badge">FAQ</span>
           <h1 className="mt-title-lg mt-4">자주 묻는 질문</h1>
           <p className="mt-text-main mt-4">
-            MomTools를 이용하면서 가장 자주 궁금해할 수 있는 내용을 한곳에 정리했습니다.
-            계산기 결과의 의미, 정보 콘텐츠의 활용 범위, 육아용품 링크, 문의 방법,
-            개인정보와 이용 정책 관련 기준까지 빠르게 확인할 수 있습니다.
+            MomTools를 이용하면서 자주 궁금해할 수 있는 내용을 한곳에 정리했습니다.
+            계산기 결과의 의미, 정보 콘텐츠의 활용 범위, 외부 링크 안내, 문의 기준,
+            개인정보와 정책 페이지 관련 내용을 한 번에 확인할 수 있습니다.
           </p>
         </section>
 
-        <AdBlock label="FAQ 상단 광고 영역" format="horizontal" />
+        <section className="mt-card-soft p-6 md:p-8">
+          <h2 className="text-xl font-bold text-slate-800">빠르게 확인할 핵심</h2>
+          <div className="mt-4 grid gap-4 md:grid-cols-3">
+            <div className="rounded-2xl border border-slate-100 bg-white p-5 text-sm leading-7 text-slate-600">
+              계산기와 정보 페이지는 참고용이며, 의료 판단이나 법적 판단을 대신하지
+              않습니다.
+            </div>
+            <div className="rounded-2xl border border-slate-100 bg-white p-5 text-sm leading-7 text-slate-600">
+              외부 링크는 편의를 위한 연결이며, 실제 상품 정보와 정책은 연결된 페이지 기준이 적용됩니다.
+            </div>
+            <div className="rounded-2xl border border-slate-100 bg-white p-5 text-sm leading-7 text-slate-600">
+              오류 제보, 정보 수정 요청은 문의하기로 받을 수 있지만, 개인별 의료 상담은
+              답변 대상이 아닙니다.
+            </div>
+          </div>
+        </section>
 
         {faqSections.map((section, index) => (
           <section key={section.title} className="mt-card p-8 md:p-10">
-            <h2 className="text-2xl font-bold tracking-tight text-slate-800">
-              {section.title}
-            </h2>
+            <h2 className="text-2xl font-bold tracking-tight text-slate-800">{section.title}</h2>
 
             <div className="mt-6 space-y-4">
               {section.items.map((item) => (
@@ -162,18 +175,40 @@ export default function FAQPage() {
                 </article>
               ))}
             </div>
-
-            {index === 1 ? <AdBlock label="FAQ 중단 광고 영역" format="rectangle" /> : null}
           </section>
         ))}
 
         <section className="mt-card-soft p-8 md:p-10">
-          <h2 className="text-xl font-bold text-slate-800">안내</h2>
-          <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">
-            FAQ의 내용은 MomTools 이용 편의를 위한 일반 안내입니다. 실제 의료 판단,
-            구매 결정, 법적 판단이 필요한 경우에는 공식 기관, 의료진, 판매처,
-            전문가의 안내를 우선적으로 확인해 주세요.
-          </p>
+          <h2 className="text-xl font-bold text-slate-800">관련 페이지 바로가기</h2>
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            <Link
+              href="/privacy"
+              className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200"
+            >
+              <div className="font-semibold text-slate-800">개인정보처리방침</div>
+              <div className="mt-2 text-sm leading-7 text-slate-500">
+                정보 수집, 쿠키, 외부 서비스, 이용자 권리를 확인해 보세요.
+              </div>
+            </Link>
+            <Link
+              href="/terms"
+              className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200"
+            >
+              <div className="font-semibold text-slate-800">이용약관</div>
+              <div className="mt-2 text-sm leading-7 text-slate-500">
+                서비스 활용 범위, 참고 기준, 외부 링크 안내 원칙을 볼 수 있어요.
+              </div>
+            </Link>
+            <Link
+              href="/contact"
+              className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200"
+            >
+              <div className="font-semibold text-slate-800">문의하기</div>
+              <div className="mt-2 text-sm leading-7 text-slate-500">
+                오류 제보, 정보 수정 요청, 제휴 문의를 보내는 방법을 확인하세요.
+              </div>
+            </Link>
+          </div>
         </section>
       </div>
     </div>

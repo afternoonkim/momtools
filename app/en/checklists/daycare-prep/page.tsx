@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PersistentChecklist from "@/components/common/PersistentChecklist";
+import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import RelatedContent from "@/components/common/RelatedContent";
 
 export const metadata: Metadata = {
   title: "Daycare Prep Checklist | Labels, Extra Clothes, and Daily Basics",
@@ -102,6 +104,8 @@ export default function Page() {
           </p>
         </section>
 
+        <ContentUpdateNote publishedOn="2026-04-09" updatedOn="2026-04-09" locale="en" />
+
         <section className="space-y-5">
           {sections.map((section) => (
             <article key={section.title} className="mt-card p-6 md:p-8">
@@ -142,6 +146,19 @@ export default function Page() {
             ))}
           </div>
         </section>
+      
+
+        <RelatedContent
+          locale="en"
+          title="Helpful next pages"
+          description="Use the related tools, guides, and checklists below to turn one answer into a clearer next step."
+          items={[
+            { href: "/en/info/toddler", title: "Toddler guide", description: "Pair daycare prep with routines, transitions, and everyday toddler patterns." },
+            { href: "/en/qna/behavior", title: "Behavior Q&A", description: "Useful for separation anxiety, morning resistance, and pickup transitions." },
+            { href: "/en/checklists/newborn", title: "Newborn checklist", description: "Helpful if your child is still in the younger infant stage." },
+            { href: "/en/faq", title: "FAQ", description: "See how the site’s tools fit into real-world planning for parents." }
+          ]}
+        />
       </div>
     </div>
   );

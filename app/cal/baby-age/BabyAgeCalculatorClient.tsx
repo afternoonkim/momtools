@@ -226,12 +226,8 @@ export default function BabyAgeCalculatorClient() {
           </section>
 
           <div className="mt-card p-4 md:p-5">
-            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-              AdSense 추천 위치 1
-            </div>
-            <div className="mt-2 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-8 text-center text-sm text-slate-500">
-              입력 영역 아래 / 결과 영역 시작 전 광고 영역
-            </div>
+            <div className="text-sm font-bold text-slate-900">입력 전에 확인해 보세요</div>
+            <p className="mt-2 text-sm leading-7 text-slate-600">날짜와 수치를 천천히 확인해 입력하면 결과를 더 안정적으로 참고할 수 있어요. 헷갈리는 값이 있다면 정확한 기준을 먼저 다시 확인한 뒤 입력해 주세요.</p>
           </div>
         </aside>
 
@@ -326,12 +322,8 @@ export default function BabyAgeCalculatorClient() {
           </section>
 
           <div className="mt-card p-4 md:p-5">
-            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-              AdSense 추천 위치 2
-            </div>
-            <div className="mt-2 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-8 text-center text-sm text-slate-500">
-              결과 영역 아래 / 설명 콘텐츠 시작 전 광고 영역
-            </div>
+            <div className="text-sm font-bold text-slate-900">결과는 이렇게 활용해 보세요</div>
+            <p className="mt-2 text-sm leading-7 text-slate-600">결과를 한 번 확인한 뒤 바로 결론을 내리기보다, 아래 설명과 자주 묻는 질문을 함께 읽으면 실제 생활에 어떻게 연결하면 좋을지 더 쉽게 이해할 수 있습니다.</p>
           </div>
         </div>
       </div>
@@ -440,7 +432,7 @@ export default function BabyAgeCalculatorClient() {
                 훨씬 수월해집니다.
               </p>
               {/* <p className="mt-3 text-sm leading-7 text-slate-700">
-                MomTools에서 육아 일정을 정리한 뒤, 나중에는 BlueDino와 연결해 가계 예산과
+                MomTools에서 육아 일정을 정리한 뒤, 관련 정보와 체크리스트를 함께 보며 가계 예산과
                 육아비 준비 흐름까지 자연스럽게 확장할 수 있어요.
               </p> */}
             </div>

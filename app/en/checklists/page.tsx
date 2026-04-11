@@ -2,33 +2,39 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Parenting Checklists | Birth, Newborn, Solids, Daycare",
+  title: "Parenting checklists | birth, newborn, solids, and daycare prep",
   description:
-    "Practical checklists for hospital prep, newborn basics, starting solids, and daycare. Built for parents in the US.",
+    "Use practical parenting checklists for birth prep, newborn setup, starting solids, and daycare preparation. Built for parents in the United States.",
   alternates: { canonical: "https://momtools.kr/en/checklists" },
 };
 
 const cards = [
   {
     href: "/en/checklists/birth",
-    title: "Birth Prep Checklist",
-    description: "Hospital bag, paperwork, partner prep, and the last tasks to finish before labor.",
+    title: "Birth prep checklist",
+    description: "Hospital bag basics, paperwork, support-person planning, car seat setup, and the last tasks that matter most before delivery.",
   },
   {
     href: "/en/checklists/newborn",
-    title: "Newborn Checklist",
-    description: "Safe sleep, feeding basics, diapering, and the items most families use right away.",
+    title: "Newborn checklist",
+    description: "Safe sleep, feeding basics, diapering, home setup, and the items most families actually use right away.",
   },
   {
     href: "/en/checklists/weaning",
-    title: "Starting Solids Checklist",
-    description: "High chair setup, simple feeding tools, first-food planning, and cleanup basics.",
+    title: "Starting solids checklist",
+    description: "High chair setup, bibs, spoons, simple first-food planning, and cleanup basics that make solids feel easier.",
   },
   {
     href: "/en/checklists/daycare",
-    title: "Daycare Prep Checklist",
-    description: "Labels, extra clothes, backup care notes, and what helps drop-off feel smoother.",
+    title: "Daycare prep checklist",
+    description: "Labels, extra clothes, nap items, emergency contacts, and the details that help the first weeks go more smoothly.",
   },
+];
+
+const checklistPrinciples = [
+  "These checklists focus on the items and steps parents usually need first, not on building the biggest possible shopping cart.",
+  "Each page is designed to reduce last-minute stress by grouping together the tasks that are easiest to forget.",
+  "Use the lists as planning tools, then adjust for your own pediatrician, daycare, birth setting, or family routine.",
 ];
 
 export default function EnChecklistsPage() {
@@ -37,11 +43,10 @@ export default function EnChecklistsPage() {
       <div className="mt-container space-y-8">
         <section className="mt-card p-8 md:p-10">
           <span className="mt-badge">Parenting checklists</span>
-          <h1 className="mt-title-xl mt-5">Only the checklists most parents actually need</h1>
+          <h1 className="mt-title-xl mt-5">The checklists parents actually reuse</h1>
           <p className="mt-text-main mt-4 max-w-4xl">
-            Instead of long shopping lists, these pages focus on the items and steps that matter
-            most in real life. Use them as simple planning guides for the stages families commonly
-            prepare for in the US.
+            This section keeps preparation practical. Instead of huge gear lists, the English pages focus on the steps,
+            documents, and everyday items that usually make the biggest difference in real life.
           </p>
         </section>
 
@@ -53,6 +58,15 @@ export default function EnChecklistsPage() {
               <div className="mt-5 text-sm font-semibold text-sky-700">Open checklist</div>
             </Link>
           ))}
+        </section>
+
+        <section className="mt-card-soft p-6 md:p-8">
+          <h2 className="text-xl font-bold text-slate-800">How to use these lists well</h2>
+          <div className="mt-5 space-y-3 text-sm leading-8 text-slate-600 md:text-base">
+            {checklistPrinciples.map((item) => (
+              <div key={item} className="rounded-2xl border border-slate-100 bg-white px-5 py-4">{item}</div>
+            ))}
+          </div>
         </section>
       </div>
     </div>

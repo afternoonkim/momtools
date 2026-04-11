@@ -90,7 +90,7 @@ const faqItems = [
   {
     question: "첫 등원 준비에서 가장 먼저 챙길 것은 무엇인가요?",
     answer:
-      "여벌옷, 이름 표시, 비상연락처, 귀가자 정보처럼 실제 운영에 바로 필요한 항목을 먼저 챙기는 것이 좋아요. 이후 낮잠 침구와 생활용품을 정리하면 흐름이 훨씬 수월해집니다.",
+      "여벌옷, 이름 표시, 비상연락처, 귀가자 정보처럼 첫 등원 전에 바로 챙겨야 하는 항목을 먼저 정리하는 것이 좋아요. 이후 낮잠 침구와 생활용품을 정리하면 흐름이 훨씬 수월해집니다.",
   },
   {
     question: "어린이집 적응은 얼마나 걸릴 수 있나요?",
@@ -150,7 +150,7 @@ export default function DaycarePrepChecklistClient() {
           <QuickCard
             title="가장 먼저"
             value="여벌옷 · 이름 표시 · 연락처"
-            description="첫 등원 전에 실제 운영에 바로 필요한 기본 항목부터 먼저 정리하는 것이 좋아요."
+            description="첫 등원 전에 바로 필요한 기본 항목부터 먼저 정리하면 준비가 훨씬 쉬워집니다."
             tone="sky"
           />
           <QuickCard
@@ -168,12 +168,8 @@ export default function DaycarePrepChecklistClient() {
         </section>
 
         <div className="mt-card p-4 md:p-5">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-            AdSense 추천 위치 1
-          </div>
-          <div className="mt-2 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-8 text-center text-sm text-slate-500">
-            상단 요약 카드 아래 / 체크리스트 본문 시작 전 광고 영역
-          </div>
+          <div className="text-sm font-bold text-slate-900">체크리스트 활용 팁</div>
+          <p className="mt-2 text-sm leading-7 text-slate-600">처음부터 모든 항목을 한 번에 끝내려 하기보다, 오늘 바로 확인할 수 있는 항목부터 체크해 보세요. 부담을 줄이면 실제 준비가 더 꾸준히 이어집니다.</p>
         </div>
 
         <section className="space-y-6">
@@ -241,7 +237,7 @@ export default function DaycarePrepChecklistClient() {
               <h2 className="text-lg font-bold text-slate-900">안내 문구</h2>
               <ul className="mt-4 space-y-2 text-sm leading-7 text-slate-700">
                 <li>• 이 페이지는 첫 등원 전 준비 흐름을 정리한 참고용 체크리스트예요.</li>
-                <li>• 어린이집마다 준비물과 운영 방식이 다를 수 있으니 원 안내를 함께 확인해 주세요.</li>
+                <li>• 어린이집마다 준비물과 안내 방식이 다를 수 있으니 원 안내를 함께 확인해 주세요.</li>
                 <li>• 물건만 챙기는 것보다 등원·하원 루틴과 연락 체계를 같이 준비하는 것이 중요해요.</li>
                 <li>• 적응 기간에는 아이 반응이 달라질 수 있으니 너무 빠르게 판단하지 않는 것이 좋아요.</li>
               </ul>
@@ -276,12 +272,8 @@ export default function DaycarePrepChecklistClient() {
         </section>
 
         <div className="mt-card p-4 md:p-5">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-            AdSense 추천 위치 2
-          </div>
-          <div className="mt-2 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-8 text-center text-sm text-slate-500">
-            체크리스트 본문 아래 / FAQ 및 설명 콘텐츠 시작 전 광고 영역
-          </div>
+          <div className="text-sm font-bold text-slate-900">준비를 마무리할 때 확인해 보세요</div>
+          <p className="mt-2 text-sm leading-7 text-slate-600">체크가 끝난 뒤에도 병원 안내문, 어린이집 공지, 집 안 동선처럼 실제 환경에 따라 달라지는 부분이 없는지 마지막으로 한 번 더 확인하면 좋아요.</p>
         </div>
 
         <section className="mt-card p-6 md:p-8">
@@ -304,7 +296,7 @@ export default function DaycarePrepChecklistClient() {
                     구성했습니다.
                   </p>
                   <p>
-                    다만 어린이집마다 필요한 준비물과 운영 방식이 다를 수 있으니, 최종 준비는 원 안내와 함께
+                    다만 어린이집마다 필요한 준비물과 안내 방식이 다를 수 있으니, 최종 준비는 원 안내와 함께
                     다시 확인하는 것이 좋습니다.
                   </p>
                 </div>

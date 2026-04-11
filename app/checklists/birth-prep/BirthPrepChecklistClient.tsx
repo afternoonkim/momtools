@@ -162,12 +162,8 @@ export default function BirthPrepChecklistClient() {
         </section>
 
         <div className="mt-card p-4 md:p-5">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-            AdSense 추천 위치 1
-          </div>
-          <div className="mt-2 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-8 text-center text-sm text-slate-500">
-            상단 요약 카드 아래 / 체크리스트 본문 시작 전 광고 영역
-          </div>
+          <div className="text-sm font-bold text-slate-900">체크리스트 활용 팁</div>
+          <p className="mt-2 text-sm leading-7 text-slate-600">처음부터 모든 항목을 한 번에 끝내려 하기보다, 오늘 바로 확인할 수 있는 항목부터 체크해 보세요. 부담을 줄이면 실제 준비가 더 꾸준히 이어집니다.</p>
         </div>
 
         <section className="space-y-6">
@@ -270,12 +266,8 @@ export default function BirthPrepChecklistClient() {
         </section>
 
         <div className="mt-card p-4 md:p-5">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-            AdSense 추천 위치 2
-          </div>
-          <div className="mt-2 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-8 text-center text-sm text-slate-500">
-            체크리스트 본문 아래 / FAQ 및 설명 콘텐츠 시작 전 광고 영역
-          </div>
+          <div className="text-sm font-bold text-slate-900">준비를 마무리할 때 확인해 보세요</div>
+          <p className="mt-2 text-sm leading-7 text-slate-600">체크가 끝난 뒤에도 병원 안내문, 어린이집 공지, 집 안 동선처럼 실제 환경에 따라 달라지는 부분이 없는지 마지막으로 한 번 더 확인하면 좋아요.</p>
         </div>
 
         <section className="mt-card p-6 md:p-8">

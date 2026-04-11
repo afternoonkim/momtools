@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { enQnaEntries, getEnQnaEntry } from "@/data/en/qna100";
 import { notFound } from "next/navigation";
-import AdBlock from "@/components/ad/AdBlock";
+import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import RelatedContent from "@/components/common/RelatedContent";
 
 const topicMeta = {
   Health: {
@@ -86,6 +87,8 @@ export default async function EnQnaDetailPage({ params }: { params: Promise<{ sl
           </div>
         </section>
 
+        <ContentUpdateNote publishedOn="2026-04-09" updatedOn="2026-04-09" locale="en" note="This answer is reviewed so parents can quickly see when the guidance on home observation, next steps, and when to call a clinician was last checked." />
+
         <section className="mt-card-soft p-6 md:p-8">
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Short answer</div>
           <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">
@@ -93,8 +96,6 @@ export default async function EnQnaDetailPage({ params }: { params: Promise<{ sl
             what is often okay to observe, what you can try at home, and when it is smarter to call your pediatrician.
           </p>
         </section>
-
-        <AdBlock placement="contentInline" format="rectangle" />
 
         <section className="mt-card p-6 md:p-8">
           <h2 className="mt-title-md">What this question usually means in real life</h2>
@@ -146,11 +147,14 @@ export default async function EnQnaDetailPage({ params }: { params: Promise<{ sl
           </div>
         </section>
 
-        <AdBlock placement="contentInline" format="horizontal" />
-
         <section className="mt-card-soft p-6 md:p-8">
           <h2 className="mt-title-md">Related questions parents also search</h2>
-          <div className="mt-4 grid gap-4 md:grid-cols-3">
+          <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">
+            Most parent concerns do not stop at one question. Reading nearby questions often helps you
+            compare patterns, notice what changed, and decide what details are worth writing down before
+            you call your pediatrician.
+          </p>
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
             {entry.related.map((item) => (
               <Link
                 key={item.slug}
@@ -158,10 +162,29 @@ export default async function EnQnaDetailPage({ params }: { params: Promise<{ sl
                 className="rounded-2xl bg-white px-5 py-5 shadow-sm transition hover:-translate-y-0.5"
               >
                 <div className="font-semibold text-slate-800">{item.question}</div>
+                <div className="mt-3 text-sm font-semibold text-sky-700">Read this question next</div>
               </Link>
             ))}
           </div>
+          <div className="mt-6 grid gap-4 md:grid-cols-2">
+            <Link href={topic.hubHref} className="rounded-2xl border border-slate-100 bg-white px-5 py-5 transition hover:-translate-y-0.5 hover:border-amber-200">
+              <div className="font-semibold text-slate-800">Browse all {topic.hubLabel.toLowerCase()}</div>
+              <p className="mt-2 text-sm leading-7 text-slate-500">Compare similar questions in the same topic instead of relying on one page alone.</p>
+            </Link>
+            <Link href="/en/qna" className="rounded-2xl border border-slate-100 bg-white px-5 py-5 transition hover:-translate-y-0.5 hover:border-amber-200">
+              <div className="font-semibold text-slate-800">Back to the full Parent Q&amp;A hub</div>
+              <p className="mt-2 text-sm leading-7 text-slate-500">Jump across health, growth, and behavior questions from one place.</p>
+            </Link>
+          </div>
         </section>
+      
+
+        <RelatedContent
+          locale="en"
+          title="Helpful next pages for this question"
+          description="Most parent questions make more sense when you compare them with a guide, a calculator, or another question in the same topic."
+          items={topic.guides.map((item) => ({ href: item.href, title: item.label, description: item.note }))}
+        />
       </div>
     </div>
   );

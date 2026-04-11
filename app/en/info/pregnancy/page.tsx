@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import AdBlock from "@/components/ad/AdBlock";
+import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import RelatedContent from "@/components/common/RelatedContent";
 
 export const metadata: Metadata = {
-  title: "Pregnancy guide | due date planning, appointments, and trimester basics",
+  title: "Pregnancy guide | due date planning, trimester priorities, and next steps",
   description:
-    "A practical pregnancy guide for parents in the US, covering trimester planning, prenatal appointments, common symptoms, and what to prepare before birth.",
+    "A practical pregnancy guide for parents in the U.S., covering due date planning, trimester priorities, prenatal visits, symptom questions, and birth preparation.",
   alternates: { canonical: "https://momtools.kr/en/info/pregnancy" },
   openGraph: {
     title: "Pregnancy guide | MomTools",
@@ -19,16 +20,20 @@ export const metadata: Metadata = {
 
 const sections = [
   {
-    title: "What most parents want first",
-    text: "Most pregnancy questions start with timing: how far along you are, when your due date falls, and which appointments matter next. A simple structure helps more than reading everything at once.",
+    title: "Start with timing, not with everything",
+    text: "Most pregnancy questions feel easier once the timing is clear. Due date, current week, the next visit, and the trimester you are in usually matter more than reading every possible topic at once.",
   },
   {
-    title: "Trimester planning in real life",
-    text: "The first trimester usually brings the biggest uncertainty, the second is often when planning feels easier, and the third is when practical decisions pick up. Thinking by trimester helps you focus on what matters now instead of trying to prepare for everything at once.",
+    title: "Think in trimester priorities",
+    text: "The first trimester often centers on confirmation, early symptoms, and basic questions. The second often brings more planning space. The third usually shifts attention toward birth prep, leave planning, and what you want ready before labor starts.",
   },
   {
-    title: "When online information is not enough",
-    text: "Heavy bleeding, severe abdominal pain, reduced fetal movement later in pregnancy, or symptoms your OB office has told you to watch should always be handled through your medical team first.",
+    title: "Prepare questions before visits",
+    text: "Parents often get more out of prenatal visits when they bring a short written list. Symptoms, testing questions, work concerns, medication questions, and birth-prep decisions are easier to discuss when they are not left to memory.",
+  },
+  {
+    title: "Know when online reading should stop",
+    text: "Heavy bleeding, severe abdominal pain, reduced fetal movement later in pregnancy, severe headache, or any symptom your OB office has specifically warned you about should be handled through your medical team first.",
   },
 ];
 
@@ -38,14 +43,15 @@ export default function PregnancyPage() {
       <div className="mt-container space-y-8">
         <section className="mt-card p-8 md:p-10">
           <span className="mt-badge">Pregnancy guide</span>
-          <h1 className="mt-title-xl mt-5">Pregnancy planning that feels easier to follow</h1>
+          <h1 className="mt-title-xl mt-5">Pregnancy planning that is easier to follow in real life</h1>
           <p className="mt-text-main mt-4 max-w-4xl">
-            This page is built for everyday use: due date timing, trimester priorities, what to ask at visits,
-            and how to prepare without turning pregnancy into a full-time research project.
+            This guide is built for everyday use: due date timing, trimester priorities, prenatal visit planning,
+            symptom questions, and birth preparation. The goal is to make the next step clearer without turning
+            pregnancy into a full-time research project.
           </p>
         </section>
 
-        <AdBlock placement="contentInline" format="horizontal" label="Pregnancy guide" />
+        <ContentUpdateNote publishedOn="2026-04-09" updatedOn="2026-04-11" locale="en" />
 
         <section className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="mt-card p-6 md:p-8 space-y-5">
@@ -66,6 +72,18 @@ export default function PregnancyPage() {
             </div>
           </aside>
         </section>
+
+        <RelatedContent
+          locale="en"
+          title="Helpful next pages"
+          description="Use the related tools, guides, and checklists below to turn one answer into a clearer next step."
+          items={[
+            { href: "/en/cal/due-date", title: "Due date calculator", description: "Estimate your due date and pregnancy week before planning the next steps." },
+            { href: "/en/checklists/birth", title: "Birth prep checklist", description: "Keep your hospital bag, paperwork, and home prep in one place." },
+            { href: "/en/info/newborn", title: "Newborn guide", description: "See what parents usually need right after delivery." },
+            { href: "/en/qna/health", title: "Health Q&A", description: "Browse practical parent questions about symptoms and when to call your OB or pediatrician." }
+          ]}
+        />
       </div>
     </div>
   );

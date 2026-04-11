@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import AdBlock from "@/components/ad/AdBlock";
 import ToddlerInfoClient from "./ToddlerInfoClient";
+import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import RelatedContent from "@/components/common/RelatedContent";
+import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
 
 export const metadata: Metadata = {
   title: "유아 정보 | 식사 수면 감정 놀이 어린이집 적응 가이드 | MomTools",
@@ -17,13 +19,13 @@ export const metadata: Metadata = {
     "MomTools",
   ],
   alternates: {
-    canonical: "https://momtools.kr/info/toddler",
+    canonical: buildCanonical("/info/toddler"),
   },
   openGraph: {
     title: "유아 정보 | 식사 수면 감정 놀이 어린이집 적응 가이드 | MomTools",
     description:
       "유아기 생활 루틴, 식사와 수면, 말과 감정, 놀이, 어린이집 적응까지 한눈에 정리해보세요.",
-    url: "https://momtools.kr/info/toddler",
+    url: buildCanonical("/info/toddler"),
     siteName: "MomTools",
     locale: "ko_KR",
     type: "website",
@@ -45,8 +47,9 @@ export default function ToddlerPage() {
     <div className="space-y-8">
       <ToddlerInfoClient />
 
+      <ContentUpdateNote publishedOn={SITE_DATES.published} updatedOn={SITE_DATES.updated} />
+
       <div className="mt-container-narrow space-y-8">
-        <AdBlock label="유아 정보 하단 광고 영역" format="rectangle" />
 
         <section className="mt-card p-6 md:p-8">
           <span className="mt-badge">추가 안내</span>
@@ -96,6 +99,19 @@ export default function ToddlerPage() {
             />
           </div>
         </section>
+      
+
+        <RelatedContent
+          locale="ko"
+          title="함께 보면 좋은 페이지"
+          description="관련 계산기, 정보, 체크리스트를 같이 보면 한 가지 질문을 더 쉽게 정리할 수 있어요."
+          items={[
+            { href: "/checklists/daycare", title: "어린이집 준비 체크리스트", description: "등원 준비와 생활 루틴을 함께 정리할 수 있어요." },
+            { href: "/qna/behavior", title: "행동 Q&A", description: "떼쓰기, 거부 행동, 분리불안 같은 질문을 이어서 볼 수 있어요." },
+            { href: "/qna/growth", title: "성장 Q&A", description: "언어와 놀이, 발달 흐름을 같이 확인해 보세요." },
+            { href: "/items/essential", title: "육아용품 목록", description: "생활용품과 외출 준비를 함께 살펴보기 좋아요." }
+          ]}
+        />
       </div>
     </div>
   );

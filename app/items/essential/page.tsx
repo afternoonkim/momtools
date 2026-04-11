@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import AdBlock from "@/components/ad/AdBlock";
 import EssentialItemsClient from "./EssentialItemsClient";
 
 export const metadata: Metadata = {
@@ -37,7 +36,35 @@ export default function EssentialItemsPage() {
       <EssentialItemsClient />
 
       <div className="mt-container-narrow space-y-8">
-        <AdBlock label="육아용품 목록 하단 광고 영역" format="rectangle" />
+        <section className="mt-card-soft p-6 md:p-8">
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">용품목록 안내</div>
+          <h1 className="mt-title-lg mt-3">용품을 고르기 전에 먼저 살펴보면 좋은 기준을 정리했습니다</h1>
+          <p className="mt-text-main mt-3 max-w-4xl">
+            육아용품은 브랜드, 예산, 수유 방식, 생활 공간, 아이 피부 상태에 따라 선택 기준이 달라질 수 있습니다.
+            MomTools 용품목록은 특정 상품을 강하게 권하는 방식보다, 부모가 카테고리별로 필요한 물품을 먼저 정리하고
+            준비 흐름을 잡는 데 도움이 되도록 구성했습니다. 실제 구매 전에는 제품 상세 정보, 사용 후기, 병원 또는 전문가 안내를
+            함께 확인하는 것이 좋습니다.
+          </p>
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            <div className="rounded-3xl bg-white p-5 shadow-sm">
+              <div className="font-bold text-slate-800">카테고리별 탐색</div>
+              <p className="mt-2 text-sm leading-7 text-slate-600">기저귀, 수유용품, 위생용품처럼 실제 준비 순서에 맞춰 살펴볼 수 있습니다.</p>
+            </div>
+            <div className="rounded-3xl bg-white p-5 shadow-sm">
+              <div className="font-bold text-slate-800">준비 가이드 연결</div>
+              <p className="mt-2 text-sm leading-7 text-slate-600">신생아 준비 체크리스트와 정보 페이지를 함께 보며 필요한 범위를 넓게 점검할 수 있습니다.</p>
+            </div>
+            <div className="rounded-3xl bg-white p-5 shadow-sm">
+              <div className="font-bold text-slate-800">이용 안내</div>
+              <p className="mt-2 text-sm leading-7 text-slate-600">외부 링크 이용 방법과 참고 범위는 FAQ와 안내 페이지에서 함께 확인할 수 있습니다.</p>
+            </div>
+          </div>
+          <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold">
+            <Link href="/faq" className="rounded-full bg-amber-50 px-4 py-2 text-amber-800">FAQ</Link>
+            <Link href="/privacy" className="rounded-full bg-white px-4 py-2 text-slate-700 shadow-sm">개인정보처리방침</Link>
+            <Link href="/about" className="rounded-full bg-white px-4 py-2 text-slate-700 shadow-sm">사이트 소개</Link>
+          </div>
+        </section>
 
         <section className="mt-card p-6 md:p-8">
           <span className="mt-badge">육아 준비 가이드</span>
@@ -107,7 +134,7 @@ export default function EssentialItemsPage() {
             <CategoryLink
               href="/faq"
               title="FAQ"
-              description="제휴 링크, 이용 기준, 참고 범위처럼 용품 페이지 이용 전 알아두면 좋은 내용을 확인할 수 있어요."
+              description="용품 페이지를 참고하는 방법과 함께 보면 좋은 안내를 확인할 수 있어요."
             />
           </div>
         </section>

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { stageGuides, stageLabels, getRecipesByStage } from "@/data/en/babyFood";
-import AdBlock from "@/components/ad/AdBlock";
 
 export const metadata: Metadata = {
   title: "Baby Food Guide by Age | First Foods, Stage 2, Stage 3",
@@ -44,8 +43,6 @@ export default function BabyFoodHubPage() {
             </Link>
           ))}
         </section>
-
-        <AdBlock placement="contentInline" format="horizontal" label="Baby food guide" />
 
         <section className="mt-card-soft p-6 md:p-8">
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">

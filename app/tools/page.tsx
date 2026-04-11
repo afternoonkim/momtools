@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import AdBlock from "@/components/ad/AdBlock";
+import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
 
 export const metadata: Metadata = {
-  title: "육아 계산기 모음",
-  description: "출산 예정일, 아기 개월수, 예방접종 일정, 이유식 시작 시기, 성장 백분위를 한곳에서 확인하는 MomTools 육아 계산기 모음입니다.",
-  alternates: { canonical: "https://momtools.kr/tools" },
+  title: "육아 계산기 모음 | 출산 예정일 아기 개월수 접종 이유식 성장 | MomTools",
+  description: "출산 예정일, 아기 개월수, 예방접종 일정, 이유식 시작 시기, 성장 백분위를 한곳에서 확인하는 MomTools 육아 계산기 허브입니다.",
+  alternates: { canonical: buildCanonical("/tools") },
 };
 
 const tools = [
@@ -16,6 +17,12 @@ const tools = [
   ["성장 백분위 계산기", "키와 몸무게로 현재 성장 위치를 살펴봅니다.", "/tools/growth-percentile"],
 ] as const;
 
+const trustNotes = [
+  "계산 결과는 가정에서 먼저 흐름을 정리하기 위한 참고용입니다.",
+  "아이 상태가 평소와 다르거나 수치 해석이 어렵다면 병원 상담을 우선으로 두는 것이 좋습니다.",
+  "각 계산기 페이지 아래에는 결과 해석, 활용 팁, 관련 Q&A와 내부 링크를 함께 배치했습니다.",
+];
+
 export default function ToolsHubPage() {
   return (
     <div className="mt-page">
@@ -24,23 +31,54 @@ export default function ToolsHubPage() {
           <span className="mt-badge">육아 계산기</span>
           <h1 className="mt-title-xl mt-5">지금 필요한 계산부터 바로 시작할 수 있게 정리했습니다</h1>
           <p className="mt-text-main mt-4 max-w-4xl">
-            MomTools 계산기 메뉴는 초보 부모가 가장 자주 찾는 계산형 기능만 따로 모아둔 공간입니다.
-            네이버 검색에서 바로 들어와도 헷갈리지 않도록 이름과 기능을 단순하게 구성했고, 각 계산기
-            페이지 안에는 관련 정보 페이지와 체크리스트 링크도 함께 배치했습니다.
+            MomTools 계산기 메뉴는 초보 부모가 가장 자주 찾는 계산을 한곳에 모아 둔 허브입니다.
+            한 번 계산하고 끝나는 구조가 아니라, 결과를 본 뒤 바로 이어서 확인하면 좋은 정보 페이지와 체크리스트까지 연결해 둬서
+            준비 흐름을 더 자연스럽게 이어갈 수 있습니다.
           </p>
         </section>
+
+        <ContentUpdateNote publishedOn={SITE_DATES.published} updatedOn={SITE_DATES.updated} />
 
         <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {tools.map(([title, description, href]) => (
             <Link key={href} href={href} className="mt-card p-6 transition hover:-translate-y-0.5">
-              <div className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-600">Tool</div>
-              <h2 className="mt-3 text-xl font-bold text-slate-800">{title}</h2>
-              <p className="mt-3 text-sm leading-7 text-slate-500">{description}</p>
+              <div className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-600">Calculator</div>
+              <h2 className="mt-3 text-xl font-bold text-slate-900">{title}</h2>
+              <p className="mt-3 text-sm leading-7 text-slate-600">{description}</p>
+              <div className="mt-5 text-sm font-semibold text-slate-800">바로 계산하기 →</div>
             </Link>
           ))}
         </section>
 
-        <AdBlock placement="contentInline" label="육아 계산기 허브 광고 영역" format="horizontal" />
+        <section className="mt-card-soft p-6 md:p-8">
+          <div className="grid gap-6 lg:grid-cols-[1fr_1fr]">
+            <div>
+              <h2 className="text-xl font-bold text-slate-900">계산기를 볼 때 먼저 알아둘 점</h2>
+              <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-600">
+                {trustNotes.map((note) => (
+                  <li key={note} className="rounded-2xl bg-white px-4 py-3 shadow-sm">{note}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h2 className="text-xl font-bold text-slate-900">계산 뒤에 이어서 보기 좋은 메뉴</h2>
+              <div className="mt-4 grid gap-3 text-sm">
+                <Link href="/info" className="mt-list-card">
+                  <div className="font-semibold text-slate-800">육아 정보 허브</div>
+                  <div className="mt-2 text-slate-500">임신, 신생아, 이유식, 유아 시기별로 연결되는 정보를 함께 볼 수 있어요.</div>
+                </Link>
+                <Link href="/qna" className="mt-list-card">
+                  <div className="font-semibold text-slate-800">육아 Q&A</div>
+                  <div className="mt-2 text-slate-500">건강, 성장, 행동 질문을 설명형 답변으로 바로 이어서 확인할 수 있습니다.</div>
+                </Link>
+                <Link href="/checklists" className="mt-list-card">
+                  <div className="font-semibold text-slate-800">체크리스트</div>
+                  <div className="mt-2 text-slate-500">시기별 준비물과 해야 할 일을 한 번 더 정리할 수 있어요.</div>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

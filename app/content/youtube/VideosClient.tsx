@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { ExternalLink, RefreshCcw } from "lucide-react";
+import StateMessage from "@/components/common/StateMessage";
 
 type VideoItem = {
   id: string;
@@ -49,8 +50,9 @@ export default function VideosClient() {
         </div>
       </section>
 
-      {loading ? <div className="mt-card-soft p-8 text-slate-500">불러오는 중...</div> : null}
-      {error ? <div className="mt-card-soft p-8 text-rose-500">{error}</div> : null}
+      {loading ? <StateMessage tone="loading" title="추천 영상을 불러오는 중입니다" description="연결된 채널의 최신 영상과 썸네일을 확인하고 있습니다." /> : null}
+      {error ? <StateMessage tone="error" title="추천 영상을 불러오지 못했습니다" description={error} actionLabel="다시 시도" onAction={loadVideos} secondaryHref="/content/blog" secondaryLabel="블로그 글 보기" /> : null}
+      {!loading && !error && items.length === 0 ? <StateMessage title="표시할 영상이 아직 없습니다" description="채널 연결은 유지되고 있지만 지금은 노출할 최신 영상이 없습니다. 잠시 뒤 다시 시도해 주세요." actionLabel="새로고침" onAction={loadVideos} secondaryHref="/info" secondaryLabel="육아 정보 허브 보기" /> : null}
 
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {items.map((item) => (

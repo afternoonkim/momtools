@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { babyFoodRecipes, getRecipe, stageLabels } from "@/data/en/babyFood";
 import { notFound } from "next/navigation";
-import AdBlock from "@/components/ad/AdBlock";
+import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import RelatedContent from "@/components/common/RelatedContent";
 
 export async function generateStaticParams() {
   return babyFoodRecipes.map((item) => ({ slug: item.slug }));
@@ -51,7 +52,7 @@ export default async function BabyFoodRecipeDetailPage({
           <p className="mt-text-main mt-4">{recipe.summary}</p>
         </section>
 
-        <AdBlock placement="contentInline" format="rectangle" label="Baby food recipe" />
+        <ContentUpdateNote reviewedOn="2026-04-09" locale="en" />
 
         <section className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <article className="mt-card p-6 md:p-8">
@@ -110,21 +111,12 @@ export default async function BabyFoodRecipeDetailPage({
           </article>
         </section>
 
-        <section className="mt-card-soft p-6 md:p-8">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">
-            More meal ideas in this stage
-          </div>
-          <div className="mt-4 grid gap-4 md:grid-cols-2">
-            {related.map((item) => (
-              <Link key={item.slug} href={`/en/baby-food/recipes/${item.slug}`} className="mt-list-card">
-                <div className="font-semibold text-slate-800">{item.title}</div>
-                <div className="mt-2 text-sm text-slate-500">
-                  {item.category} · {stageLabels[item.stage]}
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
+        <RelatedContent
+          locale="en"
+          title="More meal ideas around the same feeding stage"
+          description="Use nearby recipes to compare textures, serving ideas, and simple ingredient combinations for the same solids stage."
+          items={related.map((item) => ({ href: `/en/baby-food/recipes/${item.slug}`, title: item.title, description: `${item.category} · ${stageLabels[item.stage]}` }))}
+        />
       </div>
     </div>
   );

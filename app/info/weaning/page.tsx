@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import AdBlock from "@/components/ad/AdBlock";
 import WeaningInfoClient from "./WeaningInfoClient";
+import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import RelatedContent from "@/components/common/RelatedContent";
+import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
 
 export const metadata: Metadata = {
   title: "이유식 정보 | 시작 시기 단계별 진행 가이드 | MomTools",
@@ -16,13 +18,13 @@ export const metadata: Metadata = {
     "MomTools",
   ],
   alternates: {
-    canonical: "https://momtools.kr/info/weaning",
+    canonical: buildCanonical("/info/weaning"),
   },
   openGraph: {
     title: "이유식 정보 | 시작 시기 단계별 진행 가이드 | MomTools",
     description:
       "이유식 시작 전 체크포인트, 단계별 진행 방법, 알레르기 주의, 잘 안 먹을 때 대처까지 한눈에 정리해보세요.",
-    url: "https://momtools.kr/info/weaning",
+    url: buildCanonical("/info/weaning"),
     siteName: "MomTools",
     locale: "ko_KR",
     type: "website",
@@ -44,8 +46,9 @@ export default function WeaningPage() {
     <div className="space-y-8">
       <WeaningInfoClient />
 
+      <ContentUpdateNote publishedOn={SITE_DATES.published} updatedOn={SITE_DATES.updated} />
+
       <div className="mt-container-narrow space-y-8">
-        <AdBlock label="이유식 정보 하단 광고 영역" format="rectangle" />
 
         <section className="mt-card p-6 md:p-8">
           <span className="mt-badge">추가 안내</span>
@@ -95,6 +98,19 @@ export default function WeaningPage() {
             />
           </div>
         </section>
+      
+
+        <RelatedContent
+          locale="ko"
+          title="함께 보면 좋은 페이지"
+          description="관련 계산기, 정보, 체크리스트를 같이 보면 한 가지 질문을 더 쉽게 정리할 수 있어요."
+          items={[
+            { href: "/tools/weaning-start", title: "이유식 시작 시기 계산기", description: "언제부터 준비하면 좋을지 개월수 기준으로 확인할 수 있어요." },
+            { href: "/baby-food", title: "이유식 메뉴", description: "재료별 메뉴와 조리 흐름을 이어서 볼 수 있어요." },
+            { href: "/checklists/weaning", title: "이유식 준비 체크리스트", description: "식기와 재료, 식사 준비 흐름을 한 번에 정리해 보세요." },
+            { href: "/qna/growth", title: "성장 Q&A", description: "먹는 양과 성장 흐름을 함께 볼 때 도움이 됩니다." }
+          ]}
+        />
       </div>
     </div>
   );

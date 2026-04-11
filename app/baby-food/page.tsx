@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { stageGuides, stageLabels, getRecipesByStage } from "@/data/babyFood";
-import AdBlock from "@/components/ad/AdBlock";
 
 export const metadata: Metadata = {
   title: "이유식 메뉴 | 초기 중기 후기 레시피",
@@ -17,11 +16,40 @@ export default function BabyFoodHubPage() {
       <div className="mt-container space-y-8">
         <section className="mt-card p-8 md:p-10">
           <span className="mt-badge">이유식 메뉴</span>
-          <h1 className="mt-title-xl mt-5">초기, 중기, 후기 이유식을 사용자 흐름에 맞게 다시 정리했습니다</h1>
+          <h1 className="mt-title-xl mt-5">초기, 중기, 후기 이유식을 집에서 보기 쉽게 정리했습니다</h1>
           <p className="mt-text-main mt-4 max-w-4xl">
             단계만 나누는 데서 끝나지 않고, 각 단계마다 어떤 질감으로 시작하면 좋은지, 무엇을 먼저 확인하면 좋은지,
             그리고 어떤 분류에서 레시피를 찾으면 편한지까지 한 번에 볼 수 있도록 구성했습니다.
           </p>
+        </section>
+
+        <section className="mt-card-soft p-6 md:p-8">
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">이용 안내</div>
+          <h2 className="mt-title-lg mt-3">이유식 메뉴는 정답표가 아니라 준비 흐름을 돕는 참고 자료입니다</h2>
+          <p className="mt-text-main mt-3 max-w-4xl">
+            이유식은 시작 시기, 질감, 재료 선택이 아이의 발달 상태와 알레르기 가능성, 병원 안내에 따라 달라질 수 있습니다.
+            MomTools 이유식 허브는 부모가 집에서 먼저 순서를 이해하고 메뉴 아이디어를 정리할 수 있게 돕는 참고형 자료로 구성했습니다.
+            실제 진행은 소아청소년과나 전문 상담에서 들은 안내를 함께 반영해 조정하는 것이 좋습니다.
+          </p>
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            <div className="rounded-3xl bg-white p-5 shadow-sm">
+              <div className="font-bold text-slate-800">단계별 이해</div>
+              <p className="mt-2 text-sm leading-7 text-slate-600">초기, 중기, 후기 단계에서 어떤 질감과 흐름이 많은지 쉽게 파악할 수 있게 정리했습니다.</p>
+            </div>
+            <div className="rounded-3xl bg-white p-5 shadow-sm">
+              <div className="font-bold text-slate-800">메뉴 찾기 편의</div>
+              <p className="mt-2 text-sm leading-7 text-slate-600">단계별 레시피 수와 소개 문구를 함께 배치해 지금 필요한 메뉴를 빠르게 찾을 수 있습니다.</p>
+            </div>
+            <div className="rounded-3xl bg-white p-5 shadow-sm">
+              <div className="font-bold text-slate-800">관련 페이지 연결</div>
+              <p className="mt-2 text-sm leading-7 text-slate-600">이유식 시작 계산기, 체크리스트, FAQ와 이어서 보며 준비 범위를 넓힐 수 있습니다.</p>
+            </div>
+          </div>
+          <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold">
+            <Link href="/tools/weaning-start" className="rounded-full bg-amber-50 px-4 py-2 text-amber-800">이유식 시작 계산기</Link>
+            <Link href="/checklists/weaning" className="rounded-full bg-white px-4 py-2 text-slate-700 shadow-sm">이유식 준비 체크리스트</Link>
+            <Link href="/faq" className="rounded-full bg-white px-4 py-2 text-slate-700 shadow-sm">FAQ</Link>
+          </div>
         </section>
 
         <section className="grid gap-5 md:grid-cols-3">
@@ -34,8 +62,6 @@ export default function BabyFoodHubPage() {
             </Link>
           ))}
         </section>
-
-        <AdBlock placement="contentInline" format="horizontal" label="이유식 허브 광고 영역" />
 
         <section className="mt-card-soft p-6 md:p-8">
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">이유식 메뉴 활용법</div>

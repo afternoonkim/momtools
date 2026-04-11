@@ -131,12 +131,8 @@ export default function PregnancyInfoClient() {
         </section>
 
         <div className="mt-card p-4 md:p-5">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-            AdSense 추천 위치 1
-          </div>
-          <div className="mt-2 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-8 text-center text-sm text-slate-500">
-            상단 요약 카드 아래 / 본문 시작 전 광고 영역
-          </div>
+          <div className="text-sm font-bold text-slate-900">이 페이지를 읽는 방법</div>
+          <p className="mt-2 text-sm leading-7 text-slate-600">지금 우리 집 상황과 가장 가까운 항목부터 가볍게 읽어보세요. 모든 내용을 한 번에 보지 않아도, 필요한 시점에 다시 와서 확인하면 충분합니다.</p>
         </div>
 
         <section className="space-y-6">
@@ -249,12 +245,8 @@ export default function PregnancyInfoClient() {
         </section>
 
         <div className="mt-card p-4 md:p-5">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-            AdSense 추천 위치 2
-          </div>
-          <div className="mt-2 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-8 text-center text-sm text-slate-500">
-            시기별 정보 섹션 아래 / FAQ 및 설명 콘텐츠 시작 전 광고 영역
-          </div>
+          <div className="text-sm font-bold text-slate-900">부담 없이 참고하는 방법</div>
+          <p className="mt-2 text-sm leading-7 text-slate-600">설명 내용은 일반적인 흐름을 이해하는 데 도움이 되도록 정리한 참고 정보예요. 아이 상태가 걱정되거나 평소와 다르다면 병원이나 전문가 상담을 함께 고려해 주세요.</p>
         </div>
 
         <section className="mt-card p-6 md:p-8">

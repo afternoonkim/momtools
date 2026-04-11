@@ -469,7 +469,7 @@ export async function GET() {
     const response = await fetch(rssUrl, {
       headers: {
         Accept: "application/rss+xml, application/xml, text/xml;q=0.9, */*;q=0.8",
-        "User-Agent": "MomToolsBot/1.0 (+https://momtools.example)",
+        "User-Agent": "MomToolsBot/1.0 (+https://momtools.kr)",
       },
       next: { revalidate },
     });

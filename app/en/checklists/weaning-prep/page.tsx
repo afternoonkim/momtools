@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PersistentChecklist from "@/components/common/PersistentChecklist";
+import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import RelatedContent from "@/components/common/RelatedContent";
 
 export const metadata: Metadata = {
   title: "Starting Solids Checklist | Feeding Setup, Tools, and First Foods",
@@ -102,6 +104,8 @@ export default function Page() {
           </p>
         </section>
 
+        <ContentUpdateNote publishedOn="2026-04-09" updatedOn="2026-04-09" locale="en" />
+
         <section className="space-y-5">
           {sections.map((section) => (
             <article key={section.title} className="mt-card p-6 md:p-8">
@@ -142,6 +146,19 @@ export default function Page() {
             ))}
           </div>
         </section>
+      
+
+        <RelatedContent
+          locale="en"
+          title="Helpful next pages"
+          description="Use the related tools, guides, and checklists below to turn one answer into a clearer next step."
+          items={[
+            { href: "/en/info/weaning", title: "Solids guide", description: "Read the main readiness signs and first-food planning before you buy anything." },
+            { href: "/en/cal/weaning-start", title: "Starting solids calculator", description: "Estimate the timing window before building the feeding setup." },
+            { href: "/en/baby-food", title: "Baby food ideas", description: "Move from prep into simple recipe ideas and texture planning." },
+            { href: "/en/qna/growth", title: "Growth Q&A", description: "Compare feeding questions with growth and milestone questions." }
+          ]}
+        />
       </div>
     </div>
   );

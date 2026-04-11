@@ -8,7 +8,6 @@ import {
 } from "@/data/en/babyFood";
 import EnglishRecipeExplorerClient from "@/components/en/EnglishRecipeExplorerClient";
 import { notFound } from "next/navigation";
-import AdBlock from "@/components/ad/AdBlock";
 
 const stages: EnglishBabyFoodStage[] = ["early", "middle", "late"];
 
@@ -69,7 +68,6 @@ export default async function BabyFoodStagePage({
         </section>
 
         <EnglishRecipeExplorerClient recipes={recipes} categories={categories} stage={typedStage} />
-        <AdBlock placement="contentInline" format="horizontal" label="Baby food stage guide" />
       </div>
     </div>
   );

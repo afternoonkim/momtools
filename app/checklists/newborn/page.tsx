@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import AdBlock from "@/components/ad/AdBlock";
 import NewbornPrepChecklistClient from "../newborn-prep/NewbornPrepChecklistClient";
 
 export const metadata: Metadata = {
@@ -14,7 +13,6 @@ export default function Page() {
     <div className="space-y-8">
       <NewbornPrepChecklistClient />
       <div className="mt-container-narrow space-y-8">
-        <AdBlock label="신생아 준비 체크리스트 하단 광고 영역" format="rectangle" />
         <section className="mt-card-soft p-6 md:p-8">
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">관련 페이지</div>
           <div className="mt-5 grid gap-4 md:grid-cols-2">

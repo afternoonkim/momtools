@@ -1,21 +1,14 @@
 import type { MetadataRoute } from "next";
 import { babyFoodRecipes as koBabyFoodRecipes } from "@/data/babyFood";
 import { babyFoodRecipes as enBabyFoodRecipes } from "@/data/en/babyFood";
-import { allPureKoreanNames } from "@/data/koreanNames";
 import { rankingYears } from "@/data/babyNames";
 import { qnaData, qnaCategories, type QnaCategory } from "@/data/qna";
 import { enQnaEntries } from "@/data/en/qna100";
+import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
 
 type ChangeFrequency = "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
-
-type RouteConfig = {
-  path: string;
-  priority: number;
-  changeFrequency: ChangeFrequency;
-};
-
-const baseUrl = "https://momtools.kr";
-const now = new Date();
+type RouteConfig = { path: string; priority: number; changeFrequency: ChangeFrequency };
+const now = new Date(SITE_DATES.updated);
 
 function route(path: string, priority: number, changeFrequency: ChangeFrequency): RouteConfig {
   return { path, priority, changeFrequency };
@@ -33,6 +26,7 @@ const staticRoutes: RouteConfig[] = [
   route("/qna/health", 0.85, "weekly"),
   route("/qna/growth", 0.85, "weekly"),
   route("/qna/behavior", 0.85, "weekly"),
+  route("/info", 0.84, "weekly"),
   route("/info/pregnancy", 0.8, "weekly"),
   route("/info/newborn", 0.8, "weekly"),
   route("/info/weaning", 0.8, "weekly"),
@@ -50,15 +44,13 @@ const staticRoutes: RouteConfig[] = [
   route("/baby-names/rankings/2025", 0.75, "weekly"),
   route("/baby-names/rankings/2024", 0.7, "monthly"),
   route("/baby-names/rankings/2023", 0.7, "monthly"),
-  route("/baby-names/meanings", 0.8, "weekly"),
-  route("/content/blog", 0.7, "daily"),
-  route("/content/youtube", 0.7, "daily"),
+  route("/baby-names/meanings", 0.72, "weekly"),
   route("/items/essential", 0.65, "weekly"),
+  route("/about", 0.55, "monthly"),
   route("/faq", 0.5, "monthly"),
   route("/contact", 0.4, "monthly"),
   route("/privacy", 0.3, "yearly"),
   route("/terms", 0.3, "yearly"),
-
   route("/en", 0.95, "daily"),
   route("/en/cal", 0.9, "weekly"),
   route("/en/cal/due-date", 0.85, "weekly"),
@@ -84,53 +76,34 @@ const staticRoutes: RouteConfig[] = [
   route("/en/checklists/newborn", 0.7, "monthly"),
   route("/en/checklists/weaning", 0.7, "monthly"),
   route("/en/checklists/daycare", 0.7, "monthly"),
+  route("/en/about", 0.5, "monthly"),
   route("/en/faq", 0.45, "monthly"),
   route("/en/contact", 0.35, "monthly"),
   route("/en/privacy", 0.25, "yearly"),
   route("/en/terms", 0.25, "yearly"),
 ];
 
-const dynamicKoreanQnaRoutes: RouteConfig[] = (Object.keys(qnaCategories) as QnaCategory[]).flatMap((category) =>
+const dynamicKoreanQnaRoutes = (Object.keys(qnaCategories) as QnaCategory[]).flatMap((category) =>
   qnaData[category].map((entry) => route(`/qna/${category}/${entry.slug}`, 0.72, "weekly")),
 );
-
-const dynamicKoreanBabyFoodRoutes: RouteConfig[] = koBabyFoodRecipes.map((recipe) =>
-  route(`/baby-food/recipes/${recipe.slug}`, 0.68, "weekly"),
-);
-
-const dynamicEnglishBabyFoodRoutes: RouteConfig[] = enBabyFoodRecipes.map((recipe) =>
-  route(`/en/baby-food/recipes/${recipe.slug}`, 0.65, "weekly"),
-);
-
-const dynamicEnglishQnaRoutes: RouteConfig[] = enQnaEntries.map((entry) =>
-  route(`/en/qna/${entry.slug}`, 0.7, "weekly"),
-);
-
-const dynamicNameRoutes: RouteConfig[] = allPureKoreanNames.map((item) =>
-  route(`/baby-names/meanings/${item.slug}`, 0.62, "weekly"),
-);
-
-const dynamicRankingRoutes: RouteConfig[] = rankingYears.map((year, index) =>
-  route(`/baby-names/rankings/${year}`, index === 0 ? 0.75 : 0.7, index === 0 ? "weekly" : "monthly"),
-);
+const dynamicKoreanBabyFoodRoutes = koBabyFoodRecipes.map((recipe) => route(`/baby-food/recipes/${recipe.slug}`, 0.68, "weekly"));
+const dynamicEnglishBabyFoodRoutes = enBabyFoodRecipes.map((recipe) => route(`/en/baby-food/recipes/${recipe.slug}`, 0.65, "weekly"));
+const dynamicEnglishQnaRoutes = enQnaEntries.map((entry) => route(`/en/qna/${entry.slug}`, 0.7, "weekly"));
+const dynamicRankingRoutes = rankingYears.map((year, index) => route(`/baby-names/rankings/${year}`, index === 0 ? 0.75 : 0.7, index === 0 ? "weekly" : "monthly"));
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const deduped = new Map<string, RouteConfig>();
-
   [
     ...staticRoutes,
     ...dynamicKoreanQnaRoutes,
     ...dynamicKoreanBabyFoodRoutes,
     ...dynamicEnglishBabyFoodRoutes,
     ...dynamicEnglishQnaRoutes,
-    ...dynamicNameRoutes,
     ...dynamicRankingRoutes,
-  ].forEach((item) => {
-    deduped.set(item.path, item);
-  });
+  ].forEach((item) => deduped.set(item.path, item));
 
   return Array.from(deduped.values()).map((item) => ({
-    url: `${baseUrl}${item.path}`,
+    url: buildCanonical(item.path),
     lastModified: now,
     changeFrequency: item.changeFrequency,
     priority: item.priority,

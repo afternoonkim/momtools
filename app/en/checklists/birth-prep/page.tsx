@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PersistentChecklist from "@/components/common/PersistentChecklist";
+import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import RelatedContent from "@/components/common/RelatedContent";
 
 export const metadata: Metadata = {
   title: "Birth Prep Checklist | Hospital Bag, Paperwork, and Delivery Prep",
@@ -102,6 +104,8 @@ export default function Page() {
           </p>
         </section>
 
+        <ContentUpdateNote publishedOn="2026-04-09" updatedOn="2026-04-09" locale="en" />
+
         <section className="space-y-5">
           {sections.map((section) => (
             <article key={section.title} className="mt-card p-6 md:p-8">
@@ -143,6 +147,19 @@ export default function Page() {
             ))}
           </div>
         </section>
+      
+
+        <RelatedContent
+          locale="en"
+          title="Helpful next pages"
+          description="Use the related tools, guides, and checklists below to turn one answer into a clearer next step."
+          items={[
+            { href: "/en/cal/due-date", title: "Due date calculator", description: "Use your due date and pregnancy week to pace the final prep timeline." },
+            { href: "/en/info/pregnancy", title: "Pregnancy guide", description: "Keep appointments, symptom planning, and birth prep on the same track." },
+            { href: "/en/checklists/newborn", title: "Newborn checklist", description: "Move from birth prep into the first home setup without missing the basics." },
+            { href: "/en/qna/health", title: "Health Q&A", description: "Open common parent health questions that often come up late in pregnancy and right after birth." }
+          ]}
+        />
       </div>
     </div>
   );

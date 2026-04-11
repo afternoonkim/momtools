@@ -21,6 +21,10 @@ import {
   HeartPulse,
   UtensilsCrossed,
   Tags,
+  Palette,
+  Map,
+  SearchCheck,
+  Dot,
 } from "lucide-react";
 import SidebarItem from "./SidebarItem";
 import SidebarGroup from "./SidebarGroup";
@@ -43,7 +47,7 @@ export default function Sidebar({
 
   const t = isKo
     ? {
-        tagline: "네이버 중심 육아 도구 허브",
+        tagline: "필요한 육아 정보를 쉽게 찾는 안내 공간",
         openMenu: "메뉴 열기",
         closeMenu: "메뉴 닫기",
         collapse: "사이드바 접기",
@@ -53,6 +57,7 @@ export default function Sidebar({
         checklists: "체크리스트",
         content: "콘텐츠",
         babyFood: "이유식 메뉴",
+        play: "놀이",
         names: "아이 이름 짓기",
         items: "육아용품",
         misc: "기타",
@@ -75,6 +80,10 @@ export default function Sidebar({
           earlyFood: "초기 이유식",
           middleFood: "중기 이유식",
           lateFood: "후기 이유식",
+          coloring: "색칠공부",
+          maze: "미로찾기",
+          hiddenPicture: "숨은그림찾기",
+          dotToDot: "점잇기",
           generator: "이름 생성기",
           rankings: "인기 이름 순위",
           meanings: "한글 이름 뜻 모음",
@@ -94,6 +103,7 @@ export default function Sidebar({
         checklists: "Checklists",
         content: "Content",
         babyFood: "Baby Food",
+        play: "Play",
         names: "Baby Names",
         items: "Essentials",
         misc: "More",
@@ -116,6 +126,10 @@ export default function Sidebar({
           earlyFood: "First foods",
           middleFood: "Stage 2 foods",
           lateFood: "Stage 3 foods",
+          coloring: "Coloring pages",
+          maze: "Mazes",
+          hiddenPicture: "Hidden picture",
+          dotToDot: "Dot to dot",
           generator: "Name generator",
           rankings: "Popular names",
           meanings: "Name meanings",
@@ -218,6 +232,17 @@ export default function Sidebar({
               <SidebarItem href={href("/baby-food/late")} label={t.links.lateFood} icon={UtensilsCrossed} collapsed={collapsed} />
             </SidebarGroup>
           </div>
+
+          {/* 미완성으로 추후 오픈 예정 
+          <div onClick={closeMobileSidebar}>
+            <SidebarGroup title={t.play} collapsed={collapsed}>
+              <SidebarItem href={href("/play/coloring")} label={t.links.coloring} icon={Palette} collapsed={collapsed} />
+              <SidebarItem href={href("/play/maze")} label={t.links.maze} icon={Map} collapsed={collapsed} />
+              <SidebarItem href={href("/play/hidden-picture")} label={t.links.hiddenPicture} icon={SearchCheck} collapsed={collapsed} />
+              <SidebarItem href={href("/play/dot-to-dot")} label={t.links.dotToDot} icon={Dot} collapsed={collapsed} />
+            </SidebarGroup> 
+          </div>
+          */}
 
           {isKo ? (
             <div onClick={closeMobileSidebar}>

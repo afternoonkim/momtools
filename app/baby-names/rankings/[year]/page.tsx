@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { babyNameRankings, rankingYears } from "@/data/babyNames";
-import AdBlock from "@/components/ad/AdBlock";
 
 export async function generateStaticParams() {
   return rankingYears.map((year) => ({ year: String(year) }));
@@ -71,8 +70,6 @@ export default async function RankingYearPage({ params }: { params: Promise<{ ye
             </div>
           </article>
         </section>
-
-        <AdBlock placement="contentInline" format="horizontal" label="이름 순위 광고 영역" />
       </div>
     </div>
   );

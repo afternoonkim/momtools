@@ -44,6 +44,7 @@ export default function SiteFooter() {
           </div>
 
           <div className="flex flex-wrap gap-x-5 gap-y-2">
+            <FooterLink href={href("/about")}>{locale === "ko" ? "사이트 소개" : "About"}</FooterLink>
             <FooterLink href={href("/faq")}>FAQ</FooterLink>
             <FooterLink href={href("/contact")}>{locale === "ko" ? "문의하기" : "Contact"}</FooterLink>
             <FooterLink href={href("/privacy")}>{locale === "ko" ? "개인정보처리방침" : "Privacy"}</FooterLink>

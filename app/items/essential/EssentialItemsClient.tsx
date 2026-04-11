@@ -287,7 +287,7 @@ export default function EssentialItemsClient() {
                 기저귀, 물티슈, 수유용품, 외출용품처럼 자주 찾는 육아용품을
                 카테고리별로 정리해두었어요. <br/>
                 키워드를 누르면 해당 품목만 볼 수 있고,
-                품목 카드를 누르면 연결한 쇼핑 링크로 바로 이동할 수 있게 구성했습니다.
+                품목 카드를 누르면 연결된 외부 상품 페이지로 이동해 자세한 정보를 확인할 수 있습니다.
               </p>
             </div>
 
@@ -295,8 +295,8 @@ export default function EssentialItemsClient() {
               <div className="font-semibold text-slate-900">활용 방식</div>
               <p className="mt-2">
                 지금은 쿠팡파트너스나 네이버쇼핑커넥트 링크를 넣을 수 있게 구조를
-                만들어둔 상태예요. 나중에는 실제 제휴 링크와 상품 이미지 URL만
-                바꿔 넣으면 바로 운영할 수 있습니다.
+                만들어둔 상태예요. 나중에는 실제 외부 링크와 상품 이미지 URL만
+                필요한 상품 링크나 이미지로 자연스럽게 교체해 사용할 수 있습니다.
               </p>
             </div> */}
           </div>
@@ -306,10 +306,9 @@ export default function EssentialItemsClient() {
           <div className="flex items-start gap-3">
             <Info className="mt-0.5 shrink-0 text-amber-700" size={18} />
             <div>
-              <h2 className="text-base font-bold text-slate-900">제휴 링크 안내</h2>
+              <h2 className="text-base font-bold text-slate-900">외부 링크 안내</h2>
               <p className="mt-2 text-sm leading-7 text-slate-700">
-                이 페이지에는 쿠팡파트너스 및 네이버쇼핑커넥트 제휴 링크가 포함될 수 있으며,
-                링크를 통해 구매가 이루어질 경우 일정 수수료를 제공받을 수 있습니다.
+                이 페이지의 일부 품목 카드는 외부 쇼핑 페이지로 연결될 수 있습니다. 구매 전에는 가격, 구성, 배송, 환불 조건을 판매처 페이지에서 다시 확인해 주세요.
               </p>
             </div>
           </div>
@@ -344,13 +343,12 @@ export default function EssentialItemsClient() {
           </div>
         </section>
 
-        <div className="mt-card p-4 md:p-5">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-            AdSense 추천 위치 1
-          </div>
-          <div className="mt-2 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-8 text-center text-sm text-slate-500">
-            카테고리 필터 아래 / 품목 카드 시작 전 광고 영역
-          </div>
+        <div className="mt-card p-5 md:p-6">
+          <div className="text-sm font-bold text-slate-900">용품 고를 때 이렇게 시작해 보세요</div>
+          <p className="mt-2 text-sm leading-7 text-slate-600">
+            필요한 카테고리부터 좁혀 보면 한 번에 너무 많은 품목을 보지 않아도 됩니다. 먼저 꼭 필요한 기본 품목을 보고,
+            예산이나 사용 빈도에 따라 나중에 추가할 품목을 나누어 생각해 보세요.
+          </p>
         </div>
 
         <section className="space-y-4">
@@ -419,7 +417,7 @@ export default function EssentialItemsClient() {
 
                     <div className="flex items-center gap-2">
                       <span className="rounded-full border border-slate-200 px-3 py-1 text-xs font-semibold text-slate-500">
-                        제휴 링크
+                        외부 링크
                       </span>
                       <span
                         className={[
@@ -438,18 +436,17 @@ export default function EssentialItemsClient() {
 
           {filteredItems.length === 0 ? (
             <div className="mt-card-soft p-8 text-center text-slate-500">
-              선택한 카테고리에 표시할 품목이 아직 없습니다.
+              선택한 조건에 맞는 품목이 아직 없습니다. 다른 카테고리를 선택하거나 전체 보기로 돌아가면 다시 확인할 수 있어요.
             </div>
           ) : null}
         </section>
 
-        <div className="mt-card p-4 md:p-5">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-            AdSense 추천 위치 2
-          </div>
-          <div className="mt-2 rounded-2xl border border-dashed border-slate-200 bg-slate-50 px-4 py-8 text-center text-sm text-slate-500">
-            품목 카드 목록 아래 / 설명 콘텐츠 시작 전 광고 영역
-          </div>
+        <div className="mt-card p-5 md:p-6">
+          <div className="text-sm font-bold text-slate-900">비교할 때 체크하면 좋은 점</div>
+          <p className="mt-2 text-sm leading-7 text-slate-600">
+            같은 카테고리라도 크기, 재질, 세척 편의, 보관 공간, 아이 피부 상태에 따라 만족도가 달라질 수 있어요.
+            제품명만 보기보다 우리 집 생활 방식에 맞는지 함께 확인해 보세요.
+          </p>
         </div>
 
         <section className="mt-card p-6 md:p-8">
@@ -457,7 +454,7 @@ export default function EssentialItemsClient() {
             <div className="space-y-6">
               <div>
                 <h2 className="text-lg font-bold text-slate-900 md:text-xl">
-                  용품목록은 이렇게 활용하면 좋아요
+                  용품목록은 이렇게 보면 더 편해요
                 </h2>
                 <div className="mt-4 space-y-4 text-sm leading-7 text-slate-700 md:text-base">
                   <p>
@@ -467,8 +464,8 @@ export default function EssentialItemsClient() {
                   </p>
                   <p>
                     기본은 전체 보기로 두고, 필요할 때 키워드를 눌러 원하는 품목만 골라볼 수 있어요.
-                    나중에는 쿠팡파트너스나 네이버쇼핑커넥트 링크를 실제 제휴 링크로 교체하고,
-                    썸네일 이미지까지 함께 넣어서 바로 운영할 수 있도록 구조를 단순하게 잡아두었습니다.
+                    나중에는 쿠팡파트너스나 네이버쇼핑커넥트 링크를 실제 외부 링크로 교체하고,
+                    썸네일 이미지와 외부 링크를 함께 확인할 수 있도록 보기 쉽게 정리했습니다.
                   </p>
                 </div>
               </div>
@@ -505,27 +502,6 @@ export default function EssentialItemsClient() {
                 </div>
               </div>
             </div>
-
-            {/* <aside className="space-y-6">
-              <div className="rounded-3xl border border-amber-100 bg-amber-50 p-5 md:p-6">
-                <h2 className="text-lg font-bold text-slate-900">안내 문구</h2>
-                <ul className="mt-4 space-y-2 text-sm leading-7 text-slate-700">
-                  <li>• 이 페이지는 육아용품을 카테고리별로 정리한 참고용 목록입니다.</li>
-                  <li>• 실제 구매 전에는 가격, 구성, 배송, 후기 등을 함께 비교해보는 것이 좋아요.</li>
-                  <li>• 제휴 링크 운영 시 문구, 위치, 가독성은 각 플랫폼 정책과 관련 법령에 맞게 확인해 주세요.</li>
-                  <li>• 품목은 처음부터 많이 사기보다 자주 쓰는 기본 항목부터 정리하는 것이 실용적일 수 있어요.</li>
-                </ul>
-              </div>
-
-              <div className="rounded-3xl border border-emerald-100 bg-emerald-50 p-5 md:p-6">
-                <h2 className="text-lg font-bold text-slate-900">운영 팁</h2>
-                <p className="mt-3 text-sm leading-7 text-slate-700">
-                  지금은 예시 링크와 빈 이미지 값으로 넣어두고, 나중에 각 품목의{" "}
-                  <code>url</code> 과 <code>imageUrl</code> 값만 실제 제휴 링크와 상품 이미지로
-                  바꾸면 바로 활용할 수 있어요. 카테고리와 품목도 같은 방식으로 계속 추가 가능합니다.
-                </p>
-              </div>
-            </aside> */}
           {/* </div> */}
         </section>
       </div>

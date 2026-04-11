@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { RefreshCcw, ExternalLink, ImageIcon } from "lucide-react";
+import StateMessage from "@/components/common/StateMessage";
 
 type BlogItem = {
   title: string;
@@ -143,17 +144,15 @@ export default function BlogFeedClient() {
       </section>
 
       {loading ? (
-        <div className="mt-card-soft p-8 text-slate-500">불러오는 중...</div>
+        <StateMessage tone="loading" title="블로그 글을 불러오는 중입니다" description="최신 글 목록과 썸네일을 확인하고 있습니다. 잠시만 기다려 주세요." />
       ) : null}
 
       {error ? (
-        <div className="mt-card-soft p-8 text-rose-500">{error}</div>
+        <StateMessage tone="error" title="블로그 글을 불러오지 못했습니다" description={error} actionLabel="다시 시도" onAction={loadFeed} secondaryHref="/info" secondaryLabel="육아 정보 허브 보기" />
       ) : null}
 
       {!loading && !error && items.length === 0 ? (
-        <div className="mt-card-soft p-8 text-slate-500">
-          표시할 블로그 글이 아직 없습니다. RSS 연결 상태를 확인해 주세요.
-        </div>
+        <StateMessage title="표시할 블로그 글이 아직 없습니다" description="RSS 연결은 유지되고 있지만 현재 화면에 노출할 글이 없습니다. 잠시 뒤 다시 확인하거나 주요 정보 허브를 먼저 둘러보세요." actionLabel="새로고침" onAction={loadFeed} secondaryHref="/info" secondaryLabel="육아 정보 허브 보기" />
       ) : null}
 
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">

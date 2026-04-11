@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import AdBlock from "@/components/ad/AdBlock";
 import DaycarePrepChecklistClient from "./DaycarePrepChecklistClient";
+import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import RelatedContent from "@/components/common/RelatedContent";
 
 export const metadata: Metadata = {
   title: "어린이집 준비 체크리스트 | 등원 준비물과 적응 준비 정리 | MomTools",
@@ -44,8 +45,9 @@ export default function DaycarePrepPage() {
     <div className="space-y-8">
       <DaycarePrepChecklistClient />
 
+      <ContentUpdateNote publishedOn="2026-04-09" updatedOn="2026-04-09" />
+
       <div className="mt-container-narrow space-y-8">
-        <AdBlock label="어린이집 준비 체크리스트 하단 광고 영역" format="rectangle" />
 
         <section className="mt-card p-6 md:p-8">
           <span className="mt-badge">추가 안내</span>
@@ -57,7 +59,7 @@ export default function DaycarePrepPage() {
               실제 적응이 훨씬 부드러워질 수 있습니다.
             </p>
             <p>
-              또 어린이집마다 준비물 기준과 운영 방식이 다르기 때문에 공통 준비물과
+              또 어린이집마다 준비물 기준과 안내 기준이 다르기 때문에 공통 준비물과
               원별 지정 준비물을 따로 구분해 정리하는 것이 좋습니다.
               이렇게 나누어 보면 빠뜨리는 항목이 훨씬 줄어듭니다.
             </p>
@@ -91,6 +93,19 @@ export default function DaycarePrepPage() {
             />
           </div>
         </section>
+      
+
+        <RelatedContent
+          locale="ko"
+          title="함께 보면 좋은 페이지"
+          description="관련 계산기, 정보, 체크리스트를 같이 보면 한 가지 질문을 더 쉽게 정리할 수 있어요."
+          items={[
+            { href: "/info/toddler", title: "유아 정보", description: "생활 습관과 적응 흐름을 함께 이해하면 등원 준비가 쉬워져요." },
+            { href: "/qna/behavior", title: "행동 Q&A", description: "분리불안과 전환 적응에 관한 질문을 이어서 볼 수 있어요." },
+            { href: "/items/essential", title: "육아용품 목록", description: "등원용 생활용품을 함께 확인하기 좋습니다." },
+            { href: "/faq", title: "FAQ", description: "사이트 이용 범위와 참고 기준을 다시 확인할 수 있어요." }
+          ]}
+        />
       </div>
     </div>
   );

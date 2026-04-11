@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { babyFoodRecipes, getRecipe, stageLabels } from "@/data/babyFood";
 import { notFound } from "next/navigation";
-import AdBlock from "@/components/ad/AdBlock";
 
 export async function generateStaticParams() {
   return babyFoodRecipes.map((item) => ({ slug: item.slug }));
@@ -36,8 +35,6 @@ export default async function BabyFoodRecipeDetailPage({ params }: { params: Pro
           <h1 className="mt-title-xl mt-5">{recipe.title} 레시피</h1>
           <p className="mt-text-main mt-4">{recipe.summary}</p>
         </section>
-
-        <AdBlock placement="contentInline" format="rectangle" label="이유식 상세 광고 영역" />
 
         <section className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <article className="mt-card p-6 md:p-8">

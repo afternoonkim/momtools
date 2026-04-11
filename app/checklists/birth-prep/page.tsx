@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import AdBlock from "@/components/ad/AdBlock";
 import BirthPrepChecklistClient from "./BirthPrepChecklistClient";
+import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import RelatedContent from "@/components/common/RelatedContent";
 
 export const metadata: Metadata = {
   title: "출산 준비 체크리스트 | 입원 준비물과 출산 전 준비 정리 | MomTools",
@@ -44,8 +45,9 @@ export default function BirthPrepPage() {
     <div className="space-y-8">
       <BirthPrepChecklistClient />
 
+      <ContentUpdateNote publishedOn="2026-04-09" updatedOn="2026-04-09" />
+
       <div className="mt-container-narrow space-y-8">
-        <AdBlock label="출산 준비 체크리스트 하단 광고 영역" format="rectangle" />
 
         <section className="mt-card p-6 md:p-8">
           <span className="mt-badge">추가 안내</span>
@@ -91,6 +93,19 @@ export default function BirthPrepPage() {
             />
           </div>
         </section>
+      
+
+        <RelatedContent
+          locale="ko"
+          title="함께 보면 좋은 페이지"
+          description="관련 계산기, 정보, 체크리스트를 같이 보면 한 가지 질문을 더 쉽게 정리할 수 있어요."
+          items={[
+            { href: "/tools/due-date", title: "출산 예정일 계산기", description: "예정일과 임신 주수를 먼저 확인하면 준비 타이밍을 잡기 쉬워요." },
+            { href: "/info/pregnancy", title: "임신 정보", description: "진료 일정과 생활 흐름을 함께 보면 준비 순서를 세우기 편합니다." },
+            { href: "/checklists/newborn", title: "신생아 준비 체크리스트", description: "출산 후 바로 필요한 준비를 이어서 정리해 보세요." },
+            { href: "/qna/health", title: "건강 Q&A", description: "불안한 증상과 진료가 필요한 신호를 함께 살펴볼 수 있어요." }
+          ]}
+        />
       </div>
     </div>
   );

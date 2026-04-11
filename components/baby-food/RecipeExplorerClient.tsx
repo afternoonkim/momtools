@@ -43,7 +43,7 @@ export default function RecipeExplorerClient({
             </p>
           </div>
           <div className="rounded-3xl border border-amber-100 bg-amber-50 px-5 py-4 text-sm text-amber-700">
-            현재 {recipes.length}개 메뉴 · 검색 결과 {filtered.length}개
+            현재 {recipes.length}개 메뉴 · 찾은 결과 {filtered.length}개
           </div>
         </div>
 

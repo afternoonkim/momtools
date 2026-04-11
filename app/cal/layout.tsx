@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import AdBlock from "@/components/ad/AdBlock";
 import PageContextHero from "@/components/common/PageContextHero";
 
 export const metadata: Metadata = {
@@ -19,9 +18,7 @@ export default function CalLayout({ children }: { children: React.ReactNode }) {
         </section>
 
         <PageContextHero />
-        <AdBlock placement="calculatorTop" label="육아 계산기 상단 광고 영역" format="horizontal" />
         {children}
-        <AdBlock placement="calculatorBottom" label="육아 계산기 하단 광고 영역" format="rectangle" />
       </div>
     </div>
   );

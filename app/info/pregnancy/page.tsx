@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import AdBlock from "@/components/ad/AdBlock";
 import PregnancyInfoClient from "./PregnancyInfoClient";
+import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import RelatedContent from "@/components/common/RelatedContent";
+import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
 
 export const metadata: Metadata = {
   title: "임신 정보 | 주차별 체크포인트와 준비 가이드 | MomTools",
@@ -16,13 +18,13 @@ export const metadata: Metadata = {
     "MomTools",
   ],
   alternates: {
-    canonical: "https://momtools.kr/info/pregnancy",
+    canonical: buildCanonical("/info/pregnancy"),
   },
   openGraph: {
     title: "임신 정보 | 주차별 체크포인트와 준비 가이드 | MomTools",
     description:
       "임신 초기, 중기, 후기별 체크포인트와 생활 팁을 한눈에 확인해보세요.",
-    url: "https://momtools.kr/info/pregnancy",
+    url: buildCanonical("/info/pregnancy"),
     siteName: "MomTools",
     locale: "ko_KR",
     type: "website",
@@ -44,8 +46,9 @@ export default function PregnancyPage() {
     <div className="space-y-8">
       <PregnancyInfoClient />
 
+      <ContentUpdateNote publishedOn={SITE_DATES.published} updatedOn={SITE_DATES.updated} />
+
       <div className="mt-container-narrow space-y-8">
-        <AdBlock label="임신 정보 하단 광고 영역" format="rectangle" />
 
         <section className="mt-card p-6 md:p-8">
           <span className="mt-badge">추가 안내</span>
@@ -95,6 +98,19 @@ export default function PregnancyPage() {
             />
           </div>
         </section>
+      
+
+        <RelatedContent
+          locale="ko"
+          title="함께 보면 좋은 페이지"
+          description="관련 계산기, 정보, 체크리스트를 같이 보면 한 가지 질문을 더 쉽게 정리할 수 있어요."
+          items={[
+            { href: "/tools/due-date", title: "출산 예정일 계산기", description: "예정일과 임신 주수 흐름을 먼저 확인하고 준비 순서를 잡아보세요." },
+            { href: "/checklists/birth", title: "출산 준비 체크리스트", description: "입원 가방, 서류, 집안 준비를 함께 정리하기 좋아요." },
+            { href: "/info/newborn", title: "신생아 정보", description: "출산 직후 이어서 보게 되는 수유와 수면 흐름을 함께 확인할 수 있어요." },
+            { href: "/qna/health", title: "건강 Q&A", description: "임신 중 불안할 때 참고 범위와 상담이 필요한 신호를 함께 볼 수 있어요." }
+          ]}
+        />
       </div>
     </div>
   );
