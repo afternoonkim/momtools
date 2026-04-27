@@ -162,7 +162,7 @@ export default function BabyAgeCalculatorClient() {
             </h1>
             <p className="text-sm leading-7 text-slate-600 md:text-base">
               아기 생년월일을 입력하면 현재 생후 개월수, 출생 후 일수, 주수, 100일과 돌 시점을
-              간편하게 확인할 수 있어요. 이유식, 예방접종, 성장 체크할 때 빠르게 참고하기 좋게 구성했습니다.
+              간편하게 확인할 수 있어요. 이유식·예방접종·성장 체크할 때 빠르게 참고하기 좋아요.
             </p>
           </div>
 
@@ -234,9 +234,9 @@ export default function BabyAgeCalculatorClient() {
         <div className="space-y-6">
           <section className="mt-card p-6 md:p-7">
             <div>
-              <h2 className="text-lg font-bold text-slate-900">결과 화면 구성</h2>
+              <h2 className="text-lg font-bold text-slate-900">결과 화면 한눈에 보기</h2>
               <p className="mt-1 text-sm text-slate-500">
-                핵심 결과 → 기념 시점 → 안내 문구 순서로 구성했습니다.
+                핵심 결과 → 기념 시점 → 안내 문구 순서로 살펴볼 수 있어요.
               </p>
             </div>
 
@@ -337,13 +337,12 @@ export default function BabyAgeCalculatorClient() {
               </h2>
               <div className="mt-4 space-y-4 text-sm leading-7 text-slate-700 md:text-base">
                 <p>
-                  아기 개월수 계산기는 생년월일을 기준으로 현재 생후 개월수와 출생 후 일수를 빠르게 계산하는
-                  도구입니다. 이유식 시작 시기, 예방접종 일정, 발달 체크 포인트를 확인할 때 자주 활용됩니다.
+                  아기 개월수 계산기는 생년월일을 기준으로 현재 생후 개월수와 출생 후 일수를 빠르게 계산해 주는
+                  도구예요. 이유식 시작 시기, 예방접종 일정, 발달 체크 포인트를 확인할 때 활용해 보세요.
                 </p>
                 <p>
-                  부모 입장에서는 “지금 우리 아기가 몇 개월이지?”, “100일은 정확히 언제지?” 같은 질문이
-                  자주 생기는데, 이 페이지에서는 개월수뿐 아니라 생후 주수와 주요 기념 날짜까지 함께 볼 수
-                  있도록 구성했습니다.
+                  “지금 우리 아기가 몇 개월이지?”, “100일은 정확히 언제지?” 같은 질문이 자주 생기죠.
+                  여기서는 개월수뿐 아니라 생후 주수와 주요 기념 날짜까지 한 번에 볼 수 있어요.
                 </p>
                 <p>
                   다만 병원 안내나 발달 정보는 상황에 따라 만 나이, 교정 연령 기준을 함께 보는 경우가 있으니,
@@ -360,7 +359,7 @@ export default function BabyAgeCalculatorClient() {
               <div className="mt-4 space-y-4">
                 <FaqItem
                   question="아기 개월수는 어떻게 계산하나요?"
-                  answer="일반적으로 생년월일과 오늘 날짜를 기준으로 연·월 차이를 계산합니다. MomTools는 날짜 차이를 반영해 현재 생후 개월수를 보다 자연스럽게 확인할 수 있게 구성했습니다."
+                  answer="일반적으로 생년월일과 오늘 날짜를 기준으로 연·월 차이를 계산합니다. 날짜 차이까지 반영해서 현재 생후 개월수를 자연스럽게 확인할 수 있어요."
                 />
                 <FaqItem
                   question="생후 일수와 개월수는 왜 함께 보는 게 좋나요?"

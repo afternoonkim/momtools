@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { enQnaEntries } from "@/data/en/qna100";
+import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
 
 export const metadata: Metadata = {
   title: "Parent Q&A | baby and toddler questions U.S. parents actually search",
@@ -57,6 +58,8 @@ export default function EnQnaHubPage() {
           </p>
           <div className="mt-4 text-sm font-semibold text-sky-700">{enQnaEntries.length} total questions</div>
         </section>
+
+        <MedicalDisclaimer lang="en" variant="full" />
 
         <section className="grid gap-5 md:grid-cols-3">
           {topicCards.map((item) => (

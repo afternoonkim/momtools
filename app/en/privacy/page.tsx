@@ -26,6 +26,10 @@ const sections = [
     body: "Cookies or similar technologies may be used for basic settings, site performance, analytics, and simple traffic understanding. You can manage cookies in your browser settings, although some parts of the site may work less smoothly if cookies are blocked.",
   },
   {
+    title: "Advertising and Google AdSense",
+    body: "MomTools English may show ads served by Google AdSense and other third-party advertising partners. These partners may set or read cookies and use device identifiers (such as advertising IDs) to display ads that are more relevant to you. Google's processing of advertising data is governed by the Google Privacy Policy and the page \"How Google uses information from sites or apps that use our services.\" If you'd rather not see personalized ads, choose \"Reject personalized ads\" in the cookie banner, or visit adssettings.google.com, optout.aboutads.info, or youronlinechoices.eu to opt out of personalized advertising. EU/EEA, UK, and Swiss visitors may see a separate consent prompt before any non-essential cookies load. California residents have the right to opt out of the sale or sharing of personal information under CCPA.",
+  },
+  {
     title: "Third-party services and links",
     body: "Some pages may link to outside services such as videos, public resources, shopping pages, or embedded content. Once you leave MomTools English, the other service's own privacy policy and terms control what happens there.",
   },

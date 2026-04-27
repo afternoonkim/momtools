@@ -297,9 +297,9 @@ export default function VaccineScheduleCalculatorClient() {
         <div className="space-y-6">
           <section className="mt-card p-6 md:p-7">
             <div>
-              <h2 className="text-lg font-bold text-slate-900">결과 화면 구성</h2>
+              <h2 className="text-lg font-bold text-slate-900">결과 화면 한눈에 보기</h2>
               <p className="mt-1 text-sm text-slate-500">
-                핵심 요약 → 월령별 접종 일정 → 안내 문구 순서로 구성했습니다.
+                핵심 요약 → 월령별 접종 일정 → 안내 문구 순서로 살펴볼 수 있어요.
               </p>
             </div>
 

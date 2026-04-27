@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
 
 export const metadata: Metadata = {
@@ -18,9 +19,9 @@ const tools = [
 ] as const;
 
 const trustNotes = [
-  "계산 결과는 가정에서 먼저 흐름을 정리하기 위한 참고용입니다.",
-  "아이 상태가 평소와 다르거나 수치 해석이 어렵다면 병원 상담을 우선으로 두는 것이 좋습니다.",
-  "각 계산기 페이지 아래에는 결과 해석, 활용 팁, 관련 Q&A와 내부 링크를 함께 배치했습니다.",
+  "계산 결과는 집에서 먼저 흐름을 정리해 보기 위한 참고용으로 활용해 주세요.",
+  "아이 상태가 평소와 다르거나 수치 해석이 헷갈린다면 병원 상담을 먼저 받는 게 좋아요.",
+  "계산기 페이지 아래에서 결과 해석, 활용 팁, 관련 Q&A까지 한 번에 이어 볼 수 있어요.",
 ];
 
 export default function ToolsHubPage() {
@@ -29,15 +30,17 @@ export default function ToolsHubPage() {
       <div className="mt-container space-y-8">
         <section className="mt-card p-8 md:p-10">
           <span className="mt-badge">육아 계산기</span>
-          <h1 className="mt-title-xl mt-5">지금 필요한 계산부터 바로 시작할 수 있게 정리했습니다</h1>
+          <h1 className="mt-title-xl mt-5">지금 필요한 계산부터 바로 시작해 보세요</h1>
           <p className="mt-text-main mt-4 max-w-4xl">
-            MomTools 계산기 메뉴는 초보 부모가 가장 자주 찾는 계산을 한곳에 모아 둔 허브입니다.
-            한 번 계산하고 끝나는 구조가 아니라, 결과를 본 뒤 바로 이어서 확인하면 좋은 정보 페이지와 체크리스트까지 연결해 둬서
-            준비 흐름을 더 자연스럽게 이어갈 수 있습니다.
+            처음 부모가 가장 자주 찾는 계산기를 한곳에 모아 두었어요.
+            한 번 계산하고 끝나는 게 아니라, 결과를 본 뒤 이어서 보면 좋은 정보와 체크리스트까지
+            바로 연결돼 있어 준비 흐름을 자연스럽게 이어갈 수 있어요.
           </p>
         </section>
 
         <ContentUpdateNote publishedOn={SITE_DATES.published} updatedOn={SITE_DATES.updated} />
+
+        <MedicalDisclaimer lang="ko" variant="compact" />
 
         <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {tools.map(([title, description, href]) => (

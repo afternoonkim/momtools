@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
 
 export const metadata: Metadata = {
@@ -70,14 +71,17 @@ export default function InfoHubPage() {
       <div className="mt-container space-y-8">
         <section className="mt-card p-8 md:p-10">
           <span className="mt-badge">육아 정보 허브</span>
-          <h1 className="mt-title-xl mt-5">지금 시기에 필요한 정보를 한 번에 찾을 수 있도록 묶었습니다</h1>
+          <h1 className="mt-title-xl mt-5">지금 시기에 필요한 정보를 한자리에서 찾아 보세요</h1>
           <p className="mt-text-main mt-4 max-w-4xl">
-            MomTools 정보 페이지는 임신, 신생아, 이유식, 유아처럼 부모가 실제로 겪는 시기 흐름에 맞춰 구성했습니다.
-            한 페이지에서 끝나지 않고 다음에 궁금해질 계산기, 체크리스트, Q&A, 놀이 자료까지 함께 이어서 볼 수 있도록 정리했습니다.
+            임신, 신생아, 이유식, 유아처럼 실제로 거치는 시기 흐름에 맞춰 정리해 두었어요.
+            한 페이지에서 끝나는 게 아니라, 다음에 궁금해질 계산기, 체크리스트, Q&A, 놀이 자료까지
+            바로 이어서 볼 수 있어요.
           </p>
         </section>
 
         <ContentUpdateNote publishedOn={SITE_DATES.published} updatedOn={SITE_DATES.updated} />
+
+        <MedicalDisclaimer lang="ko" variant="compact" />
 
         <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
           {guides.map((guide) => (
@@ -102,7 +106,7 @@ export default function InfoHubPage() {
         <section className="mt-card-soft p-6 md:p-8">
           <div className="grid gap-6 lg:grid-cols-[1.02fr_0.98fr]">
             <div>
-              <h2 className="text-xl font-bold text-slate-900">정보 페이지를 이렇게 이어서 보면 편합니다</h2>
+              <h2 className="text-xl font-bold text-slate-900">정보 페이지, 이렇게 이어서 보면 편해요</h2>
               <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-600">
                 {flow.map((item) => (
                   <li key={item} className="rounded-2xl bg-white px-4 py-3 shadow-sm">{item}</li>

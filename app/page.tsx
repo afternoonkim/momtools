@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { HOME_CARD_UPDATED_LABEL } from "@/lib/content-meta";
 import { Sparkles, HeartHandshake, BookOpenCheck, CheckSquare2 } from "lucide-react";
+import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
 
 export const metadata: Metadata = {
   title: "육아 계산기와 체크리스트 한곳에 | MomTools",
@@ -149,19 +150,19 @@ const featuredContents = [
 
 const trustPoints = [
   {
-    title: "계산기만 보여주지 않습니다",
+    title: "계산 결과 다음 단계까지 한 번에",
     description:
-      "결과를 본 뒤 바로 이어서 확인할 수 있도록 관련 정보 페이지, Q&A, 체크리스트를 함께 연결했습니다.",
+      "결과만 보고 끝이 아니라, 바로 이어서 볼 수 있는 정보 글, Q&A, 체크리스트를 함께 연결해 두었어요.",
   },
   {
-    title: "가정에서 참고하기 쉽게 정리합니다",
+    title: "병원 가기 전 미리 확인하기 좋게",
     description:
-      "의료 진단이나 개별 치료 지시가 아니라, 부모가 먼저 흐름을 이해하고 준비할 수 있는 참고용 안내를 중심으로 구성합니다.",
+      "의료 진단을 대신하지 않지만, 부모가 먼저 흐름을 이해하고 궁금한 점을 정리해 둘 수 있는 참고 자료로 쓰기 좋아요.",
   },
   {
-    title: "정책과 안내 페이지를 함께 공개합니다",
+    title: "이용 범위와 정책도 투명하게",
     description:
-      "사이트 소개, 문의 방법, 이용약관, 개인정보처리방침, FAQ를 함께 제공해 이용 범위와 기준을 확인할 수 있습니다.",
+      "사이트 소개, 문의, 이용약관, 개인정보처리방침, FAQ를 한곳에 두어 어떤 기준으로 운영되는지 확인할 수 있어요.",
   },
 ];
 
@@ -176,13 +177,12 @@ export default function HomePage() {
               <h1 className="mt-title-xl mt-5">
                 육아할 때 자주 찾는 정보,
                 <br />
-                헤매지 않게 한곳에 모았습니다
+                헤매지 않게 한곳에서
               </h1>
               <p className="mt-text-main mt-5 max-w-3xl">
-                MomTools는 계산기만 모아둔 사이트가 아니라, 계산 결과를 본 뒤 바로 이어서
-                필요한 정보와 체크리스트까지 볼 수 있도록 구성한 육아 도구 홈입니다. 지금
-                필요한 계산을 먼저 확인하고, 다음에 해야 할 준비까지 자연스럽게 이어서 볼 수
-                있게 만들었습니다.
+                계산기 하나만 따로 떨어져 있는 게 아니라, 결과를 본 뒤 자연스럽게 이어지는
+                정보와 체크리스트까지 한 흐름으로 볼 수 있어요. 지금 필요한 계산부터
+                시작해 보세요. 다음에 챙겨야 할 준비까지 한자리에서 확인할 수 있어요.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link href="/tools/due-date" className="mt-button-primary">바로 시작하기</Link>
@@ -193,7 +193,7 @@ export default function HomePage() {
               <div className="mt-card-soft p-5">
                 <div className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">Pregnancy</div>
                 <div className="mt-3 text-xl font-bold text-slate-800">예정일과 주차</div>
-                <p className="mt-2 text-sm leading-6 text-slate-600">출산 준비는 시기를 먼저 아는 것부터 시작됩니다.</p>
+                <p className="mt-2 text-sm leading-6 text-slate-600">출산 준비는 시기를 먼저 아는 것부터 시작돼요.</p>
               </div>
               <div className="mt-card-soft p-5">
                 <div className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">Baby</div>
@@ -203,7 +203,7 @@ export default function HomePage() {
               <div className="mt-card-soft p-5">
                 <div className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">Feeding</div>
                 <div className="mt-3 text-xl font-bold text-slate-800">이유식 시작</div>
-                <p className="mt-2 text-sm leading-6 text-slate-600">언제부터 준비하고 어떤 순서로 진행할지 쉽게 정리합니다.</p>
+                <p className="mt-2 text-sm leading-6 text-slate-600">언제부터 준비하고 어떤 순서로 진행할지 쉽게 확인해 보세요.</p>
               </div>
               <div className="mt-card-soft p-5">
                 <div className="text-xs font-semibold uppercase tracking-[0.2em] text-amber-700">Checklist</div>
@@ -214,16 +214,18 @@ export default function HomePage() {
           </div>
         </section>
 
+        <MedicalDisclaimer lang="ko" variant="compact" />
+
         <section className="mt-card p-6 md:p-8">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div className="max-w-3xl">
-              <span className="mt-badge">신뢰형 안내</span>
-              <h2 className="mt-title-lg mt-4">MomTools를 어떻게 참고하면 좋은지 먼저 알려드립니다</h2>
+              <span className="mt-badge">이용 안내</span>
+              <h2 className="mt-title-lg mt-4">MomTools, 이렇게 활용해 보세요</h2>
               <p className="mt-text-main mt-3">
-                MomTools는 부모가 집에서 먼저 흐름을 정리하고 준비할 수 있도록 돕는 참고형 육아 사이트입니다.
-                계산 결과나 정보 글은 병원 진료를 대신하지 않으며, 아이 상태가 걱정되거나 급한 증상이 있다면
-                의료진 상담을 우선으로 두는 것이 좋습니다. 대신 일상에서 자주 헷갈리는 월령, 준비 순서,
-                체크 포인트를 한 번에 이어서 볼 수 있게 만드는 데 집중하고 있습니다.
+                MomTools는 집에서 먼저 흐름을 정리하고 준비할 수 있게 돕는 참고용 육아 사이트예요.
+                계산 결과와 정보 글은 병원 진료를 대신하지 않으니, 아이 상태가 걱정되거나 급한 증상이 있다면
+                의료진 상담을 먼저 받으세요. 대신 일상에서 자주 헷갈리는 월령, 준비 순서,
+                체크 포인트를 한 번에 이어서 볼 수 있게 모아 두었어요.
               </p>
             </div>
             <div className="grid gap-3 sm:grid-cols-2 lg:w-[360px] lg:grid-cols-1">
@@ -254,11 +256,11 @@ export default function HomePage() {
         <section className="mt-card p-6 md:p-8">
           <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
             <div className="max-w-3xl">
-              <span className="mt-badge">최근 대표 콘텐츠</span>
-              <h2 className="mt-title-lg mt-4">홈에서 바로 볼 수 있는 최신 정리 콘텐츠</h2>
+              <span className="mt-badge">자주 찾는 콘텐츠</span>
+              <h2 className="mt-title-lg mt-4">지금 많이 보고 있는 가이드</h2>
               <p className="mt-text-main mt-3">
-                최근에 보강한 대표 콘텐츠를 홈 아래에 직접 배치했습니다. 계산기만 빠르게 쓰고 나가는 구조보다,
-                부모가 실제로 많이 이어서 읽는 설명형 콘텐츠를 함께 노출해 사이트의 정보성과 신뢰도를 높이는 목적입니다.
+                계산기만 빠르게 쓰고 끝내기 아쉬울 때, 다른 부모들이 함께 많이 읽는 설명형 콘텐츠를
+                홈에서 바로 이어 볼 수 있어요. 궁금한 주제로 들어가 자세한 흐름까지 확인해 보세요.
               </p>
             </div>
             <Link href="/about" className="text-sm font-semibold text-amber-700">사이트 소개 보기 →</Link>
@@ -297,7 +299,7 @@ export default function HomePage() {
         <section className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="mt-card p-6 md:p-8">
             <h2 className="mt-title-lg">육아 흐름에 맞춘 정보 연결</h2>
-            <p className="mt-text-main mt-3">계산 결과만 보고 끝내지 않고, 그 다음에 궁금해지는 내용을 바로 이어서 볼 수 있게 구성했습니다.</p>
+            <p className="mt-text-main mt-3">계산 결과를 본 뒤 자연스럽게 궁금해지는 다음 내용을 바로 이어서 확인할 수 있어요.</p>
             <div className="mt-6 grid gap-4 md:grid-cols-2">
               {guideCards.map((card) => {
                 const Icon = card.icon;
@@ -314,7 +316,7 @@ export default function HomePage() {
 
           <div className="mt-card p-6 md:p-8">
             <h2 className="mt-title-lg">많이 찾는 질문 흐름</h2>
-            <p className="mt-text-main mt-3">실제 부모가 검색하는 흐름을 고려해 홈에서 자주 찾는 질문 출발점을 먼저 정리했습니다.</p>
+            <p className="mt-text-main mt-3">다른 부모들이 자주 검색하는 질문을 먼저 모아 두었어요. 비슷한 고민이 있다면 여기서부터 시작해 보세요.</p>
             <ul className="mt-6 space-y-3">
               {searchIntent.map((item) => (
                 <li key={item} className="rounded-2xl border border-amber-100 bg-amber-50/70 px-4 py-3 text-sm font-medium text-slate-700">{item}</li>

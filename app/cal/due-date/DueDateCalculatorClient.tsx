@@ -327,10 +327,10 @@ export default function DueDateCalculatorClient() {
           <section className="mt-card p-6 md:p-7">
             <div>
               <h2 className="text-lg font-bold text-slate-900">
-                결과 화면 구성
+                결과 화면 한눈에 보기
               </h2>
               <p className="mt-1 text-sm text-slate-500">
-                핵심 결과 → 주요 일정 → 안내 문구 순서로 구성했습니다.
+                핵심 결과 → 주요 일정 → 안내 문구 순서로 살펴볼 수 있어요.
               </p>
             </div>
 

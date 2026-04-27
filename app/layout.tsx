@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import ClientLayout from "@/components/layout/ClientLayout";
+import AdSenseScript from "@/components/ad/AdSenseScript";
+import CookieConsent from "@/components/common/CookieConsent";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://momtools.kr"),
@@ -9,6 +11,14 @@ export const metadata: Metadata = {
   description:
     "육아 계산기, 아이 이름 짓기, 이유식 메뉴, 질문형 육아 정보, 체크리스트를 한곳에서 보는 MomTools",
   robots: { index: true, follow: true },
+  alternates: {
+    canonical: "https://momtools.kr/",
+    languages: {
+      "ko-KR": "https://momtools.kr/",
+      "en-US": "https://momtools.kr/en",
+      "x-default": "https://momtools.kr/",
+    },
+  },
   openGraph: {
     title: "MomTools",
     description:
@@ -16,6 +26,7 @@ export const metadata: Metadata = {
     url: "https://momtools.kr",
     siteName: "MomTools",
     locale: "ko_KR",
+    alternateLocale: ["en_US"],
     type: "website",
   },
   verification: {
@@ -36,6 +47,8 @@ export default function RootLayout({
     <html lang="ko" suppressHydrationWarning>
       <body>
         <ClientLayout>{children}</ClientLayout>
+        <CookieConsent />
+        <AdSenseScript />
         <Analytics />
       </body>
     </html>

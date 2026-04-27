@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
 
 export const metadata: Metadata = {
   title: "Parenting Calculators | Due Date, Baby Age, Vaccines, Solids, Growth",
@@ -47,6 +48,8 @@ export default function EnCalHubPage() {
           Each one is built around common questions parents in the US ask most often.
         </p>
       </section>
+
+      <MedicalDisclaimer lang="en" variant="compact" />
 
       <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
         {tools.map((tool) => (

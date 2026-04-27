@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { HOME_CARD_UPDATED_LABEL } from "@/lib/content-meta";
+import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
 
 export const metadata: Metadata = {
   title: "U.S. parenting tools, checklists, and practical baby guides | MomTools English",
@@ -107,19 +108,19 @@ const searchIntent = [
 
 const trustPoints = [
   {
-    title: "Tools with context",
+    title: "Tools that don't stop at a number",
     description:
-      "The English version does not stop at a result. Each major tool is connected to a practical guide, Q&A topic, or checklist so parents can keep moving instead of starting a new search.",
+      "Every calculator links straight to a practical guide, Q&A topic, or checklist for the question that usually comes next, so you aren't left starting a new search every time.",
   },
   {
-    title: "Built for U.S. parent searches",
+    title: "Written for everyday U.S. parents",
     description:
-      "Pages are written around the kinds of Google searches parents actually make in English, such as due date timing, vaccine by age, starting solids, newborn sleep, and toddler behavior.",
+      "The pages cover the things you'd actually type into Google as a parent here: due date timing, vaccines by age, starting solids, newborn sleep, toddler behavior, and daycare prep.",
   },
   {
-    title: "Clear limits, not false certainty",
+    title: "Honest about what this site can do",
     description:
-      "MomTools English is written as a planning and education reference. It does not pretend to diagnose symptoms or replace a pediatrician, OB office, or urgent medical advice.",
+      "Use MomTools as a planning and learning reference. It won't diagnose a symptom or replace your pediatrician, OB office, or urgent medical advice — and it won't pretend to.",
   },
 ];
 
@@ -135,10 +136,9 @@ export default function EnglishHomePage() {
                 Parenting tools and guides that help you get to the next step faster
               </h1>
               <p className="mt-text-main mt-5 max-w-3xl">
-                MomTools English is designed for parents who want clear help without opening ten tabs.
-                Start with a calculator, move into a short guide, and then use a checklist or Q&amp;A page
-                for the part that usually comes next. The goal is not more content. The goal is fewer
-                repeated searches.
+                If you're tired of opening ten tabs every time a parenting question comes up, you're in the
+                right place. Start with a calculator, jump into a short guide, and grab a checklist or Q&amp;A
+                for whatever comes next. Less searching, more answers in one place.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link href="/en/cal/due-date" className="mt-button-primary">Start with a popular tool</Link>
@@ -171,14 +171,16 @@ export default function EnglishHomePage() {
           </div>
         </section>
 
+        <MedicalDisclaimer lang="en" variant="compact" />
+
         <section className="mt-card p-6 md:p-8">
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div className="max-w-3xl">
-              <span className="mt-badge">Search-driven starting points</span>
-              <h2 className="mt-title-lg mt-4">Popular ways parents arrive here</h2>
+              <span className="mt-badge">Common starting points</span>
+              <h2 className="mt-title-lg mt-4">Popular questions parents start with</h2>
               <p className="mt-text-sub mt-3">
-                The English pages are built around the questions parents tend to search in real life.
-                These are the kinds of entry points the site is meant to support.
+                If one of these sounds like the question you came in with, jump straight to the page that
+                walks through it. You don&apos;t have to dig through unrelated articles to find the answer.
               </p>
             </div>
             <Link href="/en/info" className="mt-button-secondary">Open all guides</Link>
@@ -204,10 +206,10 @@ export default function EnglishHomePage() {
         <section className="mt-card-soft p-6 md:p-8">
           <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <div className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Featured pages</div>
-              <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-800">High-value pages to strengthen trust and depth</h2>
+              <div className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Featured guides</div>
+              <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-800">Take a deeper look at the topics parents come back to</h2>
             </div>
-            <Link href="/en/about" className="mt-button-secondary">Why MomTools exists</Link>
+            <Link href="/en/about" className="mt-button-secondary">About MomTools</Link>
           </div>
           <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {featuredGuides.map((item) => (

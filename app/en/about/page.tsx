@@ -30,7 +30,7 @@ const principles = [
   "Major tools are connected to related guides, Q&A pages, and checklists so parents can keep moving without starting over.",
   "Pages try to explain what is common, what is worth watching, and when online reading should stop and a clinician should come first.",
   "Site policies, contact information, and usage limits are visible because trust matters as much as convenience.",
-  "The English section prioritizes clearer structure, stronger internal links, and parent-facing usefulness over filler text.",
+  "Pages favor clear structure and useful next steps over filler — so you spend less time reading and more time deciding.",
 ];
 
 const bestFor = [
@@ -53,10 +53,10 @@ export default function EnglishAboutPage() {
           <span className="mt-badge">About MomTools</span>
           <h1 className="mt-title-lg mt-4">MomTools English is built to make the next parenting step clearer</h1>
           <p className="mt-text-main mt-4">
-            MomTools English organizes common parenting questions into a simpler path. Instead of giving parents
-            one isolated calculator or one short answer, the site tries to connect the result, the explanation,
-            and the next practical page. That matters because most parents are not looking for "content." They are
-            trying to decide what to check, what to prepare, and what to ask next.
+            MomTools English organizes common parenting questions into one clearer path. Instead of leaving you
+            with a single calculator or a short answer, the site connects the result, the plain-language
+            explanation, and the next practical page. The goal is simple: help you decide what to check,
+            what to prepare, and what to ask next — without ten browser tabs.
           </p>
           <p className="mt-text-sub mt-4">
             The English version is especially focused on U.S. parent searches and everyday family use. At the same time,

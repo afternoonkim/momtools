@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { qnaCategories, qnaData } from "@/data/qna";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
 
 export const metadata: Metadata = {
@@ -29,15 +30,15 @@ const categoryDescriptions = {
 const guideCards = [
   {
     title: "질문 그대로 찾기",
-    description: "부모가 자주 묻는 상황을 문장형 제목으로 정리해 원하는 답변을 쉽게 찾을 수 있습니다.",
+    description: "검색하던 문장 그대로 제목으로 정리되어 있어, 원하는 답을 빠르게 찾아볼 수 있어요.",
   },
   {
     title: "체크포인트 먼저 보기",
-    description: "모든 상세 페이지에 보호자가 집에서 먼저 확인하면 좋은 포인트와 기록 기준을 함께 넣었습니다.",
+    description: "병원에 전화하기 전, 집에서 먼저 살펴보면 좋은 포인트와 어떤 기록을 남겨 두면 도움이 되는지 함께 안내해요.",
   },
   {
-    title: "설명형 콘텐츠로 이해하기",
-    description: "짧은 답변 한 줄이 아니라 왜 이런 상황을 같이 보는지, 언제 상담을 고려해야 하는지까지 설명합니다.",
+    title: "왜 그런지까지 이해하기",
+    description: "“괜찮아요/아니에요” 한 줄이 아니라, 왜 이런 상황을 같이 봐야 하는지, 언제 상담이 필요한지까지 풀어서 설명해요.",
   },
 ];
 
@@ -47,15 +48,17 @@ export default function QnaHubPage() {
       <div className="mt-container space-y-8">
         <section className="mt-card p-8 md:p-10">
           <span className="mt-badge">질문형 육아 정보</span>
-          <h1 className="mt-title-xl mt-5">아이 건강, 성장, 행동 질문을 설명형 콘텐츠로 다시 정리했습니다</h1>
+          <h1 className="mt-title-xl mt-5">아이 건강·성장·행동, 궁금한 질문부터 천천히 풀어 보세요</h1>
           <p className="mt-text-main mt-4 max-w-4xl">
-            MomTools 육아 Q&amp;A는 보호자가 실제로 검색하는 질문 문장을 기준으로 만들었습니다.
-            단순히 “괜찮다, 괜찮지 않다”를 나누는 방식이 아니라 지금 집에서 무엇을 먼저 보고,
-            어떤 기록을 남기고, 언제 상담을 고려하면 좋은지를 이해하기 쉽게 설명합니다.
+            “이게 정상인지 아닌지” 한 줄로 끊어 말하기 어려운 상황이 더 많죠. 그래서 부모가 실제로
+            검색하는 질문 그대로 모아 두고, 지금 집에서 무엇을 먼저 보면 좋은지, 어떤 기록을 남겨 두면
+            도움이 되는지, 언제 상담을 고려해야 하는지까지 자세히 설명하고 있어요.
           </p>
         </section>
 
         <ContentUpdateNote publishedOn={SITE_DATES.published} updatedOn={SITE_DATES.updated} />
+
+        <MedicalDisclaimer lang="ko" variant="full" />
 
         <section className="mt-card-soft p-6 md:p-8">
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">이 페이지가 다른 점</div>
@@ -91,18 +94,16 @@ export default function QnaHubPage() {
         </section>
 
         <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-md">이렇게 활용하면 더 편합니다</h2>
+          <h2 className="mt-title-md">이렇게 활용하면 더 편해요</h2>
           <div className="mt-4 space-y-4 text-sm leading-8 text-slate-600 md:text-base">
             <p>
-              아이가 열이 나거나, 발달이 느린 것 같거나, 떼쓰기가 심해졌을 때 보호자는 보통 짧고 빠른 답을
-              찾게 됩니다. 하지만 실제로는 숫자 하나, 행동 하나만 보고 판단하기 어려운 경우가 많습니다.
-              그래서 MomTools Q&amp;A는 각 상황을 설명형으로 확장해 보호자가 집에서 먼저 봐야 할 기준과
-              다음 행동을 정리하도록 구성했습니다.
+              아이가 열이 나거나, 발달이 좀 느린 것 같거나, 갑자기 떼쓰기가 심해지면 짧고 빠른 답부터 찾게 되죠.
+              그런데 실제로는 숫자 하나, 행동 하나만 보고 판단하기 어려운 경우가 많아요. 그래서 각 상황을
+              설명형으로 풀어서, 집에서 먼저 살펴볼 기준과 다음 행동을 함께 정리해 두었어요.
             </p>
             <p>
-              카테고리 안으로 들어가면 질문별로 체크포인트, 간단한 대처, 상담이 필요한 신호, 관련 도구와 정보
-              페이지까지 이어서 볼 수 있습니다. 한 번의 검색으로 끝나는 구조가 아니라 비슷한 고민을 계속
-              한 번에 많은 정보를 외우기보다, 필요한 질문부터 차근차근 읽어볼 수 있도록 정리했습니다.
+              카테고리에 들어가면 질문별로 체크포인트, 간단한 대처법, 상담이 필요한 신호, 관련 도구와 정보까지
+              이어서 볼 수 있어요. 한 번에 많은 내용을 다 외우기보다, 지금 궁금한 질문부터 차근차근 읽어보세요.
             </p>
           </div>
         </section>

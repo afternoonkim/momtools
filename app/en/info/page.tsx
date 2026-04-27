@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
 
 export const metadata: Metadata = {
   title: "Baby and toddler guides for everyday parenting decisions | MomTools English",
@@ -49,6 +50,8 @@ export default function Page() {
             then use the related calculator, checklist, or Q&amp;A page that helps the next question make more sense.
           </p>
         </section>
+
+        <MedicalDisclaimer lang="en" variant="compact" />
 
         <section className="grid gap-5 md:grid-cols-2">
           {guideCards.map((item) => (

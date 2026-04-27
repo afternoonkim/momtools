@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "페이지를 찾을 수 없어요",
+  description: "MomTools에서 요청하신 페이지를 찾을 수 없습니다. 자주 찾는 메뉴로 빠르게 돌아가 보세요.",
+  robots: { index: false, follow: true },
+};
 
 const quickLinks = [
   { href: "/tools", title: "계산기 모아보기", description: "출산 예정일, 아기 개월수, 성장 백분위처럼 자주 찾는 도구를 바로 볼 수 있어요." },
@@ -16,11 +23,11 @@ export default function NotFoundPage() {
           <span className="mt-badge">404</span>
           <h1 className="mt-title-xl mt-5">찾으시는 페이지를 열 수 없어요</h1>
           <p className="mt-text-main mt-4">
-            주소가 바뀌었거나, 더 이상 제공되지 않는 페이지일 수 있습니다. 특히 계산기 주소가 /cal에서 /tools로 정리된 뒤 이전 링크로 들어오면 자동 이동이 되지만, 오래된 북마크나 잘못된 주소는 이 화면이 보일 수 있습니다. 아래의 자주 찾는 메뉴로 이동하면 필요한 내용을 다시 찾는 데 도움이 됩니다.
+            주소가 바뀌었거나 더 이상 제공되지 않는 페이지일 수 있어요. 오래된 북마크나 잘못된 주소로 들어오셨다면, 아래 자주 찾는 메뉴에서 필요한 내용을 다시 찾아 보세요.
           </p>
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link href="/" className="rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white">홈으로 가기</Link>
-            <Link href="/qna" className="rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700">육아 Q&A 보기</Link>
+            <Link href="/qna" className="rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700">육아 Q&amp;A 보기</Link>
           </div>
         </section>
 

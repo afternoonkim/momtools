@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Page not found",
+  description: "We could not find that page on MomTools English. Try one of the popular sections below.",
+  robots: { index: false, follow: true },
+};
 
 const quickLinks = [
   { href: "/en/cal", title: "Calculators", description: "Open the most-used parenting tools for due date timing, baby age, solids, vaccines, and growth." },
