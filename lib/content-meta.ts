@@ -2,7 +2,7 @@ export const SITE_BASE_URL = "https://momtools.kr";
 
 export const SITE_DATES = {
   published: "2026-04-09",
-  updated: "2026-04-10",
+  updated: "2026-04-28",
 } as const;
 
 export const PAGE_DATES = {
@@ -22,6 +22,7 @@ export const PAGE_DATES = {
   "/content/blog": { published: "2026-04-09", updated: "2026-04-10" },
   "/content/youtube": { published: "2026-04-09", updated: "2026-04-10" },
   "/play": { published: "2026-04-09", updated: "2026-04-10" },
+  "/family-health-qna": { published: "2026-04-27", updated: "2026-04-28" },
 } as const satisfies Record<string, { published: string; updated: string }>;
 
 export const HOME_CARD_UPDATED_LABEL = "2026.04 최근 검토";

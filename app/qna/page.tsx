@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "육아 Q&A | MomTools",
     description:
-      "짧은 답변이 아니라 보호자 관점의 설명형 콘텐츠로 정리한 육아 질문 모음입니다.",
+      "짧은 답변이 아니라 보호자 관점의 설명형 답변으로 정리한 육아 질문 모음입니다.",
     url: buildCanonical("/qna"),
     siteName: "MomTools",
     locale: "ko_KR",
@@ -30,7 +30,7 @@ const categoryDescriptions = {
 const guideCards = [
   {
     title: "질문 그대로 찾기",
-    description: "검색하던 문장 그대로 제목으로 정리되어 있어, 원하는 답을 빠르게 찾아볼 수 있어요.",
+    description: "보호자가 실제로 궁금해하는 문장 그대로 정리되어 있어, 원하는 답을 빠르게 찾아볼 수 있어요.",
   },
   {
     title: "체크포인트 먼저 보기",
@@ -51,7 +51,7 @@ export default function QnaHubPage() {
           <h1 className="mt-title-xl mt-5">아이 건강·성장·행동, 궁금한 질문부터 천천히 풀어 보세요</h1>
           <p className="mt-text-main mt-4 max-w-4xl">
             “이게 정상인지 아닌지” 한 줄로 끊어 말하기 어려운 상황이 더 많죠. 그래서 부모가 실제로
-            검색하는 질문 그대로 모아 두고, 지금 집에서 무엇을 먼저 보면 좋은지, 어떤 기록을 남겨 두면
+            궁금해하는 질문 그대로 모아 두고, 지금 집에서 무엇을 먼저 보면 좋은지, 어떤 기록을 남겨 두면
             도움이 되는지, 언제 상담을 고려해야 하는지까지 자세히 설명하고 있어요.
           </p>
         </section>

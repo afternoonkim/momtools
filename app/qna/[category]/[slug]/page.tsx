@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getQnaEntry, getRelatedQna, qnaCategories, type QnaCategory } from "@/data/qna";
 import { notFound } from "next/navigation";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
 import RelatedContent from "@/components/common/RelatedContent";
+import { getQnaEntry, getRelatedQna, qnaCategories, type QnaCategory } from "@/data/qna";
+import { buildQnaLongtailContent, type QnaLongtailContent } from "@/lib/qna-longtail";
 
 type Params = { category: string; slug: string };
 
@@ -13,11 +14,14 @@ type RelatedLink = {
   description: string;
 };
 
+const QNA_PUBLISHED_ON = "2026-04-09";
+const QNA_UPDATED_ON = "2026-04-27";
+
 const categoryIntro: Record<QnaCategory, string> = {
   health:
-    "아이 건강 Q&A는 열, 기침, 콧물, 구토, 설사처럼 보호자가 가장 먼저 검색하는 증상형 질문을 기준으로 정리했습니다. 병명을 단정하기보다 아이의 컨디션, 수분 섭취, 수면, 호흡 상태처럼 집에서 먼저 볼 수 있는 기준을 중심으로 설명합니다.",
+    "아이 건강 Q&A는 열, 기침, 콧물, 구토, 설사처럼 보호자가 자주 걱정하는 증상형 질문을 기준으로 정리했습니다. 병명을 단정하기보다 아이의 컨디션, 수분 섭취, 수면, 호흡 상태처럼 집에서 먼저 볼 수 있는 기준을 중심으로 설명합니다.",
   growth:
-    "아이 성장 Q&A는 뒤집기, 앉기, 걷기, 말, 키와 몸무게처럼 월령별 발달 흐름을 이해하려는 보호자를 위한 설명형 페이지입니다. 한 번의 결과보다 최근 몇 주와 몇 달의 흐름을 함께 보는 관점으로 정리했습니다.",
+    "아이 성장 Q&A는 뒤집기, 앉기, 걷기, 말, 키와 몸무게처럼 월령별 발달 흐름을 궁금해하는 보호자를 위한 내용입니다. 한 번의 결과보다 최근 몇 주와 몇 달의 흐름을 함께 보는 관점으로 정리했습니다.",
   behavior:
     "아이 행동 Q&A는 잠투정, 떼쓰기, 편식, 분리불안, 예민함처럼 반복적으로 부딪히는 일상 고민을 보호자 관점에서 다시 풀었습니다. 문제 행동만 보지 않고 수면, 루틴, 자극, 배고픔, 피로 같은 배경 요인을 함께 살펴보는 방식으로 설명합니다.",
 };
@@ -62,7 +66,7 @@ const categoryFaqExtra: Record<QnaCategory, { question: string; answer: string }
   health: {
     question: "건강 Q&A는 어디까지 참고하고 언제 병원을 우선해야 하나요?",
     answer:
-      "이 페이지는 보호자가 집에서 먼저 볼 관찰 포인트를 정리한 일반 참고용 정보입니다. 축 처짐, 탈수 의심, 호흡곤란, 경련, 혈변처럼 경고 신호가 있거나 보호자가 느끼기에 평소와 많이 다르면 온라인 정보보다 진료 상담을 먼저 고려하는 편이 안전합니다.",
+      "아래 내용은 보호자가 집에서 먼저 볼 관찰 포인트를 정리한 일반 참고용 정보입니다. 축 처짐, 탈수 의심, 호흡곤란, 경련, 혈변처럼 경고 신호가 있거나 보호자가 느끼기에 평소와 많이 다르면 온라인 정보보다 진료 상담을 먼저 고려하는 편이 안전합니다.",
   },
   growth: {
     question: "성장 Q&A에서 가장 중요한 것은 평균 수치인가요?",
@@ -88,6 +92,11 @@ const relatedLinks: Record<QnaCategory, RelatedLink[]> = {
       label: "신생아 정보",
       description: "수유, 체온, 수면, 배변처럼 초기 관찰 기준을 함께 확인할 수 있습니다.",
     },
+    {
+      href: "/tools/baby-age",
+      label: "아기 개월수 계산기",
+      description: "건강 증상을 볼 때 월령 기준을 먼저 확인하면 판단이 더 쉬워집니다.",
+    },
   ],
   growth: [
     {
@@ -99,6 +108,11 @@ const relatedLinks: Record<QnaCategory, RelatedLink[]> = {
       href: "/tools/baby-age",
       label: "아기 개월수 계산기",
       description: "정확한 개월수를 확인한 뒤 발달 흐름을 비교할 때 편리합니다.",
+    },
+    {
+      href: "/info/toddler",
+      label: "유아 정보",
+      description: "말, 놀이, 생활습관처럼 성장과 연결되는 일상 기준을 함께 볼 수 있습니다.",
     },
   ],
   behavior: [
@@ -112,18 +126,27 @@ const relatedLinks: Record<QnaCategory, RelatedLink[]> = {
       label: "어린이집 준비 체크리스트",
       description: "분리불안, 생활 전환, 등원 적응처럼 행동 변화가 생기기 쉬운 시기에 참고하기 좋습니다.",
     },
+    {
+      href: "/checklists/newborn-prep",
+      label: "신생아 준비 체크리스트",
+      description: "초기 생활 루틴과 환경 준비를 확인하며 행동 변화의 배경을 같이 살펴볼 수 있습니다.",
+    },
   ],
 };
 
-function buildFaqItems(item: NonNullable<ReturnType<typeof getQnaEntry>>, category: QnaCategory) {
+function buildFaqItems(
+  item: NonNullable<ReturnType<typeof getQnaEntry>>,
+  category: QnaCategory,
+  content: QnaLongtailContent,
+) {
   return [
     {
       question: item.question,
-      answer: `${item.summary} ${item.caution}`,
+      answer: content.oneLineAnswer,
     },
     {
       question: `${item.topic} 상황에서 집에서 먼저 무엇을 보면 좋나요?`,
-      answer: item.checklist.join(" "),
+      answer: content.quickSummary.join(" "),
     },
     ...(item.simpleAction && item.simpleAction.length > 0
       ? [
@@ -133,6 +156,10 @@ function buildFaqItems(item: NonNullable<ReturnType<typeof getQnaEntry>>, catego
           },
         ]
       : []),
+    {
+      question: `${item.topic} 상황에서 어떤 기록을 남기면 도움이 되나요?`,
+      answer: content.recordItems.join(" "),
+    },
     {
       question: `${item.topic} 상황에서 언제 상담을 더 서둘러야 하나요?`,
       answer: item.caution,
@@ -150,21 +177,26 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { category, slug } = await params;
   if (!(category in qnaCategories)) return {};
-  const item = getQnaEntry(category as QnaCategory, slug);
+  const typed = category as QnaCategory;
+  const item = getQnaEntry(typed, slug);
   if (!item) return {};
+  const content = buildQnaLongtailContent(item, typed);
+  const url = `https://momtools.kr/qna/${category}/${slug}`;
 
   return {
-    title: `${item.question} | ${qnaCategories[category as QnaCategory]} Q&A | MomTools`,
-    description: `${item.summary} 집에서 먼저 볼 체크포인트, 간단한 대처, 상담이 필요한 신호까지 설명형 콘텐츠로 정리했습니다.`,
-    keywords: item.keywords,
-    alternates: { canonical: `https://momtools.kr/qna/${category}/${slug}` },
+    title: content.seoTitle,
+    description: content.metaDescription,
+    keywords: content.metaKeywords,
+    alternates: { canonical: url },
     openGraph: {
-      title: `${item.question} | MomTools`,
-      description: `${item.summary} 집에서 먼저 볼 기준과 상담이 필요한 신호를 함께 확인해보세요.`,
-      url: `https://momtools.kr/qna/${category}/${slug}`,
+      title: content.seoTitle,
+      description: content.metaDescription,
+      url,
       siteName: "MomTools",
       locale: "ko_KR",
       type: "article",
+      publishedTime: QNA_PUBLISHED_ON,
+      modifiedTime: QNA_UPDATED_ON,
     },
   };
 }
@@ -175,59 +207,118 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
   const typed = category as QnaCategory;
   const item = getQnaEntry(typed, slug);
   if (!item) notFound();
-  const related = getRelatedQna(typed, slug);
-  const faqs = buildFaqItems(item, typed);
-  const faqJsonLd = {
+
+  const content = buildQnaLongtailContent(item, typed);
+  const related = getRelatedQna(typed, slug, 6);
+  const faqs = buildFaqItems(item, typed, content);
+  const pageUrl = `https://momtools.kr/qna/${typed}/${slug}`;
+  const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
+    "@graph": [
+      {
+        "@type": "Article",
+        "@id": `${pageUrl}#article`,
+        headline: content.h1,
+        description: content.metaDescription,
+        inLanguage: "ko-KR",
+        datePublished: QNA_PUBLISHED_ON,
+        dateModified: QNA_UPDATED_ON,
+        author: { "@type": "Organization", name: "MomTools" },
+        publisher: { "@type": "Organization", name: "MomTools" },
+        mainEntityOfPage: pageUrl,
+        about: content.metaKeywords.slice(0, 8),
       },
-    })),
+      {
+        "@type": "FAQPage",
+        "@id": `${pageUrl}#faq`,
+        mainEntity: faqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer,
+          },
+        })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${pageUrl}#breadcrumb`,
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "홈", item: "https://momtools.kr" },
+          { "@type": "ListItem", position: 2, name: "육아 Q&A", item: "https://momtools.kr/qna" },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: qnaCategories[typed],
+            item: `https://momtools.kr/qna/${typed}`,
+          },
+          { "@type": "ListItem", position: 4, name: item.question, item: pageUrl },
+        ],
+      },
+    ],
   };
 
   return (
     <div className="mt-page">
       <div className="mt-container-narrow space-y-8">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-        />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
+        <nav className="flex flex-wrap items-center gap-2 text-sm text-slate-500" aria-label="breadcrumb">
+          <Link href="/" className="hover:text-amber-700">홈</Link>
+          <span>/</span>
+          <Link href="/qna" className="hover:text-amber-700">육아 Q&amp;A</Link>
+          <span>/</span>
+          <Link href={`/qna/${typed}`} className="hover:text-amber-700">{qnaCategories[typed]}</Link>
+        </nav>
 
         <section className="mt-card p-8 md:p-10">
           <div className="flex flex-wrap items-center gap-3">
             <span className="mt-badge">{qnaCategories[typed]}</span>
             <span className="rounded-full bg-slate-50 px-3 py-1 text-xs text-slate-500">{item.topic}</span>
+            <span className="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700">보호자용 체크 답변</span>
           </div>
-          <h1 className="mt-title-xl mt-5">{item.question}</h1>
-          <p className="mt-text-main mt-4">{item.summary}</p>
+          <h1 className="mt-title-xl mt-5">{content.h1}</h1>
+          <p className="mt-text-main mt-4">{content.heroLead}</p>
           <div className="mt-6 rounded-3xl bg-amber-50 px-5 py-4 text-sm leading-7 text-amber-900">
-            <div className="font-semibold">한눈에 보면</div>
-            <p className="mt-2">
-              {typed === "health"
-                ? "열이나 기침처럼 눈에 띄는 증상 하나보다 아이가 잘 마시고, 잘 자고, 숨쉬는 모습이 편한지를 먼저 보는 것이 더 중요합니다."
-                : typed === "growth"
-                  ? "성장과 발달은 하루 차이보다 최근 흐름을 함께 볼 때 판단이 쉬워집니다."
-                  : "행동 문제는 그 장면만 보지 말고 졸림, 배고픔, 과자극, 전환 상황 같은 배경을 함께 보는 것이 도움이 됩니다."}
-            </p>
+            <div className="font-semibold">바로 결론</div>
+            <p className="mt-2">{content.oneLineAnswer}</p>
           </div>
         </section>
 
-        <ContentUpdateNote publishedOn="2026-04-09" updatedOn="2026-04-09" note="질문별 답변은 보호자가 집에서 먼저 볼 기준을 이해하기 쉽도록 정리하고, 실제 진료 판단이 필요한 부분은 보수적으로 안내하는 방향으로 점검하고 있습니다." />
+        <ContentUpdateNote
+          publishedOn={QNA_PUBLISHED_ON}
+          updatedOn={QNA_UPDATED_ON}
+          note="최근 검토 기준에 맞춰 집에서 먼저 볼 관찰 기준, 기록 항목, 함께 보면 좋은 질문을 정리했습니다."
+        />
 
         <section className="mt-card-soft p-6 md:p-8">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">설명형 가이드</div>
-          <p className="mt-3 text-sm leading-8 text-slate-600 md:text-base">
-            {categoryIntro[typed]}
-          </p>
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">핵심 요약</div>
+          <h2 className="mt-3 text-xl font-bold text-slate-900">한눈에 보는 체크포인트</h2>
+          <div className="mt-5 grid gap-3 md:grid-cols-2">
+            {content.quickSummary.map((point, index) => (
+              <div key={`${point}-${index}`} className="rounded-2xl bg-white px-4 py-4 text-sm leading-7 text-slate-600 shadow-sm">
+                <span className="font-semibold text-amber-700">{index + 1}. </span>{point}
+              </div>
+            ))}
+          </div>
         </section>
 
         <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-md">보호자가 먼저 이해하면 좋은 핵심 설명</h2>
+          <h2 className="mt-title-md">{content.searchIntentTitle}</h2>
+          <div className="mt-4 space-y-4 text-sm leading-8 text-slate-600 md:text-base">
+            {content.searchIntentParagraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-card-soft p-6 md:p-8">
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">비슷한 고민을 볼 때 참고할 기준</div>
+          <p className="mt-3 text-sm leading-8 text-slate-600 md:text-base">{categoryIntro[typed]}</p>
+        </section>
+
+        <section className="mt-card p-6 md:p-8">
+          <h2 className="mt-title-md">질문에 대한 자세한 답변</h2>
           <div className="mt-4 space-y-4 text-sm leading-8 text-slate-600 md:text-base">
             {item.answer.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
@@ -235,12 +326,26 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
           </div>
         </section>
 
+        <section className="grid gap-4 md:grid-cols-3">
+          {content.situationCards.map((card) => (
+            <article key={card.title} className="mt-card p-5">
+              <h2 className="text-lg font-bold text-slate-800">{card.title}</h2>
+              <p className="mt-3 text-sm leading-7 text-slate-500">{card.description}</p>
+              <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-600">
+                {card.points.map((point, index) => (
+                  <li key={`${point}-${index}`} className="rounded-2xl bg-slate-50 px-4 py-3">{point}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </section>
+
         <section className="mt-card p-6 md:p-8">
           <h2 className="mt-title-md">{categoryObservationTitle[typed]}</h2>
           <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">{categoryObservationBody[typed]}</p>
           <ul className="mt-5 space-y-3 text-sm leading-7 text-slate-600">
-            {item.checklist.map((point) => (
-              <li key={point} className="rounded-2xl bg-slate-50 px-4 py-3">{point}</li>
+            {item.checklist.map((point, index) => (
+              <li key={`${point}-${index}`} className="rounded-2xl bg-slate-50 px-4 py-3">{point}</li>
             ))}
           </ul>
         </section>
@@ -251,13 +356,36 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
             <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">{categoryActionBody[typed]}</p>
             {item.simpleAction && item.simpleAction.length > 0 ? (
               <ul className="mt-5 space-y-3 text-sm leading-7 text-slate-600">
-                {item.simpleAction.map((point) => (
-                  <li key={point} className="rounded-2xl bg-white px-4 py-3">{point}</li>
+                {item.simpleAction.map((point, index) => (
+                  <li key={`${point}-${index}`} className="rounded-2xl bg-white px-4 py-3">{point}</li>
                 ))}
               </ul>
             ) : null}
           </section>
         ) : null}
+
+        <section className="mt-card p-6 md:p-8">
+          <h2 className="mt-title-md">{content.recordTitle}</h2>
+          <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">{content.recordDescription}</p>
+          <div className="mt-5 grid gap-3 md:grid-cols-2">
+            {content.recordItems.map((point, index) => (
+              <div key={`${point}-${index}`} className="rounded-2xl border border-amber-100 bg-amber-50/60 px-4 py-3 text-sm leading-7 text-slate-700">
+                {point}
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-card-soft p-6 md:p-8">
+          <h2 className="mt-title-md">{content.avoidTitle}</h2>
+          <div className="mt-5 grid gap-3 md:grid-cols-3">
+            {content.avoidItems.map((point, index) => (
+              <div key={`${point}-${index}`} className="rounded-2xl bg-white px-4 py-4 text-sm leading-7 text-slate-600 shadow-sm">
+                {point}
+              </div>
+            ))}
+          </div>
+        </section>
 
         <section className="mt-card p-6 md:p-8">
           <h2 className="mt-title-md">이 내용을 병원이나 상담에서 더 잘 설명하려면</h2>
@@ -281,10 +409,24 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
         </section>
 
         <section className="mt-card p-6 md:p-8">
+          <h2 className="mt-title-md">비슷한 상황에서 함께 볼 주제</h2>
+          <p className="mt-3 text-sm leading-7 text-slate-600">
+            같은 고민도 아이 상태와 상황에 따라 살펴볼 부분이 조금씩 달라질 수 있습니다. 아래 주제들은 이 질문과 함께 확인하면 도움이 됩니다.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-2">
+            {content.longtailPhrases.map((phrase) => (
+              <span key={phrase} className="rounded-full border border-amber-100 bg-amber-50 px-3 py-2 text-sm font-medium text-amber-800">
+                {phrase}
+              </span>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-card p-6 md:p-8">
           <h2 className="mt-title-md">같이 보면 좋은 도구와 정보</h2>
-          <div className="mt-5 grid gap-4 md:grid-cols-2">
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
             {relatedLinks[typed].map((link) => (
-              <Link key={link.href} href={link.href} className="mt-list-card">
+              <Link key={link.href} href={link.href} className="mt-list-card transition hover:-translate-y-0.5 hover:border-amber-200">
                 <div className="font-semibold text-slate-800">{link.label}</div>
                 <div className="mt-2 text-sm leading-7 text-slate-500">{link.description}</div>
               </Link>
@@ -292,7 +434,7 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
           </div>
         </section>
 
-        <section className="mt-card p-6 md:p-8">
+        <section className="mt-card p-6 md:p-8" id="faq">
           <h2 className="mt-title-md">자주 묻는 질문</h2>
           <div className="mt-6 space-y-4">
             {faqs.map((faq) => (
@@ -306,16 +448,13 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
 
         <section className="mt-card-soft p-6 md:p-8">
           <h2 className="mt-title-md">같이 이어서 보면 좋은 질문</h2>
-          <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">
-            비슷한 고민은 한 가지 질문으로 끝나지 않는 경우가 많습니다. 같은 카테고리 안에서
-            이어지는 질문을 같이 보면 보호자가 패턴을 더 빨리 이해하고, 집에서 무엇을 먼저
-            기록해야 하는지도 정리하기 쉬워집니다.
-          </p>
+          <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">{content.relatedQuestionIntro}</p>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             {related.map((entry) => (
-              <Link key={entry.slug} href={`/qna/${typed}/${entry.slug}`} className="mt-list-card">
-                <div className="font-semibold text-slate-800">{entry.question}</div>
-                <div className="mt-2 text-sm text-slate-500">{entry.summary}</div>
+              <Link key={entry.slug} href={`/qna/${typed}/${entry.slug}`} className="mt-list-card transition hover:-translate-y-0.5 hover:border-amber-200">
+                <div className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-600">{entry.topic}</div>
+                <div className="mt-2 font-semibold text-slate-800">{entry.question}</div>
+                {/* <div className="mt-2 line-clamp-3 text-sm leading-7 text-slate-500">{entry.summary}</div> */}
                 <div className="mt-3 text-sm font-semibold text-amber-700">이 질문도 이어서 보기</div>
               </Link>
             ))}
@@ -327,15 +466,14 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
             </Link>
             <Link href="/qna" className="rounded-3xl border border-slate-100 bg-white px-5 py-5 transition hover:-translate-y-0.5 hover:border-amber-200">
               <div className="font-semibold text-slate-800">육아 Q&amp;A 허브로 돌아가기</div>
-              <p className="mt-2 text-sm leading-7 text-slate-500">건강, 성장, 행동 카테고리를 비교하며 지금 필요한 질문으로 다시 이동할 수 있습니다.</p>
+              <p className="mt-2 text-sm leading-7 text-slate-500">건강, 성장, 행동 고민을 비교하며 지금 필요한 질문을 다시 찾아볼 수 있습니다.</p>
             </Link>
           </div>
         </section>
-      
 
         <RelatedContent
-          title="관련 페이지를 함께 보면 정리가 더 쉬워져요"
-          description="같은 질문을 여러 방향에서 확인하면 집에서 무엇을 먼저 보고, 어떤 페이지를 다음으로 보면 좋은지 감을 잡기 쉬워집니다."
+          title="관련 정보를 함께 보면 정리가 더 쉬워져요"
+          description="같은 고민을 여러 방향에서 확인하면 집에서 무엇을 먼저 보고, 어떤 정보를 이어서 보면 좋은지 감을 잡기 쉬워집니다."
           items={relatedLinks[typed].map((item) => ({ href: item.href, title: item.label, description: item.description }))}
         />
       </div>

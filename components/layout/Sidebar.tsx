@@ -54,6 +54,7 @@ export default function Sidebar({
         home: "홈",
         tools: "육아 계산기",
         qna: "육아 Q&A",
+        familyHealth: "가족건강 Q&A",
         checklists: "체크리스트",
         content: "콘텐츠",
         babyFood: "이유식 메뉴",
@@ -61,7 +62,7 @@ export default function Sidebar({
         names: "아이 이름 짓기",
         items: "육아용품",
         misc: "기타",
-        versionMeta: "tools · names · baby food · qna",
+        versionMeta: "tools · family health · qna",
         links: {
           dueDate: "출산 예정일 계산기",
           babyAge: "아기 개월수 계산기",
@@ -71,6 +72,12 @@ export default function Sidebar({
           health: "아이 건강",
           growthQna: "아이 성장",
           behavior: "아이 행동",
+          momHealth: "엄마 건강",
+          dadHealth: "아빠 건강",
+          postpartumHealth: "임신·출산 후",
+          familyLifeHealth: "생활 건강",
+          medicineHealth: "약·영양제",
+          checkupHealth: "검진·병원",
           birth: "출산 준비",
           newborn: "신생아 준비",
           weaning: "이유식 준비",
@@ -100,6 +107,7 @@ export default function Sidebar({
         home: "Home",
         tools: "Parenting Tools",
         qna: "Parent Q&A",
+        familyHealth: "Family Health Q&A",
         checklists: "Checklists",
         content: "Content",
         babyFood: "Baby Food",
@@ -117,6 +125,12 @@ export default function Sidebar({
           health: "Health",
           growthQna: "Growth",
           behavior: "Behavior",
+          momHealth: "Mom health",
+          dadHealth: "Dad health",
+          postpartumHealth: "Pregnancy & postpartum",
+          familyLifeHealth: "Everyday health",
+          medicineHealth: "Medicine & supplements",
+          checkupHealth: "Checkups",
           birth: "Birth prep",
           newborn: "Newborn prep",
           weaning: "Starting solids prep",
@@ -206,6 +220,21 @@ export default function Sidebar({
               <SidebarItem href={href("/qna/behavior")} label={t.links.behavior} icon={Sparkles} collapsed={collapsed} />
             </SidebarGroup>
           </div>
+
+
+
+          {isKo ? (
+            <div onClick={closeMobileSidebar}>
+              <SidebarGroup title={t.familyHealth} collapsed={collapsed}>
+                <SidebarItem href={href("/family-health-qna/mom")} label={t.links.momHealth} icon={HeartPulse} collapsed={collapsed} />
+                <SidebarItem href={href("/family-health-qna/dad")} label={t.links.dadHealth} icon={HeartPulse} collapsed={collapsed} />
+                <SidebarItem href={href("/family-health-qna/postpartum")} label={t.links.postpartumHealth} icon={HeartPulse} collapsed={collapsed} />
+                <SidebarItem href={href("/family-health-qna/family")} label={t.links.familyLifeHealth} icon={HeartPulse} collapsed={collapsed} />
+                <SidebarItem href={href("/family-health-qna/medicine")} label={t.links.medicineHealth} icon={HeartPulse} collapsed={collapsed} />
+                <SidebarItem href={href("/family-health-qna/checkup")} label={t.links.checkupHealth} icon={HeartPulse} collapsed={collapsed} />
+              </SidebarGroup>
+            </div>
+          ) : null}
 
           <div onClick={closeMobileSidebar}>
             <SidebarGroup title={t.checklists} collapsed={collapsed}>

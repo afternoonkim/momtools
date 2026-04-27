@@ -136,7 +136,7 @@ export default function EnglishHomePage() {
                 Parenting tools and guides that help you get to the next step faster
               </h1>
               <p className="mt-text-main mt-5 max-w-3xl">
-                If you're tired of opening ten tabs every time a parenting question comes up, you're in the
+                If you&apos;re tired of opening ten tabs every time a parenting question comes up, you&apos;re in the
                 right place. Start with a calculator, jump into a short guide, and grab a checklist or Q&amp;A
                 for whatever comes next. Less searching, more answers in one place.
               </p>

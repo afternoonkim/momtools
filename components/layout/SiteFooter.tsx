@@ -45,6 +45,7 @@ export default function SiteFooter() {
 
           <div className="flex flex-wrap gap-x-5 gap-y-2">
             <FooterLink href={href("/about")}>{locale === "ko" ? "사이트 소개" : "About"}</FooterLink>
+            {locale === "ko" ? <FooterLink href="/family-health-qna/family">가족 생활 건강</FooterLink> : null}
             <FooterLink href={href("/faq")}>FAQ</FooterLink>
             <FooterLink href={href("/contact")}>{locale === "ko" ? "문의하기" : "Contact"}</FooterLink>
             <FooterLink href={href("/privacy")}>{locale === "ko" ? "개인정보처리방침" : "Privacy"}</FooterLink>
@@ -52,7 +53,30 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-6 text-xs text-slate-400">© {new Date().getFullYear()} MomTools. All rights reserved.</div>
+        <div className="mt-6 flex flex-col gap-3 border-t border-amber-50 pt-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="text-xs text-slate-400">© {new Date().getFullYear()} MomTools. All rights reserved.</div>
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
+            <span className="text-slate-400">
+              {locale === "ko" ? "관련 채널" : "Related links"}
+            </span>
+            <a
+              href="https://blog.naver.com/afterchan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition hover:text-slate-700"
+            >
+              Naver Blog
+            </a>
+            <a
+              href="https://github.com/afternoonkim"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition hover:text-slate-700"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   );

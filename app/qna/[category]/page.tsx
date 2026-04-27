@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getQnaEntries, qnaCategories, type QnaCategory } from "@/data/qna";
 import { notFound } from "next/navigation";
+import QnaCategorySearch from "./QnaCategorySearch";
 
 type Params = { category: string };
 
@@ -23,7 +24,7 @@ const categoryGuideCards: Record<QnaCategory, { title: string; description: stri
     },
     {
       title: "경고 신호는 바로 확인",
-      description: "호흡곤란, 경련, 탈수 의심, 혈변처럼 경고 신호가 있으면 검색보다 상담이 우선입니다.",
+      description: "호흡곤란, 경련, 탈수 의심, 혈변처럼 경고 신호가 있으면 집에서 더 기다리기보다 상담이 우선입니다.",
     },
   ],
   growth: [
@@ -58,7 +59,7 @@ const categoryGuideCards: Record<QnaCategory, { title: string; description: stri
 
 const categoryIntroBlocks: Record<QnaCategory, string[]> = {
   health: [
-    "아이 건강 Q&A는 보호자가 바로 검색하는 문장형 질문을 그대로 살리면서, 짧은 답변이 아니라 집에서 어떻게 관찰하고 어떤 상황에서 병원을 먼저 고려해야 하는지까지 설명하도록 구성했습니다.",
+    "아이 건강 Q&A는 보호자가 자주 묻는 문장형 질문을 그대로 살리면서, 짧은 답변이 아니라 집에서 어떻게 관찰하고 어떤 상황에서 병원을 먼저 고려해야 하는지까지 설명하도록 구성했습니다.",
     "특히 건강 카테고리는 열, 기침, 콧물, 배변, 피부 변화처럼 흔하지만 불안해지기 쉬운 주제를 중심으로 정리했습니다. 병명을 추측하기보다 지금 아이 상태를 더 정확히 이해하는 데 초점을 맞췄습니다.",
   ],
   growth: [
@@ -66,7 +67,7 @@ const categoryIntroBlocks: Record<QnaCategory, string[]> = {
     "성장은 평균값 하나로 판단하기보다 흐름을 함께 보는 것이 중요하기 때문에, 각 질문마다 보호자가 집에서 먼저 체크하면 좋은 포인트를 같이 정리했습니다.",
   ],
   behavior: [
-    "아이 행동 Q&A는 단순한 훈육 팁보다 행동이 왜 반복되는지 이해하고, 집에서 어떻게 반응하면 갈등을 덜 키울 수 있는지에 초점을 맞춘 설명형 콘텐츠입니다.",
+    "아이 행동 Q&A는 단순한 훈육 팁보다 행동이 왜 반복되는지 이해하고, 집에서 어떻게 반응하면 갈등을 덜 키울 수 있는지에 초점을 맞춘 설명형 답변입니다.",
     "잠투정, 떼쓰기, 편식, 분리불안처럼 보호자가 매일 부딪히는 상황을 중심으로 묶어두어 비슷한 고민을 한 번에 이어서 살펴보기 쉽게 구성했습니다.",
   ],
 };
@@ -82,11 +83,11 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
 
   return {
     title: `${qnaCategories[typed]} Q&A | 설명형 육아 질문 모음 | MomTools`,
-    description: `${qnaCategories[typed]}과 관련해 보호자가 집에서 먼저 확인할 포인트, 체크리스트, 상담이 필요한 신호를 설명형 콘텐츠로 정리한 육아 질문 모음입니다.`,
+    description: `${qnaCategories[typed]}과 관련해 보호자가 집에서 먼저 확인할 포인트, 체크리스트, 상담이 필요한 신호를 설명형 답변으로 정리한 육아 질문 모음입니다.`,
     alternates: { canonical: `https://momtools.kr/qna/${category}` },
     openGraph: {
       title: `${qnaCategories[typed]} Q&A | MomTools`,
-      description: `${qnaCategories[typed]} 질문을 짧은 답변이 아닌 설명형 콘텐츠로 정리했습니다.`,
+      description: `${qnaCategories[typed]} 질문을 짧은 답변이 아닌 설명형 답변으로 정리했습니다.`,
       url: `https://momtools.kr/qna/${category}`,
       siteName: "MomTools",
       locale: "ko_KR",
@@ -101,6 +102,13 @@ export default async function QnaCategoryPage({ params }: { params: Promise<Para
   const typed = category as QnaCategory;
   const entries = getQnaEntries(typed);
   const featuredEntries = entries.slice(0, 6);
+  const searchableEntries = entries.map(({ slug, question, topic, summary, keywords }) => ({
+    slug,
+    question,
+    topic,
+    summary,
+    keywords,
+  }));
 
   return (
     <div className="mt-page">
@@ -134,33 +142,24 @@ export default async function QnaCategoryPage({ params }: { params: Promise<Para
           <div className="flex items-center justify-between gap-4">
             <div>
               <h2 className="mt-title-md">먼저 많이 찾는 질문</h2>
-              <p className="mt-2 text-sm leading-7 text-slate-600">검색량이 높은 문장형 질문 위주로 먼저 배치해 빠르게 탐색할 수 있게 구성했습니다.</p>
+              <p className="mt-2 text-sm leading-7 text-slate-600">부모들이 먼저 확인하고 싶어 하는 문장형 질문부터 빠르게 살펴볼 수 있게 정리했습니다.</p>
             </div>
-            <div className="rounded-full bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-800">
+            {/* <div className="rounded-full bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-800">
               총 {entries.length}개 질문
-            </div>
+            </div> */}
           </div>
           <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {featuredEntries.map((item) => (
               <Link key={item.slug} href={`/qna/${typed}/${item.slug}`} className="rounded-[28px] border border-amber-100 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-amber-200">
                 <div className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-600">{item.topic}</div>
                 <h3 className="mt-3 text-lg font-bold text-slate-800">{item.question}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-500">{item.summary}</p>
+                {/* <p className="mt-3 text-sm leading-7 text-slate-500">{item.summary}</p> */}
               </Link>
             ))}
           </div>
         </section>
 
-        <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {entries.map((item) => (
-            <Link key={item.slug} href={`/qna/${typed}/${item.slug}`} className="rounded-[28px] border border-amber-100 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-amber-200">
-              <div className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-600">{item.topic}</div>
-              <h2 className="mt-3 text-lg font-bold text-slate-800">{item.question}</h2>
-              <p className="mt-3 text-sm leading-7 text-slate-500">{item.summary}</p>
-              <div className="mt-4 text-sm font-semibold text-amber-700">설명형 답변 보기</div>
-            </Link>
-          ))}
-        </section>
+        <QnaCategorySearch category={typed} entries={searchableEntries} />
       </div>
     </div>
   );

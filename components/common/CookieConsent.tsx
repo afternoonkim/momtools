@@ -40,16 +40,19 @@ export default function CookieConsent() {
   const privacyHref = lang === "en" ? "/en/privacy" : "/privacy";
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    try {
-      const stored = window.localStorage.getItem(STORAGE_KEY);
-      if (!stored) {
+    let cancelled = false;
+    queueMicrotask(() => {
+      if (cancelled || typeof window === "undefined") return;
+      try {
+        const stored = window.localStorage.getItem(STORAGE_KEY);
+        if (!stored) setVisible(true);
+      } catch {
         setVisible(true);
       }
-    } catch {
-      // localStorage may be unavailable (private browsing, etc.)
-      setVisible(true);
-    }
+    });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const writeConsent = (value: ConsentValue) => {
@@ -59,13 +62,10 @@ export default function CookieConsent() {
       // Ignore storage errors; the banner will simply re-appear next visit.
     }
 
-    // Pass the signal to Google AdSense if its consent API is loaded.
-    type GoogleTag = { cmd: { push: (cb: () => void) => void } };
-    type WindowWithGoogletag = Window & {
-      googletag?: GoogleTag;
+    type WindowWithAds = Window & {
       adsbygoogle?: unknown[] & { requestNonPersonalizedAds?: number };
     };
-    const w = window as WindowWithGoogletag;
+    const w = window as WindowWithAds;
     try {
       if (value === "rejected") {
         w.adsbygoogle = w.adsbygoogle ?? [];

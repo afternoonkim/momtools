@@ -122,8 +122,6 @@ export default function AboutPage() {
           </div>
         </section>
 
-
-
         <section className="mt-card p-8 md:p-10">
           <h2 className="text-2xl font-bold tracking-tight text-slate-800">MomTools가 콘텐츠를 정리하는 기준</h2>
           <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">
@@ -137,6 +135,36 @@ export default function AboutPage() {
               </li>
             ))}
           </ul>
+        </section>
+
+        <section className="mt-card p-8 md:p-10">
+          <h2 className="text-2xl font-bold tracking-tight text-slate-800">운영자 정보</h2>
+          <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">
+            MomTools는 한 명의 개인 운영자가 직접 만들고 관리하는 사이트입니다. 콘텐츠 정확도, 표현 수정,
+            기능 개선 요청은 아래 채널 또는 문의 페이지를 통해 직접 받고 반영합니다.
+          </p>
+          <div className="mt-5 grid gap-3 md:grid-cols-2">
+            <a
+              href="https://blog.naver.com/afterchan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200"
+            >
+              <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">Naver Blog</div>
+              <div className="mt-2 font-semibold text-slate-800">blog.naver.com/afterchan</div>
+              <p className="mt-2 text-sm leading-7 text-slate-500">육아 관련 일상 글과 사이트 운영 노트를 함께 정리합니다.</p>
+            </a>
+            <a
+              href="https://github.com/afternoonkim"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200"
+            >
+              <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">GitHub</div>
+              <div className="mt-2 font-semibold text-slate-800">github.com/afternoonkim</div>
+              <p className="mt-2 text-sm leading-7 text-slate-500">사이트의 기술적 변경 이력과 다른 프로젝트를 확인할 수 있어요.</p>
+            </a>
+          </div>
         </section>
 
         <section className="mt-card-soft p-8 md:p-10">

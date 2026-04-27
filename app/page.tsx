@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     "이유식 시작 시기",
     "성장 백분위",
     "육아 체크리스트",
+    "가족건강 Q&A",
   ],
 };
 
@@ -46,9 +47,9 @@ const quickActions = [
     href: "/tools/growth-percentile",
   },
   {
-    title: "한글 이름 뜻 모음",
-    description: "남아·여아 이름 뜻을 자연스럽고 보기 쉽게 모아두었습니다.",
-    href: "/baby-names/meanings",
+    title: "가족 생활 건강 Q&A",
+    description: "감기, 장염, 알레르기처럼 가족이 함께 겪기 쉬운 질문을 확인해요.",
+    href: "/family-health-qna/family",
   },
 ];
 
@@ -87,7 +88,6 @@ const searchIntent = [
   "성장 백분위는 어떻게 해석하면 될까",
   "신생아 준비물은 무엇부터 챙겨야 할까",
 ];
-
 
 const featuredContents = [
   {
@@ -144,6 +144,13 @@ const featuredContents = [
     description: "수유, 수면, 발달, 이유식처럼 많이 묻는 질문을 설명형 답변으로 읽기 쉽게 정리했습니다.",
     href: "/qna",
     category: "Q&A",
+    updatedAt: HOME_CARD_UPDATED_LABEL,
+  },
+  {
+    title: "가족 생활 건강 Q&A",
+    description: "감기, 장염, 알레르기, 피부 변화처럼 가족이 함께 겪기 쉬운 생활 건강 질문을 정리했습니다.",
+    href: "/family-health-qna/family",
+    category: "가족 건강",
     updatedAt: HOME_CARD_UPDATED_LABEL,
   },
 ];

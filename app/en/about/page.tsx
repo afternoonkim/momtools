@@ -122,6 +122,37 @@ export default function EnglishAboutPage() {
           </article>
         </section>
 
+        <section className="mt-card p-8 md:p-10">
+          <h2 className="text-2xl font-bold tracking-tight text-slate-800">Who runs MomTools</h2>
+          <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">
+            MomTools is built and maintained by a single individual operator. Corrections, edits, and content
+            requests are reviewed and applied directly. The channels below are the official ways to verify the
+            site&apos;s ownership and reach the maintainer outside of the contact form.
+          </p>
+          <div className="mt-5 grid gap-3 md:grid-cols-2">
+            <a
+              href="https://blog.naver.com/afterchan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200"
+            >
+              <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">Naver Blog</div>
+              <div className="mt-2 font-semibold text-slate-800">blog.naver.com/afterchan</div>
+              <p className="mt-2 text-sm leading-7 text-slate-500">Personal blog with parenting notes and updates from the site maintainer.</p>
+            </a>
+            <a
+              href="https://github.com/afternoonkim"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200"
+            >
+              <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">GitHub</div>
+              <div className="mt-2 font-semibold text-slate-800">github.com/afternoonkim</div>
+              <p className="mt-2 text-sm leading-7 text-slate-500">Public profile and technical history for the maintainer&apos;s open work.</p>
+            </a>
+          </div>
+        </section>
+
         <section className="mt-card-soft p-8 md:p-10">
           <h2 className="text-xl font-bold text-slate-800">Useful next pages</h2>
           <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-4">

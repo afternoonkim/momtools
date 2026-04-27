@@ -3,6 +3,7 @@ import { babyFoodRecipes as koBabyFoodRecipes } from "@/data/babyFood";
 import { babyFoodRecipes as enBabyFoodRecipes } from "@/data/en/babyFood";
 import { rankingYears } from "@/data/babyNames";
 import { qnaData, qnaCategories, type QnaCategory } from "@/data/qna";
+import { familyHealthCategories, familyHealthQnaData, type FamilyHealthQnaCategory } from "@/data/familyHealthQna";
 import { enQnaEntries } from "@/data/en/qna100";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
 
@@ -26,6 +27,12 @@ const staticRoutes: RouteConfig[] = [
   route("/qna/health", 0.85, "weekly"),
   route("/qna/growth", 0.85, "weekly"),
   route("/qna/behavior", 0.85, "weekly"),
+  route("/family-health-qna/mom", 0.84, "weekly"),
+  route("/family-health-qna/dad", 0.84, "weekly"),
+  route("/family-health-qna/postpartum", 0.84, "weekly"),
+  route("/family-health-qna/family", 0.84, "weekly"),
+  route("/family-health-qna/medicine", 0.84, "weekly"),
+  route("/family-health-qna/checkup", 0.84, "weekly"),
   route("/info", 0.84, "weekly"),
   route("/info/pregnancy", 0.8, "weekly"),
   route("/info/newborn", 0.8, "weekly"),
@@ -84,7 +91,10 @@ const staticRoutes: RouteConfig[] = [
 ];
 
 const dynamicKoreanQnaRoutes = (Object.keys(qnaCategories) as QnaCategory[]).flatMap((category) =>
-  qnaData[category].map((entry) => route(`/qna/${category}/${entry.slug}`, 0.72, "weekly")),
+  qnaData[category].map((entry) => route(`/qna/${category}/${entry.slug}`, 0.82, "daily")),
+);
+const dynamicKoreanFamilyHealthRoutes = (Object.keys(familyHealthCategories) as FamilyHealthQnaCategory[]).flatMap((category) =>
+  familyHealthQnaData[category].map((entry) => route(`/family-health-qna/${category}/${entry.slug}`, 0.78, "weekly")),
 );
 const dynamicKoreanBabyFoodRoutes = koBabyFoodRecipes.map((recipe) => route(`/baby-food/recipes/${recipe.slug}`, 0.68, "weekly"));
 const dynamicEnglishBabyFoodRoutes = enBabyFoodRecipes.map((recipe) => route(`/en/baby-food/recipes/${recipe.slug}`, 0.65, "weekly"));
@@ -96,6 +106,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   [
     ...staticRoutes,
     ...dynamicKoreanQnaRoutes,
+    ...dynamicKoreanFamilyHealthRoutes,
     ...dynamicKoreanBabyFoodRoutes,
     ...dynamicEnglishBabyFoodRoutes,
     ...dynamicEnglishQnaRoutes,
