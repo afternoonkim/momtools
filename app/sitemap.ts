@@ -5,6 +5,7 @@ import { rankingYears } from "@/data/babyNames";
 import { qnaData, qnaCategories, type QnaCategory } from "@/data/qna";
 import { familyHealthCategories, familyHealthQnaData, type FamilyHealthQnaCategory } from "@/data/familyHealthQna";
 import { governmentPolicies } from "@/data/governmentPolicy";
+import { babyProductQnaItems } from "@/data/babyProductQna";
 import { enQnaEntries } from "@/data/en/qna100";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
 
@@ -60,7 +61,7 @@ const staticRoutes: RouteConfig[] = [
   route("/baby-names/rankings/2024", 0.7, "monthly"),
   route("/baby-names/rankings/2023", 0.7, "monthly"),
   route("/baby-names/meanings", 0.72, "weekly"),
-  route("/items/essential", 0.65, "weekly"),
+  route("/items/essential", 0.82, "weekly"),
   route("/about", 0.55, "monthly"),
   route("/faq", 0.5, "monthly"),
   route("/contact", 0.4, "monthly"),
@@ -106,6 +107,7 @@ const dynamicKoreanFamilyHealthRoutes = (Object.keys(familyHealthCategories) as 
 );
 const dynamicKoreanPolicyRoutes = governmentPolicies.map((policy) => route(`/policy/${policy.category}/${policy.slug}`, 0.8, "daily"));
 const dynamicKoreanBabyFoodRoutes = koBabyFoodRecipes.map((recipe) => route(`/baby-food/recipes/${recipe.slug}`, 0.68, "weekly"));
+const dynamicKoreanBabyProductRoutes = babyProductQnaItems.map((item) => route(`/items/essential/${item.slug}`, 0.76, "weekly"));
 const dynamicEnglishBabyFoodRoutes = enBabyFoodRecipes.map((recipe) => route(`/en/baby-food/recipes/${recipe.slug}`, 0.65, "weekly"));
 const dynamicEnglishQnaRoutes = enQnaEntries.map((entry) => route(`/en/qna/${entry.slug}`, 0.7, "weekly"));
 const dynamicRankingRoutes = rankingYears.map((year, index) => route(`/baby-names/rankings/${year}`, index === 0 ? 0.75 : 0.7, index === 0 ? "weekly" : "monthly"));
@@ -118,6 +120,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...dynamicKoreanFamilyHealthRoutes,
     ...dynamicKoreanPolicyRoutes,
     ...dynamicKoreanBabyFoodRoutes,
+    ...dynamicKoreanBabyProductRoutes,
     ...dynamicEnglishBabyFoodRoutes,
     ...dynamicEnglishQnaRoutes,
     ...dynamicRankingRoutes,

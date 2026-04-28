@@ -48,6 +48,7 @@ export default function SiteFooter() {
             {locale === "ko" ? <FooterLink href="/policy/pregnancy-birth">임신·출산 지원</FooterLink> : null}
             {locale === "ko" ? <FooterLink href="/policy/local-check">지역별 출산지원금</FooterLink> : null}
             {locale === "ko" ? <FooterLink href="/family-health-qna/family">가족 생활 건강</FooterLink> : null}
+            {locale === "ko" ? <FooterLink href="/items/essential">육아용품 Q&A</FooterLink> : null}
             <FooterLink href={href("/faq")}>FAQ</FooterLink>
             <FooterLink href={href("/contact")}>{locale === "ko" ? "문의하기" : "Contact"}</FooterLink>
             <FooterLink href={href("/privacy")}>{locale === "ko" ? "개인정보처리방침" : "Privacy"}</FooterLink>

@@ -64,7 +64,7 @@ export default function Sidebar({
         names: "아이 이름 짓기",
         items: "육아용품",
         misc: "기타",
-        versionMeta: "tools · policy · family health · qna",
+        versionMeta: "tools · policy · family health · qna · items",
         links: {
           dueDate: "출산 예정일 계산기",
           babyAge: "아기 개월수 계산기",
@@ -103,7 +103,7 @@ export default function Sidebar({
           generator: "이름 생성기",
           rankings: "인기 이름 순위",
           meanings: "한글 이름 뜻 모음",
-          essential: "필수용품",
+          essential: "용품 Q&A",
           faq: "FAQ",
           contact: "문의하기",
         },
