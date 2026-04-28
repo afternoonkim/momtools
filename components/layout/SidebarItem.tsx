@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 import { LucideIcon } from "lucide-react";
 
 export default function SidebarItem({
@@ -16,7 +17,13 @@ export default function SidebarItem({
   collapsed: boolean;
 }) {
   const pathname = usePathname();
-  const active = pathname === href;
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const active = mounted && pathname === href;
 
   if (collapsed) {
     return (

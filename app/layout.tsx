@@ -4,6 +4,7 @@ import "./globals.css";
 import ClientLayout from "@/components/layout/ClientLayout";
 import AdSenseScript from "@/components/ad/AdSenseScript";
 import CookieConsent from "@/components/common/CookieConsent";
+import HydrationCleanupScript from "@/components/common/HydrationCleanupScript";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://momtools.kr"),
@@ -45,7 +46,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" suppressHydrationWarning>
-      <body>
+      <body suppressHydrationWarning>
+        <HydrationCleanupScript />
         <ClientLayout>{children}</ClientLayout>
         <CookieConsent />
         <AdSenseScript />

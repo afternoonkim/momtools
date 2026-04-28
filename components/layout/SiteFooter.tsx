@@ -57,7 +57,7 @@ export default function SiteFooter() {
         </div>
 
         <div className="mt-6 flex flex-col gap-3 border-t border-amber-50 pt-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="text-xs text-slate-400">© {new Date().getFullYear()} MomTools. All rights reserved.</div>
+          <div className="text-xs text-slate-400">© 2026 MomTools. All rights reserved.</div>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
             <span className="text-slate-400">
               {locale === "ko" ? "관련 채널" : "Related links"}

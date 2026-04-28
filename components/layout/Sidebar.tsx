@@ -79,6 +79,7 @@ export default function Sidebar({
           careEducationPolicy: "돌봄·교육 지원",
           medicalHealthPolicy: "의료·건강 지원",
           localCheckPolicy: "지역별 출산지원금",
+          birthSupportCalculatorPolicy: "출산지원금 계산기",
           birth: "출산 준비",
           newborn: "신생아 준비",
           weaning: "이유식 준비",
@@ -131,6 +132,7 @@ export default function Sidebar({
           careEducationPolicy: "Care & education",
           medicalHealthPolicy: "Medical support",
           localCheckPolicy: "Local checks",
+          birthSupportCalculatorPolicy: "Birth grant calculator",
           birth: "Birth prep",
           newborn: "Newborn prep",
           weaning: "Starting solids prep",
@@ -220,6 +222,7 @@ export default function Sidebar({
               <SidebarItem href={isEn ? "/en/cal/vaccine-schedule" : href("/tools/vaccine-schedule")} label={t.links.vaccine} icon={Calculator} collapsed={collapsed} />
               <SidebarItem href={isEn ? "/en/cal/weaning-start" : href("/tools/weaning-start")} label={t.links.weaningStart} icon={Sparkles} collapsed={collapsed} />
               <SidebarItem href={isEn ? "/en/cal/growth-percentile" : href("/tools/growth-percentile")} label={t.links.growth} icon={Calculator} collapsed={collapsed} />
+              {isKo ? <SidebarItem href={href("/tools/birth-support-calculator")} label={t.links.birthSupportCalculatorPolicy} icon={Calculator} collapsed={collapsed} /> : null}
             </SidebarGroup>
           </div>
 

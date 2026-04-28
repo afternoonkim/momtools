@@ -42,6 +42,7 @@ const staticRoutes: RouteConfig[] = [
   route("/policy/care-education", 0.84, "daily"),
   route("/policy/medical-health", 0.84, "daily"),
   route("/policy/local-check", 0.82, "daily"),
+  route("/tools/birth-support-calculator", 0.9, "daily"),
   route("/info", 0.84, "weekly"),
   route("/info/pregnancy", 0.8, "weekly"),
   route("/info/newborn", 0.8, "weekly"),

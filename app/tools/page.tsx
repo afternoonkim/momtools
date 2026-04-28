@@ -16,6 +16,7 @@ const tools = [
   ["예방접종 일정 계산기", "월령 기준 접종 시기를 참고용으로 봅니다.", "/tools/vaccine-schedule"],
   ["이유식 시작 계산기", "이유식 시작 시기와 준비 주간을 확인합니다.", "/tools/weaning-start"],
   ["성장 백분위 계산기", "키와 몸무게로 현재 성장 위치를 살펴봅니다.", "/tools/growth-percentile"],
+  ["출산지원금 계산기", "사는 지역과 출생 순위로 전국 공통 지원금과 지자체 지원금을 함께 계산합니다.", "/tools/birth-support-calculator"],
 ] as const;
 
 const trustNotes = [

@@ -14,10 +14,10 @@ export default function SidebarGroup({
   collapsed: boolean;
   defaultOpen?: boolean;
 }) {
-  const [open, setOpen] = useState(defaultOpen);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (defaultOpen) setOpen(true);
+    setOpen(defaultOpen);
   }, [defaultOpen]);
 
   if (collapsed) {
