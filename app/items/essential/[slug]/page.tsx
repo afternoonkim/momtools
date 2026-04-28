@@ -48,7 +48,8 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       description,
     },
     robots: {
-      index: true,
+      // AdSense 심사 동안 색인 차단 (쿠팡 파트너스 affiliate 콘텐츠)
+      index: false,
       follow: true,
     },
   };

@@ -11,7 +11,6 @@ import {
   Baby,
   ClipboardList,
   BookOpen,
-  Package,
   CircleHelp,
   Mail,
   CalendarHeart,
@@ -21,10 +20,6 @@ import {
   HeartPulse,
   UtensilsCrossed,
   Tags,
-  Palette,
-  Map,
-  SearchCheck,
-  Dot,
   Landmark,
 } from "lucide-react";
 import SidebarItem from "./SidebarItem";
@@ -60,11 +55,9 @@ export default function Sidebar({
         checklists: "체크리스트",
         content: "콘텐츠",
         babyFood: "이유식 메뉴",
-        play: "놀이",
         names: "아이 이름 짓기",
-        items: "육아용품",
         misc: "기타",
-        versionMeta: "tools · policy · family health · qna · items",
+        versionMeta: "tools · policy · family health · qna",
         links: {
           dueDate: "출산 예정일 계산기",
           babyAge: "아기 개월수 계산기",
@@ -80,7 +73,6 @@ export default function Sidebar({
           familyLifeHealth: "생활 건강",
           medicineHealth: "약·영양제",
           checkupHealth: "검진·병원",
-          policyHome: "정책 홈",
           pregnancyBirthPolicy: "임신·출산 지원",
           childcareBenefitPolicy: "양육·보육 지원",
           workParentingPolicy: "일·육아 병행",
@@ -96,14 +88,8 @@ export default function Sidebar({
           earlyFood: "초기 이유식",
           middleFood: "중기 이유식",
           lateFood: "후기 이유식",
-          coloring: "색칠공부",
-          maze: "미로찾기",
-          hiddenPicture: "숨은그림찾기",
-          dotToDot: "점잇기",
-          generator: "이름 생성기",
           rankings: "인기 이름 순위",
           meanings: "한글 이름 뜻 모음",
-          essential: "용품 Q&A",
           faq: "FAQ",
           contact: "문의하기",
         },
@@ -121,9 +107,7 @@ export default function Sidebar({
         checklists: "Checklists",
         content: "Content",
         babyFood: "Baby Food",
-        play: "Play",
         names: "Baby Names",
-        items: "Essentials",
         misc: "More",
         versionMeta: "tools · baby food · qna",
         links: {
@@ -141,7 +125,6 @@ export default function Sidebar({
           familyLifeHealth: "Everyday health",
           medicineHealth: "Medicine & supplements",
           checkupHealth: "Checkups",
-          policyHome: "Policy home",
           pregnancyBirthPolicy: "Pregnancy & birth",
           childcareBenefitPolicy: "Childcare benefits",
           workParentingPolicy: "Work & parenting",
@@ -157,14 +140,8 @@ export default function Sidebar({
           earlyFood: "First foods",
           middleFood: "Stage 2 foods",
           lateFood: "Stage 3 foods",
-          coloring: "Coloring pages",
-          maze: "Mazes",
-          hiddenPicture: "Hidden picture",
-          dotToDot: "Dot to dot",
-          generator: "Name generator",
           rankings: "Popular names",
           meanings: "Name meanings",
-          essential: "Must-have items",
           faq: "FAQ",
           contact: "Contact",
         },
@@ -185,9 +162,7 @@ export default function Sidebar({
   const isChecklistsOpen = hasPath("/checklists");
   const isContentOpen = isKo && hasPath("/content");
   const isBabyFoodOpen = hasPath("/baby-food");
-  const isPlayOpen = hasPath("/play");
   const isNamesOpen = isKo && hasPath("/baby-names");
-  const isItemsOpen = isKo && hasPath("/items");
   const isMiscOpen = hasPath("/faq") || hasPath("/contact");
 
   return (
@@ -256,8 +231,6 @@ export default function Sidebar({
             </SidebarGroup>
           </div>
 
-
-
           {isKo ? (
             <div onClick={closeMobileSidebar}>
               <SidebarGroup title={t.policy} collapsed={collapsed} defaultOpen={isPolicyOpen}>
@@ -310,17 +283,6 @@ export default function Sidebar({
             </SidebarGroup>
           </div>
 
-          {/* 미완성으로 추후 오픈 예정 
-          <div onClick={closeMobileSidebar}>
-            <SidebarGroup title={t.play} collapsed={collapsed} defaultOpen={isPlayOpen}>
-              <SidebarItem href={href("/play/coloring")} label={t.links.coloring} icon={Palette} collapsed={collapsed} />
-              <SidebarItem href={href("/play/maze")} label={t.links.maze} icon={Map} collapsed={collapsed} />
-              <SidebarItem href={href("/play/hidden-picture")} label={t.links.hiddenPicture} icon={SearchCheck} collapsed={collapsed} />
-              <SidebarItem href={href("/play/dot-to-dot")} label={t.links.dotToDot} icon={Dot} collapsed={collapsed} />
-            </SidebarGroup> 
-          </div>
-          */}
-
           {isKo ? (
             <div onClick={closeMobileSidebar}>
               <SidebarGroup title={t.names} collapsed={collapsed} defaultOpen={isNamesOpen}>
@@ -330,13 +292,7 @@ export default function Sidebar({
             </div>
           ) : null}
 
-          {isKo ? (
-            <div onClick={closeMobileSidebar}>
-              <SidebarGroup title={t.items} collapsed={collapsed} defaultOpen={isItemsOpen}>
-                <SidebarItem href={href("/items/essential")} label={t.links.essential} icon={Package} collapsed={collapsed} />
-              </SidebarGroup>
-            </div>
-          ) : null}
+          {/* 육아용품(쿠팡 파트너스) 메뉴는 AdSense 심사 동안 사이드바에서 숨김. 콘텐츠 자체는 유지. */}
 
           <div onClick={closeMobileSidebar}>
             <SidebarGroup title={t.misc} collapsed={collapsed} defaultOpen={isMiscOpen}>

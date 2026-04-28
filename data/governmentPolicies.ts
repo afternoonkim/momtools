@@ -999,51 +999,26 @@ const workAngles: PolicyQuestionAngle[] = [
   { ...sharedAngles[11], id: "work-childcare", questionEnding: "어린이집 등원과 근무시간을 같이 조정할 수 있나요?", firstCheck: "등원 시간, 출근 시간, 단축근무 가능 여부, 돌봄서비스 이용 가능 시간을 함께 보세요.", keyword: "등원 출근" },
 ];
 
+// 지역별 출산지원금은 첫만남이용권(전국 공통)과 별개로 광역·기초지자체에서 자체 지급하는
+// 추가 지원금입니다. angle은 "얼마·조건"과 "신청·이사" 두 갈래로 압축해 중복 콘텐츠를 줄였습니다.
 const localAngles: PolicyQuestionAngle[] = [
   {
-    id: "amount",
-    questionEnding: "2026년 출산지원금 금액은 어디서 확인하나요?",
-    scenario: "우리 지역 출산지원금이 얼마인지 먼저 알고 싶은 상황",
-    firstCheck: "아이사랑 출산지원금 게시판에서 지역명과 최신 등록일을 먼저 확인하세요.",
-    userAction: "금액만 보지 말고 거주기간, 출생순위, 신청기한을 함께 확인하세요.",
-    recordTip: "출생일, 전입일, 부모 주소지, 출생순위를 적어두세요.",
-    keyword: "출산지원금 금액",
+    id: "amount-condition",
+    questionEnding: "얼마 받을 수 있고, 우리 집은 대상인지 어떻게 확인하나요?",
+    scenario: "지역 출산지원금이 얼마인지, 우리 집이 받을 수 있는지 한 번에 알고 싶은 상황",
+    firstCheck: "아이사랑(임신육아종합포털) 출산지원금 게시판에서 우리 시·군·구 게시글을 먼저 열어 보세요. 출생순위별 금액과 거주기간 요건이 함께 정리되어 있습니다.",
+    userAction: "광역시도 지원과 시·군·구 지원이 따로 있을 수 있으니 두 단계 모두 확인하고, 첫만남이용권(전국 공통 200/300만 원)과 헷갈리지 않게 따로 기록해 두세요.",
+    recordTip: "출생일, 부모와 아이 전입일, 출생순위, 받게 될 금액(광역+기초)을 한 줄로 정리해 두면 이후 신청이 수월해요.",
+    keyword: "출산지원금 금액 조건",
   },
   {
-    id: "condition",
-    questionEnding: "신청 조건에서 가장 먼저 볼 부분은 무엇인가요?",
-    scenario: "금액보다 대상 조건을 먼저 확인해야 하는 상황",
-    firstCheck: "부모와 아동의 주민등록 주소, 거주기간, 출생신고 지역, 신청자 기준을 확인하세요.",
-    userAction: "조건이 애매하면 주민센터에 출생일과 주소 기준을 말하고 확인하세요.",
-    recordTip: "전입일과 출생신고일을 함께 메모해 두세요.",
-    keyword: "출산지원금 조건",
-  },
-  {
-    id: "deadline",
-    questionEnding: "신청기한을 놓치지 않으려면 어떻게 해야 하나요?",
-    scenario: "출생신고 후 여러 신청을 한 번에 처리해야 하는 상황",
-    firstCheck: "출생일 또는 출생신고일 기준 신청기한이 몇 개월인지 확인하세요.",
-    userAction: "행복출산 원스톱서비스와 주민센터 지역지원금 신청을 함께 확인하세요.",
-    recordTip: "출생신고일, 신청기한 마지막 날, 접수번호를 기록해 두세요.",
-    keyword: "출산지원금 신청기한",
-  },
-  {
-    id: "move",
-    questionEnding: "이사한 경우 어느 지역 기준으로 보나요?",
-    scenario: "임신 중 또는 출산 전후에 주소지가 바뀐 상황",
-    firstCheck: "전입일, 출생일, 신청일 중 어느 날짜를 기준으로 보는지 확인하세요.",
-    userAction: "이전 주소지와 현재 주소지 주민센터에 각각 문의해 중복·제외 여부를 확인하세요.",
-    recordTip: "전입신고일과 실제 거주 시작일을 구분해 적어두세요.",
-    keyword: "전입 출산지원금",
-  },
-  {
-    id: "second",
-    questionEnding: "둘째·셋째 출산이면 지원이 달라지나요?",
-    scenario: "출생순위에 따라 추가 지원이 있는지 확인하고 싶은 상황",
-    firstCheck: "첫째, 둘째, 셋째 이상 기준과 다자녀 추가지원을 확인하세요.",
-    userAction: "아이사랑 게시판에서 출생순위별 금액과 지자체 별도 지원을 함께 확인하세요.",
-    recordTip: "자녀별 생년월일과 주민등록 등재 상태를 정리해 두세요.",
-    keyword: "둘째 출산지원금",
+    id: "apply-move",
+    questionEnding: "신청은 어떻게 하고, 이사한 경우엔 어디서 받나요?",
+    scenario: "출생신고와 함께 지원금 신청을 처리하거나, 임신·출산 전후 이사로 주소가 바뀐 상황",
+    firstCheck: "행복출산 원스톱서비스(정부24)에서 첫만남이용권·부모급여·아동수당과 함께 ‘지역 출산지원금’을 한 화면에서 신청할 수 있는지 먼저 확인해 보세요. 일부 지자체는 별도 주민센터 방문이 필요합니다.",
+    userAction: "이사한 경우엔 ‘출생일 기준 주민등록 주소’ 또는 ‘신청일 기준 주소’ 중 어느 쪽을 보는지가 지자체마다 달라요. 전출 전 주소지와 현재 주소지 주민센터에 각각 전화로 확인해 주세요.",
+    recordTip: "출생신고일, 신청기한 마지막 날, 전입일·전출일, 접수번호를 따로 적어두면 누락을 줄일 수 있어요.",
+    keyword: "출산지원금 신청 이사",
   },
 ];
 
@@ -1054,17 +1029,32 @@ const categoryAngles: Record<Exclude<GovernmentPolicyCategory, "work-parenting" 
   "health-medical": sharedAngles,
 };
 
+// 17개 광역시도 단위로 정리. 시·군·구 단위까지 모두 자동 생성하면 같은 골격의 페이지가
+// 수백 개 만들어져 ‘중복 콘텐츠’로 보일 수 있어, 광역 단위 안내 + 외부 게시판 링크로 통합.
 const localRegions = [
-  ["seoul", "서울시"], ["busan", "부산시"], ["daegu", "대구시"], ["incheon", "인천시"], ["gwangju", "광주시"],
-  ["daejeon", "대전시"], ["ulsan", "울산시"], ["sejong", "세종시"], ["gyeonggi-suwon", "경기 수원시"], ["gyeonggi-yongin", "경기 용인시"],
-  ["gyeonggi-seongnam", "경기 성남시"], ["gyeonggi-goyang", "경기 고양시"], ["gyeonggi-hwaseong", "경기 화성시"], ["gangwon-chuncheon", "강원 춘천시"], ["gangwon-wonju", "강원 원주시"],
-  ["chungbuk-cheongju", "충북 청주시"], ["chungbuk-chungju", "충북 충주시"], ["chungnam-cheonan", "충남 천안시"], ["chungnam-asan", "충남 아산시"], ["jeonbuk-jeonju", "전북 전주시"],
-  ["jeonnam-mokpo", "전남 목포시"], ["jeonnam-suncheon", "전남 순천시"], ["gyeongbuk-pohang", "경북 포항시"], ["gyeongbuk-gumi", "경북 구미시"], ["gyeongnam-changwon", "경남 창원시"],
-  ["gyeongnam-gimhae", "경남 김해시"], ["gyeongnam-jinju", "경남 진주시"], ["jeju", "제주도"], ["jeju-jeju-city", "제주시"], ["jeju-seogwipo", "서귀포시"],
+  ["seoul", "서울특별시"],
+  ["busan", "부산광역시"],
+  ["daegu", "대구광역시"],
+  ["incheon", "인천광역시"],
+  ["gwangju", "광주광역시"],
+  ["daejeon", "대전광역시"],
+  ["ulsan", "울산광역시"],
+  ["sejong", "세종특별자치시"],
+  ["gyeonggi", "경기도"],
+  ["gangwon", "강원특별자치도"],
+  ["chungbuk", "충청북도"],
+  ["chungnam", "충청남도"],
+  ["jeonbuk", "전북특별자치도"],
+  ["jeonnam", "전라남도"],
+  ["gyeongbuk", "경상북도"],
+  ["gyeongnam", "경상남도"],
+  ["jeju", "제주특별자치도"],
 ] as const;
 
 function makeSummary(seed: PolicySeed, angle: PolicyQuestionAngle) {
-  return `${seed.policyName}은 ${seed.target} ${angle.scenario}이라면 ${seed.benefit} ${seed.application} 최신 기준을 함께 확인해 보세요.`;
+  // 사용자 관점·네이버 SEO를 위해 자연스러운 문장 흐름으로 정리:
+  //   "[시나리오]일 때 보면 좋은 안내. 정책명 + 핵심 혜택 + 신청 + 최신 기준 확인"
+  return `${angle.scenario}일 때 참고하기 좋은 정책 안내예요. ${seed.policyName}의 ${seed.benefit} ${seed.application} 신청 직전 최신 기준은 다시 확인해 보세요.`;
 }
 
 function buildEntry(category: GovernmentPolicyCategory, seed: PolicySeed, angle: PolicyQuestionAngle): GovernmentPolicyEntry {
@@ -1087,10 +1077,10 @@ function buildEntry(category: GovernmentPolicyCategory, seed: PolicySeed, angle:
       angle.recordTip,
     ],
     answer: [
-      `${seed.policyName}을 확인할 때는 먼저 우리 집이 대상 조건에 들어가는지부터 보는 것이 좋습니다. ${seed.currentStandard}`,
-      `${angle.scenario}이라면 ${angle.firstCheck} 특히 정책은 연도, 주소지, 아이 생년월일, 현재 이용 중인 서비스에 따라 결과가 달라질 수 있습니다.`,
-      `${seed.benefit} 다만 실제 지급 여부와 금액은 신청 화면에서 최종 판정되므로, ${seed.officialSourceName}의 최신 안내와 담당기관 상담을 함께 확인해 주세요.`,
-      `${angle.userAction} 신청 후에는 접수번호, 처리상태, 보완 요청 여부를 남겨두면 나중에 문의할 때 도움이 됩니다.`,
+      `${seed.policyName}은 ${seed.target} ${seed.currentStandard}`,
+      `${angle.scenario}처럼 느끼실 때는 ${angle.firstCheck} 같은 제도라도 신청 연도, 주소지, 아이 생년월일, 지금 이용 중인 보육·돌봄 서비스에 따라 적용 결과가 달라질 수 있어요.`,
+      `${seed.benefit} 실제 지급 금액과 일정은 신청 단계에서 최종 확인되니, ${seed.officialSourceName}의 최신 공지와 담당기관 상담을 함께 보세요.`,
+      `${angle.userAction} 신청 후엔 접수번호, 처리상태, 보완 요청 여부를 따로 적어두면 다음 문의 때 시간을 아낄 수 있어요.`,
     ],
     caution: `${seed.caution} 정책은 예산, 시행일, 거주지, 가구 상황에 따라 바뀔 수 있으므로 신청 직전 공식자료를 다시 확인해 주세요.`,
     keywords: Array.from(new Set([...seed.keywords, angle.keyword, `${seed.policyName} 신청`, `${seed.policyName} 대상`, `${seed.policyName} 2026`, governmentPolicyCategories[category].shortLabel])),
@@ -1102,19 +1092,32 @@ function buildEntry(category: GovernmentPolicyCategory, seed: PolicySeed, angle:
 }
 
 function buildLocalSeed(regionSlug: string, regionName: string): PolicySeed {
+  // 표시용 짧은 이름 (예: "서울특별시" → "서울")
+  const shortRegion = regionName
+    .replace(/특별자치도|특별자치시|광역시|특별시/g, "")
+    .replace(/도$|시$/g, "")
+    .trim() || regionName;
+
   return {
     id: `${regionSlug}-birth-grant`,
     policyName: `${regionName} 출산지원금`,
     topic: "지역 출산지원금",
-    currentStandard: "아이사랑 출산지원금 게시판은 2026년 지자체 출산지원금 업데이트 완료 공지를 기준으로 지역별 게시글을 제공합니다.",
-    target: `${regionName}에 주민등록을 두고 출산지원금 조건을 확인하려는 가정이 기본 확인 대상입니다.`,
-    benefit: "지역별 출산축하금, 출산장려금, 산후조리비, 첫만남이용권 안내를 함께 비교할 수 있습니다.",
-    application: "아이사랑 출산지원금 게시판에서 지역명을 검색하고, 최종 신청은 주민센터 또는 지자체 안내에 따라 진행합니다.",
-    caution: "지역별 금액은 조례와 예산에 따라 변경될 수 있으므로 게시글 등록일과 지자체 공고를 같이 확인해 주세요.",
-    keywords: [`${regionName} 출산지원금`, `${regionName} 출산축하금`, `${regionName} 출산장려금`, "아이사랑 출산지원금"],
+    currentStandard: `${regionName}의 출산지원금은 광역시도 단위 지원과 시·군·구 단위 지원이 따로 있는 경우가 많고, 금액과 거주기간 요건이 매년 조례·예산에 따라 바뀝니다. 아이사랑(임신육아종합포털) 출산지원금 게시판에서 시·군·구 게시글을 직접 열어 최신 등록일을 확인해 주세요.`,
+    target: `${regionName}에 출생일 또는 신청일 기준 주민등록을 둔 가정이 기본 확인 대상이며, 지역마다 부모 거주기간(보통 6개월~1년 이상) 요건이 추가됩니다.`,
+    benefit: `${shortRegion} 광역 출산지원금과 시·군·구 출산축하금·출산장려금·산후조리비를 함께 확인할 수 있습니다. 첫만남이용권(전국 공통 200/300만 원), 부모급여, 아동수당은 별도 정책이라 중복 수령 가능합니다.`,
+    application: `행복출산 원스톱서비스(정부24)에서 출생신고와 함께 신청하거나, 시·군·구 주민센터에서 별도 신청합니다. ${shortRegion} 일부 지자체는 별도 방문이 필요할 수 있어요.`,
+    caution: `금액·조건은 조례 개정과 지자체 예산에 따라 자주 바뀌니 게시글 등록일과 시·군·구 공식 공고를 함께 확인해 주세요. 특히 둘째·셋째 추가지원, 산후조리비, 다자녀 우대는 같은 ${shortRegion} 내에서도 시·군·구별 차이가 큽니다.`,
+    keywords: [
+      `${regionName} 출산지원금`,
+      `${shortRegion} 출산지원금`,
+      `${shortRegion} 출산축하금`,
+      `${shortRegion} 출산장려금`,
+      `${shortRegion} 산후조리비`,
+      "지자체 출산지원금",
+    ],
     officialSourceName: "아이사랑 출산지원금 게시판",
     officialSourceUrl: officialUrls.childcareLocal,
-    sourceUpdatedLabel: "2026년 지자체 출산지원금 업데이트 기준",
+    sourceUpdatedLabel: "아이사랑 게시판 최신 등록일 기준",
   };
 }
 

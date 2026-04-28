@@ -61,7 +61,7 @@ const staticRoutes: RouteConfig[] = [
   route("/baby-names/rankings/2024", 0.7, "monthly"),
   route("/baby-names/rankings/2023", 0.7, "monthly"),
   route("/baby-names/meanings", 0.72, "weekly"),
-  route("/items/essential", 0.82, "weekly"),
+  // 쿠팡 파트너스 콘텐츠 페이지(/items/essential)는 AdSense 심사 동안 sitemap에서 제외
   route("/about", 0.55, "monthly"),
   route("/faq", 0.5, "monthly"),
   route("/contact", 0.4, "monthly"),
@@ -107,7 +107,9 @@ const dynamicKoreanFamilyHealthRoutes = (Object.keys(familyHealthCategories) as 
 );
 const dynamicKoreanPolicyRoutes = governmentPolicies.map((policy) => route(`/policy/${policy.category}/${policy.slug}`, 0.8, "daily"));
 const dynamicKoreanBabyFoodRoutes = koBabyFoodRecipes.map((recipe) => route(`/baby-food/recipes/${recipe.slug}`, 0.68, "weekly"));
-const dynamicKoreanBabyProductRoutes = babyProductQnaItems.map((item) => route(`/items/essential/${item.slug}`, 0.76, "weekly"));
+// AdSense 심사 동안 sitemap 제외 (쿠팡 파트너스 affiliate 콘텐츠)
+const dynamicKoreanBabyProductRoutes: RouteConfig[] = [];
+void babyProductQnaItems;
 const dynamicEnglishBabyFoodRoutes = enBabyFoodRecipes.map((recipe) => route(`/en/baby-food/recipes/${recipe.slug}`, 0.65, "weekly"));
 const dynamicEnglishQnaRoutes = enQnaEntries.map((entry) => route(`/en/qna/${entry.slug}`, 0.7, "weekly"));
 const dynamicRankingRoutes = rankingYears.map((year, index) => route(`/baby-names/rankings/${year}`, index === 0 ? 0.75 : 0.7, index === 0 ? "weekly" : "monthly"));

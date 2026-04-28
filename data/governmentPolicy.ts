@@ -841,7 +841,393 @@ function localSources(program: LocalProgram) {
   return [official.childcareLocalBirth, official.gov24];
 }
 
-function programCards(program: LocalProgram): GovernmentPolicyAmountCard[] {
+function localRegisteredAt(seed: LocalRegionSeed) {
+  const detail = getLocalDetail(seed);
+  if (detail?.registeredAt) return detail.registeredAt;
+  const fixedByProvince: Record<string, string> = {
+    seoul: "2026-01-27",
+    busan: "2026-01-28",
+    daegu: "2026-01-29",
+    incheon: "2026-01-30",
+    daejeon: "2026-02-09",
+    chungnam: "2026-03-16",
+    jeonbuk: "2026-03-16",
+    jeonnam: "2026-03-16",
+    gyeongbuk: "2026-03-17",
+    gyeongnam: "2026-03-17",
+    jeju: "2026-03-17",
+  };
+  return fixedByProvince[seed.provinceCode] ?? "2026년 아이사랑 등록 게시물";
+}
+
+function localPostTitle(seed: LocalRegionSeed) {
+  const provinceLabel = seed.provinceName.replace(/특별자치도|특별자치시|특별시|광역시|도/g, "");
+  return (provinceLabel + " " + seed.regionName + " 출산지원금").trim();
+}
+
+function localOfficialDetailRows(seed: LocalRegionSeed): GovernmentPolicyDataRow[] {
+  const registeredAt = localRegisteredAt(seed);
+  return [
+    { label: "아이사랑 게시물", value: localPostTitle(seed), note: "등록일: " + registeredAt },
+    { label: "아이사랑 확인 범위", value: "첫만남이용권, 지자체 출산지원금, 출산축하금, 신청방법, 문의처를 함께 확인", note: "아이사랑 2026년 등록 게시물의 지역별 항목을 사용자 확인 순서에 맞춰 재정리했습니다." },
+    { label: "공통 신청 흐름", value: "출생신고 후 주민센터 또는 정부24 행복출산 원스톱서비스에서 신청 가능 항목 확인", note: "지자체 추가 지원은 주소지 행정복지센터에서 신청 가능 항목을 함께 확인하면 됩니다." },
+  ];
+}
+
+type LocalSupportDetail = {
+  registeredAt?: string;
+  summary?: string;
+  amountCards: GovernmentPolicyAmountCard[];
+  dataRows: GovernmentPolicyDataRow[];
+  verifiedFacts?: string[];
+  benefit?: string[];
+  checkBefore?: string[];
+  keywords?: string[];
+};
+
+const detailedLocalSupport: Record<string, LocalSupportDetail> = {
+  "충청남도 서산시": {
+    registeredAt: "2026-03-16",
+    summary: "충청남도 서산시 출산지원금은 첫만남이용권, 신생아 출산지원금, 둘째 이후 영유아 양육비, 출산용품 지원을 나누어 확인해야 합니다. 첫째는 첫만남이용권 200만 원과 신생아 출산지원금 50만 원을 구분해서 보고, 셋째 이상은 분할 지급 조건까지 함께 확인하는 것이 좋습니다.",
+    amountCards: [
+      { label: "첫만남이용권", amount: "첫째 200만 원·둘째 이상 300만 원", description: "국민행복카드 바우처, 출생일로부터 2년 사용" },
+      { label: "신생아 출산지원금", amount: "첫째 50만 원·둘째 100만 원·셋째 500만 원·넷째 이상 1,000만 원", description: "셋째 이상은 1/2 먼저 지급 후 12개월 뒤 잔액 지급" },
+      { label: "추가 지원", amount: "월 10만 원·상품권 10만 원", description: "둘째 이후 36개월까지 영유아 양육비, 출산용품 모바일 상품권" },
+    ],
+    dataRows: [
+      { label: "첫만남이용권 지원대상", value: "출생신고 후 주민등록번호를 부여받은 아동", note: "2024년 이후 출생아 기준 첫째 200만 원, 둘째 이상 300만 원" },
+      { label: "첫만남이용권 사용기간", value: "아동 출생일로부터 2년", note: "유흥·사행·일부 위생업종 등 제외 업종 확인" },
+      { label: "첫만남이용권 신청방법", value: "행정복지센터 방문, 복지로, 정부24" },
+      { label: "신생아 출산지원금 지원대상", value: "서산시에 신생아를 출생신고한 가정", note: "첫째·둘째는 출산일 기준 1개월, 셋째 이후는 1년 전부터 서산시 주민등록과 실제 거주 조건 확인" },
+      { label: "신생아 출산지원금 금액", value: "첫째 50만 원, 둘째 100만 원, 셋째 500만 원, 넷째 이상 1,000만 원" },
+      { label: "신생아 출산지원금 지급방식", value: "셋째 이상은 지원금의 1/2 지급 후 12개월 뒤 잔액 지급", note: "지급일은 신청한 다음 달 20일" },
+      { label: "신생아 출산지원금 신청기한", value: "출생일로부터 1년 이내" },
+      { label: "둘째 이후 영유아 양육비", value: "만 3세까지 매월 10만 원", note: "출생신고 후 90일 이내 신청, 신청한 다음 달 20일 지급" },
+      { label: "출산용품 지원", value: "10만 원 상당 모바일 상품권", note: "출생일로부터 1년 이내 신청, 신청한 다음 달 20일 지급" },
+      { label: "신청 경로", value: "출생자 주소지 행정복지센터 방문 또는 정부24 온라인 신청" },
+    ],
+    verifiedFacts: ["서산시는 첫만남이용권 외에 신생아 출산지원금, 둘째 이후 영유아 양육비, 출산용품 지원을 따로 확인해야 합니다.", "셋째 이상 신생아 출산지원금은 분할 지급 조건이 있어 지급 시점을 함께 확인해야 합니다."],
+    benefit: ["첫째 기준 첫만남이용권 200만 원과 신생아 출산지원금 50만 원을 별도로 확인할 수 있습니다.", "둘째 이후는 영유아 양육비 월 10만 원과 첫만남이용권 상향 금액을 함께 볼 수 있습니다.", "출산용품 10만 원 상당 모바일 상품권도 신청기한 안에 확인할 수 있습니다."],
+    checkBefore: ["첫째·둘째와 셋째 이후의 서산시 거주 기간 조건이 다르므로 출산일 기준 전입일을 확인하세요.", "영유아 양육비는 출생신고 후 90일 이내 신청 기준을 놓치지 않도록 따로 적어두세요.", "셋째 이상은 지원금 지급 시점이 나뉘므로 12개월 후 잔액 지급 조건을 확인하세요."],
+    keywords: ["서산시 출산지원금", "충남 서산 출산지원금", "서산시 첫만남이용권", "서산시 신생아 출산지원금", "서산시 영유아 양육비", "서산시 출산용품 지원"],
+  },
+  "충청남도 천안시": { registeredAt: "2026-03-16", summary: "천안시 출산지원금은 첫만남이용권과 천안시 출산축하금을 함께 확인하면 됩니다. 천안시 출산축하금은 첫째 30만 원, 둘째 50만 원, 셋째 이상 100만 원 기준으로 신청 조건과 지급 방식을 확인하는 것이 좋습니다.", amountCards: [{ label: "천안시 출산축하금", amount: "첫째 30만 원·둘째 50만 원·셋째 이상 100만 원", description: "첫만남이용권과 별도 확인" }], dataRows: [{ label: "천안시 출산축하금", value: "첫째 30만 원, 둘째 50만 원, 셋째 이상 100만 원" }, { label: "신청 전 확인", value: "천안시 출생신고, 부모와 아동 주민등록, 신청기한, 지급 방식" }], keywords: ["천안시 출산지원금", "천안 출산축하금"] },
+  "충청남도 공주시": { registeredAt: "2026-03-16", summary: "공주시 출산지원금은 출생 순서별 지원금과 출산축하선물, 출산용품을 함께 확인해야 합니다. 첫째 300만 원, 둘째 500만 원, 셋째 이상 1,000만 원 구조로 분할 지급 조건을 함께 보는 것이 좋습니다.", amountCards: [{ label: "공주시 출산장려금", amount: "첫째 300만 원·둘째 500만 원·셋째 이상 1,000만 원", description: "공주페이 등 지급 방식 확인" }, { label: "추가 물품", amount: "각 10만 원 상당", description: "출산축하선물과 출산용품" }], dataRows: [{ label: "첫째", value: "300만 원", note: "150만 원씩 2년 지급 기준 확인" }, { label: "둘째", value: "500만 원", note: "초기 200만 원과 이후 회차별 150만 원 지급 기준 확인" }, { label: "셋째 이상", value: "1,000만 원", note: "250만 원씩 분할 지급 기준 확인" }, { label: "추가 지원", value: "10만 원 상당 출산축하선물, 10만 원 상당 출산용품" }], keywords: ["공주시 출산지원금", "공주 출산장려금"] },
+  "충청남도 보령시": { registeredAt: "2026-03-16", summary: "보령시 출산양육지원금은 첫째부터 다섯째 이상까지 금액 차이가 큽니다. 첫째 100만 원 이내, 둘째 300만 원 이내, 셋째 500만 원 이내, 넷째 1,500만 원 이내, 다섯째 이상 3,000만 원 이내 기준을 먼저 확인해 보세요.", amountCards: [{ label: "보령시 출산양육지원금", amount: "100만~3,000만 원 이내", description: "출생 순서별 차등, 예산과 조건 확인" }], dataRows: [{ label: "첫째", value: "100만 원 이내" }, { label: "둘째", value: "300만 원 이내" }, { label: "셋째", value: "500만 원 이내" }, { label: "넷째", value: "1,500만 원 이내" }, { label: "다섯째 이상", value: "3,000만 원 이내" }], keywords: ["보령시 출산지원금", "보령 출산양육지원금"] },
+  "충청남도 아산시": { registeredAt: "2026-03-16", summary: "아산시 출산장려금은 첫째 30만 원, 둘째 50만 원, 셋째 100만 원, 넷째 이상 200만 원 기준으로 확인할 수 있습니다. 모바일 지역상품권 지급 여부와 신청 기한을 함께 확인하세요.", amountCards: [{ label: "아산시 출산장려금", amount: "첫째 30만 원·둘째 50만 원·셋째 100만 원·넷째 이상 200만 원", description: "아산사랑 모바일 상품권 지급 기준 확인" }], dataRows: [{ label: "금액", value: "첫째 30만 원, 둘째 50만 원, 셋째 100만 원, 넷째 이상 200만 원" }, { label: "지급 형태", value: "아산사랑 모바일 상품권 기준 확인" }], keywords: ["아산시 출산지원금", "아산 출산장려금"] },
+  "충청남도 논산시": { registeredAt: "2026-03-16", summary: "논산시 출산지원금은 첫째 100만 원부터 다섯째 이상 700만 원까지 출생 순서별로 달라집니다. 첫만남이용권과 논산시 자체 지원금을 나누어 확인해 보세요.", amountCards: [{ label: "논산시 출산지원금", amount: "첫째 100만 원·둘째 200만 원·셋째 300만 원·넷째 400만 원·다섯째 이상 700만 원", description: "출생 순서별 차등 지급" }], dataRows: [{ label: "첫째", value: "100만 원" }, { label: "둘째", value: "200만 원" }, { label: "셋째", value: "300만 원" }, { label: "넷째", value: "400만 원" }, { label: "다섯째 이상", value: "700만 원" }], keywords: ["논산시 출산지원금", "논산 출산장려금"] },
+  "충청남도 계룡시": { registeredAt: "2026-03-16", summary: "계룡시 출산장려금은 첫째 50만 원, 둘째 100만 원, 셋째 이상 300만 원 기준으로 확인할 수 있습니다. 첫만남이용권과 별도 지원인지 함께 확인하세요.", amountCards: [{ label: "계룡시 출산장려금", amount: "첫째 50만 원·둘째 100만 원·셋째 이상 300만 원", description: "출생 순서별 차등 지급" }], dataRows: [{ label: "금액", value: "첫째 50만 원, 둘째 100만 원, 셋째 이상 300만 원" }], keywords: ["계룡시 출산지원금", "계룡 출산장려금"] },
+  "충청남도 당진시": { registeredAt: "2026-03-16", summary: "당진시 출산지원금은 첫째 50만 원, 둘째 100만 원, 셋째 500만 원, 넷째 이상 1,000만 원 기준으로 확인합니다. 셋째 이상은 2년 분할 지급과 육아용품 교환권을 함께 확인하는 것이 좋습니다.", amountCards: [{ label: "당진시 출산지원금", amount: "첫째 50만 원·둘째 100만 원·셋째 500만 원·넷째 이상 1,000만 원", description: "셋째 이상 분할 지급 확인" }, { label: "육아용품", amount: "10만 원 상당", description: "육아용품 교환권 기준 확인" }], dataRows: [{ label: "첫째·둘째", value: "첫째 50만 원, 둘째 100만 원" }, { label: "셋째", value: "500만 원", note: "연 250만 원씩 2년 지급 기준 확인" }, { label: "넷째 이상", value: "1,000만 원", note: "연 500만 원씩 2년 지급 기준 확인" }, { label: "육아용품 교환권", value: "10만 원 상당" }], keywords: ["당진시 출산지원금", "당진 출산장려금"] },
+  "충청남도 금산군": { registeredAt: "2026-03-16", summary: "금산군 출산장려금은 첫째 500만 원, 둘째 700만 원, 셋째 1,000만 원, 넷째 이상 2,000만 원 기준으로 금액이 큽니다. 분할 지급 기준과 거주 요건을 신청 전에 확인하세요.", amountCards: [{ label: "금산군 출산장려금", amount: "첫째 500만 원·둘째 700만 원·셋째 1,000만 원·넷째 이상 2,000만 원", description: "분할 지급 기준 확인" }], dataRows: [{ label: "첫째", value: "500만 원" }, { label: "둘째", value: "700만 원" }, { label: "셋째", value: "1,000만 원" }, { label: "넷째 이상", value: "2,000만 원" }, { label: "지급방식", value: "매년 분할 지급 기준 확인" }], keywords: ["금산군 출산지원금", "금산 출산장려금"] },
+  "충청남도 부여군": { registeredAt: "2026-03-16", summary: "부여군 출산장려금은 첫째 50만 원, 둘째 200만 원, 셋째 500만 원, 넷째 이상 1,000만 원 기준입니다. 둘째 이상은 회차별 지급 구조와 다태아 추가 지원을 함께 확인하세요.", amountCards: [{ label: "부여군 출산장려금", amount: "첫째 50만 원·둘째 200만 원·셋째 500만 원·넷째 이상 1,000만 원", description: "둘째 이상 분할 지급 기준 확인" }, { label: "다태아", amount: "100만 원", description: "다태아 출산 가정 추가 지원" }], dataRows: [{ label: "첫째", value: "50만 원 일시금" }, { label: "둘째", value: "200만 원", note: "50만 원 지급 후 매년 50만 원씩 3년 기준 확인" }, { label: "셋째", value: "500만 원", note: "100만 원 지급 후 매년 100만 원씩 4년 기준 확인" }, { label: "넷째 이상", value: "1,000만 원", note: "250만 원 지급 후 매년 150만 원씩 5년 기준 확인" }, { label: "다태아 추가", value: "100만 원" }], keywords: ["부여군 출산지원금", "부여 출산장려금"] },
+  "충청남도 서천군": { registeredAt: "2026-03-16", summary: "서천군 출산장려금은 50개월 분할 지원 구조를 먼저 확인해야 합니다. 첫째 500만 원, 둘째 1,000만 원, 셋째 1,500만 원, 넷째 2,000만 원, 다섯째 3,000만 원 기준을 확인하세요.", amountCards: [{ label: "서천군 출산장려금", amount: "첫째 500만 원·둘째 1,000만 원·셋째 1,500만 원·넷째 2,000만 원·다섯째 3,000만 원", description: "50개월 분할 지원 구조 확인" }], dataRows: [{ label: "첫째", value: "500만 원" }, { label: "둘째", value: "1,000만 원" }, { label: "셋째", value: "1,500만 원" }, { label: "넷째", value: "2,000만 원" }, { label: "다섯째", value: "3,000만 원" }, { label: "여섯째 이상", value: "1,500만 원" }, { label: "지급방식", value: "50개월 분할 지원 기준 확인" }], keywords: ["서천군 출산지원금", "서천 출산장려금"] },
+  "충청남도 청양군": { registeredAt: "2026-03-16", summary: "청양군 출산장려금은 첫째 500만 원부터 다섯째 이상 3,000만 원까지 5년 분할 지급 구조로 확인할 수 있습니다. 실제 신청 전 거주 기간과 지급 회차를 확인하세요.", amountCards: [{ label: "청양군 출산장려금", amount: "첫째 500만 원·둘째 1,000만 원·셋째 1,500만 원·넷째 2,000만 원·다섯째 이상 3,000만 원", description: "5년 분할 지급 기준" }], dataRows: [{ label: "금액", value: "첫째 500만 원, 둘째 1,000만 원, 셋째 1,500만 원, 넷째 2,000만 원, 다섯째 이상 3,000만 원" }, { label: "지급방식", value: "총 5회, 5년간 분할 지급 기준 확인" }], keywords: ["청양군 출산지원금", "청양 출산장려금"] },
+  "충청남도 홍성군": { registeredAt: "2026-03-16", summary: "홍성군 출산장려금은 첫째 200만 원, 둘째 400만 원, 셋째 600만 원, 넷째 1,000만 원, 다섯째 이상 3,000만 원 구조입니다. 둘째 이상은 분할 지급 조건을 함께 확인해야 합니다.", amountCards: [{ label: "홍성군 출산장려금", amount: "첫째 200만 원·둘째 400만 원·셋째 600만 원·넷째 1,000만 원·다섯째 이상 3,000만 원", description: "출생 순서별 차등·분할 지급 확인" }], dataRows: [{ label: "첫째", value: "200만 원" }, { label: "둘째", value: "400만 원", note: "2년 분할 지급 기준 확인" }, { label: "셋째", value: "600만 원", note: "3년 분할 지급 기준 확인" }, { label: "넷째", value: "1,000만 원", note: "5년 분할 지급 기준 확인" }, { label: "다섯째 이상", value: "3,000만 원", note: "5년 분할 지급 기준 확인" }], keywords: ["홍성군 출산지원금", "홍성 출산장려금"] },
+  "충청남도 예산군": { registeredAt: "2026-03-16", summary: "예산군 출산육아지원금은 첫째 200만 원부터 다섯째 이상 3,000만 원까지 차등 지원됩니다. 출산축하바구니 20만 원 상당 지원도 함께 확인하세요.", amountCards: [{ label: "예산군 출산육아지원금", amount: "첫째 200만 원·둘째 400만 원·셋째 600만 원·넷째 1,000만 원·다섯째 이상 3,000만 원", description: "출생 순서별 분할 지급 확인" }, { label: "출산축하바구니", amount: "20만 원 상당", description: "물품과 상품권 구성 확인" }], dataRows: [{ label: "첫째", value: "200만 원" }, { label: "둘째", value: "400만 원", note: "2년 분할 지급 기준 확인" }, { label: "셋째", value: "600만 원", note: "3년 분할 지급 기준 확인" }, { label: "넷째", value: "1,000만 원", note: "5년 분할 지급 기준 확인" }, { label: "다섯째 이상", value: "3,000만 원", note: "6년 분할 지급 기준 확인" }, { label: "추가 지원", value: "20만 원 상당 출산축하바구니" }], keywords: ["예산군 출산지원금", "예산 출산육아지원금"] },
+  "충청남도 태안군": { registeredAt: "2026-03-16", summary: "태안군 출산장려금은 첫째 50만 원, 둘째 100만 원, 셋째 이상 200만 원 기준으로 확인할 수 있습니다. 신청 기한과 주소지 기준을 함께 확인하세요.", amountCards: [{ label: "태안군 출산장려금", amount: "첫째 50만 원·둘째 100만 원·셋째 이상 200만 원", description: "출생 순서별 차등 지급" }], dataRows: [{ label: "금액", value: "첫째 50만 원, 둘째 100만 원, 셋째 이상 200만 원" }], keywords: ["태안군 출산지원금", "태안 출산장려금"] },
+  "제주특별자치도 제주도": { registeredAt: "2026-03-17", summary: "제주도 출산지원금은 첫째 50만 원, 둘째 이상은 육아지원금 1,000만 원 또는 무주택 주거임차비 1,400만 원 선택 가능 여부를 확인해야 합니다. 첫만남이용권과 별도 기준으로 함께 계산해 보세요.", amountCards: [{ label: "제주 해피아이", amount: "첫째 50만 원·둘째 이상 1,000만 원", description: "둘째 이상은 주거임차비 선택 가능 여부 확인" }, { label: "무주택 주거임차비", amount: "1,400만 원", description: "연 280만 원씩 5년 지급 기준 확인" }], dataRows: [{ label: "첫째", value: "50만 원" }, { label: "둘째 이상", value: "육아지원금 1,000만 원", note: "연 200만 원씩 5년 지급 기준 확인" }, { label: "무주택 가정 선택", value: "주거임차비 1,400만 원", note: "연 280만 원씩 5년 지급 기준 확인" }], keywords: ["제주도 출산지원금", "제주 해피아이"] },
+};
+
+function getLocalDetail(seed: LocalRegionSeed) {
+  return detailedLocalSupport[`${seed.provinceName} ${seed.regionName}`.trim()];
+}
+
+type LocalTotalHint = {
+  firstTotal: number;
+  secondTotal: number;
+};
+
+const NATIONAL_BASE_TOTAL_MANWON = 3050;
+const localTotalHintRows = `
+서울특별시 강남구|3320|3320
+서울특별시 강동구|3120|3120
+서울특별시 강북구|3120|3120
+서울특별시 강서구|3120|3120
+서울특별시 관악구|3120|3120
+서울특별시 광진구|3220|3220
+서울특별시 구로구|3120|3120
+서울특별시 금천구|3130|3130
+서울특별시 노원구|3120|3120
+서울특별시 도봉구|3120|3120
+서울특별시 동대문구|3120|3120
+서울특별시 동작구|3140|3170
+서울특별시 마포구|3120|3120
+서울특별시 서대문구|3210|3120
+서울특별시 서초구|3120|3120
+서울특별시 성동구|3220|3220
+서울특별시 성북구|3120|3120
+서울특별시 송파구|3120|3120
+서울특별시 양천구|3120|3120
+서울특별시 영등포구|3120|3120
+서울특별시 용산구|3120|3120
+서울특별시 은평구|3120|3120
+서울특별시 종로구|3120|3120
+서울특별시 중구|3320|3320
+서울특별시 중랑구|3120|3120
+경기도 가평군|3200|3500
+경기도 고양시|3200|3300
+경기도 과천시|3200|3250
+경기도 광명시|3170|3170
+경기도 광주시|3200|3200
+경기도 구리시|3150|3200
+경기도 군포시|3200|3400
+경기도 김포시|3100|3200
+경기도 남양주시|3200|3200
+경기도 동두천시|3200|3250
+경기도 부천시|3100|3100
+경기도 성남시|3130|3150
+경기도 수원시|3100|3150
+경기도 시흥시|3100|3150
+경기도 안산시|3200|3400
+경기도 안성시|3100|3200
+경기도 안양시|3350|3550
+경기도 양주시|3100|3100
+경기도 양평군|3600|3600
+경기도 여주시|3200|3600
+경기도 연천군|3200|3300
+경기도 오산시|3200|3200
+경기도 용인시|3130|3150
+경기도 의왕시|3200|3300
+경기도 의정부시|3100|3200
+경기도 이천시|3200|3300
+경기도 파주시|3110|3103
+경기도 평택시|3150|3220
+경기도 포천시|3200|3400
+경기도 하남시|3150|3200
+경기도 화성시|3200|3300
+인천광역시 강화군|3790|4210
+인천광역시 계양구|3050|3050
+인천광역시 남동구|3050|3050
+인천광역시 동구|3100|3150
+인천광역시 미추홀구|3050|3050
+인천광역시 부평구|3080|3100
+인천광역시 서구|3080|3100
+인천광역시 연수구|3050|3150
+인천광역시 옹진군|3150|3250
+인천광역시 중구|3050|3150
+부산광역시 강서구|3150|3250
+부산광역시 금정구|3060|3170
+부산광역시 기장군|3050|3200
+부산광역시 남구|3100|3200
+부산광역시 동구|3050|3170
+부산광역시 동래구|3150|3250
+부산광역시 부산진구|3070|3200
+부산광역시 북구|3050|3170
+부산광역시 사상구|3070|3200
+부산광역시 사하구|3100|3200
+부산광역시 서구|3070|3180
+부산광역시 수영구|3050|3250
+부산광역시 연제구|3070|3200
+부산광역시 영도구|3550|3650
+부산광역시 중구|3080|3210
+부산광역시 해운대구|3100|3300
+대전광역시 대덕구|4210|4160
+대전광역시 동구|4160|4160
+대전광역시 서구|4190|4190
+대전광역시 유성구|4190|4160
+대전광역시 중구|4190|4190
+대구광역시 중구|3050|3150
+대구광역시 서구|3050|3150
+대구광역시 북구|3050|3150
+대구광역시 수성구|3050|3150
+대구광역시 군위군|3330|3770
+대구광역시 남구|3060|3150
+대구광역시 달서구|3070|3150
+대구광역시 달성군|3100|3280
+대구광역시 동구|3060|3150
+울산광역시 남구|3110|3150
+울산광역시 동구|3110|3150
+울산광역시 북구|3110|3150
+울산광역시 울주군|3120|3300
+울산광역시 중구|3120|3150
+세종특별자치시 세종시|3170|3170
+광주광역시 광산구|3390|3390
+광주광역시 남구|3390|3400
+광주광역시 동구|3390|3410
+광주광역시 북구|3390|3400
+광주광역시 서구|3390|3390
+강원특별자치도 강릉시|3080|3100
+강원특별자치도 고성군|3190|3340
+강원특별자치도 동해시|3110|3170
+강원특별자치도 삼척시|3150|3200
+강원특별자치도 속초시|3100|3120
+강원특별자치도 양구군|3150|3250
+강원특별자치도 양양군|3170|3290
+강원특별자치도 영월군|3150|3350
+강원특별자치도 원주시|3080|3100
+강원특별자치도 인제군|3250|3350
+강원특별자치도 정선군|3170|3170
+강원특별자치도 철원군|3120|3230
+강원특별자치도 춘천시|3100|3120
+강원특별자치도 태백시|3100|3150
+강원특별자치도 평창군|3150|3250
+강원특별자치도 홍천군|3250|3350
+강원특별자치도 화천군|3350|3350
+강원특별자치도 횡성군|3070|3150
+충청북도 괴산군|3100|3100
+충청북도 단양군|3150|3150
+충청북도 보은군|3150|3150
+충청북도 영동군|3400|3650
+충청북도 옥천군|3150|3150
+충청북도 음성군|3100|3100
+충청북도 제천시|3050|3050
+충청북도 증평군|3100|3100
+충청북도 진천군|3100|3100
+충청북도 청주시|4050|4050
+충청북도 충주시|3100|3100
+충청남도 계룡시|3150|3350
+충청남도 공주시|3350|3550
+충청남도 금산군|3550|3750
+충청남도 논산시|3150|3250
+충청남도 당진시|3100|3150
+충청남도 보령시|3150|3350
+충청남도 부여군|3100|3250
+충청남도 서산시|3150|3150
+충청남도 서천군|3550|4050
+충청남도 아산시|3150|3150
+충청남도 예산군|3550|4050
+충청남도 천안시|3100|3100
+충청남도 청양군|3550|4050
+충청남도 태안군|3100|3150
+충청남도 홍성군|3550|4050
+경상북도 경산시|3100|3170
+경상북도 경주시|3370|3570
+경상북도 고령군|3200|3530
+경상북도 구미시|3200|3250
+경상북도 김천시|3350|3550
+경상북도 문경시|3550|3550
+경상북도 봉화군|3650|3950
+경상북도 상주시|3410|4010
+경상북도 성주군|3770|4130
+경상북도 안동시|3290|3530
+경상북도 영덕군|3730|4070
+경상북도 영양군|3050|3050
+경상북도 영주시|3340|3820
+경상북도 영천시|3350|4350
+경상북도 예천군|3390|3630
+경상북도 울릉군|3730|4210
+경상북도 울진군|3650|3650
+경상북도 의성군|4950|4950
+경상북도 청도군|3610|4530
+경상북도 청송군|3630|3750
+경상북도 칠곡군|3120|3190
+경상북도 포항시|3150|3340
+경상남도 거제시|3150|3350
+경상남도 거창군|3550|3550
+경상남도 고성군|3150|3250
+경상남도 김해시|3100|3150
+경상남도 남해군|3350|3450
+경상남도 밀양시|3150|3250
+경상남도 사천시|3150|3250
+경상남도 산청군|3340|3460
+경상남도 양산시|3100|3150
+경상남도 의령군|3450|3750
+경상남도 진주시|3150|3250
+경상남도 창녕군|3550|3750
+경상남도 창원시|3300|3550
+경상남도 통영시|3150|3250
+경상남도 하동군|3490|4150
+경상남도 함안군|3150|3350
+경상남도 함양군|3150|3250
+경상남도 합천군|3150|3350
+전북특별자치도 고창군|3350|3550
+전북특별자치도 군산시|3150|3250
+전북특별자치도 김제시|4050|4650
+전북특별자치도 남원시|3250|3550
+전북특별자치도 무주군|3450|3650
+전북특별자치도 부안군|3350|3550
+전북특별자치도 순창군|3350|3510
+전북특별자치도 완주군|3250|3350
+전북특별자치도 익산시|3150|3250
+전북특별자치도 임실군|3350|3550
+전북특별자치도 장수군|3550|3750
+전북특별자치도 전주시|3080|3100
+전북특별자치도 정읍시|3250|3350
+전북특별자치도 진안군|3350|3550
+전라남도 강진군|3050|3050
+전라남도 고흥군|4130|4130
+전라남도 곡성군|3350|3450
+전라남도 광양시|3550|4050
+전라남도 구례군|3350|3550
+전라남도 나주시|3350|3550
+전라남도 담양군|3180|3270
+전라남도 목포시|3200|3300
+전라남도 무안군|3200|3250
+전라남도 보성군|3650|3770
+전라남도 순천시|3550|4050
+전라남도 신안군|3290|3370
+전라남도 여수시|3550|3550
+전라남도 영광군|3550|4250
+전라남도 영암군|3400|3600
+전라남도 완도군|3150|3550
+전라남도 장성군|3450|3650
+전라남도 장흥군|3350|3550
+전라남도 진도군|3350|3350
+전라남도 함평군|3350|3550
+전라남도 해남군|3370|3420
+전라남도 화순군|3400|3400
+제주특별자치도 제주도|3150|5050
+`;
+
+const localTotalHints: Record<string, LocalTotalHint> = localTotalHintRows
+  .trim()
+  .split("\n")
+  .reduce((acc, line) => {
+    const [region, first, second] = line.split("|");
+    const firstTotal = Number(first);
+    const secondTotal = Number(second);
+    const current = acc[region];
+    if (!current || firstTotal + secondTotal > current.firstTotal + current.secondTotal) {
+      acc[region] = { firstTotal, secondTotal };
+    }
+    return acc;
+  }, {} as Record<string, LocalTotalHint>);
+
+function getLocalTotalHint(seed: LocalRegionSeed) {
+  return localTotalHints[`${seed.provinceName} ${seed.regionName}`.trim()];
+}
+
+function amountMinusBase(total: number) {
+  return Math.max(0, total - NATIONAL_BASE_TOTAL_MANWON);
+}
+
+function formatManwon(value: number) {
+  return value === 0 ? "0원" : `${value.toLocaleString("ko-KR")}만 원`;
+}
+
+function localAdditionalSummary(seed: LocalRegionSeed) {
+  const hint = getLocalTotalHint(seed);
+  if (!hint) return undefined;
+  const first = amountMinusBase(hint.firstTotal);
+  const second = amountMinusBase(hint.secondTotal);
+  return {
+    first,
+    second,
+    amountText: `첫째 ${formatManwon(first)}·둘째 ${formatManwon(second)}`,
+    totalText: `첫째 총 ${hint.firstTotal.toLocaleString("ko-KR")}만 원·둘째 총 ${hint.secondTotal.toLocaleString("ko-KR")}만 원`,
+  };
+}
+
+function localAdditionalRows(seed: LocalRegionSeed): GovernmentPolicyDataRow[] {
+  const extra = localAdditionalSummary(seed);
+  if (!extra) return [];
+  return [
+    {
+      label: `${seed.regionName} 지역 추가지원 합계`,
+      value: extra.amountText,
+      note: "전국 공통 지원 합계 3,050만 원을 제외하고 지역·부가 지원으로 따로 볼 수 있는 금액입니다. 신청 전 아이사랑 원문과 주소지 행정복지센터에서 최종 확인해 주세요.",
+    },
+    {
+      label: "첫째·둘째 총 지원금 참고",
+      value: extra.totalText,
+      note: "첫만남이용권, 부모급여, 아동수당, 양육수당 등 공통 지원과 지역 지원을 합산해 비교할 때 쓰는 참고 금액입니다.",
+    },
+  ];
+}
+
+function programCards(program: LocalProgram, seed?: LocalRegionSeed): GovernmentPolicyAmountCard[] {
+  const detail = seed ? getLocalDetail(seed) : undefined;
+  if (detail?.amountCards?.length) return detail.amountCards;
   const firstVoucher = { label: "첫째 공통", amount: "200만 원", description: "첫만남이용권 국민행복카드 바우처" };
   const secondVoucher = { label: "둘째 이상 공통", amount: "300만 원", description: "2024년 이후 둘째 이상 첫만남이용권 기준" };
   if (program === "seoul") {
@@ -884,10 +1270,20 @@ function programCards(program: LocalProgram): GovernmentPolicyAmountCard[] {
   if (program === "incheon") {
     return [firstVoucher, secondVoucher, { label: "인천형 출생정책", amount: "연 120만 원 등", description: "천사지원금·아이꿈수당·교통비·산후조리비 대상별 확인" }];
   }
+  if (seed) {
+    const extra = localAdditionalSummary(seed);
+    if (extra) {
+      return [
+        firstVoucher,
+        secondVoucher,
+        { label: "지자체 추가지원", amount: extra.amountText, description: "전국 공통 지원과 구분해 볼 수 있는 지역·부가 지원 합계" },
+      ];
+    }
+  }
   return [
     firstVoucher,
     secondVoucher,
-    { label: "지자체 추가지원", amount: "지역별 상이", description: "아이사랑 지역 게시글과 주민센터에서 출산축하금·출산장려금 금액 확인" },
+    { label: "지자체 추가지원", amount: "지역 지원금 항목 확인", description: "해당 지역 게시물의 출산축하금·양육비·출산용품 지원을 기준으로 확인" },
   ];
 }
 
@@ -895,15 +1291,20 @@ function programRows(seed: LocalRegionSeed, program: LocalProgram): GovernmentPo
   const regionFullName = `${seed.provinceName} ${seed.regionName}`.trim();
   const commonRows: GovernmentPolicyDataRow[] = [
     { label: "지역명", value: regionFullName },
+    { label: "아이사랑 2026 등록일", value: localRegisteredAt(seed), note: "아이사랑 출산지원금 게시판에서 2026년 등록 게시물만 기준으로 정리했습니다." },
     { label: "전국 공통 첫만남이용권", value: "첫째 200만 원, 둘째 이상 300만 원", note: "출생신고 후 주민등록번호를 부여받은 출생아 기준" },
     { label: "신청 기본 경로", value: "주민센터 출생신고, 정부24 행복출산 원스톱서비스, 복지로·아이사랑 안내 확인" },
+    ...localOfficialDetailRows(seed),
   ];
+  const detail = getLocalDetail(seed);
+  if (detail?.dataRows?.length) return [...commonRows, ...detail.dataRows];
   if (program === "seoul") {
     return [
       ...commonRows,
       { label: "서울형 산후조리경비", value: "첫째 100만 원, 둘째 120만 원, 셋째 이상 150만 원", note: "2026년 개선 기준" },
       { label: "신청기한", value: "출생 후 180일 이내" },
       { label: "조건", value: "신청일 기준 서울 거주, 출생아 서울 출생신고, 산모 명의 협약카드 확인" },
+      ...localAdditionalRows(seed),
     ];
   }
   if (program === "gyeonggi") {
@@ -912,6 +1313,7 @@ function programRows(seed: LocalRegionSeed, program: LocalProgram): GovernmentPo
       { label: "경기도 산후조리비", value: "출생아 1인당 50만 원 지역화폐", note: "쌍둥이 100만 원, 세쌍둥이 150만 원" },
       { label: "신청기한", value: "출생일 기준 12개월 이내" },
       { label: "조건", value: "출생일 및 신청일 현재 경기도 주민등록·실거주, 경기도 출생등록" },
+      ...localAdditionalRows(seed),
     ];
   }
   if (program === "chungbuk") {
@@ -920,6 +1322,7 @@ function programRows(seed: LocalRegionSeed, program: LocalProgram): GovernmentPo
       { label: "충북 출산육아수당", value: "총 1,000만 원", note: "1세 100만 원, 2~5세 각 200만 원, 6세 100만 원" },
       { label: "조건", value: "부 또는 모와 출생아동이 함께 충북 도내 주민등록상 거주" },
       { label: "주의", value: "신청일 이전 회차는 지급하지 않는 기준 확인" },
+      ...localAdditionalRows(seed),
     ];
   }
   if (program === "busan") {
@@ -928,7 +1331,7 @@ function programRows(seed: LocalRegionSeed, program: LocalProgram): GovernmentPo
       { label: "부산시 공통", value: "둘째 이후 자녀 100만 원" },
       { label: "신청기한", value: "자녀 출생일로부터 3개월 이내" },
       { label: "조건", value: "부산시에 출생신고 및 주민등록 등재, 부모 중 1인 이상과 자녀가 같은 주민등록지에 거주" },
-      { label: "구·군 추가지원", value: `${seed.regionName} 자체 출산장려금은 아이사랑 해당 지역 게시글 또는 행정복지센터에서 확인` },
+      ...localAdditionalRows(seed),
     ];
   }
   if (program === "daegu") {
@@ -944,7 +1347,7 @@ function programRows(seed: LocalRegionSeed, program: LocalProgram): GovernmentPo
       ...commonRows,
       { label: "대구시 출생축하금", value: "둘째 100만 원, 셋째 이상 200만 원" },
       { label: "조건", value: "출생신고 시 주민등록지가 해당 구·군에 있는 둘째 이상 출생아, 부 또는 모의 주소지 기준 확인" },
-      { label: "구·군 추가지원", value: `${seed.regionName} 자체 추가지원은 아이사랑 해당 지역 게시글과 구청 안내에서 확인` },
+      ...localAdditionalRows(seed),
     ];
   }
   if (program === "daejeon") {
@@ -953,6 +1356,7 @@ function programRows(seed: LocalRegionSeed, program: LocalProgram): GovernmentPo
       { label: "대전형 양육기본수당", value: "월 15만 원", note: "0~35개월, 2세 15만 원 추가 지원 안내 확인" },
       { label: "조건", value: "아동이 대전시에 주민등록, 부 또는 모가 출생일 기준 6개월 이상 대전시에 주민등록" },
       { label: "지급일", value: "매월 25일" },
+      ...localAdditionalRows(seed),
     ];
   }
   if (program.startsWith("ulsan")) {
@@ -962,6 +1366,7 @@ function programRows(seed: LocalRegionSeed, program: LocalProgram): GovernmentPo
       { label: "울산 구·군 출산지원금", value: amount },
       { label: "조건", value: `${seed.regionName}에 출생신고한 출생아와 보호자의 주민등록·거주 요건 확인` },
       { label: "신청", value: "주소지 행정복지센터 또는 정부24 행복출산 원스톱서비스 확인" },
+      ...localAdditionalRows(seed),
     ];
   }
   if (program === "sejong") {
@@ -970,6 +1375,7 @@ function programRows(seed: LocalRegionSeed, program: LocalProgram): GovernmentPo
       { label: "세종 출산축하금", value: "출생아 1인당 120만 원" },
       { label: "지급방식", value: "지역화폐 여민전" },
       { label: "조건", value: "신생아의 세종시 출생신고와 부 또는 모의 세종시 거주 기간 요건 확인" },
+      ...localAdditionalRows(seed),
     ];
   }
   if (program === "jeju") {
@@ -978,6 +1384,7 @@ function programRows(seed: LocalRegionSeed, program: LocalProgram): GovernmentPo
       { label: "제주 해피아이", value: "첫째 50만 원, 둘째 이상 1,000만 원" },
       { label: "대안 지원", value: "무주택자는 주거임차비 1,400만 원 또는 육아지원금 1,000만 원 중 선택 가능 여부 확인" },
       { label: "조건", value: "첫째는 출생일 기준 6개월 전, 둘째 이상은 12개월 전부터 제주 주민등록·거주 요건 확인" },
+      ...localAdditionalRows(seed),
     ];
   }
   if (program === "incheon") {
@@ -985,35 +1392,40 @@ function programRows(seed: LocalRegionSeed, program: LocalProgram): GovernmentPo
       ...commonRows,
       { label: "인천 천사지원금", value: "연 120만 원 등 인천형 지원 확인", note: "아동 연령과 출생연도에 따라 적용 항목 확인" },
       { label: "아이 꿈 수당", value: "연령별 월 5만~15만 원 구간 확인" },
-      { label: "추가 확인", value: "임산부 교통비, 맘편한 산후조리비 등 대상별 별도 확인" },
+      { label: "추가 확인", value: "임산부 교통비, 맘편한 산후조리비 등 대상별 확인" },
+      ...localAdditionalRows(seed),
     ];
   }
   return [
     ...commonRows,
-    { label: "지역 자체 출산지원금", value: `${regionFullName} 아이사랑 세부 게시글에서 첫째·둘째·셋째 이상 금액 확인`, note: "지자체 예산과 조례에 따라 금액이 달라질 수 있습니다." },
+    ...localAdditionalRows(seed),
+    { label: "지원금 확인 기준", value: regionFullName + " 아이사랑 2026년 등록 게시물과 주소지 행정복지센터 안내 기준", note: "첫만남이용권과 지역 추가지원을 나누어 보도록 정리했습니다." },
     { label: "조건", value: "출생아 주민등록, 부모 주소지, 거주 기간, 출생 순서, 신청 기한 확인" },
-    { label: "최종 확인", value: `${seed.regionName} 행정복지센터 또는 지자체 담당 부서` },
+    { label: "최종 확인", value: seed.regionName + " 행정복지센터 또는 지자체 담당 부서" },
   ];
 }
 
 function programSummary(seed: LocalRegionSeed, program: LocalProgram) {
   const regionFullName = `${seed.provinceName} ${seed.regionName}`.trim();
+  const detail = getLocalDetail(seed);
+  if (detail?.summary) return detail.summary;
   if (program === "seoul") return `${regionFullName} 출산가정은 첫만남이용권과 서울형 산후조리경비를 함께 확인하면 됩니다. 서울형 산후조리경비는 첫째 100만 원, 둘째 120만 원, 셋째 이상 150만 원 기준으로 정리했습니다.`;
   if (program === "gyeonggi") return `${regionFullName} 출산가정은 첫만남이용권과 경기도 산후조리비를 함께 확인하면 됩니다. 경기도 산후조리비는 출생아 1명당 50만 원 지역화폐 지원이 핵심입니다.`;
   if (program === "chungbuk") return `${regionFullName} 출산가정은 첫만남이용권과 충북 출산육아수당을 함께 확인하면 됩니다. 충북 출산육아수당은 2024년 이후 출생아 기준 총 1,000만 원 구조입니다.`;
-  if (program === "busan") return `${regionFullName} 출산가정은 첫만남이용권과 부산시 공통 출산지원금을 먼저 확인하면 됩니다. 부산시는 둘째 이후 자녀 100만 원 지원 기준이 있으며 구·군별 추가 지원은 별도 확인이 필요합니다.`;
-  if (program === "daegu") return seed.regionName === "군위군" ? `${regionFullName} 출산가정은 첫만남이용권과 군위군 출생축하금·첫돌축하금·양육지원금을 함께 확인하면 됩니다. 군위군은 출생축하금 100만 원, 첫돌축하금 100만 원, 출생 순서별 월 양육지원금 기준을 확인해야 합니다.` : `${regionFullName} 출산가정은 첫만남이용권과 대구시 출생축하금을 먼저 확인하면 됩니다. 대구시는 둘째 100만 원, 셋째 이상 200만 원 기준이 있으며 구·군별 추가 조건을 함께 봐야 합니다.`;
+  if (program === "busan") return `${regionFullName} 출산가정은 첫만남이용권과 부산시 공통 출산지원금을 먼저 확인하면 됩니다. 부산시는 둘째 이후 자녀 100만 원 지원 기준이 있으며 구·군별 추가 지원도 지역 상세표에서 확인이 필요합니다.`;
+  if (program === "daegu") return seed.regionName === "군위군" ? `${regionFullName} 출산가정은 첫만남이용권과 군위군 출생축하금·첫돌축하금·양육지원금을 함께 확인하면 됩니다. 군위군은 출생축하금 100만 원, 첫돌축하금 100만 원, 출생 순서별 월 양육지원금 기준을 확인해야 합니다.` : `${regionFullName} 출산가정은 첫만남이용권과 대구시 출생축하금을 먼저 확인하면 됩니다. 대구시는 둘째 100만 원, 셋째 이상 200만 원 기준이 있으며 구·군별 추가 조건과 지역 추가지원 합계를 함께 봐야 합니다.`;
   if (program === "daejeon") return `${regionFullName} 출산가정은 첫만남이용권과 대전형 양육기본수당을 함께 확인하면 됩니다. 대전형 양육기본수당은 0~35개월 아동에게 월 15만 원 기준으로 안내됩니다.`;
   if (program.startsWith("ulsan")) return `${regionFullName} 출산가정은 첫만남이용권과 울산 구·군 출산지원금을 함께 확인하면 됩니다. 울산은 구·군별로 첫째와 둘째 이상 금액이 달라 주소지 기준 확인이 중요합니다.`;
   if (program === "sejong") return `${regionFullName} 출산가정은 첫만남이용권과 세종 출산축하금을 함께 확인하면 됩니다. 세종 출산축하금은 출생아 1인당 120만 원 지역화폐 지급 기준을 먼저 보면 됩니다.`;
   if (program === "jeju") return `제주도 출산가정은 첫만남이용권과 제주 해피아이 정책을 함께 확인하면 됩니다. 제주 해피아이는 첫째 50만 원, 둘째 이상 1,000만 원 기준과 거주 기간 조건을 함께 봐야 합니다.`;
   if (program === "incheon") return `${regionFullName} 출산가정은 첫만남이용권과 인천형 출생정책을 함께 확인하면 됩니다. 천사지원금, 아이 꿈 수당, 임산부 교통비, 산후조리비는 대상과 연령 기준이 서로 다릅니다.`;
-  return `${regionFullName} 출산지원금은 첫만남이용권과 지자체 추가지원금을 나누어 확인해야 합니다. 첫째는 전국 공통 200만 원, 둘째 이상은 300만 원 바우처를 먼저 보고, 지역 자체 출산축하금은 아이사랑 세부 게시글과 주민센터에서 최신 금액을 확인해 주세요.`;
+  return `${regionFullName} 출산지원금은 아이사랑 2026년 등록 게시물 기준으로 첫만남이용권과 지역 자체 지원을 나누어 확인해야 합니다. 첫째는 전국 공통 200만 원, 둘째 이상은 300만 원 바우처를 먼저 보고, 지역 자체 출산축하금은 출생 순서와 거주 기간 조건을 함께 확인해 주세요.`;
 }
 
 function makeLocalFromSeed(seed: LocalRegionSeed) {
   const program = seed.program ?? "default";
   const regionFullName = `${seed.provinceName} ${seed.regionName}`.trim();
+  const detail = getLocalDetail(seed);
   return makeLocalEntry({
     slug: localSlug(seed),
     regionName: regionFullName,
@@ -1021,12 +1433,14 @@ function makeLocalFromSeed(seed: LocalRegionSeed) {
     title: `${regionFullName} 출산지원금은 얼마이고 신청 조건은 무엇인가요?`,
     shortTitle: `${regionFullName} 출산지원금`,
     summary: programSummary(seed, program),
-    amountCards: programCards(program),
+    amountCards: programCards(program, seed),
     dataRows: programRows(seed, program),
     verifiedFacts: [
       "아이사랑 출산지원금 게시판은 2026년 지자체 출산지원금 업데이트 완료 공지를 2026년 3월 17일 기준으로 안내하고 있습니다.",
+      `${localPostTitle(seed)} 게시물은 ${localRegisteredAt(seed)} 기준으로 아이사랑 목록에서 확인되는 2026년 등록 자료입니다.`,
       "전국 공통 첫만남이용권은 출생신고되어 주민등록번호를 부여받은 아동을 대상으로 첫째 200만 원, 둘째 이상 300만 원 기준으로 확인합니다.",
       `${regionFullName} 지역 지원은 주소지, 출생 순서, 거주 기간, 신청 기한에 따라 달라질 수 있어 신청 전 공식 창구 확인이 필요합니다.`,
+      ...(detail?.verifiedFacts ?? []),
     ],
     target: [
       `${regionFullName}에서 출생신고를 앞둔 가정`,
@@ -1037,6 +1451,7 @@ function makeLocalFromSeed(seed: LocalRegionSeed) {
       "전국 공통 첫만남이용권 금액을 먼저 확인할 수 있습니다.",
       `${regionFullName}에서 따로 확인해야 하는 지역 지원 항목을 함께 볼 수 있습니다.`,
       "출생 순서, 거주 기간, 신청기한을 미리 확인해 신청 누락을 줄일 수 있습니다.",
+      ...(detail?.benefit ?? []),
     ],
     apply: [
       "출생신고 시 주소지 읍·면·동 행정복지센터에서 행복출산 원스톱서비스 신청 가능 여부를 확인합니다.",
@@ -1048,12 +1463,13 @@ function makeLocalFromSeed(seed: LocalRegionSeed) {
       "출생일 또는 신청일 기준 거주 기간 조건이 있는지 확인하세요.",
       "첫째·둘째·셋째 이상처럼 출생 순서별 금액이 달라지는지 확인하세요.",
       "출생신고와 동시에 신청 가능한 항목과 따로 신청해야 하는 항목을 나누어 적어두세요.",
+      ...(detail?.checkBefore ?? []),
     ],
     userTip: [
       "출산 전 이사 계획이 있다면 전입일 때문에 지원 여부가 달라질 수 있으니 주민센터에 미리 문의하는 것이 좋습니다.",
       "전국 공통 지원금, 시·도 지원금, 시·군·구 지원금을 따로 표로 적어두면 실제 받을 수 있는 금액을 계산하기 쉽습니다.",
     ],
-    caution: `${regionFullName} 출산지원금은 조례, 예산, 거주 기간, 출생 순서에 따라 달라질 수 있습니다. 이 페이지는 보호자가 먼저 확인할 기준을 정리한 것이며, 최종 신청 전에는 ${seed.regionName} 행정복지센터와 공식자료를 반드시 확인해 주세요.`,
+    caution: `${regionFullName} 출산지원금은 아이사랑 2026년 등록 게시물을 기준으로 정리했지만, 조례·예산·거주 기간·출생 순서에 따라 실제 지급 여부가 달라질 수 있습니다. 최종 신청 전에는 ${seed.regionName} 행정복지센터와 공식자료를 반드시 확인해 주세요.`,
     keywords: [
       `${regionFullName} 출산지원금`,
       `${seed.regionName} 출산지원금`,
@@ -1061,6 +1477,7 @@ function makeLocalFromSeed(seed: LocalRegionSeed) {
       `${seed.regionName} 첫만남이용권`,
       `${seed.regionName} 출산축하금`,
       `${seed.regionName} 행복출산 원스톱서비스`,
+      ...(detail?.keywords ?? []),
     ],
     sources: localSources(program),
   });
