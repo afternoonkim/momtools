@@ -45,6 +45,8 @@ export default function SiteFooter() {
 
           <div className="flex flex-wrap gap-x-5 gap-y-2">
             <FooterLink href={href("/about")}>{locale === "ko" ? "사이트 소개" : "About"}</FooterLink>
+            {locale === "ko" ? <FooterLink href="/policy/pregnancy-birth">임신·출산 지원</FooterLink> : null}
+            {locale === "ko" ? <FooterLink href="/policy/local-check">지역별 출산지원금</FooterLink> : null}
             {locale === "ko" ? <FooterLink href="/family-health-qna/family">가족 생활 건강</FooterLink> : null}
             <FooterLink href={href("/faq")}>FAQ</FooterLink>
             <FooterLink href={href("/contact")}>{locale === "ko" ? "문의하기" : "Contact"}</FooterLink>

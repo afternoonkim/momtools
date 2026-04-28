@@ -25,6 +25,7 @@ import {
   Map,
   SearchCheck,
   Dot,
+  Landmark,
 } from "lucide-react";
 import SidebarItem from "./SidebarItem";
 import SidebarGroup from "./SidebarGroup";
@@ -55,6 +56,7 @@ export default function Sidebar({
         tools: "육아 계산기",
         qna: "육아 Q&A",
         familyHealth: "가족건강 Q&A",
+        policy: "정부정책",
         checklists: "체크리스트",
         content: "콘텐츠",
         babyFood: "이유식 메뉴",
@@ -62,7 +64,7 @@ export default function Sidebar({
         names: "아이 이름 짓기",
         items: "육아용품",
         misc: "기타",
-        versionMeta: "tools · family health · qna",
+        versionMeta: "tools · policy · family health · qna",
         links: {
           dueDate: "출산 예정일 계산기",
           babyAge: "아기 개월수 계산기",
@@ -78,6 +80,13 @@ export default function Sidebar({
           familyLifeHealth: "생활 건강",
           medicineHealth: "약·영양제",
           checkupHealth: "검진·병원",
+          policyHome: "정책 홈",
+          pregnancyBirthPolicy: "임신·출산 지원",
+          childcareBenefitPolicy: "양육·보육 지원",
+          workParentingPolicy: "일·육아 병행",
+          careEducationPolicy: "돌봄·교육 지원",
+          medicalHealthPolicy: "의료·건강 지원",
+          localCheckPolicy: "지역별 출산지원금",
           birth: "출산 준비",
           newborn: "신생아 준비",
           weaning: "이유식 준비",
@@ -108,6 +117,7 @@ export default function Sidebar({
         tools: "Parenting Tools",
         qna: "Parent Q&A",
         familyHealth: "Family Health Q&A",
+        policy: "Government policies",
         checklists: "Checklists",
         content: "Content",
         babyFood: "Baby Food",
@@ -131,6 +141,13 @@ export default function Sidebar({
           familyLifeHealth: "Everyday health",
           medicineHealth: "Medicine & supplements",
           checkupHealth: "Checkups",
+          policyHome: "Policy home",
+          pregnancyBirthPolicy: "Pregnancy & birth",
+          childcareBenefitPolicy: "Childcare benefits",
+          workParentingPolicy: "Work & parenting",
+          careEducationPolicy: "Care & education",
+          medicalHealthPolicy: "Medical support",
+          localCheckPolicy: "Local checks",
           birth: "Birth prep",
           newborn: "Newborn prep",
           weaning: "Starting solids prep",
@@ -154,6 +171,24 @@ export default function Sidebar({
       };
 
   const href = (path: string) => withLocalePath(path, locale);
+  const hasPath = (path: string) => {
+    const target = href(path);
+    return pathname === target || pathname.startsWith(`${target}/`);
+  };
+
+  const isToolsOpen = isEn
+    ? pathname.startsWith("/en/cal") || pathname.startsWith("/en/tools")
+    : hasPath("/tools") || hasPath("/cal");
+  const isQnaOpen = hasPath("/qna");
+  const isPolicyOpen = isKo && hasPath("/policy");
+  const isFamilyHealthOpen = isKo && hasPath("/family-health-qna");
+  const isChecklistsOpen = hasPath("/checklists");
+  const isContentOpen = isKo && hasPath("/content");
+  const isBabyFoodOpen = hasPath("/baby-food");
+  const isPlayOpen = hasPath("/play");
+  const isNamesOpen = isKo && hasPath("/baby-names");
+  const isItemsOpen = isKo && hasPath("/items");
+  const isMiscOpen = hasPath("/faq") || hasPath("/contact");
 
   return (
     <>
@@ -204,7 +239,7 @@ export default function Sidebar({
           <div onClick={closeMobileSidebar}><SidebarItem href={href("/")} label={t.home} icon={Home} collapsed={collapsed} /></div>
 
           <div onClick={closeMobileSidebar}>
-            <SidebarGroup title={t.tools} collapsed={collapsed}>
+            <SidebarGroup title={t.tools} collapsed={collapsed} defaultOpen={isToolsOpen}>
               <SidebarItem href={isEn ? "/en/cal/due-date" : href("/tools/due-date")} label={t.links.dueDate} icon={CalendarHeart} collapsed={collapsed} />
               <SidebarItem href={isEn ? "/en/cal/baby-age" : href("/tools/baby-age")} label={t.links.babyAge} icon={Baby} collapsed={collapsed} />
               <SidebarItem href={isEn ? "/en/cal/vaccine-schedule" : href("/tools/vaccine-schedule")} label={t.links.vaccine} icon={Calculator} collapsed={collapsed} />
@@ -214,7 +249,7 @@ export default function Sidebar({
           </div>
 
           <div onClick={closeMobileSidebar}>
-            <SidebarGroup title={t.qna} collapsed={collapsed}>
+            <SidebarGroup title={t.qna} collapsed={collapsed} defaultOpen={isQnaOpen}>
               <SidebarItem href={href("/qna/health")} label={t.links.health} icon={HeartPulse} collapsed={collapsed} />
               <SidebarItem href={href("/qna/growth")} label={t.links.growthQna} icon={Baby} collapsed={collapsed} />
               <SidebarItem href={href("/qna/behavior")} label={t.links.behavior} icon={Sparkles} collapsed={collapsed} />
@@ -225,7 +260,20 @@ export default function Sidebar({
 
           {isKo ? (
             <div onClick={closeMobileSidebar}>
-              <SidebarGroup title={t.familyHealth} collapsed={collapsed}>
+              <SidebarGroup title={t.policy} collapsed={collapsed} defaultOpen={isPolicyOpen}>
+                <SidebarItem href={href("/policy/pregnancy-birth")} label={t.links.pregnancyBirthPolicy} icon={Landmark} collapsed={collapsed} />
+                <SidebarItem href={href("/policy/childcare-benefit")} label={t.links.childcareBenefitPolicy} icon={Landmark} collapsed={collapsed} />
+                <SidebarItem href={href("/policy/work-parenting")} label={t.links.workParentingPolicy} icon={Landmark} collapsed={collapsed} />
+                <SidebarItem href={href("/policy/care-education")} label={t.links.careEducationPolicy} icon={Landmark} collapsed={collapsed} />
+                <SidebarItem href={href("/policy/medical-health")} label={t.links.medicalHealthPolicy} icon={Landmark} collapsed={collapsed} />
+                <SidebarItem href={href("/policy/local-check")} label={t.links.localCheckPolicy} icon={Landmark} collapsed={collapsed} />
+              </SidebarGroup>
+            </div>
+          ) : null}
+
+          {isKo ? (
+            <div onClick={closeMobileSidebar}>
+              <SidebarGroup title={t.familyHealth} collapsed={collapsed} defaultOpen={isFamilyHealthOpen}>
                 <SidebarItem href={href("/family-health-qna/mom")} label={t.links.momHealth} icon={HeartPulse} collapsed={collapsed} />
                 <SidebarItem href={href("/family-health-qna/dad")} label={t.links.dadHealth} icon={HeartPulse} collapsed={collapsed} />
                 <SidebarItem href={href("/family-health-qna/postpartum")} label={t.links.postpartumHealth} icon={HeartPulse} collapsed={collapsed} />
@@ -237,7 +285,7 @@ export default function Sidebar({
           ) : null}
 
           <div onClick={closeMobileSidebar}>
-            <SidebarGroup title={t.checklists} collapsed={collapsed}>
+            <SidebarGroup title={t.checklists} collapsed={collapsed} defaultOpen={isChecklistsOpen}>
               <SidebarItem href={href("/checklists/birth")} label={t.links.birth} icon={ClipboardList} collapsed={collapsed} />
               <SidebarItem href={href("/checklists/newborn")} label={t.links.newborn} icon={ClipboardList} collapsed={collapsed} />
               <SidebarItem href={href("/checklists/weaning")} label={t.links.weaning} icon={ClipboardList} collapsed={collapsed} />
@@ -247,7 +295,7 @@ export default function Sidebar({
 
           {isKo ? (
             <div onClick={closeMobileSidebar}>
-              <SidebarGroup title={t.content} collapsed={collapsed}>
+              <SidebarGroup title={t.content} collapsed={collapsed} defaultOpen={isContentOpen}>
                 <SidebarItem href={href("/content/blog")} label={t.links.blog} icon={Rss} collapsed={collapsed} />
                 <SidebarItem href={href("/content/youtube")} label={t.links.youtube} icon={PlaySquare} collapsed={collapsed} />
               </SidebarGroup>
@@ -255,7 +303,7 @@ export default function Sidebar({
           ) : null}
 
           <div onClick={closeMobileSidebar}>
-            <SidebarGroup title={t.babyFood} collapsed={collapsed}>
+            <SidebarGroup title={t.babyFood} collapsed={collapsed} defaultOpen={isBabyFoodOpen}>
               <SidebarItem href={href("/baby-food/early")} label={t.links.earlyFood} icon={UtensilsCrossed} collapsed={collapsed} />
               <SidebarItem href={href("/baby-food/middle")} label={t.links.middleFood} icon={UtensilsCrossed} collapsed={collapsed} />
               <SidebarItem href={href("/baby-food/late")} label={t.links.lateFood} icon={UtensilsCrossed} collapsed={collapsed} />
@@ -264,7 +312,7 @@ export default function Sidebar({
 
           {/* 미완성으로 추후 오픈 예정 
           <div onClick={closeMobileSidebar}>
-            <SidebarGroup title={t.play} collapsed={collapsed}>
+            <SidebarGroup title={t.play} collapsed={collapsed} defaultOpen={isPlayOpen}>
               <SidebarItem href={href("/play/coloring")} label={t.links.coloring} icon={Palette} collapsed={collapsed} />
               <SidebarItem href={href("/play/maze")} label={t.links.maze} icon={Map} collapsed={collapsed} />
               <SidebarItem href={href("/play/hidden-picture")} label={t.links.hiddenPicture} icon={SearchCheck} collapsed={collapsed} />
@@ -275,7 +323,7 @@ export default function Sidebar({
 
           {isKo ? (
             <div onClick={closeMobileSidebar}>
-              <SidebarGroup title={t.names} collapsed={collapsed}>
+              <SidebarGroup title={t.names} collapsed={collapsed} defaultOpen={isNamesOpen}>
                 <SidebarItem href={href("/baby-names/rankings/2025")} label={t.links.rankings} icon={Tags} collapsed={collapsed} />
                 <SidebarItem href={href("/baby-names/meanings")} label={t.links.meanings} icon={BookOpen} collapsed={collapsed} />
               </SidebarGroup>
@@ -284,14 +332,14 @@ export default function Sidebar({
 
           {isKo ? (
             <div onClick={closeMobileSidebar}>
-              <SidebarGroup title={t.items} collapsed={collapsed}>
+              <SidebarGroup title={t.items} collapsed={collapsed} defaultOpen={isItemsOpen}>
                 <SidebarItem href={href("/items/essential")} label={t.links.essential} icon={Package} collapsed={collapsed} />
               </SidebarGroup>
             </div>
           ) : null}
 
           <div onClick={closeMobileSidebar}>
-            <SidebarGroup title={t.misc} collapsed={collapsed}>
+            <SidebarGroup title={t.misc} collapsed={collapsed} defaultOpen={isMiscOpen}>
               <SidebarItem href={href("/faq")} label={t.links.faq} icon={CircleHelp} collapsed={collapsed} />
               <SidebarItem href={href("/contact")} label={t.links.contact} icon={Mail} collapsed={collapsed} />
             </SidebarGroup>

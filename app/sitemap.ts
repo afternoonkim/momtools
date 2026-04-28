@@ -4,6 +4,7 @@ import { babyFoodRecipes as enBabyFoodRecipes } from "@/data/en/babyFood";
 import { rankingYears } from "@/data/babyNames";
 import { qnaData, qnaCategories, type QnaCategory } from "@/data/qna";
 import { familyHealthCategories, familyHealthQnaData, type FamilyHealthQnaCategory } from "@/data/familyHealthQna";
+import { governmentPolicies } from "@/data/governmentPolicy";
 import { enQnaEntries } from "@/data/en/qna100";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
 
@@ -33,6 +34,13 @@ const staticRoutes: RouteConfig[] = [
   route("/family-health-qna/family", 0.84, "weekly"),
   route("/family-health-qna/medicine", 0.84, "weekly"),
   route("/family-health-qna/checkup", 0.84, "weekly"),
+  route("/policy", 0.88, "daily"),
+  route("/policy/pregnancy-birth", 0.84, "daily"),
+  route("/policy/childcare-benefit", 0.84, "daily"),
+  route("/policy/work-parenting", 0.84, "daily"),
+  route("/policy/care-education", 0.84, "daily"),
+  route("/policy/medical-health", 0.84, "daily"),
+  route("/policy/local-check", 0.82, "daily"),
   route("/info", 0.84, "weekly"),
   route("/info/pregnancy", 0.8, "weekly"),
   route("/info/newborn", 0.8, "weekly"),
@@ -96,6 +104,7 @@ const dynamicKoreanQnaRoutes = (Object.keys(qnaCategories) as QnaCategory[]).fla
 const dynamicKoreanFamilyHealthRoutes = (Object.keys(familyHealthCategories) as FamilyHealthQnaCategory[]).flatMap((category) =>
   familyHealthQnaData[category].map((entry) => route(`/family-health-qna/${category}/${entry.slug}`, 0.78, "weekly")),
 );
+const dynamicKoreanPolicyRoutes = governmentPolicies.map((policy) => route(`/policy/${policy.category}/${policy.slug}`, 0.8, "daily"));
 const dynamicKoreanBabyFoodRoutes = koBabyFoodRecipes.map((recipe) => route(`/baby-food/recipes/${recipe.slug}`, 0.68, "weekly"));
 const dynamicEnglishBabyFoodRoutes = enBabyFoodRecipes.map((recipe) => route(`/en/baby-food/recipes/${recipe.slug}`, 0.65, "weekly"));
 const dynamicEnglishQnaRoutes = enQnaEntries.map((entry) => route(`/en/qna/${entry.slug}`, 0.7, "weekly"));
@@ -107,6 +116,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...staticRoutes,
     ...dynamicKoreanQnaRoutes,
     ...dynamicKoreanFamilyHealthRoutes,
+    ...dynamicKoreanPolicyRoutes,
     ...dynamicKoreanBabyFoodRoutes,
     ...dynamicEnglishBabyFoodRoutes,
     ...dynamicEnglishQnaRoutes,

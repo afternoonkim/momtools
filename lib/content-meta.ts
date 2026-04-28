@@ -22,10 +22,16 @@ export const PAGE_DATES = {
   "/content/blog": { published: "2026-04-09", updated: "2026-04-10" },
   "/content/youtube": { published: "2026-04-09", updated: "2026-04-10" },
   "/play": { published: "2026-04-09", updated: "2026-04-10" },
-  "/family-health-qna": { published: "2026-04-27", updated: "2026-04-28" },
+  "/family-health-qna": { published: "2026-04-27", updated: "2026-04-27" },
+  "/policy/pregnancy-birth": { published: "2026-04-28", updated: "2026-04-28" },
+  "/policy/childcare-benefit": { published: "2026-04-28", updated: "2026-04-28" },
+  "/policy/work-parenting": { published: "2026-04-28", updated: "2026-04-28" },
+  "/policy/care-education": { published: "2026-04-28", updated: "2026-04-28" },
+  "/policy/health-medical": { published: "2026-04-28", updated: "2026-04-28" },
+  "/policy/local-birth-grant": { published: "2026-04-28", updated: "2026-04-28" },
 } as const satisfies Record<string, { published: string; updated: string }>;
 
-export const HOME_CARD_UPDATED_LABEL = "2026.04 최근 검토";
+export const HOME_CARD_UPDATED_LABEL = "2026.04 최신 검토";
 
 export function buildCanonical(path: string) {
   if (!path.startsWith("/")) {

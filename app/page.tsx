@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     "성장 백분위",
     "육아 체크리스트",
     "가족건강 Q&A",
+    "정부지원정책",
+    "부모급여",
+    "아동수당",
   ],
 };
 
@@ -50,6 +53,11 @@ const quickActions = [
     title: "가족 생활 건강 Q&A",
     description: "감기, 장염, 알레르기처럼 가족이 함께 겪기 쉬운 질문을 확인해요.",
     href: "/family-health-qna/family",
+  },
+  {
+    title: "정부지원정책",
+    description: "부모급여, 아동수당, 첫만남이용권처럼 놓치기 쉬운 지원을 확인해요.",
+    href: "/policy",
   },
 ];
 
@@ -151,6 +159,13 @@ const featuredContents = [
     description: "감기, 장염, 알레르기, 피부 변화처럼 가족이 함께 겪기 쉬운 생활 건강 질문을 정리했습니다.",
     href: "/family-health-qna/family",
     category: "가족 건강",
+    updatedAt: HOME_CARD_UPDATED_LABEL,
+  },
+  {
+    title: "정부지원정책 최신 정리",
+    description: "부모급여, 아동수당, 첫만남이용권, 육아휴직급여처럼 가족이 신청 전 확인해야 할 지원정책을 모았습니다.",
+    href: "/policy",
+    category: "정부정책",
     updatedAt: HOME_CARD_UPDATED_LABEL,
   },
 ];
