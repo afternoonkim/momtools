@@ -6,6 +6,7 @@ import { qnaData, qnaCategories, type QnaCategory } from "@/data/qna";
 import { familyHealthCategories, familyHealthQnaData, type FamilyHealthQnaCategory } from "@/data/familyHealthQna";
 import { governmentPolicies } from "@/data/governmentPolicy";
 import { babyProductQnaItems } from "@/data/babyProductQna";
+import { birthSupportRegions } from "@/data/birthSupportCalculator";
 import { enQnaEntries } from "@/data/en/qna100";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
 
@@ -108,6 +109,10 @@ const dynamicKoreanFamilyHealthRoutes = (Object.keys(familyHealthCategories) as 
 );
 const dynamicKoreanPolicyRoutes = governmentPolicies.map((policy) => route(`/policy/${policy.category}/${policy.slug}`, 0.8, "daily"));
 const dynamicKoreanBabyFoodRoutes = koBabyFoodRecipes.map((recipe) => route(`/baby-food/recipes/${recipe.slug}`, 0.68, "weekly"));
+// "[지역명] 출산지원금" 검색에 대응하기 위해 시·군·구별 지역 페이지를 sitemap에 노출합니다.
+const dynamicKoreanBirthSupportRoutes = birthSupportRegions.map((region) =>
+  route(`/tools/birth-support-calculator/${region.regionCode}`, 0.85, "weekly"),
+);
 // AdSense 심사 동안 sitemap 제외 (쿠팡 파트너스 affiliate 콘텐츠)
 const dynamicKoreanBabyProductRoutes: RouteConfig[] = [];
 void babyProductQnaItems;
@@ -123,6 +128,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...dynamicKoreanFamilyHealthRoutes,
     ...dynamicKoreanPolicyRoutes,
     ...dynamicKoreanBabyFoodRoutes,
+    ...dynamicKoreanBirthSupportRoutes,
     ...dynamicKoreanBabyProductRoutes,
     ...dynamicEnglishBabyFoodRoutes,
     ...dynamicEnglishQnaRoutes,

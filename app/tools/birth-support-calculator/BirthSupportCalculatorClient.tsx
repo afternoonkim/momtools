@@ -32,11 +32,26 @@ const regionSearchOptions = birthSupportRegions.map((region) => {
   };
 });
 
-export default function BirthSupportCalculatorClient() {
+interface BirthSupportCalculatorClientProps {
+  initialRegionCode?: string;
+  initialBirthOrder?: BirthOrder;
+}
+
+export default function BirthSupportCalculatorClient({
+  initialRegionCode,
+  initialBirthOrder = "first",
+}: BirthSupportCalculatorClientProps = {}) {
+  const fallbackRegionCode = birthSupportRegions[0]?.regionCode ?? "jeju";
+  const startingRegionCode =
+    initialRegionCode && birthSupportRegions.some((region) => region.regionCode === initialRegionCode)
+      ? initialRegionCode
+      : fallbackRegionCode;
+  const startingRegion = birthSupportRegions.find((region) => region.regionCode === startingRegionCode) ?? birthSupportRegions[0];
+
   const [mounted, setMounted] = useState(false);
-  const [regionCode, setRegionCode] = useState(birthSupportRegions[0]?.regionCode ?? "jeju");
-  const [birthOrder, setBirthOrder] = useState<BirthOrder>("first");
-  const [regionSearch, setRegionSearch] = useState(() => (birthSupportRegions[0] ? getRegionLabel(birthSupportRegions[0]) : ""));
+  const [regionCode, setRegionCode] = useState(startingRegionCode);
+  const [birthOrder, setBirthOrder] = useState<BirthOrder>(initialBirthOrder);
+  const [regionSearch, setRegionSearch] = useState(() => (startingRegion ? getRegionLabel(startingRegion) : ""));
   const [regionListOpen, setRegionListOpen] = useState(false);
 
   useEffect(() => {
@@ -71,9 +86,9 @@ export default function BirthSupportCalculatorClient() {
       <section className="mt-card overflow-hidden p-0" suppressHydrationWarning>
         <div className="border-b border-amber-100 bg-gradient-to-br from-amber-50 via-white to-sky-50 p-6 md:p-8">
           <span className="mt-badge">지역별 출산지원금 데이터 적용</span>
-          <h2 className="mt-title-lg mt-4">출산지원금 계산기를 불러오는 중입니다</h2>
+          <h2 className="mt-title-lg mt-4">출산지원금 계산기를 불러오고 있어요</h2>
           <p className="mt-text-sub mt-3 max-w-3xl">
-            거주 지역과 출생 순위를 선택하면 전국 공통 지원금과 지자체 출산지원금을 함께 계산해 보여드립니다.
+            거주 지역과 출생 순위를 선택하면 전국 공통 지원금과 지자체 출산지원금이 합쳐져서 한 번에 보여요.
           </p>
         </div>
         <div className="grid gap-4 p-6 md:p-8 lg:grid-cols-2">
@@ -92,7 +107,7 @@ export default function BirthSupportCalculatorClient() {
             <span className="mt-badge">지역별 출산지원금 데이터 적용</span>
             <h2 className="mt-title-lg mt-4">사는 지역과 출생 순위를 선택해 예상 지원금을 계산해 보세요</h2>
             <p className="mt-text-sub mt-3 max-w-3xl">
-              제공해주신 2026년 전국 공통 지원금 기준과 제주도·경남·경북·전남·전북·충남·충북·경기·강원·세종·울산·대전·광주·인천·대구·부산·서울 지역별 상세 자료를 반영했습니다. 지역과 출생 순위를 선택하면 첫만남이용권, 부모급여, 아동수당, 가정양육수당, 지자체 출산지원금을 함께 계산합니다.
+              사는 지역과 출생 순위만 선택하면 첫만남이용권, 부모급여, 아동수당, 가정양육수당, 그리고 시·군·구별 지자체 출산지원금이 한 번에 합산돼서 예상 받을 금액이 바로 나와요. 2026년 전국 공통 출산·육아 지원금과 제주·경남·경북·전남·전북·충남·충북·경기·강원·세종·울산·대전·광주·인천·대구·부산·서울 지역 데이터를 반영해 보여드려요.
             </p>
           </div>
           <div className="rounded-3xl bg-white/80 p-4 text-sm text-slate-600 shadow-sm ring-1 ring-amber-100">
@@ -213,7 +228,7 @@ export default function BirthSupportCalculatorClient() {
           <div className="rounded-3xl border border-slate-100 bg-slate-50 p-5 text-sm leading-7 text-slate-600">
             <div className="font-semibold text-slate-800">계산 기준</div>
             <p className="mt-2">
-              총액은 첫만남이용권, 부모급여, 아동수당, 가정양육수당, 선택한 지역의 지자체 지원금을 합산했습니다. 부모급여는 0세 월 100만 원·1세 월 50만 원, 아동수당은 비수도권 월 10.5만 원, 가정양육수당은 조건부 월 10만 원 기준입니다.
+              총액은 첫만남이용권, 부모급여, 아동수당, 가정양육수당, 선택한 지역의 지자체 지원금을 모두 더한 값이에요. 부모급여는 0세 월 100만 원·1세 월 50만 원, 아동수당은 비수도권 월 10.5만 원, 가정양육수당은 조건부 월 10만 원 기준이에요.
             </p>
           </div>
         </div>
@@ -314,6 +329,12 @@ export default function BirthSupportCalculatorClient() {
           <CheckCircle2 className="mt-1 shrink-0 text-amber-600" size={20} />
           <div>
             <b className="text-slate-900">신청 전 꼭 확인하세요.</b> 지자체 출산지원금은 지역에 따라 일시금, 분할 지급, 지역화폐, 선불카드, 현물 지원으로 달라질 수 있습니다. 부모급여는 어린이집 이용 시 보육료 차감 후 차액이 지급되고, 가정양육수당은 보육서비스 이용 여부에 따라 실제 지급 여부가 달라질 수 있으므로 신청 전 주민센터 또는 담당 부서 안내를 다시 확인해야 합니다.
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
           </div>
         </div>
       </div>

@@ -52,7 +52,7 @@ export const metadata: Metadata = {
 const faq = [
   {
     q: "지역별 출산지원금 계산기는 어떤 금액을 합산하나요?",
-    a: "현재 버전은 첫만남이용권, 부모급여, 아동수당, 가정양육수당, 선택 지역의 지자체 출산지원금을 합산합니다. 전국 공통 지원금은 부모급여 1,800만 원, 비수도권 아동수당 최대 1,134만 원, 가정양육수당 최대 620만 원을 반영했습니다.",
+    a: "첫만남이용권, 부모급여, 아동수당, 가정양육수당, 그리고 선택한 지역의 지자체 출산지원금이 한 번에 합산돼요. 전국 공통 지원금 기준은 부모급여 1,800만 원, 비수도권 아동수당 최대 1,134만 원, 가정양육수당 최대 620만 원이에요.",
   },
   {
     q: "지자체 출산지원금은 한 번에 지급되나요?",
@@ -79,7 +79,7 @@ export default function Page() {
             출산지원금은 출생 직후 받는 첫만남이용권, 매월 지급되는 부모급여와 아동수당, 조건에 따라 받을 수 있는 가정양육수당, 그리고 지자체가 따로 지급하는 출산지원금으로 나뉩니다. 그래서 단순히 “출산지원금 얼마”만 검색하면 실제로 우리 집이 받을 수 있는 금액을 한눈에 파악하기 어렵습니다.
           </p>
           <p className="mt-text-sub mt-4">
-            이 페이지는 제공해주신 2026년 전국 공통 출산·육아 지원금 기준과 제주도·경남·경북·전남·전북·충남·충북·경기·강원·세종·울산·대전·광주·인천·대구·부산·서울 지역별 출산지원금 자료를 바탕으로, 사용자가 거주 지역과 출생 순위를 선택하면 예상 지원 가치를 바로 확인할 수 있도록 만든 계산기 페이지입니다.
+            거주 지역과 출생 순위만 선택하면, 2026년 전국 공통 출산·육아 지원금과 제주·경남·경북·전남·전북·충남·충북·경기·강원·세종·울산·대전·광주·인천·대구·부산·서울 시·군·구별 출산지원금이 합쳐져서 예상 받을 금액이 바로 나와요.
           </p>
         </section>
 
@@ -88,7 +88,7 @@ export default function Page() {
         <ContentUpdateNote
           publishedOn={pageDates.published}
           updatedOn={pageDates.updated}
-          note="출산지원금 계산기 페이지는 제공된 2026년 전국 공통 지원금 기준과 아이사랑 2026년 지역별 출산지원금 게시물 기준으로 구성했으며, 지역별 데이터가 추가될 때 같은 계산 구조로 확장할 수 있습니다."
+          note="2026년 전국 공통 출산·육아 지원금과 아이사랑 출산지원금 게시판의 시·군·구 자료를 기준으로 합산해 보여드려요. 지자체에서 새로운 게시물이 올라오면 계산 결과에도 반영돼요."
         />
 
         <section className="grid gap-5 md:grid-cols-3">
@@ -146,6 +146,8 @@ export default function Page() {
           </div>
         </section>
 
+        <RegionIndexSection />
+
         <section className="mt-card-soft p-6 md:p-8">
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">함께 확인하기</div>
           <div className="mt-4 grid gap-4 md:grid-cols-3">
@@ -165,5 +167,78 @@ export default function Page() {
         </section>
       </div>
     </div>
+  );
+}
+
+/**
+ * 지역명 + “출산지원금” 검색 노출을 위해 174개 지역으로 가는 내부 링크 그리드를 시도(광역시도) 단위로 그룹화해 노출합니다.
+ * 네이버 크롤러가 지역명 앵커 텍스트를 통해 각 지역별 페이지를 발견할 수 있도록 의도된 SEO 인덱스 섹션입니다.
+ */
+function RegionIndexSection() {
+  // 시도별로 묶기
+  const grouped = new Map<string, typeof birthSupportRegions>();
+  for (const region of birthSupportRegions) {
+    const key = region.sido;
+    if (!grouped.has(key)) grouped.set(key, []);
+    grouped.get(key)!.push(region);
+  }
+
+  // 시도 순서: 서울→부산→대구→인천→광주→대전→울산→세종→경기→강원→충북→충남→전북→전남→경북→경남→제주
+  const sidoOrder = [
+    "서울특별시",
+    "부산광역시",
+    "대구광역시",
+    "인천광역시",
+    "광주광역시",
+    "대전광역시",
+    "울산광역시",
+    "세종특별자치시",
+    "경기도",
+    "강원특별자치도",
+    "강원도",
+    "충청북도",
+    "충청남도",
+    "전북특별자치도",
+    "전라북도",
+    "전라남도",
+    "경상북도",
+    "경상남도",
+    "제주특별자치도",
+  ];
+
+  const ordered = sidoOrder
+    .map((sido) => [sido, grouped.get(sido)] as const)
+    .filter(([, regions]) => Array.isArray(regions) && regions.length > 0);
+
+  return (
+    <section className="mt-card p-6 md:p-8">
+      <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">지역별 바로가기</div>
+      <h2 className="mt-title-lg mt-3">시·군·구별 출산지원금 페이지</h2>
+      <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">
+        “청주 출산지원금”, “광주 출산지원금”처럼 우리 동네 이름으로 바로 찾고 싶을 때를 위한 시·군·구별 페이지예요.
+        지역명을 누르면 해당 지자체 출산지원금만 모아 둔 페이지로 바로 이동해요.
+      </p>
+      <div className="mt-6 space-y-5">
+        {ordered.map(([sido, regions]) => (
+          <div key={sido}>
+            <h3 className="text-sm font-bold text-slate-800">{sido}</h3>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {regions!.map((region) => {
+                const sigungu = region.sigungu === "전체" ? region.sido : region.sigungu;
+                return (
+                  <Link
+                    key={region.regionCode}
+                    href={`/tools/birth-support-calculator/${region.regionCode}`}
+                    className="rounded-full border border-amber-100 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition hover:border-amber-300 hover:text-amber-700"
+                  >
+                    {sigungu} 출산지원금
+                  </Link>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
