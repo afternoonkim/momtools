@@ -335,9 +335,3 @@ export default function BirthSupportCalculatorClient({
     </section>
   );
 }
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
