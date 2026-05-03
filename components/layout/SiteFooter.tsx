@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { getLocaleFromPath, withLocalePath } from "@/lib/site-locale";
+import { PARTNER_SITES, getPartnerLinkProps } from "@/lib/partner-sites";
 
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
@@ -16,6 +17,10 @@ export default function SiteFooter() {
   const pathname = usePathname() || "/";
   const locale = getLocaleFromPath(pathname);
   const href = (path: string) => withLocalePath(path, locale);
+
+  const sisterLabel = locale === "ko" ? "함께 운영하는 사이트" : "Sister sites";
+  const bluedinoProps = getPartnerLinkProps(PARTNER_SITES.bluedino, locale);
+  const megaProps = getPartnerLinkProps(PARTNER_SITES.megaCalculators, locale);
 
   return (
     <footer className="border-t border-amber-100 bg-white/80">
@@ -48,7 +53,6 @@ export default function SiteFooter() {
             {locale === "ko" ? <FooterLink href="/policy/pregnancy-birth">임신·출산 지원</FooterLink> : null}
             {locale === "ko" ? <FooterLink href="/policy/local-check">지역별 출산지원금</FooterLink> : null}
             {locale === "ko" ? <FooterLink href="/family-health-qna/family">가족 생활 건강</FooterLink> : null}
-            {locale === "ko" ? <FooterLink href="/items/essential">육아용품 Q&A</FooterLink> : null}
             <FooterLink href={href("/faq")}>FAQ</FooterLink>
             <FooterLink href={href("/contact")}>{locale === "ko" ? "문의하기" : "Contact"}</FooterLink>
             <FooterLink href={href("/privacy")}>{locale === "ko" ? "개인정보처리방침" : "Privacy"}</FooterLink>
@@ -56,11 +60,25 @@ export default function SiteFooter() {
           </div>
         </div>
 
+        <div className="mt-6 border-t border-amber-50 pt-4">
+          <div className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+            {sisterLabel}
+          </div>
+          <div className="mt-2 flex flex-wrap gap-x-5 gap-y-2 text-xs text-slate-500">
+            <a {...megaProps} className="transition hover:text-slate-700">
+              {PARTNER_SITES.megaCalculators.copy[locale].label} · {PARTNER_SITES.megaCalculators.domain}
+            </a>
+            <a {...bluedinoProps} className="transition hover:text-slate-700">
+              {PARTNER_SITES.bluedino.copy[locale].label} · {PARTNER_SITES.bluedino.domain}
+            </a>
+          </div>
+        </div>
+
         <div className="mt-6 flex flex-col gap-3 border-t border-amber-50 pt-4 sm:flex-row sm:items-center sm:justify-between">
-          <div className="text-xs text-slate-400">© 2026 MomTools. All rights reserved.</div>
+          <div className="text-xs text-slate-400">© {new Date().getFullYear()} MomTools. All rights reserved.</div>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
             <span className="text-slate-400">
-              {locale === "ko" ? "관련 채널" : "Related links"}
+              {locale === "ko" ? "운영자" : "Maintainer"}
             </span>
             <a
               href="https://blog.naver.com/afterchan"

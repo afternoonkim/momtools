@@ -324,11 +324,25 @@ export default function BirthSupportCalculatorClient({
         </div>
       </div>
 
-      <div className="border-t border-amber-100 bg-amber-50/60 p-6 md:p-8">
+      <div className="border-t border-amber-100 bg-amber-50/60 p-6 md:p-8 space-y-4">
         <div className="flex items-start gap-3 rounded-3xl bg-white p-5 text-sm leading-7 text-slate-600 shadow-sm">
           <CheckCircle2 className="mt-1 shrink-0 text-amber-600" size={20} />
           <div>
             <b className="text-slate-900">신청 전 꼭 확인하세요.</b> 지자체 출산지원금은 지역에 따라 일시금, 분할 지급, 지역화폐, 선불카드, 현물 지원으로 달라질 수 있습니다. 부모급여는 어린이집 이용 시 보육료 차감 후 차액이 지급되고, 가정양육수당은 보육서비스 이용 여부에 따라 실제 지급 여부가 달라질 수 있으므로 신청 전 주민센터 또는 담당 부서 안내를 다시 확인해야 합니다.
+          </div>
+        </div>
+        <div className="rounded-3xl border border-sky-100 bg-sky-50/70 p-5 text-sm leading-7 text-slate-700">
+          <div className="text-xs font-semibold uppercase tracking-[0.16em] text-sky-700">다음 단계 · 가계 계획</div>
+          <div className="mt-2">
+            <b className="text-slate-900">받게 될 금액 다음에 챙길 흐름이 있어요.</b>{" "}
+            첫만남이용권·부모급여·아동수당·지자체 출산지원금이 들어오면 자녀 적금, 청약, 연말정산 자녀세액공제처럼 가계에서 함께 정리하면 좋은 항목이 늘어요.
+            관련 흐름은 같은 운영자가 운영하는 <a
+              href="https://bluedino.kr"
+              target="_blank"
+              rel="me external noopener"
+              hrefLang="ko-KR"
+              className="font-semibold text-sky-700 underline underline-offset-4 hover:text-sky-800"
+            >BlueDino(bluedino.kr)</a>에서 한국 가정 기준으로 정리해 두고 있어요.
           </div>
         </div>
       </div>

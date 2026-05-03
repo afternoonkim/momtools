@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
+import { PARTNER_SITES, getPartnerLinkProps } from "@/lib/partner-sites";
 
 export const metadata: Metadata = {
   title: "Parenting Calculators | Due Date, Baby Age, Vaccines, Solids, Growth",
   description:
-    "Simple parenting calculators for due date, baby age, US vaccine timing, solids readiness, and baby growth.",
+    "Simple parenting calculators for due date, baby age, US vaccine timing, solids readiness, and baby growth — plus a link to our other everyday calculator hub.",
   alternates: { canonical: "https://momtools.kr/en/cal" },
 };
 
@@ -38,6 +39,8 @@ const tools = [
 ];
 
 export default function EnCalHubPage() {
+  const megaProps = getPartnerLinkProps(PARTNER_SITES.megaCalculators, "en");
+
   return (
     <div className="space-y-8">
       <section className="mt-card p-8 md:p-10">
@@ -62,6 +65,25 @@ export default function EnCalHubPage() {
             <p className="mt-3 text-sm leading-7 text-slate-600">{tool.desc}</p>
           </Link>
         ))}
+      </section>
+
+      <section className="mt-card p-6 md:p-8">
+        <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">Sister site</div>
+        <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-800">
+          Need calculators outside parenting? Try Mega Calculators
+        </h2>
+        <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">
+          The same maintainer behind MomTools also runs <strong>Mega Calculators</strong> — a hub of everyday calculators
+          for currency, loans, savings, and unit conversions. If you frequently switch between parenting prep and household
+          numbers, it’s a useful sister site to keep open in another tab.
+        </p>
+        <a
+          {...megaProps}
+          className="mt-5 inline-flex items-center gap-2 rounded-2xl bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700"
+        >
+          {PARTNER_SITES.megaCalculators.copy.en.cta} ↗
+        </a>
+        <p className="mt-3 text-xs text-slate-500">{PARTNER_SITES.megaCalculators.domain}</p>
       </section>
     </div>
   );

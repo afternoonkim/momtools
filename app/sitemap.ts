@@ -7,6 +7,7 @@ import { familyHealthCategories, familyHealthQnaData, type FamilyHealthQnaCatego
 import { governmentPolicies } from "@/data/governmentPolicy";
 import { babyProductQnaItems } from "@/data/babyProductQna";
 import { birthSupportRegions } from "@/data/birthSupportCalculator";
+import { familyFinanceArticles } from "@/data/familyFinance";
 import { enQnaEntries } from "@/data/en/qna100";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
 
@@ -113,6 +114,14 @@ const dynamicKoreanBabyFoodRoutes = koBabyFoodRecipes.map((recipe) => route(`/ba
 const dynamicKoreanBirthSupportRoutes = birthSupportRegions.map((region) =>
   route(`/tools/birth-support-calculator/${region.regionCode}`, 0.85, "weekly"),
 );
+
+// 출산·육아 가계 가이드(부모급여·자녀 적금·연말정산 등) 콘텐츠
+const dynamicKoreanFamilyFinanceRoutes: RouteConfig[] = [
+  route("/info/family-finance", 0.82, "weekly"),
+  ...familyFinanceArticles.map((article) =>
+    route(`/info/family-finance/${article.slug}`, 0.78, "weekly"),
+  ),
+];
 // AdSense 심사 동안 sitemap 제외 (쿠팡 파트너스 affiliate 콘텐츠)
 const dynamicKoreanBabyProductRoutes: RouteConfig[] = [];
 void babyProductQnaItems;
@@ -129,6 +138,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...dynamicKoreanPolicyRoutes,
     ...dynamicKoreanBabyFoodRoutes,
     ...dynamicKoreanBirthSupportRoutes,
+    ...dynamicKoreanFamilyFinanceRoutes,
     ...dynamicKoreanBabyProductRoutes,
     ...dynamicEnglishBabyFoodRoutes,
     ...dynamicEnglishQnaRoutes,

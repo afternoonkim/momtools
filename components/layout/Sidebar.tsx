@@ -163,6 +163,7 @@ export default function Sidebar({
   const isFamilyHealthOpen = isKo && hasPath("/family-health-qna");
   const isChecklistsOpen = hasPath("/checklists");
   const isContentOpen = isKo && hasPath("/content");
+  const isFamilyFinanceOpen = isKo && hasPath("/info/family-finance");
   const isBabyFoodOpen = hasPath("/baby-food");
   const isNamesOpen = isKo && hasPath("/baby-names");
   const isMiscOpen = hasPath("/faq") || hasPath("/contact");
@@ -268,6 +269,17 @@ export default function Sidebar({
               <SidebarItem href={href("/checklists/daycare")} label={t.links.daycare} icon={ClipboardList} collapsed={collapsed} />
             </SidebarGroup>
           </div>
+
+          {isKo ? (
+            <div onClick={closeMobileSidebar}>
+              <SidebarGroup title="가계 가이드" collapsed={collapsed} defaultOpen={isFamilyFinanceOpen}>
+                <SidebarItem href="/info/family-finance" label="가계 가이드 모음" icon={Landmark} collapsed={collapsed} />
+                <SidebarItem href="/info/family-finance/parent-benefit-200-how-to-use" label="부모급여 활용법" icon={Landmark} collapsed={collapsed} />
+                <SidebarItem href="/info/family-finance/child-account-from-zero" label="아이 통장·청약" icon={Landmark} collapsed={collapsed} />
+                <SidebarItem href="/info/family-finance/child-tax-credit-year-end" label="자녀 연말정산" icon={Landmark} collapsed={collapsed} />
+              </SidebarGroup>
+            </div>
+          ) : null}
 
           {isKo ? (
             <div onClick={closeMobileSidebar}>

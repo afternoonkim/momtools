@@ -3,6 +3,7 @@ import Link from "next/link";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
 import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
+import { PARTNER_SITES, getPartnerLinkProps } from "@/lib/partner-sites";
 
 export const metadata: Metadata = {
   title: "육아 계산기 모음 | 출산 예정일 아기 개월수 접종 이유식 성장 | MomTools",
@@ -26,6 +27,9 @@ const trustNotes = [
 ];
 
 export default function ToolsHubPage() {
+  const megaProps = getPartnerLinkProps(PARTNER_SITES.megaCalculators, "ko");
+  const bluedinoProps = getPartnerLinkProps(PARTNER_SITES.bluedino, "ko");
+
   return (
     <div className="mt-page">
       <div className="mt-container space-y-8">
@@ -81,6 +85,39 @@ export default function ToolsHubPage() {
                 </Link>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="mt-card p-6 md:p-8">
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">함께 운영하는 사이트</div>
+          <h2 className="mt-title-md mt-3">MomTools 외 더 많은 계산기와 가계 가이드</h2>
+          <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">
+            육아 계산 외에도 일상에서 자주 필요한 계산기와 가계 운용 가이드를 같은 운영자가 따로 운영하고 있어요.
+            육아 흐름과 함께 보면 좋아 자매 사이트로 자연스럽게 이어 두었어요.
+          </p>
+          <div className="mt-5 grid gap-4 md:grid-cols-2">
+            <a
+              {...megaProps}
+              className="group rounded-3xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200"
+            >
+              <div className="text-xs font-semibold uppercase tracking-[0.16em] text-sky-600">Mega Calculators</div>
+              <div className="mt-2 text-base font-bold text-slate-900">{PARTNER_SITES.megaCalculators.copy.ko.label}</div>
+              <p className="mt-2 text-sm leading-7 text-slate-600">{PARTNER_SITES.megaCalculators.copy.ko.blurb}</p>
+              <div className="mt-3 text-xs font-semibold text-sky-700">
+                {PARTNER_SITES.megaCalculators.copy.ko.cta} ↗
+              </div>
+            </a>
+            <a
+              {...bluedinoProps}
+              className="group rounded-3xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200"
+            >
+              <div className="text-xs font-semibold uppercase tracking-[0.16em] text-sky-600">BlueDino</div>
+              <div className="mt-2 text-base font-bold text-slate-900">{PARTNER_SITES.bluedino.copy.ko.label}</div>
+              <p className="mt-2 text-sm leading-7 text-slate-600">{PARTNER_SITES.bluedino.copy.ko.blurb}</p>
+              <div className="mt-3 text-xs font-semibold text-sky-700">
+                {PARTNER_SITES.bluedino.copy.ko.cta} ↗
+              </div>
+            </a>
           </div>
         </section>
       </div>
