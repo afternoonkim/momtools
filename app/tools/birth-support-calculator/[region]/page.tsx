@@ -248,7 +248,7 @@ export default async function RegionalBirthSupportCalculatorPage({ params }: { p
             {displayName} 출산지원금은 전국 공통 지원금(첫만남이용권, 부모급여, 아동수당, 가정양육수당)과 {displayName}이 자체적으로 지급하는 출산축하금·출산장려금·다자녀지원금을 합쳐서 봐야 실제 받을 수 있는 금액에 가까워요. 출생 순위별 합산 예상 금액을 한 번에 보고, {shortName} 지자체 지원 항목까지 같이 살펴보세요.
           </p>
           <p className="mt-text-sub mt-4">
-            검색 키워드 예시: {aliases.map((a) => `“${a} 출산지원금”`).join(", ")}.
+            이 지역의 지원금은 출생순위, 거주기간, 신청기한에 따라 달라질 수 있어요. 결과 카드 아래 항목별 조건을 함께 확인해 주세요.
           </p>
         </section>
 

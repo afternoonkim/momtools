@@ -328,7 +328,7 @@
           "third": 0,
           "fourthPlus": 0
         },
-        "displayValue": "첫째 500만 원, 둘째 금액 확인 필요, 셋째 금액 확인 필요, 넷째 이상 금액 확인 필요",
+        "displayValue": "첫째 500만 원 / 둘째 이상 금액은 관할 행정복지센터에서 확인해 주세요",
         "includedInTotal": true,
         "isRecurring": true,
         "isConditional": true,
@@ -432,7 +432,7 @@
           "third": 30000000,
           "fourthPlus": 0
         },
-        "displayValue": "첫째 500만 원, 둘째 1,200만 원, 셋째 3,000만 원, 넷째 이상 금액 확인 필요",
+        "displayValue": "첫째 500만 원, 둘째 1,200만 원, 셋째 3,000만 원, 넷째 이상은 관할 행정복지센터에서 확인해 주세요",
         "includedInTotal": true,
         "isRecurring": true,
         "isConditional": true,

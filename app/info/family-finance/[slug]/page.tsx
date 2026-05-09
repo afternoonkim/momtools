@@ -134,7 +134,7 @@ export default async function FamilyFinanceArticlePage({ params }: { params: Pro
             받는 돈 다음에 챙길 흐름까지 보고 싶다면
           </h2>
           <p className="mt-3 text-sm leading-7 text-slate-700 md:text-base">
-            {article.bluedinoCallout.leadIn}, 같은 운영자가 운영하는{" "}
+            {article.bluedinoCallout.leadIn}, 함께 보면 좋은 관련 서비스{" "}
             <a
               {...bluedinoProps}
               className="font-semibold text-sky-700 underline underline-offset-4 hover:text-sky-800"

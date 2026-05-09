@@ -21,7 +21,7 @@ export default function Page() {
 
         <GrowthPercentileCalculatorClient />
 
-        <ContentUpdateNote publishedOn={pageDates.published} updatedOn={pageDates.updated} note="성장 백분위 페이지는 부모가 결과 숫자에 과하게 불안해하지 않도록, 해석 기준과 병원 상담이 필요한 경우를 함께 설명하는 방향으로 정기 점검합니다." />
+        <ContentUpdateNote publishedOn={pageDates.published} updatedOn={pageDates.updated} note="결과 숫자 하나에 너무 마음 졸이지 않도록, 해석 기준과 병원 상담이 필요한 경우까지 같이 안내해 드려요." />
 
         <section className="grid gap-6 lg:grid-cols-2"><article className="mt-card p-6 md:p-8"><h2 className="mt-title-lg">결과를 볼 때 먼저 확인할 점</h2><ul className="mt-5 space-y-3 text-sm leading-7 text-slate-600 md:text-base"><li className="rounded-2xl bg-amber-50/70 px-4 py-4">한 번의 측정값보다 이전 기록과 비교해 성장 흐름이 이어지는지</li><li className="rounded-2xl bg-amber-50/70 px-4 py-4">식사량, 수면, 활동량, 컨디션처럼 일상 변화가 최근에 있었는지</li><li className="rounded-2xl bg-amber-50/70 px-4 py-4">또래 평균과 다르더라도 아이의 개별 성장 곡선이 안정적인지</li></ul></article><article className="mt-card p-6 md:p-8"><h2 className="mt-title-lg">언제 상담을 고려하면 좋을까요?</h2><div className="mt-4 space-y-4 text-sm leading-8 text-slate-600 md:text-base"><p>성장 백분위가 한 번 낮게 나오거나 높게 나온 것만으로 바로 문제를 판단하기는 어렵습니다. 하지만 이전보다 급격한 변화가 반복되거나, 식사·수면·활동과 함께 눈에 띄는 변화가 있다면 병원 상담을 고려하는 편이 좋습니다.</p><p>측정 환경이나 시간에 따라 숫자가 달라질 수 있으므로, 기록을 꾸준히 남기고 같은 기준으로 비교하는 습관이 도움이 됩니다.</p></div></article></section>
 

@@ -89,11 +89,11 @@ export default function ToolsHubPage() {
         </section>
 
         <section className="mt-card p-6 md:p-8">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">함께 운영하는 사이트</div>
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">함께 보면 좋은 관련 서비스</div>
           <h2 className="mt-title-md mt-3">MomTools 외 더 많은 계산기와 가계 가이드</h2>
           <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">
-            육아 계산 외에도 일상에서 자주 필요한 계산기와 가계 운용 가이드를 같은 운영자가 따로 운영하고 있어요.
-            육아 흐름과 함께 보면 좋아 자매 사이트로 자연스럽게 이어 두었어요.
+            육아 외 일상 계산이나 가계 운용 흐름까지 함께 챙기고 싶을 때 보기 좋은 관련 서비스예요.
+            육아 흐름과 자연스럽게 이어볼 수 있게 한자리에 모아 두었어요.
           </p>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             <a

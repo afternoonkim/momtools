@@ -40,7 +40,7 @@ export default function PlayHomePage() {
         <ContentUpdateNote
           publishedOn={pageDates.published}
           updatedOn={pageDates.updated}
-          note="놀이 자료는 준비 상태가 분명하게 보이도록 허브 구조와 연결 상태를 점검합니다. 자료가 충분히 연결되기 전까지는 검색 노출보다 사용 안내를 우선합니다."
+          note="아직 준비 중인 자료는 제외하고, 바로 활용할 수 있는 자료부터 안내해 드려요."
         />
 
         <PlayHubView locale="ko" />

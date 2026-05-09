@@ -109,13 +109,14 @@ const childAllowance: BirthSupportBenefit = {
   category: "아동수당",
   name: "아동수당",
   paymentType: "계좌입금",
+  // 기본값(비수도권 월 10.5만 원). 실제 값은 region.sido를 보고 후처리에서 다시 계산합니다.
   amountByBirthOrder: { first: 11_340_000, second: 11_340_000, third: 11_340_000, fourthPlus: 11_340_000 },
   displayValue: "비수도권 월 10.5만 원, 만 9세 미만 기준 최대 1,134만 원",
   includedInTotal: true,
   isRecurring: true,
   periodLabel: "0~8세 월 지급",
   target: "2026년 기준 만 9세 미만 아동입니다. 2017년생 이후 출생 아동부터 순차 적용되는 연령 확대 기준을 확인합니다.",
-  residenceCondition: "전국 공통 지원이지만 2026년 한시적으로 수도권·비수도권 지급액이 달라질 수 있습니다. 현재 계산기는 비수도권 월 10.5만 원을 기본값으로 반영했습니다.",
+  residenceCondition: "수도권 월 10만 원, 비수도권 월 10.5만 원이 기본 기준이고, 인구감소 우대지역과 특별지역은 월 11만~12만 원으로 더 높을 수 있어요. 계산기는 거주 시·도를 기준으로 자동 적용해 보여드려요.",
   applicationPeriod: "2026년 4월부터 확대 내용이 적용되며, 1~3월분은 소급 적용 안내를 확인해야 합니다.",
   applicationMethod: "복지로, 정부24 또는 아동의 주민등록상 주소지 읍·면·동 주민센터에서 신청할 수 있습니다.",
   contact: "주소지 읍·면·동 행정복지센터 또는 보건복지상담센터 129",
@@ -125,11 +126,12 @@ const childAllowance: BirthSupportBenefit = {
 const homeCareAllowance: BirthSupportBenefit = {
   id: "home-care-allowance",
   category: "가정양육수당",
-  name: "가정양육수당",
+  name: "가정양육수당 (조건부)",
   paymentType: "계좌입금",
   amountByBirthOrder: { first: 6_200_000, second: 6_200_000, third: 6_200_000, fourthPlus: 6_200_000 },
-  displayValue: "24개월 이상~86개월 미만 월 10만 원 기준 최대 620만 원",
-  includedInTotal: true,
+  displayValue: "어린이집·유치원 미이용 가정에 한해 24개월 이상~86개월 미만 월 10만 원, 조건 충족 시 최대 620만 원",
+  // 어린이집·유치원·종일제 돌봄을 이용하면 받지 못해 메인 합계에는 포함하지 않고, 조건 충족 시 추가 가능 금액으로 별도 안내합니다.
+  includedInTotal: false,
   isRecurring: true,
   isConditional: true,
   periodLabel: "24~85개월 조건부 월 지급",
@@ -239,7 +241,7 @@ export const birthSupportRegions: BirthSupportRegion[] = [
       residenceCondition: "합천군 기준 출생신고 및 주민등록 요건을 확인해야 합니다.",
       applicationPeriod: "아동 출생일로부터 2년 사용 기준",
       applicationMethod: "행정복지센터 방문 또는 복지로·정부24 온라인 신청",
-      contact: "합천군 담당부서 확인 필요",
+      contact: "합천군청 또는 관할 읍·면·동 행정복지센터 (신청 전 최신 담당 부서 확인)",
       note: "사용처 제한이 있는 지원으로 안내되어 있어 계산기에서는 바우처성 지원으로 분류했습니다.",
     }),
       createLocalBenefit({
@@ -1763,6 +1765,32 @@ const extraBirthSupportRegions = (extraBirthSupportRegionSeeds as unknown as Ext
 }));
 
 birthSupportRegions.push(...extraBirthSupportRegions);
+
+/**
+ * 아동수당은 거주 시·도에 따라 월 지급액이 다르므로(수도권 10만 원 / 비수도권 10.5만 원 기본),
+ * 모든 region을 한 번 순회하며 region.sido 기준으로 child-allowance 금액·표시를 다시 맞춥니다.
+ * 인구감소 우대지역·특별지역(월 11만~12만 원)은 시·군·구 단위 고시라 보수적으로 적용하지 않고,
+ * residenceCondition 안내에 “더 높을 수 있어요”로 남겨 둡니다.
+ */
+const METROPOLITAN_SIDO = new Set(["서울특별시", "경기도", "인천광역시"]);
+const METROPOLITAN_MONTHLY = 100_000;
+const NON_METROPOLITAN_MONTHLY = 105_000;
+const CHILD_ALLOWANCE_MONTHS = 108; // 0~8세까지 9년 × 12개월
+
+for (const region of birthSupportRegions) {
+  const isMetro = METROPOLITAN_SIDO.has(region.sido);
+  const monthly = isMetro ? METROPOLITAN_MONTHLY : NON_METROPOLITAN_MONTHLY;
+  const total = monthly * CHILD_ALLOWANCE_MONTHS;
+  const tierLabel = isMetro ? "수도권" : "비수도권";
+  region.benefits = region.benefits.map((benefit) => {
+    if (benefit.id !== "child-allowance") return benefit;
+    return {
+      ...benefit,
+      amountByBirthOrder: { first: total, second: total, third: total, fourthPlus: total },
+      displayValue: `${tierLabel} 월 ${(monthly / 10_000).toFixed(monthly % 10_000 === 0 ? 0 : 1)}만 원, 만 9세 미만 기준 최대 ${(total / 10_000).toLocaleString("ko-KR")}만 원`,
+    };
+  });
+}
 
 export function formatWon(amount: number) {
   if (amount >= 10_000) {

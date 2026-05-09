@@ -23,7 +23,7 @@ export default function BlogPage() {
           <ContentUpdateNote
             publishedOn={pageDates.published}
             updatedOn={pageDates.updated}
-            note="블로그 연결 페이지는 최신 글이 보이는지만 확인하는 공간이 아니라, 부모가 계산기와 정보 페이지에서 부족했던 배경 설명을 더 읽고 싶을 때 참고할 수 있도록 안내 문구를 함께 점검합니다."
+            note="계산기와 정보 페이지에서 부족했던 배경 설명을 더 읽고 싶을 때 참고할 수 있는 글을 모아 두었어요."
           />
         </div>
       </div>

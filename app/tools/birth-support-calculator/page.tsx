@@ -88,7 +88,7 @@ export default function Page() {
         <ContentUpdateNote
           publishedOn={pageDates.published}
           updatedOn={pageDates.updated}
-          note="2026년 전국 공통 출산·육아 지원금과 아이사랑 출산지원금 게시판의 시·군·구 자료를 기준으로 합산해 보여드려요. 지자체에서 새로운 게시물이 올라오면 계산 결과에도 반영돼요."
+          note="2026년 전국 공통 출산·육아 지원금과 아이사랑 출산지원금 게시판의 시·군·구 자료를 기준으로 합산해 보여드려요. 자료는 정기적으로 검토해 업데이트되며, 신청 직전엔 관할 주민센터에서 최신 금액·조건을 다시 확인해 주세요."
         />
 
         <section className="grid gap-5 md:grid-cols-3">

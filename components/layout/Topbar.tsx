@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import LanguageSwitch from "./LanguageSwitch";
+import SearchBox from "./SearchBox";
 
 export default function Topbar() {
   const pathname = usePathname();
@@ -26,6 +27,12 @@ export default function Topbar() {
 
         <LanguageSwitch mobile />
       </div>
+
+      {!isEnglish ? (
+        <div className="mt-3">
+          <SearchBox size="sm" placeholder="감기, 부모급여, 청주 출산지원금" />
+        </div>
+      ) : null}
     </div>
   );
 }

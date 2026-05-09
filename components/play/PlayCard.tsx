@@ -11,7 +11,6 @@ export default function PlayCard({
   locale: PlayLocale;
 }) {
   const basePath = locale === "ko" ? "/play" : "/en/play";
-  const isReady = item.assets.status === "ready";
 
   return (
     <Link
@@ -23,20 +22,13 @@ export default function PlayCard({
         <div className="flex items-start justify-between gap-4">
           <div>
             <div className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
-              {locale === "ko" ? "Printable Play" : "Printable Play"}
+              Printable Play
             </div>
             <div className="mt-3 text-4xl">{item.emoji}</div>
           </div>
           <div className="flex flex-col items-end gap-2">
             <div className="rounded-full border border-white/80 bg-white/80 px-3 py-1 text-xs font-semibold text-slate-700 shadow-sm">
               {getLocalizedPlayText(item.difficulty, locale)}
-            </div>
-            <div
-              className={`rounded-full px-3 py-1 text-[11px] font-semibold ${
-                isReady ? "bg-emerald-50 text-emerald-700" : "bg-amber-50 text-amber-700"
-              }`}
-            >
-              {isReady ? (locale === "ko" ? "다운로드 가능" : "Ready") : locale === "ko" ? "준비 중" : "Coming soon"}
             </div>
           </div>
         </div>

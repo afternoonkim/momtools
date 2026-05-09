@@ -163,16 +163,7 @@ export default function PlayDetailView({
                 <PlayCard key={relatedItem.slug} item={relatedItem} locale={locale} />
               ))}
             </div>
-          ) : (
-            <div className="mt-6">
-              <StateMessage
-                title={locale === "ko" ? "같은 카테고리의 다른 자료를 준비 중입니다" : "More pages in this category are coming soon"}
-                description={locale === "ko" ? "현재는 이 자료를 먼저 확인할 수 있고, 같은 카테고리의 추가 예시는 순차적으로 연결할 예정입니다." : "This is the first connected page in the category. More printable examples can be attached here later."}
-                href={locale === "ko" ? `/play/${item.category}` : `/en/play/${item.category}`}
-                actionLabel={locale === "ko" ? "카테고리 다시 보기" : "Back to category"}
-              />
-            </div>
-          )}
+          ) : null}
         </section>
       </div>
     </div>
@@ -202,23 +193,16 @@ function DownloadCard({
         <a href={file.href} download className="inline-flex rounded-full bg-amber-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-amber-600">
           {locale === "ko" ? "파일 받기" : "Download"}
         </a>
-      ) : (
-        <div className="inline-flex rounded-full bg-slate-100 px-4 py-2 text-sm font-semibold text-slate-500">
-          {locale === "ko" ? "준비 중" : "Coming soon"}
-        </div>
-      )}
+      ) : null}
     </div>
   );
 }
 
 function StatusBadge({ ready, locale }: { ready: boolean; locale: PlayLocale }) {
+  if (!ready) return null;
   return (
-    <span
-      className={`inline-flex rounded-full px-3 py-1 text-xs font-semibold ${
-        ready ? "bg-emerald-50 text-emerald-700" : "bg-amber-50 text-amber-700"
-      }`}
-    >
-      {ready ? (locale === "ko" ? "다운로드 가능" : "Download ready") : locale === "ko" ? "파일 준비 중" : "Files coming soon"}
+    <span className="inline-flex rounded-full bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
+      {locale === "ko" ? "다운로드 가능" : "Download ready"}
     </span>
   );
 }

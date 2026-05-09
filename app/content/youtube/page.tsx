@@ -22,7 +22,7 @@ export default function VideosPage() {
           <ContentUpdateNote
             publishedOn={pageDates.published}
             updatedOn={pageDates.updated}
-            note="추천 영상 페이지는 부모가 영상만 보고 판단하지 않도록, 계산기와 정보 페이지를 먼저 확인할 수 있는 안내 흐름을 함께 점검합니다."
+            note="영상만 보고 판단하기보다 계산기와 정보 페이지를 먼저 보고 영상은 보조 자료로 활용하시면 좋아요."
           />
         </div>
       </div>

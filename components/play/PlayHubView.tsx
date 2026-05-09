@@ -109,7 +109,7 @@ export default function PlayHubView({ locale }: { locale: PlayLocale }) {
                       <div className="mt-1 text-sm text-slate-500">{getLocalizedPlayText(category.searchLabel, locale)}</div>
                     </div>
                     <div className="rounded-full bg-amber-50 px-3 py-1 text-sm font-semibold text-amber-700">
-                      {count}{locale === "ko" ? "개 예시" : " samples"}
+                      {count}{locale === "ko" ? "개" : " items"}
                     </div>
                   </Link>
                 );

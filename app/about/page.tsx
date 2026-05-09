@@ -138,10 +138,10 @@ export default function AboutPage() {
         </section>
 
         <section className="mt-card p-8 md:p-10">
-          <h2 className="text-2xl font-bold tracking-tight text-slate-800">운영자 정보</h2>
+          <h2 className="text-2xl font-bold tracking-tight text-slate-800">공식 채널</h2>
           <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">
-            MomTools는 한 명의 개인 운영자가 직접 만들고 관리하는 사이트입니다. 콘텐츠 정확도, 표현 수정,
-            기능 개선 요청은 아래 채널 또는 문의 페이지를 통해 직접 받고 반영합니다.
+            MomTools는 부모가 육아 정보를 더 쉽게 확인할 수 있도록 계산기와 안내 콘텐츠를 함께 제공합니다.
+            콘텐츠 오류 제보, 표현 수정, 기능 개선 요청은 아래 채널 또는 문의 페이지로 받고 있어요.
           </p>
           <div className="mt-5 grid gap-3 md:grid-cols-2">
             <a

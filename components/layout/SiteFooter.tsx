@@ -18,7 +18,6 @@ export default function SiteFooter() {
   const locale = getLocaleFromPath(pathname);
   const href = (path: string) => withLocalePath(path, locale);
 
-  const sisterLabel = locale === "ko" ? "함께 운영하는 사이트" : "Sister sites";
   const bluedinoProps = getPartnerLinkProps(PARTNER_SITES.bluedino, locale);
   const megaProps = getPartnerLinkProps(PARTNER_SITES.megaCalculators, locale);
 
@@ -62,7 +61,7 @@ export default function SiteFooter() {
 
         <div className="mt-6 border-t border-amber-50 pt-4">
           <div className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
-            {sisterLabel}
+            {locale === "ko" ? "함께 보면 좋은 관련 서비스" : "Related services we recommend"}
           </div>
           <div className="mt-2 flex flex-wrap gap-x-5 gap-y-2 text-xs text-slate-500">
             <a {...megaProps} className="transition hover:text-slate-700">
@@ -78,7 +77,7 @@ export default function SiteFooter() {
           <div className="text-xs text-slate-400">© {new Date().getFullYear()} MomTools. All rights reserved.</div>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-slate-500">
             <span className="text-slate-400">
-              {locale === "ko" ? "운영자" : "Maintainer"}
+              {locale === "ko" ? "공식 채널" : "Official channels"}
             </span>
             <a
               href="https://blog.naver.com/afterchan"

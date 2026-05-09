@@ -336,7 +336,7 @@ export default function BirthSupportCalculatorClient({
           <div className="mt-2">
             <b className="text-slate-900">받게 될 금액 다음에 챙길 흐름이 있어요.</b>{" "}
             첫만남이용권·부모급여·아동수당·지자체 출산지원금이 들어오면 자녀 적금, 청약, 연말정산 자녀세액공제처럼 가계에서 함께 정리하면 좋은 항목이 늘어요.
-            관련 흐름은 같은 운영자가 운영하는 <a
+            관련 흐름은 함께 보면 좋은 관련 서비스인 <a
               href="https://bluedino.kr"
               target="_blank"
               rel="me external noopener"

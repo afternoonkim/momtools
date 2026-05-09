@@ -63,8 +63,8 @@ export default function PlayCategoryView({
 
         {items.length === 0 ? (
           <StateMessage
-            title={locale === "ko" ? "아직 표시할 놀이 자료가 없습니다" : "No printable pages are listed here yet"}
-            description={locale === "ko" ? "카테고리는 준비되어 있지만 실제 예시 자료가 아직 연결되지 않았습니다. 다른 카테고리를 먼저 보거나 유아 정보 페이지를 함께 확인해 보세요." : "The category structure is ready, but sample printable pages are not connected yet. Try another category or open the toddler guide first."}
+            title={locale === "ko" ? "이 카테고리는 준비된 자료가 아직 없어요" : "Nothing here yet"}
+            description={locale === "ko" ? "다른 카테고리에서 바로 활용 가능한 자료를 살펴보거나, 유아 정보 페이지를 함께 확인해 보세요." : "Try another category for printable pages that are ready to use, or open the toddler guide for related ideas."}
             href={basePath}
             actionLabel={locale === "ko" ? "전체 놀이 보기" : "Back to play hub"}
             secondaryHref={locale === "ko" ? "/info/toddler" : "/en/info/toddler"}

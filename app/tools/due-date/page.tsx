@@ -55,7 +55,7 @@ export default function Page() {
         <ContentUpdateNote
           publishedOn={pageDates.published}
           updatedOn={pageDates.updated}
-          note="예정일 계산 페이지는 부모가 날짜만 보는 데서 그치지 않고, 다음에 무엇을 준비하면 좋은지까지 함께 이해할 수 있도록 설명 구조를 정기적으로 점검합니다."
+          note="날짜 계산만 보고 끝내지 않도록, 결과 아래에서 다음에 무엇을 준비하면 좋은지까지 한 번에 이어서 살펴볼 수 있어요."
         />
 
         <section className="mt-card p-6 md:p-8">

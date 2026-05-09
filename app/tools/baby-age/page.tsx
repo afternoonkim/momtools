@@ -37,7 +37,7 @@ export default function Page() {
         <ContentUpdateNote
           publishedOn={pageDates.published}
           updatedOn={pageDates.updated}
-          note="월령 계산 페이지는 부모가 개월수 숫자를 실제 육아 일정에 연결해 이해할 수 있도록 설명과 내부 링크 흐름을 함께 점검합니다."
+          note="월령 숫자만 보지 않고, 결과 아래에서 실제 육아 일정과 연결되는 정보까지 한 번에 이어서 살펴볼 수 있어요."
         />
 
         <section className="grid gap-6 lg:grid-cols-2">

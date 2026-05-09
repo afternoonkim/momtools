@@ -25,6 +25,7 @@ import {
 import SidebarItem from "./SidebarItem";
 import SidebarGroup from "./SidebarGroup";
 import LanguageSwitch from "./LanguageSwitch";
+import SearchBox from "./SearchBox";
 import { getLocaleFromPath, withLocalePath } from "@/lib/site-locale";
 
 export default function Sidebar({
@@ -210,6 +211,12 @@ export default function Sidebar({
         {!collapsed ? (
           <div className="hidden border-b border-amber-100 px-4 py-3 lg:block">
             <LanguageSwitch />
+          </div>
+        ) : null}
+
+        {!collapsed && isKo ? (
+          <div className="border-b border-amber-100 px-4 py-3">
+            <SearchBox size="sm" placeholder="감기, 부모급여, 청주 출산지원금" />
           </div>
         ) : null}
 
