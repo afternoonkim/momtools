@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 
 const items = [
-  ["출산 준비 체크리스트", "입원 가방과 출산 전 준비 항목을 순서대로 점검합니다.", "/checklists/birth"],
+  ["출산 준비 체크리스트", "입원 가방과 출산 전 준비 항목을 순서대로 확인할 수 있어요.", "/checklists/birth"],
   ["신생아 준비 체크리스트", "집으로 아기를 맞이하기 전 필요한 준비를 모았습니다.", "/checklists/newborn"],
   ["이유식 준비 체크리스트", "조리 도구와 시작 전 점검 항목을 정리했습니다.", "/checklists/weaning"],
   ["어린이집 준비 체크리스트", "등원 전 준비물과 적응 포인트를 정리했습니다.", "/checklists/daycare"],

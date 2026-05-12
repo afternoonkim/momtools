@@ -27,18 +27,21 @@ export default function PersistentChecklist({
   const [checkedMap, setCheckedMap] = useState<Record<string, boolean>>(initialState);
 
   useEffect(() => {
-    try {
-      const raw = window.localStorage.getItem(storageKey);
-      if (!raw) {
+    const timer = window.setTimeout(() => {
+      try {
+        const raw = window.localStorage.getItem(storageKey);
+        if (!raw) {
+          setCheckedMap(initialState);
+          return;
+        }
+        const parsed = JSON.parse(raw) as Record<string, boolean>;
+        const merged = Object.fromEntries(items.map((item) => [item, Boolean(parsed[item])]));
+        setCheckedMap(merged);
+      } catch {
         setCheckedMap(initialState);
-        return;
       }
-      const parsed = JSON.parse(raw) as Record<string, boolean>;
-      const merged = Object.fromEntries(items.map((item) => [item, Boolean(parsed[item])]));
-      setCheckedMap(merged);
-    } catch {
-      setCheckedMap(initialState);
-    }
+    }, 0);
+    return () => window.clearTimeout(timer);
   }, [initialState, items, storageKey]);
 
   useEffect(() => {
@@ -48,7 +51,9 @@ export default function PersistentChecklist({
   }, [checkedMap, storageKey]);
 
   return (
-    <div className="mt-5 grid gap-3">
+    <div className="mt-5">
+      <p className="mb-3 rounded-2xl bg-slate-50 px-4 py-3 text-sm leading-6 text-slate-600">체크한 항목은 이 기기 브라우저에 자동 저장돼요. 다음에 다시 들어와도 이어서 확인할 수 있습니다.</p>
+      <div className="grid gap-3">
       {items.map((item) => (
         <label
           key={item}
@@ -68,6 +73,7 @@ export default function PersistentChecklist({
           <span className={checkedMap[item] ? "text-slate-400 line-through" : ""}>{item}</span>
         </label>
       ))}
+      </div>
     </div>
   );
 }

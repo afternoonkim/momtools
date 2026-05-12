@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { rankingYears, nameMeanings } from "@/data/babyNames";
+import { rankingYears } from "@/data/babyNames";
+import { meaningPureKoreanNames } from "@/data/koreanNames";
 
 export const metadata: Metadata = {
   title: "아이 이름 짓기 | 이름 생성기 순위 뜻",
@@ -73,7 +74,7 @@ export default function BabyNamesHubPage() {
         <section className="mt-card-soft p-6 md:p-8">
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">많이 보는 이름 바로가기</div>
           <div className="mt-4 flex flex-wrap gap-3">
-            {nameMeanings.slice(0, 12).map((item) => (
+            {meaningPureKoreanNames.slice(0, 12).map((item) => (
               <Link key={item.slug} href={`/baby-names/meanings/${item.slug}`} className="rounded-full bg-white px-4 py-2 text-sm text-slate-600 shadow-sm">
                 {item.name}
               </Link>

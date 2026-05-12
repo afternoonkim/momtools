@@ -14,7 +14,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: `${item.name} 이름 뜻`,
     description: `${item.name} 이름의 뜻과 느낌, 부모가 함께 체크하면 좋은 포인트를 정리했습니다.`,
-    robots: { index: false, follow: true },
+    robots: { index: true, follow: true },
+    alternates: { canonical: `https://momtools.kr/baby-names/meanings/${item.slug}` },
   };
 }
 

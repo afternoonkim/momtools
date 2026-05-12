@@ -95,7 +95,7 @@ export async function generateMetadata({ params }: { params: Promise<RouteParams
   // 예) "청주 출산지원금 2026 첫째 둘째 예상 금액 | MomTools"
   const title = `${shortName} 출산지원금 2026 첫째 둘째 예상 금액 | MomTools`;
   const description =
-    `${displayName} 출산지원금을 첫만남이용권, 부모급여, 아동수당, 가정양육수당, 지자체 출산지원금까지 합산해 ` +
+    `${displayName} 출산지원금을 첫만남이용권, 부모급여, 아동수당, 지자체 출산지원금을 먼저 합산해 ` +
     `첫째 ${result.formattedTotal}, 둘째 ${secondResult.formattedTotal} 예상 금액을 바로 확인할 수 있어요. ` +
     `${shortName} 출산지원금 신청 조건과 지급 방식까지 한 번에 살펴보세요.`;
 
@@ -245,7 +245,7 @@ export default async function RegionalBirthSupportCalculatorPage({ params }: { p
           <span className="mt-badge">{region.sido} 출산지원금</span>
           <h1 className="mt-title-xl mt-5">{shortName} 출산지원금 2026 첫째·둘째·셋째 얼마 받을 수 있나요?</h1>
           <p className="mt-text-main mt-4">
-            {displayName} 출산지원금은 전국 공통 지원금(첫만남이용권, 부모급여, 아동수당, 가정양육수당)과 {displayName}이 자체적으로 지급하는 출산축하금·출산장려금·다자녀지원금을 합쳐서 봐야 실제 받을 수 있는 금액에 가까워요. 출생 순위별 합산 예상 금액을 한 번에 보고, {shortName} 지자체 지원 항목까지 같이 살펴보세요.
+            {displayName} 출산지원금은 전국 공통 기본 지원금(첫만남이용권, 부모급여, 아동수당)과 {displayName}이 자체적으로 지급하는 출산축하금·출산장려금·다자녀지원금을 합쳐서 봐야 실제 받을 수 있는 금액에 가까워요. 출생 순위별 합산 예상 금액을 한 번에 보고, {shortName} 지자체 지원 항목까지 같이 살펴보세요.
           </p>
           <p className="mt-text-sub mt-4">
             이 지역의 지원금은 출생순위, 거주기간, 신청기한에 따라 달라질 수 있어요. 결과 카드 아래 항목별 조건을 함께 확인해 주세요.
@@ -345,7 +345,7 @@ export default async function RegionalBirthSupportCalculatorPage({ params }: { p
               <h3 className="text-base font-semibold text-slate-900">{shortName} 출산지원금은 일시금인가요, 분할 지급인가요?</h3>
               <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">
                 항목에 따라 일시금, 분할 지급, 지역화폐, 선불카드, 출산축하용품 등 지급 방식이 다양합니다.
-                계산 결과 카드 옆 “{`{지급방식}`}” 표시와 항목별 안내 문구에서 우리 가정에 맞는 방식인지 확인해 보세요.
+                계산 결과 카드 옆 “지급방식” 표시와 항목별 안내 문구에서 우리 가정에 맞는 방식인지 확인해 보세요.
               </p>
             </article>
           </div>

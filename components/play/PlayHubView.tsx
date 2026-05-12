@@ -1,11 +1,11 @@
 import Link from "next/link";
 import type { PlayLocale } from "@/data/play";
-import { playCategories, playItems, getLocalizedPlayText } from "@/data/play";
+import { playCategories, getLocalizedPlayText, getPlayItemsByCategory, getReadyPlayItems } from "@/data/play";
 import PlayCard from "./PlayCard";
 
 export default function PlayHubView({ locale }: { locale: PlayLocale }) {
   const basePath = locale === "ko" ? "/play" : "/en/play";
-  const topItems = playItems.slice(0, 4);
+  const topItems = getReadyPlayItems().slice(0, 4);
 
   return (
     <div className="mt-page">
@@ -97,7 +97,7 @@ export default function PlayHubView({ locale }: { locale: PlayLocale }) {
             </h2>
             <div className="mt-5 space-y-3">
               {playCategories.map((category) => {
-                const count = playItems.filter((item) => item.category === category.slug).length;
+                const count = getPlayItemsByCategory(category.slug).length;
                 return (
                   <Link
                     key={category.slug}
@@ -108,9 +108,15 @@ export default function PlayHubView({ locale }: { locale: PlayLocale }) {
                       <div className="font-semibold text-slate-900">{getLocalizedPlayText(category.name, locale)}</div>
                       <div className="mt-1 text-sm text-slate-500">{getLocalizedPlayText(category.searchLabel, locale)}</div>
                     </div>
-                    <div className="rounded-full bg-amber-50 px-3 py-1 text-sm font-semibold text-amber-700">
-                      {count}{locale === "ko" ? "개" : " items"}
-                    </div>
+                    {count > 0 ? (
+                      <div className="rounded-full bg-amber-50 px-3 py-1 text-sm font-semibold text-amber-700">
+                        {count}{locale === "ko" ? "개" : " items"}
+                      </div>
+                    ) : (
+                      <div className="rounded-full bg-amber-50 px-3 py-1 text-sm font-semibold text-amber-700">
+                        {locale === "ko" ? "놀이 아이디어" : "Activity ideas"}
+                      </div>
+                    )}
                   </Link>
                 );
               })}

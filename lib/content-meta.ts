@@ -27,13 +27,14 @@ export const PAGE_DATES = {
   "/policy/childcare-benefit": { published: "2026-04-28", updated: "2026-04-28" },
   "/policy/work-parenting": { published: "2026-04-28", updated: "2026-04-28" },
   "/policy/care-education": { published: "2026-04-28", updated: "2026-04-28" },
-  "/policy/health-medical": { published: "2026-04-28", updated: "2026-04-28" },
-  "/policy/local-birth-grant": { published: "2026-04-28", updated: "2026-04-28" },
+  "/policy/medical-health": { published: "2026-04-28", updated: "2026-04-28" },
+  "/policy/local-check": { published: "2026-04-28", updated: "2026-04-28" },
   "/tools/birth-support-calculator": { published: "2026-04-28", updated: "2026-04-28" },
   "/policy/birth-support-calculator": { published: "2026-04-28", updated: "2026-04-28" },
 } as const satisfies Record<string, { published: string; updated: string }>;
 
-export const HOME_CARD_UPDATED_LABEL = "2026.04 최신 검토";
+export const HOME_CARD_UPDATED_LABEL_KO = "2026.04 최신 검토";
+export const HOME_CARD_UPDATED_LABEL_EN = "Reviewed April 2026";
 
 export function buildCanonical(path: string) {
   if (!path.startsWith("/")) {

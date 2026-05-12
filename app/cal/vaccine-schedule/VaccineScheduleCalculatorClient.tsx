@@ -491,7 +491,7 @@ export default function VaccineScheduleCalculatorClient() {
                   이유식 시작 계산기
                 </Link>
                 <Link
-                  href="/checklist/newborn-prep"
+                  href="/checklists/newborn"
                   className="block rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700"
                 >
                   신생아 준비 체크리스트

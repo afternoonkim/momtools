@@ -12,7 +12,7 @@ const secondResult = calculateBirthSupport("jeju", "second");
 export const metadata: Metadata = {
   title: "출산지원금 계산기 | 지역별 첫째 둘째 지원금 예상 금액 | MomTools",
   description:
-    "2026년 전국 공통 출산·육아 지원금과 제주도·경남·경북·전남·전북·충남·충북·경기·강원·세종·울산·대전·광주·인천·대구·부산·서울 지역별 출산지원금 자료를 반영해 첫만남이용권, 부모급여, 아동수당, 가정양육수당, 지자체 출산지원금을 합산 계산합니다.",
+    "2026년 전국 공통 출산·육아 지원금과 제주도·경남·경북·전남·전북·충남·충북·경기·강원·세종·울산·대전·광주·인천·대구·부산·서울 지역별 출산지원금 자료를 반영해 첫만남이용권, 부모급여, 아동수당, 지자체 출산지원금을 먼저 합산하고 가정양육수당처럼 조건에 따라 달라지는 지원은 별도로 안내합니다.",
   keywords: [
     "출산지원금 계산기",
     "지역별 출산지원금",
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
 const faq = [
   {
     q: "지역별 출산지원금 계산기는 어떤 금액을 합산하나요?",
-    a: "첫만남이용권, 부모급여, 아동수당, 가정양육수당, 그리고 선택한 지역의 지자체 출산지원금이 한 번에 합산돼요. 전국 공통 지원금 기준은 부모급여 1,800만 원, 비수도권 아동수당 최대 1,134만 원, 가정양육수당 최대 620만 원이에요.",
+    a: "첫만남이용권, 부모급여, 아동수당, 그리고 선택한 지역의 지자체 출산지원금이 기본 예상 금액으로 먼저 합산돼요. 가정양육수당은 어린이집·유치원 이용 여부에 따라 달라지는 조건부 지원이라 별도 항목으로 확인할 수 있어요.",
   },
   {
     q: "지자체 출산지원금은 한 번에 지급되나요?",
@@ -60,7 +60,7 @@ const faq = [
   },
   {
     q: "가정양육수당도 무조건 받을 수 있나요?",
-    a: "가정양육수당은 어린이집이나 유치원 등 보육·교육 서비스를 이용하지 않고 가정에서 양육하는 경우에 확인해야 하는 조건부 지원입니다. 계산기에는 24개월 이상~86개월 미만 일반 아동 기준 월 10만 원을 포함했지만 실제 수령 여부는 보육서비스 이용 상태에 따라 달라질 수 있습니다.",
+    a: "가정양육수당은 어린이집이나 유치원 등 보육·교육 서비스를 이용하지 않고 가정에서 양육하는 경우에 확인해야 하는 조건부 지원입니다. 계산기에서는 기본 예상 합계에 넣지 않고, 24개월 이상~86개월 미만 일반 아동 기준 월 10만 원을 조건 충족 시 추가 가능 금액으로 따로 보여줍니다.",
   },
   {
     q: "전입한 지 얼마 안 됐으면 받을 수 있나요?",
@@ -95,24 +95,24 @@ export default function Page() {
           <article className="mt-card p-6">
             <div className="text-sm font-semibold text-amber-600">첫째아 기준</div>
             <h2 className="mt-3 text-2xl font-black text-slate-900">{firstResult.formattedTotal}</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-600">첫만남이용권 200만 원, 부모급여 1,800만 원, 비수도권 아동수당 최대 1,134만 원, 가정양육수당 최대 620만 원, 제주도 출산지원금 500만 원을 합산한 조건 충족 시 예상 금액입니다.</p>
+            <p className="mt-3 text-sm leading-7 text-slate-600">첫만남이용권 200만 원, 부모급여 1,800만 원, 비수도권 아동수당 최대 1,134만 원, 제주도 출산지원금 500만 원을 우선 합산한 기본 예상 금액입니다. 가정양육수당은 조건 충족 시 추가 가능 금액으로 별도 확인할 수 있습니다.</p>
           </article>
           <article className="mt-card p-6">
             <div className="text-sm font-semibold text-amber-600">둘째아 이상 기준</div>
             <h2 className="mt-3 text-2xl font-black text-slate-900">{secondResult.formattedTotal}</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-600">첫만남이용권 300만 원과 제주도 출산지원금 1,000만 원에 부모급여 1,800만 원, 비수도권 아동수당, 가정양육수당을 더한 조건 충족 시 예상 금액입니다.</p>
+            <p className="mt-3 text-sm leading-7 text-slate-600">첫만남이용권 300만 원과 제주도 출산지원금 1,000만 원에 부모급여 1,800만 원, 비수도권 아동수당을 더한 기본 예상 금액입니다. 조건부 지원은 별도 항목으로 확인할 수 있습니다.</p>
           </article>
           <article className="mt-card p-6">
             <div className="text-sm font-semibold text-amber-600">지급 방식</div>
             <h2 className="mt-3 text-2xl font-black text-slate-900">바우처 + 월 지급 + 현금</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-600">첫만남이용권은 국민행복카드 바우처, 부모급여·아동수당·가정양육수당은 월 단위 현금성 지원, 지자체 출산지원금은 현금, 지역화폐, 선불카드, 현물 지원 등으로 구분해 보여줍니다.</p>
+            <p className="mt-3 text-sm leading-7 text-slate-600">첫만남이용권은 국민행복카드 바우처, 부모급여·아동수당은 월 단위 현금성 지원, 지자체 출산지원금은 현금, 지역화폐, 선불카드, 현물 지원 등으로 구분해 보여줍니다.</p>
           </article>
         </section>
 
         <section className="mt-card p-6 md:p-8">
           <h2 className="mt-title-lg">지역별 출산지원금 신청 전 확인할 조건</h2>
           <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">
-            현재 계산기에는 총 {birthSupportRegions.length}개 지역 데이터가 들어가 있습니다. 같은 도 안에서도 시·군·구마다 금액, 지급 방식, 거주기간, 신청기한이 다르기 때문에 계산 결과를 본 뒤 반드시 신청 조건을 함께 확인해야 합니다.
+            현재 계산기는 아이사랑 지자체 출산지원금 자료와 지역별 공식 안내를 기준으로 정리한 데이터를 사용합니다. 같은 도 안에서도 시·군·구마다 금액, 지급 방식, 거주기간, 신청기한이 다르기 때문에 계산 결과를 본 뒤 반드시 신청 조건을 함께 확인해야 합니다.
           </p>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
             <div className="rounded-3xl bg-amber-50/70 p-5 text-sm leading-7 text-slate-700">
@@ -171,8 +171,7 @@ export default function Page() {
 }
 
 /**
- * 지역명 + “출산지원금” 검색 노출을 위해 174개 지역으로 가는 내부 링크 그리드를 시도(광역시도) 단위로 그룹화해 노출합니다.
- * 네이버 크롤러가 지역명 앵커 텍스트를 통해 각 지역별 페이지를 발견할 수 있도록 의도된 SEO 인덱스 섹션입니다.
+ * 지역별 출산지원금 상세 페이지로 바로 이동할 수 있도록 시·도 단위로 묶어 보여줍니다.
  */
 function RegionIndexSection() {
   // 시도별로 묶기

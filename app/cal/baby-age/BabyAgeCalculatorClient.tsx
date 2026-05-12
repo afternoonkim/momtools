@@ -72,6 +72,21 @@ function getMonthDiffWithDayAdjustment(birth: Date, today: Date) {
   return Math.max(0, months);
 }
 
+
+function getMonthlyGuideLink(months: number) {
+  if (months <= 12) return `/monthly-guide/${months}-month`;
+  if (months <= 18) return "/monthly-guide/13-18-month";
+  if (months <= 24) return "/monthly-guide/19-24-month";
+  return "/monthly-guide/25-36-month";
+}
+
+function getMonthlyGuideLabel(months: number) {
+  if (months <= 12) return `생후 ${months}개월 육아 로드맵`;
+  if (months <= 18) return "생후 13~18개월 육아 로드맵";
+  if (months <= 24) return "생후 19~24개월 육아 로드맵";
+  return "생후 25~36개월 육아 로드맵";
+}
+
 function getYearsMonthsDays(birth: Date, today: Date) {
   let years = today.getFullYear() - birth.getFullYear();
   let months = today.getMonth() - birth.getMonth();
@@ -273,13 +288,27 @@ export default function BabyAgeCalculatorClient() {
                 <div className="mt-6 rounded-3xl border border-amber-100 bg-gradient-to-br from-amber-50 via-white to-sky-50 p-5">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="inline-flex rounded-full bg-white px-3 py-1 text-xs font-semibold text-amber-700 shadow-sm ring-1 ring-amber-100">
-                      계산 로직
+                      월령별 체크
                     </span>
                     <span className="text-sm text-slate-700">
-                      생년월일 기준 개월수 계산 + 출생 후 경과일/주수 자동 산출
+                      지금 월령에 맞는 수유·수면·발달 체크도 함께 확인해보세요.
                     </span>
                   </div>
                   <p className="mt-3 text-sm leading-7 text-slate-600">
+                    계산된 개월수에 맞춰 바로 볼 수 있는 육아 로드맵을 연결했어요. 하루 루틴, 놀이,
+                    주의 신호를 함께 보면 현재 시기에 무엇을 챙기면 좋을지 더 쉽게 정리할 수 있습니다.
+                  </p>
+                  <Link
+                    href={getMonthlyGuideLink(result.months)}
+                    className="mt-4 inline-flex rounded-full bg-amber-600 px-4 py-2 text-sm font-bold text-white transition hover:bg-amber-700"
+                  >
+                    {getMonthlyGuideLabel(result.months)} 보기
+                  </Link>
+                </div>
+
+                <div className="mt-4 rounded-3xl border border-slate-100 bg-white p-5">
+                  <div className="text-sm font-semibold text-slate-900">계산 기준</div>
+                  <p className="mt-2 text-sm leading-7 text-slate-600">
                     개월수는 연·월 차이를 기준으로 계산하고, 오늘 날짜의 일이 출생일보다 이르면 1개월을
                     차감해 실제 체감 개월수에 가깝게 보여줍니다.
                   </p>
@@ -408,7 +437,7 @@ export default function BabyAgeCalculatorClient() {
                   이유식 시작 계산기
                 </Link>
                 <Link
-                  href="/checklist/newborn-prep"
+                  href="/checklists/newborn"
                   className="block rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700"
                 >
                   신생아 준비 체크리스트

@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       description,
     },
     robots: {
-      // AdSense 심사 동안 색인 차단 (쿠팡 파트너스 affiliate 콘텐츠)
+      // 제휴 상품 상세 페이지는 별도 정책에 따라 색인 범위를 제한
       index: false,
       follow: true,
     },

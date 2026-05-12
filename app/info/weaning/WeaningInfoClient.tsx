@@ -245,7 +245,7 @@ export default function WeaningInfoClient() {
                   아기 개월수 계산기
                 </Link>
                 <Link
-                  href="/checklist/weaning-prep"
+                  href="/checklists/weaning"
                   className="block rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3 text-sm font-medium text-slate-700 transition hover:border-sky-200 hover:bg-sky-50 hover:text-sky-700"
                 >
                   이유식 준비 체크리스트

@@ -1,5 +1,5 @@
-import { redirect } from "next/navigation";
+import { permanentRedirect } from "next/navigation";
 
 export default function VaccinationAliasPage() {
-  redirect("/en/cal/vaccine-schedule");
+  permanentRedirect("/en/cal/vaccine-schedule");
 }

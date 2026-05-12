@@ -18,7 +18,8 @@ export default function BirthSupportCalculatorClient() {
   const [birthOrder, setBirthOrder] = useState<BirthOrder>("first");
 
   useEffect(() => {
-    setMounted(true);
+    const timer = window.setTimeout(() => setMounted(true), 0);
+    return () => window.clearTimeout(timer);
   }, []);
 
   const result = useMemo(() => calculateBirthSupport(regionCode, birthOrder), [regionCode, birthOrder]);
@@ -49,7 +50,7 @@ export default function BirthSupportCalculatorClient() {
             <span className="mt-badge">지역별 출산지원금 데이터 적용</span>
             <h2 className="mt-title-lg mt-4">사는 지역과 출생 순위를 선택해 예상 지원금을 계산해 보세요</h2>
             <p className="mt-text-sub mt-3 max-w-3xl">
-              제공해주신 2026년 전국 공통 지원금 기준과 제주도·경남·경북·전남·전북·충남·충북·경기·강원·세종·울산·대전·광주·인천·대구·부산·서울 지역별 상세 자료를 반영했습니다. 지역과 출생 순위를 선택하면 첫만남이용권, 부모급여, 아동수당, 가정양육수당, 지자체 출산지원금을 함께 계산합니다.
+              2026년 전국 공통 지원금 기준과 제주도·경남·경북·전남·전북·충남·충북·경기·강원·세종·울산·대전·광주·인천·대구·부산·서울 지역별 상세 자료를 반영했습니다. 지역과 출생 순위를 선택하면 첫만남이용권, 부모급여, 아동수당, 지자체 출산지원금을 먼저 계산하고, 가정양육수당처럼 조건에 따라 달라지는 지원은 별도로 안내합니다.
             </p>
           </div>
           <div className="rounded-3xl bg-white/80 p-4 text-sm text-slate-600 shadow-sm ring-1 ring-amber-100">
@@ -102,7 +103,7 @@ export default function BirthSupportCalculatorClient() {
           <div className="rounded-3xl border border-slate-100 bg-slate-50 p-5 text-sm leading-7 text-slate-600">
             <div className="font-semibold text-slate-800">계산 기준</div>
             <p className="mt-2">
-              총액은 첫만남이용권, 부모급여, 아동수당, 가정양육수당, 선택한 지역의 지자체 지원금을 합산했습니다. 부모급여는 0세 월 100만 원·1세 월 50만 원, 아동수당은 비수도권 월 10.5만 원, 가정양육수당은 조건부 월 10만 원 기준입니다.
+              총액은 첫만남이용권, 부모급여, 아동수당, 선택한 지역의 지자체 지원금을 합산했습니다. 부모급여는 0세 월 100만 원·1세 월 50만 원 기준이며, 아동수당은 거주 시·도에 따라 수도권 월 10만 원 또는 비수도권 월 10.5만 원 기준으로 적용됩니다. 가정양육수당은 어린이집·유치원 이용 여부에 따라 달라져 별도로 안내합니다.
             </p>
           </div>
         </div>
@@ -110,11 +111,11 @@ export default function BirthSupportCalculatorClient() {
         <div className="space-y-4">
           <div className="rounded-[2rem] bg-slate-900 p-6 text-white shadow-xl">
             <div className="flex items-center gap-3 text-sm font-semibold text-amber-200">
-              <Calculator size={18} /> 예상 지원 가치
+              <Calculator size={18} /> 기본 예상 지원금
             </div>
             <div className="mt-5 text-4xl font-black tracking-tight md:text-5xl">{result.formattedTotal}</div>
             <p className="mt-3 text-sm leading-7 text-slate-300">
-              {result.region.sido} {result.region.sigungu === "전체" ? "" : result.region.sigungu} 기준 {result.birthOrderLabel} 출산·양육 과정에서 받을 수 있는 전국 공통 지원과 지자체 지원의 누적 예상 금액입니다.
+              {result.region.sido} {result.region.sigungu === "전체" ? "" : result.region.sigungu} 기준 {result.birthOrderLabel} 출산·양육 과정에서 받을 수 있는 전국 공통 기본 지원과 지자체 지원을 합산한 예상 금액입니다. 조건부 지원은 아래 항목에서 따로 확인해 주세요.
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               <div className="rounded-3xl bg-white/10 p-4">
@@ -126,12 +127,17 @@ export default function BirthSupportCalculatorClient() {
                 <div className="mt-2 text-2xl font-bold">{result.formattedVoucher}</div>
               </div>
               <div className="rounded-3xl bg-white/10 p-4">
-                <div className="text-xs font-semibold text-slate-300">전국 공통 누적</div>
+                <div className="text-xs font-semibold text-slate-300">전국 공통 기본 합계</div>
                 <div className="mt-2 text-2xl font-bold">{result.formattedCommonSupport}</div>
               </div>
               <div className="rounded-3xl bg-white/10 p-4">
                 <div className="text-xs font-semibold text-slate-300">지자체 추가 지원</div>
                 <div className="mt-2 text-2xl font-bold">{result.formattedLocalSupport}</div>
+              </div>
+              <div className="rounded-3xl bg-white/10 p-4 sm:col-span-2">
+                <div className="text-xs font-semibold text-slate-300">조건 충족 시 추가 가능</div>
+                <div className="mt-2 text-2xl font-bold">{result.formattedConditionalPossible}</div>
+                <p className="mt-2 text-xs leading-5 text-slate-300">가정양육수당처럼 보육서비스 이용 여부에 따라 달라지는 금액은 기본 합계에 넣지 않았습니다.</p>
               </div>
             </div>
           </div>
@@ -145,7 +151,7 @@ export default function BirthSupportCalculatorClient() {
                     <h3 className="mt-1 text-lg font-bold text-slate-900">{item.name}</h3>
                     <p className="mt-2 text-sm leading-7 text-slate-600">{item.displayValue}</p>
                     {item.isConditional ? (
-                      <p className="mt-2 inline-flex rounded-full bg-rose-50 px-3 py-1 text-xs font-semibold text-rose-700">조건부 지원: 어린이집·유치원 이용 여부 확인 필요</p>
+                      <p className="mt-2 inline-flex rounded-full bg-rose-50 px-3 py-1 text-xs font-semibold text-rose-700">조건 충족 시 추가 가능: 어린이집·유치원 이용 여부에 따라 달라져요</p>
                     ) : null}
                   </div>
                   <div className="shrink-0 rounded-2xl bg-amber-50 px-4 py-3 text-right">
@@ -168,7 +174,7 @@ export default function BirthSupportCalculatorClient() {
       <div className="border-t border-slate-100 bg-white p-6 md:p-8">
         <h3 className="text-lg font-black text-slate-900">연령별 공통 지원 흐름</h3>
         <p className="mt-2 text-sm leading-7 text-slate-600">
-          아래 표는 2026년 전국 공통 지원금을 계산기 화면에서 바로 이해할 수 있도록 정리한 내용입니다. 첫만남이용권은 1회, 부모급여·아동수당·가정양육수당은 월 단위 지원으로 구분됩니다.
+          아래 표는 2026년 전국 공통 지원금을 계산기 화면에서 바로 이해할 수 있도록 정리한 내용입니다. 첫만남이용권은 1회, 부모급여·아동수당은 월 단위 기본 지원으로 구분됩니다. 가정양육수당은 보육서비스 이용 여부에 따라 달라지는 조건부 지원입니다.
         </p>
         <div className="mt-5 overflow-x-auto rounded-3xl border border-slate-100">
           <table className="w-full min-w-[760px] text-left text-sm">

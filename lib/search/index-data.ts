@@ -1,9 +1,11 @@
 import { qnaData, qnaCategories, type QnaCategory } from "@/data/qna";
 import { familyHealthCategories, familyHealthQnaData, type FamilyHealthQnaCategory } from "@/data/familyHealthQna";
-import { governmentPolicyEntries, governmentPolicyCategories } from "@/data/governmentPolicies";
+import { governmentPolicies, governmentPolicyCategories } from "@/data/governmentPolicy";
 import { familyFinanceArticles } from "@/data/familyFinance";
 import { babyFoodRecipes, stageLabels } from "@/data/babyFood";
 import { birthSupportRegions } from "@/data/birthSupportCalculator";
+import { monthlyGuideItems } from "@/data/monthlyGuide";
+import { healthGuideItems } from "@/data/healthGuides";
 
 export type SearchEntryType =
   | "qna"
@@ -14,7 +16,9 @@ export type SearchEntryType =
   | "tool"
   | "info"
   | "checklist"
-  | "birth-support-region";
+  | "birth-support-region"
+  | "monthly-guide"
+  | "health-guide";
 
 export interface SearchEntry {
   type: SearchEntryType;
@@ -52,14 +56,14 @@ const familyHealthEntries: SearchEntry[] = (Object.keys(familyHealthCategories) 
     })),
 );
 
-const policyEntries: SearchEntry[] = governmentPolicyEntries.map((entry) => ({
+const policyEntries: SearchEntry[] = governmentPolicies.map((entry) => ({
   type: "policy" as const,
   categoryLabel: `정부정책 · ${governmentPolicyCategories[entry.category].shortLabel}`,
   href: `/policy/${entry.category}/${entry.slug}`,
-  title: entry.question,
+  title: entry.title,
   description: entry.summary,
-  topic: entry.policyName,
-  keywords: [...(entry.keywords ?? []), entry.policyName, entry.topic].filter(Boolean) as string[],
+  topic: entry.shortTitle,
+  keywords: [...(entry.keywords ?? []), entry.shortTitle, entry.title].filter(Boolean) as string[],
 }));
 
 const familyFinanceEntries: SearchEntry[] = familyFinanceArticles.map((article) => ({
@@ -117,6 +121,27 @@ const birthSupportRegionEntries: SearchEntry[] = birthSupportRegions.map((region
     ].filter(Boolean) as string[],
   };
 });
+
+
+const monthlyGuideEntries: SearchEntry[] = monthlyGuideItems.map((item) => ({
+  type: "monthly-guide" as const,
+  categoryLabel: "월령별 육아 로드맵",
+  href: `/monthly-guide/${item.slug}`,
+  title: item.title,
+  description: item.summary,
+  topic: item.ageLabel,
+  keywords: [...item.keywords, item.ageLabel, "월령별 육아"],
+}));
+
+const healthGuideEntries: SearchEntry[] = healthGuideItems.map((item) => ({
+  type: "health-guide" as const,
+  categoryLabel: "증상별 건강 가이드",
+  href: `/health/${item.slug}`,
+  title: item.title,
+  description: item.summary,
+  topic: item.title,
+  keywords: [...item.keywords, "아기 증상", "아이 건강"],
+}));
 
 /**
  * 정적인 도구·정보·체크리스트 페이지 (검색에 잡혀야 하지만 데이터로 정의되어 있지 않은 페이지들)
@@ -252,4 +277,6 @@ export const SEARCH_INDEX: SearchEntry[] = [
   ...familyFinanceEntries,
   ...babyFoodEntries,
   ...birthSupportRegionEntries,
+  ...monthlyGuideEntries,
+  ...healthGuideEntries,
 ];

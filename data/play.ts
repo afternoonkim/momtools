@@ -172,16 +172,20 @@ export function getPlayCategory(category: string) {
   return playCategories.find((item) => item.slug === category);
 }
 
+export function getReadyPlayItems() {
+  return playItems.filter((item) => item.assets.status === "ready");
+}
+
 export function getPlayItemsByCategory(category: string) {
-  return playItems.filter((item) => item.category === category);
+  return getReadyPlayItems().filter((item) => item.category === category);
 }
 
 export function getPlayItem(category: string, slug: string) {
-  return playItems.find((item) => item.category === category && item.slug === slug);
+  return getReadyPlayItems().find((item) => item.category === category && item.slug === slug);
 }
 
 export function getPlayRelatedItems(category: string, slug: string, limit = 3) {
-  return playItems.filter((item) => item.category === category && item.slug !== slug).slice(0, limit);
+  return getReadyPlayItems().filter((item) => item.category === category && item.slug !== slug).slice(0, limit);
 }
 
 export function getLocalizedPlayText(value: LocalizedText, locale: PlayLocale) {

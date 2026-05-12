@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { meaningPureKoreanNames } from "@/data/koreanNames";
 
-const pureKoreanNames = meaningPureKoreanNames.slice(0, 400);
+const pureKoreanNames = meaningPureKoreanNames;
 
 export const metadata: Metadata = {
   title: "한글 이름 뜻 모음",
-  description: "순우리말 이름 400개를 뜻과 함께 정리한 참고 페이지입니다. 마음에 드는 이름을 누르면 개별 이름의 뜻을 더 자세히 볼 수 있습니다.",
+  description: "순우리말 이름을 뜻과 함께 정리한 참고 페이지입니다. 마음에 드는 이름을 누르면 개별 이름의 뜻과 느낌을 더 자세히 볼 수 있습니다.",
 };
 
 export default function KoreanNameMeaningsPage() {
@@ -27,7 +27,7 @@ export default function KoreanNameMeaningsPage() {
           <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
             <div>
               <span className="mt-badge">이름 카드 모음</span>
-              <h2 className="mt-title-md mt-3">순우리말 이름 400개</h2>
+              <h2 className="mt-title-md mt-3">순우리말 이름 뜻 모음</h2>
               <p className="mt-text-sub mt-3 max-w-3xl">
                 부드럽고 따뜻한 느낌, 자연의 이미지, 밝고 단정한 인상을 담은 순우리말 이름을 함께 모았습니다. 이름을 고를 때는 뜻뿐 아니라 실제로 자주 불렀을 때의 발음,
                 성과 붙였을 때의 자연스러움도 함께 살펴보면 좋습니다.

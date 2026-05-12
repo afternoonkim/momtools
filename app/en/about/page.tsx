@@ -123,11 +123,11 @@ export default function EnglishAboutPage() {
         </section>
 
         <section className="mt-card p-8 md:p-10">
-          <h2 className="text-2xl font-bold tracking-tight text-slate-800">Who runs MomTools</h2>
+          <h2 className="text-2xl font-bold tracking-tight text-slate-800">How MomTools stays useful for parents</h2>
           <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">
-            MomTools is built and maintained by a single individual operator. Corrections, edits, and content
-            requests are reviewed and applied directly. The channels below are the official ways to verify the
-            site&apos;s ownership and reach the maintainer outside of the contact form.
+            MomTools brings practical calculators, checklists, and plain-language guides together so parents can
+            move from a quick answer to the next helpful step without digging through scattered pages. Corrections,
+            edits, and content suggestions can be sent through the contact page.
           </p>
           <div className="mt-5 grid gap-3 md:grid-cols-2">
             <a
@@ -138,7 +138,7 @@ export default function EnglishAboutPage() {
             >
               <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">Naver Blog</div>
               <div className="mt-2 font-semibold text-slate-800">blog.naver.com/afterchan</div>
-              <p className="mt-2 text-sm leading-7 text-slate-500">Personal blog with parenting notes and updates from the site maintainer.</p>
+              <p className="mt-2 text-sm leading-7 text-slate-500">Parenting notes, everyday family tips, and related updates.</p>
             </a>
             <a
               href="https://github.com/afternoonkim"
@@ -148,7 +148,7 @@ export default function EnglishAboutPage() {
             >
               <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">GitHub</div>
               <div className="mt-2 font-semibold text-slate-800">github.com/afternoonkim</div>
-              <p className="mt-2 text-sm leading-7 text-slate-500">Public profile and technical history for the maintainer&apos;s open work.</p>
+              <p className="mt-2 text-sm leading-7 text-slate-500">Public profile for related open projects and resources.</p>
             </a>
           </div>
         </section>

@@ -5,6 +5,7 @@ import ContentUpdateNote from "@/components/common/ContentUpdateNote";
 import RelatedContent from "@/components/common/RelatedContent";
 import { getQnaEntry, getRelatedQna, qnaCategories, type QnaCategory } from "@/data/qna";
 import { buildQnaLongtailContent, type QnaLongtailContent } from "@/lib/qna-longtail";
+import { healthGuideItems } from "@/data/healthGuides";
 
 type Params = { category: string; slug: string };
 
@@ -122,17 +123,31 @@ const relatedLinks: Record<QnaCategory, RelatedLink[]> = {
       description: "생활 루틴, 자율성, 감정 조절처럼 행동과 연결되는 배경 정보를 함께 볼 수 있습니다.",
     },
     {
-      href: "/checklists/daycare-prep",
+      href: "/checklists/daycare",
       label: "어린이집 준비 체크리스트",
       description: "분리불안, 생활 전환, 등원 적응처럼 행동 변화가 생기기 쉬운 시기에 참고하기 좋습니다.",
     },
     {
-      href: "/checklists/newborn-prep",
+      href: "/checklists/newborn",
       label: "신생아 준비 체크리스트",
       description: "초기 생활 루틴과 환경 준비를 확인하며 행동 변화의 배경을 같이 살펴볼 수 있습니다.",
     },
   ],
 };
+
+
+function getRelatedHealthGuideLinks(item: NonNullable<ReturnType<typeof getQnaEntry>>) {
+  const haystack = `${item.question} ${item.topic} ${item.summary} ${item.keywords.join(" ")}`.toLowerCase();
+  return healthGuideItems
+    .filter((guide) => {
+      const candidates = [guide.slug, ...guide.keywords, ...guide.title.split(/[｜·\s]+/)];
+      return candidates.some((candidate) => {
+        const keyword = candidate.toLowerCase();
+        return keyword.length >= 2 && haystack.includes(keyword);
+      });
+    })
+    .slice(0, 4);
+}
 
 function buildFaqItems(
   item: NonNullable<ReturnType<typeof getQnaEntry>>,
@@ -210,6 +225,7 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
 
   const content = buildQnaLongtailContent(item, typed);
   const related = getRelatedQna(typed, slug, 6);
+  const relatedHealthGuides = typed === "health" ? getRelatedHealthGuideLinks(item) : [];
   const faqs = buildFaqItems(item, typed, content);
   const pageUrl = `https://momtools.kr/qna/${typed}/${slug}`;
   const jsonLd = {
@@ -421,6 +437,24 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
             ))}
           </div>
         </section>
+
+
+        {relatedHealthGuides.length > 0 ? (
+          <section className="mt-card p-6 md:p-8">
+            <h2 className="mt-title-md">증상별 건강 가이드로 더 자세히 보기</h2>
+            <p className="mt-3 text-sm leading-7 text-slate-600">
+              이 질문과 연결되는 증상 가이드입니다. 같은 증상이라도 월령, 수유·수면 변화, 위험 신호를 함께 보면 판단이 더 쉬워집니다.
+            </p>
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              {relatedHealthGuides.map((guide) => (
+                <Link key={guide.slug} href={`/health/${guide.slug}`} className="mt-list-card transition hover:-translate-y-0.5 hover:border-rose-200">
+                  <div className="font-semibold text-slate-800">{guide.title}</div>
+                  <div className="mt-2 text-sm leading-7 text-slate-500">{guide.summary}</div>
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <section className="mt-card p-6 md:p-8">
           <h2 className="mt-title-md">같이 보면 좋은 도구와 정보</h2>

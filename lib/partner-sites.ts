@@ -1,10 +1,6 @@
 /**
- * 함께 운영하는 자매 사이트(bluedino.kr / mega-calculators.com)의 메타 데이터를 한곳에서 관리합니다.
- *
- * 두 사이트 모두 같은 운영자가 직접 운영하는 신뢰할 수 있는 도메인이므로 외부 링크에 `nofollow`를 걸지 않습니다.
- *   - 한국어 경로(`/ko`)와 영어 경로(`/en`)가 분리된 mega-calculators는 사용자가 보는 페이지의 로케일과 같은 로케일로 직접 보냅니다.
- *   - SEO 관점에서 `rel="me"`는 동일 운영자의 사이트라는 신호를, `rel="external"`은 외부 사이트라는 표기를 남깁니다.
- *   - 모든 링크는 hreflang을 함께 적어 검색엔진이 언어 매칭을 쉽게 잡도록 도와줍니다.
+ * MomTools에서 함께 안내하는 관련 사이트 정보를 관리합니다.
+ * 사용자가 보고 있는 언어와 맞는 경로로 연결합니다.
  */
 
 export type Locale = "ko" | "en";
@@ -73,13 +69,13 @@ export const PARTNER_SITES: Record<"bluedino" | "megaCalculators", PartnerSite> 
       ko: {
         label: "Mega Calculators · 더 많은 계산기",
         blurb:
-          "환율, 대출, 적금, 단위 변환처럼 일상에서 자주 쓰는 계산기를 한곳에 모아 둔 사이트예요. 같은 운영자가 만들고 있어요.",
+          "환율, 대출, 적금, 단위 변환처럼 일상에서 자주 쓰는 계산기를 한곳에 모아 둔 관련 사이트예요.",
         cta: "다른 계산기 모아보기",
       },
       en: {
         label: "Mega Calculators · everyday calculators",
         blurb:
-          "Currency, loan, savings, and unit conversion calculators in one place — built by the same maintainer behind MomTools English.",
+          "Currency, loan, savings, and unit conversion calculators in one related hub for everyday household numbers.",
         cta: "Open Mega Calculators",
       },
     },
@@ -87,10 +83,7 @@ export const PARTNER_SITES: Record<"bluedino" | "megaCalculators", PartnerSite> 
 };
 
 /**
- * 외부 자매 사이트로 향하는 anchor에 들어갈 공통 속성.
- * - 자매 사이트라 nofollow는 걸지 않음 (도메인 권위 공유 가능)
- * - rel="me external" 로 동일 운영자 + 외부 사이트 표시
- * - hreflang은 검색엔진의 언어 매칭에 도움
+ * 관련 외부 사이트로 향하는 anchor에 들어갈 공통 속성입니다.
  */
 export function getPartnerLinkProps(site: PartnerSite, viewerLocale: Locale) {
   return {

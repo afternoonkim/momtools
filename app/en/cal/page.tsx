@@ -68,14 +68,12 @@ export default function EnCalHubPage() {
       </section>
 
       <section className="mt-card p-6 md:p-8">
-        <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">Sister site</div>
+        <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">Related calculator site</div>
         <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-800">
           Need calculators outside parenting? Try Mega Calculators
         </h2>
         <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">
-          The same maintainer behind MomTools also runs <strong>Mega Calculators</strong> — a hub of everyday calculators
-          for currency, loans, savings, and unit conversions. If you frequently switch between parenting prep and household
-          numbers, it’s a useful sister site to keep open in another tab.
+          <strong>Mega Calculators</strong> is a related calculator hub for everyday numbers such as currency, loans, savings, and unit conversions. If you often move between parenting planning and household calculations, it can be helpful to keep it open in another tab.
         </p>
         <a
           {...megaProps}

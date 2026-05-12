@@ -3,7 +3,6 @@ import Link from "next/link";
 import type { PlayDownloadFile, PlayItem, PlayLocale } from "@/data/play";
 import { getLocalizedPlayText, getPlayRelatedItems } from "@/data/play";
 import PlayCard from "./PlayCard";
-import StateMessage from "@/components/common/StateMessage";
 
 export default function PlayDetailView({
   item,
@@ -53,11 +52,7 @@ export default function PlayDetailView({
                   <a href={primaryDownload.href} download className="mt-button-primary">
                     {getLocalizedPlayText(primaryDownload.label, locale)}
                   </a>
-                ) : (
-                  <a href="#download-info" className="mt-button-primary">
-                    {locale === "ko" ? "다운로드 준비 상태 보기" : "See download status"}
-                  </a>
-                )}
+                ) : null}
                 {relatedInfoHref && relatedInfoLabel ? (
                   <Link href={relatedInfoHref} className="mt-button-secondary">
                     {getLocalizedPlayText(relatedInfoLabel, locale)}
@@ -86,9 +81,7 @@ export default function PlayDetailView({
                         {getLocalizedPlayText(item.summary, locale)}
                       </div>
                       <div className="mt-5 inline-flex rounded-full bg-amber-50 px-4 py-2 text-xs font-semibold text-amber-700">
-                        {locale === "ko"
-                          ? "미리보기 이미지가 연결되면 이 영역에 실제 도안이 표시됩니다."
-                          : "The real printable preview will appear here when the image file is attached."}
+                        {locale === "ko" ? "아이와 함께할 활동을 상상하기 쉽게 요약했어요." : "A quick visual summary for choosing the activity."}
                       </div>
                     </div>
                   )}
@@ -116,20 +109,18 @@ export default function PlayDetailView({
               <StatusBadge ready={isReady} locale={locale} />
             </div>
             <p className="mt-4 text-sm leading-7 text-slate-600 md:text-base">
-              {isReady
-                ? locale === "ko"
-                  ? "아래 버튼을 통해 PDF나 이미지 파일을 바로 내려받을 수 있습니다. 파일은 한국어/영어 페이지가 따로 있어도 동일한 원본을 함께 사용하도록 설계되어 있어, 자료 하나를 올리면 양쪽 상세 페이지에서 동시에 연결됩니다."
-                  : "You can download the printable files below. The Korean and English pages share the same original asset files, so one upload can power both language versions at the same time."
-                : locale === "ko"
-                  ? "이 상세 페이지는 실제 PDF와 이미지 파일을 바로 연결할 수 있는 구조로 준비되어 있습니다. 원본 파일이 업로드되면 아래 버튼이 즉시 활성화되고, 같은 자료를 한국어/영어 페이지에서 함께 사용할 수 있습니다."
-                  : "This detail page is already structured to connect directly to real PDF and image files. Once the source files are uploaded, the buttons below can be activated and shared across both Korean and English pages."}
+              {locale === "ko"
+                ? "아래 버튼을 통해 PDF나 이미지 파일을 바로 내려받을 수 있습니다. 인쇄 전에는 용지 방향과 배율을 한 번 확인해 주세요."
+                : "Use the buttons below to download the printable PDF or image file. Before printing, check the paper orientation and scale setting."}
             </p>
 
-            <div className="mt-5 space-y-3">
-              {item.assets.downloads.map((file) => (
-                <DownloadCard key={file.kind} file={file} locale={locale} ready={isReady} />
-              ))}
-            </div>
+            {isReady ? (
+              <div className="mt-5 space-y-3">
+                {item.assets.downloads.map((file) => (
+                  <DownloadCard key={file.kind} file={file} locale={locale} ready={isReady} />
+                ))}
+              </div>
+            ) : null}
 
             <div className="mt-5 rounded-3xl bg-white p-5 shadow-sm">
               <div className="text-sm font-semibold text-slate-900">{locale === "ko" ? "출력 팁" : "Print tip"}</div>

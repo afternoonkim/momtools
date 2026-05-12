@@ -89,7 +89,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
         {query ? (
           results.length === 0 ? (
             <section className="mt-card-soft p-6 md:p-8">
-              <h2 className="text-xl font-bold text-slate-900">"{query}" 와 일치하는 결과가 없어요</h2>
+              <h2 className="text-xl font-bold text-slate-900">&quot;{query}&quot; 와 일치하는 결과가 없어요</h2>
               <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">
                 다른 단어로 다시 검색해 보세요. 예를 들어 “감기 콧물”처럼 두 단어로 나눠 입력하면 더 잘 잡혀요.
               </p>

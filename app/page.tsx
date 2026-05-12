@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { HOME_CARD_UPDATED_LABEL } from "@/lib/content-meta";
+import { HOME_CARD_UPDATED_LABEL_KO } from "@/lib/content-meta";
 import { Sparkles, HeartHandshake, BookOpenCheck, CheckSquare2 } from "lucide-react";
 import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
 
@@ -103,70 +103,70 @@ const featuredContents = [
     description: "예정일 계산 기준, 주차 확인 방법, 병원 방문 전 체크 포인트까지 한 번에 정리했습니다.",
     href: "/tools/due-date",
     category: "계산기 가이드",
-    updatedAt: HOME_CARD_UPDATED_LABEL,
+    updatedAt: HOME_CARD_UPDATED_LABEL_KO,
   },
   {
     title: "아기 개월수 계산과 월령 해석",
     description: "개월수와 일수를 왜 정확히 봐야 하는지, 수면·수유·발달 체크에 어떻게 연결되는지 설명합니다.",
     href: "/tools/baby-age",
     category: "계산기 가이드",
-    updatedAt: HOME_CARD_UPDATED_LABEL,
+    updatedAt: HOME_CARD_UPDATED_LABEL_KO,
   },
   {
     title: "예방접종 일정 참고 방법",
     description: "월령 기준으로 접종 흐름을 정리하고, 병원 예약 전에 어떤 점을 함께 확인하면 좋은지 안내합니다.",
     href: "/tools/vaccine-schedule",
     category: "건강 일정",
-    updatedAt: HOME_CARD_UPDATED_LABEL,
+    updatedAt: HOME_CARD_UPDATED_LABEL_KO,
   },
   {
     title: "이유식 시작 시기와 준비 순서",
     description: "시작 신호, 준비물, 첫 재료 선택 흐름까지 이유식 초반에 많이 찾는 내용을 보기 쉽게 모았습니다.",
     href: "/tools/weaning-start",
     category: "이유식",
-    updatedAt: HOME_CARD_UPDATED_LABEL,
+    updatedAt: HOME_CARD_UPDATED_LABEL_KO,
   },
   {
     title: "성장 백분위 결과 해석하기",
     description: "한 번의 숫자로 결론 내리기보다 어떤 흐름으로 보면 좋은지, 언제 상담을 고려하면 좋은지 참고용으로 설명합니다.",
     href: "/tools/growth-percentile",
     category: "성장 체크",
-    updatedAt: HOME_CARD_UPDATED_LABEL,
+    updatedAt: HOME_CARD_UPDATED_LABEL_KO,
   },
   {
     title: "신생아 준비물 체크리스트",
     description: "출산 전 미리 챙길 물품을 우선순위 중심으로 확인할 수 있어 처음 준비할 때 부담을 줄여줍니다.",
     href: "/checklists/newborn",
     category: "체크리스트",
-    updatedAt: HOME_CARD_UPDATED_LABEL,
+    updatedAt: HOME_CARD_UPDATED_LABEL_KO,
   },
   {
     title: "임신 정보 핵심 가이드",
     description: "임신 초기부터 후반까지 자주 헷갈리는 증상, 준비 흐름, 확인 포인트를 한곳에 정리했습니다.",
     href: "/info/pregnancy",
     category: "정보 가이드",
-    updatedAt: HOME_CARD_UPDATED_LABEL,
+    updatedAt: HOME_CARD_UPDATED_LABEL_KO,
   },
   {
     title: "육아 Q&A 대표 질문 모음",
     description: "수유, 수면, 발달, 이유식처럼 많이 묻는 질문을 설명형 답변으로 읽기 쉽게 정리했습니다.",
     href: "/qna",
     category: "Q&A",
-    updatedAt: HOME_CARD_UPDATED_LABEL,
+    updatedAt: HOME_CARD_UPDATED_LABEL_KO,
   },
   {
     title: "가족 생활 건강 Q&A",
     description: "감기, 장염, 알레르기, 피부 변화처럼 가족이 함께 겪기 쉬운 생활 건강 질문을 정리했습니다.",
     href: "/family-health-qna/family",
     category: "가족 건강",
-    updatedAt: HOME_CARD_UPDATED_LABEL,
+    updatedAt: HOME_CARD_UPDATED_LABEL_KO,
   },
   {
     title: "정부지원정책 최신 정리",
     description: "부모급여, 아동수당, 첫만남이용권, 육아휴직급여처럼 가족이 신청 전 확인해야 할 지원정책을 모았습니다.",
     href: "/policy",
     category: "정부정책",
-    updatedAt: HOME_CARD_UPDATED_LABEL,
+    updatedAt: HOME_CARD_UPDATED_LABEL_KO,
   },
 ];
 

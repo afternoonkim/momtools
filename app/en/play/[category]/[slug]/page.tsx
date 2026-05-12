@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import PlayDetailView from "@/components/play/PlayDetailView";
-import { getLocalizedPlayText, getPlayItem, playItems } from "@/data/play";
+import { getLocalizedPlayText, getPlayItem, getReadyPlayItems } from "@/data/play";
 
 export async function generateStaticParams() {
-  return playItems.map((item) => ({ category: item.category, slug: item.slug }));
+  return getReadyPlayItems().map((item) => ({ category: item.category, slug: item.slug }));
 }
 
 export async function generateMetadata({

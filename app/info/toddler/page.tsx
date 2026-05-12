@@ -83,9 +83,9 @@ export default function ToddlerPage() {
               description="등원 준비물과 적응 전 체크 포인트를 실제로 정리할 수 있어요."
             />
             <RelatedLink
-              href="/items/essential"
-              title="육아용품 목록"
-              description="유아 생활용품과 외출용품 같은 실제 품목과 연결하기 좋아요."
+              href="/qna/behavior"
+              title="행동 Q&A"
+              description="등원 거부, 분리불안, 떼쓰기처럼 유아기에 자주 겪는 상황을 이어서 볼 수 있어요."
             />
             <RelatedLink
               href="/content/blog"
@@ -109,7 +109,7 @@ export default function ToddlerPage() {
             { href: "/checklists/daycare", title: "어린이집 준비 체크리스트", description: "등원 준비와 생활 루틴을 함께 정리할 수 있어요." },
             { href: "/qna/behavior", title: "행동 Q&A", description: "떼쓰기, 거부 행동, 분리불안 같은 질문을 이어서 볼 수 있어요." },
             { href: "/qna/growth", title: "성장 Q&A", description: "언어와 놀이, 발달 흐름을 같이 확인해 보세요." },
-            { href: "/items/essential", title: "육아용품 목록", description: "생활용품과 외출 준비를 함께 살펴보기 좋아요." }
+            { href: "/tools/baby-age", title: "아기 개월수 계산기", description: "현재 월령에 맞는 발달 흐름을 함께 확인해 보세요." }
           ]}
         />
       </div>

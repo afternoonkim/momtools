@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     description: "유모차, 젖병, 이유식용품, 목욕용품을 구매하기 전 확인하면 좋은 기준을 질문형으로 정리했습니다.",
   },
   robots: {
-    // AdSense 심사 동안 일시 색인 차단 (쿠팡 파트너스 affiliate 콘텐츠)
+    // 제휴 상품 상세 페이지는 별도 정책에 따라 색인 범위를 제한
     index: false,
     follow: true,
   },

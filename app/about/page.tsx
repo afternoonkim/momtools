@@ -152,7 +152,7 @@ export default function AboutPage() {
             >
               <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">Naver Blog</div>
               <div className="mt-2 font-semibold text-slate-800">blog.naver.com/afterchan</div>
-              <p className="mt-2 text-sm leading-7 text-slate-500">육아 관련 일상 글과 사이트 운영 노트를 함께 정리합니다.</p>
+              <p className="mt-2 text-sm leading-7 text-slate-500">육아 정보와 생활 속 부모 팁을 함께 정리합니다.</p>
             </a>
             <a
               href="https://github.com/afternoonkim"
@@ -162,7 +162,7 @@ export default function AboutPage() {
             >
               <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">GitHub</div>
               <div className="mt-2 font-semibold text-slate-800">github.com/afternoonkim</div>
-              <p className="mt-2 text-sm leading-7 text-slate-500">사이트의 기술적 변경 이력과 다른 프로젝트를 확인할 수 있어요.</p>
+              <p className="mt-2 text-sm leading-7 text-slate-500">MomTools와 함께 만드는 공개 프로젝트를 확인할 수 있어요.</p>
             </a>
           </div>
         </section>

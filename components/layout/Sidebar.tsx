@@ -314,7 +314,7 @@ export default function Sidebar({
             </div>
           ) : null}
 
-          {/* 육아용품(쿠팡 파트너스) 메뉴는 AdSense 심사 동안 사이드바에서 숨김. 콘텐츠 자체는 유지. */}
+          {/* 육아용품 제휴 메뉴는 별도 정책에 따라 사이드바에서 숨김. 콘텐츠 자체는 유지. */}
 
           <div onClick={closeMobileSidebar}>
             <SidebarGroup title={t.misc} collapsed={collapsed} defaultOpen={isMiscOpen}>

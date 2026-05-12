@@ -92,9 +92,9 @@ export default function WeaningPage() {
               description="스푼, 식기, 의자, 보관용기 등 실제 준비물을 점검할 수 있어요."
             />
             <RelatedLink
-              href="/items/essential"
-              title="육아용품 목록"
-              description="이유식 관련 용품을 실제 카테고리와 연결해 보기 좋습니다."
+              href="/baby-food"
+              title="이유식 메뉴"
+              description="재료별 이유식 메뉴와 단계별 질감을 함께 확인할 수 있어요."
             />
           </div>
         </section>

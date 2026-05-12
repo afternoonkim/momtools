@@ -134,8 +134,8 @@ export default function ContactPage() {
               답변 대상이 아닙니다.
             </div>
             <div className="rounded-2xl border border-slate-100 bg-white p-5 text-sm leading-7 text-slate-600">
-              계산기 오류, 오탈자, 링크 오류, 정책 문의처럼 확인 가능한 내용은 적극적으로
-              검토합니다.
+              계산기 오류, 오탈자, 링크 오류, 정책 문의처럼 바로 확인할 수 있는 내용은
+              최대한 꼼꼼하게 살펴봅니다.
             </div>
             <div className="rounded-2xl border border-slate-100 bg-white p-5 text-sm leading-7 text-slate-600">
               아이 실명, 전체 생년월일, 상세 진료기록, 사진처럼 민감한 정보는 메일에 넣지

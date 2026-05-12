@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { HOME_CARD_UPDATED_LABEL } from "@/lib/content-meta";
+import { HOME_CARD_UPDATED_LABEL_EN } from "@/lib/content-meta";
 import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
 
 export const metadata: Metadata = {
@@ -58,42 +58,42 @@ const featuredGuides = [
     description: "Trimester priorities, visit planning, symptom questions, and birth preparation in a simpler order.",
     href: "/en/info/pregnancy",
     tag: "Planning",
-    updatedAt: HOME_CARD_UPDATED_LABEL,
+    updatedAt: HOME_CARD_UPDATED_LABEL_EN,
   },
   {
     title: "Newborn guide",
     description: "Feeding, diaper output, sleep basics, and the patterns parents usually watch in the first weeks.",
     href: "/en/info/newborn",
     tag: "Newborn",
-    updatedAt: HOME_CARD_UPDATED_LABEL,
+    updatedAt: HOME_CARD_UPDATED_LABEL_EN,
   },
   {
     title: "Starting solids guide",
     description: "Readiness signs, first-food ideas, texture progression, and how to keep meals simple.",
     href: "/en/info/weaning",
     tag: "Feeding",
-    updatedAt: HOME_CARD_UPDATED_LABEL,
+    updatedAt: HOME_CARD_UPDATED_LABEL_EN,
   },
   {
     title: "Toddler guide",
     description: "Daily routines, picky eating, sleep struggles, big feelings, and smoother transitions at home and daycare.",
     href: "/en/info/toddler",
     tag: "Toddler",
-    updatedAt: HOME_CARD_UPDATED_LABEL,
+    updatedAt: HOME_CARD_UPDATED_LABEL_EN,
   },
   {
     title: "Checklists hub",
     description: "Keep birth prep, newborn setup, starting solids, and daycare planning organized without a giant shopping list.",
     href: "/en/checklists",
     tag: "Checklist",
-    updatedAt: HOME_CARD_UPDATED_LABEL,
+    updatedAt: HOME_CARD_UPDATED_LABEL_EN,
   },
   {
     title: "FAQ and site policies",
     description: "Review how to use the site, what its limits are, and where to send a correction or content suggestion.",
     href: "/en/faq",
     tag: "Trust",
-    updatedAt: HOME_CARD_UPDATED_LABEL,
+    updatedAt: HOME_CARD_UPDATED_LABEL_EN,
   },
 ];
 

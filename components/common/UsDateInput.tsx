@@ -45,10 +45,13 @@ export default function UsDateInput({ id, value, onChange, min, max }: Props) {
   const [year, setYear] = useState(initial.year);
 
   useEffect(() => {
-    const next = splitIso(value);
-    setMonth(next.month);
-    setDay(next.day);
-    setYear(next.year);
+    const timer = window.setTimeout(() => {
+      const next = splitIso(value);
+      setMonth(next.month);
+      setDay(next.day);
+      setYear(next.year);
+    }, 0);
+    return () => window.clearTimeout(timer);
   }, [value]);
 
   const helperId = `${id}-hint`;

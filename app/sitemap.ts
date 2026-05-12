@@ -2,12 +2,14 @@ import type { MetadataRoute } from "next";
 import { babyFoodRecipes as koBabyFoodRecipes } from "@/data/babyFood";
 import { babyFoodRecipes as enBabyFoodRecipes } from "@/data/en/babyFood";
 import { rankingYears } from "@/data/babyNames";
+import { meaningPureKoreanNames } from "@/data/koreanNames";
 import { qnaData, qnaCategories, type QnaCategory } from "@/data/qna";
 import { familyHealthCategories, familyHealthQnaData, type FamilyHealthQnaCategory } from "@/data/familyHealthQna";
 import { governmentPolicies } from "@/data/governmentPolicy";
-import { babyProductQnaItems } from "@/data/babyProductQna";
 import { birthSupportRegions } from "@/data/birthSupportCalculator";
 import { familyFinanceArticles } from "@/data/familyFinance";
+import { monthlyGuideItems } from "@/data/monthlyGuide";
+import { healthGuideItems } from "@/data/healthGuides";
 import { enQnaEntries } from "@/data/en/qna100";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
 
@@ -37,6 +39,8 @@ const staticRoutes: RouteConfig[] = [
   route("/family-health-qna/family", 0.84, "weekly"),
   route("/family-health-qna/medicine", 0.84, "weekly"),
   route("/family-health-qna/checkup", 0.84, "weekly"),
+  route("/monthly-guide", 0.86, "weekly"),
+  route("/health", 0.86, "weekly"),
   route("/policy", 0.88, "daily"),
   route("/policy/pregnancy-birth", 0.84, "daily"),
   route("/policy/childcare-benefit", 0.84, "daily"),
@@ -60,11 +64,15 @@ const staticRoutes: RouteConfig[] = [
   route("/checklists/weaning", 0.75, "monthly"),
   route("/checklists/daycare", 0.75, "monthly"),
   route("/baby-names", 0.8, "weekly"),
+  route("/baby-names/generator", 0.76, "monthly"),
+  route("/baby-names/rankings", 0.76, "weekly"),
+  route("/search", 0.62, "weekly"),
+  route("/family-health-qna", 0.86, "weekly"),
   route("/baby-names/rankings/2025", 0.75, "weekly"),
   route("/baby-names/rankings/2024", 0.7, "monthly"),
   route("/baby-names/rankings/2023", 0.7, "monthly"),
   route("/baby-names/meanings", 0.72, "weekly"),
-  // 쿠팡 파트너스 콘텐츠 페이지(/items/essential)는 AdSense 심사 동안 sitemap에서 제외
+  // 제휴 상품 콘텐츠 페이지(/items/essential)는 별도 정책에 따라 sitemap에서 제외
   route("/about", 0.55, "monthly"),
   route("/faq", 0.5, "monthly"),
   route("/contact", 0.4, "monthly"),
@@ -122,12 +130,12 @@ const dynamicKoreanFamilyFinanceRoutes: RouteConfig[] = [
     route(`/info/family-finance/${article.slug}`, 0.78, "weekly"),
   ),
 ];
-// AdSense 심사 동안 sitemap 제외 (쿠팡 파트너스 affiliate 콘텐츠)
-const dynamicKoreanBabyProductRoutes: RouteConfig[] = [];
-void babyProductQnaItems;
 const dynamicEnglishBabyFoodRoutes = enBabyFoodRecipes.map((recipe) => route(`/en/baby-food/recipes/${recipe.slug}`, 0.65, "weekly"));
 const dynamicEnglishQnaRoutes = enQnaEntries.map((entry) => route(`/en/qna/${entry.slug}`, 0.7, "weekly"));
 const dynamicRankingRoutes = rankingYears.map((year, index) => route(`/baby-names/rankings/${year}`, index === 0 ? 0.75 : 0.7, index === 0 ? "weekly" : "monthly"));
+const dynamicBabyNameMeaningRoutes = meaningPureKoreanNames.map((item) => route(`/baby-names/meanings/${item.slug}`, 0.68, "monthly"));
+const dynamicMonthlyGuideRoutes = monthlyGuideItems.map((item) => route(`/monthly-guide/${item.slug}`, 0.82, "weekly"));
+const dynamicHealthGuideRoutes = healthGuideItems.map((item) => route(`/health/${item.slug}`, 0.82, "weekly"));
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const deduped = new Map<string, RouteConfig>();
@@ -139,10 +147,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...dynamicKoreanBabyFoodRoutes,
     ...dynamicKoreanBirthSupportRoutes,
     ...dynamicKoreanFamilyFinanceRoutes,
-    ...dynamicKoreanBabyProductRoutes,
     ...dynamicEnglishBabyFoodRoutes,
     ...dynamicEnglishQnaRoutes,
     ...dynamicRankingRoutes,
+    ...dynamicBabyNameMeaningRoutes,
+    ...dynamicMonthlyGuideRoutes,
+    ...dynamicHealthGuideRoutes,
   ].forEach((item) => deduped.set(item.path, item));
 
   return Array.from(deduped.values()).map((item) => ({

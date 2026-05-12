@@ -334,7 +334,7 @@ const basePolicies: GovernmentPolicyEntry[] = [
       { label: "지급 연령", amount: "9세 미만", description: "2026년 4월부터 단계적 확대 시작" },
     ],
     dataRows: [
-      { label: "확대 시점", value: "2026년 4월부터", note: "소급 지급과 지역별 지급 방식 확인 필요" },
+      { label: "확대 시점", value: "2026년 4월부터", note: "소급 지급과 지역별 지급 방식은 지역 안내에 따라 확인해 주세요" },
       { label: "지급 방식", value: "현금 또는 지역사랑상품권 등", note: "거주 지역 기준을 확인해야 합니다." },
       { label: "신청처", value: "복지로 또는 주민센터" },
     ],
