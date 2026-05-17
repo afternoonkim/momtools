@@ -19,6 +19,15 @@ export const metadata: Metadata = {
       "en-US": "https://momtools.kr/en",
       "x-default": "https://momtools.kr/",
     },
+    // 피드 리더와 검색엔진 RSS 자동 발견용. <link rel="alternate" type="application/rss+xml" /> 형태로 렌더링됩니다.
+    types: {
+      "application/rss+xml": [
+        { url: "https://momtools.kr/rss.xml", title: "MomTools 전체 피드" },
+        { url: "https://momtools.kr/info/family-finance/rss.xml", title: "MomTools 가계 가이드 피드" },
+        { url: "https://momtools.kr/policy/rss.xml", title: "MomTools 정부정책 피드" },
+        { url: "https://momtools.kr/qna/rss.xml", title: "MomTools 육아 Q&A 피드" },
+      ],
+    },
   },
   openGraph: {
     title: "MomTools",

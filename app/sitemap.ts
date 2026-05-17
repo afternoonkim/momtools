@@ -73,6 +73,11 @@ const staticRoutes: RouteConfig[] = [
   route("/baby-names/rankings/2023", 0.7, "monthly"),
   route("/baby-names/meanings", 0.72, "weekly"),
   // 제휴 상품 콘텐츠 페이지(/items/essential)는 별도 정책에 따라 sitemap에서 제외
+  // RSS 피드는 sitemap에 함께 노출해 검색엔진이 빠르게 발견하도록 합니다.
+  route("/rss.xml", 0.6, "daily"),
+  route("/info/family-finance/rss.xml", 0.55, "daily"),
+  route("/policy/rss.xml", 0.55, "daily"),
+  route("/qna/rss.xml", 0.55, "daily"),
   route("/about", 0.55, "monthly"),
   route("/faq", 0.5, "monthly"),
   route("/contact", 0.4, "monthly"),
