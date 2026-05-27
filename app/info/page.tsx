@@ -56,6 +56,15 @@ const guides = [
       { href: "/play", label: "놀이 자료" },
     ],
   },
+  {
+    href: "/info/childcare-portal",
+    title: "아이사랑 공식정보 활용 가이드",
+    description: "임신육아종합포털 아이사랑에서 확인할 수 있는 임신, 출산, 육아, 어린이집, 상담 정보를 필요한 순서대로 정리했어요.",
+    links: [
+      { href: "/info/childcare-portal/daycare-search", label: "어린이집 찾기" },
+      { href: "/info/childcare-portal/daycare-waiting", label: "입소대기 확인" },
+    ],
+  },
 ];
 
 const flow = [
@@ -83,7 +92,7 @@ export default function InfoHubPage() {
 
         <MedicalDisclaimer lang="ko" variant="compact" />
 
-        <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
           {guides.map((guide) => (
             <article key={guide.href} className="mt-card p-6 transition hover:-translate-y-0.5">
               <div className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-600">가이드</div>
@@ -127,6 +136,10 @@ export default function InfoHubPage() {
                 <Link href="/checklists" className="mt-list-card">
                   <div className="font-semibold text-slate-800">체크리스트</div>
                   <div className="mt-2 text-slate-500">시기별로 준비해야 할 항목을 빠뜨리지 않게 정리해 보세요.</div>
+                </Link>
+                <Link href="/info/childcare-portal" className="mt-list-card">
+                  <div className="font-semibold text-slate-800">아이사랑 공식정보 활용 가이드</div>
+                  <div className="mt-2 text-slate-500">임신·출산·육아·어린이집 공식 메뉴를 필요한 상황별로 이어서 확인할 수 있어요.</div>
                 </Link>
               </div>
             </div>

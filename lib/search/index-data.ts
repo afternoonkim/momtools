@@ -6,6 +6,8 @@ import { babyFoodRecipes, stageLabels } from "@/data/babyFood";
 import { birthSupportRegions } from "@/data/birthSupportCalculator";
 import { monthlyGuideItems } from "@/data/monthlyGuide";
 import { healthGuideItems } from "@/data/healthGuides";
+import { childcarePortalSections } from "@/data/childcarePortal";
+import { childcarePortalGuides } from "@/data/childcarePortalGuides";
 
 export type SearchEntryType =
   | "qna"
@@ -143,6 +145,37 @@ const healthGuideEntries: SearchEntry[] = healthGuideItems.map((item) => ({
   keywords: [...item.keywords, "아기 증상", "아이 건강"],
 }));
 
+const childcarePortalEntries: SearchEntry[] = [
+  {
+    type: "info" as const,
+    categoryLabel: "공식 육아정보",
+    href: "/info/childcare-portal",
+    title: "아이사랑 공식정보 활용 가이드",
+    description: "임신육아종합포털 아이사랑에서 확인할 수 있는 임신, 출산, 육아, 어린이집, 상담, 건강정보를 필요한 순서대로 정리했어요.",
+    topic: "아이사랑",
+    keywords: [
+      "아이사랑",
+      "임신육아종합포털",
+      "어린이집 찾기",
+      "입소대기",
+      "국민행복카드",
+      "시간제보육",
+      "육아 상담",
+      ...childcarePortalSections.flatMap((section) => section.keywords),
+    ],
+  },
+];
+
+const childcarePortalGuideEntries: SearchEntry[] = childcarePortalGuides.map((guide) => ({
+  type: "info" as const,
+  categoryLabel: `공식 육아정보 · ${guide.topic}`,
+  href: `/info/childcare-portal/${guide.slug}`,
+  title: guide.title,
+  description: guide.quickAnswer,
+  topic: guide.topic,
+  keywords: [guide.topic, guide.shortTitle, ...guide.keywords, ...guide.checkPoints].filter(Boolean) as string[],
+}));
+
 /**
  * 정적인 도구·정보·체크리스트 페이지 (검색에 잡혀야 하지만 데이터로 정의되어 있지 않은 페이지들)
  */
@@ -275,6 +308,8 @@ export const SEARCH_INDEX: SearchEntry[] = [
   ...familyHealthEntries,
   ...policyEntries,
   ...familyFinanceEntries,
+  ...childcarePortalEntries,
+  ...childcarePortalGuideEntries,
   ...babyFoodEntries,
   ...birthSupportRegionEntries,
   ...monthlyGuideEntries,

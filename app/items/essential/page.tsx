@@ -7,7 +7,7 @@ import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
 export const metadata: Metadata = {
   title: "육아용품 Q&A | 유모차·젖병·이유식·목욕용품 구매 전 체크 | MomTools",
   description:
-    "유모차, 젖병, 이유식용품, 목욕용품, 장난감처럼 구매 전 많이 묻는 육아용품 질문을 사용자 관점으로 정리한 Q&A 목록입니다.",
+    "유모차, 젖병, 이유식용품, 목욕용품, 장난감처럼 구매 전 많이 묻는 육아용품 질문을 부모 입장에서 정리한 Q&A 목록입니다.",
   keywords: [
     "육아용품 Q&A",
     "유모차 추천",

@@ -150,8 +150,6 @@ export default async function RegionalBirthSupportCalculatorPage({ params }: { p
 
   const displayName = getRegionDisplayName(region);
   const shortName = getRegionShortName(region);
-  const aliases = buildRegionAliases(region);
-
   const firstResult = calculateBirthSupport(region.regionCode, "first");
   const secondResult = calculateBirthSupport(region.regionCode, "second");
   const thirdResult = calculateBirthSupport(region.regionCode, "third");

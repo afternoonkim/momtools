@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
 
   return {
     title: `${info.label} | 2026 정부지원정책 정리 | MomTools`,
-    description: `${info.description} ${POLICY_VERIFIED_LABEL}으로 대상, 지원내용, 신청 전 확인할 점을 사용자 관점으로 정리했습니다.`,
+    description: `${info.description} ${POLICY_VERIFIED_LABEL}으로 대상, 지원내용, 신청 전 확인할 점을 신청 전에 확인하기 쉽게 정리했습니다.`,
     keywords: [info.label, "정부지원정책", "육아 지원금", "출산 지원금", ...getGovernmentPolicies(typed).flatMap((item) => item.keywords.slice(0, 2)).slice(0, 40)],
     alternates: { canonical: buildCanonical(`/policy/${typed}`) },
     openGraph: {

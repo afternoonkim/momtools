@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import VaccineScheduleCalculatorClient from "@/app/cal/vaccine-schedule/VaccineScheduleCalculatorClient";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import NextStepLinks from "@/components/common/NextStepLinks";
 import { buildCanonical, getPageDates } from "@/lib/content-meta";
 
 const pageDates = getPageDates("/tools/vaccine-schedule");
@@ -27,6 +28,18 @@ export default function Page() {
         </section>
 
         <VaccineScheduleCalculatorClient />
+
+        <NextStepLinks
+          eyebrow="접종 일정 다음에 볼 정보"
+          title="접종일만 확인하지 말고 접종 후 관찰 포인트까지 같이 보세요"
+          description="접종 전후에는 월령, 컨디션, 발열 여부, 병원 상담 신호를 함께 정리해 두면 더 안심할 수 있어요."
+          items={[
+            { href: "/qna/health/after-vaccine-fever", label: "접종 후 열 Q&A", description: "접종 뒤 열이 날 때 먼저 볼 신호를 확인해요.", tag: "발열" },
+            { href: "/health/fever", label: "아기 열 대처 가이드", description: "체온 기록과 상담 신호를 이어서 봐요.", tag: "건강" },
+            { href: "/tools/baby-age", label: "아기 개월수 계산기", description: "정확한 월령을 다시 맞춰 접종 흐름을 봐요.", tag: "월령" },
+            { href: "/qna/health", label: "상담이 필요한 신호", description: "열·기침·처짐 등 건강 질문을 함께 확인해요.", tag: "상담" },
+          ]}
+        />
 
         <ContentUpdateNote publishedOn={pageDates.published} updatedOn={pageDates.updated} note="예방접종 일정 페이지는 참고용 계산 결과와 함께, 병원 예약 전에 무엇을 함께 확인하면 좋은지 부모 관점의 설명을 주기적으로 보완합니다." />
 

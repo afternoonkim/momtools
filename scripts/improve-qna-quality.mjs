@@ -6,7 +6,6 @@ const match = src.match(/export const qnaData: Record<QnaCategory, QnaEntry\[]> 
 if (!match) throw new Error('qnaData not found');
 const data = Function(`return (${match[1]});`)();
 
-const first = (arr, fallback='') => arr.find(Boolean) || fallback;
 const includes = (text, words) => words.some(w => text.includes(w));
 const clean = (s) => s.replace(/\s+/g, ' ').trim();
 

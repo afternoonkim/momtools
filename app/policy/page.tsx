@@ -15,7 +15,7 @@ import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
 export const metadata: Metadata = {
   title: "정부지원정책 | 임신 출산 육아 지원금 최신 정리 | MomTools",
   description:
-    "2026년 공식자료 기준으로 임신·출산, 양육·보육, 일·육아 병행, 돌봄·교육, 지역별 추가 지원정책을 사용자 관점으로 정리했습니다.",
+    "2026년 공식자료 기준으로 임신·출산, 양육·보육, 일·육아 병행, 돌봄·교육, 지역별 추가 지원정책을 신청 전에 확인하기 쉽게 정리했습니다.",
   keywords: [
     "정부지원정책",
     "육아 지원금",
@@ -184,6 +184,22 @@ export default function PolicyHubPage() {
                 <div className="mt-4 text-sm font-semibold text-amber-700">자세히 보기</div>
               </Link>
             ))}
+          </div>
+        </section>
+
+        <section className="mt-card p-6 md:p-8">
+          <div className="grid gap-5 lg:grid-cols-[1fr_auto] lg:items-center">
+            <div>
+              <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">공식정보 함께 보기</div>
+              <h2 className="mt-title-md mt-3">아이사랑 공식 메뉴도 같이 확인해 보세요</h2>
+              <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">
+                지원정책을 확인하다 보면 어린이집 찾기, 입소대기, 국민행복카드, 시간제보육, 임신·출산·육아 상담으로 이어지는 경우가 많습니다.
+                MomTools에서 받을 수 있는 지원을 먼저 정리한 뒤, 아이사랑 공식 메뉴에서 실제 신청·상담 경로를 최종 확인해 보세요.
+              </p>
+            </div>
+            <Link href="/info/childcare-portal" className="mt-button-secondary min-h-12 px-5 text-sm font-semibold">
+              아이사랑 활용 가이드 보기
+            </Link>
           </div>
         </section>
 

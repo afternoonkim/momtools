@@ -610,15 +610,3 @@ function ResultCard({
   );
 }
 
-function SeoBox({ title, items }: { title: string; items: string[] }) {
-  return (
-    <div className="rounded-2xl border border-slate-100 bg-slate-50 p-5">
-      <div className="font-semibold text-slate-900">{title}</div>
-      <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-700">
-        {items.map((item) => (
-          <li key={item}>• {item}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}

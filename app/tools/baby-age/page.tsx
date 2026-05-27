@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import BabyAgeCalculatorClient from "@/app/cal/baby-age/BabyAgeCalculatorClient";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import NextStepLinks from "@/components/common/NextStepLinks";
 import { buildCanonical, getPageDates } from "@/lib/content-meta";
 
 const pageDates = getPageDates("/tools/baby-age");
@@ -33,6 +34,19 @@ export default function Page() {
         </section>
 
         <BabyAgeCalculatorClient />
+
+        <NextStepLinks
+          eyebrow="계산 결과 다음에 볼 정보"
+          title="개월수만 확인하지 말고 지금 월령에 맞는 내용을 이어서 보세요"
+          description="결과만 보고 끝내지 말고, 수면·접종·이유식·성장처럼 같은 월령에서 함께 확인하면 좋은 내용을 바로 열어볼 수 있어요."
+          items={[
+            { href: "/monthly-guide", label: "월령별 발달 가이드", description: "수면·수유·놀이 흐름을 월령별로 확인해요.", tag: "발달" },
+            { href: "/tools/vaccine-schedule", label: "예방접종 일정", description: "현재 개월수 기준으로 접종 흐름을 이어서 봐요.", tag: "건강" },
+            { href: "/tools/weaning-start", label: "이유식 시작 시기", description: "이유식 시작 가능 시기와 준비 신호를 확인해요.", tag: "이유식" },
+            { href: "/qna/behavior", label: "수면 Q&A", description: "잠투정과 수면 루틴 질문을 함께 살펴봐요.", tag: "수면" },
+            { href: "/qna/growth", label: "성장 Q&A", description: "키·몸무게·발달 흐름 질문으로 이어서 봐요.", tag: "성장" },
+          ]}
+        />
 
         <ContentUpdateNote
           publishedOn={pageDates.published}

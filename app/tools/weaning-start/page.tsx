@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import WeaningStartCalculatorClient from "@/app/cal/weaning-start/WeaningStartCalculatorClient";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import NextStepLinks from "@/components/common/NextStepLinks";
 import { buildCanonical, getPageDates } from "@/lib/content-meta";
 
 const pageDates = getPageDates("/tools/weaning-start");
@@ -24,6 +25,18 @@ export default function Page() {
         </section>
 
         <WeaningStartCalculatorClient />
+
+        <NextStepLinks
+          eyebrow="이유식 시작 다음에 볼 정보"
+          title="시작 시기를 확인했다면 재료와 준비물을 함께 정리해 보세요"
+          description="날짜만 정하기보다 아이의 준비 신호, 첫 재료, 알레르기 관찰, 조리 도구를 함께 보면 시작 부담이 줄어듭니다."
+          items={[
+            { href: "/baby-food/early", label: "초기 이유식", description: "첫 재료와 부드러운 질감부터 살펴봐요.", tag: "초기" },
+            { href: "/checklists/weaning", label: "이유식 준비물", description: "조리도구와 보관용품을 체크해요.", tag: "준비" },
+            { href: "/qna/health", label: "알레르기 체크", description: "새 재료 뒤 피부·구토·설사 신호를 확인해요.", tag: "관찰" },
+            { href: "/baby-food", label: "이유식 메뉴", description: "단계별 메뉴와 재료 아이디어를 이어서 봐요.", tag: "메뉴" },
+          ]}
+        />
 
         <ContentUpdateNote publishedOn={pageDates.published} updatedOn={pageDates.updated} note="이유식 시작 페이지는 단순 날짜 계산이 아니라, 보호자가 실제 준비 순서를 이해할 수 있도록 단계별 설명과 연결 메뉴를 계속 다듬고 있습니다." />
 

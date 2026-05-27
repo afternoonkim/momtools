@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "check:birth-support-coverage": "node scripts/check-birth-support-coverage.mjs"
+    "check:birth-support-coverage": "node scripts/check-birth-support-coverage.mjs",
+    "check:qna-quality": "node scripts/check-qna-duplication.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

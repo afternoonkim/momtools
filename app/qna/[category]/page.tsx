@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getQnaEntries, qnaCategories, type QnaCategory } from "@/data/qna";
 import { notFound } from "next/navigation";
 import QnaCategorySearch from "./QnaCategorySearch";
+import SituationExplorer from "@/components/common/SituationExplorer";
 
 type Params = { category: string };
 
@@ -54,6 +55,32 @@ const categoryGuideCards: Record<QnaCategory, { title: string; description: stri
       title: "일관된 반응이 중요",
       description: "긴 설명보다 짧고 같은 문장으로 반복해주는 방식이 갈등을 줄이는 데 도움이 됩니다.",
     },
+  ],
+};
+
+const situationItems: Record<QnaCategory, { href: string; label: string; description?: string }[]> = {
+  health: [
+    { href: "/qna/health?topic=fever", label: "열이 날 때", description: "체온·처짐·수분 섭취" },
+    { href: "/qna/health?topic=cough", label: "기침·콧물", description: "호흡과 수면 변화" },
+    { href: "/qna/health?topic=vomit", label: "구토·설사", description: "탈수와 배변 변화" },
+    { href: "/qna/health?topic=skin", label: "피부·발진", description: "새 음식·제품·번짐" },
+    { href: "/qna/health?topic=vaccine", label: "예방접종 후 증상", description: "접종 후 열과 처짐" },
+    { href: "/qna/health?topic=urgent", label: "병원 상담 신호", description: "호흡곤란·경련·의식 저하" },
+  ],
+  growth: [
+    { href: "/qna/growth?topic=motor", label: "뒤집기·앉기·걷기", description: "대근육 발달" },
+    { href: "/qna/growth?topic=language", label: "말 발달", description: "이름 반응과 표현" },
+    { href: "/qna/growth?topic=size", label: "키·몸무게", description: "성장곡선 흐름" },
+    { href: "/qna/growth?topic=play", label: "놀이와 운동 발달", description: "시도와 상호작용" },
+    { href: "/qna/growth?topic=consult", label: "발달 상담 신호", description: "후퇴·비대칭·반응 변화" },
+  ],
+  behavior: [
+    { href: "/qna/behavior?topic=sleep", label: "잠투정", description: "낮잠·밤잠 루틴" },
+    { href: "/qna/behavior?topic=eating", label: "편식", description: "식사 거부와 질감" },
+    { href: "/qna/behavior?topic=tantrum", label: "떼쓰기", description: "감정 폭발과 전환" },
+    { href: "/qna/behavior?topic=separation", label: "분리불안", description: "등원과 보호자 분리" },
+    { href: "/qna/behavior?topic=daycare", label: "어린이집 적응", description: "등원 초기 변화" },
+    { href: "/qna/behavior?topic=shy", label: "낯가림", description: "새 사람·새 장소" },
   ],
 };
 
@@ -137,6 +164,14 @@ export default async function QnaCategoryPage({ params }: { params: Promise<Para
             ))}
           </div>
         </section>
+
+
+
+        <SituationExplorer
+          title="지금 상황과 가까운 질문부터 고르세요"
+          description="전체 목록을 훑기 전에 현재 상황과 가장 비슷한 묶음을 먼저 열어보면 원하는 답을 더 빨리 찾을 수 있어요."
+          items={situationItems[typed]}
+        />
 
         <section className="mt-card p-6 md:p-8">
           <div className="flex items-center justify-between gap-4">

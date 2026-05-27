@@ -82,7 +82,7 @@ export default function EssentialItemsClient() {
           </div>
           <div className="rounded-3xl border border-amber-100 bg-white p-5 shadow-sm">
             <div className="flex items-center gap-2 font-bold text-slate-900"><ShoppingBag size={18} /> 필요한 경우 이동</div>
-            <p className="mt-2 text-sm leading-7 text-slate-600">답변을 읽은 뒤 상품 정보와 후기를 확인할 수 있도록 상품정보 URL과 파트너스 링크를 연결했습니다.</p>
+            <p className="mt-2 text-sm leading-7 text-slate-600">답변을 읽은 뒤 가격, 구성품, 후기, 배송 조건을 판매처에서 다시 확인할 수 있도록 연결했습니다.</p>
           </div>
         </section>
 

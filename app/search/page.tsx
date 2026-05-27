@@ -16,7 +16,7 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
     : "통합 검색 | MomTools";
   const description = query
     ? `MomTools에서 "${query}"로 검색한 결과예요. 육아 Q&A, 가족건강, 정부정책, 출산지원금, 이유식, 가계 가이드까지 한 번에 모아 보여드려요.`
-    : "MomTools 통합 검색이에요. 감기, 이유식, 부모급여, 출산지원금처럼 궁금한 키워드를 입력하면 사이트 전체에서 관련 정보를 한 번에 찾아드려요.";
+    : "MomTools 통합 검색이에요. 아기 열, 아기 개월수, 이유식 시작, 예방접종처럼 궁금한 키워드를 입력하면 관련 답변과 도구를 한 번에 찾아드려요.";
 
   return {
     title,
@@ -53,7 +53,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
           <p className="mt-text-main mt-4">
             {query
               ? `육아 Q&A, 가족건강, 정부정책, 지역별 출산지원금, 이유식, 가계 가이드까지 "${query}"와 관련된 페이지를 모아 보여드려요.`
-              : "감기, 이유식, 부모급여, 출산지원금, 자녀 적금 같은 키워드를 넣으면 사이트 전체에서 관련된 글과 도구를 한 번에 찾아드려요."}
+              : "아기 열, 아기 개월수, 이유식 시작, 예방접종, 수면처럼 지금 궁금한 단어를 넣으면 관련 답변과 도구를 한 번에 찾아드려요."}
           </p>
 
           <form
@@ -72,14 +72,14 @@ export default async function SearchPage({ searchParams }: PageProps) {
                 name="q"
                 type="search"
                 defaultValue={query}
-                placeholder="예) 감기, 부모급여, 청주 출산지원금"
+                placeholder="예) 아기 열, 아기 개월수, 이유식 시작"
                 className="ml-3 w-full bg-transparent text-base text-slate-800 outline-none placeholder:text-slate-400"
                 autoComplete="off"
               />
             </div>
             <button
               type="submit"
-              className="rounded-2xl bg-amber-500 px-6 py-3 text-sm font-bold text-white transition hover:bg-amber-600"
+              className="min-h-12 rounded-2xl bg-amber-500 px-6 py-3 text-sm font-bold text-white transition hover:bg-amber-600"
             >
               검색
             </button>
@@ -91,14 +91,14 @@ export default async function SearchPage({ searchParams }: PageProps) {
             <section className="mt-card-soft p-6 md:p-8">
               <h2 className="text-xl font-bold text-slate-900">&quot;{query}&quot; 와 일치하는 결과가 없어요</h2>
               <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">
-                다른 단어로 다시 검색해 보세요. 예를 들어 “감기 콧물”처럼 두 단어로 나눠 입력하면 더 잘 잡혀요.
+                검색어를 조금 짧게 입력해 보세요. 예: “아기 열 38도” 대신 “아기 열”, “어린이집 입소대기 신청 방법” 대신 “입소대기”처럼 핵심 단어만 넣으면 더 잘 찾을 수 있어요.
               </p>
               <div className="mt-5 flex flex-wrap gap-2 text-sm">
-                {["감기", "열", "이유식", "부모급여", "예방접종", "수유"].map((seed) => (
+                {["아기 열", "아기 개월수", "이유식 시작", "예방접종", "수면", "신생아 준비물"].map((seed) => (
                   <Link
                     key={seed}
                     href={`/search?q=${encodeURIComponent(seed)}`}
-                    className="rounded-full border border-amber-200 bg-white px-4 py-2 text-slate-700 transition hover:bg-amber-50"
+                    className="inline-flex min-h-11 items-center rounded-full border border-amber-200 bg-white px-4 py-2 text-slate-700 transition hover:bg-amber-50"
                   >
                     {seed}
                   </Link>
@@ -119,12 +119,20 @@ export default async function SearchPage({ searchParams }: PageProps) {
                   <ul className="mt-4 divide-y divide-slate-100">
                     {group.results.slice(0, 12).map((entry) => (
                       <li key={entry.href} className="py-4">
-                        <Link href={entry.href} className="group block">
-                          <div className="text-xs font-semibold text-amber-700">{entry.categoryLabel}</div>
-                          <div className="mt-1 text-base font-bold leading-7 text-slate-900 group-hover:text-amber-700">
+                        <Link href={entry.href} className="group block rounded-2xl border border-transparent p-3 transition hover:border-amber-100 hover:bg-amber-50/50">
+                          <div className="flex flex-wrap items-center gap-2">
+                            <span className="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700">{entry.categoryLabel}</span>
+                            {entry.type === "tool" ? (
+                              <span className="rounded-full bg-sky-50 px-3 py-1 text-xs font-semibold text-sky-700">관련 도구</span>
+                            ) : null}
+                          </div>
+                          <div className="mt-2 text-base font-bold leading-7 text-slate-900 group-hover:text-amber-700">
                             {entry.title}
                           </div>
                           <p className="mt-2 line-clamp-2 text-sm leading-7 text-slate-600">{entry.description}</p>
+                          <div className="mt-3 inline-flex min-h-11 items-center rounded-2xl bg-white px-4 text-sm font-bold text-amber-700 shadow-sm transition group-hover:bg-amber-100">
+                            {entry.type === "tool" ? "바로 확인하기" : "바로 답변 보기"}
+                          </div>
                         </Link>
                       </li>
                     ))}
@@ -144,23 +152,39 @@ export default async function SearchPage({ searchParams }: PageProps) {
             </p>
             <div className="mt-5 flex flex-wrap gap-2 text-sm">
               {[
-                "감기",
-                "열",
+                "아기 열",
+                "아기 개월수",
                 "이유식 시작",
                 "예방접종",
-                "수유",
-                "부모급여",
+                "수면",
+                "신생아 준비물",
+                "어린이집 찾기",
+                "입소대기",
                 "출산지원금",
-                "자녀 적금",
-                "청약",
-                "어린이집 준비",
+                "국민행복카드",
+                "시간제보육",
+                "육아 상담",
               ].map((seed) => (
                 <Link
                   key={seed}
                   href={`/search?q=${encodeURIComponent(seed)}`}
-                  className="rounded-full border border-amber-200 bg-white px-4 py-2 text-slate-700 transition hover:bg-amber-50"
+                  className="inline-flex min-h-11 items-center rounded-full border border-amber-200 bg-white px-4 py-2 text-slate-700 transition hover:bg-amber-50"
                 >
                   {seed}
+                </Link>
+              ))}
+            </div>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {[
+                { href: "/tools/baby-age", label: "아기 개월수 계산" },
+                { href: "/tools/vaccine-schedule", label: "예방접종 일정 확인" },
+                { href: "/info/childcare-portal/daycare-search", label: "어린이집 찾기" },
+                { href: "/info/childcare-portal/daycare-waiting", label: "입소대기 확인" },
+                { href: "/policy", label: "정부지원정책 보기" },
+                { href: "/family-health-qna", label: "가족건강 Q&A" },
+              ].map((item) => (
+                <Link key={item.href} href={item.href} className="flex min-h-12 items-center justify-between rounded-2xl border border-amber-100 bg-white px-4 py-3 text-sm font-bold text-slate-800 transition hover:bg-amber-50">
+                  {item.label}<span className="text-amber-700">→</span>
                 </Link>
               ))}
             </div>

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { RefreshCcw, ExternalLink, ImageIcon } from "lucide-react";
 import StateMessage from "@/components/common/StateMessage";
@@ -76,12 +77,14 @@ function Thumbnail({
   }
 
   return (
-    <img
+    <Image
       src={safeSrc}
       alt={alt}
-      loading="lazy"
+      fill
+      sizes="(min-width: 768px) 33vw, 100vw"
+      className="object-cover"
       referrerPolicy="no-referrer"
-      className="h-full w-full object-cover"
+      unoptimized
       onError={() => setHasError(true)}
     />
   );

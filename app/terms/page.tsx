@@ -145,7 +145,7 @@ export default function TermsPage() {
           </div>
         </section>
 
-        {sections.map((section, index) => (
+        {sections.map((section) => (
           <div key={section.title}>
             <section className="mt-card p-8 md:p-10">
               <h2 className="text-xl font-bold text-slate-800 md:text-2xl">{section.title}</h2>

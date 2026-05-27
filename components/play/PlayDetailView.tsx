@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import type { PlayDownloadFile, PlayItem, PlayLocale } from "@/data/play";
@@ -68,9 +69,12 @@ export default function PlayDetailView({
                 </div>
                 <div className="mt-5 overflow-hidden rounded-[28px] border border-dashed border-amber-200 bg-white">
                   {isReady && item.assets.previewImage ? (
-                    <img
+                    <Image
                       src={item.assets.previewImage}
                       alt={getLocalizedPlayText(item.title, locale)}
+                      width={960}
+                      height={720}
+                      sizes="(min-width: 1024px) 45vw, 100vw"
                       className="h-auto w-full object-cover"
                     />
                   ) : (

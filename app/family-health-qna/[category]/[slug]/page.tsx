@@ -144,6 +144,12 @@ export default async function FamilyHealthDetailPage({ params }: { params: Promi
   const info = familyHealthCategories[typed];
   const related = getRelatedFamilyHealthQna(typed, slug, 6);
   const faqs = buildFaqs(item, typed);
+  const mobileQuickLinks = [
+    { href: "#first-check", label: "먼저 볼 핵심" },
+    { href: "#checkpoints", label: "체크포인트" },
+    { href: "#when-help", label: "상담 신호" },
+    { href: "#related-tools", label: "함께 볼 정보" },
+  ];
   const pageUrl = buildCanonical(`/family-health-qna/${typed}/${slug}`);
   const jsonLd = {
     "@context": "https://schema.org",
@@ -201,11 +207,21 @@ export default async function FamilyHealthDetailPage({ params }: { params: Promi
           </div>
           <h1 className="mt-title-xl mt-5">{item.question}</h1>
           <p className="mt-text-main mt-4">{item.summary}</p>
-          <div className="mt-6 rounded-3xl bg-amber-50 px-5 py-4 text-sm leading-7 text-amber-900">
+          <div id="first-check" className="mt-6 rounded-3xl bg-amber-50 px-5 py-4 text-sm leading-7 text-amber-900">
             <div className="font-semibold">먼저 볼 핵심</div>
             <p className="mt-2">{item.checklist[0]}</p>
           </div>
         </section>
+
+        <nav className="sticky top-16 z-20 -mx-1 overflow-x-auto rounded-2xl border border-amber-100 bg-white/95 p-2 shadow-[0_10px_30px_rgba(15,23,42,0.08)] backdrop-blur md:static md:mx-0" aria-label="이 페이지 빠른 이동">
+          <div className="flex min-w-max gap-2">
+            {mobileQuickLinks.map((link) => (
+              <a key={link.href} href={link.href} className="flex min-h-11 items-center rounded-full bg-amber-50 px-4 py-2 text-sm font-bold text-amber-800 transition hover:bg-amber-100">
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </nav>
 
         <ContentUpdateNote
           publishedOn={SITE_DATES.published}
@@ -215,7 +231,7 @@ export default async function FamilyHealthDetailPage({ params }: { params: Promi
 
         <MedicalDisclaimer lang="ko" variant="full" />
 
-        <section className="mt-card-soft p-6 md:p-8">
+        <section id="checkpoints" className="mt-card-soft p-5 md:p-8">
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">핵심 요약</div>
           <h2 className="mt-3 text-xl font-bold text-slate-900">지금 먼저 확인하면 좋은 내용</h2>
           <div className="mt-5 grid gap-3 md:grid-cols-2">
@@ -227,7 +243,22 @@ export default async function FamilyHealthDetailPage({ params }: { params: Promi
           </div>
         </section>
 
-        <section className="mt-card p-6 md:p-8">
+        <section className="mt-card p-5 md:p-8">
+          <h2 className="mt-title-md">지금 같이 확인하면 좋은 페이지</h2>
+          <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">
+            가족 건강 질문은 증상, 약, 검진, 아이 건강 정보가 함께 연결되는 경우가 많습니다. 필요한 페이지를 먼저 열어두면 상황을 더 빠르게 정리할 수 있어요.
+          </p>
+          <div className="mt-5 grid gap-3 md:grid-cols-3">
+            {relatedLinks[typed].map((link) => (
+              <Link key={`${link.href}-top`} href={link.href} className="rounded-2xl border border-amber-100 bg-amber-50/70 p-4 transition hover:bg-white">
+                <div className="font-bold text-slate-900">{link.label}</div>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{link.description}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-card p-5 md:p-8">
           <h2 className="mt-title-md">질문에 대한 자세한 답변</h2>
           <div className="mt-4 space-y-4 text-sm leading-8 text-slate-600 md:text-base">
             {item.answer.map((paragraph) => (
@@ -266,7 +297,7 @@ export default async function FamilyHealthDetailPage({ params }: { params: Promi
           </div>
         </section>
 
-        <section className="mt-card-soft p-6 md:p-8">
+        <section id="when-help" className="mt-card-soft p-5 md:p-8">
           <h2 className="mt-title-md">상담을 더 서둘러야 하는 신호</h2>
           <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">{item.caution}</p>
         </section>
@@ -317,6 +348,18 @@ export default async function FamilyHealthDetailPage({ params }: { params: Promi
               <div className="font-semibold text-slate-800">{info.label} 전체 질문 보기</div>
               <p className="mt-2 text-sm leading-7 text-slate-500">같은 카테고리의 질문을 한 번에 비교하며 내 상황과 비슷한 내용을 찾아보세요.</p>
             </Link>
+          </div>
+        </section>
+
+        <section id="related-tools" className="mt-card p-5 md:p-8">
+          <h2 className="mt-title-md">같이 보면 좋은 도구와 정보</h2>
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            {relatedLinks[typed].map((link) => (
+              <Link key={`${link.href}-bottom`} href={link.href} className="mt-list-card transition hover:-translate-y-0.5 hover:border-amber-200">
+                <div className="font-semibold text-slate-800">{link.label}</div>
+                <div className="mt-2 text-sm leading-7 text-slate-500">{link.description}</div>
+              </Link>
+            ))}
           </div>
         </section>
 

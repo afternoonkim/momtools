@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import DueDateCalculatorClient from "@/app/cal/due-date/DueDateCalculatorClient";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import NextStepLinks from "@/components/common/NextStepLinks";
 import { buildCanonical, getPageDates } from "@/lib/content-meta";
 
 const pageDates = getPageDates("/tools/due-date");
@@ -51,6 +52,19 @@ export default function Page() {
         </section>
 
         <DueDateCalculatorClient />
+
+        <NextStepLinks
+          eyebrow="예정일 확인 후 다음 단계"
+          title="출산 예정일을 확인했다면 준비 순서를 같이 정리해 보세요"
+          description="예정일은 날짜 하나보다 지금 주차에서 무엇을 준비할지 정하는 기준으로 활용하면 더 좋습니다."
+          items={[
+            { href: "/info/pregnancy", label: "임신 주차 정보", description: "주차별 변화와 진료 전 확인할 내용을 봐요.", tag: "임신" },
+            { href: "/checklists/birth", label: "출산 준비 체크리스트", description: "출산 가방과 산모·아기 준비물을 정리해요.", tag: "준비" },
+            { href: "/info/childcare-portal/kids-card", label: "국민행복카드", description: "카드와 바우처 확인 흐름을 살펴봐요.", tag: "지원" },
+            { href: "/policy/birth-support-calculator", label: "출산지원금 확인", description: "지역별 지원 정보를 볼 때 필요한 기준을 확인해요.", tag: "정책" },
+            { href: "/info/childcare-portal", label: "아이사랑 공식정보", description: "임신·출산·육아 공식 메뉴를 쉽게 이어서 봐요.", tag: "공식" },
+          ]}
+        />
 
         <ContentUpdateNote
           publishedOn={pageDates.published}

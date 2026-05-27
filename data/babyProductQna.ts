@@ -542,7 +542,7 @@ function toSlug(seed: BabyProductSeed) {
 function productNumber(seed: BabyProductSeed) {
   const productId = seed.sourceUrl.match(/products\/(\d+)/)?.[1];
   const itemId = seed.sourceUrl.match(/itemId=(\d+)/)?.[1];
-  return productId && itemId ? `${productId} - ${itemId}` : "상품정보 URL에서 확인";
+  return productId && itemId ? `${productId} - ${itemId}` : "판매처 상세페이지에서 확인";
 }
 
 function categoryTone(category: BabyProductCategory) {
@@ -610,14 +610,14 @@ function makeTitle(seed: BabyProductSeed) {
 
 function makeSummary(seed: BabyProductSeed) {
   const tone = categoryTone(seed.category);
-  return `${seed.shortName}를 바로 구매하기보다 우리 집의 ${tone.situation}을 먼저 확인하는 것이 좋습니다. ${tone.decision} 이 글에서는 상품정보 URL을 바탕으로 구매 전 확인할 점과 실제 생활에서 비교할 기준을 정리했습니다.`;
+  return `${seed.shortName}를 바로 구매하기보다 우리 집의 ${tone.situation}을 먼저 확인하는 것이 좋습니다. ${tone.decision} 이 글에서는 판매처 상세페이지의 기본 정보를 참고해 구매 전 확인할 점과 실제 생활에서 비교할 기준을 정리했습니다.`;
 }
 
 function makeAnswer(seed: BabyProductSeed) {
   const tone = categoryTone(seed.category);
   return [
     `${seed.productName}를 볼 때 가장 먼저 확인할 부분은 “우리 집에서 얼마나 자주, 어떤 상황에서 쓰게 될까?”입니다. 같은 ${seed.kind}라도 아이 월령, 생활 동선, 보관 공간에 따라 만족도가 달라질 수 있습니다.`,
-    "상품정보 URL에서 표시되는 제품명과 구성은 구매 전 기준을 잡는 데 도움이 됩니다. 다만 가격, 재고, 색상, 옵션, 배송 조건은 수시로 바뀔 수 있으므로 최종 결정 전에는 판매처 상세페이지를 다시 확인하는 것이 안전합니다.",
+    "판매처 상세페이지에 표시되는 제품명과 구성은 구매 전 기준을 잡는 데 도움이 됩니다. 다만 가격, 재고, 색상, 옵션, 배송 조건은 수시로 바뀔 수 있으므로 최종 결정 전에는 판매처 상세페이지를 다시 확인하는 것이 안전합니다.",
     `${tone.compare} 처음 준비하는 부모라면 유명한 제품인지보다 관리가 쉬운지, 아이에게 맞는지, 우리 집 예산 안에서 오래 쓸 수 있는지를 함께 보세요.`,
   ];
 }
@@ -779,7 +779,7 @@ function makeKeywords(seed: BabyProductSeed) {
 }
 
 function makeDescription(seed: BabyProductSeed) {
-  return `${seed.shortName} 구매 전 확인할 기준을 사용자 관점으로 정리했습니다. 상품정보 URL, 쿠팡파트너스 링크, 체크포인트, 주의사항을 함께 확인해 보세요.`;
+  return `${seed.shortName} 구매 전 확인하면 좋은 기준을 부모 입장에서 정리했습니다. 제품 특징, 구매 전 체크포인트, 주의사항을 함께 확인해 보세요.`;
 }
 
 function makeCompareWith(seed: BabyProductSeed) {
@@ -788,10 +788,10 @@ function makeCompareWith(seed: BabyProductSeed) {
 
 function makeProductFacts(seed: BabyProductSeed) {
   return [
-    { label: "상품정보 URL 기준 표시명", value: seed.productName },
+    { label: "판매처 표시명", value: seed.productName },
     { label: "분류", value: `${babyProductCategories[seed.category].shortLabel} · ${seed.kind}` },
     ...(seed.brand ? [{ label: "브랜드", value: seed.brand }] : []),
-    { label: "쿠팡상품번호", value: productNumber(seed), note: "상품정보 URL에서 확인되는 번호를 기준으로 정리했습니다." },
+    { label: "쿠팡상품번호", value: productNumber(seed), note: "판매처 상세페이지에서 확인되는 번호를 기준으로 정리했습니다." },
     { label: "확인할 부분", value: "가격, 재고, 색상, 옵션, 구성품, 배송, 교환·반품 조건", note: "이 항목들은 수시로 달라질 수 있어 구매 직전 상세페이지에서 다시 확인하는 것이 좋습니다." },
   ];
 }

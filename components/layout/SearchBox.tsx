@@ -22,7 +22,7 @@ interface SearchBoxProps {
  */
 export default function SearchBox({
   initialQuery = "",
-  placeholder = "감기, 부모급여, 청주 출산지원금 검색",
+  placeholder = "아기 열, 아기 개월수, 이유식 시작 검색",
   size = "md",
   className,
 }: SearchBoxProps) {

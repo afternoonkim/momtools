@@ -227,6 +227,12 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
   const related = getRelatedQna(typed, slug, 6);
   const relatedHealthGuides = typed === "health" ? getRelatedHealthGuideLinks(item) : [];
   const faqs = buildFaqItems(item, typed, content);
+  const mobileQuickLinks = [
+    { href: "#quick-answer", label: "바로 결론" },
+    { href: "#checkpoints", label: "체크포인트" },
+    { href: "#when-help", label: "상담 신호" },
+    { href: "#related-tools", label: "함께 볼 정보" },
+  ];
   const pageUrl = `https://momtools.kr/qna/${typed}/${slug}`;
   const jsonLd = {
     "@context": "https://schema.org",
@@ -295,11 +301,21 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
           </div>
           <h1 className="mt-title-xl mt-5">{content.h1}</h1>
           <p className="mt-text-main mt-4">{content.heroLead}</p>
-          <div className="mt-6 rounded-3xl bg-amber-50 px-5 py-4 text-sm leading-7 text-amber-900">
+          <div id="quick-answer" className="mt-6 rounded-3xl bg-amber-50 px-5 py-4 text-sm leading-7 text-amber-900">
             <div className="font-semibold">바로 결론</div>
             <p className="mt-2">{content.oneLineAnswer}</p>
           </div>
         </section>
+
+        <nav className="sticky top-16 z-20 -mx-1 overflow-x-auto rounded-2xl border border-amber-100 bg-white/95 p-2 shadow-[0_10px_30px_rgba(15,23,42,0.08)] backdrop-blur md:static md:mx-0" aria-label="이 페이지 빠른 이동">
+          <div className="flex min-w-max gap-2">
+            {mobileQuickLinks.map((link) => (
+              <a key={link.href} href={link.href} className="flex min-h-11 items-center rounded-full bg-amber-50 px-4 py-2 text-sm font-bold text-amber-800 transition hover:bg-amber-100">
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </nav>
 
         <ContentUpdateNote
           publishedOn={QNA_PUBLISHED_ON}
@@ -307,7 +323,7 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
           note="최근 검토 기준에 맞춰 집에서 먼저 볼 관찰 기준, 기록 항목, 함께 보면 좋은 질문을 정리했습니다."
         />
 
-        <section className="mt-card-soft p-6 md:p-8">
+        <section id="checkpoints" className="mt-card-soft p-5 md:p-8">
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">핵심 요약</div>
           <h2 className="mt-3 text-xl font-bold text-slate-900">한눈에 보는 체크포인트</h2>
           <div className="mt-5 grid gap-3 md:grid-cols-2">
@@ -319,7 +335,22 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
           </div>
         </section>
 
-        <section className="mt-card p-6 md:p-8">
+        <section id="related-tools" className="mt-card p-5 md:p-8">
+          <h2 className="mt-title-md">함께 볼 계산기와 관련 질문</h2>
+          <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">
+            모바일에서 긴 글을 끝까지 읽기 전에 필요한 도구로 바로 이동할 수 있게 연결했습니다. 현재 질문과 함께 보면 판단 흐름을 더 빨리 정리할 수 있어요.
+          </p>
+          <div className="mt-5 grid gap-3 md:grid-cols-3">
+            {relatedLinks[typed].map((link) => (
+              <Link key={`${link.href}-top`} href={link.href} className="rounded-2xl border border-amber-100 bg-amber-50/70 p-4 transition hover:bg-white">
+                <div className="font-bold text-slate-900">{link.label}</div>
+                <p className="mt-2 text-sm leading-6 text-slate-600">{link.description}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="mt-card p-5 md:p-8">
           <h2 className="mt-title-md">{content.searchIntentTitle}</h2>
           <div className="mt-4 space-y-4 text-sm leading-8 text-slate-600 md:text-base">
             {content.searchIntentParagraphs.map((paragraph) => (
@@ -419,7 +450,7 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
           </div>
         </section>
 
-        <section className="mt-card-soft p-6 md:p-8">
+        <section id="when-help" className="mt-card-soft p-5 md:p-8">
           <h2 className="mt-title-md">{categoryWhenToSeekHelpTitle[typed]}</h2>
           <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">{item.caution}</p>
         </section>
@@ -456,8 +487,8 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
           </section>
         ) : null}
 
-        <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-md">같이 보면 좋은 도구와 정보</h2>
+        <section className="mt-card p-5 md:p-8">
+          <h2 className="mt-title-md">이어서 보면 좋은 도구와 정보</h2>
           <div className="mt-5 grid gap-4 md:grid-cols-3">
             {relatedLinks[typed].map((link) => (
               <Link key={link.href} href={link.href} className="mt-list-card transition hover:-translate-y-0.5 hover:border-amber-200">

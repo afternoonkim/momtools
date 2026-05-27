@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { ExternalLink, RefreshCcw } from "lucide-react";
 import StateMessage from "@/components/common/StateMessage";
@@ -57,8 +58,18 @@ export default function VideosClient() {
       <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {items.map((item) => (
           <a key={item.id} href={item.url} target="_blank" rel="noreferrer" className="mt-card overflow-hidden transition hover:-translate-y-1">
-            <div className="aspect-video bg-amber-50">
-              {item.thumbnail ? <img src={item.thumbnail} alt={item.title} className="h-full w-full object-cover" loading="lazy" referrerPolicy="no-referrer" /> : null}
+            <div className="relative aspect-video bg-amber-50">
+              {item.thumbnail ? (
+                <Image
+                  src={item.thumbnail}
+                  alt={item.title}
+                  fill
+                  sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+                  className="object-cover"
+                  referrerPolicy="no-referrer"
+                  unoptimized
+                />
+              ) : null}
             </div>
             <div className="p-6">
               <div className="flex items-center justify-between">

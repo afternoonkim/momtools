@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { babyFoodRecipes, getRecipe, stageLabels } from "@/data/en/babyFood";
 import { notFound } from "next/navigation";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";

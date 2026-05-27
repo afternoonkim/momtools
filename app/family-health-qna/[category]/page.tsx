@@ -9,8 +9,42 @@ import {
 } from "@/data/familyHealthQna";
 import { buildCanonical } from "@/lib/content-meta";
 import FamilyHealthCategorySearch from "./FamilyHealthCategorySearch";
+import SituationExplorer from "@/components/common/SituationExplorer";
 
 type Params = { category: string };
+
+const familySituationItems: Record<FamilyHealthQnaCategory, { href: string; label: string; description?: string }[]> = {
+  mom: [
+    { href: "/family-health-qna/mom?topic=fatigue", label: "피로·수면 부족" },
+    { href: "/family-health-qna/mom?topic=pain", label: "허리·손목 통증" },
+    { href: "/family-health-qna/mom?topic=mood", label: "기분 변화" },
+  ],
+  dad: [
+    { href: "/family-health-qna/dad?topic=stress", label: "스트레스·수면" },
+    { href: "/family-health-qna/dad?topic=blood-pressure", label: "혈압·체중" },
+    { href: "/family-health-qna/dad?topic=pain", label: "허리·목 통증" },
+  ],
+  postpartum: [
+    { href: "/family-health-qna/postpartum?topic=recovery", label: "출산 후 회복" },
+    { href: "/family-health-qna/postpartum?topic=bleeding", label: "출혈·통증" },
+    { href: "/family-health-qna/postpartum?topic=mood", label: "우울감·불안" },
+  ],
+  family: [
+    { href: "/family-health-qna/family?topic=cold", label: "기침·콧물" },
+    { href: "/family-health-qna/family?topic=stomach", label: "구토·설사" },
+    { href: "/family-health-qna/family?topic=skin", label: "피부·알레르기" },
+  ],
+  medicine: [
+    { href: "/family-health-qna/medicine?topic=fever-medicine", label: "해열제·진통제" },
+    { href: "/family-health-qna/medicine?topic=cold-medicine", label: "감기약" },
+    { href: "/family-health-qna/medicine?topic=supplement", label: "영양제" },
+  ],
+  checkup: [
+    { href: "/family-health-qna/checkup?topic=blood", label: "혈압·혈당" },
+    { href: "/family-health-qna/checkup?topic=liver", label: "간 수치" },
+    { href: "/family-health-qna/checkup?topic=visit", label: "진료 전 준비" },
+  ],
+};
 
 const categoryTips: Record<FamilyHealthQnaCategory, { title: string; description: string }[]> = {
   mom: [
@@ -123,6 +157,12 @@ export default async function FamilyHealthCategoryPage({ params }: { params: Pro
             ))}
           </div>
         </section>
+
+        <SituationExplorer
+          title="현재 상황과 가까운 주제부터 확인하세요"
+          description="전체 질문을 보기 전에 지금 필요한 건강 상황을 먼저 고르면 더 빠르게 비교할 수 있어요."
+          items={familySituationItems[typed]}
+        />
 
         <section className="mt-card p-6 md:p-8">
           <h2 className="mt-title-md">먼저 많이 찾는 질문</h2>

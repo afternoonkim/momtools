@@ -8,6 +8,7 @@ import { familyHealthCategories, familyHealthQnaData, type FamilyHealthQnaCatego
 import { governmentPolicies } from "@/data/governmentPolicy";
 import { birthSupportRegions } from "@/data/birthSupportCalculator";
 import { familyFinanceArticles } from "@/data/familyFinance";
+import { childcarePortalGuides } from "@/data/childcarePortalGuides";
 import { monthlyGuideItems } from "@/data/monthlyGuide";
 import { healthGuideItems } from "@/data/healthGuides";
 import { enQnaEntries } from "@/data/en/qna100";
@@ -50,6 +51,7 @@ const staticRoutes: RouteConfig[] = [
   route("/policy/local-check", 0.82, "daily"),
   route("/tools/birth-support-calculator", 0.9, "daily"),
   route("/info", 0.84, "weekly"),
+  route("/info/childcare-portal", 0.82, "weekly"),
   route("/info/pregnancy", 0.8, "weekly"),
   route("/info/newborn", 0.8, "weekly"),
   route("/info/weaning", 0.8, "weekly"),
@@ -72,12 +74,6 @@ const staticRoutes: RouteConfig[] = [
   route("/baby-names/rankings/2024", 0.7, "monthly"),
   route("/baby-names/rankings/2023", 0.7, "monthly"),
   route("/baby-names/meanings", 0.72, "weekly"),
-  // 제휴 상품 콘텐츠 페이지(/items/essential)는 별도 정책에 따라 sitemap에서 제외
-  // RSS 피드는 sitemap에 함께 노출해 검색엔진이 빠르게 발견하도록 합니다.
-  route("/rss.xml", 0.6, "daily"),
-  route("/info/family-finance/rss.xml", 0.55, "daily"),
-  route("/policy/rss.xml", 0.55, "daily"),
-  route("/qna/rss.xml", 0.55, "daily"),
   route("/about", 0.55, "monthly"),
   route("/faq", 0.5, "monthly"),
   route("/contact", 0.4, "monthly"),
@@ -135,6 +131,9 @@ const dynamicKoreanFamilyFinanceRoutes: RouteConfig[] = [
     route(`/info/family-finance/${article.slug}`, 0.78, "weekly"),
   ),
 ];
+const dynamicChildcarePortalGuideRoutes = childcarePortalGuides.map((guide) =>
+  route(`/info/childcare-portal/${guide.slug}`, 0.8, "weekly"),
+);
 const dynamicEnglishBabyFoodRoutes = enBabyFoodRecipes.map((recipe) => route(`/en/baby-food/recipes/${recipe.slug}`, 0.65, "weekly"));
 const dynamicEnglishQnaRoutes = enQnaEntries.map((entry) => route(`/en/qna/${entry.slug}`, 0.7, "weekly"));
 const dynamicRankingRoutes = rankingYears.map((year, index) => route(`/baby-names/rankings/${year}`, index === 0 ? 0.75 : 0.7, index === 0 ? "weekly" : "monthly"));
@@ -152,6 +151,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...dynamicKoreanBabyFoodRoutes,
     ...dynamicKoreanBirthSupportRoutes,
     ...dynamicKoreanFamilyFinanceRoutes,
+    ...dynamicChildcarePortalGuideRoutes,
     ...dynamicEnglishBabyFoodRoutes,
     ...dynamicEnglishQnaRoutes,
     ...dynamicRankingRoutes,

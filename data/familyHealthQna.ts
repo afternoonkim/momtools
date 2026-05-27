@@ -499,9 +499,9 @@ const medicineProductAngles: MedicineProductAngle[] = [
   },
   {
     id: "storage",
-    question: (product) => `${product.name} 남은 제품을 다시 ${product.useVerb}해도 되나요`,
+    question: () => `남은 제품을 다시 사용해도 되나요`,
     focus: "보관과 재사용",
-    action: (product) => `개봉일, 유통기한, 보관 온도, 색이나 냄새 변화, 포장 손상 여부를 먼저 확인해 보세요.`,
+    action: () => `개봉일, 유통기한, 보관 온도, 색이나 냄새 변화, 포장 손상 여부를 먼저 확인해 보세요.`,
     record: "개봉 날짜와 보관 장소를 적어두고 가족이 함께 보는 약 보관함에 정리해 보세요.",
     caution: "오래된 제품, 처방받아 남은 약, 변색되거나 냄새가 달라진 제품은 임의로 다시 사용하지 않는 것이 안전합니다.",
     keyword: "남은 약 사용",
@@ -1748,7 +1748,7 @@ const questionPlans: Record<FamilyHealthQnaCategory, QuestionPlan[]> = {
       "first": "수면 시간, 통증, 수유 계획, 마음 상태, 검진 결과를 확인해 보세요",
       "care": "복직 전 가족과 돌봄 분담과 휴식 시간을 구체적으로 정해보세요",
       "record": "수면, 피로, 통증, 수유 계획, 도움 받을 사람을 적어두세요",
-      "caution": "복직 준비 중 우울감, 극심한 피로, 통증이 심하면 상담을 고려해 주세요",
+      "caution": "복직을 앞두고 우울감, 극심한 피로, 통증이 심하면 상담을 고려해 주세요",
       "keywords": [
         "출산 후 복직",
         "엄마 건강 점검",

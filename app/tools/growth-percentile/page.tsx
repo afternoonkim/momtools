@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import GrowthPercentileCalculatorClient from "@/app/cal/growth-percentile/GrowthPercentileCalculatorClient";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import NextStepLinks from "@/components/common/NextStepLinks";
 import { buildCanonical, getPageDates } from "@/lib/content-meta";
 
 const pageDates = getPageDates("/tools/growth-percentile");
@@ -20,6 +21,17 @@ export default function Page() {
         <section className="mt-card p-8 md:p-10"><span className="mt-badge">성장 흐름 확인</span><h1 className="mt-title-xl mt-5">성장 백분위는 한 번의 숫자보다 흐름으로 보는 것이 중요합니다</h1><p className="mt-text-main mt-4">성장 백분위 계산기는 현재 키와 몸무게가 또래 기준에서 어느 정도 위치인지 참고용으로 확인할 수 있는 도구입니다. 다만 백분위는 높고 낮음으로 단순 평가하기보다, 이전 기록과 비교했을 때 꾸준한 흐름이 유지되는지 함께 보는 편이 훨씬 중요합니다.</p></section>
 
         <GrowthPercentileCalculatorClient />
+
+        <NextStepLinks
+          eyebrow="성장 결과 다음에 볼 정보"
+          title="백분위 숫자만 보지 말고 성장 흐름을 같이 확인하세요"
+          description="한 번의 수치보다 이전 기록, 식사·수면·활동 변화, 월령별 발달 흐름을 함께 보면 결과를 더 차분하게 해석할 수 있어요."
+          items={[
+            { href: "/qna/growth", label: "성장 Q&A", description: "키·몸무게·발달 질문을 이어서 확인해요.", tag: "성장" },
+            { href: "/monthly-guide", label: "월령별 발달 가이드", description: "개월수별 생활과 놀이 흐름을 봐요.", tag: "월령" },
+            { href: "/qna/growth", label: "상담이 필요한 신호", description: "성장 흐름이 급격히 달라질 때 볼 기준을 확인해요.", tag: "상담" },
+          ]}
+        />
 
         <ContentUpdateNote publishedOn={pageDates.published} updatedOn={pageDates.updated} note="결과 숫자 하나에 너무 마음 졸이지 않도록, 해석 기준과 병원 상담이 필요한 경우까지 같이 안내해 드려요." />
 

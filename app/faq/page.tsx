@@ -54,7 +54,7 @@ const faqSections = [
       {
         question: "임신, 신생아, 이유식, 유아 정보는 누구에게 도움이 되나요?",
         answer:
-          "초보 부모, 출산 준비 중인 가정, 육아 흐름을 빠르게 정리하고 싶은 사용자에게 특히 도움이 되도록 구성했습니다. 긴 논문형 설명보다는 실제로 자주 궁금해하는 내용을 이해하기 쉽게 정리하는 데 초점을 두고 있습니다.",
+          "초보 부모, 출산을 준비하는 가정, 육아 흐름을 빠르게 정리하고 싶은 분들도 쉽게 볼 수 있도록 구성했습니다. 긴 논문형 설명보다는 실제로 자주 궁금해하는 내용을 이해하기 쉽게 정리하는 데 초점을 두고 있습니다.",
       },
       {
         question: "체크리스트는 그대로 사용해도 되나요?",
@@ -156,7 +156,7 @@ export default function FAQPage() {
           </div>
         </section>
 
-        {faqSections.map((section, index) => (
+        {faqSections.map((section) => (
           <section key={section.title} className="mt-card p-8 md:p-10">
             <h2 className="text-2xl font-bold tracking-tight text-slate-800">{section.title}</h2>
 
