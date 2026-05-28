@@ -3,6 +3,8 @@ import Link from "next/link";
 import WeaningPrepChecklistClient from "../weaning-prep/WeaningPrepChecklistClient";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
 import RelatedContent from "@/components/common/RelatedContent";
+import AdFitAd from "@/components/ads/AdFitAd";
+import { ADFIT_UNITS } from "@/lib/adfit";
 
 export const metadata: Metadata = {
   title: "이유식 준비 체크리스트 | 식기 재료 보관 준비물 정리 | MomTools",
@@ -44,6 +46,8 @@ export default function WeaningPrepCanonicalPage() {
   return (
     <div className="space-y-8">
       <WeaningPrepChecklistClient />
+
+      <AdFitAd {...ADFIT_UNITS.mobileResult} />
 
       <ContentUpdateNote publishedOn="2026-04-09" updatedOn="2026-04-09" />
 

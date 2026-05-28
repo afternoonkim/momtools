@@ -4,6 +4,8 @@ import BabyAgeCalculatorClient from "@/app/cal/baby-age/BabyAgeCalculatorClient"
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
 import NextStepLinks from "@/components/common/NextStepLinks";
 import { buildCanonical, getPageDates } from "@/lib/content-meta";
+import AdFitAd from "@/components/ads/AdFitAd";
+import { ADFIT_UNITS } from "@/lib/adfit";
 
 const pageDates = getPageDates("/tools/baby-age");
 
@@ -34,6 +36,8 @@ export default function Page() {
         </section>
 
         <BabyAgeCalculatorClient />
+
+        <AdFitAd {...ADFIT_UNITS.mobileResult} />
 
         <NextStepLinks
           eyebrow="계산 결과 다음에 볼 정보"

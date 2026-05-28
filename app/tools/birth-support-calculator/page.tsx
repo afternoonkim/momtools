@@ -4,6 +4,8 @@ import ContentUpdateNote from "@/components/common/ContentUpdateNote";
 import { buildCanonical, getPageDates } from "@/lib/content-meta";
 import { birthSupportRegions, calculateBirthSupport } from "@/data/birthSupportCalculator";
 import BirthSupportCalculatorClient from "./BirthSupportCalculatorClient";
+import AdFitAd from "@/components/ads/AdFitAd";
+import { ADFIT_UNITS } from "@/lib/adfit";
 
 const pageDates = getPageDates("/tools/birth-support-calculator");
 const firstResult = calculateBirthSupport("jeju", "first");
@@ -84,6 +86,8 @@ export default function Page() {
         </section>
 
         <BirthSupportCalculatorClient />
+
+        <AdFitAd {...ADFIT_UNITS.mobileResult} />
 
         <ContentUpdateNote
           publishedOn={pageDates.published}

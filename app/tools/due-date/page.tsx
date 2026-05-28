@@ -4,6 +4,8 @@ import DueDateCalculatorClient from "@/app/cal/due-date/DueDateCalculatorClient"
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
 import NextStepLinks from "@/components/common/NextStepLinks";
 import { buildCanonical, getPageDates } from "@/lib/content-meta";
+import AdFitAd from "@/components/ads/AdFitAd";
+import { ADFIT_UNITS } from "@/lib/adfit";
 
 const pageDates = getPageDates("/tools/due-date");
 
@@ -52,6 +54,8 @@ export default function Page() {
         </section>
 
         <DueDateCalculatorClient />
+
+        <AdFitAd {...ADFIT_UNITS.mobileResult} />
 
         <NextStepLinks
           eyebrow="예정일 확인 후 다음 단계"

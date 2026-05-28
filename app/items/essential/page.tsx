@@ -3,6 +3,8 @@ import Link from "next/link";
 import EssentialItemsClient from "./EssentialItemsClient";
 import { babyProductQnaItems, COUPANG_PARTNERS_DISCLOSURE } from "@/data/babyProductQna";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
+import AdFitAd from "@/components/ads/AdFitAd";
+import { ADFIT_UNITS } from "@/lib/adfit";
 
 export const metadata: Metadata = {
   title: "육아용품 Q&A | 유모차·젖병·이유식·목욕용품 구매 전 체크 | MomTools",
@@ -94,6 +96,8 @@ export default function EssentialItemsPage() {
             </p>
           </div>
         </section>
+
+      <AdFitAd {...ADFIT_UNITS.contentMedium} />
 
         <section className="mt-card p-6 md:p-8">
           <span className="mt-badge">구매 전 체크</span>

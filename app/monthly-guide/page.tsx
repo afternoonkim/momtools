@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { monthlyGuideItems } from "@/data/monthlyGuide";
+import AdFitAd from "@/components/ads/AdFitAd";
+import { ADFIT_UNITS } from "@/lib/adfit";
 
 export const metadata: Metadata = {
   title: "월령별 육아 로드맵 | 생후 0개월부터 36개월까지 발달·수유·수면 가이드",
@@ -19,6 +21,8 @@ export default function MonthlyGuidePage() {
           아기 개월수에 따라 수유, 수면, 이유식, 놀이, 발달 확인 포인트가 달라집니다. 월령별 가이드는 부모가 오늘 바로 볼 수 있는 기준, 집에서 기록할 내용, 병원 상담이 필요한 신호까지 함께 정리했습니다.
         </p>
       </section>
+
+      <AdFitAd {...ADFIT_UNITS.contentMedium} />
 
       <section className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {monthlyGuideItems.map((item) => (

@@ -4,6 +4,8 @@ import WeaningInfoClient from "./WeaningInfoClient";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
 import RelatedContent from "@/components/common/RelatedContent";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
+import AdFitAd from "@/components/ads/AdFitAd";
+import { ADFIT_UNITS } from "@/lib/adfit";
 
 export const metadata: Metadata = {
   title: "이유식 정보 | 시작 시기 단계별 진행 가이드 | MomTools",
@@ -45,6 +47,8 @@ export default function WeaningPage() {
   return (
     <div className="space-y-8">
       <WeaningInfoClient />
+
+      <AdFitAd {...ADFIT_UNITS.contentMedium} />
 
       <ContentUpdateNote publishedOn={SITE_DATES.published} updatedOn={SITE_DATES.updated} />
 

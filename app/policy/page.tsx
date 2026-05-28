@@ -11,6 +11,8 @@ import {
   type GovernmentPolicyCategory,
 } from "@/data/governmentPolicy";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
+import AdFitAd from "@/components/ads/AdFitAd";
+import { ADFIT_UNITS } from "@/lib/adfit";
 
 export const metadata: Metadata = {
   title: "정부지원정책 | 임신 출산 육아 지원금 최신 정리 | MomTools",
@@ -114,6 +116,8 @@ export default function PolicyHubPage() {
             </div>
           </div>
         </section>
+
+      <AdFitAd {...ADFIT_UNITS.contentMedium} />
 
         <ContentUpdateNote
           publishedOn={SITE_DATES.published}

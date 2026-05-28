@@ -12,6 +12,8 @@ import {
 } from "@/data/childcarePortal";
 import { childcarePortalGuides } from "@/data/childcarePortalGuides";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
+import AdFitAd from "@/components/ads/AdFitAd";
+import { ADFIT_UNITS } from "@/lib/adfit";
 
 export const metadata: Metadata = {
   title: "아이사랑 공식정보 활용 가이드 | 임신 출산 육아 어린이집 정보 | MomTools",
@@ -91,6 +93,8 @@ export default function ChildcarePortalGuidePage() {
             </div>
           </div>
         </section>
+
+      <AdFitAd {...ADFIT_UNITS.contentMedium} />
 
         <ContentUpdateNote
           publishedOn={SITE_DATES.published}

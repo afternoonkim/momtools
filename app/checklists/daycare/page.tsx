@@ -3,6 +3,8 @@ import Link from "next/link";
 import DaycarePrepChecklistClient from "../daycare-prep/DaycarePrepChecklistClient";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
 import RelatedContent from "@/components/common/RelatedContent";
+import AdFitAd from "@/components/ads/AdFitAd";
+import { ADFIT_UNITS } from "@/lib/adfit";
 
 export const metadata: Metadata = {
   title: "어린이집 준비 체크리스트 | 등원 준비물과 적응 준비 정리 | MomTools",
@@ -44,6 +46,8 @@ export default function DaycarePrepCanonicalPage() {
   return (
     <div className="space-y-8">
       <DaycarePrepChecklistClient />
+
+      <AdFitAd {...ADFIT_UNITS.mobileResult} />
 
       <ContentUpdateNote publishedOn="2026-04-09" updatedOn="2026-04-09" />
 

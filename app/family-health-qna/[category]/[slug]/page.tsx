@@ -12,6 +12,8 @@ import {
   getRelatedFamilyHealthQna,
   type FamilyHealthQnaCategory,
 } from "@/data/familyHealthQna";
+import AdFitAd from "@/components/ads/AdFitAd";
+import { ADFIT_UNITS } from "@/lib/adfit";
 
 type Params = { category: string; slug: string };
 
@@ -228,6 +230,8 @@ export default async function FamilyHealthDetailPage({ params }: { params: Promi
           updatedOn={SITE_DATES.updated}
           note="가족이 집에서 먼저 확인할 수 있는 관찰 기준, 기록 항목, 상담이 필요한 신호를 중심으로 정리했습니다."
         />
+
+        <AdFitAd {...ADFIT_UNITS.mobileResult} />
 
         <MedicalDisclaimer lang="ko" variant="full" />
 

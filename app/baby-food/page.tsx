@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { stageGuides, stageLabels, getRecipesByStage } from "@/data/babyFood";
+import AdFitAd from "@/components/ads/AdFitAd";
+import { ADFIT_UNITS } from "@/lib/adfit";
 
 export const metadata: Metadata = {
   title: "이유식 메뉴 | 초기 중기 후기 레시피",
@@ -22,6 +24,8 @@ export default function BabyFoodHubPage() {
             무엇을 먼저 확인하면 좋은지, 어떤 분류에서 레시피를 찾으면 편한지까지 한 번에 볼 수 있어요.
           </p>
         </section>
+
+      <AdFitAd {...ADFIT_UNITS.contentMedium} />
 
         <section className="mt-card-soft p-6 md:p-8">
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">이용 안내</div>

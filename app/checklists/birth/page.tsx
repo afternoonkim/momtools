@@ -3,6 +3,8 @@ import Link from "next/link";
 import BirthPrepChecklistClient from "../birth-prep/BirthPrepChecklistClient";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
 import RelatedContent from "@/components/common/RelatedContent";
+import AdFitAd from "@/components/ads/AdFitAd";
+import { ADFIT_UNITS } from "@/lib/adfit";
 
 export const metadata: Metadata = {
   title: "출산 준비 체크리스트 | 입원 준비물과 출산 전 준비 정리 | MomTools",
@@ -44,6 +46,8 @@ export default function BirthPrepCanonicalPage() {
   return (
     <div className="space-y-8">
       <BirthPrepChecklistClient />
+
+      <AdFitAd {...ADFIT_UNITS.mobileResult} />
 
       <ContentUpdateNote publishedOn="2026-04-09" updatedOn="2026-04-09" />
 

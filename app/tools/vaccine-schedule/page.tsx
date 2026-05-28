@@ -4,6 +4,8 @@ import VaccineScheduleCalculatorClient from "@/app/cal/vaccine-schedule/VaccineS
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
 import NextStepLinks from "@/components/common/NextStepLinks";
 import { buildCanonical, getPageDates } from "@/lib/content-meta";
+import AdFitAd from "@/components/ads/AdFitAd";
+import { ADFIT_UNITS } from "@/lib/adfit";
 
 const pageDates = getPageDates("/tools/vaccine-schedule");
 
@@ -28,6 +30,8 @@ export default function Page() {
         </section>
 
         <VaccineScheduleCalculatorClient />
+
+        <AdFitAd {...ADFIT_UNITS.mobileResult} />
 
         <NextStepLinks
           eyebrow="접종 일정 다음에 볼 정보"

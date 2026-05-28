@@ -6,6 +6,8 @@ import RelatedContent from "@/components/common/RelatedContent";
 import { getQnaEntry, getRelatedQna, qnaCategories, type QnaCategory } from "@/data/qna";
 import { buildQnaLongtailContent, type QnaLongtailContent } from "@/lib/qna-longtail";
 import { healthGuideItems } from "@/data/healthGuides";
+import AdFitAd from "@/components/ads/AdFitAd";
+import { ADFIT_UNITS } from "@/lib/adfit";
 
 type Params = { category: string; slug: string };
 
@@ -372,6 +374,8 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
             ))}
           </div>
         </section>
+
+        <AdFitAd {...ADFIT_UNITS.mobileResult} />
 
         <section className="grid gap-4 md:grid-cols-3">
           {content.situationCards.map((card) => (

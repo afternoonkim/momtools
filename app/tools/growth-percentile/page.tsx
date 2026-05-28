@@ -4,6 +4,8 @@ import GrowthPercentileCalculatorClient from "@/app/cal/growth-percentile/Growth
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
 import NextStepLinks from "@/components/common/NextStepLinks";
 import { buildCanonical, getPageDates } from "@/lib/content-meta";
+import AdFitAd from "@/components/ads/AdFitAd";
+import { ADFIT_UNITS } from "@/lib/adfit";
 
 const pageDates = getPageDates("/tools/growth-percentile");
 
@@ -21,6 +23,8 @@ export default function Page() {
         <section className="mt-card p-8 md:p-10"><span className="mt-badge">성장 흐름 확인</span><h1 className="mt-title-xl mt-5">성장 백분위는 한 번의 숫자보다 흐름으로 보는 것이 중요합니다</h1><p className="mt-text-main mt-4">성장 백분위 계산기는 현재 키와 몸무게가 또래 기준에서 어느 정도 위치인지 참고용으로 확인할 수 있는 도구입니다. 다만 백분위는 높고 낮음으로 단순 평가하기보다, 이전 기록과 비교했을 때 꾸준한 흐름이 유지되는지 함께 보는 편이 훨씬 중요합니다.</p></section>
 
         <GrowthPercentileCalculatorClient />
+
+        <AdFitAd {...ADFIT_UNITS.mobileResult} />
 
         <NextStepLinks
           eyebrow="성장 결과 다음에 볼 정보"
