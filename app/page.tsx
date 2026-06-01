@@ -3,6 +3,8 @@ import Link from "next/link";
 import { HOME_CARD_UPDATED_LABEL_KO } from "@/lib/content-meta";
 import { Baby, CalendarDays, CheckSquare2, HeartPulse, Search, Sparkles } from "lucide-react";
 import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
+import AdFitAd from "@/components/ads/AdFitAd";
+import { ADFIT_UNITS } from "@/lib/adfit";
 
 export const metadata: Metadata = {
   title: "육아 계산기와 육아 질문 빠른 확인 | MomTools",
@@ -300,6 +302,8 @@ export default function HomePage() {
             ))}
           </div>
         </section>
+
+        <AdFitAd {...ADFIT_UNITS.mobileSmall} className="mb-2" />
       </div>
     </div>
   );

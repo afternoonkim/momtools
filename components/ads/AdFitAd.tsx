@@ -38,7 +38,7 @@ export default function AdFitAd({
       </div>
       <Script
         id="kakao-adfit-script"
-        src="//t1.daumcdn.net/kas/static/ba.min.js"
+        src="https://t1.daumcdn.net/kas/static/ba.min.js"
         strategy="afterInteractive"
         async
       />
