@@ -1,6 +1,6 @@
 "use client";
 
-import Script from "next/script";
+import { useEffect, useId, useRef } from "react";
 
 type AdFitAdProps = {
   unit: string;
@@ -9,6 +9,8 @@ type AdFitAdProps = {
   className?: string;
 };
 
+const ADFIT_SCRIPT_SRC = "https://t1.daumcdn.net/kas/static/ba.min.js";
+
 export default function AdFitAd({
   unit,
   width,
@@ -16,6 +18,29 @@ export default function AdFitAd({
   className = "",
 }: AdFitAdProps) {
   const enabled = process.env.NEXT_PUBLIC_ADFIT_ENABLED === "true";
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const instanceId = useId().replace(/:/g, "");
+
+  useEffect(() => {
+    if (!enabled || !unit || !containerRef.current) return;
+
+    const container = containerRef.current;
+    const previousScript = container.querySelector<HTMLScriptElement>(
+      "script[data-adfit-render-script='true']",
+    );
+    previousScript?.remove();
+
+    const script = document.createElement("script");
+    script.src = ADFIT_SCRIPT_SRC;
+    script.async = true;
+    script.dataset.adfitRenderScript = "true";
+    script.dataset.adfitInstance = instanceId;
+    container.appendChild(script);
+
+    return () => {
+      script.remove();
+    };
+  }, [enabled, unit, width, height, instanceId]);
 
   if (!enabled || !unit) return null;
 
@@ -25,6 +50,7 @@ export default function AdFitAd({
       className={`my-6 flex w-full justify-center overflow-hidden ${className}`.trim()}
     >
       <div
+        ref={containerRef}
         className="mx-auto max-w-full"
         style={{ width: `${width}px`, minHeight: `${height}px` }}
       >
@@ -36,12 +62,6 @@ export default function AdFitAd({
           data-ad-height={String(height)}
         />
       </div>
-      <Script
-        id="kakao-adfit-script"
-        src="https://t1.daumcdn.net/kas/static/ba.min.js"
-        strategy="afterInteractive"
-        async
-      />
     </aside>
   );
 }

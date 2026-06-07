@@ -194,6 +194,8 @@ export default function HomePage() {
 
         <MedicalDisclaimer lang="ko" variant="compact" />
 
+        <AdFitAd {...ADFIT_UNITS.mobileSmall} className="my-3" />
+
         <section className="mt-card p-5 md:p-8">
           <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
             <div>

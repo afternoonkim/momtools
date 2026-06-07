@@ -15,3 +15,42 @@ export const ADFIT_UNITS = {
     height: 100,
   },
 } as const;
+
+export type GlobalAdFitPosition = "top" | "bottom";
+
+const GLOBAL_ADFIT_EXCLUDED_PATH_PREFIXES = ["/en"] as const;
+
+const GLOBAL_ADFIT_EXCLUDED_PATHS = new Set<string>([
+  "/privacy",
+  "/terms",
+  "/contact",
+] as const);
+
+const GLOBAL_ADFIT_BOTTOM_EXCLUDED_PATHS = new Set<string>([
+  "/",
+] as const);
+
+export function normalizeAdFitPathname(pathname: string) {
+  return pathname.split("?")[0]?.replace(/\/$/, "") || "/";
+}
+
+export function shouldShowGlobalAdFitAd(
+  pathname: string,
+  position: GlobalAdFitPosition = "bottom",
+) {
+  const normalizedPathname = normalizeAdFitPathname(pathname);
+
+  if (GLOBAL_ADFIT_EXCLUDED_PATHS.has(normalizedPathname)) return false;
+
+  if (GLOBAL_ADFIT_EXCLUDED_PATH_PREFIXES.some((prefix) =>
+    normalizedPathname === prefix || normalizedPathname.startsWith(`${prefix}/`),
+  )) {
+    return false;
+  }
+
+  if (position === "bottom" && GLOBAL_ADFIT_BOTTOM_EXCLUDED_PATHS.has(normalizedPathname)) {
+    return false;
+  }
+
+  return true;
+}
