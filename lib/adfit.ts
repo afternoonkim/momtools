@@ -1,6 +1,6 @@
 export const ADFIT_UNITS = {
   mobileSmall: {
-    unit: "DAN-Ra251xHJJXqo5PJc",
+    unit: "DAN-Ra251xHJjXQo5PJc",
     width: 320,
     height: 50,
   },
@@ -10,7 +10,7 @@ export const ADFIT_UNITS = {
     height: 250,
   },
   mobileResult: {
-    unit: "DAN-dEE6T8m6QpHzO3V",
+    unit: "DAN-dEE6T8m6QcpHzO3V",
     width: 320,
     height: 100,
   },
