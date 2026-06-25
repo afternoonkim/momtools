@@ -1,4 +1,7 @@
 import { SEARCH_INDEX, type SearchEntry, type SearchEntryType } from "./index-data";
+import { familyHealthCategories } from "@/data/familyHealthQna";
+import { getFamilyHealthSearchEntriesFromDb } from "@/lib/repositories/family-health-qna-db";
+import { getHealthGuideSearchEntriesFromDb, getMonthlyGuideSearchEntriesFromDb } from "@/lib/repositories/guides-db";
 
 export interface SearchResult extends SearchEntry {
   score: number;
@@ -80,12 +83,58 @@ function scoreEntry(entry: SearchEntry, tokens: string[]): number {
   return anyHit ? score : 0;
 }
 
-export function searchSite(query: string, limit = 60): SearchResult[] {
+async function buildSearchIndex(): Promise<SearchEntry[]> {
+  const [familyHealthEntries, monthlyGuideEntries, healthGuideEntries] = await Promise.all([
+    getFamilyHealthSearchEntriesFromDb(),
+    getMonthlyGuideSearchEntriesFromDb(),
+    getHealthGuideSearchEntriesFromDb(),
+  ]);
+
+  const dbFamilyEntries: SearchEntry[] = familyHealthEntries.map((entry) => ({
+    type: "family-health" as const,
+    categoryLabel: familyHealthCategories[entry.category].label,
+    href: `/family-health-qna/${entry.category}/${entry.slug}`,
+    title: entry.question,
+    description: entry.summary,
+    topic: entry.topic,
+    keywords: [...(entry.keywords ?? []), entry.topic, familyHealthCategories[entry.category].shortLabel].filter(Boolean) as string[],
+  }));
+
+  const dbMonthlyEntries: SearchEntry[] = monthlyGuideEntries.map((entry) => ({
+    type: "monthly-guide" as const,
+    categoryLabel: "월령별 육아 로드맵",
+    href: entry.path,
+    title: entry.title,
+    description: entry.summary,
+    topic: entry.topic,
+    keywords: entry.keywords,
+  }));
+
+  const dbHealthEntries: SearchEntry[] = healthGuideEntries.map((entry) => ({
+    type: "health-guide" as const,
+    categoryLabel: "증상별 건강 가이드",
+    href: entry.path,
+    title: entry.title,
+    description: entry.summary,
+    topic: entry.topic,
+    keywords: entry.keywords,
+  }));
+
+  const merged = new Map<string, SearchEntry>();
+  for (const entry of SEARCH_INDEX) merged.set(entry.href, entry);
+  for (const entry of dbFamilyEntries) merged.set(entry.href, entry);
+  for (const entry of dbMonthlyEntries) merged.set(entry.href, entry);
+  for (const entry of dbHealthEntries) merged.set(entry.href, entry);
+  return Array.from(merged.values());
+}
+
+export async function searchSite(query: string, limit = 60): Promise<SearchResult[]> {
   const tokens = tokenize(query);
   if (tokens.length === 0) return [];
 
+  const index = await buildSearchIndex();
   const scored: SearchResult[] = [];
-  for (const entry of SEARCH_INDEX) {
+  for (const entry of index) {
     const score = scoreEntry(entry, tokens);
     if (score > 0) {
       scored.push({ ...entry, score });

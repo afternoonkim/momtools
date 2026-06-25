@@ -3,7 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
 import RelatedContent from "@/components/common/RelatedContent";
-import { getQnaEntry, getRelatedQna, qnaCategories, type QnaCategory } from "@/data/qna";
+import { qnaCategories, type QnaCategory, type QnaEntry } from "@/data/qna";
+import { getQnaEntryFromDb, getRelatedQnaFromDb } from "@/lib/repositories/qna-db";
 import { buildQnaLongtailContent, type QnaLongtailContent } from "@/lib/qna-longtail";
 import { healthGuideItems } from "@/data/healthGuides";
 import AdFitAd from "@/components/ads/AdFitAd";
@@ -138,7 +139,7 @@ const relatedLinks: Record<QnaCategory, RelatedLink[]> = {
 };
 
 
-function getRelatedHealthGuideLinks(item: NonNullable<ReturnType<typeof getQnaEntry>>) {
+function getRelatedHealthGuideLinks(item: QnaEntry) {
   const haystack = `${item.question} ${item.topic} ${item.summary} ${item.keywords.join(" ")}`.toLowerCase();
   return healthGuideItems
     .filter((guide) => {
@@ -152,7 +153,7 @@ function getRelatedHealthGuideLinks(item: NonNullable<ReturnType<typeof getQnaEn
 }
 
 function buildFaqItems(
-  item: NonNullable<ReturnType<typeof getQnaEntry>>,
+  item: QnaEntry,
   category: QnaCategory,
   content: QnaLongtailContent,
 ) {
@@ -185,17 +186,15 @@ function buildFaqItems(
   ];
 }
 
-export async function generateStaticParams() {
-  const categories = Object.keys(qnaCategories) as QnaCategory[];
-  const { qnaData } = await import("@/data/qna");
-  return categories.flatMap((category) => qnaData[category].map((item) => ({ category, slug: item.slug })));
-}
+export const runtime = "nodejs";
+export const revalidate = 3600;
+export const dynamicParams = true;
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { category, slug } = await params;
   if (!(category in qnaCategories)) return {};
   const typed = category as QnaCategory;
-  const item = getQnaEntry(typed, slug);
+  const item = await getQnaEntryFromDb(typed, slug);
   if (!item) return {};
   const content = buildQnaLongtailContent(item, typed);
   const url = `https://momtools.kr/qna/${category}/${slug}`;
@@ -222,11 +221,11 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
   const { category, slug } = await params;
   if (!(category in qnaCategories)) notFound();
   const typed = category as QnaCategory;
-  const item = getQnaEntry(typed, slug);
+  const item = await getQnaEntryFromDb(typed, slug);
   if (!item) notFound();
 
   const content = buildQnaLongtailContent(item, typed);
-  const related = getRelatedQna(typed, slug, 6);
+  const related = await getRelatedQnaFromDb(typed, slug, 6);
   const relatedHealthGuides = typed === "health" ? getRelatedHealthGuideLinks(item) : [];
   const faqs = buildFaqItems(item, typed, content);
   const mobileQuickLinks = [
@@ -322,7 +321,7 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
         <ContentUpdateNote
           publishedOn={QNA_PUBLISHED_ON}
           updatedOn={QNA_UPDATED_ON}
-          note="최근 검토 기준에 맞춰 집에서 먼저 볼 관찰 기준, 기록 항목, 함께 보면 좋은 질문을 정리했습니다."
+          note="집에서 먼저 볼 관찰 기준, 기록 항목, 함께 보면 좋은 질문을 보호자 입장에서 정리했습니다."
         />
 
         <section id="checkpoints" className="mt-card-soft p-5 md:p-8">
@@ -340,7 +339,7 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
         <section id="related-tools" className="mt-card p-5 md:p-8">
           <h2 className="mt-title-md">함께 볼 계산기와 관련 질문</h2>
           <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">
-            모바일에서 긴 글을 끝까지 읽기 전에 필요한 도구로 바로 이동할 수 있게 연결했습니다. 현재 질문과 함께 보면 판단 흐름을 더 빨리 정리할 수 있어요.
+            아이 나이, 접종 시기, 성장 흐름처럼 함께 확인하면 좋은 기준을 모았습니다. 지금 질문과 연결해 보면 다음에 무엇을 볼지 정리하기 쉬워요.
           </p>
           <div className="mt-5 grid gap-3 md:grid-cols-3">
             {relatedLinks[typed].map((link) => (
@@ -442,14 +441,12 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
           <h2 className="mt-title-md">이 내용을 병원이나 상담에서 더 잘 설명하려면</h2>
           <div className="mt-4 space-y-4 text-sm leading-8 text-slate-600 md:text-base">
             <p>
-              증상이나 행동 자체보다 언제 시작됐는지, 하루 중 언제 심해지는지, 먹는 양과 잠은 어떤지,
-              최근 달라진 환경이 있었는지를 함께 정리해두면 설명이 훨씬 쉬워집니다. 특히 같은 문제라도
-              반복되는 시간대와 패턴이 보이면 원인을 좁히는 데 도움이 됩니다.
+              증상이나 행동을 설명할 때는 “언제 시작됐는지”, “먹는 양과 잠이 달라졌는지”, “최근 새 음식이나 외출이 있었는지”처럼
+              실제로 확인한 내용을 함께 말하는 것이 좋습니다. 같은 증상도 반복되는 시간대와 전후 상황을 알면 상담 때 훨씬 전달하기 쉽습니다.
             </p>
             <p>
-              짧게라도 기록해두면 보호자 스스로 불안을 줄이는 데도 도움이 됩니다. 오늘은 어땠는지,
-              어제와 비교해 나아졌는지 악화됐는지, 아이가 힘들어하는 포인트가 무엇인지를 적어두면 다음
-              판단이 한결 분명해집니다.
+              기록은 길 필요가 없어요. 체온, 먹은 양, 마지막 소변 시간, 평소와 다른 행동처럼 몇 가지만 남겨도
+              “좋아지는 중인지, 더 확인이 필요한지”를 판단하는 데 도움이 됩니다.
             </p>
           </div>
         </section>
@@ -462,7 +459,7 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
         <section className="mt-card p-6 md:p-8">
           <h2 className="mt-title-md">비슷한 상황에서 함께 볼 주제</h2>
           <p className="mt-3 text-sm leading-7 text-slate-600">
-            같은 고민도 아이 상태와 상황에 따라 살펴볼 부분이 조금씩 달라질 수 있습니다. 아래 주제들은 이 질문과 함께 확인하면 도움이 됩니다.
+            같은 증상처럼 보여도 아이 나이와 함께 나타나는 변화에 따라 확인할 부분이 달라질 수 있어요. 아래 주제는 이어서 비교해보기 좋습니다.
           </p>
           <div className="mt-5 flex flex-wrap gap-2">
             {content.longtailPhrases.map((phrase) => (

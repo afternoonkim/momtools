@@ -4,9 +4,9 @@ import { notFound } from "next/navigation";
 import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
 import {
   familyHealthCategories,
-  getFamilyHealthEntries,
   type FamilyHealthQnaCategory,
 } from "@/data/familyHealthQna";
+import { getFamilyHealthEntriesForCategory } from "@/lib/repositories/family-health-qna-db";
 import { buildCanonical } from "@/lib/content-meta";
 import FamilyHealthCategorySearch from "./FamilyHealthCategorySearch";
 import SituationExplorer from "@/components/common/SituationExplorer";
@@ -79,6 +79,8 @@ const categoryTips: Record<FamilyHealthQnaCategory, { title: string; description
   ],
 };
 
+export const revalidate = 86400;
+
 export async function generateStaticParams() {
   return (Object.keys(familyHealthCategories) as FamilyHealthQnaCategory[]).map((category) => ({ category }));
 }
@@ -92,7 +94,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   return {
     title: `${info.label} Q&A | 가족건강 질문 모음 | MomTools`,
     description: `${info.description} 집에서 먼저 확인할 점, 기록할 내용, 병원·약국 상담이 필요한 신호를 바로 확인할 수 있게 정리했습니다.`,
-    keywords: [info.label, "가족건강 Q&A", "생활 건강", "건강 질문", ...getFamilyHealthEntries(typed).slice(0, 8).map((item) => item.topic)],
+    keywords: [info.label, "가족건강 Q&A", "생활 건강", "건강 질문", ...(await getFamilyHealthEntriesForCategory(typed)).slice(0, 8).map((item) => item.topic)],
     alternates: { canonical: buildCanonical(`/family-health-qna/${typed}`) },
     openGraph: {
       title: `${info.label} Q&A | MomTools`,
@@ -110,7 +112,7 @@ export default async function FamilyHealthCategoryPage({ params }: { params: Pro
   if (!(category in familyHealthCategories)) notFound();
   const typed = category as FamilyHealthQnaCategory;
   const info = familyHealthCategories[typed];
-  const entries = getFamilyHealthEntries(typed);
+  const entries = await getFamilyHealthEntriesForCategory(typed);
   const featuredEntries = entries.slice(0, 6);
   const searchableEntries = entries.map(({ slug, question, topic, summary, keywords }) => ({ slug, question, topic, summary, keywords }));
 

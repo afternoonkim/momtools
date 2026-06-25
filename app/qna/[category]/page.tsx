@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getQnaEntries, qnaCategories, type QnaCategory } from "@/data/qna";
+import { qnaCategories, type QnaCategory } from "@/data/qna";
+import { getQnaEntriesForCategory } from "@/lib/repositories/qna-db";
 import { notFound } from "next/navigation";
 import QnaCategorySearch from "./QnaCategorySearch";
 import SituationExplorer from "@/components/common/SituationExplorer";
@@ -99,6 +100,9 @@ const categoryIntroBlocks: Record<QnaCategory, string[]> = {
   ],
 };
 
+export const runtime = "nodejs";
+export const revalidate = 3600;
+
 export async function generateStaticParams() {
   return (Object.keys(qnaCategories) as QnaCategory[]).map((category) => ({ category }));
 }
@@ -127,7 +131,7 @@ export default async function QnaCategoryPage({ params }: { params: Promise<Para
   const { category } = await params;
   if (!(category in qnaCategories)) notFound();
   const typed = category as QnaCategory;
-  const entries = getQnaEntries(typed);
+  const entries = await getQnaEntriesForCategory(typed);
   const featuredEntries = entries.slice(0, 6);
   const searchableEntries = entries.map(({ slug, question, topic, summary, keywords }) => ({
     slug,

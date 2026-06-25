@@ -8,15 +8,40 @@
     "start": "next start",
     "lint": "eslint",
     "check:birth-support-coverage": "node scripts/check-birth-support-coverage.mjs",
-    "check:qna-quality": "node scripts/check-qna-duplication.mjs"
+    "check:qna-quality": "node scripts/check-qna-duplication.mjs",
+    "db:generate": "prisma generate",
+    "db:push": "prisma db push",
+    "prebuild": "prisma generate",
+    "db:seed": "tsx prisma/seed.ts",
+    "db:seed:dry": "tsx prisma/seed.ts --dry-run",
+    "db:check:qna": "tsx scripts/check-qna-db.ts",
+    "db:seed:family-health": "tsx prisma/seed-family-health-qna.ts",
+    "db:seed:family-health:dry": "tsx prisma/seed-family-health-qna.ts --dry-run",
+    "db:check:family-health": "tsx scripts/check-family-health-qna-db.ts",
+    "db:seed:guides": "tsx prisma/seed-guides.ts",
+    "db:seed:guides:dry": "tsx prisma/seed-guides.ts --dry-run",
+    "db:check:guides": "tsx scripts/check-guides-db.ts",
+    "db:audit:content": "tsx scripts/audit-db-content-quality.ts",
+    "db:improve:content": "tsx scripts/improve-db-content-quality.ts",
+    "db:improve:content:apply": "tsx scripts/improve-db-content-quality.ts --apply",
+    "db:quality:init": "tsx scripts/create-content-quality-batches.ts",
+    "db:quality:export": "tsx scripts/export-content-quality-batch.ts",
+    "db:quality:progress": "tsx scripts/check-content-quality-progress.ts",
+    "db:quality:page": "tsx scripts/audit-page-detail-sections.ts",
+    "check:deploy": "npm run lint && npm run build",
+    "cleanup:korean-only": "node scripts/cleanup-korean-only-before-deploy.mjs"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^7.8.0",
+    "@prisma/client": "^7.8.0",
     "@vercel/analytics": "^2.0.1",
+    "dotenv": "^17.4.2",
     "html-to-image": "^1.11.13",
     "html2canvas": "^1.4.1",
     "jspdf": "^4.1.0",
     "lucide-react": "^0.564.0",
     "next": "16.1.6",
+    "pg": "^8.22.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "recharts": "^3.7.0"
@@ -28,7 +53,12 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "prisma": "^7.8.0",
     "tailwindcss": "^4",
+    "tsx": "^4.22.4",
     "typescript": "^5"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   }
 }

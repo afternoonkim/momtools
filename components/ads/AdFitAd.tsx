@@ -47,11 +47,11 @@ export default function AdFitAd({
   return (
     <aside
       aria-label="광고"
-      className={`my-6 flex w-full justify-center overflow-hidden ${className}`.trim()}
+      className={`not-prose my-6 flex w-full justify-center overflow-hidden ${className}`.trim()}
     >
       <div
         ref={containerRef}
-        className="mx-auto max-w-full"
+        className="mx-auto flex max-w-full justify-center"
         style={{ width: `${width}px`, minHeight: `${height}px` }}
       >
         <ins

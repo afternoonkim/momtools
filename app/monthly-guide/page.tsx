@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { monthlyGuideItems } from "@/data/monthlyGuide";
+import { getMonthlyGuidesFromDb } from "@/lib/repositories/guides-db";
 import AdFitAd from "@/components/ads/AdFitAd";
 import { ADFIT_UNITS } from "@/lib/adfit";
 
@@ -11,7 +11,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://momtools.kr/monthly-guide" },
 };
 
-export default function MonthlyGuidePage() {
+export const revalidate = 3600;
+
+export default async function MonthlyGuidePage() {
+  const monthlyGuideItems = await getMonthlyGuidesFromDb();
+
   return (
     <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <section className="rounded-3xl bg-slate-950 px-6 py-10 text-white shadow-sm sm:px-8">

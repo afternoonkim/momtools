@@ -1,4 +1,3 @@
-import { qnaData, qnaCategories, type QnaCategory } from "@/data/qna";
 import { familyHealthCategories, familyHealthQnaData, type FamilyHealthQnaCategory } from "@/data/familyHealthQna";
 import { governmentPolicies, governmentPolicyCategories } from "@/data/governmentPolicy";
 import { familyFinanceArticles } from "@/data/familyFinance";
@@ -32,18 +31,6 @@ export interface SearchEntry {
   topic?: string;
   keywords: string[];
 }
-
-const koreanQnaEntries: SearchEntry[] = (Object.keys(qnaCategories) as QnaCategory[]).flatMap((category) =>
-  qnaData[category].map((entry) => ({
-    type: "qna" as const,
-    categoryLabel: `${qnaCategories[category]} Q&A`,
-    href: `/qna/${category}/${entry.slug}`,
-    title: entry.question,
-    description: entry.summary,
-    topic: entry.topic,
-    keywords: [...(entry.keywords ?? []), entry.topic, qnaCategories[category]].filter(Boolean) as string[],
-  })),
-);
 
 const familyHealthEntries: SearchEntry[] = (Object.keys(familyHealthCategories) as FamilyHealthQnaCategory[]).flatMap(
   (category) =>
@@ -302,9 +289,8 @@ const staticPageEntries: SearchEntry[] = [
   },
 ];
 
-export const SEARCH_INDEX: SearchEntry[] = [
+export const STATIC_SEARCH_INDEX: SearchEntry[] = [
   ...staticPageEntries,
-  ...koreanQnaEntries,
   ...familyHealthEntries,
   ...policyEntries,
   ...familyFinanceEntries,
@@ -315,3 +301,6 @@ export const SEARCH_INDEX: SearchEntry[] = [
   ...monthlyGuideEntries,
   ...healthGuideEntries,
 ];
+
+
+export const SEARCH_INDEX: SearchEntry[] = STATIC_SEARCH_INDEX;

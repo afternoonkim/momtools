@@ -39,7 +39,7 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
 export default async function SearchPage({ searchParams }: PageProps) {
   const { q } = await searchParams;
   const query = (q ?? "").trim();
-  const results = query ? searchSite(query, 80) : [];
+  const results = query ? await searchSite(query, 80) : [];
   const groups = groupResultsByType(results);
 
   return (

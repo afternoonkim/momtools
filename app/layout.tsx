@@ -16,10 +16,8 @@ export const metadata: Metadata = {
     canonical: "https://momtools.kr/",
     languages: {
       "ko-KR": "https://momtools.kr/",
-      "en-US": "https://momtools.kr/en",
       "x-default": "https://momtools.kr/",
     },
-    // 피드 리더와 검색엔진 RSS 자동 발견용. <link rel="alternate" type="application/rss+xml" /> 형태로 렌더링됩니다.
     types: {
       "application/rss+xml": [
         { url: "https://momtools.kr/rss.xml", title: "MomTools 전체 피드" },
@@ -36,7 +34,6 @@ export const metadata: Metadata = {
     url: "https://momtools.kr",
     siteName: "MomTools",
     locale: "ko_KR",
-    alternateLocale: ["en_US"],
     type: "website",
   },
   verification: {

@@ -71,7 +71,7 @@ function Thumbnail({
     return (
       <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-sky-50 via-white to-emerald-50 text-slate-400">
         <ImageIcon size={30} />
-        <span className="text-sm font-medium">썸네일 준비중</span>
+        <span className="text-sm font-medium">글로 먼저 확인</span>
       </div>
     );
   }

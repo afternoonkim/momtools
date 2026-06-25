@@ -299,7 +299,7 @@ export default function HomePage() {
                 <span className="rounded-full bg-amber-50 px-3 py-1 text-[11px] font-semibold text-amber-700">{item.category}</span>
                 <h3 className="mt-4 text-base font-bold leading-7 text-slate-900">{item.title}</h3>
                 <p className="mt-2 text-sm leading-6 text-slate-600">{item.description}</p>
-                <div className="mt-4 text-xs text-slate-400">업데이트 {item.updatedAt}</div>
+                <div className="mt-4 text-xs text-slate-400">최근 확인 {item.updatedAt}</div>
               </Link>
             ))}
           </div>

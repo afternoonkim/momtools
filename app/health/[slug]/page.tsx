@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { findHealthGuide, healthGuideItems } from "@/data/healthGuides";
-import { getQnaEntries } from "@/data/qna";
+import { healthGuideItems, type HealthGuideItem } from "@/data/healthGuides";
+import { getHealthGuideFromDb, getHealthGuidesFromDb } from "@/lib/repositories/guides-db";
+import { getQnaEntriesForCategory } from "@/lib/repositories/qna-db";
+
+export const dynamicParams = true;
+export const revalidate = 3600;
 
 export function generateStaticParams() {
   return healthGuideItems.map((item) => ({ slug: item.slug }));
@@ -10,7 +14,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const item = findHealthGuide(slug);
+  const item = await getHealthGuideFromDb(slug);
   if (!item) return {};
   return {
     title: `${item.title} | MomTools`,
@@ -21,14 +25,16 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 
-function getRelatedHealthQna(item: NonNullable<ReturnType<typeof findHealthGuide>>) {
+async function getRelatedHealthQna(item: HealthGuideItem) {
   const keywords = new Set([
     item.slug,
     ...item.keywords,
     ...item.title.split(/[｜·\s]+/),
   ].map((word) => word.toLowerCase()).filter(Boolean));
 
-  return getQnaEntries("health")
+  const healthQnaEntries = await getQnaEntriesForCategory("health");
+
+  return healthQnaEntries
     .filter((entry) => {
       const haystack = `${entry.question} ${entry.topic} ${entry.summary} ${entry.keywords.join(" ")}`.toLowerCase();
       return [...keywords].some((keyword) => keyword.length >= 2 && haystack.includes(keyword));
@@ -38,10 +44,11 @@ function getRelatedHealthQna(item: NonNullable<ReturnType<typeof findHealthGuide
 
 export default async function HealthGuideDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const item = findHealthGuide(slug);
+  const item = await getHealthGuideFromDb(slug);
   if (!item) notFound();
-  const otherItems = healthGuideItems.filter((guide) => guide.slug !== item.slug).slice(0, 4);
-  const relatedQna = getRelatedHealthQna(item);
+  const allGuides = await getHealthGuidesFromDb();
+  const otherItems = allGuides.filter((guide) => guide.slug !== item.slug).slice(0, 4);
+  const relatedQna = await getRelatedHealthQna(item);
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">

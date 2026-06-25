@@ -1,0 +1,18 @@
+# Content quality batch files
+scripts/apply-content-quality-batch-*.ts
+exports/content-quality/
+batch*/
+out_batch*/
+prev*/
+package_batch*/
+
+# Local/debug routes
+app/db-check/
+
+# English section temporarily excluded
+app/en/
+
+# Archives and local files
+*.zip
+.env
+.env.local

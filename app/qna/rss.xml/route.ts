@@ -1,22 +1,29 @@
-import { qnaCategories, qnaData, type QnaCategory } from "@/data/qna";
+import { qnaCategories, type QnaCategory } from "@/data/qna";
+import { getQnaEntriesForCategory } from "@/lib/repositories/qna-db";
 import { buildRssXml, RSS_RESPONSE_HEADERS, type FeedItem } from "@/lib/rss/feed";
 import { SITE_DATES } from "@/lib/content-meta";
 
-export const dynamic = "force-static";
+export const runtime = "nodejs";
 export const revalidate = 3600;
 
 const PER_CATEGORY = 20;
 
-export function GET() {
-  const items: FeedItem[] = (Object.keys(qnaCategories) as QnaCategory[]).flatMap((category) =>
-    qnaData[category].slice(0, PER_CATEGORY).map((entry) => ({
-      link: `/qna/${category}/${entry.slug}`,
-      title: entry.question,
-      description: entry.summary,
-      pubDate: SITE_DATES.updated,
-      category: qnaCategories[category],
-    })),
+export async function GET() {
+  const itemsByCategory = await Promise.all(
+    (Object.keys(qnaCategories) as QnaCategory[]).map(async (category) => {
+      const entries = await getQnaEntriesForCategory(category);
+
+      return entries.slice(0, PER_CATEGORY).map((entry) => ({
+        link: `/qna/${category}/${entry.slug}`,
+        title: entry.question,
+        description: entry.summary,
+        pubDate: SITE_DATES.updated,
+        category: qnaCategories[category],
+      }));
+    }),
   );
+
+  const items: FeedItem[] = itemsByCategory.flat();
 
   const xml = buildRssXml(
     {

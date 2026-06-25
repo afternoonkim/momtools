@@ -1,7 +1,11 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
-import { findMonthlyGuide, monthlyGuideItems } from "@/data/monthlyGuide";
+import { monthlyGuideItems } from "@/data/monthlyGuide";
+import { getMonthlyGuideFromDb, getMonthlyGuidesFromDb } from "@/lib/repositories/guides-db";
+
+export const dynamicParams = true;
+export const revalidate = 3600;
 
 export function generateStaticParams() {
   return monthlyGuideItems.map((item) => ({ slug: item.slug }));
@@ -9,7 +13,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const item = findMonthlyGuide(slug);
+  const item = await getMonthlyGuideFromDb(slug);
   if (!item) return {};
   return {
     title: `${item.title} | MomTools`,
@@ -21,10 +25,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function MonthlyGuideDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const item = findMonthlyGuide(slug);
+  const item = await getMonthlyGuideFromDb(slug);
   if (!item) notFound();
 
-  const otherItems = monthlyGuideItems.filter((guide) => guide.slug !== item.slug).slice(0, 4);
+  const allGuides = await getMonthlyGuidesFromDb();
+  const otherItems = allGuides.filter((guide) => guide.slug !== item.slug).slice(0, 4);
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">

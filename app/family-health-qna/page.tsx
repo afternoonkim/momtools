@@ -5,10 +5,9 @@ import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
 import {
   familyHealthCategories,
-  familyHealthQnaData,
-  familyHealthTotalCount,
   type FamilyHealthQnaCategory,
 } from "@/data/familyHealthQna";
+import { getFamilyHealthCategorySummaries } from "@/lib/repositories/family-health-qna-db";
 
 export const metadata: Metadata = {
   title: "가족건강 Q&A | 엄마 아빠 생활 건강 약 영양제 질문 모음 | MomTools",
@@ -71,8 +70,12 @@ const bridgeLinks = [
   },
 ];
 
-export default function FamilyHealthQnaHubPage() {
-  const categories = Object.keys(familyHealthCategories) as FamilyHealthQnaCategory[];
+export const revalidate = 86400;
+
+export default async function FamilyHealthQnaHubPage() {
+  const categorySummaries = await getFamilyHealthCategorySummaries();
+  const totalCount = categorySummaries.reduce((sum, category) => sum + category.count, 0);
+  const categories = categorySummaries.map((category) => category.key);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -84,7 +87,7 @@ export default function FamilyHealthQnaHubPage() {
     mainEntity: categories.map((category) => ({
       "@type": "ItemList",
       name: familyHealthCategories[category].label,
-      numberOfItems: familyHealthQnaData[category].length,
+      numberOfItems: categorySummaries.find((item) => item.key === category)?.count ?? 0,
       url: buildCanonical(`/family-health-qna/${category}`),
     })),
   };
@@ -104,7 +107,7 @@ export default function FamilyHealthQnaHubPage() {
             언제 상담을 고려하면 좋은지 쉽게 확인할 수 있게 풀어갑니다.
           </p>
           <div className="mt-6 flex flex-wrap gap-3 text-sm text-slate-600">
-            <span className="rounded-full bg-amber-50 px-4 py-2 font-semibold text-amber-800">총 {familyHealthTotalCount}개 질문</span>
+            <span className="rounded-full bg-amber-50 px-4 py-2 font-semibold text-amber-800">총 {totalCount.toLocaleString()}개 질문</span>
             <span className="rounded-full bg-slate-50 px-4 py-2">엄마 건강</span>
             <span className="rounded-full bg-slate-50 px-4 py-2">아빠 건강</span>
             <span className="rounded-full bg-slate-50 px-4 py-2">약·영양제</span>
@@ -135,6 +138,7 @@ export default function FamilyHealthQnaHubPage() {
         <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {categories.map((category) => {
             const info = familyHealthCategories[category];
+            const count = categorySummaries.find((item) => item.key === category)?.count ?? 0;
             return (
               <Link
                 key={category}
@@ -144,7 +148,7 @@ export default function FamilyHealthQnaHubPage() {
                 <div className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-600">Family Health</div>
                 <h2 className="mt-3 text-xl font-bold text-slate-800">{info.label}</h2>
                 <p className="mt-3 text-sm leading-7 text-slate-500">{info.description}</p>
-                <div className="mt-4 text-sm font-semibold text-amber-700">{familyHealthQnaData[category].length}개 질문 보기</div>
+                <div className="mt-4 text-sm font-semibold text-amber-700">{count.toLocaleString()}개 질문 보기</div>
               </Link>
             );
           })}

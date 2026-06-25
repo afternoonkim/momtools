@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { healthGuideItems } from "@/data/healthGuides";
+import { getHealthGuidesFromDb } from "@/lib/repositories/guides-db";
 
 export const metadata: Metadata = {
   title: "아기 증상별 건강 가이드 | 열·기침·콧물·설사·구토·발진 확인 기준",
@@ -9,7 +9,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "https://momtools.kr/health" },
 };
 
-export default function HealthGuidePage() {
+export const revalidate = 3600;
+
+export default async function HealthGuidePage() {
+  const healthGuideItems = await getHealthGuidesFromDb();
+
   return (
     <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <section className="rounded-3xl bg-rose-50 px-6 py-10 sm:px-8">

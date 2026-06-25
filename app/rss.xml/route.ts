@@ -1,12 +1,14 @@
 import { qnaCategories, qnaData, type QnaCategory } from "@/data/qna";
-import { familyHealthCategories, familyHealthQnaData, type FamilyHealthQnaCategory } from "@/data/familyHealthQna";
+import { familyHealthCategories } from "@/data/familyHealthQna";
+import { getFamilyHealthSearchEntriesFromDb } from "@/lib/repositories/family-health-qna-db";
+import { getHealthGuideSearchEntriesFromDb, getMonthlyGuideSearchEntriesFromDb } from "@/lib/repositories/guides-db";
 import { governmentPolicies, governmentPolicyCategories } from "@/data/governmentPolicy";
 import { familyFinanceArticles } from "@/data/familyFinance";
 import { babyFoodRecipes, stageLabels } from "@/data/babyFood";
 import { SITE_DATES } from "@/lib/content-meta";
 import { buildRssXml, RSS_RESPONSE_HEADERS, type FeedItem } from "@/lib/rss/feed";
 
-export const dynamic = "force-static";
+export const dynamic = "force-dynamic";
 export const revalidate = 3600;
 
 const MAX_ITEMS_PER_SECTION = 40;
@@ -24,16 +26,41 @@ function pickQnaItems(): FeedItem[] {
   );
 }
 
-function pickFamilyHealthItems(): FeedItem[] {
-  return (Object.keys(familyHealthCategories) as FamilyHealthQnaCategory[]).flatMap((category) =>
-    familyHealthQnaData[category].slice(0, 4).map((entry) => ({
-      link: `/family-health-qna/${category}/${entry.slug}`,
-      title: entry.question,
-      description: entry.summary,
-      pubDate: SITE_DATES.updated,
-      category: `${familyHealthCategories[category].label}`,
-    })),
-  );
+async function pickFamilyHealthItems(): Promise<FeedItem[]> {
+  const entries = await getFamilyHealthSearchEntriesFromDb();
+
+  return entries.slice(0, 24).map((entry) => ({
+    link: `/family-health-qna/${entry.category}/${entry.slug}`,
+    title: entry.question,
+    description: entry.summary,
+    pubDate: SITE_DATES.updated,
+    category: familyHealthCategories[entry.category].label,
+  }));
+}
+
+
+async function pickMonthlyGuideItems(): Promise<FeedItem[]> {
+  const entries = await getMonthlyGuideSearchEntriesFromDb();
+
+  return entries.slice(0, 18).map((entry) => ({
+    link: entry.path,
+    title: entry.title,
+    description: entry.summary,
+    pubDate: SITE_DATES.updated,
+    category: "월령별 육아 로드맵",
+  }));
+}
+
+async function pickHealthGuideItems(): Promise<FeedItem[]> {
+  const entries = await getHealthGuideSearchEntriesFromDb();
+
+  return entries.slice(0, 12).map((entry) => ({
+    link: entry.path,
+    title: entry.title,
+    description: entry.summary,
+    pubDate: SITE_DATES.updated,
+    category: "증상별 건강 가이드",
+  }));
 }
 
 function pickPolicyItems(): FeedItem[] {
@@ -122,11 +149,19 @@ function sortByDateDesc(items: FeedItem[]): FeedItem[] {
   });
 }
 
-export function GET() {
+export async function GET() {
+  const [familyHealthItems, monthlyGuideItems, healthGuideItems] = await Promise.all([
+    pickFamilyHealthItems(),
+    pickMonthlyGuideItems(),
+    pickHealthGuideItems(),
+  ]);
+
   const items = sortByDateDesc([
     ...pickFamilyFinanceItems(),
     ...pickPolicyItems(),
-    ...pickFamilyHealthItems(),
+    ...familyHealthItems,
+    ...monthlyGuideItems,
+    ...healthGuideItems,
     ...pickQnaItems(),
     ...pickBabyFoodItems(),
     ...pickFeaturedToolItems(),

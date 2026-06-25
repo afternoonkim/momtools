@@ -7,11 +7,10 @@ import RelatedContent from "@/components/common/RelatedContent";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
 import {
   familyHealthCategories,
-  familyHealthQnaData,
-  getFamilyHealthEntry,
-  getRelatedFamilyHealthQna,
   type FamilyHealthQnaCategory,
+  type FamilyHealthQnaEntry,
 } from "@/data/familyHealthQna";
+import { getFamilyHealthEntryFromDb, getRelatedFamilyHealthFromDb } from "@/lib/repositories/family-health-qna-db";
 import AdFitAd from "@/components/ads/AdFitAd";
 import { ADFIT_UNITS } from "@/lib/adfit";
 
@@ -80,7 +79,7 @@ const relatedLinks: Record<FamilyHealthQnaCategory, RelatedLink[]> = {
   ],
 };
 
-function buildFaqs(item: NonNullable<ReturnType<typeof getFamilyHealthEntry>>, category: FamilyHealthQnaCategory) {
+function buildFaqs(item: FamilyHealthQnaEntry, category: FamilyHealthQnaCategory) {
   return [
     {
       question: item.question,
@@ -101,18 +100,18 @@ function buildFaqs(item: NonNullable<ReturnType<typeof getFamilyHealthEntry>>, c
   ];
 }
 
+export const revalidate = 86400;
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
-  const categories = Object.keys(familyHealthCategories) as FamilyHealthQnaCategory[];
-  return categories.flatMap((category) =>
-    familyHealthQnaData[category].map((item) => ({ category, slug: item.slug })),
-  );
+  return [];
 }
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { category, slug } = await params;
   if (!(category in familyHealthCategories)) return {};
   const typed = category as FamilyHealthQnaCategory;
-  const item = getFamilyHealthEntry(typed, slug);
+  const item = await getFamilyHealthEntryFromDb(typed, slug);
   if (!item) return {};
   const info = familyHealthCategories[typed];
   const title = `${item.question} | ${info.shortLabel} 가족건강 Q&A`;
@@ -140,11 +139,11 @@ export default async function FamilyHealthDetailPage({ params }: { params: Promi
   const { category, slug } = await params;
   if (!(category in familyHealthCategories)) notFound();
   const typed = category as FamilyHealthQnaCategory;
-  const item = getFamilyHealthEntry(typed, slug);
+  const item = await getFamilyHealthEntryFromDb(typed, slug);
   if (!item) notFound();
 
   const info = familyHealthCategories[typed];
-  const related = getRelatedFamilyHealthQna(typed, slug, 6);
+  const related = await getRelatedFamilyHealthFromDb(typed, slug, 6);
   const faqs = buildFaqs(item, typed);
   const mobileQuickLinks = [
     { href: "#first-check", label: "먼저 볼 핵심" },

@@ -38,6 +38,14 @@
     ".next/dev/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    ".next",
+    "out",
+    "scripts",
+    "exports",
+    "batch*",
+    "out_batch*",
+    "prev*",
+    "package_batch*"
   ]
 }

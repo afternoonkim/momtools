@@ -1,0 +1,225 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../lib/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Locale {
+  ko
+  en
+}
+
+enum ContentType {
+  QNA
+  FAMILY_HEALTH_QNA
+  HEALTH_GUIDE
+  MONTHLY_GUIDE
+  POLICY
+  CHILDCARE_PORTAL_GUIDE
+  FAMILY_FINANCE
+  CHECKLIST
+  INFO_PAGE
+  BABY_NAME
+  BABY_FOOD_RECIPE
+  BABY_PRODUCT_QNA
+  PLAY_ITEM
+}
+
+enum PublishStatus {
+  DRAFT
+  REVIEW
+  PUBLISHED
+  HIDDEN
+}
+
+model ContentCategory {
+  id          String      @id @default(cuid())
+  locale      Locale      @default(ko)
+  type        ContentType
+  slug        String
+  name        String
+  shortName   String?
+  description String?
+  sortOrder   Int         @default(0)
+
+  contents    Content[]
+
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@unique([locale, type, slug])
+  @@index([locale, type])
+}
+
+model Content {
+  id              String        @id @default(cuid())
+
+  locale          Locale        @default(ko)
+  type            ContentType
+
+  categoryId      String?
+  category        ContentCategory? @relation(fields: [categoryId], references: [id])
+
+  slug            String
+  path            String        @unique
+
+  title           String
+  shortTitle      String?
+  question        String?
+  topic           String?
+  summary         String
+
+  ageMinMonth     Int?
+  ageMaxMonth     Int?
+
+  isMedical       Boolean       @default(false)
+  isOfficialInfo  Boolean       @default(false)
+
+  status          PublishStatus @default(DRAFT)
+  reviewStatus    String        @default("NEEDS_REVIEW")
+  duplicateMemo   String?
+  editorMemo      String?
+
+  metaTitle       String?
+  metaDescription String?
+  canonicalPath   String?
+  ogTitle         String?
+  ogDescription   String?
+
+  publishedAt     DateTime?
+  verifiedAt      DateTime?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  sections        ContentSection[]
+  keywords        ContentKeyword[]
+  sources         ContentSource[]
+
+  outgoingLinks   ContentRelation[] @relation("ContentRelationFrom")
+  incomingLinks   ContentRelation[] @relation("ContentRelationTo")
+
+  @@unique([locale, type, slug])
+  @@index([locale, type, status])
+  @@index([categoryId])
+  @@index([topic])
+}
+
+model ContentSection {
+  id          String   @id @default(cuid())
+
+  contentId   String
+  content     Content  @relation(fields: [contentId], references: [id], onDelete: Cascade)
+
+  sectionType String
+  title       String?
+  body        String?
+  items       Json?
+  sortOrder   Int      @default(0)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([contentId])
+  @@index([contentId, sectionType])
+}
+
+model ContentKeyword {
+  id        String  @id @default(cuid())
+
+  contentId String
+  content   Content @relation(fields: [contentId], references: [id], onDelete: Cascade)
+
+  keyword   String
+
+  @@unique([contentId, keyword])
+  @@index([keyword])
+}
+
+model ContentSource {
+  id          String   @id @default(cuid())
+
+  contentId   String
+  content     Content  @relation(fields: [contentId], references: [id], onDelete: Cascade)
+
+  name        String
+  url         String?
+  description String?
+  checkedAt   DateTime?
+
+  @@index([contentId])
+}
+
+model ContentRelation {
+  id            String  @id @default(cuid())
+
+  fromContentId String
+  fromContent   Content @relation("ContentRelationFrom", fields: [fromContentId], references: [id], onDelete: Cascade)
+
+  toContentId   String
+  toContent     Content @relation("ContentRelationTo", fields: [toContentId], references: [id], onDelete: Cascade)
+
+  label         String
+  description   String?
+  reason        String?
+  sortOrder     Int     @default(0)
+
+  @@unique([fromContentId, toContentId])
+  @@index([fromContentId])
+  @@index([toContentId])
+}
+model ContentQualityBatch {
+  id             String   @id @default(cuid())
+  batchNo        Int      @unique
+  label          String
+  scope          String
+  status         String   @default("READY")
+  totalItems     Int      @default(0)
+  completedItems Int      @default(0)
+  startedAt      DateTime?
+  completedAt    DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  items          ContentQualityBatchItem[]
+
+  @@index([status])
+  @@index([scope])
+}
+
+model ContentQualityBatchItem {
+  id           String   @id @default(cuid())
+  batchId      String
+  batch        ContentQualityBatch @relation(fields: [batchId], references: [id], onDelete: Cascade)
+
+  batchNo      Int
+  sequence     Int
+  globalOrder  Int      @unique
+
+  sourceKind   String
+  sourceKey    String   @unique
+  dbStatus     String   @default("DB_READY")
+  contentId    String?
+
+  path         String
+  type         String
+  category     String?
+  title        String
+
+  status       String   @default("READY")
+  reviewStatus String?
+  editorMemo   String?
+
+  exportedAt   DateTime?
+  completedAt  DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([batchNo])
+  @@index([status])
+  @@index([dbStatus])
+  @@index([type, category])
+  @@index([sourceKind])
+}

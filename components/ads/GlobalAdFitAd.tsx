@@ -19,7 +19,7 @@ export default function GlobalAdFitAd({ position = "bottom" }: GlobalAdFitAdProp
 
   if (position === "top") {
     return (
-      <div className="mx-auto w-full max-w-7xl px-4 pt-3 sm:px-6">
+      <div className="mx-auto w-full max-w-7xl px-4 pt-2 sm:px-6 md:pt-3">
         <AdFitAd {...ADFIT_UNITS.mobileSmall} className="my-2" />
       </div>
     );

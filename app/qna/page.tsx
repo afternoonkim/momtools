@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { qnaCategories, qnaData } from "@/data/qna";
+import { getQnaCategorySummaries } from "@/lib/repositories/qna-db";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
 import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
@@ -42,7 +42,11 @@ const guideCards = [
   },
 ];
 
-export default function QnaHubPage() {
+export const runtime = "nodejs";
+export const revalidate = 3600;
+
+export default async function QnaHubPage() {
+  const categorySummaries = await getQnaCategorySummaries();
   return (
     <div className="mt-page">
       <div className="mt-container space-y-8">
@@ -83,12 +87,12 @@ export default function QnaHubPage() {
         </section>
 
         <section className="grid gap-5 md:grid-cols-3">
-          {(Object.keys(qnaCategories) as Array<keyof typeof qnaCategories>).map((key) => (
-            <Link key={key} href={`/qna/${key}`} className="mt-card p-6 transition hover:-translate-y-0.5">
+          {categorySummaries.map((category) => (
+            <Link key={category.key} href={`/qna/${category.key}`} className="mt-card p-6 transition hover:-translate-y-0.5">
               <div className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-600">Q&amp;A</div>
-              <h2 className="mt-3 text-xl font-bold text-slate-800">{qnaCategories[key]}</h2>
-              <p className="mt-3 text-sm leading-7 text-slate-500">{categoryDescriptions[key]}</p>
-              <div className="mt-4 text-sm font-semibold text-amber-700">총 {qnaData[key].length}개 질문</div>
+              <h2 className="mt-3 text-xl font-bold text-slate-800">{category.name}</h2>
+              <p className="mt-3 text-sm leading-7 text-slate-500">{category.description ?? categoryDescriptions[category.key]}</p>
+              <div className="mt-4 text-sm font-semibold text-amber-700">총 {category.count}개 질문</div>
             </Link>
           ))}
         </section>
