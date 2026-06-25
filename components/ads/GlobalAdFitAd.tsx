@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import AdFitAd from "@/components/ads/AdFitAd";
 import {
-  ADFIT_UNITS,
+  getGlobalAdFitUnit,
   shouldShowGlobalAdFitAd,
   type GlobalAdFitPosition,
 } from "@/lib/adfit";
@@ -17,17 +17,19 @@ export default function GlobalAdFitAd({ position = "bottom" }: GlobalAdFitAdProp
 
   if (!shouldShowGlobalAdFitAd(pathname, position)) return null;
 
+  const unit = getGlobalAdFitUnit(position);
+
   if (position === "top") {
     return (
-      <div className="mx-auto w-full max-w-7xl px-4 pt-2 sm:px-6 md:pt-3">
-        <AdFitAd {...ADFIT_UNITS.mobileSmall} className="my-2" />
+      <div className="mx-auto w-full max-w-7xl px-4 pt-3 sm:px-6">
+        <AdFitAd {...unit} className="my-2" />
       </div>
     );
   }
 
   return (
     <div className="mx-auto w-full max-w-7xl px-4 pb-4 sm:px-6">
-      <AdFitAd {...ADFIT_UNITS.mobileSmall} className="my-4" />
+      <AdFitAd {...unit} className="my-4" />
     </div>
   );
 }

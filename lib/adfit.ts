@@ -16,123 +16,72 @@ export const ADFIT_UNITS = {
   },
 } as const;
 
+export type AdFitUnit = (typeof ADFIT_UNITS)[keyof typeof ADFIT_UNITS];
 export type GlobalAdFitPosition = "top" | "bottom";
 
-type AdFitRoutePolicy = {
-  enabled: boolean;
-  reason:
-    | "global-adfit"
-    | "inline-adfit"
-    | "ad-free-page"
-    | "temporary-language-page"
-    | "debug-page"
-    | "calculator-page"
-    | "content-page";
-};
+const GLOBAL_ADFIT_EXCLUDED_PATH_PREFIXES = [
+  "/en",
+  "/content",
+  "/db-check",
+  "/tools",
+  "/cal",
+] as const;
 
-const ADFIT_NEVER_SHOW_PATHS = new Set<string>([
+const GLOBAL_ADFIT_EXCLUDED_PATHS = new Set<string>([
   "/privacy",
   "/terms",
   "/contact",
 ] as const);
 
-const ADFIT_NEVER_SHOW_PREFIXES = [
-  "/en",
-  "/db-check",
-  "/api",
-] as const;
-
-const ADFIT_CALCULATOR_PREFIXES = [
-  "/cal",
-  "/tools",
-  "/policy/birth-support-calculator",
-] as const;
-
-const ADFIT_CONTENT_PREFIXES = [
-  "/content",
-] as const;
-
-const ADFIT_INLINE_EXACT_PATHS = new Set<string>([
+const GLOBAL_ADFIT_BOTTOM_EXCLUDED_PATHS = new Set<string>([
   "/",
-  "/baby-food",
-  "/checklists/birth",
-  "/checklists/daycare",
-  "/checklists/newborn",
-  "/checklists/weaning",
-  "/info/childcare-portal",
-  "/info/newborn",
-  "/info/pregnancy",
-  "/info/toddler",
-  "/info/weaning",
-  "/items/essential",
-  "/monthly-guide",
-  "/policy",
 ] as const);
 
-function matchesPrefix(pathname: string, prefix: string) {
-  return pathname === prefix || pathname.startsWith(`${prefix}/`);
-}
-
-function isQnaDetailPath(pathname: string) {
-  const parts = pathname.split("/").filter(Boolean);
-  return parts.length >= 3 && parts[0] === "qna";
-}
-
-function isFamilyHealthQnaDetailPath(pathname: string) {
-  const parts = pathname.split("/").filter(Boolean);
-  return parts.length >= 3 && parts[0] === "family-health-qna";
-}
+const GLOBAL_ADFIT_BOTTOM_INLINE_MOBILE_RESULT_PATTERNS = [
+  /^\/qna\/[^/]+\/[^/]+$/,
+  /^\/family-health-qna\/[^/]+\/[^/]+$/,
+  /^\/checklists\/(birth|daycare|newborn|weaning)$/,
+  /^\/policy\/birth-support-calculator(?:\/.*)?$/,
+] as const;
 
 export function normalizeAdFitPathname(pathname: string) {
   return pathname.split("?")[0]?.replace(/\/$/, "") || "/";
 }
 
-export function getAdFitRoutePolicy(pathname: string): AdFitRoutePolicy {
-  const normalizedPathname = normalizeAdFitPathname(pathname);
+function isExcludedGlobalAdFitPath(pathname: string) {
+  if (GLOBAL_ADFIT_EXCLUDED_PATHS.has(pathname)) return true;
 
-  if (ADFIT_NEVER_SHOW_PATHS.has(normalizedPathname)) {
-    return { enabled: false, reason: "ad-free-page" };
-  }
+  return GLOBAL_ADFIT_EXCLUDED_PATH_PREFIXES.some((prefix) =>
+    pathname === prefix || pathname.startsWith(`${prefix}/`),
+  );
+}
 
-  if (ADFIT_NEVER_SHOW_PREFIXES.some((prefix) => matchesPrefix(normalizedPathname, prefix))) {
-    if (matchesPrefix(normalizedPathname, "/en")) {
-      return { enabled: false, reason: "temporary-language-page" };
-    }
-
-    if (matchesPrefix(normalizedPathname, "/db-check") || matchesPrefix(normalizedPathname, "/api")) {
-      return { enabled: false, reason: "debug-page" };
-    }
-  }
-
-  if (ADFIT_CALCULATOR_PREFIXES.some((prefix) => matchesPrefix(normalizedPathname, prefix))) {
-    return { enabled: false, reason: "calculator-page" };
-  }
-
-  if (ADFIT_CONTENT_PREFIXES.some((prefix) => matchesPrefix(normalizedPathname, prefix))) {
-    return { enabled: false, reason: "content-page" };
-  }
-
-  if (
-    ADFIT_INLINE_EXACT_PATHS.has(normalizedPathname) ||
-    isQnaDetailPath(normalizedPathname) ||
-    isFamilyHealthQnaDetailPath(normalizedPathname)
-  ) {
-    return { enabled: false, reason: "inline-adfit" };
-  }
-
-  return { enabled: true, reason: "global-adfit" };
+function hasInlineMobileResultAd(pathname: string) {
+  return GLOBAL_ADFIT_BOTTOM_INLINE_MOBILE_RESULT_PATTERNS.some((pattern) =>
+    pattern.test(pathname),
+  );
 }
 
 export function shouldShowGlobalAdFitAd(
   pathname: string,
   position: GlobalAdFitPosition = "bottom",
 ) {
-  const policy = getAdFitRoutePolicy(pathname);
-  if (!policy.enabled) return false;
+  const normalizedPathname = normalizeAdFitPathname(pathname);
 
-  // 모바일 첫 화면을 광고가 과하게 밀어내지 않도록 상단 광고는 320x50 단위만 사용하고,
-  // 하단 광고와 함께 노출되어도 페이지당 전역 광고는 최대 2개로 제한합니다.
-  if (position === "top") return true;
+  if (isExcludedGlobalAdFitPath(normalizedPathname)) return false;
+
+  if (position === "bottom") {
+    if (GLOBAL_ADFIT_BOTTOM_EXCLUDED_PATHS.has(normalizedPathname)) return false;
+    if (hasInlineMobileResultAd(normalizedPathname)) return false;
+  }
 
   return true;
+}
+
+export function getGlobalAdFitUnit(position: GlobalAdFitPosition): AdFitUnit {
+  if (position === "top") return ADFIT_UNITS.mobileSmall;
+
+  // 하단 전역 광고는 상단 광고와 다른 광고단위를 사용해서
+  // 한 페이지 안에서 같은 data-ad-unit이 중복되지 않도록 한다.
+  return ADFIT_UNITS.mobileResult;
 }

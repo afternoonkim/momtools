@@ -3,8 +3,6 @@ import Link from "next/link";
 import { HOME_CARD_UPDATED_LABEL_KO } from "@/lib/content-meta";
 import { Baby, CalendarDays, CheckSquare2, HeartPulse, Search, Sparkles } from "lucide-react";
 import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
-import AdFitAd from "@/components/ads/AdFitAd";
-import { ADFIT_UNITS } from "@/lib/adfit";
 
 export const metadata: Metadata = {
   title: "육아 계산기와 육아 질문 빠른 확인 | MomTools",
@@ -194,8 +192,6 @@ export default function HomePage() {
 
         <MedicalDisclaimer lang="ko" variant="compact" />
 
-        <AdFitAd {...ADFIT_UNITS.mobileSmall} className="my-3" />
-
         <section className="mt-card p-5 md:p-8">
           <div className="flex flex-col gap-2 md:flex-row md:items-end md:justify-between">
             <div>
@@ -304,8 +300,6 @@ export default function HomePage() {
             ))}
           </div>
         </section>
-
-        <AdFitAd {...ADFIT_UNITS.mobileSmall} className="mb-2" />
       </div>
     </div>
   );

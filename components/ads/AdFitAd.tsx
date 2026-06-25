@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useRef } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
 type AdFitAdProps = {
   unit: string;
@@ -9,7 +9,21 @@ type AdFitAdProps = {
   className?: string;
 };
 
+type AdFitRegistryWindow = Window & {
+  __momtoolsAdFitUnitOwners?: Map<string, string>;
+};
+
 const ADFIT_SCRIPT_SRC = "https://t1.daumcdn.net/kas/static/ba.min.js";
+
+function getAdFitUnitOwners() {
+  const browserWindow = window as AdFitRegistryWindow;
+
+  if (!browserWindow.__momtoolsAdFitUnitOwners) {
+    browserWindow.__momtoolsAdFitUnitOwners = new Map<string, string>();
+  }
+
+  return browserWindow.__momtoolsAdFitUnitOwners;
+}
 
 export default function AdFitAd({
   unit,
@@ -20,9 +34,35 @@ export default function AdFitAd({
   const enabled = process.env.NEXT_PUBLIC_ADFIT_ENABLED === "true";
   const containerRef = useRef<HTMLDivElement | null>(null);
   const instanceId = useId().replace(/:/g, "");
+  const [isUnitOwner, setIsUnitOwner] = useState(false);
 
   useEffect(() => {
-    if (!enabled || !unit || !containerRef.current) return;
+    if (!enabled || !unit) {
+      setIsUnitOwner(false);
+      return;
+    }
+
+    const owners = getAdFitUnitOwners();
+    const currentOwner = owners.get(unit);
+
+    if (currentOwner && currentOwner !== instanceId) {
+      setIsUnitOwner(false);
+      return;
+    }
+
+    owners.set(unit, instanceId);
+    setIsUnitOwner(true);
+
+    return () => {
+      if (owners.get(unit) === instanceId) {
+        owners.delete(unit);
+      }
+      setIsUnitOwner(false);
+    };
+  }, [enabled, unit, instanceId]);
+
+  useEffect(() => {
+    if (!enabled || !unit || !isUnitOwner || !containerRef.current) return;
 
     const container = containerRef.current;
     const previousScript = container.querySelector<HTMLScriptElement>(
@@ -40,18 +80,18 @@ export default function AdFitAd({
     return () => {
       script.remove();
     };
-  }, [enabled, unit, width, height, instanceId]);
+  }, [enabled, unit, width, height, instanceId, isUnitOwner]);
 
-  if (!enabled || !unit) return null;
+  if (!enabled || !unit || !isUnitOwner) return null;
 
   return (
     <aside
       aria-label="광고"
-      className={`not-prose my-6 flex w-full justify-center overflow-hidden ${className}`.trim()}
+      className={`my-6 flex w-full justify-center overflow-hidden ${className}`.trim()}
     >
       <div
         ref={containerRef}
-        className="mx-auto flex max-w-full justify-center"
+        className="mx-auto max-w-full"
         style={{ width: `${width}px`, minHeight: `${height}px` }}
       >
         <ins
