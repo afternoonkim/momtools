@@ -19,8 +19,6 @@ export const PAGE_DATES = {
   "/en/cal/vaccine-schedule": { published: "2026-04-10", updated: "2026-04-10" },
   "/en/cal/weaning-start": { published: "2026-04-10", updated: "2026-04-10" },
   "/en/cal/growth-percentile": { published: "2026-04-10", updated: "2026-04-10" },
-  "/content/blog": { published: "2026-04-09", updated: "2026-04-10" },
-  "/content/youtube": { published: "2026-04-09", updated: "2026-04-10" },
   "/play": { published: "2026-04-09", updated: "2026-04-10" },
   "/family-health-qna": { published: "2026-04-27", updated: "2026-04-27" },
   "/policy/pregnancy-birth": { published: "2026-04-28", updated: "2026-04-28" },

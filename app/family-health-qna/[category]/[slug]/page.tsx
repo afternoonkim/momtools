@@ -100,7 +100,7 @@ function buildFaqs(item: FamilyHealthQnaEntry, category: FamilyHealthQnaCategory
   ];
 }
 
-export const revalidate = 86400;
+export const revalidate = 3600;
 export const dynamicParams = true;
 
 export async function generateStaticParams() {

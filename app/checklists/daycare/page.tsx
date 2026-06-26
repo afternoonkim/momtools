@@ -86,9 +86,9 @@ export default function DaycarePrepCanonicalPage() {
               description="등원 준비물과 생활용품 카테고리를 연결해 보기 좋습니다."
             />
             <RelatedLink
-              href="/content/blog"
-              title="블로그 콘텐츠"
-              description="어린이집 적응 팁 같은 확장형 글 콘텐츠와 연결하기 좋아요."
+              href="/info/childcare-portal"
+              title="아이사랑 공식정보"
+              description="어린이집·보육 관련 공식 안내를 함께 확인할 수 있어요."
             />
             <RelatedLink
               href="/faq"

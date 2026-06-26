@@ -16,3 +16,9 @@ app/en/
 *.zip
 .env
 .env.local
+
+# Removed content channel pages and APIs
+app/content/
+app/api/naver-blog/
+app/api/youtube-videos/
+lib/youtube/

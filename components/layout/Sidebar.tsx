@@ -14,8 +14,6 @@ import {
   CircleHelp,
   Mail,
   CalendarHeart,
-  Rss,
-  PlaySquare,
   Sparkles,
   HeartPulse,
   UtensilsCrossed,
@@ -48,7 +46,6 @@ export default function Sidebar({
     familyHealth: "가족건강 Q&A",
     policy: "정부정책",
     checklists: "체크리스트",
-    content: "콘텐츠",
     babyFood: "이유식 메뉴",
     names: "아이 이름 짓기",
     misc: "기타",
@@ -79,8 +76,6 @@ export default function Sidebar({
       newborn: "신생아 준비",
       weaning: "이유식 준비",
       daycare: "어린이집 준비",
-      blog: "육아 블로그",
-      youtube: "추천 유튜브",
       earlyFood: "초기 이유식",
       middleFood: "중기 이유식",
       lateFood: "후기 이유식",
@@ -99,7 +94,6 @@ export default function Sidebar({
   const isPolicyOpen = hasPath("/policy");
   const isFamilyHealthOpen = hasPath("/family-health-qna");
   const isChecklistsOpen = hasPath("/checklists");
-  const isContentOpen = hasPath("/content");
   const isInfoOpen = hasPath("/info") && !hasPath("/info/family-finance");
   const isFamilyFinanceOpen = hasPath("/info/family-finance");
   const isBabyFoodOpen = hasPath("/baby-food");
@@ -222,12 +216,6 @@ export default function Sidebar({
             </SidebarGroup>
           </div>
 
-          <div onClick={closeMobileSidebar}>
-            <SidebarGroup title={t.content} collapsed={collapsed} defaultOpen={isContentOpen}>
-              <SidebarItem href={href("/content/blog")} label={t.links.blog} icon={Rss} collapsed={collapsed} />
-              <SidebarItem href={href("/content/youtube")} label={t.links.youtube} icon={PlaySquare} collapsed={collapsed} />
-            </SidebarGroup>
-          </div>
 
           <div onClick={closeMobileSidebar}>
             <SidebarGroup title={t.babyFood} collapsed={collapsed} defaultOpen={isBabyFoodOpen}>

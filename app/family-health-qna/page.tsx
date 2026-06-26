@@ -70,7 +70,7 @@ const bridgeLinks = [
   },
 ];
 
-export const revalidate = 86400;
+export const revalidate = 3600;
 
 export default async function FamilyHealthQnaHubPage() {
   const categorySummaries = await getFamilyHealthCategorySummaries();

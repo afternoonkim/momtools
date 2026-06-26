@@ -79,7 +79,7 @@ const categoryTips: Record<FamilyHealthQnaCategory, { title: string; description
   ],
 };
 
-export const revalidate = 86400;
+export const revalidate = 3600;
 
 export async function generateStaticParams() {
   return (Object.keys(familyHealthCategories) as FamilyHealthQnaCategory[]).map((category) => ({ category }));

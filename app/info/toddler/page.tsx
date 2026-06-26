@@ -92,9 +92,9 @@ export default function ToddlerPage() {
               description="등원 거부, 분리불안, 떼쓰기처럼 유아기에 자주 겪는 상황을 이어서 볼 수 있어요."
             />
             <RelatedLink
-              href="/content/blog"
-              title="블로그 콘텐츠"
-              description="유아기 생활 팁과 확장형 정보를 더 자세한 글로 이어서 볼 수 있어요."
+              href="/monthly-guide"
+              title="월령별 가이드"
+              description="개월수별 생활 변화와 발달 흐름을 이어서 확인할 수 있어요."
             />
             <RelatedLink
               href="/faq"
