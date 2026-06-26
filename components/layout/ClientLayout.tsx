@@ -5,6 +5,7 @@ import Sidebar from "@/components/layout/Sidebar";
 import Topbar from "@/components/layout/Topbar";
 import SiteFooter from "@/components/layout/SiteFooter";
 import GlobalAdFitAd from "@/components/ads/GlobalAdFitAd";
+import GlobalCoupangPartnersAd from "@/components/ads/GlobalCoupangPartnersAd";
 
 export default function ClientLayout({
   children,
@@ -25,6 +26,7 @@ export default function ClientLayout({
         <Topbar />
         <GlobalAdFitAd position="top" />
         <main className="flex-1">{children}</main>
+        <GlobalCoupangPartnersAd />
         <GlobalAdFitAd position="bottom" />
         <SiteFooter />
       </div>
