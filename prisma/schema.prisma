@@ -223,3 +223,59 @@ model ContentQualityBatchItem {
   @@index([type, category])
   @@index([sourceKind])
 }
+
+model CoupangProductCategory {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  name        String
+  description String?
+  sortOrder   Int      @default(0)
+  enabled     Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  links        CoupangProductLink[]
+  pageMappings PageProductAdMapping[]
+
+  @@index([enabled])
+  @@index([sortOrder])
+}
+
+model CoupangProductLink {
+  id          String   @id @default(cuid())
+  categoryId  String
+  slug        String
+  title       String
+  description String?
+  partnerUrl  String
+  imageUrl    String?
+  buttonText  String   @default("상품 보러가기")
+  sortOrder   Int      @default(0)
+  enabled     Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  category    CoupangProductCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@unique([categoryId, slug])
+  @@index([categoryId])
+  @@index([enabled])
+  @@index([sortOrder])
+}
+
+model PageProductAdMapping {
+  id          String   @id @default(cuid())
+  pagePath    String
+  categoryId  String
+  priority    Int      @default(0)
+  enabled     Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  category    CoupangProductCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@unique([pagePath, categoryId])
+  @@index([pagePath])
+  @@index([enabled])
+  @@index([priority])
+}

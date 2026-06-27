@@ -75,6 +75,11 @@ export function shouldShowGlobalCoupangPartnersAd(pathname: string) {
   );
 }
 
+
+export function shouldShowCoupangProductAds(pathname: string) {
+  return COUPANG_PARTNERS.enabled && shouldShowGlobalCoupangPartnersAd(pathname);
+}
+
 export function getGlobalCoupangPartnerBanners(): CoupangPartnersBannerConfig[] {
   if (!COUPANG_PARTNERS.enabled) return [];
 
