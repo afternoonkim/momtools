@@ -218,6 +218,14 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
   const related = await getRelatedQnaFromDb(typed, slug, 6);
   const relatedHealthGuides = typed === "health" ? getRelatedHealthGuideLinks(item) : [];
   const faqs = buildFaqItems(item, typed, content);
+  const mobileQuickLinks = [
+    { href: "#quick-answer", label: "결론" },
+    { href: "#checkpoints", label: "먼저 볼 것" },
+    { href: "#home-actions", label: "집에서 할 일" },
+    { href: "#when-help", label: "상담 신호" },
+    { href: "#related-tools", label: "연결 정보" },
+  ];
+  const pageUrl = `https://momtools.kr/qna/${typed}/${slug}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -295,11 +303,20 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
           <h1 className="mt-title-xl mt-4">{content.h1}</h1>
           <p className="mt-text-main mt-3">{content.heroLead}</p>
           <div id="quick-answer" className="mt-mobile-note mt-4">
-            <div className="mt-app-link-title">바로 결론</div>
+            <div className="font-extrabold text-slate-900">바로 결론</div>
             <p className="mt-1">{content.oneLineAnswer}</p>
           </div>
         </section>
 
+        <nav className="sticky top-14 z-20 -mx-1 overflow-x-auto rounded-2xl border border-amber-100 bg-white/95 p-2 shadow-sm backdrop-blur md:static md:mx-0" aria-label="이 페이지 빠른 이동">
+          <div className="flex min-w-max gap-2">
+            {mobileQuickLinks.map((link) => (
+              <a key={link.href} href={link.href} className="flex min-h-9 items-center rounded-full bg-amber-50 px-3 py-2 text-xs font-bold text-amber-800 transition hover:bg-amber-100">
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </nav>
 
         <ContentUpdateNote
           publishedOn={QNA_PUBLISHED_ON}
@@ -307,34 +324,57 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
           note="바로 결론, 먼저 볼 기준, 집에서 할 일, 상담 신호, 기록 항목 순서로 정리했습니다."
         />
 
-        <div className="mt-app-stack" id="checkpoints">
-          <DetailStackSection
-            title="먼저 볼 기준"
-            description="하나의 증상만 보지 말고 아이의 반응, 수유, 호흡, 처짐을 함께 확인하세요."
-            items={firstChecks}
-          />
-          <DetailStackSection
-            id="home-actions"
-            title="집에서 오늘 할 일"
-            description="해결을 서두르기보다 상태를 안전하게 확인하고, 상담 때 설명할 수 있게 기록하세요."
-            items={homeActions}
-          />
-          <DetailStackSection
-            id="when-help"
-            title="상담을 서두를 신호"
-            description={item.caution}
-            items={[emergencyMessage]}
-            tone="danger"
-          />
-          <DetailStackSection title="피하면 좋은 대응" items={content.avoidItems} />
-          <DetailStackSection
-            title="기록해두면 좋은 것"
-            description={content.recordDescription}
-            items={content.recordItems}
-          />
-        </div>
+        <section id="checkpoints" className="mt-card p-4 md:p-6">
+          <h2 className="mt-title-md">먼저 볼 기준</h2>
+          <p className="mt-2 text-sm leading-7 text-slate-600">지금 상황에서는 하나의 증상만 보지 말고 아래 항목을 같이 확인하는 편이 안전합니다.</p>
+          <ol className="mt-4 space-y-2 text-sm leading-7 text-slate-600">
+            {firstChecks.map((point, index) => (
+              <li key={`${point}-${index}`} className="mt-compact-row">
+                <span className="font-extrabold text-amber-700">{index + 1}. </span>{point}
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section id="home-actions" className="mt-card-soft p-4 md:p-6">
+          <h2 className="mt-title-md">집에서 오늘 할 일</h2>
+          <p className="mt-2 text-sm leading-7 text-slate-600">해결을 서두르기보다 상태를 안전하게 확인하고, 상담 때 설명할 수 있게 정리하는 데 집중하세요.</p>
+          <ul className="mt-4 space-y-2 text-sm leading-7 text-slate-600">
+            {homeActions.map((point, index) => (
+              <li key={`${point}-${index}`} className="mt-compact-row">{point}</li>
+            ))}
+          </ul>
+        </section>
 
         <AdFitAd {...ADFIT_UNITS.mobileResult} />
+
+        <section id="when-help" className="mt-card p-4 md:p-6">
+          <h2 className="mt-title-md">상담을 서두를 신호</h2>
+          <p className="mt-3 text-sm leading-8 text-slate-600">{item.caution}</p>
+          <div className="mt-mobile-note mt-4">
+            <strong className="text-slate-900">응급실을 고민할 신호</strong>
+            <p className="mt-1">{emergencyMessage}</p>
+          </div>
+        </section>
+
+        <section className="mt-card p-4 md:p-6">
+          <h2 className="mt-title-md">피하면 좋은 대응</h2>
+          <ul className="mt-4 space-y-2 text-sm leading-7 text-slate-600">
+            {content.avoidItems.map((point, index) => (
+              <li key={`${point}-${index}`} className="mt-compact-row">{point}</li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mt-card p-4 md:p-6">
+          <h2 className="mt-title-md">기록해두면 좋은 것</h2>
+          <p className="mt-2 text-sm leading-7 text-slate-600">{content.recordDescription}</p>
+          <ul className="mt-4 space-y-2 text-sm leading-7 text-slate-600">
+            {content.recordItems.map((point, index) => (
+              <li key={`${point}-${index}`} className="mt-compact-row">{point}</li>
+            ))}
+          </ul>
+        </section>
 
         <details className="mt-section-details">
           <summary className="mt-section-summary">
@@ -359,29 +399,26 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
           </div>
         </details>
 
-        <section id="related-tools" className="space-y-3">
-          <h2 className="mt-app-section-title">함께 볼 도구와 정보</h2>
-          <div className="mt-app-link-list">
+        <section id="related-tools" className="mt-card-soft p-4 md:p-6">
+          <h2 className="mt-title-md">함께 볼 도구와 정보</h2>
+          <div className="mt-4 divide-y divide-slate-100 overflow-hidden rounded-2xl border border-amber-100 bg-white">
             {relatedLinks[typed].map((link) => (
-              <Link key={link.href} href={link.href} className="mt-app-link-item">
-                <div className="mt-app-link-title">{link.label}</div>
-                <div className="mt-app-link-desc">{link.description}</div>
+              <Link key={link.href} href={link.href} className="block px-4 py-3.5 transition hover:bg-amber-50/60">
+                <div className="font-extrabold text-slate-900">{link.label}</div>
+                <div className="mt-1 line-clamp-2 text-sm leading-6 text-slate-500">{link.description}</div>
               </Link>
             ))}
             {relatedHealthGuides.map((guide) => (
-              <Link key={guide.slug} href={`/health/${guide.slug}`} className="mt-app-link-item">
-                <div className="mt-app-link-title">{guide.title}</div>
-                <div className="mt-app-link-desc">{guide.summary}</div>
+              <Link key={guide.slug} href={`/health/${guide.slug}`} className="block px-4 py-3.5 transition hover:bg-rose-50/60">
+                <div className="font-extrabold text-slate-900">{guide.title}</div>
+                <div className="mt-1 line-clamp-2 text-sm leading-6 text-slate-500">{guide.summary}</div>
               </Link>
             ))}
           </div>
         </section>
 
-        <section className="mt-section-details" id="faq">
-          <details open>
-            <summary className="mt-section-summary"><span>자주 묻는 질문</span><span className="text-xs font-bold text-amber-700">접기</span></summary>
-            <div className="mt-detail-body">
-          <h2 className="sr-only">자주 묻는 질문</h2>
+        <section className="mt-card p-4 md:p-6" id="faq">
+          <h2 className="mt-title-md">자주 묻는 질문</h2>
           <div className="mt-4 space-y-2">
             {faqs.map((faq) => (
               <details key={faq.question} className="rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3">
@@ -390,15 +427,13 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
               </details>
             ))}
           </div>
-            </div>
-          </details>
         </section>
 
-        <section className="space-y-3">
-          <h2 className="mt-app-section-title">같이 이어서 보면 좋은 질문</h2>
-          <div className="mt-app-link-list">
+        <section className="mt-card-soft p-4 md:p-6">
+          <h2 className="mt-title-md">같이 이어서 보면 좋은 질문</h2>
+          <div className="mt-4 divide-y divide-slate-100 overflow-hidden rounded-2xl border border-amber-100 bg-white">
             {related.slice(0, 5).map((entry) => (
-              <Link key={entry.slug} href={`/qna/${typed}/${entry.slug}`} className="mt-app-link-item">
+              <Link key={entry.slug} href={`/qna/${typed}/${entry.slug}`} className="block px-4 py-3.5 transition hover:bg-amber-50/60">
                 <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-amber-600">{entry.topic}</div>
                 <div className="mt-1 font-extrabold leading-7 text-slate-900">{entry.question}</div>
               </Link>
@@ -411,36 +446,5 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
         </section>
       </div>
     </div>
-  );
-}
-
-function DetailStackSection({
-  id,
-  title,
-  description,
-  items,
-  tone = "normal",
-}: {
-  id?: string;
-  title: string;
-  description?: string;
-  items: string[];
-  tone?: "normal" | "danger";
-}) {
-  const titleClass = tone === "danger" ? "mt-app-section-title-danger" : "mt-app-section-title";
-  const itemClass = tone === "danger" ? "mt-app-list-item-danger" : "mt-app-list-item";
-
-  return (
-    <section id={id} className="mt-app-stack-section">
-      <h2 className={titleClass}>{title}</h2>
-      {description ? <p className="mt-app-section-desc">{description}</p> : null}
-      {items.length > 0 ? (
-        <ul className="mt-app-list">
-          {items.map((point, index) => (
-            <li key={`${point}-${index}`} className={itemClass}>{point}</li>
-          ))}
-        </ul>
-      ) : null}
-    </section>
   );
 }
