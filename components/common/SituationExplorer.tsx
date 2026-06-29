@@ -18,20 +18,20 @@ export default function SituationExplorer({
   items,
 }: SituationExplorerProps) {
   return (
-    <section className="mt-card-soft p-5 md:p-8">
-      <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">상황별 탐색</div>
-      <h2 className="mt-title-md mt-3">{title}</h2>
-      <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">{description}</p>
-      <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    <section className="mt-card-soft p-4 md:p-6">
+      <div className="text-xs font-bold uppercase tracking-[0.16em] text-amber-600">상황별 탐색</div>
+      <h2 className="mt-2 text-xl font-extrabold text-slate-900 md:text-2xl">{title}</h2>
+      <p className="mt-2 text-sm leading-7 text-slate-600">{description}</p>
+      <div className="mt-4 grid gap-2 sm:grid-cols-2">
         {items.map((item) => (
           <Link
             key={`${item.href}-${item.label}`}
             href={item.href}
-            className="flex min-h-14 items-center justify-between gap-3 rounded-2xl border border-amber-100 bg-white px-4 py-3 text-sm font-bold text-slate-800 shadow-sm transition hover:-translate-y-0.5 hover:border-amber-200 hover:bg-amber-50/70"
+            className="flex min-h-12 items-center justify-between gap-3 rounded-2xl border border-amber-100 bg-white px-4 py-3 text-sm font-bold text-slate-800 transition hover:bg-amber-50/70"
           >
             <span>
               {item.label}
-              {item.description ? <span className="mt-1 block text-xs font-medium leading-5 text-slate-500">{item.description}</span> : null}
+              {item.description ? <span className="mt-0.5 block text-xs font-medium leading-5 text-slate-500">{item.description}</span> : null}
             </span>
             <span className="text-amber-700">→</span>
           </Link>

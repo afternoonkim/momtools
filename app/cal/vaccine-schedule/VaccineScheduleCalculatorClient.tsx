@@ -209,14 +209,14 @@ export default function VaccineScheduleCalculatorClient() {
   }, [birthDate, today]);
 
   return (
-    <section className="space-y-8">
-      <header className="mt-card p-6 md:p-8">
+    <section className="space-y-5 md:space-y-6">
+      <header className="mt-card p-4 md:p-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl space-y-3">
             <div className="inline-flex items-center rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">
               MomTools 육아 계산기
             </div>
-            <h1 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
+            <h1 className="mt-title-lg">
               예방접종 일정 계산기
             </h1>
             <p className="text-sm leading-7 text-slate-600 md:text-base">
@@ -251,7 +251,7 @@ export default function VaccineScheduleCalculatorClient() {
 
       <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr]">
         <aside className="space-y-6">
-          <section className="mt-card p-6 md:p-7">
+          <section className="mt-card p-4 md:p-6">
             <div className="space-y-5">
               <div>
                 <h2 className="text-lg font-bold text-slate-900">입력값</h2>
@@ -295,7 +295,7 @@ export default function VaccineScheduleCalculatorClient() {
         </aside>
 
         <div className="space-y-6">
-          <section className="mt-card p-6 md:p-7">
+          <section className="mt-card p-4 md:p-6">
             <div>
               <h2 className="text-lg font-bold text-slate-900">결과 화면 한눈에 보기</h2>
               <p className="mt-1 text-sm text-slate-500">
@@ -332,7 +332,7 @@ export default function VaccineScheduleCalculatorClient() {
                   />
                 </div>
 
-                <div className="mt-6 overflow-hidden rounded-3xl border border-emerald-100 bg-white">
+                <div className="mt-6 overflow-hidden rounded-2xl border border-emerald-100 bg-white">
                   <div className="overflow-x-auto">
                     <table className="w-full min-w-[760px] text-left">
                       <thead className="bg-emerald-50 text-sm text-slate-600">
@@ -383,7 +383,7 @@ export default function VaccineScheduleCalculatorClient() {
                   </div>
                 </div>
 
-                <div className="mt-6 rounded-3xl border border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-sky-50 p-5">
+                <div className="mt-6 rounded-2xl border border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-sky-50 p-5">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="inline-flex rounded-full bg-white px-3 py-1 text-xs font-semibold text-emerald-700 shadow-sm ring-1 ring-emerald-100">
                       계산 로직
@@ -408,11 +408,11 @@ export default function VaccineScheduleCalculatorClient() {
         </div>
       </div>
 
-      <section className="mt-card p-6 md:p-8">
+      <section className="mt-card p-4 md:p-6">
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-          <div className="space-y-8">
+          <div className="space-y-5 md:space-y-6">
             <div>
-              <h2 className="text-lg font-bold text-slate-900 md:text-xl">
+              <h2 className="mt-title-md">
                 예방접종 일정 계산기는 어떻게 활용하나요?
               </h2>
               <div className="mt-4 space-y-4 text-sm leading-7 text-slate-700 md:text-base">
@@ -435,7 +435,7 @@ export default function VaccineScheduleCalculatorClient() {
             </div>
 
             <div>
-              <h2 className="text-lg font-bold text-slate-900 md:text-xl">
+              <h2 className="mt-title-md">
                 자주 묻는 질문
               </h2>
 
@@ -461,7 +461,7 @@ export default function VaccineScheduleCalculatorClient() {
           </div>
 
           <aside className="space-y-6">
-            <div className="rounded-3xl border border-emerald-100 bg-emerald-50 p-5 md:p-6">
+            <div className="rounded-2xl border border-emerald-100 bg-emerald-50 p-5 md:p-6">
               <h2 className="text-lg font-bold text-slate-900">
                 이용 전 참고해 주세요
               </h2>
@@ -473,7 +473,7 @@ export default function VaccineScheduleCalculatorClient() {
               </ul>
             </div>
 
-            <div className="rounded-3xl border border-slate-100 bg-white p-5 md:p-6 shadow-[0_8px_30px_rgba(15,23,42,0.04)]">
+            <div className="rounded-2xl border border-slate-100 bg-white p-5 md:p-6 ">
               <h2 className="text-lg font-bold text-slate-900">
                 함께 보면 좋은 도구
               </h2>
@@ -505,7 +505,7 @@ export default function VaccineScheduleCalculatorClient() {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-sky-100 bg-sky-50 p-5 md:p-6">
+            <div className="rounded-2xl border border-sky-100 bg-sky-50 p-5 md:p-6">
               <h2 className="text-lg font-bold text-slate-900">
                 육아 일정과 비용도 함께 준비해보세요
               </h2>
@@ -537,20 +537,16 @@ function SummaryCard({
   highlight?: boolean;
 }) {
   return (
-    <div
-      className={[
-        "rounded-3xl border p-5",
-        highlight
-          ? "border-emerald-100 bg-gradient-to-br from-emerald-50 to-white"
-          : "border-slate-100 bg-white",
-      ].join(" ")}
-    >
-      <div className="text-sm font-medium text-slate-500">{title}</div>
-      <div className="mt-2 text-xl font-bold tracking-tight text-slate-900">{value}</div>
-      <div className="mt-2 text-xs leading-6 text-slate-500">{hint}</div>
+    <div className={["mt-result-list-item", highlight ? "bg-amber-50/70" : "bg-white"].join(" ")}>
+      <div className="min-w-0 pr-3">
+        <div className="mt-result-label">{title}</div>
+        <div className="mt-result-hint">{hint}</div>
+      </div>
+      <div className="max-w-[58%] shrink-0 text-right text-base font-extrabold leading-6 text-slate-900 md:text-lg">{value}</div>
     </div>
   );
 }
+
 
 function FaqItem({
   question,
@@ -560,9 +556,9 @@ function FaqItem({
   answer: string;
 }) {
   return (
-    <div className="rounded-2xl border border-slate-100 bg-slate-50 p-5">
-      <h3 className="text-base font-semibold text-slate-900">{question}</h3>
-      <p className="mt-2 text-sm leading-7 text-slate-700">{answer}</p>
-    </div>
+    <details className="rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3">
+      <summary className="cursor-pointer text-sm font-extrabold leading-7 text-slate-900">{question}</summary>
+      <p className="mt-2 text-sm leading-7 text-slate-600">{answer}</p>
+    </details>
   );
 }

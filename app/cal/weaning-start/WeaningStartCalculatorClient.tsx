@@ -172,14 +172,14 @@ export default function WeaningStartCalculatorClient() {
   }, [birthDate, premature, today]);
 
   return (
-    <section className="space-y-8">
-      <header className="mt-card p-6 md:p-8">
+    <section className="space-y-5 md:space-y-6">
+      <header className="mt-card p-4 md:p-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl space-y-3">
             <div className="inline-flex items-center rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold text-orange-700">
               MomTools 육아 계산기
             </div>
-            <h1 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
+            <h1 className="mt-title-lg">
               이유식 시작 계산기
             </h1>
             <p className="text-sm leading-7 text-slate-600 md:text-base">
@@ -213,7 +213,7 @@ export default function WeaningStartCalculatorClient() {
 
       <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr]">
         <aside className="space-y-6">
-          <section className="mt-card p-6 md:p-7">
+          <section className="mt-card p-4 md:p-6">
             <div className="space-y-5">
               <div>
                 <h2 className="text-lg font-bold text-slate-900">입력값</h2>
@@ -272,7 +272,7 @@ export default function WeaningStartCalculatorClient() {
         </aside>
 
         <div className="space-y-6">
-          <section className="mt-card p-6 md:p-7">
+          <section className="mt-card p-4 md:p-6">
             <div>
               <h2 className="text-lg font-bold text-slate-900">결과 화면 한눈에 보기</h2>
               <p className="mt-1 text-sm text-slate-500">
@@ -286,7 +286,7 @@ export default function WeaningStartCalculatorClient() {
               </div>
             ) : (
               <>
-                <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                <div className="mt-5 mt-result-list">
                   <SummaryCard
                     title="현재 월령"
                     value={`${result.currentMonthAge}개월`}
@@ -314,7 +314,7 @@ export default function WeaningStartCalculatorClient() {
                   {result.phaseItems.map((item) => (
                     <div
                       key={item.title}
-                      className="rounded-2xl border border-orange-100 bg-white p-5 shadow-[0_8px_30px_rgba(15,23,42,0.04)]"
+                      className="rounded-2xl border border-orange-100 bg-white p-5 "
                     >
                       <div className="flex items-center justify-between gap-3">
                         <div className="text-base font-bold text-slate-900">{item.title}</div>
@@ -340,7 +340,7 @@ export default function WeaningStartCalculatorClient() {
                   ))}
                 </div>
 
-                <div className="mt-6 rounded-3xl border border-orange-100 bg-gradient-to-br from-orange-50 via-white to-sky-50 p-5">
+                <div className="mt-6 rounded-2xl border border-orange-100 bg-gradient-to-br from-orange-50 via-white to-sky-50 p-5">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="inline-flex rounded-full bg-white px-3 py-1 text-xs font-semibold text-orange-700 shadow-sm ring-1 ring-orange-100">
                       계산 로직
@@ -358,7 +358,7 @@ export default function WeaningStartCalculatorClient() {
             )}
           </section>
 
-          <section className="mt-card p-6 md:p-7">
+          <section className="mt-card p-4 md:p-6">
             <div>
               <h2 className="text-lg font-bold text-slate-900">이유식 시작 전 체크 포인트</h2>
               <p className="mt-2 text-sm leading-6 text-slate-600">
@@ -367,7 +367,7 @@ export default function WeaningStartCalculatorClient() {
             </div>
 
             {result.status === "ready" ? (
-              <div className="mt-5 grid gap-4 md:grid-cols-2">
+              <div className="mt-5 mt-compact-grid">
                 <CheckCard
                   title="기본 기준"
                   description={result.baseGuide}
@@ -399,11 +399,11 @@ export default function WeaningStartCalculatorClient() {
         </div>
       </div>
 
-      <section className="mt-card p-6 md:p-8">
+      <section className="mt-card p-4 md:p-6">
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-          <div className="space-y-8">
+          <div className="space-y-5 md:space-y-6">
             <div>
-              <h2 className="text-lg font-bold text-slate-900 md:text-xl">
+              <h2 className="mt-title-md">
                 이유식 시작 계산기는 어떻게 활용하나요?
               </h2>
               <div className="mt-4 space-y-4 text-sm leading-7 text-slate-700 md:text-base">
@@ -424,7 +424,7 @@ export default function WeaningStartCalculatorClient() {
             </div>
 
             <div>
-              <h2 className="text-lg font-bold text-slate-900 md:text-xl">
+              <h2 className="mt-title-md">
                 자주 묻는 질문
               </h2>
 
@@ -450,7 +450,7 @@ export default function WeaningStartCalculatorClient() {
           </div>
 
           <aside className="space-y-6">
-            <div className="rounded-3xl border border-orange-100 bg-orange-50 p-5 md:p-6">
+            <div className="rounded-2xl border border-orange-100 bg-orange-50 p-5 md:p-6">
               <h2 className="text-lg font-bold text-slate-900">
                 이용 전 참고해 주세요
               </h2>
@@ -462,7 +462,7 @@ export default function WeaningStartCalculatorClient() {
               </ul>
             </div>
 
-            <div className="rounded-3xl border border-slate-100 bg-white p-5 md:p-6 shadow-[0_8px_30px_rgba(15,23,42,0.04)]">
+            <div className="rounded-2xl border border-slate-100 bg-white p-5 md:p-6 ">
               <h2 className="text-lg font-bold text-slate-900">
                 함께 보면 좋은 도구
               </h2>
@@ -494,7 +494,7 @@ export default function WeaningStartCalculatorClient() {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-sky-100 bg-sky-50 p-5 md:p-6">
+            <div className="rounded-2xl border border-sky-100 bg-sky-50 p-5 md:p-6">
               <h2 className="text-lg font-bold text-slate-900">
                 육아 준비와 예산도 함께 정리해보세요
               </h2>
@@ -525,20 +525,16 @@ function SummaryCard({
   highlight?: boolean;
 }) {
   return (
-    <div
-      className={[
-        "rounded-3xl border p-5",
-        highlight
-          ? "border-orange-100 bg-gradient-to-br from-orange-50 to-white"
-          : "border-slate-100 bg-white",
-      ].join(" ")}
-    >
-      <div className="text-sm font-medium text-slate-500">{title}</div>
-      <div className="mt-2 text-xl font-bold tracking-tight text-slate-900">{value}</div>
-      <div className="mt-2 text-xs leading-6 text-slate-500">{hint}</div>
+    <div className={["mt-result-list-item", highlight ? "bg-amber-50/70" : "bg-white"].join(" ")}>
+      <div className="min-w-0 pr-3">
+        <div className="mt-result-label">{title}</div>
+        <div className="mt-result-hint">{hint}</div>
+      </div>
+      <div className="max-w-[58%] shrink-0 text-right text-base font-extrabold leading-6 text-slate-900 md:text-lg">{value}</div>
     </div>
   );
 }
+
 
 function CheckCard({
   title,
@@ -548,12 +544,13 @@ function CheckCard({
   description: string;
 }) {
   return (
-    <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-[0_8px_30px_rgba(15,23,42,0.04)]">
-      <div className="text-base font-bold text-slate-900">{title}</div>
-      <p className="mt-2 text-sm leading-6 text-slate-600">{description}</p>
+    <div className="mt-compact-row">
+      <div className="font-extrabold text-slate-900">{title}</div>
+      <p className="mt-1 text-sm leading-6 text-slate-600">{description}</p>
     </div>
   );
 }
+
 
 function FaqItem({
   question,
@@ -563,9 +560,9 @@ function FaqItem({
   answer: string;
 }) {
   return (
-    <div className="rounded-2xl border border-slate-100 bg-slate-50 p-5">
-      <h3 className="text-base font-semibold text-slate-900">{question}</h3>
-      <p className="mt-2 text-sm leading-7 text-slate-700">{answer}</p>
-    </div>
+    <details className="rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3">
+      <summary className="cursor-pointer text-sm font-extrabold leading-7 text-slate-900">{question}</summary>
+      <p className="mt-2 text-sm leading-7 text-slate-600">{answer}</p>
+    </details>
   );
 }

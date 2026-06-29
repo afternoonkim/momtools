@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://momtools.kr"),
   title: { default: "MomTools", template: "%s | MomTools" },
   description:
-    "육아 계산기, 아이 이름 짓기, 이유식 메뉴, 질문형 육아 정보, 체크리스트를 한곳에서 보는 MomTools",
+    "아기 개월수, 예방접종, 이유식, 건강 신호와 체크리스트를 부모가 바로 확인할 수 있게 정리한 MomTools",
   robots: { index: true, follow: true },
   alternates: {
     canonical: "https://momtools.kr/",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "MomTools",
     description:
-      "출산 예정일, 아기 개월수, 아이 이름 짓기, 이유식 메뉴, 육아 Q&A를 한곳에서 보는 육아 도구 사이트",
+      "아기 개월수, 예방접종, 이유식, 건강 신호와 체크리스트를 빠르게 확인하는 육아 도구 사이트",
     url: "https://momtools.kr",
     siteName: "MomTools",
     locale: "ko_KR",

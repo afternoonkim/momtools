@@ -113,14 +113,14 @@ export default function GrowthPercentileCalculatorClient() {
   }, [gender, months, height, weight]);
 
   return (
-    <section className="space-y-8">
-      <header className="mt-card p-6 md:p-8">
+    <section className="space-y-5 md:space-y-6">
+      <header className="mt-card p-4 md:p-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl space-y-3">
             <div className="inline-flex items-center rounded-full bg-violet-100 px-3 py-1 text-xs font-semibold text-violet-700">
               MomTools 육아 계산기
             </div>
-            <h1 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
+            <h1 className="mt-title-lg">
               성장 백분위 계산기
             </h1>
             <p className="text-sm leading-7 text-slate-600 md:text-base">
@@ -154,7 +154,7 @@ export default function GrowthPercentileCalculatorClient() {
 
       <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr]">
         <aside className="space-y-6">
-          <section className="mt-card p-6 md:p-7">
+          <section className="mt-card p-4 md:p-6">
             <div className="space-y-5">
               <div>
                 <h2 className="text-lg font-bold text-slate-900">입력값</h2>
@@ -163,7 +163,7 @@ export default function GrowthPercentileCalculatorClient() {
                 </p>
               </div>
 
-              <div className="grid gap-4 md:grid-cols-2">
+              <div className="mt-compact-grid">
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-slate-800">
                     성별
@@ -240,7 +240,7 @@ export default function GrowthPercentileCalculatorClient() {
         </aside>
 
         <div className="space-y-6">
-          <section className="mt-card p-6 md:p-7">
+          <section className="mt-card p-4 md:p-6">
             <div>
               <h2 className="text-lg font-bold text-slate-900">결과 화면 한눈에 보기</h2>
               <p className="mt-1 text-sm text-slate-500">
@@ -254,7 +254,7 @@ export default function GrowthPercentileCalculatorClient() {
               </div>
             ) : (
               <>
-                <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                <div className="mt-5 mt-result-list">
                   <SummaryCard
                     title="현재 월령"
                     value={`${result.months}개월`}
@@ -278,7 +278,7 @@ export default function GrowthPercentileCalculatorClient() {
                   />
                 </div>
 
-                <div className="mt-6 grid gap-4 md:grid-cols-2">
+                <div className="mt-6 mt-compact-grid">
                   <GrowthCard
                     title="키 위치"
                     band={result.heightBand}
@@ -291,7 +291,7 @@ export default function GrowthPercentileCalculatorClient() {
                   />
                 </div>
 
-                <div className="mt-6 rounded-3xl border border-violet-100 bg-gradient-to-br from-violet-50 via-white to-sky-50 p-5">
+                <div className="mt-6 rounded-2xl border border-violet-100 bg-gradient-to-br from-violet-50 via-white to-sky-50 p-5">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="inline-flex rounded-full bg-white px-3 py-1 text-xs font-semibold text-violet-700 shadow-sm ring-1 ring-violet-100">
                       계산 로직
@@ -308,7 +308,7 @@ export default function GrowthPercentileCalculatorClient() {
             )}
           </section>
 
-          <section className="mt-card p-6 md:p-7">
+          <section className="mt-card p-4 md:p-6">
             <div>
               <h2 className="text-lg font-bold text-slate-900">성장 체크할 때 같이 보면 좋은 포인트</h2>
               <p className="mt-2 text-sm leading-6 text-slate-600">
@@ -317,7 +317,7 @@ export default function GrowthPercentileCalculatorClient() {
             </div>
 
             {result.status === "ready" ? (
-              <div className="mt-5 grid gap-4 md:grid-cols-2">
+              <div className="mt-5 mt-compact-grid">
                 <CheckCard
                   title="추세 확인"
                   description="한 번의 측정값보다 최근 1~3개월 사이 성장 흐름을 함께 보는 것이 좋아요."
@@ -349,11 +349,11 @@ export default function GrowthPercentileCalculatorClient() {
         </div>
       </div>
 
-      <section className="mt-card p-6 md:p-8">
+      <section className="mt-card p-4 md:p-6">
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-          <div className="space-y-8">
+          <div className="space-y-5 md:space-y-6">
             <div>
-              <h2 className="text-lg font-bold text-slate-900 md:text-xl">
+              <h2 className="mt-title-md">
                 성장 백분위 계산기는 어떻게 활용하나요?
               </h2>
               <div className="mt-4 space-y-4 text-sm leading-7 text-slate-700 md:text-base">
@@ -375,7 +375,7 @@ export default function GrowthPercentileCalculatorClient() {
             </div>
 
             <div>
-              <h2 className="text-lg font-bold text-slate-900 md:text-xl">
+              <h2 className="mt-title-md">
                 자주 묻는 질문
               </h2>
 
@@ -401,7 +401,7 @@ export default function GrowthPercentileCalculatorClient() {
           </div>
 
           <aside className="space-y-6">
-            <div className="rounded-3xl border border-violet-100 bg-violet-50 p-5 md:p-6">
+            <div className="rounded-2xl border border-violet-100 bg-violet-50 p-5 md:p-6">
               <h2 className="text-lg font-bold text-slate-900">
                 이용 전 참고해 주세요
               </h2>
@@ -413,7 +413,7 @@ export default function GrowthPercentileCalculatorClient() {
               </ul>
             </div>
 
-            <div className="rounded-3xl border border-slate-100 bg-white p-5 md:p-6 shadow-[0_8px_30px_rgba(15,23,42,0.04)]">
+            <div className="rounded-2xl border border-slate-100 bg-white p-5 md:p-6 ">
               <h2 className="text-lg font-bold text-slate-900">
                 함께 보면 좋은 도구
               </h2>
@@ -445,7 +445,7 @@ export default function GrowthPercentileCalculatorClient() {
               </div>
             </div>
 
-            <div className="rounded-3xl border border-sky-100 bg-sky-50 p-5 md:p-6">
+            <div className="rounded-2xl border border-sky-100 bg-sky-50 p-5 md:p-6">
               <h2 className="text-lg font-bold text-slate-900">
                 육아 일정과 가계 준비도 함께 생각해보세요
               </h2>
@@ -476,20 +476,16 @@ function SummaryCard({
   highlight?: boolean;
 }) {
   return (
-    <div
-      className={[
-        "rounded-3xl border p-5",
-        highlight
-          ? "border-violet-100 bg-gradient-to-br from-violet-50 to-white"
-          : "border-slate-100 bg-white",
-      ].join(" ")}
-    >
-      <div className="text-sm font-medium text-slate-500">{title}</div>
-      <div className="mt-2 text-xl font-bold tracking-tight text-slate-900">{value}</div>
-      <div className="mt-2 text-xs leading-6 text-slate-500">{hint}</div>
+    <div className={["mt-result-list-item", highlight ? "bg-amber-50/70" : "bg-white"].join(" ")}>
+      <div className="min-w-0 pr-3">
+        <div className="mt-result-label">{title}</div>
+        <div className="mt-result-hint">{hint}</div>
+      </div>
+      <div className="max-w-[58%] shrink-0 text-right text-base font-extrabold leading-6 text-slate-900 md:text-lg">{value}</div>
     </div>
   );
 }
+
 
 function GrowthCard({
   title,
@@ -501,23 +497,16 @@ function GrowthCard({
   description: string;
 }) {
   return (
-    <div className="rounded-2xl border border-violet-100 bg-white p-6">
-      <div className="text-sm text-slate-500">{title}</div>
-      <div className="mt-3 flex items-center gap-3">
-        <div className="text-2xl font-bold text-slate-900">{band}</div>
-        <span
-          className={[
-            "inline-flex rounded-full px-3 py-1 text-xs font-semibold ring-1",
-            getBandStyle(band),
-          ].join(" ")}
-        >
-          간이 체크 결과
-        </span>
+    <div className="mt-compact-row">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="text-sm font-bold text-slate-500">{title}</span>
+        <span className={["rounded-full px-2 py-1 text-[11px] font-bold ring-1", getBandStyle(band)].join(" ")}>{band}</span>
       </div>
-      <p className="mt-4 text-sm leading-7 text-slate-600">{description}</p>
+      <p className="mt-2 text-sm leading-6 text-slate-600">{description}</p>
     </div>
   );
 }
+
 
 function CheckCard({
   title,
@@ -527,12 +516,13 @@ function CheckCard({
   description: string;
 }) {
   return (
-    <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-[0_8px_30px_rgba(15,23,42,0.04)]">
-      <div className="text-base font-bold text-slate-900">{title}</div>
-      <p className="mt-2 text-sm leading-6 text-slate-600">{description}</p>
+    <div className="mt-compact-row">
+      <div className="font-extrabold text-slate-900">{title}</div>
+      <p className="mt-1 text-sm leading-6 text-slate-600">{description}</p>
     </div>
   );
 }
+
 
 function FaqItem({
   question,
@@ -542,9 +532,9 @@ function FaqItem({
   answer: string;
 }) {
   return (
-    <div className="rounded-2xl border border-slate-100 bg-slate-50 p-5">
-      <h3 className="text-base font-semibold text-slate-900">{question}</h3>
-      <p className="mt-2 text-sm leading-7 text-slate-700">{answer}</p>
-    </div>
+    <details className="rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3">
+      <summary className="cursor-pointer text-sm font-extrabold leading-7 text-slate-900">{question}</summary>
+      <p className="mt-2 text-sm leading-7 text-slate-600">{answer}</p>
+    </details>
   );
 }

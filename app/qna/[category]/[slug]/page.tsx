@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
-import RelatedContent from "@/components/common/RelatedContent";
 import { qnaCategories, type QnaCategory, type QnaEntry } from "@/data/qna";
 import { getQnaEntryFromDb, getRelatedQnaFromDb } from "@/lib/repositories/qna-db";
 import { buildQnaLongtailContent, type QnaLongtailContent } from "@/lib/qna-longtail";
@@ -20,15 +19,6 @@ type RelatedLink = {
 
 const QNA_PUBLISHED_ON = "2026-04-09";
 const QNA_UPDATED_ON = "2026-04-27";
-
-const categoryIntro: Record<QnaCategory, string> = {
-  health:
-    "아이 건강 Q&A는 열, 기침, 콧물, 구토, 설사처럼 보호자가 자주 걱정하는 증상형 질문을 기준으로 정리했습니다. 병명을 단정하기보다 아이의 컨디션, 수분 섭취, 수면, 호흡 상태처럼 집에서 먼저 볼 수 있는 기준을 중심으로 설명합니다.",
-  growth:
-    "아이 성장 Q&A는 뒤집기, 앉기, 걷기, 말, 키와 몸무게처럼 월령별 발달 흐름을 궁금해하는 보호자를 위한 내용입니다. 한 번의 결과보다 최근 몇 주와 몇 달의 흐름을 함께 보는 관점으로 정리했습니다.",
-  behavior:
-    "아이 행동 Q&A는 잠투정, 떼쓰기, 편식, 분리불안, 예민함처럼 반복적으로 부딪히는 일상 고민을 보호자 관점에서 다시 풀었습니다. 문제 행동만 보지 않고 수면, 루틴, 자극, 배고픔, 피로 같은 배경 요인을 함께 살펴보는 방식으로 설명합니다.",
-};
 
 const categoryObservationTitle: Record<QnaCategory, string> = {
   health: "이 증상을 볼 때 특히 먼저 확인할 점",
@@ -228,13 +218,6 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
   const related = await getRelatedQnaFromDb(typed, slug, 6);
   const relatedHealthGuides = typed === "health" ? getRelatedHealthGuideLinks(item) : [];
   const faqs = buildFaqItems(item, typed, content);
-  const mobileQuickLinks = [
-    { href: "#quick-answer", label: "바로 결론" },
-    { href: "#checkpoints", label: "체크포인트" },
-    { href: "#when-help", label: "상담 신호" },
-    { href: "#related-tools", label: "함께 볼 정보" },
-  ];
-  const pageUrl = `https://momtools.kr/qna/${typed}/${slug}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -281,12 +264,22 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
     ],
   };
 
+  const firstChecks = content.situationCards[0]?.points ?? [];
+  const homeActions = content.situationCards[1]?.points ?? [];
+  const comparePoints = content.situationCards[2]?.points ?? [];
+  const emergencyMessage =
+    typed === "health"
+      ? "호흡이 힘들어 보이거나, 축 처짐·탈수 의심·경련·혈변처럼 평소와 다른 강한 신호가 보이면 온라인 정보를 더 찾기보다 진료 상담을 우선 고려해 주세요."
+      : typed === "growth"
+      ? "이전에 하던 행동이 갑자기 줄거나, 먹기·수면·상호작용 변화가 함께 이어지면 단순 개인차로만 보지 말고 상담을 고려해 주세요."
+      : "아이 또는 주변 사람의 안전이 걱정될 정도로 행동 강도가 커지거나, 일상생활이 계속 흔들리면 전문가 상담을 고려해 주세요.";
+
   return (
     <div className="mt-page">
-      <div className="mt-container-narrow space-y-8">
+      <div className="mt-container-narrow space-y-5 md:space-y-6">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-        <nav className="flex flex-wrap items-center gap-2 text-sm text-slate-500" aria-label="breadcrumb">
+        <nav className="flex flex-wrap items-center gap-2 text-xs text-slate-500 md:text-sm" aria-label="breadcrumb">
           <Link href="/" className="hover:text-amber-700">홈</Link>
           <span>/</span>
           <Link href="/qna" className="hover:text-amber-700">육아 Q&amp;A</Link>
@@ -294,255 +287,160 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
           <Link href={`/qna/${typed}`} className="hover:text-amber-700">{qnaCategories[typed]}</Link>
         </nav>
 
-        <section className="mt-card p-8 md:p-10">
-          <div className="flex flex-wrap items-center gap-3">
+        <section className="mt-page-hero">
+          <div className="flex flex-wrap items-center gap-2">
             <span className="mt-badge">{qnaCategories[typed]}</span>
             <span className="rounded-full bg-slate-50 px-3 py-1 text-xs text-slate-500">{item.topic}</span>
-            <span className="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700">보호자용 체크 답변</span>
           </div>
-          <h1 className="mt-title-xl mt-5">{content.h1}</h1>
-          <p className="mt-text-main mt-4">{content.heroLead}</p>
-          <div id="quick-answer" className="mt-6 rounded-3xl bg-amber-50 px-5 py-4 text-sm leading-7 text-amber-900">
-            <div className="font-semibold">바로 결론</div>
-            <p className="mt-2">{content.oneLineAnswer}</p>
+          <h1 className="mt-title-xl mt-4">{content.h1}</h1>
+          <p className="mt-text-main mt-3">{content.heroLead}</p>
+          <div id="quick-answer" className="mt-mobile-note mt-4">
+            <div className="mt-app-link-title">바로 결론</div>
+            <p className="mt-1">{content.oneLineAnswer}</p>
           </div>
         </section>
 
-        <nav className="sticky top-16 z-20 -mx-1 overflow-x-auto rounded-2xl border border-amber-100 bg-white/95 p-2 shadow-[0_10px_30px_rgba(15,23,42,0.08)] backdrop-blur md:static md:mx-0" aria-label="이 페이지 빠른 이동">
-          <div className="flex min-w-max gap-2">
-            {mobileQuickLinks.map((link) => (
-              <a key={link.href} href={link.href} className="flex min-h-11 items-center rounded-full bg-amber-50 px-4 py-2 text-sm font-bold text-amber-800 transition hover:bg-amber-100">
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </nav>
 
         <ContentUpdateNote
           publishedOn={QNA_PUBLISHED_ON}
           updatedOn={QNA_UPDATED_ON}
-          note="집에서 먼저 볼 관찰 기준, 기록 항목, 함께 보면 좋은 질문을 보호자 입장에서 정리했습니다."
+          note="바로 결론, 먼저 볼 기준, 집에서 할 일, 상담 신호, 기록 항목 순서로 정리했습니다."
         />
 
-        <section id="checkpoints" className="mt-card-soft p-5 md:p-8">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">핵심 요약</div>
-          <h2 className="mt-3 text-xl font-bold text-slate-900">한눈에 보는 체크포인트</h2>
-          <div className="mt-5 grid gap-3 md:grid-cols-2">
-            {content.quickSummary.map((point, index) => (
-              <div key={`${point}-${index}`} className="rounded-2xl bg-white px-4 py-4 text-sm leading-7 text-slate-600 shadow-sm">
-                <span className="font-semibold text-amber-700">{index + 1}. </span>{point}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section id="related-tools" className="mt-card p-5 md:p-8">
-          <h2 className="mt-title-md">함께 볼 계산기와 관련 질문</h2>
-          <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">
-            아이 나이, 접종 시기, 성장 흐름처럼 함께 확인하면 좋은 기준을 모았습니다. 지금 질문과 연결해 보면 다음에 무엇을 볼지 정리하기 쉬워요.
-          </p>
-          <div className="mt-5 grid gap-3 md:grid-cols-3">
-            {relatedLinks[typed].map((link) => (
-              <Link key={`${link.href}-top`} href={link.href} className="rounded-2xl border border-amber-100 bg-amber-50/70 p-4 transition hover:bg-white">
-                <div className="font-bold text-slate-900">{link.label}</div>
-                <p className="mt-2 text-sm leading-6 text-slate-600">{link.description}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-card p-5 md:p-8">
-          <h2 className="mt-title-md">{content.searchIntentTitle}</h2>
-          <div className="mt-4 space-y-4 text-sm leading-8 text-slate-600 md:text-base">
-            {content.searchIntentParagraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-card-soft p-6 md:p-8">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">비슷한 고민을 볼 때 참고할 기준</div>
-          <p className="mt-3 text-sm leading-8 text-slate-600 md:text-base">{categoryIntro[typed]}</p>
-        </section>
-
-        <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-md">질문에 대한 자세한 답변</h2>
-          <div className="mt-4 space-y-4 text-sm leading-8 text-slate-600 md:text-base">
-            {item.answer.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
-          </div>
-        </section>
+        <div className="mt-app-stack" id="checkpoints">
+          <DetailStackSection
+            title="먼저 볼 기준"
+            description="하나의 증상만 보지 말고 아이의 반응, 수유, 호흡, 처짐을 함께 확인하세요."
+            items={firstChecks}
+          />
+          <DetailStackSection
+            id="home-actions"
+            title="집에서 오늘 할 일"
+            description="해결을 서두르기보다 상태를 안전하게 확인하고, 상담 때 설명할 수 있게 기록하세요."
+            items={homeActions}
+          />
+          <DetailStackSection
+            id="when-help"
+            title="상담을 서두를 신호"
+            description={item.caution}
+            items={[emergencyMessage]}
+            tone="danger"
+          />
+          <DetailStackSection title="피하면 좋은 대응" items={content.avoidItems} />
+          <DetailStackSection
+            title="기록해두면 좋은 것"
+            description={content.recordDescription}
+            items={content.recordItems}
+          />
+        </div>
 
         <AdFitAd {...ADFIT_UNITS.mobileResult} />
 
-        <section className="grid gap-4 md:grid-cols-3">
-          {content.situationCards.map((card) => (
-            <article key={card.title} className="mt-card p-5">
-              <h2 className="text-lg font-bold text-slate-800">{card.title}</h2>
-              <p className="mt-3 text-sm leading-7 text-slate-500">{card.description}</p>
-              <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-600">
-                {card.points.map((point, index) => (
-                  <li key={`${point}-${index}`} className="rounded-2xl bg-slate-50 px-4 py-3">{point}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </section>
-
-        <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-md">{categoryObservationTitle[typed]}</h2>
-          <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">{categoryObservationBody[typed]}</p>
-          <ul className="mt-5 space-y-3 text-sm leading-7 text-slate-600">
-            {item.checklist.map((point, index) => (
-              <li key={`${point}-${index}`} className="rounded-2xl bg-slate-50 px-4 py-3">{point}</li>
+        <details className="mt-section-details">
+          <summary className="mt-section-summary">
+            <span>
+              <span className="block text-base font-extrabold text-slate-900">자세한 설명 보기</span>
+              <span className="mt-1 block text-sm leading-6 text-slate-500">검색 사용자를 위한 추가 설명은 접어서 화면을 줄였습니다.</span>
+            </span>
+            <span className="text-xs font-bold text-amber-700">열기</span>
+          </summary>
+          <div className="mt-detail-body space-y-4 text-sm leading-8 text-slate-600 md:text-base">
+            {item.answer.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
             ))}
-          </ul>
-        </section>
-
-        {(item.simpleAction && item.simpleAction.length > 0) || categoryActionBody[typed] ? (
-          <section className="mt-card-soft p-6 md:p-8">
-            <h2 className="mt-title-md">{categoryActionTitle[typed]}</h2>
-            <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">{categoryActionBody[typed]}</p>
-            {item.simpleAction && item.simpleAction.length > 0 ? (
-              <ul className="mt-5 space-y-3 text-sm leading-7 text-slate-600">
-                {item.simpleAction.map((point, index) => (
-                  <li key={`${point}-${index}`} className="rounded-2xl bg-white px-4 py-3">{point}</li>
-                ))}
-              </ul>
+            {comparePoints.length > 0 ? (
+              <div className="rounded-2xl bg-slate-50 px-4 py-3">
+                <strong className="text-slate-900">놓치기 쉬운 비교 기준</strong>
+                <ul className="mt-2 space-y-1 text-sm leading-7 text-slate-600">
+                  {comparePoints.map((point) => <li key={point}>• {point}</li>)}
+                </ul>
+              </div>
             ) : null}
-          </section>
-        ) : null}
-
-        <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-md">{content.recordTitle}</h2>
-          <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">{content.recordDescription}</p>
-          <div className="mt-5 grid gap-3 md:grid-cols-2">
-            {content.recordItems.map((point, index) => (
-              <div key={`${point}-${index}`} className="rounded-2xl border border-amber-100 bg-amber-50/60 px-4 py-3 text-sm leading-7 text-slate-700">
-                {point}
-              </div>
-            ))}
           </div>
-        </section>
+        </details>
 
-        <section className="mt-card-soft p-6 md:p-8">
-          <h2 className="mt-title-md">{content.avoidTitle}</h2>
-          <div className="mt-5 grid gap-3 md:grid-cols-3">
-            {content.avoidItems.map((point, index) => (
-              <div key={`${point}-${index}`} className="rounded-2xl bg-white px-4 py-4 text-sm leading-7 text-slate-600 shadow-sm">
-                {point}
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-md">이 내용을 병원이나 상담에서 더 잘 설명하려면</h2>
-          <div className="mt-4 space-y-4 text-sm leading-8 text-slate-600 md:text-base">
-            <p>
-              증상이나 행동을 설명할 때는 “언제 시작됐는지”, “먹는 양과 잠이 달라졌는지”, “최근 새 음식이나 외출이 있었는지”처럼
-              실제로 확인한 내용을 함께 말하는 것이 좋습니다. 같은 증상도 반복되는 시간대와 전후 상황을 알면 상담 때 훨씬 전달하기 쉽습니다.
-            </p>
-            <p>
-              기록은 길 필요가 없어요. 체온, 먹은 양, 마지막 소변 시간, 평소와 다른 행동처럼 몇 가지만 남겨도
-              “좋아지는 중인지, 더 확인이 필요한지”를 판단하는 데 도움이 됩니다.
-            </p>
-          </div>
-        </section>
-
-        <section id="when-help" className="mt-card-soft p-5 md:p-8">
-          <h2 className="mt-title-md">{categoryWhenToSeekHelpTitle[typed]}</h2>
-          <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">{item.caution}</p>
-        </section>
-
-        <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-md">비슷한 상황에서 함께 볼 주제</h2>
-          <p className="mt-3 text-sm leading-7 text-slate-600">
-            같은 증상처럼 보여도 아이 나이와 함께 나타나는 변화에 따라 확인할 부분이 달라질 수 있어요. 아래 주제는 이어서 비교해보기 좋습니다.
-          </p>
-          <div className="mt-5 flex flex-wrap gap-2">
-            {content.longtailPhrases.map((phrase) => (
-              <span key={phrase} className="rounded-full border border-amber-100 bg-amber-50 px-3 py-2 text-sm font-medium text-amber-800">
-                {phrase}
-              </span>
-            ))}
-          </div>
-        </section>
-
-
-        {relatedHealthGuides.length > 0 ? (
-          <section className="mt-card p-6 md:p-8">
-            <h2 className="mt-title-md">증상별 건강 가이드로 더 자세히 보기</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-600">
-              이 질문과 연결되는 증상 가이드입니다. 같은 증상이라도 월령, 수유·수면 변화, 위험 신호를 함께 보면 판단이 더 쉬워집니다.
-            </p>
-            <div className="mt-5 grid gap-4 md:grid-cols-2">
-              {relatedHealthGuides.map((guide) => (
-                <Link key={guide.slug} href={`/health/${guide.slug}`} className="mt-list-card transition hover:-translate-y-0.5 hover:border-rose-200">
-                  <div className="font-semibold text-slate-800">{guide.title}</div>
-                  <div className="mt-2 text-sm leading-7 text-slate-500">{guide.summary}</div>
-                </Link>
-              ))}
-            </div>
-          </section>
-        ) : null}
-
-        <section className="mt-card p-5 md:p-8">
-          <h2 className="mt-title-md">이어서 보면 좋은 도구와 정보</h2>
-          <div className="mt-5 grid gap-4 md:grid-cols-3">
+        <section id="related-tools" className="space-y-3">
+          <h2 className="mt-app-section-title">함께 볼 도구와 정보</h2>
+          <div className="mt-app-link-list">
             {relatedLinks[typed].map((link) => (
-              <Link key={link.href} href={link.href} className="mt-list-card transition hover:-translate-y-0.5 hover:border-amber-200">
-                <div className="font-semibold text-slate-800">{link.label}</div>
-                <div className="mt-2 text-sm leading-7 text-slate-500">{link.description}</div>
+              <Link key={link.href} href={link.href} className="mt-app-link-item">
+                <div className="mt-app-link-title">{link.label}</div>
+                <div className="mt-app-link-desc">{link.description}</div>
+              </Link>
+            ))}
+            {relatedHealthGuides.map((guide) => (
+              <Link key={guide.slug} href={`/health/${guide.slug}`} className="mt-app-link-item">
+                <div className="mt-app-link-title">{guide.title}</div>
+                <div className="mt-app-link-desc">{guide.summary}</div>
               </Link>
             ))}
           </div>
         </section>
 
-        <section className="mt-card p-6 md:p-8" id="faq">
-          <h2 className="mt-title-md">자주 묻는 질문</h2>
-          <div className="mt-6 space-y-4">
+        <section className="mt-section-details" id="faq">
+          <details open>
+            <summary className="mt-section-summary"><span>자주 묻는 질문</span><span className="text-xs font-bold text-amber-700">접기</span></summary>
+            <div className="mt-detail-body">
+          <h2 className="sr-only">자주 묻는 질문</h2>
+          <div className="mt-4 space-y-2">
             {faqs.map((faq) => (
-              <div key={faq.question} className="rounded-3xl border border-slate-100 bg-slate-50 px-5 py-5">
-                <h3 className="text-base font-semibold text-slate-900">{faq.question}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">{faq.answer}</p>
-              </div>
+              <details key={faq.question} className="rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3">
+                <summary className="cursor-pointer text-sm font-extrabold leading-7 text-slate-900">{faq.question}</summary>
+                <p className="mt-2 text-sm leading-7 text-slate-600">{faq.answer}</p>
+              </details>
             ))}
           </div>
+            </div>
+          </details>
         </section>
 
-        <section className="mt-card-soft p-6 md:p-8">
-          <h2 className="mt-title-md">같이 이어서 보면 좋은 질문</h2>
-          <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">{content.relatedQuestionIntro}</p>
-          <div className="mt-5 grid gap-4 md:grid-cols-2">
-            {related.map((entry) => (
-              <Link key={entry.slug} href={`/qna/${typed}/${entry.slug}`} className="mt-list-card transition hover:-translate-y-0.5 hover:border-amber-200">
-                <div className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-600">{entry.topic}</div>
-                <div className="mt-2 font-semibold text-slate-800">{entry.question}</div>
-                {/* <div className="mt-2 line-clamp-3 text-sm leading-7 text-slate-500">{entry.summary}</div> */}
-                <div className="mt-3 text-sm font-semibold text-amber-700">이 질문도 이어서 보기</div>
+        <section className="space-y-3">
+          <h2 className="mt-app-section-title">같이 이어서 보면 좋은 질문</h2>
+          <div className="mt-app-link-list">
+            {related.slice(0, 5).map((entry) => (
+              <Link key={entry.slug} href={`/qna/${typed}/${entry.slug}`} className="mt-app-link-item">
+                <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-amber-600">{entry.topic}</div>
+                <div className="mt-1 font-extrabold leading-7 text-slate-900">{entry.question}</div>
               </Link>
             ))}
           </div>
-          <div className="mt-6 grid gap-4 md:grid-cols-2">
-            <Link href={`/qna/${typed}`} className="rounded-3xl border border-slate-100 bg-white px-5 py-5 transition hover:-translate-y-0.5 hover:border-amber-200">
-              <div className="font-semibold text-slate-800">{qnaCategories[typed]} 전체 질문 보기</div>
-              <p className="mt-2 text-sm leading-7 text-slate-500">같은 주제의 질문을 한 번에 훑어보며 우리 아이 상황과 비슷한 고민을 비교해 보세요.</p>
-            </Link>
-            <Link href="/qna" className="rounded-3xl border border-slate-100 bg-white px-5 py-5 transition hover:-translate-y-0.5 hover:border-amber-200">
-              <div className="font-semibold text-slate-800">육아 Q&amp;A 허브로 돌아가기</div>
-              <p className="mt-2 text-sm leading-7 text-slate-500">건강, 성장, 행동 고민을 비교하며 지금 필요한 질문을 다시 찾아볼 수 있습니다.</p>
-            </Link>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <Link href={`/qna/${typed}`} className="mt-chip-link">{qnaCategories[typed]} 전체 보기</Link>
+            <Link href="/qna" className="mt-chip-link">Q&amp;A 홈</Link>
           </div>
         </section>
-
-        <RelatedContent
-          title="관련 정보를 함께 보면 정리가 더 쉬워져요"
-          description="같은 고민을 여러 방향에서 확인하면 집에서 무엇을 먼저 보고, 어떤 정보를 이어서 보면 좋은지 감을 잡기 쉬워집니다."
-          items={relatedLinks[typed].map((item) => ({ href: item.href, title: item.label, description: item.description }))}
-        />
       </div>
     </div>
+  );
+}
+
+function DetailStackSection({
+  id,
+  title,
+  description,
+  items,
+  tone = "normal",
+}: {
+  id?: string;
+  title: string;
+  description?: string;
+  items: string[];
+  tone?: "normal" | "danger";
+}) {
+  const titleClass = tone === "danger" ? "mt-app-section-title-danger" : "mt-app-section-title";
+  const itemClass = tone === "danger" ? "mt-app-list-item-danger" : "mt-app-list-item";
+
+  return (
+    <section id={id} className="mt-app-stack-section">
+      <h2 className={titleClass}>{title}</h2>
+      {description ? <p className="mt-app-section-desc">{description}</p> : null}
+      {items.length > 0 ? (
+        <ul className="mt-app-list">
+          {items.map((point, index) => (
+            <li key={`${point}-${index}`} className={itemClass}>{point}</li>
+          ))}
+        </ul>
+      ) : null}
+    </section>
   );
 }

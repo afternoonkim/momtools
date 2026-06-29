@@ -71,17 +71,40 @@ const faq = [
 ];
 
 export default function Page() {
+  const summaryRows = [
+    {
+      label: "첫째아 기준 예시",
+      value: firstResult.formattedTotal,
+      hint: "첫만남이용권, 부모급여, 아동수당, 제주도 출산지원금을 우선 합산한 참고 금액입니다.",
+    },
+    {
+      label: "둘째아 이상 기준 예시",
+      value: secondResult.formattedTotal,
+      hint: "첫만남이용권과 지자체 지원금이 출생 순위에 따라 달라질 수 있습니다.",
+    },
+    {
+      label: "지급 방식",
+      value: "바우처 · 월 지급 · 현금",
+      hint: "지역에 따라 현금, 지역화폐, 선불카드, 현물 지원이 섞일 수 있습니다.",
+    },
+  ] as const;
+
+  const checkRows = [
+    "거주기간 조건은 지역마다 3개월, 6개월, 12개월 등으로 다를 수 있습니다.",
+    "첫째, 둘째, 셋째 이상에 따라 금액과 지급 방식이 달라집니다.",
+    "출생 후 60일, 90일, 180일, 1년 이내처럼 신청기한이 있는 지역이 있습니다.",
+    "신청 직전에는 관할 주민센터나 공식 안내에서 최신 금액과 조건을 다시 확인해야 합니다.",
+  ] as const;
+
   return (
     <div className="mt-page">
-      <div className="mt-container-narrow space-y-8">
-        <section className="mt-card p-8 md:p-10">
+      <div className="mt-container-narrow space-y-5 md:space-y-6">
+        <section className="mt-card p-4 md:p-6">
           <span className="mt-badge">육아 계산기 · 지역별 출산지원금</span>
-          <h1 className="mt-title-xl mt-5">지역별 출산지원금 계산기, 첫째와 둘째 이상 예상 금액을 확인해 보세요</h1>
-          <p className="mt-text-main mt-4">
-            출산지원금은 출생 직후 받는 첫만남이용권, 매월 지급되는 부모급여와 아동수당, 조건에 따라 받을 수 있는 가정양육수당, 그리고 지자체가 따로 지급하는 출산지원금으로 나뉩니다. 그래서 단순히 “출산지원금 얼마”만 검색하면 실제로 우리 집이 받을 수 있는 금액을 한눈에 파악하기 어렵습니다.
-          </p>
-          <p className="mt-text-sub mt-4">
-            거주 지역과 출생 순위만 선택하면, 2026년 전국 공통 출산·육아 지원금과 제주·경남·경북·전남·전북·충남·충북·경기·강원·세종·울산·대전·광주·인천·대구·부산·서울 시·군·구별 출산지원금이 합쳐져서 예상 받을 금액이 바로 나와요.
+          <h1 className="mt-title-lg mt-4">지역별 출산지원금은 조건 확인이 먼저입니다</h1>
+          <p className="mt-text-main mt-3">
+            거주 지역과 출생 순위를 선택해 전국 공통 지원금과 지자체 출산지원금을 참고용으로 합산합니다.
+            실제 지급 여부는 거주기간, 신청기한, 지급 방식에 따라 달라질 수 있어요.
           </p>
         </section>
 
@@ -92,80 +115,63 @@ export default function Page() {
         <ContentUpdateNote
           publishedOn={pageDates.published}
           updatedOn={pageDates.updated}
-          note="2026년 전국 공통 출산·육아 지원금과 아이사랑 출산지원금 게시판의 시·군·구 자료를 기준으로 합산해 보여드려요. 자료는 정기적으로 검토해 업데이트되며, 신청 직전엔 관할 주민센터에서 최신 금액·조건을 다시 확인해 주세요."
+          note="2026년 전국 공통 출산·육아 지원금과 지역별 안내 자료를 기준으로 합산해 보여드려요. 신청 직전엔 관할 주민센터에서 최신 금액·조건을 다시 확인해 주세요."
         />
 
-        <section className="grid gap-5 md:grid-cols-3">
-          <article className="mt-card p-6">
-            <div className="text-sm font-semibold text-amber-600">첫째아 기준</div>
-            <h2 className="mt-3 text-2xl font-black text-slate-900">{firstResult.formattedTotal}</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-600">첫만남이용권 200만 원, 부모급여 1,800만 원, 비수도권 아동수당 최대 1,134만 원, 제주도 출산지원금 500만 원을 우선 합산한 기본 예상 금액입니다. 가정양육수당은 조건 충족 시 추가 가능 금액으로 별도 확인할 수 있습니다.</p>
-          </article>
-          <article className="mt-card p-6">
-            <div className="text-sm font-semibold text-amber-600">둘째아 이상 기준</div>
-            <h2 className="mt-3 text-2xl font-black text-slate-900">{secondResult.formattedTotal}</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-600">첫만남이용권 300만 원과 제주도 출산지원금 1,000만 원에 부모급여 1,800만 원, 비수도권 아동수당을 더한 기본 예상 금액입니다. 조건부 지원은 별도 항목으로 확인할 수 있습니다.</p>
-          </article>
-          <article className="mt-card p-6">
-            <div className="text-sm font-semibold text-amber-600">지급 방식</div>
-            <h2 className="mt-3 text-2xl font-black text-slate-900">바우처 + 월 지급 + 현금</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-600">첫만남이용권은 국민행복카드 바우처, 부모급여·아동수당은 월 단위 현금성 지원, 지자체 출산지원금은 현금, 지역화폐, 선불카드, 현물 지원 등으로 구분해 보여줍니다.</p>
-          </article>
-        </section>
-
-        <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-lg">지역별 출산지원금 신청 전 확인할 조건</h2>
-          <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">
-            현재 계산기는 아이사랑 지자체 출산지원금 자료와 지역별 공식 안내를 기준으로 정리한 데이터를 사용합니다. 같은 도 안에서도 시·군·구마다 금액, 지급 방식, 거주기간, 신청기한이 다르기 때문에 계산 결과를 본 뒤 반드시 신청 조건을 함께 확인해야 합니다.
-          </p>
-          <div className="mt-5 grid gap-4 md:grid-cols-2">
-            <div className="rounded-3xl bg-amber-50/70 p-5 text-sm leading-7 text-slate-700">
-              <b className="text-slate-900">거주기간</b><br />
-              지역별로 출생일 기준 3개월, 6개월, 12개월 이상 거주 조건이 다릅니다. 조건을 충족하지 못한 경우 일정 기간 경과 후 신청 가능한 지역도 있습니다.
-            </div>
-            <div className="rounded-3xl bg-amber-50/70 p-5 text-sm leading-7 text-slate-700">
-              <b className="text-slate-900">출생순위</b><br />
-              첫째, 둘째, 셋째, 넷째 이상에 따라 금액이 크게 달라집니다. 일부 지역은 넷째와 다섯째 이상 금액이 다르므로 상세 안내 문구를 확인해야 합니다.
-            </div>
-            <div className="rounded-3xl bg-slate-50 p-5 text-sm leading-7 text-slate-700">
-              <b className="text-slate-900">지급방식</b><br />
-              현금 일시금뿐 아니라 분할 지급, 지역화폐, 선불카드, 상품권, 출산축하용품, 건강보험료 지원으로 나뉩니다.
-            </div>
-            <div className="rounded-3xl bg-slate-50 p-5 text-sm leading-7 text-slate-700">
-              <b className="text-slate-900">신청기한</b><br />
-              출생신고 시 바로 신청하는 지역도 있고, 출생 후 60일·90일·180일·1년 이내 신청해야 하는 지역도 있습니다.
-            </div>
+        <section className="mt-card p-4 md:p-6">
+          <h2 className="mt-title-md">예상 금액을 볼 때 참고할 기준</h2>
+          <div className="mt-result-list mt-4">
+            {summaryRows.map((row) => (
+              <div key={row.label} className="mt-result-list-item">
+                <div>
+                  <div className="mt-result-label">{row.label}</div>
+                  <div className="mt-result-value">{row.value}</div>
+                  <p className="mt-result-hint mt-1">{row.hint}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </section>
 
-        <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-lg">자주 묻는 질문</h2>
-          <div className="mt-5 space-y-4">
+        <section className="mt-card p-4 md:p-6">
+          <h2 className="mt-title-md">신청 전 확인할 조건</h2>
+          <ul className="mt-result-list mt-4">
+            {checkRows.map((item) => (
+              <li key={item} className="mt-result-list-item border-amber-100 bg-amber-50/60">
+                <span className="mt-result-value text-amber-900">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mt-card p-4 md:p-6">
+          <h2 className="mt-title-md">자주 묻는 질문</h2>
+          <div className="mt-4 space-y-3">
             {faq.map((item) => (
-              <article key={item.q} className="rounded-3xl border border-slate-100 bg-white p-5">
-                <h3 className="text-base font-semibold text-slate-900">{item.q}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">{item.a}</p>
-              </article>
+              <details key={item.q} className="mt-section-details">
+                <summary className="mt-section-summary">{item.q}</summary>
+                <p className="mt-detail-body">{item.a}</p>
+              </details>
             ))}
           </div>
         </section>
 
         <RegionIndexSection />
 
-        <section className="mt-card-soft p-6 md:p-8">
+        <section className="mt-card-soft p-4 md:p-6">
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">함께 확인하기</div>
-          <div className="mt-4 grid gap-4 md:grid-cols-3">
+          <div className="mt-result-list mt-4">
             <Link href="/policy/local-check" className="mt-list-card">
               <div className="font-semibold text-slate-800">지역별 출산지원금</div>
-              <div className="mt-2 text-sm text-slate-500">지자체 지원금은 지역별 조건과 신청 기한이 다르므로 함께 확인해 보세요.</div>
+              <div className="mt-1 text-sm leading-6 text-slate-500">지자체 지원금 조건과 신청 기한을 함께 확인해요.</div>
             </Link>
             <Link href="/policy/pregnancy-birth/first-encounter-voucher-data" className="mt-list-card">
               <div className="font-semibold text-slate-800">첫만남이용권</div>
-              <div className="mt-2 text-sm text-slate-500">전국 공통 바우처 금액과 사용 기한을 자세히 볼 수 있습니다.</div>
+              <div className="mt-1 text-sm leading-6 text-slate-500">전국 공통 바우처 금액과 사용 기한을 봐요.</div>
             </Link>
             <Link href="/policy/childcare-benefit/parental-benefit-data" className="mt-list-card">
               <div className="font-semibold text-slate-800">부모급여</div>
-              <div className="mt-2 text-sm text-slate-500">출산 후 매월 받을 수 있는 양육 지원금도 이어서 확인하세요.</div>
+              <div className="mt-1 text-sm leading-6 text-slate-500">출산 후 매월 받을 수 있는 지원금도 이어서 확인해요.</div>
             </Link>
           </div>
         </section>
@@ -178,7 +184,6 @@ export default function Page() {
  * 지역별 출산지원금 상세 페이지로 바로 이동할 수 있도록 시·도 단위로 묶어 보여줍니다.
  */
 function RegionIndexSection() {
-  // 시도별로 묶기
   const grouped = new Map<string, typeof birthSupportRegions>();
   for (const region of birthSupportRegions) {
     const key = region.sido;
@@ -186,7 +191,6 @@ function RegionIndexSection() {
     grouped.get(key)!.push(region);
   }
 
-  // 시도 순서: 서울→부산→대구→인천→광주→대전→울산→세종→경기→강원→충북→충남→전북→전남→경북→경남→제주
   const sidoOrder = [
     "서울특별시",
     "부산광역시",
@@ -214,18 +218,17 @@ function RegionIndexSection() {
     .filter(([, regions]) => Array.isArray(regions) && regions.length > 0);
 
   return (
-    <section className="mt-card p-6 md:p-8">
+    <section className="mt-card p-4 md:p-6">
       <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">지역별 바로가기</div>
-      <h2 className="mt-title-lg mt-3">시·군·구별 출산지원금 페이지</h2>
-      <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">
-        “청주 출산지원금”, “광주 출산지원금”처럼 우리 동네 이름으로 바로 찾고 싶을 때를 위한 시·군·구별 페이지예요.
-        지역명을 누르면 해당 지자체 출산지원금만 모아 둔 페이지로 바로 이동해요.
+      <h2 className="mt-title-md mt-3">시·군·구별 출산지원금 페이지</h2>
+      <p className="mt-text-sub mt-3">
+        지역명을 누르면 해당 지자체 출산지원금 페이지로 이동합니다. 모바일에서는 시·도별로 접어서 확인할 수 있게 정리했습니다.
       </p>
-      <div className="mt-6 space-y-5">
+      <div className="mt-4 space-y-3">
         {ordered.map(([sido, regions]) => (
-          <div key={sido}>
-            <h3 className="text-sm font-bold text-slate-800">{sido}</h3>
-            <div className="mt-2 flex flex-wrap gap-2">
+          <details key={sido} className="mt-section-details">
+            <summary className="mt-section-summary">{sido}</summary>
+            <div className="mt-3 flex flex-wrap gap-2">
               {regions!.map((region) => {
                 const sigungu = region.sigungu === "전체" ? region.sido : region.sigungu;
                 return (
@@ -234,12 +237,12 @@ function RegionIndexSection() {
                     href={`/tools/birth-support-calculator/${region.regionCode}`}
                     className="rounded-full border border-amber-100 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700 transition hover:border-amber-300 hover:text-amber-700"
                   >
-                    {sigungu} 출산지원금
+                    {sigungu}
                   </Link>
                 );
               })}
             </div>
-          </div>
+          </details>
         ))}
       </div>
     </section>

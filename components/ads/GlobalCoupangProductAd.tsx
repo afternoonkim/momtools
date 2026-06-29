@@ -92,6 +92,27 @@ function findProductAnchor() {
   return findContentSectionAfterBreadcrumb(main) ?? findFirstContentSection(main) ?? main;
 }
 
+function getProductInsertionReference(anchor: Element) {
+  let reference = anchor;
+  let next = anchor.nextElementSibling;
+
+  while (next instanceof HTMLElement) {
+    if (next.getAttribute("data-coupang-partners-placement") === "true") {
+      reference = next;
+      next = next.nextElementSibling;
+      continue;
+    }
+
+    if (next.getAttribute(PRODUCT_PORTAL_ATTRIBUTE) === "true") {
+      break;
+    }
+
+    break;
+  }
+
+  return reference;
+}
+
 function ensureProductPlacementContainer() {
   const anchor = findProductAnchor();
   if (!anchor?.parentElement) return null;
@@ -106,8 +127,12 @@ function ensureProductPlacementContainer() {
   placement.setAttribute(PRODUCT_PORTAL_ATTRIBUTE, "true");
   placement.className = "mt-coupang-product-placement";
 
-  if (placement.parentElement !== anchor.parentElement || placement.previousElementSibling !== anchor) {
-    anchor.insertAdjacentElement("afterend", placement);
+  const insertionReference = getProductInsertionReference(anchor);
+  if (
+    placement.parentElement !== insertionReference.parentElement ||
+    placement.previousElementSibling !== insertionReference
+  ) {
+    insertionReference.insertAdjacentElement("afterend", placement);
   }
 
   return placement;

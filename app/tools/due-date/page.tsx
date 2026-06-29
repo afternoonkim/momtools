@@ -37,20 +37,45 @@ const faq = [
   },
 ];
 
+
+const nextStepItems = [
+  { href: "/checklists/birth", label: "출산 준비 체크리스트", description: "입원 가방과 보호자 준비물을 정리해요.", tag: "준비" },
+  { href: "/checklists/newborn", label: "신생아 준비 체크리스트", description: "퇴원 후 바로 필요한 물건을 확인해요.", tag: "신생아" },
+  { href: "/tools/baby-age", label: "아기 개월수 계산기", description: "출산 후 월령 기준 정보를 이어서 확인해요.", tag: "출산 후" }
+] as const;
+
+const firstLookItems = [
+  "예정일은 실제 출산일을 확정하는 날짜가 아니라 준비 기준입니다.",
+  "임신 주수, 검진 일정, 병원 안내를 함께 확인합니다.",
+  "입원 가방은 막달에 한 번에 준비하기보다 필요한 항목부터 나눠 정리합니다."
+] as const;
+
+const cautionItems = [
+  "복통, 출혈, 양수 의심, 태동 변화처럼 평소와 다른 신호가 있으면 계산보다 병원 문의가 우선입니다.",
+  "고위험 임신이나 병원에서 별도 안내를 받은 경우에는 개인 일정 안내를 따릅니다.",
+  "예정일이 가까워질수록 이동 동선과 보호자 연락 방법을 미리 정리합니다."
+] as const;
+
+const faqItems = [
+  { question: "출산 예정일은 정확한 날짜인가요?", answer: "예정일은 참고 기준입니다. 실제 출산일은 개인 상태와 병원 판단에 따라 달라질 수 있습니다." },
+  { question: "예정일을 알면 무엇부터 준비하면 좋나요?", answer: "입원 가방, 산모용품, 신생아 용품, 보호자 동선을 단계별로 나눠 준비하는 것이 좋습니다." },
+  { question: "예정일이 지나면 바로 문제가 되나요?", answer: "상황마다 다르므로 병원 안내를 우선해야 합니다. 태동 변화나 통증 등 다른 신호가 있으면 바로 문의하세요." }
+] as const;
+
+const relatedItems = [
+  { href: "/checklists/birth", title: "출산 준비 체크리스트", description: "입원 준비물을 빠르게 확인해요." },
+  { href: "/checklists/newborn", title: "신생아 준비 체크리스트", description: "퇴원 후 필요한 항목을 정리해요." },
+  { href: "/info/newborn", title: "신생아 정보", description: "출산 후 초기 수유·수면 흐름을 함께 봐요." }
+] as const;
+
 export default function Page() {
   return (
     <div className="mt-page">
-      <div className="mt-container-narrow space-y-8">
-        <section className="mt-card p-8 md:p-10">
-          <span className="mt-badge">임신 준비 흐름</span>
-          <h1 className="mt-title-xl mt-5">출산 예정일과 현재 임신 주수를 먼저 확인해 보세요</h1>
-          <p className="mt-text-main mt-4">
-            출산 예정일 계산기는 마지막 생리 시작일을 기준으로 현재 임신 주수와 예정일을 빠르게 정리할 수 있는 도구입니다.
-            날짜를 하나 확인하는 데서 끝내기보다, 지금 시기에 어떤 준비를 하면 좋은지 이어서 생각할 수 있게 만드는 것이 더 중요합니다.
-          </p>
-          <p className="mt-text-sub mt-4">
-            계산 결과는 가정에서 참고하기 좋은 기준선으로 보시면 되고, 실제 진료 일정과 분만 시점 판단은 의료진 안내를 우선해 주세요.
-          </p>
+      <div className="mt-container-narrow space-y-5 md:space-y-6">
+        <section className="mt-card p-4 md:p-6">
+          <span className="mt-badge">출산 일정 정리</span>
+          <h1 className="mt-title-lg mt-4">출산 예정일은 준비 일정을 나누는 기준입니다</h1>
+          <p className="mt-text-main mt-3">마지막 생리 시작일이나 기준일로 예정일을 참고하고, 출산 전 준비·병원 상담·신생아 준비 순서를 함께 정리합니다.</p>
         </section>
 
         <DueDateCalculatorClient />
@@ -58,95 +83,61 @@ export default function Page() {
         <AdFitAd {...ADFIT_UNITS.mobileResult} />
 
         <NextStepLinks
-          eyebrow="예정일 확인 후 다음 단계"
-          title="출산 예정일을 확인했다면 준비 순서를 같이 정리해 보세요"
-          description="예정일은 날짜 하나보다 지금 주차에서 무엇을 준비할지 정하는 기준으로 활용하면 더 좋습니다."
-          items={[
-            { href: "/info/pregnancy", label: "임신 주차 정보", description: "주차별 변화와 진료 전 확인할 내용을 봐요.", tag: "임신" },
-            { href: "/checklists/birth", label: "출산 준비 체크리스트", description: "출산 가방과 산모·아기 준비물을 정리해요.", tag: "준비" },
-            { href: "/info/childcare-portal/kids-card", label: "국민행복카드", description: "카드와 바우처 확인 흐름을 살펴봐요.", tag: "지원" },
-            { href: "/policy/birth-support-calculator", label: "출산지원금 확인", description: "지역별 지원 정보를 볼 때 필요한 기준을 확인해요.", tag: "정책" },
-            { href: "/info/childcare-portal", label: "아이사랑 공식정보", description: "임신·출산·육아 공식 메뉴를 쉽게 이어서 봐요.", tag: "공식" },
-          ]}
+          eyebrow="예정일 다음에 볼 정보"
+          title="예정일을 확인했다면 준비물을 단계별로 정리하세요"
+          description="예정일은 확정 날짜가 아니라 준비 순서를 잡는 기준으로 보면 부담이 줄어듭니다."
+          items={[...nextStepItems]}
         />
 
         <ContentUpdateNote
           publishedOn={pageDates.published}
           updatedOn={pageDates.updated}
-          note="날짜 계산만 보고 끝내지 않도록, 결과 아래에서 다음에 무엇을 준비하면 좋은지까지 한 번에 이어서 살펴볼 수 있어요."
+          note="출산 예정일은 실제 출산일과 달라질 수 있으므로, 준비 순서를 나누는 기준으로 활용하도록 설명을 정리했습니다."
         />
 
-        <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-lg">이 계산기를 이렇게 활용하면 편합니다</h2>
-          <ul className="mt-5 space-y-3 text-sm leading-7 text-slate-600 md:text-base">
-            {points.map((item) => (
-              <li key={item} className="rounded-2xl bg-amber-50/70 px-4 py-4 text-slate-700">{item}</li>
+        <section className="mt-card p-4 md:p-6">
+          <h2 className="mt-title-md">먼저 볼 기준</h2>
+          <ul className="mt-result-list mt-4">
+            {firstLookItems.map((item) => (
+              <li key={item} className="mt-result-list-item">
+                <span className="mt-result-value">{item}</span>
+              </li>
             ))}
           </ul>
         </section>
 
-        <section className="grid gap-6 lg:grid-cols-2">
-          <article className="mt-card p-6 md:p-8">
-            <h2 className="mt-title-lg">결과를 해석할 때 기억할 점</h2>
-            <div className="mt-4 space-y-4 text-sm leading-8 text-slate-600 md:text-base">
-              <p>
-                출산 예정일은 임신 전체 흐름을 보는 기준으로는 매우 유용하지만, 실제 분만일을 정확하게 예측하는 숫자는 아닙니다.
-                그래서 계산 결과를 본 뒤에는 지금이 임신 몇 주차인지, 다음 진료 전까지 무엇을 준비하면 좋은지, 출산 가방과 서류 준비는 언제 시작하면 좋은지처럼
-                행동 계획으로 연결해 보는 것이 좋습니다.
-              </p>
-              <p>
-                임신 초기에는 주수에 따라 검사 계획이나 생활 습관 조정이 달라질 수 있고, 중기 이후에는 태동 준비, 입원 준비, 출산 직전 체크리스트처럼 실제 행동이 많아집니다.
-                날짜 하나를 확인했다면 그다음엔 준비 순서를 정리하는 흐름으로 이어가 보세요.
-              </p>
-            </div>
-          </article>
-
-          <article className="mt-card p-6 md:p-8">
-            <h2 className="mt-title-lg">이럴 때는 병원 기준을 먼저 보세요</h2>
-            <div className="mt-4 space-y-4 text-sm leading-8 text-slate-600 md:text-base">
-              <p>
-                생리 주기가 일정하지 않거나 마지막 생리 시작일이 정확하지 않은 경우, 배란 시점을 따로 추적하고 있는 경우, 시험관 시술이나 배아이식처럼 일반 계산과 다른 기준이 필요한 경우에는
-                계산기보다 병원에서 안내한 예정일과 주수를 우선하는 편이 더 정확합니다.
-              </p>
-              <p>
-                임신 중 출혈, 통증, 진한 입덧, 움직임 변화처럼 몸 상태와 직접 연결되는 문제는 날짜 계산보다 의료진 상담이 우선입니다.
-                MomTools는 준비 흐름을 돕는 참고 도구로 활용해 주세요.
-              </p>
-            </div>
-          </article>
+        <section className="mt-card p-4 md:p-6">
+          <h2 className="mt-title-md">상담이 먼저인 경우</h2>
+          <ul className="mt-result-list mt-4">
+            {cautionItems.map((item) => (
+              <li key={item} className="mt-result-list-item border-amber-100 bg-amber-50/60">
+                <span className="mt-result-value text-amber-900">{item}</span>
+              </li>
+            ))}
+          </ul>
         </section>
 
-        <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-lg">자주 묻는 질문</h2>
-          <div className="mt-5 space-y-4">
-            {faq.map((item) => (
-              <article key={item.q} className="rounded-3xl border border-slate-100 bg-white p-5">
-                <h3 className="text-base font-semibold text-slate-900">{item.q}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">{item.a}</p>
-              </article>
+        <section className="mt-card p-4 md:p-6">
+          <h2 className="mt-title-md">자주 묻는 질문</h2>
+          <div className="mt-4 space-y-3">
+            {faqItems.map((item) => (
+              <details key={item.question} className="mt-section-details">
+                <summary className="mt-section-summary">{item.question}</summary>
+                <p className="mt-detail-body">{item.answer}</p>
+              </details>
             ))}
           </div>
         </section>
 
-        <section className="mt-card-soft p-6 md:p-8">
+        <section className="mt-card-soft p-4 md:p-6">
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">이어서 보기</div>
-          <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            <Link href="/info/pregnancy" className="mt-list-card">
-              <div className="font-semibold text-slate-800">임신 정보 가이드</div>
-              <div className="mt-2 text-sm text-slate-500">주수별로 어떤 흐름으로 준비하면 좋은지 설명형으로 확인할 수 있어요.</div>
-            </Link>
-            <Link href="/checklists/birth" className="mt-list-card">
-              <div className="font-semibold text-slate-800">출산 준비 체크리스트</div>
-              <div className="mt-2 text-sm text-slate-500">예정일을 확인했다면 실제 준비물을 체크박스로 정리해 보세요.</div>
-            </Link>
-            <Link href="/qna/health" className="mt-list-card">
-              <div className="font-semibold text-slate-800">건강 Q&A</div>
-              <div className="mt-2 text-sm text-slate-500">임신과 출산 직후 자주 묻는 건강 질문을 함께 읽을 수 있습니다.</div>
-            </Link>
-            <Link href="/tools/baby-age" className="mt-list-card">
-              <div className="font-semibold text-slate-800">아기 개월수 계산기</div>
-              <div className="mt-2 text-sm text-slate-500">출산 후에는 월령 계산으로 수유, 수면, 접종 흐름을 이어서 확인해 보세요.</div>
-            </Link>
+          <div className="mt-result-list mt-4">
+            {relatedItems.map((item) => (
+              <Link key={item.href} href={item.href} className="mt-list-card">
+                <div className="font-semibold text-slate-800">{item.title}</div>
+                <div className="mt-1 text-sm leading-6 text-slate-500">{item.description}</div>
+              </Link>
+            ))}
           </div>
         </section>
       </div>

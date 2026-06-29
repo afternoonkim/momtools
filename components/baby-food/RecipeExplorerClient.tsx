@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { BabyFoodRecipe, BabyFoodStage } from "@/data/babyFood";
-import { stageGuides, stageLabels } from "@/data/babyFood";
+import { stageLabels } from "@/data/babyFood";
 
 export default function RecipeExplorerClient({
   recipes,
@@ -31,34 +31,31 @@ export default function RecipeExplorerClient({
   }, [recipes, category, search]);
 
   return (
-    <div className="space-y-6">
-      <section className="mt-card p-6 md:p-8">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+    <div className="space-y-5 md:space-y-6">
+      <section className="mt-card p-4 md:p-6">
+        <div className="flex items-start justify-between gap-3">
           <div>
             <span className="mt-badge">{stageLabels[stage]}</span>
-            <h2 className="mt-title-lg mt-4">분류와 검색으로 바로 찾는 {stageLabels[stage]} 레시피</h2>
-            <p className="mt-text-sub mt-3 max-w-3xl">
-              베이스죽, 채소 토핑, 단백질, 죽/덮밥, 핑거푸드처럼 실제 검색 흐름에 맞는 분류를 넣었습니다.
-              재료명까지 함께 검색할 수 있어 원하는 메뉴를 더 빠르게 찾을 수 있습니다.
-            </p>
+            <h2 className="mt-3 text-xl font-extrabold text-slate-900 md:text-2xl">분류와 검색으로 바로 찾기</h2>
+            <p className="mt-2 text-sm leading-7 text-slate-600">재료명이나 메뉴명을 입력하면 관련 이유식만 추려서 볼 수 있습니다.</p>
           </div>
-          <div className="rounded-3xl border border-amber-100 bg-amber-50 px-5 py-4 text-sm text-amber-700">
-            현재 {recipes.length}개 메뉴 · 찾은 결과 {filtered.length}개
+          <div className="shrink-0 rounded-full bg-amber-50 px-3 py-1.5 text-xs font-bold text-amber-800">
+            {filtered.length}개
           </div>
         </div>
 
-        <div className="mt-6 grid gap-4 md:grid-cols-[1.4fr_0.8fr]">
+        <div className="mt-4 grid gap-3 md:grid-cols-[1.4fr_0.8fr]">
           <label className="space-y-2">
-            <span className="text-sm font-semibold text-slate-700">이유식 검색</span>
+            <span className="text-sm font-bold text-slate-700">이유식 검색</span>
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               className="mt-input"
-              placeholder="예: 단호박, 두부, 닭고기, 핑거푸드"
+              placeholder="예: 단호박, 두부, 닭고기"
             />
           </label>
           <label className="space-y-2">
-            <span className="text-sm font-semibold text-slate-700">분류 선택</span>
+            <span className="text-sm font-bold text-slate-700">분류</span>
             <select value={category} onChange={(e) => setCategory(e.target.value)} className="mt-input">
               <option value="전체">전체</option>
               {categories.map((item) => (
@@ -69,30 +66,20 @@ export default function RecipeExplorerClient({
             </select>
           </label>
         </div>
-
-        <div className="mt-5 rounded-3xl bg-slate-50 px-5 py-4 text-sm leading-7 text-slate-600">
-          <strong className="text-slate-800">이 단계에서 먼저 볼 것:</strong> {stageGuides[stage].focus}
-        </div>
       </section>
 
-      <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+      <section className="mt-simple-list" aria-label={`${stageLabels[stage]} 이유식 레시피 목록`}>
         {filtered.map((recipe) => (
-          <Link
-            key={recipe.slug}
-            href={`/baby-food/recipes/${recipe.slug}`}
-            className="rounded-[28px] border border-amber-100 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-amber-200"
-          >
-            <div className="flex items-center justify-between gap-3">
-              <span className="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700">
-                {recipe.category}
-              </span>
-              <span className="text-xs text-slate-400">{stageLabels[recipe.stage]}</span>
+          <Link key={recipe.slug} href={`/baby-food/recipes/${recipe.slug}`} className="mt-simple-list-item">
+            <div className="flex items-center gap-2">
+              <span className="rounded-full bg-amber-50 px-2.5 py-1 text-[11px] font-bold text-amber-700">{recipe.category}</span>
+              <span className="text-[11px] text-slate-400">{stageLabels[recipe.stage]}</span>
             </div>
-            <h3 className="mt-4 text-xl font-bold text-slate-800">{recipe.title}</h3>
-            <p className="mt-3 text-sm leading-7 text-slate-500">{recipe.summary}</p>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {recipe.ingredients.map((item) => (
-                <span key={item} className="rounded-full bg-slate-50 px-3 py-1 text-xs text-slate-500">
+            <h3 className="mt-2 text-base font-extrabold text-slate-900">{recipe.title}</h3>
+            <p className="mt-1 line-clamp-2 text-sm leading-6 text-slate-500">{recipe.summary}</p>
+            <div className="mt-2 flex gap-1.5 overflow-x-auto pb-1">
+              {recipe.ingredients.slice(0, 6).map((item) => (
+                <span key={item} className="shrink-0 rounded-full bg-slate-50 px-2.5 py-1 text-xs text-slate-500">
                   {item}
                 </span>
               ))}

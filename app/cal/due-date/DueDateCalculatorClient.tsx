@@ -210,14 +210,14 @@ export default function DueDateCalculatorClient() {
   }, [lmp, cycleLength, today]);
 
   return (
-    <section className="space-y-8">
-      <header className="mt-card p-6 md:p-8">
+    <section className="space-y-5 md:space-y-6">
+      <header className="mt-card p-4 md:p-6">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl space-y-3">
             <div className="inline-flex items-center rounded-full bg-rose-100 px-3 py-1 text-xs font-semibold text-rose-700">
               MomTools 육아 계산기
             </div>
-            <h1 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
+            <h1 className="mt-title-lg">
               출산 예정일 계산기
             </h1>
             <p className="text-sm leading-7 text-slate-600 md:text-base">
@@ -248,7 +248,7 @@ export default function DueDateCalculatorClient() {
 
       <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr]">
         <aside className="space-y-6">
-          <section className="mt-card p-6 md:p-7">
+          <section className="mt-card p-4 md:p-6">
             <div className="space-y-5">
               <div>
                 <h2 className="text-lg font-bold text-slate-900">입력값</h2>
@@ -324,7 +324,7 @@ export default function DueDateCalculatorClient() {
         </aside>
 
         <div className="space-y-6">
-          <section className="mt-card p-6 md:p-7">
+          <section className="mt-card p-4 md:p-6">
             <div>
               <h2 className="text-lg font-bold text-slate-900">
                 결과 화면 한눈에 보기
@@ -340,7 +340,7 @@ export default function DueDateCalculatorClient() {
               </div>
             ) : (
               <>
-                <div className="mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                <div className="mt-5 mt-result-list">
                   <ResultCard
                     title="출산 예정일"
                     value={formatDate(result.dueDate)}
@@ -372,7 +372,7 @@ export default function DueDateCalculatorClient() {
                   />
                 </div>
 
-                <div className="mt-6 rounded-3xl border border-rose-100 bg-gradient-to-br from-rose-50 via-white to-sky-50 p-5">
+                <div className="mt-6 rounded-2xl border border-rose-100 bg-gradient-to-br from-rose-50 via-white to-sky-50 p-5">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="inline-flex rounded-full bg-white px-3 py-1 text-xs font-semibold text-rose-700 shadow-sm ring-1 ring-rose-100">
                       계산 로직
@@ -393,7 +393,7 @@ export default function DueDateCalculatorClient() {
             )}
           </section>
 
-          <section className="mt-card p-6 md:p-7">
+          <section className="mt-card p-4 md:p-6">
             <div>
               <h2 className="text-lg font-bold text-slate-900">
                 주요 일정 타임라인
@@ -405,11 +405,11 @@ export default function DueDateCalculatorClient() {
             </div>
 
             {result.status === "ready" ? (
-              <div className="mt-5 grid gap-4 md:grid-cols-2">
+              <div className="mt-5 mt-compact-grid">
                 {result.milestones.map((milestone) => (
                   <div
                     key={milestone.label}
-                    className="rounded-2xl border border-slate-100 bg-white p-5 shadow-[0_8px_30px_rgba(15,23,42,0.04)]"
+                    className="rounded-2xl border border-slate-100 bg-white p-5 "
                   >
                     <div className="flex items-center justify-between gap-3">
                       <div className="text-base font-bold text-slate-900">
@@ -440,11 +440,11 @@ export default function DueDateCalculatorClient() {
         </div>
       </div>
 
-      <section className="mt-card p-6 md:p-8">
+      <section className="mt-card p-4 md:p-6">
         <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
-            <div className="space-y-8">
+            <div className="space-y-5 md:space-y-6">
             <div>
-                <h2 className="text-lg font-bold text-slate-900 md:text-xl">
+                <h2 className="mt-title-md">
                 출산 예정일 계산기는 어떻게 계산되나요?
                 </h2>
                 <div className="mt-4 space-y-4 text-sm leading-7 text-slate-700 md:text-base">
@@ -467,7 +467,7 @@ export default function DueDateCalculatorClient() {
             </div>
 
             <div>
-                <h2 className="text-lg font-bold text-slate-900 md:text-xl">
+                <h2 className="mt-title-md">
                 자주 묻는 질문
                 </h2>
 
@@ -517,7 +517,7 @@ export default function DueDateCalculatorClient() {
             </div>
 
             <aside className="space-y-6">
-            <div className="rounded-3xl border border-amber-100 bg-amber-50 p-5 md:p-6">
+            <div className="rounded-2xl border border-amber-100 bg-amber-50 p-5 md:p-6">
                 <h2 className="text-lg font-bold text-slate-900">
                 이용 전 참고해 주세요
                 </h2>
@@ -529,7 +529,7 @@ export default function DueDateCalculatorClient() {
                 </ul>
             </div>
 
-            <div className="rounded-3xl border border-slate-100 bg-white p-5 md:p-6 shadow-[0_8px_30px_rgba(15,23,42,0.04)]">
+            <div className="rounded-2xl border border-slate-100 bg-white p-5 md:p-6 ">
                 <h2 className="text-lg font-bold text-slate-900">
                 함께 보면 좋은 도구
                 </h2>
@@ -561,7 +561,7 @@ export default function DueDateCalculatorClient() {
                 </div>
             </div>
 
-            <div className="rounded-3xl border border-sky-100 bg-sky-50 p-5 md:p-6">
+            <div className="rounded-2xl border border-sky-100 bg-sky-50 p-5 md:p-6">
                 <h2 className="text-lg font-bold text-slate-900">
                 출산 준비 예산도 함께 생각해보세요
                 </h2>
@@ -593,20 +593,14 @@ function ResultCard({
   highlight?: boolean;
 }) {
   return (
-    <div
-      className={[
-        "rounded-3xl border p-5",
-        highlight
-          ? "border-rose-100 bg-gradient-to-br from-rose-50 to-white"
-          : "border-slate-100 bg-white",
-      ].join(" ")}
-    >
-      <div className="text-sm font-medium text-slate-500">{title}</div>
-      <div className="mt-2 text-xl font-bold tracking-tight text-slate-900">
-        {value}
+    <div className={["mt-result-list-item", highlight ? "bg-amber-50/70" : "bg-white"].join(" ")}>
+      <div className="min-w-0 pr-3">
+        <div className="mt-result-label">{title}</div>
+        <div className="mt-result-hint">{hint}</div>
       </div>
-      <div className="mt-2 text-xs leading-6 text-slate-500">{hint}</div>
+      <div className="max-w-[58%] shrink-0 text-right text-base font-extrabold leading-6 text-slate-900 md:text-lg">{value}</div>
     </div>
   );
 }
+
 

@@ -51,28 +51,28 @@ export default function PersistentChecklist({
   }, [checkedMap, storageKey]);
 
   return (
-    <div className="mt-5">
-      <p className="mb-3 rounded-2xl bg-slate-50 px-4 py-3 text-sm leading-6 text-slate-600">체크한 항목은 이 기기 브라우저에 자동 저장돼요. 다음에 다시 들어와도 이어서 확인할 수 있습니다.</p>
-      <div className="grid gap-3">
-      {items.map((item) => (
-        <label
-          key={item}
-          className="flex items-start gap-3 rounded-2xl border border-slate-100 bg-white px-4 py-4 text-sm leading-7 text-slate-700 shadow-[0_8px_30px_rgba(15,23,42,0.04)]"
-        >
-          <input
-            type="checkbox"
-            checked={Boolean(checkedMap[item])}
-            onChange={() =>
-              setCheckedMap((prev) => ({
-                ...prev,
-                [item]: !prev[item],
-              }))
-            }
-            className={`mt-1 h-4 w-4 rounded border-slate-300 ${accentClasses[accent]}`}
-          />
-          <span className={checkedMap[item] ? "text-slate-400 line-through" : ""}>{item}</span>
-        </label>
-      ))}
+    <div className="mt-4">
+      <p className="mb-2 text-xs leading-5 text-slate-500">체크한 항목은 이 기기 브라우저에 자동 저장됩니다.</p>
+      <div className="divide-y divide-slate-100 overflow-hidden rounded-2xl border border-slate-100 bg-white">
+        {items.map((item) => (
+          <label
+            key={item}
+            className="flex min-h-12 items-start gap-3 px-4 py-3 text-sm leading-6 text-slate-700"
+          >
+            <input
+              type="checkbox"
+              checked={Boolean(checkedMap[item])}
+              onChange={() =>
+                setCheckedMap((prev) => ({
+                  ...prev,
+                  [item]: !prev[item],
+                }))
+              }
+              className={`mt-1 h-4 w-4 rounded border-slate-300 ${accentClasses[accent]}`}
+            />
+            <span className={checkedMap[item] ? "text-slate-400 line-through" : ""}>{item}</span>
+          </label>
+        ))}
       </div>
     </div>
   );

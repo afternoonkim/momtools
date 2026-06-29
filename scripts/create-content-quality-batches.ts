@@ -143,33 +143,7 @@ async function buildStaticInventory(): Promise<InventoryItem[]> {
 
   items.push(staticItem("BIRTH_SUPPORT", "calculator", "/tools/birth-support-calculator", "출산지원금 계산기 안내와 지역별 지원금 확인"));
 
-  try {
-    const products = await import("../data/babyProductQna");
-    for (const item of products.babyProductQnaItems ?? []) {
-      items.push(staticItem("BABY_PRODUCT_QNA", item.category ?? null, `/items/essential/${item.slug}`, item.title ?? item.question));
-    }
-  } catch (error) {
-    console.warn("[경고] babyProductQna 정적 데이터 인벤토리 생성 실패", error);
-  }
-
-  try {
-    const names = await import("../data/babyNames");
-    for (const item of names.nameMeanings ?? []) {
-      items.push(staticItem("BABY_NAME", item.gender ?? null, `/baby-names/meanings/${item.slug}`, `${item.name ?? item.slug} 이름 뜻`));
-    }
-  } catch (error) {
-    console.warn("[경고] babyNames 정적 데이터 인벤토리 생성 실패", error);
-  }
-
-  try {
-    const play = await import("../data/play");
-    for (const item of play.playItems ?? []) {
-      const title = typeof item.title === "object" ? item.title.ko : item.title;
-      items.push(staticItem("PLAY_ITEM", item.category ?? null, `/play/${item.category}/${item.slug}`, title));
-    }
-  } catch (error) {
-    console.warn("[경고] play 정적 데이터 인벤토리 생성 실패", error);
-  }
+  // 정체성 개편으로 제외한 아기 이름, 놀이 자료, 육아용품 카드 페이지는 품질 개선 인벤토리에서도 제외합니다.
 
   const calculatorPages = [
     ["baby-age", "아기 개월수 계산기 안내와 결과 문구"],
@@ -190,7 +164,6 @@ async function buildStaticInventory(): Promise<InventoryItem[]> {
     ["toddler", "/info/toddler", "유아기 생활 정보"],
     ["baby-food", "/baby-food", "이유식 정보와 레시피"],
     ["checklists", "/checklists", "육아 체크리스트 모아보기"],
-    ["baby-names", "/baby-names", "아기 이름 찾기"],
   ] as const;
   for (const [category, path, title] of staticInfoPages) {
     items.push(staticItem("STATIC_PAGE", category, path, title));

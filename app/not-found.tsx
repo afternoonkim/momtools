@@ -11,7 +11,7 @@ const quickLinks = [
   { href: "/tools", title: "계산기 모아보기", description: "출산 예정일, 아기 개월수, 성장 백분위처럼 자주 찾는 도구를 바로 볼 수 있어요." },
   { href: "/qna", title: "육아 Q&A", description: "건강, 성장, 행동 질문을 주제별로 정리한 설명형 답변을 확인해 보세요." },
   { href: "/info", title: "육아 정보", description: "임신, 신생아, 이유식, 유아 시기의 핵심 흐름을 한눈에 볼 수 있어요." },
-  { href: "/play", title: "놀이 자료", description: "색칠공부, 미로찾기, 숨은그림찾기처럼 집에서 바로 활용할 자료를 살펴볼 수 있어요." },
+  { href: "/health", title: "증상별 확인", description: "열, 기침, 설사, 피부 변화처럼 집에서 먼저 볼 기준을 확인해 보세요." },
   { href: "/checklists", title: "체크리스트", description: "출산 준비, 신생아 준비, 이유식 준비, 어린이집 준비를 차례대로 정리할 수 있어요." },
 ];
 

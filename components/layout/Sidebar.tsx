@@ -2,23 +2,20 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 import {
-  Menu,
   ChevronLeft,
   Home,
   Calculator,
   Baby,
   ClipboardList,
   BookOpen,
-  CircleHelp,
-  Mail,
   CalendarHeart,
   Sparkles,
   HeartPulse,
   UtensilsCrossed,
-  Tags,
   Landmark,
+  NotebookPen,
+  Stethoscope,
 } from "lucide-react";
 import SidebarItem from "./SidebarItem";
 import SidebarGroup from "./SidebarGroup";
@@ -27,93 +24,28 @@ import SearchBox from "./SearchBox";
 export default function Sidebar({
   collapsed,
   setCollapsed,
+  mobileOpen,
+  setMobileOpen,
 }: {
   collapsed: boolean;
   setCollapsed: (v: boolean) => void;
+  mobileOpen: boolean;
+  setMobileOpen: (v: boolean) => void;
 }) {
   const pathname = usePathname() || "/";
-  const [mobileOpen, setMobileOpen] = useState(false);
   const closeMobileSidebar = () => setMobileOpen(false);
 
-  const t = {
-    tagline: "필요한 육아 정보를 쉽게 찾는 안내 공간",
-    openMenu: "메뉴 열기",
-    closeMenu: "메뉴 닫기",
-    collapse: "사이드바 접기",
-    home: "홈",
-    tools: "육아 계산기",
-    qna: "육아 Q&A",
-    familyHealth: "가족건강 Q&A",
-    policy: "정부정책",
-    checklists: "체크리스트",
-    babyFood: "이유식 메뉴",
-    names: "아이 이름 짓기",
-    misc: "기타",
-    versionMeta: "tools · policy · family health · qna",
-    links: {
-      dueDate: "출산 예정일 계산기",
-      babyAge: "아기 개월수 계산기",
-      vaccine: "예방접종 일정 계산기",
-      weaningStart: "이유식 시작 계산기",
-      growth: "성장 백분위 계산기",
-      health: "아이 건강",
-      growthQna: "아이 성장",
-      behavior: "아이 행동",
-      momHealth: "엄마 건강",
-      dadHealth: "아빠 건강",
-      postpartumHealth: "임신·출산 후",
-      familyLifeHealth: "생활 건강",
-      medicineHealth: "약·영양제",
-      checkupHealth: "검진·병원",
-      pregnancyBirthPolicy: "임신·출산 지원",
-      childcareBenefitPolicy: "양육·보육 지원",
-      workParentingPolicy: "일·육아 병행",
-      careEducationPolicy: "돌봄·교육 지원",
-      medicalHealthPolicy: "의료·건강 지원",
-      localCheckPolicy: "지역별 출산지원금",
-      birthSupportCalculatorPolicy: "출산지원금 계산기",
-      birth: "출산 준비",
-      newborn: "신생아 준비",
-      weaning: "이유식 준비",
-      daycare: "어린이집 준비",
-      earlyFood: "초기 이유식",
-      middleFood: "중기 이유식",
-      lateFood: "후기 이유식",
-      rankings: "인기 이름 순위",
-      meanings: "한글 이름 뜻 모음",
-      faq: "FAQ",
-      contact: "문의하기",
-    },
-  };
-
-  const href = (path: string) => path;
   const hasPath = (path: string) => pathname === path || pathname.startsWith(`${path}/`);
 
-  const isToolsOpen = hasPath("/tools") || hasPath("/cal");
-  const isQnaOpen = hasPath("/qna");
-  const isPolicyOpen = hasPath("/policy");
-  const isFamilyHealthOpen = hasPath("/family-health-qna");
-  const isChecklistsOpen = hasPath("/checklists");
-  const isInfoOpen = hasPath("/info") && !hasPath("/info/family-finance");
-  const isFamilyFinanceOpen = hasPath("/info/family-finance");
-  const isBabyFoodOpen = hasPath("/baby-food");
-  const isNamesOpen = hasPath("/baby-names");
-  const isMiscOpen = hasPath("/faq") || hasPath("/contact");
+  const isCalculateOpen = hasPath("/tools") || hasPath("/cal");
+  const isRecordOpen = hasPath("/checklists");
+  const isCheckOpen = hasPath("/qna") || hasPath("/health") || hasPath("/monthly-guide") || hasPath("/family-health-qna");
+  const isReferenceOpen = hasPath("/info") || hasPath("/policy") || hasPath("/baby-food") || hasPath("/family-health-qna");
 
   return (
     <>
-      {!mobileOpen && (
-        <button
-          onClick={() => setMobileOpen(true)}
-          className="fixed left-4 top-4 z-[60] rounded-xl border border-amber-200 bg-white p-2 text-amber-600 shadow-lg lg:hidden"
-          aria-label={t.openMenu}
-        >
-          <Menu size={20} />
-        </button>
-      )}
-
       {mobileOpen && (
-        <button className="fixed inset-0 z-40 bg-slate-900/30 lg:hidden" onClick={closeMobileSidebar} aria-label={t.closeMenu} />
+        <button className="fixed inset-0 z-40 bg-slate-900/30 lg:hidden" onClick={closeMobileSidebar} aria-label="메뉴 닫기" />
       )}
 
       <aside
@@ -122,135 +54,89 @@ export default function Sidebar({
         } ${mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}
       >
         <div className="flex items-center justify-between border-b border-amber-100 p-4">
-          <Link href={href("/")} onClick={closeMobileSidebar} className={`${collapsed ? "mx-auto" : ""} flex items-center gap-3`}>
+          <Link href="/" onClick={closeMobileSidebar} className={`${collapsed ? "mx-auto" : ""} flex items-center gap-3`}>
             <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-amber-100 text-xl shadow-sm">👶</div>
             {!collapsed ? (
               <div>
-                <div className="text-lg font-bold text-slate-800">MomTools</div>
-                <div className="text-xs text-slate-500">{t.tagline}</div>
+                <div className="text-lg font-extrabold text-slate-900">MomTools</div>
+                <div className="text-xs text-slate-500">계산 · 기록 · 확인 · 참고</div>
               </div>
             ) : null}
           </Link>
 
-          <button onClick={() => setCollapsed(!collapsed)} className="hidden text-slate-400 hover:text-slate-700 lg:block" aria-label={t.collapse}>
+          <button onClick={() => setCollapsed(!collapsed)} className="hidden text-slate-400 hover:text-slate-700 lg:block" aria-label="사이드바 접기">
             <ChevronLeft size={18} className={`transition-transform ${collapsed ? "rotate-180" : ""}`} />
           </button>
 
-          <button onClick={closeMobileSidebar} className="text-slate-400 hover:text-slate-700 lg:hidden" aria-label={t.closeMenu}>✕</button>
+          <button onClick={closeMobileSidebar} className="text-slate-400 hover:text-slate-700 lg:hidden" aria-label="메뉴 닫기">✕</button>
         </div>
 
         {!collapsed ? (
           <div className="border-b border-amber-100 px-4 py-3">
-            <SearchBox size="sm" placeholder="감기, 부모급여, 청주 출산지원금" />
+            <SearchBox size="sm" placeholder="아기 열, 개월수, 예방접종" />
           </div>
         ) : null}
 
-        <div className="flex-1 space-y-6 overflow-y-auto p-4">
-          <div onClick={closeMobileSidebar}><SidebarItem href={href("/")} label={t.home} icon={Home} collapsed={collapsed} /></div>
+        <div className="flex-1 space-y-5 overflow-y-auto p-4">
+          <div onClick={closeMobileSidebar}>
+            <SidebarItem href="/" label="홈" icon={Home} collapsed={collapsed} />
+          </div>
 
           <div onClick={closeMobileSidebar}>
-            <SidebarGroup title={t.tools} collapsed={collapsed} defaultOpen={isToolsOpen}>
-              <SidebarItem href={href("/tools/due-date")} label={t.links.dueDate} icon={CalendarHeart} collapsed={collapsed} />
-              <SidebarItem href={href("/tools/baby-age")} label={t.links.babyAge} icon={Baby} collapsed={collapsed} />
-              <SidebarItem href={href("/tools/vaccine-schedule")} label={t.links.vaccine} icon={Calculator} collapsed={collapsed} />
-              <SidebarItem href={href("/tools/weaning-start")} label={t.links.weaningStart} icon={Sparkles} collapsed={collapsed} />
-              <SidebarItem href={href("/tools/growth-percentile")} label={t.links.growth} icon={Calculator} collapsed={collapsed} />
-              <SidebarItem href={href("/tools/birth-support-calculator")} label={t.links.birthSupportCalculatorPolicy} icon={Calculator} collapsed={collapsed} />
+            <SidebarGroup title="계산하기" collapsed={collapsed} defaultOpen={isCalculateOpen}>
+              <SidebarItem href="/tools/baby-age" label="아기 개월수" icon={Baby} collapsed={collapsed} />
+              <SidebarItem href="/tools/vaccine-schedule" label="예방접종 일정" icon={HeartPulse} collapsed={collapsed} />
+              <SidebarItem href="/tools/weaning-start" label="이유식 시작" icon={UtensilsCrossed} collapsed={collapsed} />
+              <SidebarItem href="/tools/growth-percentile" label="성장 백분위" icon={Calculator} collapsed={collapsed} />
+              <SidebarItem href="/tools/due-date" label="출산 예정일" icon={CalendarHeart} collapsed={collapsed} />
+              <SidebarItem href="/tools/birth-support-calculator" label="출산지원금" icon={Landmark} collapsed={collapsed} />
             </SidebarGroup>
           </div>
 
           <div onClick={closeMobileSidebar}>
-            <SidebarGroup title={t.qna} collapsed={collapsed} defaultOpen={isQnaOpen}>
-              <SidebarItem href={href("/qna/health")} label={t.links.health} icon={HeartPulse} collapsed={collapsed} />
-              <SidebarItem href={href("/qna/growth")} label={t.links.growthQna} icon={Baby} collapsed={collapsed} />
-              <SidebarItem href={href("/qna/behavior")} label={t.links.behavior} icon={Sparkles} collapsed={collapsed} />
+            <SidebarGroup title="기록하기" collapsed={collapsed} defaultOpen={isRecordOpen}>
+              <SidebarItem href="/checklists/birth" label="출산 준비" icon={NotebookPen} collapsed={collapsed} />
+              <SidebarItem href="/checklists/newborn" label="신생아 준비" icon={ClipboardList} collapsed={collapsed} />
+              <SidebarItem href="/checklists/weaning" label="이유식 준비" icon={ClipboardList} collapsed={collapsed} />
+              <SidebarItem href="/checklists/daycare" label="어린이집 준비" icon={ClipboardList} collapsed={collapsed} />
             </SidebarGroup>
           </div>
 
           <div onClick={closeMobileSidebar}>
-            <SidebarGroup title={t.policy} collapsed={collapsed} defaultOpen={isPolicyOpen}>
-              <SidebarItem href={href("/policy/pregnancy-birth")} label={t.links.pregnancyBirthPolicy} icon={Landmark} collapsed={collapsed} />
-              <SidebarItem href={href("/policy/childcare-benefit")} label={t.links.childcareBenefitPolicy} icon={Landmark} collapsed={collapsed} />
-              <SidebarItem href={href("/policy/work-parenting")} label={t.links.workParentingPolicy} icon={Landmark} collapsed={collapsed} />
-              <SidebarItem href={href("/policy/care-education")} label={t.links.careEducationPolicy} icon={Landmark} collapsed={collapsed} />
-              <SidebarItem href={href("/policy/medical-health")} label={t.links.medicalHealthPolicy} icon={Landmark} collapsed={collapsed} />
-              <SidebarItem href={href("/policy/local-check")} label={t.links.localCheckPolicy} icon={Landmark} collapsed={collapsed} />
+            <SidebarGroup title="확인하기" collapsed={collapsed} defaultOpen={isCheckOpen}>
+              <SidebarItem href="/qna/health" label="아이 건강" icon={Stethoscope} collapsed={collapsed} />
+              <SidebarItem href="/qna/growth" label="성장·발달" icon={Baby} collapsed={collapsed} />
+              <SidebarItem href="/qna/behavior" label="행동·수면" icon={Sparkles} collapsed={collapsed} />
+              <SidebarItem href="/health" label="증상별 가이드" icon={HeartPulse} collapsed={collapsed} />
+              <SidebarItem href="/monthly-guide" label="월령별 가이드" icon={CalendarHeart} collapsed={collapsed} />
+              <SidebarItem href="/family-health-qna/family" label="가족 건강 확인" icon={HeartPulse} collapsed={collapsed} />
             </SidebarGroup>
           </div>
 
           <div onClick={closeMobileSidebar}>
-            <SidebarGroup title={t.familyHealth} collapsed={collapsed} defaultOpen={isFamilyHealthOpen}>
-              <SidebarItem href={href("/family-health-qna/mom")} label={t.links.momHealth} icon={HeartPulse} collapsed={collapsed} />
-              <SidebarItem href={href("/family-health-qna/dad")} label={t.links.dadHealth} icon={HeartPulse} collapsed={collapsed} />
-              <SidebarItem href={href("/family-health-qna/postpartum")} label={t.links.postpartumHealth} icon={HeartPulse} collapsed={collapsed} />
-              <SidebarItem href={href("/family-health-qna/family")} label={t.links.familyLifeHealth} icon={HeartPulse} collapsed={collapsed} />
-              <SidebarItem href={href("/family-health-qna/medicine")} label={t.links.medicineHealth} icon={HeartPulse} collapsed={collapsed} />
-              <SidebarItem href={href("/family-health-qna/checkup")} label={t.links.checkupHealth} icon={HeartPulse} collapsed={collapsed} />
-            </SidebarGroup>
-          </div>
-
-          <div onClick={closeMobileSidebar}>
-            <SidebarGroup title={t.checklists} collapsed={collapsed} defaultOpen={isChecklistsOpen}>
-              <SidebarItem href={href("/checklists/birth")} label={t.links.birth} icon={ClipboardList} collapsed={collapsed} />
-              <SidebarItem href={href("/checklists/newborn")} label={t.links.newborn} icon={ClipboardList} collapsed={collapsed} />
-              <SidebarItem href={href("/checklists/weaning")} label={t.links.weaning} icon={ClipboardList} collapsed={collapsed} />
-              <SidebarItem href={href("/checklists/daycare")} label={t.links.daycare} icon={ClipboardList} collapsed={collapsed} />
-            </SidebarGroup>
-          </div>
-
-          <div onClick={closeMobileSidebar}>
-            <SidebarGroup title="공식 육아정보" collapsed={collapsed} defaultOpen={isInfoOpen}>
-              <SidebarItem href="/info" label="육아 정보 허브" icon={BookOpen} collapsed={collapsed} />
-              <SidebarItem href="/info/childcare-portal" label="아이사랑 공식정보" icon={BookOpen} collapsed={collapsed} />
+            <SidebarGroup title="참고하기" collapsed={collapsed} defaultOpen={isReferenceOpen}>
+              <SidebarItem href="/info" label="육아 정보" icon={BookOpen} collapsed={collapsed} />
               <SidebarItem href="/info/pregnancy" label="임신 정보" icon={BookOpen} collapsed={collapsed} />
               <SidebarItem href="/info/newborn" label="신생아 정보" icon={BookOpen} collapsed={collapsed} />
+              <SidebarItem href="/info/weaning" label="이유식 정보" icon={UtensilsCrossed} collapsed={collapsed} />
+              <SidebarItem href="/policy" label="정부지원정책" icon={Landmark} collapsed={collapsed} />
+              <SidebarItem href="/info/family-finance" label="가계 가이드" icon={Landmark} collapsed={collapsed} />
+              <SidebarItem href="/baby-food" label="이유식 레시피" icon={UtensilsCrossed} collapsed={collapsed} />
+              <SidebarItem href="/info/childcare-portal" label="아이사랑 활용" icon={BookOpen} collapsed={collapsed} />
             </SidebarGroup>
           </div>
 
-          <div onClick={closeMobileSidebar}>
-            <SidebarGroup title="가계 가이드" collapsed={collapsed} defaultOpen={isFamilyFinanceOpen}>
-              <SidebarItem href="/info/family-finance" label="가계 가이드 모음" icon={Landmark} collapsed={collapsed} />
-              <SidebarItem href="/info/family-finance/parent-benefit-200-how-to-use" label="부모급여 활용법" icon={Landmark} collapsed={collapsed} />
-              <SidebarItem href="/info/family-finance/child-account-from-zero" label="아이 통장·청약" icon={Landmark} collapsed={collapsed} />
-              <SidebarItem href="/info/family-finance/child-tax-credit-year-end" label="자녀 연말정산" icon={Landmark} collapsed={collapsed} />
-            </SidebarGroup>
-          </div>
-
-
-          <div onClick={closeMobileSidebar}>
-            <SidebarGroup title={t.babyFood} collapsed={collapsed} defaultOpen={isBabyFoodOpen}>
-              <SidebarItem href={href("/baby-food/early")} label={t.links.earlyFood} icon={UtensilsCrossed} collapsed={collapsed} />
-              <SidebarItem href={href("/baby-food/middle")} label={t.links.middleFood} icon={UtensilsCrossed} collapsed={collapsed} />
-              <SidebarItem href={href("/baby-food/late")} label={t.links.lateFood} icon={UtensilsCrossed} collapsed={collapsed} />
-            </SidebarGroup>
-          </div>
-
-          <div onClick={closeMobileSidebar}>
-            <SidebarGroup title={t.names} collapsed={collapsed} defaultOpen={isNamesOpen}>
-              <SidebarItem href={href("/baby-names/rankings/2025")} label={t.links.rankings} icon={Tags} collapsed={collapsed} />
-              <SidebarItem href={href("/baby-names/meanings")} label={t.links.meanings} icon={BookOpen} collapsed={collapsed} />
-            </SidebarGroup>
-          </div>
-
-          {/* 육아용품 제휴 메뉴는 별도 정책에 따라 사이드바에서 숨김. 콘텐츠 자체는 유지. */}
-
-          <div onClick={closeMobileSidebar}>
-            <SidebarGroup title={t.misc} collapsed={collapsed} defaultOpen={isMiscOpen}>
-              <SidebarItem href={href("/faq")} label={t.links.faq} icon={CircleHelp} collapsed={collapsed} />
-              <SidebarItem href={href("/contact")} label={t.links.contact} icon={Mail} collapsed={collapsed} />
-            </SidebarGroup>
-          </div>
         </div>
 
         <div className="border-t border-amber-100 p-4 text-xs text-slate-500">
           {!collapsed ? (
             <div className="space-y-1">
               <div className="font-semibold text-slate-700">MomTools</div>
-              <div>v1.2.0</div>
-              <div>{t.versionMeta}</div>
+              <div>모바일에서 빠르게 확인하는 육아 도구</div>
+              <div>v1.4.0</div>
             </div>
           ) : (
-            <div className="text-center">v1.2</div>
+            <div className="text-center">v1.4</div>
           )}
         </div>
       </aside>

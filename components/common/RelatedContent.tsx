@@ -21,22 +21,22 @@ export default function RelatedContent({
   items,
   locale = "ko",
 }: RelatedContentProps) {
+  const accentClass = locale === "en" ? "text-sky-700" : "text-amber-700";
+
   return (
-    <section className="mt-card-soft p-6 md:p-8">
-      <div className={`text-xs font-semibold uppercase tracking-[0.18em] ${locale === "en" ? "text-sky-700" : "text-amber-600"}`}>
-        {eyebrow ?? (locale === "en" ? "Related pages" : "관련 페이지")}
+    <section className="space-y-3">
+      <div className="px-1">
+        <div className={`text-[12px] font-extrabold ${accentClass}`}>
+          {eyebrow ?? (locale === "en" ? "Related pages" : "관련 페이지")}
+        </div>
+        <h2 className="mt-1 text-[16px] font-extrabold leading-snug text-slate-900 md:text-xl">{title}</h2>
+        {description ? <p className="mt-1 text-[13px] leading-6 text-slate-500 md:text-sm">{description}</p> : null}
       </div>
-      <h2 className="mt-3 text-xl font-bold text-slate-900">{title}</h2>
-      {description ? <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">{description}</p> : null}
-      <div className="mt-5 grid gap-4 md:grid-cols-2">
+      <div className="mt-simple-list">
         {items.map((item) => (
-          <Link
-            key={item.href}
-            href={item.href}
-            className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200"
-          >
-            <div className="font-semibold text-slate-800">{item.title}</div>
-            <div className="mt-2 text-sm leading-7 text-slate-500">{item.description}</div>
+          <Link key={item.href} href={item.href} className="block px-4 py-3.5 transition hover:bg-amber-50/60 active:bg-amber-50">
+            <div className="text-[14px] font-extrabold leading-6 text-slate-900 md:text-base">{item.title}</div>
+            <div className="mt-0.5 line-clamp-2 text-[13px] leading-6 text-slate-500 md:text-sm">{item.description}</div>
           </Link>
         ))}
       </div>

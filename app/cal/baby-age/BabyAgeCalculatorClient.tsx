@@ -164,8 +164,8 @@ export default function BabyAgeCalculatorClient() {
   }, [birthDate, today]);
 
   return (
-    <section className="space-y-6 md:space-y-8">
-      <section className="mt-card p-5 md:p-8">
+    <section className="space-y-6 md:space-y-5 md:space-y-6">
+      <section className="mt-card p-4 md:p-6">
         <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div className="space-y-4">
             <div>
@@ -176,7 +176,7 @@ export default function BabyAgeCalculatorClient() {
               </p>
             </div>
 
-            <div className="rounded-3xl border border-amber-100 bg-amber-50/70 p-4">
+            <div className="rounded-2xl border border-amber-100 bg-amber-50/70 p-4">
               <label htmlFor="birthDate" className="block text-sm font-bold text-slate-900">
                 아기 생년월일
               </label>
@@ -194,7 +194,7 @@ export default function BabyAgeCalculatorClient() {
             </div>
           </div>
 
-          <div className="rounded-[28px] border border-slate-100 bg-gradient-to-br from-white via-amber-50/60 to-sky-50 p-4 md:p-6">
+          <div className="rounded-[20px] border border-slate-100 bg-gradient-to-br from-white via-amber-50/60 to-sky-50 p-4 md:p-6">
             <div className="flex items-center justify-between gap-3">
               <div>
                 <h2 className="text-lg font-extrabold text-slate-900">계산 결과</h2>
@@ -211,26 +211,26 @@ export default function BabyAgeCalculatorClient() {
               </div>
             ) : (
               <>
-                <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                <div className="mt-5 mt-result-list">
                   <ResultCard title="현재 개월수" value={`${result.months}개월`} hint="오늘 기준" highlight />
                   <ResultCard title="출생 후 일수" value={`${formatNumber(result.diffDays)}일`} hint="생후 일수" />
                   <ResultCard title="출생 후 주수" value={`${formatNumber(result.weeks)}주 ${result.remainDays}일`} hint="주수 기준" />
                   <ResultCard title="나이 표현" value={`${result.ageDetail.years}세 ${result.ageDetail.months}개월`} hint={`${result.ageDetail.days}일 경과`} />
                 </div>
 
-                <div className="mt-5 rounded-3xl border border-amber-100 bg-white p-5">
+                <div className="mt-5 rounded-2xl border border-amber-100 bg-white p-5">
                   <div className="text-sm font-bold text-slate-900">결과를 본 뒤 바로 확인하면 좋은 것</div>
-                  <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                    <Link href={getMonthlyGuideLink(result.months)} className="rounded-2xl bg-amber-50 px-4 py-3 text-sm font-bold leading-6 text-amber-800 transition hover:bg-amber-100">
+                  <div className="mt-4 divide-y divide-slate-100 overflow-hidden rounded-2xl border border-amber-100 bg-white">
+                    <Link href={getMonthlyGuideLink(result.months)} className="block px-4 py-3 text-sm font-bold leading-6 text-slate-800 transition hover:bg-amber-50">
                       {getMonthlyGuideLabel(result.months)} 보기 →
                     </Link>
-                    <Link href="/tools/vaccine-schedule" className="rounded-2xl bg-sky-50 px-4 py-3 text-sm font-bold leading-6 text-sky-800 transition hover:bg-sky-100">
+                    <Link href="/tools/vaccine-schedule" className="block px-4 py-3 text-sm font-bold leading-6 text-slate-800 transition hover:bg-amber-50">
                       예방접종 일정 확인 →
                     </Link>
-                    <Link href="/tools/weaning-start" className="rounded-2xl bg-emerald-50 px-4 py-3 text-sm font-bold leading-6 text-emerald-800 transition hover:bg-emerald-100">
+                    <Link href="/tools/weaning-start" className="block px-4 py-3 text-sm font-bold leading-6 text-slate-800 transition hover:bg-amber-50">
                       이유식 시작 시기 확인 →
                     </Link>
-                    <Link href="/tools/growth-percentile" className="rounded-2xl bg-rose-50 px-4 py-3 text-sm font-bold leading-6 text-rose-800 transition hover:bg-rose-100">
+                    <Link href="/tools/growth-percentile" className="block px-4 py-3 text-sm font-bold leading-6 text-slate-800 transition hover:bg-amber-50">
                       성장 백분위 확인 →
                     </Link>
                   </div>
@@ -241,16 +241,16 @@ export default function BabyAgeCalculatorClient() {
         </div>
       </section>
 
-      <section className="grid gap-4 md:grid-cols-3">
+      <section className="mt-result-list">
         <MilestoneBlock result={result} />
       </section>
 
-      <section className="mt-card p-5 md:p-8">
+      <section className="mt-card p-4 md:p-6">
         <h2 className="mt-title-md">개월수 확인 후 많이 이어보는 정보</h2>
         <p className="mt-text-main mt-3">
           월령은 이유식, 예방접종, 수면, 발달 체크를 볼 때 자주 쓰이는 기준입니다. 계산 결과를 확인했다면 아래 항목을 함께 보면 검색을 반복하지 않아도 흐름이 정리됩니다.
         </p>
-        <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-5 mt-compact-grid xl:grid-cols-4">
           <Link href="/qna/health" className="mt-list-card min-h-24"><strong className="text-slate-900">건강 Q&amp;A</strong><p className="mt-2 text-sm text-slate-600">열, 기침, 배변처럼 월령별로 헷갈리는 증상을 확인해요.</p></Link>
           <Link href="/qna/behavior" className="mt-list-card min-h-24"><strong className="text-slate-900">수면·행동 Q&amp;A</strong><p className="mt-2 text-sm text-slate-600">잠투정, 흥분, 분리불안 같은 반복 고민을 살펴봐요.</p></Link>
           <Link href="/info/weaning" className="mt-list-card min-h-24"><strong className="text-slate-900">이유식 정보</strong><p className="mt-2 text-sm text-slate-600">시작 시기와 단계별 진행 흐름을 이어서 봐요.</p></Link>
@@ -258,7 +258,7 @@ export default function BabyAgeCalculatorClient() {
         </div>
       </section>
 
-      <section className="mt-card-soft p-5 md:p-8">
+      <section className="mt-card-soft p-4 md:p-6">
         <h2 className="mt-title-md">아기 개월수 계산기는 어떻게 활용하나요?</h2>
         <div className="mt-4 space-y-4 text-sm leading-8 text-slate-700 md:text-base">
           <p>
@@ -270,7 +270,7 @@ export default function BabyAgeCalculatorClient() {
         </div>
       </section>
 
-      <section className="mt-card p-5 md:p-8" id="faq">
+      <section className="mt-card p-4 md:p-6" id="faq">
         <h2 className="mt-title-md">자주 묻는 질문</h2>
         <div className="mt-5 space-y-4">
           <FaqItem question="아기 개월수는 어떻게 계산하나요?" answer="생년월일과 오늘 날짜의 연·월 차이를 기준으로 계산하고, 오늘 날짜의 일이 출생일보다 이르면 1개월을 차감해 실제 체감 월령에 가깝게 보여줍니다." />
@@ -325,20 +325,16 @@ function ResultCard({
   highlight?: boolean;
 }) {
   return (
-    <div
-      className={[
-        "rounded-3xl border p-4",
-        highlight
-          ? "border-amber-200 bg-amber-50"
-          : "border-slate-100 bg-white",
-      ].join(" ")}
-    >
-      <div className="text-sm font-medium text-slate-500">{title}</div>
-      <div className="mt-2 text-2xl font-extrabold tracking-tight text-slate-900">{value}</div>
-      <div className="mt-2 text-xs leading-6 text-slate-500">{hint}</div>
+    <div className={["mt-result-list-item", highlight ? "bg-amber-50/70" : "bg-white"].join(" ")}>
+      <div className="min-w-0 pr-3">
+        <div className="mt-result-label">{title}</div>
+        <div className="mt-result-hint">{hint}</div>
+      </div>
+      <div className="max-w-[58%] shrink-0 text-right text-base font-extrabold leading-6 text-slate-900 md:text-lg">{value}</div>
     </div>
   );
 }
+
 
 function MilestoneCard({
   title,
@@ -350,13 +346,16 @@ function MilestoneCard({
   hint: string;
 }) {
   return (
-    <div className="mt-card p-5">
-      <div className="text-base font-bold text-slate-900">{title}</div>
-      <div className="mt-2 text-sm font-semibold text-amber-700">{hint}</div>
-      <p className="mt-2 text-sm leading-6 text-slate-600">{date}</p>
+    <div className="mt-result-list-item">
+      <div>
+        <div className="text-sm font-extrabold text-slate-900">{title}</div>
+        <div className="mt-result-hint">{date}</div>
+      </div>
+      <div className="shrink-0 text-sm font-bold text-amber-700">{hint}</div>
     </div>
   );
 }
+
 
 function FaqItem({
   question,
@@ -366,9 +365,10 @@ function FaqItem({
   answer: string;
 }) {
   return (
-    <div className="rounded-2xl border border-slate-100 bg-slate-50 p-5">
-      <h3 className="text-base font-semibold text-slate-900">{question}</h3>
-      <p className="mt-2 text-sm leading-7 text-slate-700 md:text-base">{answer}</p>
-    </div>
+    <details className="rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3">
+      <summary className="cursor-pointer text-sm font-extrabold leading-7 text-slate-900">{question}</summary>
+      <p className="mt-2 text-sm leading-7 text-slate-600">{answer}</p>
+    </details>
   );
 }
+

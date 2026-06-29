@@ -3,10 +3,11 @@
 import { useState } from "react";
 import Sidebar from "@/components/layout/Sidebar";
 import Topbar from "@/components/layout/Topbar";
+import BottomTabNav from "@/components/layout/BottomTabNav";
 import SiteFooter from "@/components/layout/SiteFooter";
 import GlobalAdFitAd from "@/components/ads/GlobalAdFitAd";
-import GlobalCoupangPartnersAd from "@/components/ads/GlobalCoupangPartnersAd";
 import GlobalCoupangProductAd from "@/components/ads/GlobalCoupangProductAd";
+import GlobalCoupangPartnersAd from "@/components/ads/GlobalCoupangPartnersAd";
 
 export default function ClientLayout({
   children,
@@ -14,10 +15,16 @@ export default function ClientLayout({
   children: React.ReactNode;
 }) {
   const [collapsed, setCollapsed] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-transparent text-slate-700">
-      <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
+      <Sidebar
+        collapsed={collapsed}
+        setCollapsed={setCollapsed}
+        mobileOpen={mobileMenuOpen}
+        setMobileOpen={setMobileMenuOpen}
+      />
 
       <div
         className={`min-h-screen flex flex-col transition-all duration-300 ${
@@ -31,6 +38,8 @@ export default function ClientLayout({
         <GlobalCoupangProductAd />
         <GlobalAdFitAd position="bottom" />
         <SiteFooter />
+        <div className="h-[calc(4.75rem+env(safe-area-inset-bottom))] lg:hidden" />
+        <BottomTabNav onMenuClick={() => setMobileMenuOpen(true)} />
       </div>
     </div>
   );

@@ -30,14 +30,7 @@
     "db:quality:progress": "tsx scripts/check-content-quality-progress.ts",
     "db:quality:page": "tsx scripts/audit-page-detail-sections.ts",
     "check:deploy": "npm run lint && npm run build",
-    "cleanup:korean-only": "node scripts/cleanup-korean-only-before-deploy.mjs",
-    "db:seed:coupang-ads": "tsx prisma/seed-coupang-product-ads.ts",
-    "db:seed:coupang-ads:dry": "tsx prisma/seed-coupang-product-ads.ts --dry-run",
-    "db:seed:coupang-page-mappings": "tsx prisma/seed-coupang-page-mappings.ts",
-    "db:seed:coupang-page-mappings:dry": "tsx prisma/seed-coupang-page-mappings.ts --dry-run",
-    "db:seed:coupang-page-mappings:sync": "tsx prisma/seed-coupang-page-mappings.ts --sync",
-    "db:seed:coupang-product-links": "tsx prisma/seed-coupang-product-links.ts",
-    "db:seed:coupang-product-links:dry": "tsx prisma/seed-coupang-product-links.ts --dry-run"
+    "cleanup:korean-only": "node scripts/cleanup-korean-only-before-deploy.mjs"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",

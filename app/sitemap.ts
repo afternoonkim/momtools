@@ -1,7 +1,5 @@
 import type { MetadataRoute } from "next";
 import { babyFoodRecipes as koBabyFoodRecipes } from "@/data/babyFood";
-import { rankingYears } from "@/data/babyNames";
-import { meaningPureKoreanNames } from "@/data/koreanNames";
 import { qnaData, qnaCategories, type QnaCategory } from "@/data/qna";
 import { getFamilyHealthSitemapPaths } from "@/lib/repositories/family-health-qna-db";
 import { governmentPolicies } from "@/data/governmentPolicy";
@@ -62,15 +60,8 @@ const staticRoutes: RouteConfig[] = [
   route("/checklists/newborn", 0.75, "monthly"),
   route("/checklists/weaning", 0.75, "monthly"),
   route("/checklists/daycare", 0.75, "monthly"),
-  route("/baby-names", 0.8, "weekly"),
-  route("/baby-names/generator", 0.76, "monthly"),
-  route("/baby-names/rankings", 0.76, "weekly"),
   route("/search", 0.62, "weekly"),
   route("/family-health-qna", 0.86, "weekly"),
-  route("/baby-names/rankings/2025", 0.75, "weekly"),
-  route("/baby-names/rankings/2024", 0.7, "monthly"),
-  route("/baby-names/rankings/2023", 0.7, "monthly"),
-  route("/baby-names/meanings", 0.72, "weekly"),
   route("/about", 0.55, "monthly"),
   route("/faq", 0.5, "monthly"),
   route("/contact", 0.4, "monthly"),
@@ -98,8 +89,6 @@ const dynamicKoreanFamilyFinanceRoutes: RouteConfig[] = [
 const dynamicChildcarePortalGuideRoutes = childcarePortalGuides.map((guide) =>
   route(`/info/childcare-portal/${guide.slug}`, 0.8, "weekly"),
 );
-const dynamicRankingRoutes = rankingYears.map((year, index) => route(`/baby-names/rankings/${year}`, index === 0 ? 0.75 : 0.7, index === 0 ? "weekly" : "monthly"));
-const dynamicBabyNameMeaningRoutes = meaningPureKoreanNames.map((item) => route(`/baby-names/meanings/${item.slug}`, 0.68, "monthly"));
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [familyHealthPaths, monthlyGuidePaths, healthGuidePaths] = await Promise.all([
     getFamilyHealthSitemapPaths(),
@@ -120,8 +109,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...dynamicKoreanBirthSupportRoutes,
     ...dynamicKoreanFamilyFinanceRoutes,
     ...dynamicChildcarePortalGuideRoutes,
-    ...dynamicRankingRoutes,
-    ...dynamicBabyNameMeaningRoutes,
     ...dynamicMonthlyGuideRoutes,
     ...dynamicHealthGuideRoutes,
   ].forEach((item) => deduped.set(item.path, item));

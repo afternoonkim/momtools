@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getRecipeCategories, getRecipesByStage, stageGuides, stageLabels, type BabyFoodStage } from "@/data/babyFood";
 import RecipeExplorerClient from "@/components/baby-food/RecipeExplorerClient";
 import { notFound } from "next/navigation";
+import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
 
 const stages: BabyFoodStage[] = ["early", "middle", "late"];
 
@@ -29,27 +30,28 @@ export default async function BabyFoodStagePage({ params }: { params: Promise<{ 
 
   return (
     <div className="mt-page">
-      <div className="mt-container space-y-8">
-        <section className="mt-card p-8 md:p-10">
+      <div className="mt-container space-y-5 md:space-y-6">
+        <section className="mt-page-hero">
           <span className="mt-badge">{stageLabels[typedStage]}</span>
-          <h1 className="mt-title-xl mt-5">{stageLabels[typedStage]} 메뉴와 레시피 찾기</h1>
-          <p className="mt-text-main mt-4 max-w-4xl">{stageGuides[typedStage].intro}</p>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            <div className="rounded-3xl bg-amber-50 px-5 py-5">
-              <h2 className="text-base font-bold text-slate-800">질감 기준</h2>
-              <p className="mt-2 text-sm leading-7 text-slate-600">{stageGuides[typedStage].texture}</p>
-            </div>
-            <div className="rounded-3xl bg-amber-50 px-5 py-5">
-              <h2 className="text-base font-bold text-slate-800">먼저 볼 것</h2>
-              <p className="mt-2 text-sm leading-7 text-slate-600">{stageGuides[typedStage].focus}</p>
-            </div>
-            <div className="rounded-3xl bg-amber-50 px-5 py-5">
-              <h2 className="text-base font-bold text-slate-800">주의점</h2>
-              <p className="mt-2 text-sm leading-7 text-slate-600">{stageGuides[typedStage].caution}</p>
-            </div>
+          <h1 className="mt-title-xl mt-4">{stageLabels[typedStage]} 메뉴와 레시피 찾기</h1>
+          <p className="mt-text-main mt-3 max-w-3xl">{stageGuides[typedStage].intro}</p>
+          <div className="mt-app-stack mt-4">
+            <section className="mt-app-stack-section">
+              <h2 className="mt-app-section-title">질감 기준</h2>
+              <p className="mt-app-section-desc">{stageGuides[typedStage].texture}</p>
+            </section>
+            <section className="mt-app-stack-section">
+              <h2 className="mt-app-section-title">먼저 볼 것</h2>
+              <p className="mt-app-section-desc">{stageGuides[typedStage].focus}</p>
+            </section>
+            <section className="mt-app-stack-section">
+              <h2 className="mt-app-section-title-danger">주의점</h2>
+              <p className="mt-app-section-desc">{stageGuides[typedStage].caution}</p>
+            </section>
           </div>
         </section>
 
+        <MedicalDisclaimer lang="ko" variant="compact" />
         <RecipeExplorerClient recipes={recipes} categories={categories} stage={typedStage} />
       </div>
     </div>

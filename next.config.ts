@@ -27,7 +27,16 @@ const nextConfig: NextConfig = {
       { source: "/en/checklists/weaning-prep", destination: "/en/checklists/weaning", permanent: true },
       { source: "/en/checklists/daycare-prep", destination: "/en/checklists/daycare", permanent: true },
 
-      { source: "/baby-names/rankings", destination: "/baby-names/rankings/2025", permanent: true },
+      // 정체성 개편으로 제외한 기능은 기존 URL을 깨지 않도록 관련 상위 페이지로 301 이동합니다.
+      { source: "/baby-names", destination: "/", permanent: true },
+      { source: "/baby-names/:path*", destination: "/", permanent: true },
+      { source: "/play", destination: "/", permanent: true },
+      { source: "/play/:path*", destination: "/", permanent: true },
+      { source: "/items", destination: "/checklists/newborn", permanent: true },
+      { source: "/items/:path*", destination: "/checklists/newborn", permanent: true },
+      { source: "/en/play", destination: "/en", permanent: true },
+      { source: "/en/play/:path*", destination: "/en", permanent: true },
+
       { source: "/cal/cal/calculator", destination: "/cal/calculator", permanent: true },
       { source: "/cal/cal/fire", destination: "/cal/fire", permanent: true },
       { source: "/cal/cal/capital-gains", destination: "/cal/capital-gains", permanent: true },

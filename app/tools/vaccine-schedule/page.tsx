@@ -16,17 +16,44 @@ export const metadata: Metadata = {
   alternates: { canonical: buildCanonical("/tools/vaccine-schedule") },
 };
 
+
+const nextStepItems = [
+  { href: "/qna/health/after-vaccine-fever", label: "접종 후 열 Q&A", description: "접종 뒤 열이 날 때 먼저 볼 신호를 확인해요.", tag: "발열" },
+  { href: "/health/fever", label: "아기 열 대처 가이드", description: "체온 기록과 상담 신호를 이어서 봐요.", tag: "건강" },
+  { href: "/tools/baby-age", label: "아기 개월수 계산기", description: "정확한 월령을 다시 확인해요.", tag: "월령" }
+] as const;
+
+const firstLookItems = [
+  "이전 접종 기록과 다음 예약 시점을 함께 확인합니다.",
+  "아이 컨디션, 발열, 최근 증상 여부를 접종 전 체크합니다.",
+  "실제 접종 가능 여부와 간격은 병원 안내를 우선합니다."
+] as const;
+
+const cautionItems = [
+  "열, 심한 기침, 처짐, 발진처럼 평소와 다른 증상이 있습니다.",
+  "알레르기 이력이나 이전 접종 후 강한 반응이 있었습니다.",
+  "접종이 늦어졌거나 여러 접종을 같은 날 하는지 헷갈립니다."
+] as const;
+
+const faqItems = [
+  { question: "접종 일정이 조금 늦어지면 어떻게 보나요?", answer: "개별 상황에 따라 보완 접종이나 일정 조정이 가능할 수 있으므로 병원에 문의하는 편이 안전합니다." },
+  { question: "여러 접종을 같은 날 할 수 있나요?", answer: "세부 시행 여부는 의료기관 판단이 중요합니다. 계산기는 큰 흐름을 이해하는 용도로 활용해 주세요." }
+] as const;
+
+const relatedItems = [
+  { href: "/qna/health", title: "아이 건강 Q&A", description: "접종 후 반응과 상담 신호를 확인해요." },
+  { href: "/tools/baby-age", title: "아기 개월수 계산기", description: "월령을 먼저 정확히 확인해요." },
+  { href: "/info/newborn", title: "신생아 정보", description: "초기 건강 관리와 생활 루틴을 봐요." }
+] as const;
+
 export default function Page() {
   return (
     <div className="mt-page">
-      <div className="mt-container-narrow space-y-8">
-        <section className="mt-card p-8 md:p-10">
+      <div className="mt-container-narrow space-y-5 md:space-y-6">
+        <section className="mt-card p-4 md:p-6">
           <span className="mt-badge">건강 일정 정리</span>
-          <h1 className="mt-title-xl mt-5">예방접종 일정을 미리 정리하면 병원 예약이 훨씬 편해집니다</h1>
-          <p className="mt-text-main mt-4">
-            이 페이지는 아기 월령을 기준으로 접종 흐름을 참고용으로 정리할 수 있게 만든 계산기입니다.
-            실제 접종 가능 여부와 접종 간격 판단은 병원과 공식 안내를 우선해야 하지만, 부모가 미리 흐름을 정리해 두면 예약과 준비가 훨씬 수월해집니다.
-          </p>
+          <h1 className="mt-title-lg mt-4">예방접종 일정은 병원 예약 전 흐름을 보는 용도입니다</h1>
+          <p className="mt-text-main mt-3">아기 월령을 기준으로 접종 흐름을 참고하고, 접종 전후 컨디션과 상담 신호를 함께 정리합니다.</p>
         </section>
 
         <VaccineScheduleCalculatorClient />
@@ -35,51 +62,60 @@ export default function Page() {
 
         <NextStepLinks
           eyebrow="접종 일정 다음에 볼 정보"
-          title="접종일만 확인하지 말고 접종 후 관찰 포인트까지 같이 보세요"
-          description="접종 전후에는 월령, 컨디션, 발열 여부, 병원 상담 신호를 함께 정리해 두면 더 안심할 수 있어요."
-          items={[
-            { href: "/qna/health/after-vaccine-fever", label: "접종 후 열 Q&A", description: "접종 뒤 열이 날 때 먼저 볼 신호를 확인해요.", tag: "발열" },
-            { href: "/health/fever", label: "아기 열 대처 가이드", description: "체온 기록과 상담 신호를 이어서 봐요.", tag: "건강" },
-            { href: "/tools/baby-age", label: "아기 개월수 계산기", description: "정확한 월령을 다시 맞춰 접종 흐름을 봐요.", tag: "월령" },
-            { href: "/qna/health", label: "상담이 필요한 신호", description: "열·기침·처짐 등 건강 질문을 함께 확인해요.", tag: "상담" },
-          ]}
+          title="접종일과 접종 후 관찰 포인트를 함께 보세요"
+          description="월령, 컨디션, 발열 여부, 병원 상담 신호를 같이 정리해두면 예약 전후 부담이 줄어듭니다."
+          items={[...nextStepItems]}
         />
 
-        <ContentUpdateNote publishedOn={pageDates.published} updatedOn={pageDates.updated} note="예방접종 일정 페이지는 참고용 계산 결과와 함께, 병원 예약 전에 무엇을 함께 확인하면 좋은지 부모 관점의 설명을 주기적으로 보완합니다." />
+        <ContentUpdateNote
+          publishedOn={pageDates.published}
+          updatedOn={pageDates.updated}
+          note="예방접종 일정 페이지는 참고용 계산 결과와 함께, 병원 예약 전에 무엇을 함께 확인하면 좋은지 부모 관점의 설명을 보완했습니다."
+        />
 
-        <section className="grid gap-6 lg:grid-cols-2">
-          <article className="mt-card p-6 md:p-8">
-            <h2 className="mt-title-lg">이 계산기가 도와주는 부분</h2>
-            <ul className="mt-5 space-y-3 text-sm leading-7 text-slate-600 md:text-base">
-              <li className="rounded-2xl bg-amber-50/70 px-4 py-4">월령 기준으로 어떤 접종을 놓치지 말아야 하는지 큰 흐름을 먼저 볼 수 있습니다.</li>
-              <li className="rounded-2xl bg-amber-50/70 px-4 py-4">병원 방문 전에 지난 접종 기록과 다음 예약 시점을 정리하는 데 도움이 됩니다.</li>
-              <li className="rounded-2xl bg-amber-50/70 px-4 py-4">접종 전후로 궁금한 발열, 발진, 컨디션 변화는 건강 Q&A와 함께 읽으면 이해가 쉬워집니다.</li>
-            </ul>
-          </article>
-          <article className="mt-card p-6 md:p-8">
-            <h2 className="mt-title-lg">꼭 기억해야 할 점</h2>
-            <div className="mt-4 space-y-4 text-sm leading-8 text-slate-600 md:text-base">
-              <p>접종 일정은 의료기관 운영 방식, 이전 접종 시점, 아이 컨디션, 백신 종류에 따라 실제 일정이 달라질 수 있습니다. 따라서 이 페이지 결과는 예약 전 참고용으로 보고 최종 일정은 병원 안내를 따라 주세요.</p>
-              <p>발열, 기침, 피부 증상, 최근 복용 약, 알레르기 이력처럼 접종과 직접 연결되는 사항은 계산기보다 상담이 먼저입니다. 부모가 일정만 알고 있어도 준비 부담이 줄어드는 만큼, 흐름 정리에 활용해 보시면 좋습니다.</p>
-            </div>
-          </article>
+        <section className="mt-card p-4 md:p-6">
+          <h2 className="mt-title-md">먼저 볼 기준</h2>
+          <ul className="mt-result-list mt-4">
+            {firstLookItems.map((item) => (
+              <li key={item} className="mt-result-list-item">
+                <span className="mt-result-value">{item}</span>
+              </li>
+            ))}
+          </ul>
         </section>
 
-        <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-lg">부모가 많이 궁금해하는 점</h2>
-          <div className="mt-5 space-y-4 text-sm leading-7 text-slate-600 md:text-base">
-            <div className="rounded-3xl border border-slate-100 bg-white p-5"><strong className="text-slate-900">접종 일정이 조금 늦어지면 어떻게 보나요?</strong><p className="mt-3">개별 상황에 따라 보완 접종이나 일정 조정이 가능할 수 있으므로 병원에 바로 문의하는 편이 안전합니다. 계산기 결과는 현재 흐름을 정리하는 데 활용해 주세요.</p></div>
-            <div className="rounded-3xl border border-slate-100 bg-white p-5"><strong className="text-slate-900">여러 접종을 같은 날 하는지 궁금할 때도 참고할 수 있나요?</strong><p className="mt-3">세부 시행 여부는 의료기관 판단이 중요하지만, 이 페이지를 보면 어느 시기에 어떤 접종을 함께 보게 되는지 큰 흐름을 이해하는 데 도움이 됩니다.</p></div>
+        <section className="mt-card p-4 md:p-6">
+          <h2 className="mt-title-md">접종 전 문의가 필요한 경우</h2>
+          <ul className="mt-result-list mt-4">
+            {cautionItems.map((item) => (
+              <li key={item} className="mt-result-list-item border-amber-100 bg-amber-50/60">
+                <span className="mt-result-value text-amber-900">{item}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="mt-card p-4 md:p-6">
+          <h2 className="mt-title-md">자주 묻는 질문</h2>
+          <div className="mt-4 space-y-3">
+            {faqItems.map((item) => (
+              <details key={item.question} className="mt-section-details">
+                <summary className="mt-section-summary">{item.question}</summary>
+                <p className="mt-detail-body">{item.answer}</p>
+              </details>
+            ))}
           </div>
         </section>
 
-        <section className="mt-card-soft p-6 md:p-8">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">관련 정보</div>
-          <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-            <Link href="/qna/health" className="mt-list-card"><div className="font-semibold text-slate-800">아이 건강 Q&A</div><div className="mt-2 text-sm text-slate-500">접종 후 반응이나 병원 상담이 필요한 상황을 함께 읽어 보세요.</div></Link>
-            <Link href="/tools/baby-age" className="mt-list-card"><div className="font-semibold text-slate-800">아기 개월수 계산기</div><div className="mt-2 text-sm text-slate-500">월령을 먼저 정확히 확인하면 접종 흐름 정리가 더 쉬워집니다.</div></Link>
-            <Link href="/checklists/newborn" className="mt-list-card"><div className="font-semibold text-slate-800">신생아 준비 체크리스트</div><div className="mt-2 text-sm text-slate-500">초기 육아 일정과 준비 항목을 함께 정리할 수 있습니다.</div></Link>
-            <Link href="/info/newborn" className="mt-list-card"><div className="font-semibold text-slate-800">신생아 정보</div><div className="mt-2 text-sm text-slate-500">초기 건강 관리와 생활 루틴을 함께 확인해 보세요.</div></Link>
+        <section className="mt-card-soft p-4 md:p-6">
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">이어서 보기</div>
+          <div className="mt-result-list mt-4">
+            {relatedItems.map((item) => (
+              <Link key={item.href} href={item.href} className="mt-list-card">
+                <div className="font-semibold text-slate-800">{item.title}</div>
+                <div className="mt-1 text-sm leading-6 text-slate-500">{item.description}</div>
+              </Link>
+            ))}
           </div>
         </section>
       </div>

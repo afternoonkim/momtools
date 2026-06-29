@@ -16,21 +16,20 @@ interface NextStepLinksProps {
 
 export default function NextStepLinks({ eyebrow = "이어서 확인하기", title, description, items }: NextStepLinksProps) {
   return (
-    <section className="mt-card-soft p-5 md:p-8">
-      <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">{eyebrow}</div>
-      <h2 className="mt-title-lg mt-3">{title}</h2>
-      {description ? <p className="mt-text-main mt-3">{description}</p> : null}
-      <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
+    <section className="space-y-3">
+      <div className="px-1">
+        <div className="text-[12px] font-extrabold text-amber-700">{eyebrow}</div>
+        <h2 className="mt-1 text-[16px] font-extrabold leading-snug text-slate-900 md:text-xl">{title}</h2>
+        {description ? <p className="mt-1 text-[13px] leading-6 text-slate-500 md:text-sm">{description}</p> : null}
+      </div>
+      <div className="mt-simple-list">
         {items.map((item) => (
-          <Link
-            key={`${item.href}-${item.label}`}
-            href={item.href}
-            className="group flex min-h-[112px] flex-col rounded-3xl border border-white bg-white p-4 shadow-sm transition hover:-translate-y-0.5 hover:border-amber-200"
-          >
-            {item.tag ? <span className="mb-3 w-fit rounded-full bg-amber-50 px-3 py-1 text-[11px] font-bold text-amber-700">{item.tag}</span> : null}
-            <strong className="text-base leading-6 text-slate-900 group-hover:text-amber-700">{item.label}</strong>
-            <span className="mt-2 text-sm leading-6 text-slate-600">{item.description}</span>
-            <span className="mt-auto pt-3 text-sm font-bold text-amber-700">바로 확인하기 →</span>
+          <Link key={`${item.href}-${item.label}`} href={item.href} className="block px-4 py-3.5 transition hover:bg-amber-50/60 active:bg-amber-50">
+            <div className="flex items-center gap-2">
+              {item.tag ? <span className="rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-bold text-amber-700">{item.tag}</span> : null}
+              <strong className="text-[14px] leading-6 text-slate-900 md:text-base">{item.label}</strong>
+            </div>
+            <span className="mt-0.5 line-clamp-2 block text-[13px] leading-6 text-slate-500 md:text-sm">{item.description}</span>
           </Link>
         ))}
       </div>

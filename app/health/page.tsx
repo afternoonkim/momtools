@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { getHealthGuidesFromDb } from "@/lib/repositories/guides-db";
+import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
 
 export const metadata: Metadata = {
   title: "아기 증상별 건강 가이드 | 열·기침·콧물·설사·구토·발진 확인 기준",
@@ -15,26 +16,28 @@ export default async function HealthGuidePage() {
   const healthGuideItems = await getHealthGuidesFromDb();
 
   return (
-    <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-      <section className="rounded-3xl bg-rose-50 px-6 py-10 sm:px-8">
-        <p className="text-sm font-semibold text-rose-700">증상별 육아 건강 가이드</p>
-        <h1 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">아기 증상, 집에서 먼저 무엇을 봐야 할까요?</h1>
-        <p className="mt-4 max-w-3xl text-base leading-7 text-slate-700">
-          증상별 가이드는 진단이 아니라 부모가 놓치기 쉬운 확인 순서를 정리한 자료입니다. 열, 기침, 콧물, 설사, 구토처럼 흔한 증상도 아이의 개월수와 컨디션에 따라 대응이 달라질 수 있습니다. 위험 신호가 보이거나 아이가 평소와 다르면 의료진 상담을 우선해 주세요.
-        </p>
-      </section>
+    <div className="mt-page">
+      <div className="mt-container space-y-5 md:space-y-6">
+        <section className="mt-page-hero">
+          <span className="mt-badge">증상별 확인</span>
+          <h1 className="mt-title-xl mt-4">아기 증상, 먼저 볼 기준만 빠르게 확인하세요</h1>
+          <p className="mt-text-main mt-3 max-w-3xl">
+            진단이 아니라 집에서 놓치기 쉬운 확인 순서, 상담을 서둘러야 할 신호, 기록할 점을 증상별로 정리했습니다.
+          </p>
+        </section>
 
-      <section className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {healthGuideItems.map((item) => (
-          <Link key={item.slug} href={`/health/${item.slug}`} className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
-            <h2 className="text-xl font-bold text-slate-900">{item.title}</h2>
-            <p className="mt-3 line-clamp-4 text-sm leading-6 text-slate-600">{item.summary}</p>
-            <div className="mt-4 rounded-2xl bg-rose-50 p-3 text-xs leading-5 text-rose-800">
-              {item.quickConclusion}
-            </div>
-          </Link>
-        ))}
-      </section>
-    </main>
+        <MedicalDisclaimer lang="ko" variant="compact" />
+
+        <section className="mt-simple-list" aria-label="아기 증상별 건강 가이드 목록">
+          {healthGuideItems.map((item) => (
+            <Link key={item.slug} href={`/health/${item.slug}`} className="mt-simple-list-item">
+              <strong className="block text-base font-extrabold text-slate-900">{item.title}</strong>
+              <span className="mt-1 line-clamp-2 block text-sm leading-6 text-slate-500">{item.summary}</span>
+              <span className="mt-2 line-clamp-2 block rounded-2xl bg-rose-50 px-3 py-2 text-xs leading-5 text-rose-800">{item.quickConclusion}</span>
+            </Link>
+          ))}
+        </section>
+      </div>
+    </div>
   );
 }

@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import DaycarePrepChecklistClient from "../daycare-prep/DaycarePrepChecklistClient";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
-import RelatedContent from "@/components/common/RelatedContent";
 import AdFitAd from "@/components/ads/AdFitAd";
 import { ADFIT_UNITS } from "@/lib/adfit";
 
@@ -44,93 +42,18 @@ export const metadata: Metadata = {
 
 export default function DaycarePrepCanonicalPage() {
   return (
-    <div className="space-y-8">
+    <>
       <DaycarePrepChecklistClient />
-
-      <AdFitAd {...ADFIT_UNITS.mobileResult} />
-
-      <ContentUpdateNote publishedOn="2026-04-09" updatedOn="2026-04-09" />
-
-      <div className="mt-container-narrow space-y-8">
-
-        <section className="mt-card p-6 md:p-8">
-          <span className="mt-badge">추가 안내</span>
-          <h2 className="mt-title-lg mt-4">어린이집 준비는 물건보다 루틴 정리가 더 중요할 수 있어요</h2>
-          <div className="mt-4 space-y-4 text-sm leading-8 text-slate-600 md:text-base">
-            <p>
-              어린이집 준비는 여벌 옷이나 이름표 같은 물건 준비도 중요하지만,
-              아침 등원 흐름, 하원 후 쉬는 루틴, 전달사항 정리처럼 생활 패턴까지 함께 생각해야
-              실제 적응이 훨씬 부드러워질 수 있습니다.
-            </p>
-            <p>
-              또 어린이집마다 준비물 기준과 안내 기준이 다르기 때문에 공통 준비물과
-              원별 지정 준비물을 따로 구분해 정리하는 것이 좋습니다.
-              이렇게 나누어 보면 빠뜨리는 항목이 훨씬 줄어듭니다.
-            </p>
-          </div>
-        </section>
-
-        <section className="mt-card-soft p-6 md:p-8">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">
-            관련 페이지
-          </div>
-          <div className="mt-5 grid gap-4 md:grid-cols-2">
-            <RelatedLink
-              href="/info/toddler"
-              title="유아 정보"
-              description="생활 습관, 감정 표현, 놀이, 적응 흐름을 함께 보면 더 도움이 됩니다."
-            />
-            <RelatedLink
-              href="/items/essential"
-              title="육아용품 목록"
-              description="등원 준비물과 생활용품 카테고리를 연결해 보기 좋습니다."
-            />
-            <RelatedLink
-              href="/info/childcare-portal"
-              title="아이사랑 공식정보"
-              description="어린이집·보육 관련 공식 안내를 함께 확인할 수 있어요."
-            />
-            <RelatedLink
-              href="/faq"
-              title="FAQ"
-              description="MomTools 이용 기준과 참고 범위를 다시 확인할 수 있어요."
-            />
-          </div>
-        </section>
-      
-
-        <RelatedContent
-          locale="ko"
-          title="함께 보면 좋은 페이지"
-          description="관련 계산기, 정보, 체크리스트를 같이 보면 한 가지 질문을 더 쉽게 정리할 수 있어요."
-          items={[
-            { href: "/info/toddler", title: "유아 정보", description: "생활 습관과 적응 흐름을 함께 이해하면 등원 준비가 쉬워져요." },
-            { href: "/qna/behavior", title: "행동 Q&A", description: "분리불안과 전환 적응에 관한 질문을 이어서 볼 수 있어요." },
-            { href: "/items/essential", title: "육아용품 목록", description: "등원용 생활용품을 함께 확인하기 좋습니다." },
-            { href: "/faq", title: "FAQ", description: "사이트 이용 범위와 참고 기준을 다시 확인할 수 있어요." }
-          ]}
-        />
+      <div className="mt-page">
+        <div className="mt-container-narrow space-y-5 md:space-y-6">
+          <AdFitAd {...ADFIT_UNITS.mobileResult} />
+          <ContentUpdateNote
+            publishedOn="2026-04-09"
+            updatedOn="2026-04-09"
+            note="모바일에서 핵심 체크 항목을 먼저 볼 수 있도록 체크리스트 구조를 간단히 정리했습니다."
+          />
+        </div>
       </div>
-    </div>
-  );
-}
-
-function RelatedLink({
-  href,
-  title,
-  description,
-}: {
-  href: string;
-  title: string;
-  description: string;
-}) {
-  return (
-    <Link
-      href={href}
-      className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200"
-    >
-      <div className="font-semibold text-slate-800">{title}</div>
-      <div className="mt-2 text-sm leading-7 text-slate-500">{description}</div>
-    </Link>
+    </>
   );
 }
