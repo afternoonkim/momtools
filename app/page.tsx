@@ -49,7 +49,7 @@ export default function HomePage() {
       <div className="mt-container space-y-6 md:space-y-8">
         <section className="mx-auto flex min-h-[58vh] max-w-3xl flex-col items-center justify-center px-1 py-8 text-center md:py-14">
           <span className="mt-badge">MomTools</span>
-          <h1 className="mt-home-slogan mt-5">아이를 키우는 모든 순간을 더 쉽게</h1>
+          {/* <h1 className="mt-home-slogan mt-5">아이를 키우는 모든 순간을 더 쉽게</h1> */}
 
           <div className="mt-7 w-full max-w-2xl">
             <SearchBox

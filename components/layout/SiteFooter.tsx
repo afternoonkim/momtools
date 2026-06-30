@@ -27,6 +27,7 @@ export default function SiteFooter() {
             <FooterLink href="/about">사이트 소개</FooterLink>
             <FooterLink href="/faq">FAQ</FooterLink>
             <FooterLink href="/contact">문의하기</FooterLink>
+            <FooterLink href="/feedback">의견 보내기</FooterLink>
             <FooterLink href="/privacy">개인정보처리방침</FooterLink>
             <FooterLink href="/terms">이용약관</FooterLink>
           </div>

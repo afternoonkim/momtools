@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import ContentUpdateNote from "@/components/common/ContentUpdateNote";
 import { qnaCategories, type QnaCategory, type QnaEntry } from "@/data/qna";
 import { getQnaEntryFromDb, getRelatedQnaFromDb } from "@/lib/repositories/qna-db";
 import { buildQnaLongtailContent, type QnaLongtailContent } from "@/lib/qna-longtail";
 import { healthGuideItems } from "@/data/healthGuides";
 import AdFitAd from "@/components/ads/AdFitAd";
 import { ADFIT_UNITS } from "@/lib/adfit";
+import FeedbackPrompt from "@/components/common/FeedbackPrompt";
 
 type Params = { category: string; slug: string };
 
@@ -318,63 +318,59 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
           </div>
         </nav>
 
-        <ContentUpdateNote
-          publishedOn={QNA_PUBLISHED_ON}
-          updatedOn={QNA_UPDATED_ON}
-          note="바로 결론, 먼저 볼 기준, 집에서 할 일, 상담 신호, 기록 항목 순서로 정리했습니다."
-        />
+        <div className="mt-app-stack" aria-label="핵심 확인 내용">
+          <section id="checkpoints" className="mt-app-stack-section">
+            <h2 className="mt-app-section-title">먼저 볼 기준</h2>
+            <p className="mt-app-section-desc">하나의 증상만 보지 말고 아래 항목을 같이 확인해 주세요.</p>
+            <ol className="mt-app-list">
+              {firstChecks.map((point, index) => (
+                <li key={`${point}-${index}`} className="mt-app-list-item">
+                  <span className="font-extrabold text-amber-700">{index + 1}. </span>{point}
+                </li>
+              ))}
+            </ol>
+          </section>
 
-        <section id="checkpoints" className="mt-card p-4 md:p-6">
-          <h2 className="mt-title-md">먼저 볼 기준</h2>
-          <p className="mt-2 text-sm leading-7 text-slate-600">지금 상황에서는 하나의 증상만 보지 말고 아래 항목을 같이 확인하는 편이 안전합니다.</p>
-          <ol className="mt-4 space-y-2 text-sm leading-7 text-slate-600">
-            {firstChecks.map((point, index) => (
-              <li key={`${point}-${index}`} className="mt-compact-row">
-                <span className="font-extrabold text-amber-700">{index + 1}. </span>{point}
-              </li>
-            ))}
-          </ol>
-        </section>
+          <section id="home-actions" className="mt-app-stack-section">
+            <h2 className="mt-app-section-title">집에서 오늘 할 일</h2>
+            <p className="mt-app-section-desc">상태를 안전하게 확인하고 상담 때 설명할 수 있게 정리하는 데 집중하세요.</p>
+            <ul className="mt-app-list">
+              {homeActions.map((point, index) => (
+                <li key={`${point}-${index}`} className="mt-app-list-item">{point}</li>
+              ))}
+            </ul>
+          </section>
 
-        <section id="home-actions" className="mt-card-soft p-4 md:p-6">
-          <h2 className="mt-title-md">집에서 오늘 할 일</h2>
-          <p className="mt-2 text-sm leading-7 text-slate-600">해결을 서두르기보다 상태를 안전하게 확인하고, 상담 때 설명할 수 있게 정리하는 데 집중하세요.</p>
-          <ul className="mt-4 space-y-2 text-sm leading-7 text-slate-600">
-            {homeActions.map((point, index) => (
-              <li key={`${point}-${index}`} className="mt-compact-row">{point}</li>
-            ))}
-          </ul>
-        </section>
+          <section id="when-help" className="mt-app-stack-section">
+            <h2 className="mt-app-section-title-danger">상담을 서두를 신호</h2>
+            <p className="mt-app-section-desc text-rose-900">{item.caution}</p>
+            <div className="mt-mobile-note mt-3">
+              <strong className="text-slate-900">응급실을 고민할 신호</strong>
+              <p className="mt-1">{emergencyMessage}</p>
+            </div>
+          </section>
+
+          <section className="mt-app-stack-section">
+            <h2 className="mt-app-section-title">피하면 좋은 대응</h2>
+            <ul className="mt-app-list">
+              {content.avoidItems.map((point, index) => (
+                <li key={`${point}-${index}`} className="mt-app-list-item">{point}</li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="mt-app-stack-section">
+            <h2 className="mt-app-section-title">기록해두면 좋은 것</h2>
+            <p className="mt-app-section-desc">{content.recordDescription}</p>
+            <ul className="mt-app-list">
+              {content.recordItems.map((point, index) => (
+                <li key={`${point}-${index}`} className="mt-app-list-item">{point}</li>
+              ))}
+            </ul>
+          </section>
+        </div>
 
         <AdFitAd {...ADFIT_UNITS.mobileResult} />
-
-        <section id="when-help" className="mt-card p-4 md:p-6">
-          <h2 className="mt-title-md">상담을 서두를 신호</h2>
-          <p className="mt-3 text-sm leading-8 text-slate-600">{item.caution}</p>
-          <div className="mt-mobile-note mt-4">
-            <strong className="text-slate-900">응급실을 고민할 신호</strong>
-            <p className="mt-1">{emergencyMessage}</p>
-          </div>
-        </section>
-
-        <section className="mt-card p-4 md:p-6">
-          <h2 className="mt-title-md">피하면 좋은 대응</h2>
-          <ul className="mt-4 space-y-2 text-sm leading-7 text-slate-600">
-            {content.avoidItems.map((point, index) => (
-              <li key={`${point}-${index}`} className="mt-compact-row">{point}</li>
-            ))}
-          </ul>
-        </section>
-
-        <section className="mt-card p-4 md:p-6">
-          <h2 className="mt-title-md">기록해두면 좋은 것</h2>
-          <p className="mt-2 text-sm leading-7 text-slate-600">{content.recordDescription}</p>
-          <ul className="mt-4 space-y-2 text-sm leading-7 text-slate-600">
-            {content.recordItems.map((point, index) => (
-              <li key={`${point}-${index}`} className="mt-compact-row">{point}</li>
-            ))}
-          </ul>
-        </section>
 
         <details className="mt-section-details">
           <summary className="mt-section-summary">
@@ -399,51 +395,55 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
           </div>
         </details>
 
-        <section id="related-tools" className="mt-card-soft p-4 md:p-6">
-          <h2 className="mt-title-md">함께 볼 도구와 정보</h2>
-          <div className="mt-4 divide-y divide-slate-100 overflow-hidden rounded-2xl border border-amber-100 bg-white">
+        <section id="related-tools" className="space-y-3">
+          <h2 className="mt-app-section-title">함께 볼 도구와 정보</h2>
+          <div className="mt-app-link-list">
             {relatedLinks[typed].map((link) => (
-              <Link key={link.href} href={link.href} className="block px-4 py-3.5 transition hover:bg-amber-50/60">
-                <div className="font-extrabold text-slate-900">{link.label}</div>
-                <div className="mt-1 line-clamp-2 text-sm leading-6 text-slate-500">{link.description}</div>
+              <Link key={link.href} href={link.href} className="mt-app-link-item">
+                <div className="mt-app-link-title">{link.label}</div>
+                <div className="mt-app-link-desc">{link.description}</div>
               </Link>
             ))}
             {relatedHealthGuides.map((guide) => (
-              <Link key={guide.slug} href={`/health/${guide.slug}`} className="block px-4 py-3.5 transition hover:bg-rose-50/60">
-                <div className="font-extrabold text-slate-900">{guide.title}</div>
-                <div className="mt-1 line-clamp-2 text-sm leading-6 text-slate-500">{guide.summary}</div>
+              <Link key={guide.slug} href={`/health/${guide.slug}`} className="mt-app-link-item">
+                <div className="mt-app-link-title">{guide.title}</div>
+                <div className="mt-app-link-desc">{guide.summary}</div>
               </Link>
             ))}
           </div>
         </section>
 
-        <section className="mt-card p-4 md:p-6" id="faq">
-          <h2 className="mt-title-md">자주 묻는 질문</h2>
-          <div className="mt-4 space-y-2">
+        <details className="mt-section-details" id="faq">
+          <summary className="mt-section-summary">
+            <span>자주 묻는 질문</span>
+            <span className="text-xs font-bold text-amber-700">열기</span>
+          </summary>
+          <div className="mt-detail-body space-y-2">
             {faqs.map((faq) => (
               <details key={faq.question} className="rounded-2xl border border-slate-100 bg-slate-50 px-4 py-3">
-                <summary className="cursor-pointer text-sm font-extrabold leading-7 text-slate-900">{faq.question}</summary>
-                <p className="mt-2 text-sm leading-7 text-slate-600">{faq.answer}</p>
+                <summary className="cursor-pointer text-[13px] font-extrabold leading-6 text-slate-900">{faq.question}</summary>
+                <p className="mt-2 text-[13px] leading-6 text-slate-600">{faq.answer}</p>
               </details>
             ))}
           </div>
-        </section>
+        </details>
 
-        <section className="mt-card-soft p-4 md:p-6">
-          <h2 className="mt-title-md">같이 이어서 보면 좋은 질문</h2>
-          <div className="mt-4 divide-y divide-slate-100 overflow-hidden rounded-2xl border border-amber-100 bg-white">
+        <section className="space-y-3">
+          <h2 className="mt-app-section-title">같이 이어서 보면 좋은 질문</h2>
+          <div className="mt-app-link-list">
             {related.slice(0, 5).map((entry) => (
-              <Link key={entry.slug} href={`/qna/${typed}/${entry.slug}`} className="block px-4 py-3.5 transition hover:bg-amber-50/60">
-                <div className="text-[11px] font-bold uppercase tracking-[0.14em] text-amber-600">{entry.topic}</div>
-                <div className="mt-1 font-extrabold leading-7 text-slate-900">{entry.question}</div>
+              <Link key={entry.slug} href={`/qna/${typed}/${entry.slug}`} className="mt-app-link-item">
+                <div className="text-[11px] font-bold text-amber-600">{entry.topic}</div>
+                <div className="mt-app-link-title mt-1">{entry.question}</div>
               </Link>
             ))}
           </div>
-          <div className="mt-4 flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2">
             <Link href={`/qna/${typed}`} className="mt-chip-link">{qnaCategories[typed]} 전체 보기</Link>
             <Link href="/qna" className="mt-chip-link">Q&amp;A 홈</Link>
           </div>
         </section>
+        <FeedbackPrompt />
       </div>
     </div>
   );

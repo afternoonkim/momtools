@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
@@ -15,34 +16,34 @@ type Params = { category: string };
 
 const familySituationItems: Record<FamilyHealthQnaCategory, { href: string; label: string; description?: string }[]> = {
   mom: [
-    { href: "/family-health-qna/mom?topic=fatigue", label: "피로·수면 부족" },
-    { href: "/family-health-qna/mom?topic=pain", label: "허리·손목 통증" },
-    { href: "/family-health-qna/mom?topic=mood", label: "기분 변화" },
+    { href: "/family-health-qna/mom?q=%ED%94%BC%EB%A1%9C", label: "피로·수면 부족" },
+    { href: "/family-health-qna/mom?q=%ED%86%B5%EC%A6%9D", label: "허리·손목 통증" },
+    { href: "/family-health-qna/mom?q=%EA%B8%B0%EB%B6%84", label: "기분 변화" },
   ],
   dad: [
-    { href: "/family-health-qna/dad?topic=stress", label: "스트레스·수면" },
-    { href: "/family-health-qna/dad?topic=blood-pressure", label: "혈압·체중" },
-    { href: "/family-health-qna/dad?topic=pain", label: "허리·목 통증" },
+    { href: "/family-health-qna/dad?q=%EC%8A%A4%ED%8A%B8%EB%A0%88%EC%8A%A4", label: "스트레스·수면" },
+    { href: "/family-health-qna/dad?q=%ED%98%88%EC%95%95", label: "혈압·체중" },
+    { href: "/family-health-qna/dad?q=%ED%86%B5%EC%A6%9D", label: "허리·목 통증" },
   ],
   postpartum: [
-    { href: "/family-health-qna/postpartum?topic=recovery", label: "출산 후 회복" },
-    { href: "/family-health-qna/postpartum?topic=bleeding", label: "출혈·통증" },
-    { href: "/family-health-qna/postpartum?topic=mood", label: "우울감·불안" },
+    { href: "/family-health-qna/postpartum?q=%ED%9A%8C%EB%B3%B5", label: "출산 후 회복" },
+    { href: "/family-health-qna/postpartum?q=%EC%B6%9C%ED%98%88", label: "출혈·통증" },
+    { href: "/family-health-qna/postpartum?q=%EC%9A%B0%EC%9A%B8%EA%B0%90", label: "우울감·불안" },
   ],
   family: [
-    { href: "/family-health-qna/family?topic=cold", label: "기침·콧물" },
-    { href: "/family-health-qna/family?topic=stomach", label: "구토·설사" },
-    { href: "/family-health-qna/family?topic=skin", label: "피부·알레르기" },
+    { href: "/family-health-qna/family?q=%EA%B8%B0%EC%B9%A8%20%EC%BD%A7%EB%AC%BC", label: "기침·콧물" },
+    { href: "/family-health-qna/family?q=%EA%B5%AC%ED%86%A0%20%EC%84%A4%EC%82%AC", label: "구토·설사" },
+    { href: "/family-health-qna/family?q=%ED%94%BC%EB%B6%80", label: "피부·알레르기" },
   ],
   medicine: [
-    { href: "/family-health-qna/medicine?topic=fever-medicine", label: "해열제·진통제" },
-    { href: "/family-health-qna/medicine?topic=cold-medicine", label: "감기약" },
-    { href: "/family-health-qna/medicine?topic=supplement", label: "영양제" },
+    { href: "/family-health-qna/medicine?q=%ED%95%B4%EC%97%B4%EC%A0%9C", label: "해열제·진통제" },
+    { href: "/family-health-qna/medicine?q=%EA%B0%90%EA%B8%B0%EC%95%BD", label: "감기약" },
+    { href: "/family-health-qna/medicine?q=%EC%98%81%EC%96%91%EC%A0%9C", label: "영양제" },
   ],
   checkup: [
-    { href: "/family-health-qna/checkup?topic=blood", label: "혈압·혈당" },
-    { href: "/family-health-qna/checkup?topic=liver", label: "간 수치" },
-    { href: "/family-health-qna/checkup?topic=visit", label: "진료 전 준비" },
+    { href: "/family-health-qna/checkup?q=%ED%98%88%EC%95%95%20%ED%98%88%EB%8B%B9", label: "혈압·혈당" },
+    { href: "/family-health-qna/checkup?q=%EA%B0%84%20%EC%88%98%EC%B9%98", label: "간 수치" },
+    { href: "/family-health-qna/checkup?q=%EC%A7%84%EB%A3%8C%20%EC%A0%84%20%EC%A4%80%EB%B9%84", label: "진료 전 준비" },
   ],
 };
 
@@ -136,50 +137,51 @@ export default async function FamilyHealthCategoryPage({ params }: { params: Pro
           <span className="text-slate-700">{info.label}</span>
         </nav>
 
-        <section className="mt-card p-8 md:p-10">
+        <section className="mt-page-hero">
           <span className="mt-badge">{info.label}</span>
           <h1 className="mt-title-xl mt-5">{info.label} 질문을 상황별로 확인해 보세요</h1>
           <p className="mt-text-main mt-4 max-w-4xl">{info.heroLead}</p>
           <p className="mt-4 max-w-4xl text-sm leading-8 text-slate-600 md:text-base">{info.homeGuide}</p>
-          <div className="mt-5 rounded-full bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-800 inline-flex">
-            {entries.length}개 질문
-          </div>
         </section>
 
         <MedicalDisclaimer lang="ko" variant="compact" />
 
-        <section className="mt-card-soft p-6 md:p-8">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">이 카테고리 활용법</div>
-          <div className="mt-4 grid gap-4 md:grid-cols-3">
-            {categoryTips[typed].map((tip) => (
-              <article key={tip.title} className="rounded-3xl bg-white px-5 py-5 shadow-sm">
-                <h2 className="text-base font-bold text-slate-800">{tip.title}</h2>
-                <p className="mt-2 text-sm leading-7 text-slate-600">{tip.description}</p>
-              </article>
-            ))}
+        <section className="mt-app-stack" aria-label="이 카테고리 활용법">
+          <div className="mt-app-stack-section">
+            <div className="text-[11px] font-bold tracking-[0.14em] text-amber-600">이 카테고리 활용법</div>
           </div>
+          {categoryTips[typed].map((tip) => (
+            <div key={tip.title} className="mt-app-stack-section">
+              <h2 className="mt-app-section-title">{tip.title}</h2>
+              <p className="mt-app-section-desc">{tip.description}</p>
+            </div>
+          ))}
         </section>
 
-        <SituationExplorer
+        {/* <SituationExplorer
           title="현재 상황과 가까운 주제부터 확인하세요"
           description="전체 질문을 보기 전에 지금 필요한 건강 상황을 먼저 고르면 더 빠르게 비교할 수 있어요."
           items={familySituationItems[typed]}
-        />
+        /> */}
 
-        <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-md">먼저 많이 찾는 질문</h2>
-          <p className="mt-2 text-sm leading-7 text-slate-600">비슷한 상황을 빠르게 비교할 수 있도록 먼저 확인하기 좋은 질문을 모았습니다.</p>
-          <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <section className="mt-app-stack" aria-label="먼저 많이 찾는 질문">
+          <div className="mt-app-stack-section">
+            <h2 className="mt-app-section-title">먼저 많이 찾는 질문</h2>
+            <p className="mt-app-section-desc">비슷한 상황을 빠르게 비교할 수 있도록 먼저 확인하기 좋은 질문을 모았습니다.</p>
+          </div>
+          <div className="divide-y divide-slate-100">
             {featuredEntries.map((item) => (
-              <Link key={item.slug} href={`/family-health-qna/${typed}/${item.slug}`} className="rounded-[28px] border border-amber-100 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-amber-200">
-                <div className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-600">{item.topic}</div>
-                <h3 className="mt-3 text-lg font-bold text-slate-800">{item.question}</h3>
+              <Link key={item.slug} href={`/family-health-qna/${typed}/${item.slug}`} className="block px-4 py-3.5 transition hover:bg-amber-50/60 active:bg-amber-50">
+                <div className="text-[11px] font-bold text-amber-600">{item.topic}</div>
+                <h3 className="mt-1 text-[13px] font-extrabold leading-5 text-slate-900">{item.question}</h3>
               </Link>
             ))}
           </div>
         </section>
 
-        <FamilyHealthCategorySearch category={typed} entries={searchableEntries} />
+        <Suspense fallback={<div className="mt-app-stack"><div className="mt-app-stack-section">질문을 불러오고 있어요.</div></div>}>
+          <FamilyHealthCategorySearch category={typed} entries={searchableEntries} />
+        </Suspense>
       </div>
     </div>
   );

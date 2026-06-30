@@ -76,8 +76,30 @@ export function shouldShowGlobalCoupangPartnersAd(pathname: string) {
 }
 
 
+const PRODUCT_AD_EXCLUDED_PATH_PREFIXES = [
+  "/content",
+  "/db-check",
+  "/en",
+] as const;
+
+const PRODUCT_AD_EXCLUDED_PATHS = new Set<string>([
+  "/about",
+  "/contact",
+  "/faq",
+  "/privacy",
+  "/search",
+  "/terms",
+] as const);
+
 export function shouldShowCoupangProductAds(pathname: string) {
-  return COUPANG_PARTNERS.enabled && shouldShowGlobalCoupangPartnersAd(pathname);
+  if (!COUPANG_PARTNERS.enabled) return false;
+  const normalizedPathname = normalizeCoupangPathname(pathname);
+
+  if (PRODUCT_AD_EXCLUDED_PATHS.has(normalizedPathname)) return false;
+
+  return !PRODUCT_AD_EXCLUDED_PATH_PREFIXES.some(
+    (prefix) => normalizedPathname === prefix || normalizedPathname.startsWith(`${prefix}/`),
+  );
 }
 
 export function getGlobalCoupangPartnerBanners(): CoupangPartnersBannerConfig[] {

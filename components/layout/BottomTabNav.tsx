@@ -59,9 +59,9 @@ export default function BottomTabNav({ onMenuClick }: { onMenuClick: () => void 
     },
     {
       label: "확인",
-      href: "/qna/health",
+      href: "/qna",
       icon: Stethoscope,
-      active: (path) => path.startsWith("/qna") || path.startsWith("/health") || path.startsWith("/monthly-guide"),
+      active: (path) => path.startsWith("/qna") || path.startsWith("/health") || path.startsWith("/monthly-guide") || path.startsWith("/family-health-qna") || path.startsWith("/moonlight-hospitals"),
     },
     {
       label: "기록",

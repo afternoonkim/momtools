@@ -41,12 +41,13 @@ export default function BirthSupportCalculatorClient({
   initialRegionCode,
   initialBirthOrder = "first",
 }: BirthSupportCalculatorClientProps = {}) {
-  const fallbackRegionCode = birthSupportRegions[0]?.regionCode ?? "jeju";
   const startingRegionCode =
     initialRegionCode && birthSupportRegions.some((region) => region.regionCode === initialRegionCode)
       ? initialRegionCode
-      : fallbackRegionCode;
-  const startingRegion = birthSupportRegions.find((region) => region.regionCode === startingRegionCode) ?? birthSupportRegions[0];
+      : "";
+  const startingRegion = startingRegionCode
+    ? birthSupportRegions.find((region) => region.regionCode === startingRegionCode)
+    : null;
 
   const [mounted, setMounted] = useState(false);
   const [regionCode, setRegionCode] = useState(startingRegionCode);
@@ -59,11 +60,11 @@ export default function BirthSupportCalculatorClient({
     return () => window.clearTimeout(timer);
   }, []);
 
-  const result = useMemo(() => calculateBirthSupport(regionCode, birthOrder), [regionCode, birthOrder]);
-  const selectedRegionLabel = getRegionLabel(result.region);
+  const result = useMemo(() => (regionCode ? calculateBirthSupport(regionCode, birthOrder) : null), [regionCode, birthOrder]);
+  const selectedRegionLabel = result ? getRegionLabel(result.region) : "";
 
   useEffect(() => {
-    setRegionSearch(selectedRegionLabel);
+    if (selectedRegionLabel) setRegionSearch(selectedRegionLabel);
   }, [selectedRegionLabel]);
 
   const filteredRegions = useMemo(() => {
@@ -113,7 +114,7 @@ export default function BirthSupportCalculatorClient({
           </div>
           <div className="rounded-3xl bg-white/80 p-4 text-sm text-slate-600 shadow-sm ring-1 ring-amber-100">
             <div className="font-semibold text-slate-800">자료 기준일</div>
-            <div className="mt-1">{result.region.updatedAt}</div>
+            <div className="mt-1">{result ? result.region.updatedAt : "지역 선택 후 표시"}</div>
           </div>
         </div>
       </div>
@@ -158,7 +159,7 @@ export default function BirthSupportCalculatorClient({
                       handleRegionSelect(filteredRegions[0]);
                     }
                   }}
-                  placeholder="예: 서울 강남구, 부산 해운대구, 제주도"
+                  placeholder="지역을 선택해주세요"
                   className="block w-full appearance-none rounded-2xl border border-amber-100 bg-white py-3 pl-12 pr-4 text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-amber-300 focus:ring-4 focus:ring-amber-100"
                 />
               </div>
@@ -235,6 +236,8 @@ export default function BirthSupportCalculatorClient({
         </div>
 
         <div className="space-y-4">
+          {result ? (
+            <>
           <div className="rounded-[2rem] bg-slate-900 p-6 text-white shadow-xl">
             <div className="flex items-center gap-3 text-sm font-semibold text-amber-200">
               <Calculator size={18} /> 기본 예상 지원금
@@ -294,6 +297,13 @@ export default function BirthSupportCalculatorClient({
               </article>
             ))}
           </div>
+          </>
+          ) : (
+            <div className="rounded-[1.25rem] border border-amber-100 bg-amber-50/70 p-5 text-sm leading-7 text-slate-700">
+              <div className="font-extrabold text-slate-900">지역을 선택해주세요</div>
+              <p className="mt-2">거주 지역을 먼저 선택하면 전국 공통 지원금과 지자체 출산지원금 예상 금액을 바로 확인할 수 있어요.</p>
+            </div>
+          )}
         </div>
       </div>
 

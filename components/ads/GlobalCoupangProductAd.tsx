@@ -85,9 +85,14 @@ function findFirstContentSection(main: HTMLElement) {
   return firstMainContentSection ?? null;
 }
 
-function findProductAnchor() {
+function findProductAnchor(pathname: string) {
   const main = document.querySelector<HTMLElement>("main");
   if (!main) return null;
+
+  if (pathname.startsWith("/tools/")) {
+    const calculatorAd = main.querySelector<HTMLElement>('aside[aria-label="광고"]');
+    if (calculatorAd) return calculatorAd;
+  }
 
   return findContentSectionAfterBreadcrumb(main) ?? findFirstContentSection(main) ?? main;
 }
@@ -113,8 +118,8 @@ function getProductInsertionReference(anchor: Element) {
   return reference;
 }
 
-function ensureProductPlacementContainer() {
-  const anchor = findProductAnchor();
+function ensureProductPlacementContainer(pathname: string) {
+  const anchor = findProductAnchor(pathname);
   if (!anchor?.parentElement) return null;
 
   const existingPlacements = Array.from(
@@ -228,7 +233,7 @@ export default function GlobalCoupangProductAd() {
 
     const mountPlacement = () => {
       if (disposed) return;
-      const placement = ensureProductPlacementContainer();
+      const placement = ensureProductPlacementContainer(pathname);
       setPortalTarget(placement);
     };
 
@@ -264,12 +269,12 @@ export default function GlobalCoupangProductAd() {
               이 내용과 함께 확인하면 좋은 육아용품
             </p>
             <p className="mt-1 text-xs leading-5 text-slate-500 md:text-sm">
-              현재 페이지와 연결된 품목만 보여드려요.
+              현재 페이지 주제와 맞는 품목을 골라 보여드려요.
             </p>
           </div>
         </div>
 
-        <div className="mt-3 grid gap-2.5 md:grid-cols-3">
+        <div className="mt-3 grid gap-2.5 sm:grid-cols-2 md:grid-cols-3">
           {items.map((item) => (
             <ProductAdCard key={`${item.categorySlug}-${item.id}`} item={item} />
           ))}

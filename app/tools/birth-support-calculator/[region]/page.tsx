@@ -10,6 +10,7 @@ import {
   type BirthSupportRegion,
 } from "@/data/birthSupportCalculator";
 import BirthSupportCalculatorClient from "../BirthSupportCalculatorClient";
+import FeedbackPrompt from "@/components/common/FeedbackPrompt";
 
 const pageDates = getPageDates("/tools/birth-support-calculator");
 
@@ -366,6 +367,7 @@ export default async function RegionalBirthSupportCalculatorPage({ params }: { p
             </Link>
           </div>
         </section>
+        <FeedbackPrompt />
       </div>
     </div>
   );

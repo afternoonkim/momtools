@@ -10,6 +10,7 @@ import {
   getRelatedChildcarePortalGuides,
 } from "@/data/childcarePortalGuides";
 import { buildCanonical } from "@/lib/content-meta";
+import FeedbackPrompt from "@/components/common/FeedbackPrompt";
 
 type Params = { slug: string };
 
@@ -255,6 +256,7 @@ export default async function ChildcarePortalDetailPage({ params }: { params: Pr
             ))}
           </div>
         </section>
+        <FeedbackPrompt />
       </div>
     </div>
   );

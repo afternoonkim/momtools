@@ -9,6 +9,7 @@ import {
 } from "@/data/familyFinance";
 import { PARTNER_SITES, getPartnerLinkProps } from "@/lib/partner-sites";
 import { buildCanonical } from "@/lib/content-meta";
+import FeedbackPrompt from "@/components/common/FeedbackPrompt";
 
 type Params = { slug: string };
 
@@ -188,6 +189,7 @@ export default async function FamilyFinanceArticlePage({ params }: { params: Pro
             </div>
           </section>
         ) : null}
+        <FeedbackPrompt />
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { monthlyGuideItems } from "@/data/monthlyGuide";
 import { getMonthlyGuideFromDb, getMonthlyGuidesFromDb } from "@/lib/repositories/guides-db";
 import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
+import FeedbackPrompt from "@/components/common/FeedbackPrompt";
 
 export const dynamicParams = true;
 export const revalidate = 3600;
@@ -95,6 +96,7 @@ export default async function MonthlyGuideDetailPage({ params }: { params: Promi
             ))}
           </div>
         </section>
+        <FeedbackPrompt />
       </div>
     </div>
   );

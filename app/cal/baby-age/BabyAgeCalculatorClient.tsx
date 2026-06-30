@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import UsDateInput from "@/components/common/UsDateInput";
 
 function parseLocalDate(dateString: string) {
   if (!dateString) return null;
@@ -180,14 +181,15 @@ export default function BabyAgeCalculatorClient() {
               <label htmlFor="birthDate" className="block text-sm font-bold text-slate-900">
                 아기 생년월일
               </label>
-              <input
-                id="birthDate"
-                type="date"
-                value={birthDate}
-                max={new Date().toISOString().split("T")[0]}
-                onChange={(e) => setBirthDate(e.target.value)}
-                className="mt-input mt-3 min-h-12 text-base"
-              />
+              <div className="mt-3">
+                <UsDateInput
+                  id="birthDate"
+                  label="아기 생년월일"
+                  value={birthDate}
+                  max={new Date().toISOString().split("T")[0]}
+                  onChange={setBirthDate}
+                />
+              </div>
               <p className="mt-3 text-sm leading-6 text-slate-600">
                 오늘 날짜 기준으로 자동 계산됩니다. 미숙아나 교정 연령 확인이 필요한 경우에는 병원 안내를 우선 참고해 주세요.
               </p>

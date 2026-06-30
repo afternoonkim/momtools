@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import UsDateInput from "@/components/common/UsDateInput";
 
 type VaccinePoint = {
   label: string;
@@ -267,13 +268,12 @@ export default function VaccineScheduleCalculatorClient() {
                 >
                   아기 생년월일
                 </label>
-                <input
+                <UsDateInput
                   id="birthDate"
-                  type="date"
+                  label="아기 생년월일"
                   value={birthDate}
                   max={new Date().toISOString().split("T")[0]}
-                  onChange={(e) => setBirthDate(e.target.value)}
-                  className="mt-input"
+                  onChange={setBirthDate}
                 />
               </div>
 
@@ -332,55 +332,20 @@ export default function VaccineScheduleCalculatorClient() {
                   />
                 </div>
 
-                <div className="mt-6 overflow-hidden rounded-2xl border border-emerald-100 bg-white">
-                  <div className="overflow-x-auto">
-                    <table className="w-full min-w-[760px] text-left">
-                      <thead className="bg-emerald-50 text-sm text-slate-600">
-                        <tr>
-                          <th className="px-4 py-3">월령</th>
-                          <th className="px-4 py-3">예상 시점</th>
-                          <th className="px-4 py-3">대표 접종</th>
-                          <th className="px-4 py-3">상태</th>
-                          <th className="px-4 py-3">메모</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {result.schedule.map((item, index) => (
-                          <tr
-                            key={item.label}
-                            className={
-                              index !== result.schedule.length - 1
-                                ? "border-t border-emerald-100"
-                                : ""
-                            }
-                          >
-                            <td className="px-4 py-4 font-semibold text-slate-800">
-                              {item.label}
-                            </td>
-                            <td className="px-4 py-4 text-slate-700">
-                              {formatDate(item.date)}
-                            </td>
-                            <td className="px-4 py-4 text-sm leading-7 text-slate-600">
-                              {item.vaccines.join(", ")}
-                            </td>
-                            <td className="px-4 py-4">
-                              <span
-                                className={[
-                                  "inline-flex rounded-full px-3 py-1 text-xs font-semibold ring-1",
-                                  item.status.style,
-                                ].join(" ")}
-                              >
-                                {item.status.text}
-                              </span>
-                            </td>
-                            <td className="px-4 py-4 text-sm leading-7 text-slate-500">
-                              {item.note}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
+                <div className="mt-5 mt-app-link-list" aria-label="월령별 예방접종 예상 일정">
+                  {result.schedule.map((item) => (
+                    <div key={item.label} className="px-4 py-3.5">
+                      <div className="flex items-start justify-between gap-3">
+                        <div className="min-w-0">
+                          <div className="text-[13px] font-extrabold text-slate-900">{item.label}</div>
+                          <div className="mt-0.5 text-[12.5px] leading-5 text-slate-500">{formatDate(item.date)}</div>
+                        </div>
+                        <span className={["shrink-0 rounded-full px-2.5 py-1 text-[11px] font-bold ring-1", item.status.style].join(" ")}>{item.status.text}</span>
+                      </div>
+                      <div className="mt-2 text-[12.5px] font-bold leading-5 text-emerald-800">{item.vaccines.join(", ")}</div>
+                      <p className="mt-1 text-[12.5px] leading-5 text-slate-500">{item.note}</p>
+                    </div>
+                  ))}
                 </div>
 
                 <div className="mt-6 rounded-2xl border border-emerald-100 bg-gradient-to-br from-emerald-50 via-white to-sky-50 p-5">

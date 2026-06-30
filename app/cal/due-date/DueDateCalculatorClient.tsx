@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import UsDateInput from "@/components/common/UsDateInput";
 
 type Milestone = {
   label: string;
@@ -265,13 +266,12 @@ export default function DueDateCalculatorClient() {
                 >
                   마지막 생리 시작일
                 </label>
-                <input
+                <UsDateInput
                   id="lmp"
-                  type="date"
+                  label="마지막 생리 시작일"
                   value={lmp}
                   max={new Date().toISOString().split("T")[0]}
-                  onChange={(e) => setLmp(e.target.value)}
-                  className="mt-input"
+                  onChange={setLmp}
                 />
               </div>
 

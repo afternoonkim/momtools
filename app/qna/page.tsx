@@ -1,19 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { getQnaCategorySummaries } from "@/lib/repositories/qna-db";
-import ContentUpdateNote from "@/components/common/ContentUpdateNote";
 import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
-import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
+import { buildCanonical } from "@/lib/content-meta";
 
 export const metadata: Metadata = {
-  title: "육아 Q&A | 아이 건강 성장 행동 설명형 질문 모음 | MomTools",
+  title: "확인하기 | 아이 건강 성장 행동 가족건강 확인 | MomTools",
   description:
-    "아이 건강, 아이 성장, 아이 행동으로 나눈 설명형 육아 Q&A 페이지입니다. 보호자가 집에서 먼저 볼 포인트, 체크리스트, 상담이 필요한 신호까지 함께 정리했습니다.",
+    "아이 건강, 성장 발달, 행동과 수면, 가족 건강, 달빛아동병원을 모바일에서 빠르게 확인할 수 있는 MomTools 확인하기 허브입니다.",
   alternates: { canonical: buildCanonical("/qna") },
   openGraph: {
-    title: "육아 Q&A | MomTools",
-    description:
-      "짧은 답변이 아니라 보호자 관점의 설명형 답변으로 정리한 육아 질문 모음입니다.",
+    title: "확인하기 | MomTools",
+    description: "아이와 가족의 상황, 야간·휴일 진료 정보를 빠르게 확인하는 MomTools 확인하기 허브입니다.",
     url: buildCanonical("/qna"),
     siteName: "MomTools",
     locale: "ko_KR",
@@ -21,40 +18,81 @@ export const metadata: Metadata = {
   },
 };
 
-const categoryDescriptions = {
-  health: "열, 기침, 콧물, 발진, 변 상태처럼 병원에 가기 전 먼저 확인하고 싶은 건강 질문입니다.",
-  growth: "뒤집기, 앉기, 걷기, 말, 키와 몸무게처럼 발달 흐름이 궁금할 때 보는 질문입니다.",
-  behavior: "잠투정, 편식, 떼쓰기, 분리불안처럼 매일 부딪히는 행동 고민입니다.",
-} as const;
+const checkMenus = [
+  {
+    href: "/qna/health",
+    label: "아이 건강",
+    description: "열, 기침, 콧물, 구토, 설사, 발진처럼 아플 때 먼저 볼 기준",
+  },
+  {
+    href: "/qna/growth",
+    label: "성장·발달",
+    description: "뒤집기, 앉기, 걷기, 말, 키와 몸무게 흐름 확인",
+  },
+  {
+    href: "/qna/behavior",
+    label: "행동·수면",
+    description: "잠투정, 편식, 떼쓰기, 분리불안, 어린이집 적응 고민",
+  },
+  {
+    href: "/family-health-qna/family",
+    label: "가족 건강 확인",
+    description: "가족 감기, 장염, 약 복용, 검진 수치처럼 함께 확인할 건강 질문",
+  },
+  {
+    href: "/moonlight-hospitals",
+    label: "달빛아동병원",
+    description: "야간·휴일 아이 진료가 필요할 때 지역별 병원과 전화번호 확인",
+  },
+] as const;
+
+const quickLinks = [
+  { href: "/health", label: "증상별 가이드", description: "증상별로 상담 신호와 기록할 점을 봐요." },
+  { href: "/monthly-guide", label: "월령별 가이드", description: "개월수별 발달·수유·수면 흐름을 봐요." },
+  { href: "/tools/baby-age", label: "개월수 먼저 계산", description: "월령 기준이 필요할 때 먼저 확인해요." },
+] as const;
 
 export const runtime = "nodejs";
 export const revalidate = 3600;
 
 export default async function QnaHubPage() {
-  const categorySummaries = await getQnaCategorySummaries();
   return (
     <div className="mt-page">
       <div className="mt-container space-y-5 md:space-y-6">
         <section className="mt-page-hero">
-          <span className="mt-badge">질문형 육아 정보</span>
-          <h1 className="mt-title-xl mt-4">아이 건강·성장·행동을 질문 그대로 찾아보세요</h1>
+          <span className="mt-badge">확인하기</span>
+          <h1 className="mt-title-xl mt-4">지금 상황에 맞는 확인 메뉴를 고르세요</h1>
           <p className="mt-text-main mt-3 max-w-3xl">
-            긴 설명보다 먼저 볼 기준, 상담을 서둘러야 할 신호, 기록해두면 좋은 내용을 앞에 두었습니다.
+            긴 글을 읽기 전에 아이 건강, 성장, 행동, 가족 건강 중 지금 가장 가까운 상황을 먼저 선택하세요.
           </p>
         </section>
 
         <MedicalDisclaimer lang="ko" variant="compact" />
-        <ContentUpdateNote publishedOn={SITE_DATES.published} updatedOn={SITE_DATES.updated} />
 
-        <section className="mt-simple-list" aria-label="육아 Q&A 카테고리">
-          {categorySummaries.map((category) => (
-            <Link key={category.key} href={`/qna/${category.key}`} className="mt-simple-list-item flex items-center justify-between gap-3">
+        <section className="mt-app-stack" aria-label="확인하기 메뉴">
+          {checkMenus.map((item) => (
+            <Link key={item.href} href={item.href} className="flex items-center justify-between gap-3 border-t border-slate-100 px-4 py-3.5 first:border-t-0 transition hover:bg-amber-50/60 active:bg-amber-50">
               <span className="min-w-0">
-                <strong className="block text-base font-extrabold text-slate-900">{category.name}</strong>
-                <span className="mt-1 line-clamp-2 block text-sm leading-6 text-slate-500">{category.description ?? categoryDescriptions[category.key]}</span>
-                <span className="mt-2 inline-block text-xs font-bold text-amber-700">{category.count}개 질문</span>
+                <strong className="block text-[13px] font-extrabold leading-5 text-slate-900">{item.label}</strong>
+                <span className="mt-0.5 line-clamp-2 block text-[12.5px] leading-5 text-slate-500">{item.description}</span>
               </span>
-              <span className="shrink-0 text-amber-700">→</span>
+              <span className="shrink-0 text-sm font-bold text-amber-700">→</span>
+            </Link>
+          ))}
+        </section>
+
+        <section className="mt-app-stack" aria-label="같이 쓰면 좋은 확인 도구">
+          <div className="mt-app-stack-section">
+            <h2 className="mt-app-section-title">함께 쓰면 더 빨라요</h2>
+            <p className="mt-app-section-desc">월령과 증상 기준을 함께 보면 다음 행동을 정하기 쉽습니다.</p>
+          </div>
+          {quickLinks.map((item) => (
+            <Link key={item.href} href={item.href} className="flex items-center justify-between gap-3 border-t border-slate-100 px-4 py-3.5 transition hover:bg-amber-50/60 active:bg-amber-50">
+              <span className="min-w-0">
+                <strong className="block text-[13px] font-extrabold leading-5 text-slate-900">{item.label}</strong>
+                <span className="mt-0.5 line-clamp-2 block text-[12.5px] leading-5 text-slate-500">{item.description}</span>
+              </span>
+              <span className="shrink-0 text-sm font-bold text-amber-700">→</span>
             </Link>
           ))}
         </section>

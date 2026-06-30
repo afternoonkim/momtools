@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { babyFoodRecipes, getRecipe, stageLabels } from "@/data/babyFood";
 import { notFound } from "next/navigation";
+import FeedbackPrompt from "@/components/common/FeedbackPrompt";
 
 export async function generateStaticParams() {
   return babyFoodRecipes.map((item) => ({ slug: item.slug }));
@@ -95,6 +96,7 @@ export default async function BabyFoodRecipeDetailPage({ params }: { params: Pro
             ))}
           </div>
         </section>
+        <FeedbackPrompt />
       </div>
     </div>
   );

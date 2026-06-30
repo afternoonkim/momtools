@@ -38,7 +38,6 @@ export const revalidate = 3600;
 
 export default async function FamilyHealthQnaHubPage() {
   const categorySummaries = await getFamilyHealthCategorySummaries();
-  const totalCount = categorySummaries.reduce((sum, category) => sum + category.count, 0);
   const categories = categorySummaries.map((category) => category.key);
 
   const jsonLd = {
@@ -67,9 +66,6 @@ export default async function FamilyHealthQnaHubPage() {
           <p className="mt-text-main mt-3 max-w-3xl">
             부모와 가족이 자주 검색하는 건강 질문을 증상 단정이 아니라 확인할 점, 기록할 점, 상담 신호 중심으로 정리했습니다.
           </p>
-          <div className="mt-4 inline-flex rounded-full bg-amber-50 px-4 py-2 text-sm font-bold text-amber-800">
-            총 {totalCount.toLocaleString()}개 질문
-          </div>
         </section>
 
         <MedicalDisclaimer lang="ko" variant="compact" />
@@ -82,13 +78,11 @@ export default async function FamilyHealthQnaHubPage() {
         <section className="mt-simple-list" aria-label="가족건강 Q&A 카테고리">
           {categories.map((category) => {
             const info = familyHealthCategories[category as FamilyHealthQnaCategory];
-            const count = categorySummaries.find((item) => item.key === category)?.count ?? 0;
             return (
               <Link key={category} href={`/family-health-qna/${category}`} className="mt-simple-list-item flex items-center justify-between gap-3">
                 <span className="min-w-0">
                   <strong className="block text-base font-extrabold text-slate-900">{info.label}</strong>
                   <span className="mt-1 line-clamp-2 block text-sm leading-6 text-slate-500">{info.description}</span>
-                  <span className="mt-2 inline-block text-xs font-bold text-amber-700">{count.toLocaleString()}개 질문</span>
                 </span>
                 <span className="shrink-0 text-amber-700">→</span>
               </Link>

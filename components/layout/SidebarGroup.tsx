@@ -28,21 +28,21 @@ export default function SidebarGroup({
     <details
       open={open}
       onToggle={(event) => setOpen(event.currentTarget.open)}
-      className="rounded-3xl border border-transparent transition-colors duration-200 hover:border-amber-100/70 hover:bg-white/40"
+      className="mt-sidebar-group rounded-3xl border border-transparent transition-colors duration-200 hover:border-amber-100/70 hover:bg-white/40"
     >
       <summary
         onClick={(event) => event.stopPropagation()}
-        className="flex cursor-pointer list-none items-center justify-between rounded-2xl px-2 py-2 text-left text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 transition-colors hover:bg-amber-50 hover:text-amber-700 [&::-webkit-details-marker]:hidden"
+        className="mt-sidebar-group-summary flex cursor-pointer list-none items-center justify-between rounded-2xl px-2 py-2 text-left text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 transition-colors hover:bg-amber-50 hover:text-amber-700 [&::-webkit-details-marker]:hidden"
       >
         <span className="truncate">{title}</span>
         <ChevronDown
           size={15}
           strokeWidth={2.3}
-          className={`shrink-0 transition-transform duration-200 ${open ? "rotate-180 text-amber-600" : "text-slate-400"}`}
+          className={`mt-sidebar-group-chevron shrink-0 transition-transform duration-200 ${open ? "rotate-180 text-amber-600" : "text-slate-400"}`}
         />
       </summary>
 
-      <div className="mt-2 space-y-2 pb-1">{children}</div>
+      <div className="mt-sidebar-group-items mt-2 space-y-2 pb-1">{children}</div>
     </details>
   );
 }

@@ -5,6 +5,7 @@ import { healthGuideItems, type HealthGuideItem } from "@/data/healthGuides";
 import { getHealthGuideFromDb, getHealthGuidesFromDb } from "@/lib/repositories/guides-db";
 import { getQnaEntriesForCategory } from "@/lib/repositories/qna-db";
 import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
+import FeedbackPrompt from "@/components/common/FeedbackPrompt";
 
 export const dynamicParams = true;
 export const revalidate = 3600;
@@ -126,6 +127,7 @@ export default async function HealthGuideDetailPage({ params }: { params: Promis
             ))}
           </div>
         </section>
+        <FeedbackPrompt />
       </div>
     </div>
   );

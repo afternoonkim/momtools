@@ -7,6 +7,7 @@ import { monthlyGuideItems } from "@/data/monthlyGuide";
 import { healthGuideItems } from "@/data/healthGuides";
 import { childcarePortalSections } from "@/data/childcarePortal";
 import { childcarePortalGuides } from "@/data/childcarePortalGuides";
+import { getMoonlightHospitalAreaPath, moonlightHospitalAreas, moonlightHospitals } from "@/data/moonlightHospitals";
 
 export type SearchEntryType =
   | "qna"
@@ -19,7 +20,8 @@ export type SearchEntryType =
   | "checklist"
   | "birth-support-region"
   | "monthly-guide"
-  | "health-guide";
+  | "health-guide"
+  | "moonlight-hospital";
 
 export interface SearchEntry {
   type: SearchEntryType;
@@ -130,6 +132,48 @@ const healthGuideEntries: SearchEntry[] = healthGuideItems.map((item) => ({
   description: item.summary,
   topic: item.title,
   keywords: [...item.keywords, "아기 증상", "아이 건강"],
+}));
+
+const moonlightHospitalAreaEntries: SearchEntry[] = moonlightHospitalAreas.map((area) => ({
+  type: "moonlight-hospital" as const,
+  categoryLabel: "지역별 달빛아동병원",
+  href: getMoonlightHospitalAreaPath(area),
+  title: `${area.label} 달빛아동병원`,
+  description: area.description,
+  topic: area.label,
+  keywords: [
+    ...area.keywords,
+    area.label,
+    area.region ?? "",
+    area.regionShort ?? "",
+    area.city ?? "",
+    "달빛아동병원",
+    "소아 야간진료",
+    "휴일 소아과",
+  ].filter(Boolean) as string[],
+}));
+
+const moonlightHospitalEntries: SearchEntry[] = moonlightHospitals.map((hospital) => ({
+  type: "moonlight-hospital" as const,
+  categoryLabel: "달빛아동병원",
+  href: `/moonlight-hospitals?region=${encodeURIComponent(hospital.region)}&q=${encodeURIComponent(hospital.name)}`,
+  title: hospital.name,
+  description: `${hospital.regionShort} ${hospital.city} · ${hospital.address} · ${hospital.phone}`,
+  topic: hospital.regionShort,
+  keywords: [
+    hospital.name,
+    hospital.region,
+    hospital.regionShort,
+    hospital.city,
+    hospital.address,
+    hospital.phone,
+    `${hospital.regionShort} 달빛아동병원`,
+    `${hospital.city} 달빛아동병원`,
+    "달빛아동병원",
+    "야간진료",
+    "휴일진료",
+    "소아과",
+  ].filter(Boolean) as string[],
 }));
 
 const childcarePortalEntries: SearchEntry[] = [
@@ -300,6 +344,8 @@ export const STATIC_SEARCH_INDEX: SearchEntry[] = [
   ...birthSupportRegionEntries,
   ...monthlyGuideEntries,
   ...healthGuideEntries,
+  ...moonlightHospitalAreaEntries,
+  ...moonlightHospitalEntries,
 ];
 
 

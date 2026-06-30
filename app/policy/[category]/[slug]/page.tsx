@@ -12,6 +12,7 @@ import {
   type GovernmentPolicyCategory,
 } from "@/data/governmentPolicy";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
+import FeedbackPrompt from "@/components/common/FeedbackPrompt";
 
 type Params = { category: string; slug: string };
 
@@ -287,6 +288,7 @@ export default async function PolicyDetailPage({ params }: { params: Promise<Par
             ))}
           </div>
         </section>
+        <FeedbackPrompt />
       </div>
     </div>
   );

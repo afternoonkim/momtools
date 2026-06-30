@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import UsDateInput from "@/components/common/UsDateInput";
 
 function parseLocalDate(dateString: string) {
   if (!dateString) return null;
@@ -226,13 +227,12 @@ export default function WeaningStartCalculatorClient() {
                 <label htmlFor="birthDate" className="block text-sm font-semibold text-slate-800">
                   아기 생년월일
                 </label>
-                <input
+                <UsDateInput
                   id="birthDate"
-                  type="date"
+                  label="아기 생년월일"
                   value={birthDate}
                   max={new Date().toISOString().split("T")[0]}
-                  onChange={(e) => setBirthDate(e.target.value)}
-                  className="mt-input"
+                  onChange={setBirthDate}
                 />
               </div>
 

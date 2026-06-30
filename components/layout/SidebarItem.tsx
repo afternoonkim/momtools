@@ -32,8 +32,9 @@ export default function SidebarItem({
         href={href}
         aria-label={label}
         title={label}
+        data-active={active ? "true" : "false"}
         className={[
-          "flex w-full items-center justify-center rounded-2xl px-2 py-2.5 transition-all duration-200",
+          "mt-sidebar-item flex w-full items-center justify-center rounded-2xl px-2 py-2.5 transition-all duration-200",
           active
             ? "bg-amber-100 text-amber-700 shadow-sm"
             : "text-slate-600 hover:bg-amber-50 hover:text-slate-800",
@@ -41,7 +42,7 @@ export default function SidebarItem({
       >
         <span
           className={[
-            "flex h-11 w-11 items-center justify-center rounded-2xl border transition-all",
+            "mt-sidebar-item-icon flex h-11 w-11 items-center justify-center rounded-2xl border transition-all",
             active
               ? "border-amber-200 bg-white shadow-sm"
               : "border-transparent bg-white/70",
@@ -56,14 +57,15 @@ export default function SidebarItem({
   return (
     <Link
       href={href}
+      data-active={active ? "true" : "false"}
       className={[
-        "flex w-full items-center gap-3 rounded-2xl px-3 py-3 transition-all duration-200",
+        "mt-sidebar-item flex w-full items-center gap-3 rounded-2xl px-3 py-3 transition-all duration-200",
         active
           ? "bg-amber-100 text-amber-700 shadow-sm"
           : "text-slate-600 hover:bg-amber-50 hover:text-slate-800",
       ].join(" ")}
     >
-      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-amber-100 bg-white">
+      <span className="mt-sidebar-item-icon flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-amber-100 bg-white">
         <Icon size={19} strokeWidth={2} />
       </span>
       <span className="min-w-0 text-sm font-medium leading-5">{label}</span>

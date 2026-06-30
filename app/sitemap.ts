@@ -8,6 +8,7 @@ import { familyFinanceArticles } from "@/data/familyFinance";
 import { childcarePortalGuides } from "@/data/childcarePortalGuides";
 import { getHealthGuideSitemapPathsFromDb, getMonthlyGuideSitemapPathsFromDb } from "@/lib/repositories/guides-db";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
+import { getMoonlightHospitalAreaPath, moonlightHospitalAreas } from "@/data/moonlightHospitals";
 
 type ChangeFrequency = "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
 type RouteConfig = { path: string; priority: number; changeFrequency: ChangeFrequency };
@@ -35,6 +36,7 @@ const staticRoutes: RouteConfig[] = [
   route("/family-health-qna/family", 0.84, "weekly"),
   route("/family-health-qna/medicine", 0.84, "weekly"),
   route("/family-health-qna/checkup", 0.84, "weekly"),
+  route("/moonlight-hospitals", 0.86, "weekly"),
   route("/monthly-guide", 0.86, "weekly"),
   route("/health", 0.86, "weekly"),
   route("/policy", 0.88, "daily"),
@@ -74,6 +76,9 @@ const dynamicKoreanQnaRoutes = (Object.keys(qnaCategories) as QnaCategory[]).fla
 );
 const dynamicKoreanPolicyRoutes = governmentPolicies.map((policy) => route(`/policy/${policy.category}/${policy.slug}`, 0.8, "daily"));
 const dynamicKoreanBabyFoodRoutes = koBabyFoodRecipes.map((recipe) => route(`/baby-food/recipes/${recipe.slug}`, 0.68, "weekly"));
+const dynamicMoonlightHospitalAreaRoutes = moonlightHospitalAreas.map((area) =>
+  route(getMoonlightHospitalAreaPath(area), area.kind === "region" ? 0.84 : 0.8, "weekly"),
+);
 // "[지역명] 출산지원금" 검색에 대응하기 위해 시·군·구별 지역 페이지를 sitemap에 노출합니다.
 const dynamicKoreanBirthSupportRoutes = birthSupportRegions.map((region) =>
   route(`/tools/birth-support-calculator/${region.regionCode}`, 0.85, "weekly"),
@@ -106,6 +111,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...dynamicKoreanFamilyHealthRoutes,
     ...dynamicKoreanPolicyRoutes,
     ...dynamicKoreanBabyFoodRoutes,
+    ...dynamicMoonlightHospitalAreaRoutes,
     ...dynamicKoreanBirthSupportRoutes,
     ...dynamicKoreanFamilyFinanceRoutes,
     ...dynamicChildcarePortalGuideRoutes,

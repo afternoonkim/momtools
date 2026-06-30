@@ -16,6 +16,7 @@ import {
   Landmark,
   NotebookPen,
   Stethoscope,
+  Moon,
 } from "lucide-react";
 import SidebarItem from "./SidebarItem";
 import SidebarGroup from "./SidebarGroup";
@@ -39,7 +40,7 @@ export default function Sidebar({
 
   const isCalculateOpen = hasPath("/tools") || hasPath("/cal");
   const isRecordOpen = hasPath("/checklists");
-  const isCheckOpen = hasPath("/qna") || hasPath("/health") || hasPath("/monthly-guide") || hasPath("/family-health-qna");
+  const isCheckOpen = hasPath("/qna") || hasPath("/health") || hasPath("/monthly-guide") || hasPath("/family-health-qna") || hasPath("/moonlight-hospitals");
   const isReferenceOpen = hasPath("/info") || hasPath("/policy") || hasPath("/baby-food") || hasPath("/family-health-qna");
 
   return (
@@ -49,17 +50,17 @@ export default function Sidebar({
       )}
 
       <aside
-        className={`fixed bottom-0 left-0 top-0 z-50 flex flex-col border-r border-amber-100 bg-[linear-gradient(180deg,#fffaf2_0%,#ffffff_100%)] text-slate-700 transition-all duration-300 ${
+        className={`mt-sidebar fixed bottom-0 left-0 top-0 z-50 flex flex-col border-r border-amber-100 bg-[linear-gradient(180deg,#fffaf2_0%,#ffffff_100%)] text-slate-700 transition-all duration-300 ${
           collapsed ? "w-20" : "w-72"
         } ${mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}
       >
-        <div className="flex items-center justify-between border-b border-amber-100 p-4">
+        <div className="mt-sidebar-header flex items-center justify-between border-b border-amber-100 p-4">
           <Link href="/" onClick={closeMobileSidebar} className={`${collapsed ? "mx-auto" : ""} flex items-center gap-3`}>
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-amber-100 text-xl shadow-sm">👶</div>
+            {/* <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-amber-100 text-xl shadow-sm">👶</div> */}
             {!collapsed ? (
               <div>
                 <div className="text-lg font-extrabold text-slate-900">MomTools</div>
-                <div className="text-xs text-slate-500">계산 · 기록 · 확인 · 참고</div>
+                {/* <div className="text-xs text-slate-500">계산 · 기록 · 확인 · 참고</div> */}
               </div>
             ) : null}
           </Link>
@@ -72,12 +73,12 @@ export default function Sidebar({
         </div>
 
         {!collapsed ? (
-          <div className="border-b border-amber-100 px-4 py-3">
-            <SearchBox size="sm" placeholder="아기 열, 개월수, 예방접종" />
+          <div className="mt-sidebar-search-wrap border-b border-amber-100 px-4 py-3">
+            <SearchBox size="sm" placeholder="아기 열, 개월수, 예방접종" className="mt-sidebar-searchbox" />
           </div>
         ) : null}
 
-        <div className="flex-1 space-y-5 overflow-y-auto p-4">
+        <div className="mt-sidebar-body flex-1 space-y-5 overflow-y-auto p-4">
           <div onClick={closeMobileSidebar}>
             <SidebarItem href="/" label="홈" icon={Home} collapsed={collapsed} />
           </div>
@@ -108,6 +109,7 @@ export default function Sidebar({
               <SidebarItem href="/qna/growth" label="성장·발달" icon={Baby} collapsed={collapsed} />
               <SidebarItem href="/qna/behavior" label="행동·수면" icon={Sparkles} collapsed={collapsed} />
               <SidebarItem href="/health" label="증상별 가이드" icon={HeartPulse} collapsed={collapsed} />
+              <SidebarItem href="/moonlight-hospitals" label="달빛아동병원" icon={Moon} collapsed={collapsed} />
               <SidebarItem href="/monthly-guide" label="월령별 가이드" icon={CalendarHeart} collapsed={collapsed} />
               <SidebarItem href="/family-health-qna/family" label="가족 건강 확인" icon={HeartPulse} collapsed={collapsed} />
             </SidebarGroup>
@@ -128,11 +130,11 @@ export default function Sidebar({
 
         </div>
 
-        <div className="border-t border-amber-100 p-4 text-xs text-slate-500">
+        <div className="mt-sidebar-footer border-t border-amber-100 p-4 text-xs text-slate-500">
           {!collapsed ? (
             <div className="space-y-1">
               <div className="font-semibold text-slate-700">MomTools</div>
-              <div>모바일에서 빠르게 확인하는 육아 도구</div>
+              {/* <div>모바일에서 빠르게 확인하는 육아 도구</div> */}
               <div>v1.4.0</div>
             </div>
           ) : (

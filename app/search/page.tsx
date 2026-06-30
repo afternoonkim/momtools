@@ -36,7 +36,7 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
   };
 }
 
-const seeds = ["아기 열", "아기 개월수", "이유식 시작", "예방접종", "수면", "신생아 준비물", "출산지원금", "입소대기"];
+const seeds = ["아기 열", "아기 개월수", "이유식 시작", "예방접종", "수면", "신생아 준비물", "출산지원금", "달빛아동병원", "입소대기"];
 
 function SearchResultRow({ entry }: { entry: Awaited<ReturnType<typeof searchSite>>[number] }) {
   return (
@@ -56,7 +56,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
   const query = (q ?? "").trim();
   const results = query ? await searchSite(query, 80) : [];
   const groups = groupResultsByType(results);
-  const directResults = results.filter((entry) => entry.type === "tool" || entry.type === "qna" || entry.type === "health-guide").slice(0, 4);
+  const directResults = results.filter((entry) => entry.type === "tool" || entry.type === "qna" || entry.type === "health-guide" || entry.type === "moonlight-hospital").slice(0, 4);
 
   return (
     <div className="mt-page">

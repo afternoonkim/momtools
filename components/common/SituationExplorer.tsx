@@ -18,24 +18,38 @@ export default function SituationExplorer({
   items,
 }: SituationExplorerProps) {
   return (
-    <section className="mt-card-soft p-4 md:p-6">
-      <div className="text-xs font-bold uppercase tracking-[0.16em] text-amber-600">상황별 탐색</div>
-      <h2 className="mt-2 text-xl font-extrabold text-slate-900 md:text-2xl">{title}</h2>
-      <p className="mt-2 text-sm leading-7 text-slate-600">{description}</p>
-      <div className="mt-4 grid gap-2 sm:grid-cols-2">
-        {items.map((item) => (
+    <section className="mt-app-stack" aria-label="상황별 탐색">
+      <div className="mt-app-stack-section">
+        <div className="text-[11px] font-bold tracking-[0.14em] text-amber-600">상황별 탐색</div>
+        <h2 className="mt-app-section-title mt-1.5">{title}</h2>
+        <p className="mt-app-section-desc">{description}</p>
+      </div>
+      <div className="divide-y divide-slate-100">
+        {items.map((item) => {
+          const targetHref = item.href.includes("#")
+            ? item.href
+            : item.href.includes("?")
+            ? `${item.href}#qna-search-panel`
+            : item.href;
+
+          return (
           <Link
             key={`${item.href}-${item.label}`}
-            href={item.href}
-            className="flex min-h-12 items-center justify-between gap-3 rounded-2xl border border-amber-100 bg-white px-4 py-3 text-sm font-bold text-slate-800 transition hover:bg-amber-50/70"
+            href={targetHref}
+            className="flex min-h-14 items-center justify-between gap-3 px-4 py-3 transition hover:bg-amber-50/60 active:bg-amber-50"
           >
-            <span>
-              {item.label}
-              {item.description ? <span className="mt-0.5 block text-xs font-medium leading-5 text-slate-500">{item.description}</span> : null}
+            <span className="min-w-0">
+              <span className="block text-[13px] font-extrabold leading-5 text-slate-900">{item.label}</span>
+              {item.description ? (
+                <span className="mt-0.5 line-clamp-1 block text-[12.5px] leading-5 text-slate-500">
+                  {item.description}
+                </span>
+              ) : null}
             </span>
-            <span className="text-amber-700">→</span>
+            <span className="shrink-0 text-sm font-bold text-amber-700">→</span>
           </Link>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

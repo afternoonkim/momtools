@@ -3,6 +3,7 @@ import { getRecipeCategories, getRecipesByStage, stageGuides, stageLabels, type 
 import RecipeExplorerClient from "@/components/baby-food/RecipeExplorerClient";
 import { notFound } from "next/navigation";
 import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
+import FeedbackPrompt from "@/components/common/FeedbackPrompt";
 
 const stages: BabyFoodStage[] = ["early", "middle", "late"];
 
@@ -53,6 +54,7 @@ export default async function BabyFoodStagePage({ params }: { params: Promise<{ 
 
         <MedicalDisclaimer lang="ko" variant="compact" />
         <RecipeExplorerClient recipes={recipes} categories={categories} stage={typedStage} />
+        <FeedbackPrompt />
       </div>
     </div>
   );

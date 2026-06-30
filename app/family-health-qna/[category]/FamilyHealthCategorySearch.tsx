@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { Search, X } from "lucide-react";
 
 type FamilyHealthSearchEntry = {
@@ -17,6 +18,25 @@ type FamilyHealthCategorySearchProps = {
   entries: readonly FamilyHealthSearchEntry[];
 };
 
+const topicKeywordMap: Record<string, string> = {
+  fatigue: "피로",
+  pain: "통증",
+  mood: "기분",
+  stress: "스트레스",
+  "blood-pressure": "혈압",
+  recovery: "회복",
+  bleeding: "출혈",
+  cold: "기침",
+  stomach: "구토 설사",
+  skin: "피부",
+  "fever-medicine": "해열제",
+  "cold-medicine": "감기약",
+  supplement: "영양제",
+  blood: "혈압 혈당",
+  liver: "간 수치",
+  visit: "진료 준비",
+};
+
 function normalizeText(value: string) {
   return value.toLowerCase().replace(/\s+/g, "").trim();
 }
@@ -26,8 +46,19 @@ function buildSearchText(item: FamilyHealthSearchEntry) {
 }
 
 export default function FamilyHealthCategorySearch({ category, entries }: FamilyHealthCategorySearchProps) {
+  const searchParams = useSearchParams();
   const [query, setQuery] = useState("");
   const [selectedTopic, setSelectedTopic] = useState("전체");
+
+  useEffect(() => {
+    const queryParam = searchParams.get("q")?.trim();
+    const topicParam = searchParams.get("topic")?.trim();
+    const nextQuery = queryParam || (topicParam ? topicKeywordMap[topicParam] ?? topicParam : "");
+    if (nextQuery) {
+      setQuery(nextQuery);
+      setSelectedTopic("전체");
+    }
+  }, [searchParams]);
 
   const topicOptions = useMemo(() => {
     const counts = new Map<string, number>();
@@ -35,7 +66,19 @@ export default function FamilyHealthCategorySearch({ category, entries }: Family
 
     return [...counts.entries()]
       .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "ko"))
+      .slice(0, 12)
       .map(([topic]) => topic);
+  }, [entries]);
+
+  const suggestedTerms = useMemo(() => {
+    const terms = new Set<string>();
+    entries.slice(0, 24).forEach((item) => {
+      terms.add(item.topic);
+      item.keywords.slice(0, 2).forEach((keyword) => {
+        if (keyword.length >= 2 && keyword.length <= 10) terms.add(keyword);
+      });
+    });
+    return [...terms].slice(0, 8);
   }, [entries]);
 
   const normalizedQuery = normalizeText(query);
@@ -51,35 +94,24 @@ export default function FamilyHealthCategorySearch({ category, entries }: Family
   const hasFilter = Boolean(query.trim()) || selectedTopic !== "전체";
 
   return (
-    <section className="mt-card p-6 md:p-8">
-      <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-        <div>
-          <h2 className="mt-title-md">궁금한 건강 질문 찾기</h2>
-          <p className="mt-2 text-sm leading-7 text-slate-600">
-            지금 불편한 증상이나 상황을 짧게 입력해 보세요. “두통”, “피로”, “혈압”, “영양제”처럼 한 단어만 입력해도 관련 질문을 찾을 수 있어요.
-          </p>
-        </div>
-        <div className="rounded-full bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-800">
-          {filteredEntries.length}개 질문 표시
-        </div>
+    <section id="qna-search-panel" className="mt-app-stack scroll-mt-24" aria-label="궁금한 건강 질문 찾기">
+      <div className="mt-app-stack-section">
+        <h2 className="mt-app-section-title">궁금한 건강 질문 찾기</h2>
+        <p className="mt-app-section-desc">증상, 부위, 약, 검진 수치처럼 짧은 단어로 찾아보세요.</p>
       </div>
 
-      <div className="mt-5 rounded-[28px] border border-amber-100 bg-amber-50/60 p-4 md:p-5">
-        <label htmlFor="family-health-search" className="text-sm font-bold text-slate-800">
-          찾고 싶은 질문 입력
-        </label>
-        <div className="mt-3 flex flex-col gap-3 md:flex-row md:items-stretch">
-          <div className="flex flex-1 items-center gap-3 rounded-2xl border border-amber-100 bg-white px-4 py-3 transition focus-within:border-amber-300 focus-within:ring-4 focus-within:ring-amber-100">
-            <Search className="h-5 w-5 shrink-0 text-amber-600" aria-hidden="true" />
-            <input
-              id="family-health-search"
-              type="search"
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="예: 피로, 손목 통증, 감기약, 혈압, 검진 결과"
-              className="min-w-0 flex-1 bg-transparent py-1 text-sm text-slate-800 outline-none placeholder:text-slate-400"
-            />
-          </div>
+      <div className="mt-app-stack-section bg-amber-50/40">
+        <label htmlFor="family-health-search" className="sr-only">찾고 싶은 질문 입력</label>
+        <div className="flex items-center gap-2 rounded-2xl border border-amber-100 bg-white px-3 py-2.5 transition focus-within:border-amber-300 focus-within:ring-4 focus-within:ring-amber-100">
+          <Search className="h-4 w-4 shrink-0 text-amber-600" aria-hidden="true" />
+          <input
+            id="family-health-search"
+            type="search"
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="예: 피로, 감기약, 혈압"
+            className="min-w-0 flex-1 bg-transparent py-1 text-[13px] text-slate-800 outline-none placeholder:text-slate-400"
+          />
           {hasFilter ? (
             <button
               type="button"
@@ -87,15 +119,15 @@ export default function FamilyHealthCategorySearch({ category, entries }: Family
                 setQuery("");
                 setSelectedTopic("전체");
               }}
-              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-5 py-4 text-sm font-bold text-amber-800 shadow-sm transition hover:bg-amber-100"
+              className="rounded-full bg-amber-50 p-2 text-amber-800"
+              aria-label="검색 조건 지우기"
             >
               <X className="h-4 w-4" aria-hidden="true" />
-              전체 질문 보기
             </button>
           ) : null}
         </div>
 
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
           {["전체", ...topicOptions].map((topic) => {
             const isActive = selectedTopic === topic;
             return (
@@ -103,16 +135,12 @@ export default function FamilyHealthCategorySearch({ category, entries }: Family
                 key={topic}
                 type="button"
                 aria-pressed={isActive}
-                onClick={() => setSelectedTopic(topic)}
-                style={
-                  isActive
-                    ? { backgroundColor: "#fef3c7", borderColor: "#f59e0b", color: "#78350f" }
-                    : undefined
-                }
-                className={`rounded-full border px-4 py-2 text-sm font-semibold transition ${
-                  isActive
-                    ? "border-amber-400 bg-amber-100 text-amber-900 shadow-sm ring-2 ring-amber-200"
-                    : "border-amber-100 bg-white text-slate-600 hover:bg-amber-100 hover:text-amber-800"
+                onClick={() => {
+                  setSelectedTopic(topic);
+                  setQuery("");
+                }}
+                className={`shrink-0 rounded-full border px-3 py-1.5 text-[12px] font-bold transition ${
+                  isActive ? "border-amber-400 bg-amber-100 text-amber-900" : "border-amber-100 bg-white text-slate-600"
                 }`}
               >
                 {topic}
@@ -120,38 +148,41 @@ export default function FamilyHealthCategorySearch({ category, entries }: Family
             );
           })}
         </div>
+
+        {/* {!hasFilter ? (
+          <div className="mt-3 flex flex-wrap gap-1.5">
+            {suggestedTerms.map((term) => (
+              <button key={term} type="button" onClick={() => setQuery(term)} className="rounded-full bg-white px-2.5 py-1 text-[11px] font-bold text-slate-500 ring-1 ring-amber-100">
+                {term}
+              </button>
+            ))}
+          </div>
+        ) : null} */}
       </div>
 
       {filteredEntries.length > 0 ? (
-        <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="divide-y divide-slate-100">
           {filteredEntries.map((item) => (
-            <Link
-              key={item.slug}
-              href={`/family-health-qna/${category}/${item.slug}`}
-              className="rounded-[28px] border border-amber-100 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-amber-200"
-            >
-              <div className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-600">{item.topic}</div>
-              <h3 className="mt-3 text-lg font-bold text-slate-800">{item.question}</h3>
-              <p className="mt-3 line-clamp-4 text-sm leading-7 text-slate-500">{item.summary}</p>
-              <div className="mt-4 text-sm font-semibold text-amber-700">답변 확인하기</div>
+            <Link key={item.slug} href={`/family-health-qna/${category}/${item.slug}`} className="block px-4 py-3.5 transition hover:bg-amber-50/60 active:bg-amber-50">
+              <div className="text-[11px] font-bold text-amber-600">{item.topic}</div>
+              <h3 className="mt-1 text-[13px] font-extrabold leading-5 text-slate-900">{item.question}</h3>
+              <p className="mt-1 line-clamp-2 text-[12.5px] leading-5 text-slate-500">{item.summary}</p>
             </Link>
           ))}
         </div>
       ) : (
-        <div className="mt-6 rounded-[28px] border border-amber-100 bg-white p-6 text-center shadow-sm">
-          <h3 className="text-lg font-bold text-slate-800">아직 맞는 질문을 찾지 못했어요</h3>
-          <p className="mt-3 text-sm leading-7 text-slate-600">
-            단어를 더 짧게 입력하거나 증상, 부위, 복용 중인 약처럼 다른 표현으로 다시 찾아보세요. 그래도 걱정이 계속된다면 증상과 시간을 메모한 뒤 상담을 고려하는 것이 좋습니다.
-          </p>
+        <div className="mt-app-stack-section text-center">
+          <h3 className="text-[14px] font-extrabold text-slate-900">맞는 질문을 찾지 못했어요</h3>
+          <p className="mt-1 text-[13px] leading-6 text-slate-600">증상, 부위, 약 이름처럼 다른 단어로 다시 찾아보세요.</p>
           <button
             type="button"
             onClick={() => {
               setQuery("");
               setSelectedTopic("전체");
             }}
-            className="mt-5 rounded-2xl bg-amber-600 px-5 py-3 text-sm font-bold text-white shadow-sm transition hover:bg-amber-700"
+            className="mt-3 rounded-2xl bg-amber-600 px-4 py-2.5 text-[13px] font-bold text-white"
           >
-            전체 질문 다시 보기
+            전체 질문 보기
           </button>
         </div>
       )}

@@ -12,7 +12,7 @@ export default function Topbar() {
           </div>
           <div className="min-w-0">
             <div className="text-sm font-extrabold text-slate-900">MomTools</div>
-            <div className="truncate text-[11px] text-slate-500">아이 케어를 더 쉽게</div>
+            <div className="truncate text-[11px] text-slate-500">아이를 키우는 모든 순간을 더 쉽게</div>
           </div>
         </Link>
         <Link
