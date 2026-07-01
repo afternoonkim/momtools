@@ -5,6 +5,8 @@ import Sidebar from "@/components/layout/Sidebar";
 import Topbar from "@/components/layout/Topbar";
 import BottomTabNav from "@/components/layout/BottomTabNav";
 import SiteFooter from "@/components/layout/SiteFooter";
+import ScrollToTopButton from "@/components/common/ScrollToTopButton";
+import RecentPageTracker from "@/components/common/RecentPageTracker";
 import GlobalAdFitAd from "@/components/ads/GlobalAdFitAd";
 import GlobalCoupangProductAd from "@/components/ads/GlobalCoupangProductAd";
 import GlobalCoupangPartnersAd from "@/components/ads/GlobalCoupangPartnersAd";
@@ -19,6 +21,7 @@ export default function ClientLayout({
 
   return (
     <div className="min-h-screen bg-transparent text-slate-700">
+      <RecentPageTracker />
       <Sidebar
         collapsed={collapsed}
         setCollapsed={setCollapsed}
@@ -39,6 +42,7 @@ export default function ClientLayout({
         <GlobalAdFitAd position="bottom" />
         <SiteFooter />
         <div className="h-[calc(4.75rem+env(safe-area-inset-bottom))] lg:hidden" />
+        <ScrollToTopButton />
         <BottomTabNav onMenuClick={() => setMobileMenuOpen(true)} />
       </div>
     </div>

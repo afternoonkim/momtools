@@ -26,8 +26,8 @@ const sections = [
     body: "Cookies or similar technologies may be used for basic settings, site performance, analytics, and simple traffic understanding. You can manage cookies in your browser settings, although some parts of the site may work less smoothly if cookies are blocked.",
   },
   {
-    title: "Advertising and Google AdSense",
-    body: "MomTools English may show ads served by Google AdSense and other third-party advertising partners. These partners may set or read cookies and use device identifiers (such as advertising IDs) to display ads that are more relevant to you. Google's processing of advertising data is governed by the Google Privacy Policy and the page \"How Google uses information from sites or apps that use our services.\" If you'd rather not see personalized ads, choose \"Reject personalized ads\" in the cookie banner, or visit adssettings.google.com, optout.aboutads.info, or youronlinechoices.eu to opt out of personalized advertising. EU/EEA, UK, and Swiss visitors may see a separate consent prompt before any non-essential cookies load. California residents have the right to opt out of the sale or sharing of personal information under CCPA.",
+    title: "Advertising and affiliate links",
+    body: "MomTools English may show Kakao AdFit ads and Coupang Partners affiliate links. These ads and links help support the site and may send you to an external advertising or shopping service. Once you leave MomTools, the external service's own privacy policy, pricing, delivery, return, and purchase terms apply. If a purchase is made through a Coupang Partners link, MomTools may receive a commission.",
   },
   {
     title: "Third-party services and links",

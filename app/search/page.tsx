@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Search } from "lucide-react";
 import { buildCanonical } from "@/lib/content-meta";
 import { searchSite, groupResultsByType, TYPE_LABELS } from "@/lib/search/search";
+import SearchBox from "@/components/layout/SearchBox";
+import RecentViewedPages from "@/components/common/RecentViewedPages";
 
 interface PageProps {
   searchParams: Promise<{ q?: string }>;
@@ -72,24 +73,14 @@ export default async function SearchPage({ searchParams }: PageProps) {
               : "아기 열, 개월수, 이유식, 예방접종처럼 지금 필요한 단어만 입력해도 됩니다."}
           </p>
 
-          <form action="/search" method="get" role="search" className="mt-5 flex flex-col gap-2 sm:flex-row sm:items-center">
-            <label htmlFor="q" className="sr-only">검색어</label>
-            <div className="flex min-h-12 flex-1 items-center rounded-2xl border border-amber-200 bg-white px-4 py-3 shadow-sm focus-within:border-amber-400">
-              <Search size={18} className="shrink-0 text-amber-600" aria-hidden />
-              <input
-                id="q"
-                name="q"
-                type="search"
-                defaultValue={query}
-                placeholder="예) 아기 열, 이유식 시작"
-                className="ml-3 w-full bg-transparent text-base text-slate-800 outline-none placeholder:text-slate-400"
-                autoComplete="off"
-              />
-            </div>
-            <button type="submit" className="min-h-12 rounded-2xl bg-amber-500 px-6 py-3 text-sm font-bold text-white transition hover:bg-amber-600">
-              검색
-            </button>
-          </form>
+          <div className="mt-5">
+            <SearchBox
+              initialQuery={query}
+              placeholder="예) 아기 열, 이유식 시작"
+              showSubmitButton
+              className="min-h-12 px-4 py-3"
+            />
+          </div>
         </section>
 
         {query ? (
@@ -137,14 +128,17 @@ export default async function SearchPage({ searchParams }: PageProps) {
             </div>
           )
         ) : (
-          <section className="mt-card-soft p-4 md:p-6">
-            <h2 className="mt-title-md">자주 찾는 키워드</h2>
-            <div className="mt-4 flex flex-wrap gap-2">
-              {seeds.map((seed) => (
-                <Link key={seed} href={`/search?q=${encodeURIComponent(seed)}`} className="mt-chip-link">{seed}</Link>
-              ))}
-            </div>
-          </section>
+          <div className="space-y-5 md:space-y-6">
+            <RecentViewedPages title="최근 확인한 페이지" />
+            <section className="mt-card-soft p-4 md:p-6">
+              <h2 className="mt-title-md">자주 찾는 키워드</h2>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {seeds.map((seed) => (
+                  <Link key={seed} href={`/search?q=${encodeURIComponent(seed)}`} className="mt-chip-link">{seed}</Link>
+                ))}
+              </div>
+            </section>
+          </div>
         )}
       </div>
     </div>

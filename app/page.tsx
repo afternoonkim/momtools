@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Search } from "lucide-react";
 import SearchBox from "@/components/layout/SearchBox";
+import RecentViewedPages from "@/components/common/RecentViewedPages";
 
 export const metadata: Metadata = {
   title: "아이를 키우는 모든 순간을 더 쉽게 | MomTools",
@@ -67,6 +68,8 @@ export default function HomePage() {
           </div>
         </section>
 
+
+        <RecentViewedPages />
 
         <section className="mt-card-soft p-4 md:p-6">
           <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-amber-600">

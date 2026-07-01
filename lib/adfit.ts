@@ -28,6 +28,7 @@ const GLOBAL_ADFIT_EXCLUDED_PATH_PREFIXES = [
 ] as const;
 
 const GLOBAL_ADFIT_EXCLUDED_PATHS = new Set<string>([
+  "/",
   "/privacy",
   "/terms",
   "/contact",

@@ -25,6 +25,7 @@ export default function FeedbackForm({
   const [pageTitle, setPageTitle] = useState("");
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
   const [notice, setNotice] = useState("");
+  const [fallbackEmail, setFallbackEmail] = useState("");
   const startedAt = useMemo(() => Date.now(), []);
 
   useEffect(() => {
@@ -46,6 +47,7 @@ export default function FeedbackForm({
 
     setStatus("sending");
     setNotice("");
+    setFallbackEmail("");
 
     try {
       const response = await fetch("/api/feedback", {
@@ -53,14 +55,16 @@ export default function FeedbackForm({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ type, message, email, pageUrl, pageTitle, website, startedAt }),
       });
-      const result = (await response.json().catch(() => ({}))) as { ok?: boolean; message?: string };
+      const result = (await response.json().catch(() => ({}))) as { ok?: boolean; message?: string; fallbackEmail?: string };
       if (!response.ok || !result.ok) {
-        throw new Error(result.message || "의견 전송에 실패했습니다.");
+        if (result.fallbackEmail) setFallbackEmail(result.fallbackEmail);
+        throw new Error(result.message || "지금은 의견 보내기가 원활하지 않아요.");
       }
       setStatus("sent");
       setNotice("의견을 보냈어요. 남겨주신 내용은 사이트 개선에 반영해볼게요.");
       setMessage("");
       setEmail("");
+      setFallbackEmail("");
     } catch (error) {
       setStatus("error");
       setNotice(error instanceof Error ? error.message : "의견 전송 중 오류가 발생했습니다.");
@@ -125,6 +129,14 @@ export default function FeedbackForm({
         {notice ? (
           <div className={status === "sent" ? "rounded-2xl bg-emerald-50 px-4 py-3 text-[13px] font-bold text-emerald-800" : "rounded-2xl bg-rose-50 px-4 py-3 text-[13px] font-bold text-rose-800"}>
             {notice}
+            {fallbackEmail ? (
+              <a
+                href={`mailto:${fallbackEmail}?subject=${encodeURIComponent(`[MomTools 의견] ${type}`)}&body=${encodeURIComponent(`${message}\n\n페이지: ${pageUrl || "미확인"}`)}`}
+                className="mt-2 inline-flex rounded-full bg-white px-3 py-2 text-[12px] font-extrabold text-rose-700 ring-1 ring-rose-100"
+              >
+                메일로 직접 보내기
+              </a>
+            ) : null}
           </div>
         ) : null}
 

@@ -41,6 +41,7 @@ const GLOBAL_COUPANG_EXCLUDED_PATH_PREFIXES = [
 ] as const;
 
 const GLOBAL_COUPANG_EXCLUDED_PATHS = new Set<string>([
+  "/",
   "/about",
   "/contact",
   "/faq",
@@ -83,6 +84,7 @@ const PRODUCT_AD_EXCLUDED_PATH_PREFIXES = [
 ] as const;
 
 const PRODUCT_AD_EXCLUDED_PATHS = new Set<string>([
+  "/",
   "/about",
   "/contact",
   "/faq",

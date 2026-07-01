@@ -2,8 +2,6 @@ import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import ClientLayout from "@/components/layout/ClientLayout";
-import AdSenseScript from "@/components/ad/AdSenseScript";
-import CookieConsent from "@/components/common/CookieConsent";
 import HydrationCleanupScript from "@/components/common/HydrationCleanupScript";
 import TimeBasedThemeScript from "@/components/common/TimeBasedThemeScript";
 
@@ -57,8 +55,6 @@ export default function RootLayout({
         <TimeBasedThemeScript />
         <HydrationCleanupScript />
         <ClientLayout>{children}</ClientLayout>
-        <CookieConsent />
-        <AdSenseScript />
         <Analytics />
       </body>
     </html>

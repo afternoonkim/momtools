@@ -21,10 +21,19 @@ const FEEDBACK_TYPES = new Set([
 ]);
 
 const DEFAULT_TO_EMAIL = "afternoonkim93@gmail.com";
-const DEFAULT_FROM_EMAIL = "MomTools <onboarding@resend.dev>";
+const DEFAULT_FROM_EMAIL = "MomTools <noreply@momtools.kr>";
 
 function asText(value: unknown, max = 1000) {
   return typeof value === "string" ? value.trim().slice(0, max) : "";
+}
+
+function envText(...keys: string[]) {
+  for (const key of keys) {
+    const value = process.env[key]?.trim();
+    if (!value) continue;
+    return value.replace(/^['\"]|['\"]$/g, "");
+  }
+  return "";
 }
 
 function isValidEmail(value: string) {
@@ -109,13 +118,13 @@ async function sendWithResend({
   userAgent: string;
   ip: string;
 }) {
-  const apiKey = process.env.RESEND_API_KEY;
+  const apiKey = envText("RESEND_API_KEY");
   if (!apiKey) {
-    return { ok: false, status: 503, error: "RESEND_API_KEY가 설정되어 있지 않습니다." };
+    return { ok: false, status: 503, error: "missing_resend_api_key" };
   }
 
-  const to = process.env.FEEDBACK_TO_EMAIL || DEFAULT_TO_EMAIL;
-  const from = process.env.FEEDBACK_FROM_EMAIL || DEFAULT_FROM_EMAIL;
+  const to = envText("FEEDBACK_TO_EMAIL") || DEFAULT_TO_EMAIL;
+  const from = envText("FEEDBACK_FROM_EMAIL", "RESEND_FROM_EMAIL") || DEFAULT_FROM_EMAIL;
   const subject = `[MomTools 의견] ${type}${pageTitle ? ` · ${pageTitle}` : ""}`.slice(0, 160);
 
   const response = await fetch("https://api.resend.com/emails", {
@@ -145,7 +154,7 @@ async function sendWithResend({
 
   if (!response.ok) {
     const errorText = await response.text().catch(() => "");
-    return { ok: false, status: response.status, error: errorText || "메일 전송에 실패했습니다." };
+    return { ok: false, status: response.status, error: errorText || "resend_send_failed" };
   }
 
   return { ok: true, status: 200, error: "" };
@@ -156,7 +165,7 @@ export async function POST(request: NextRequest) {
   try {
     payload = (await request.json()) as FeedbackPayload;
   } catch {
-    return NextResponse.json({ ok: false, message: "요청 형식을 확인해 주세요." }, { status: 400 });
+    return NextResponse.json({ ok: false, message: "의견 내용을 다시 확인해 주세요." }, { status: 400 });
   }
 
   const honeypot = asText(payload.website, 200);
@@ -188,9 +197,19 @@ export async function POST(request: NextRequest) {
   try {
     const result = await sendWithResend({ type, message, email, pageUrl, pageTitle, userAgent, ip });
     if (!result.ok) {
-      console.error("Feedback email failed", result.error);
+      console.error("Feedback email failed", {
+        status: result.status,
+        error: result.error,
+        hasApiKey: Boolean(envText("RESEND_API_KEY")),
+        from: envText("FEEDBACK_FROM_EMAIL", "RESEND_FROM_EMAIL") || DEFAULT_FROM_EMAIL,
+        to: envText("FEEDBACK_TO_EMAIL") || DEFAULT_TO_EMAIL,
+      });
       return NextResponse.json(
-        { ok: false, message: "현재 의견 전송 설정을 확인해야 합니다. 잠시 후 다시 시도해 주세요." },
+        {
+          ok: false,
+          message: "지금은 의견 보내기가 원활하지 않아요. 아래 메일로 직접 보내주셔도 됩니다.",
+          fallbackEmail: DEFAULT_TO_EMAIL,
+        },
         { status: result.status || 500 },
       );
     }
@@ -198,7 +217,11 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("Feedback email error", error);
     return NextResponse.json(
-      { ok: false, message: "의견 전송 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요." },
+      {
+        ok: false,
+        message: "지금은 의견 보내기가 원활하지 않아요. 아래 메일로 직접 보내주셔도 됩니다.",
+        fallbackEmail: DEFAULT_TO_EMAIL,
+      },
       { status: 500 },
     );
   }

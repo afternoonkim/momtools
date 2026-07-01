@@ -132,7 +132,7 @@ export default function MoonlightHospitalFinder() {
       </div>
 
 
-      <section className="mt-app-stack" aria-label="지역별 달빛아동병원 검색 페이지">
+      {/* <section className="mt-app-stack" aria-label="지역별 달빛아동병원 검색 페이지">
         <div className="mt-app-stack-section">
           <h2 className="mt-app-section-title">지역별 달빛아동병원 바로가기</h2>
           <p className="mt-app-section-desc">네이버에서 자주 찾는 지역명 기준으로 바로 확인할 수 있게 정리했어요.</p>
@@ -164,7 +164,7 @@ export default function MoonlightHospitalFinder() {
             </div>
           </details>
         </div>
-      </section>
+      </section> */}
 
       <div className="mt-app-stack" aria-live="polite">
         <div className="mt-app-stack-section">
