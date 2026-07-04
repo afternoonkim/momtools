@@ -16,8 +16,11 @@ type CoupangProductAdItem = {
   title: string;
   description: string | null;
   partnerUrl: string;
+  imageUrl?: string | null;
+  price?: number | null;
   buttonText: string;
   priority: number;
+  source?: "api" | "manual";
 };
 
 type CoupangProductAdsResponse = {
@@ -144,33 +147,39 @@ function ensureProductPlacementContainer(pathname: string) {
 }
 
 function ProductAdCard({ item }: { item: CoupangProductAdItem }) {
+  const title = item.title.trim() || `${item.categoryName} 확인하기`;
+  const description =
+    item.description?.trim() ||
+    "지금 보고 있는 내용과 함께 확인해볼 수 있는 육아 준비물이에요.";
+  const buttonText = "보기";
+
   return (
     <a
       href={item.partnerUrl}
       target="_blank"
       rel="sponsored nofollow noopener noreferrer"
-      className="group flex min-h-[92px] items-center justify-between gap-3 rounded-2xl border border-amber-100 bg-white px-4 py-3 shadow-sm transition hover:-translate-y-0.5 hover:border-amber-200 hover:shadow-md"
-      aria-label={`${item.categoryName} 쿠팡 파트너스 링크 열기`}
+      className="group flex min-h-[112px] items-center gap-3 rounded-2xl border border-slate-200 bg-white/80 p-4 transition hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-sm"
+      aria-label={`${item.categoryName} 관련 쿠팡 파트너스 링크 열기`}
     >
-      <span className="min-w-0 flex-1">
-        <span className="inline-flex rounded-full bg-amber-50 px-2.5 py-1 text-[11px] font-bold text-amber-700">
+      <span className="flex min-w-0 flex-1 flex-col">
+        <span className="inline-flex w-fit rounded-full border border-amber-200 bg-amber-50 px-2.5 py-1 text-[11px] font-bold text-amber-700">
           {item.categoryName}
         </span>
-        <span className="mt-2 block text-sm font-extrabold leading-6 text-slate-900 md:text-base">
-          {item.title}
+        <span className="mt-2 text-sm font-extrabold leading-5 text-slate-900 md:text-[15px] md:leading-6">
+          {title}
         </span>
-        {item.description ? (
-          <span className="mt-1 block text-xs leading-5 text-slate-500 md:text-sm md:leading-6">
-            {item.description}
-          </span>
-        ) : null}
+        <span className="mt-1 line-clamp-2 text-xs leading-5 text-slate-500 md:text-sm md:leading-6">
+          {description}
+        </span>
       </span>
-      <span className="shrink-0 rounded-full bg-slate-900 px-3 py-2 text-xs font-bold text-white transition group-hover:bg-amber-600">
-        보기
+
+      <span className="shrink-0 rounded-full border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold text-amber-700 transition group-hover:border-amber-300 group-hover:bg-amber-100 group-hover:text-amber-800">
+        {buttonText}
       </span>
     </a>
   );
 }
+
 
 export default function GlobalCoupangProductAd() {
   const pathname = usePathname() || "/";
@@ -184,15 +193,19 @@ export default function GlobalCoupangProductAd() {
 
   useEffect(() => {
     if (!shouldTryLoad) {
-      setItems([]);
-      setIsLoaded(false);
       removeProductPlacements();
-      setPortalTarget(null);
-      return;
+      const timer = window.setTimeout(() => {
+        setItems([]);
+        setIsLoaded(false);
+        setPortalTarget(null);
+      }, 0);
+      return () => window.clearTimeout(timer);
     }
 
     const controller = new AbortController();
-    setIsLoaded(false);
+    const pendingTimer = window.setTimeout(() => {
+      setIsLoaded(false);
+    }, 0);
 
     fetch(`/api/coupang-product-ads?path=${encodeURIComponent(pathname)}`, {
       signal: controller.signal,
@@ -214,7 +227,10 @@ export default function GlobalCoupangProductAd() {
         setIsLoaded(true);
       });
 
-    return () => controller.abort();
+    return () => {
+      window.clearTimeout(pendingTimer);
+      controller.abort();
+    };
   }, [pathname, shouldTryLoad]);
 
   const shouldShow = shouldTryLoad && isLoaded && items.length > 0;
@@ -222,8 +238,10 @@ export default function GlobalCoupangProductAd() {
   useEffect(() => {
     if (!shouldShow) {
       removeProductPlacements();
-      setPortalTarget(null);
-      return;
+      const timer = window.setTimeout(() => {
+        setPortalTarget(null);
+      }, 0);
+      return () => window.clearTimeout(timer);
     }
 
     let disposed = false;
@@ -262,25 +280,23 @@ export default function GlobalCoupangProductAd() {
 
   return createPortal(
     <aside aria-label="페이지 내용과 관련된 육아용품" className="my-4 w-full">
-      <div className="rounded-2xl border border-amber-100 bg-amber-50/70 p-3 shadow-[0_10px_30px_rgba(245,158,11,0.08)] md:p-4">
-        <div className="flex items-start justify-between gap-3 px-1">
-          <div>
-            <p className="text-sm font-extrabold text-slate-900 md:text-base">
-              이 내용과 함께 확인하면 좋은 육아용품
-            </p>
-            <p className="mt-1 text-xs leading-5 text-slate-500 md:text-sm">
-              현재 페이지 주제와 맞는 품목을 골라 보여드려요.
-            </p>
-          </div>
+      <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-3 shadow-sm md:p-4">
+        <div className="px-1">
+          <p className="text-sm font-extrabold text-slate-900 md:text-base">
+            이 내용과 함께 확인하면 좋은 육아용품
+          </p>
+          <p className="mt-1 text-xs leading-5 text-slate-500 md:text-sm">
+            현재 페이지와 관련된 준비물을 최대 3개만 골라 보여드려요.
+          </p>
         </div>
 
-        <div className="mt-3 grid gap-2.5 sm:grid-cols-2 md:grid-cols-3">
+        <div className="mt-3 grid gap-2.5">
           {items.map((item) => (
             <ProductAdCard key={`${item.categorySlug}-${item.id}`} item={item} />
           ))}
         </div>
 
-        <p className="mt-3 rounded-xl bg-white/80 px-3 py-2 text-center text-[11px] font-medium leading-5 text-slate-500">
+        <p className="mt-3 rounded-xl border border-slate-200 bg-white/70 px-3 py-2 text-center text-[11px] font-medium leading-5 text-slate-500">
           {COUPANG_PARTNERS_DISCLOSURE}
         </p>
       </div>

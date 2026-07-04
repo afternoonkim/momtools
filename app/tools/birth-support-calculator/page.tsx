@@ -118,31 +118,35 @@ export default function Page() {
           note="2026년 전국 공통 출산·육아 지원금과 지역별 안내 자료를 기준으로 합산해 보여드려요. 신청 직전엔 관할 주민센터에서 최신 금액·조건을 다시 확인해 주세요."
         />
 
-        <section className="mt-card p-4 md:p-6">
-          <h2 className="mt-title-md">예상 금액을 볼 때 참고할 기준</h2>
-          <div className="mt-result-list mt-4">
-            {summaryRows.map((row) => (
-              <div key={row.label} className="mt-result-list-item">
-                <div>
-                  <div className="mt-result-label">{row.label}</div>
-                  <div className="mt-result-value">{row.value}</div>
-                  <p className="mt-result-hint mt-1">{row.hint}</p>
-                </div>
+        <details className="mt-section-details">
+          <summary className="mt-section-summary"><span>예상 금액 기준과 신청 전 확인할 조건</span><span className="text-xs font-bold text-amber-700">열기</span></summary>
+          <div className="mt-detail-body space-y-4">
+            <section className="rounded-2xl bg-white px-4 py-3">
+              <h2 className="mt-title-md">예상 금액을 볼 때 참고할 기준</h2>
+              <div className="mt-result-list mt-4">
+                {summaryRows.map((row) => (
+                  <div key={row.label} className="mt-result-list-item">
+                    <div>
+                      <div className="mt-result-label">{row.label}</div>
+                      <div className="mt-result-value">{row.value}</div>
+                      <p className="mt-result-hint mt-1">{row.hint}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </section>
+            <section className="rounded-2xl bg-white px-4 py-3">
+              <h2 className="mt-title-md">신청 전 확인할 조건</h2>
+              <ul className="mt-result-list mt-4">
+                {checkRows.map((item) => (
+                  <li key={item} className="mt-result-list-item border-amber-100 bg-amber-50/60">
+                    <span className="mt-result-value text-amber-900">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
           </div>
-        </section>
-
-        <section className="mt-card p-4 md:p-6">
-          <h2 className="mt-title-md">신청 전 확인할 조건</h2>
-          <ul className="mt-result-list mt-4">
-            {checkRows.map((item) => (
-              <li key={item} className="mt-result-list-item border-amber-100 bg-amber-50/60">
-                <span className="mt-result-value text-amber-900">{item}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
+        </details>
 
         <section className="mt-card p-4 md:p-6">
           <h2 className="mt-title-md">자주 묻는 질문</h2>

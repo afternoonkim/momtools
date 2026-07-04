@@ -107,9 +107,9 @@ export default function BirthSupportCalculatorClient({
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <span className="mt-badge">지역별 출산지원금 데이터 적용</span>
-            <h2 className="mt-title-lg mt-4">사는 지역과 출생 순위를 선택해 예상 지원금을 계산해 보세요</h2>
+            <h2 className="mt-title-lg mt-4">사는 지역과 출생 순위만 선택하세요</h2>
             <p className="mt-text-sub mt-3 max-w-3xl">
-              사는 지역과 출생 순위만 선택하면 첫만남이용권, 부모급여, 아동수당, 그리고 시·군·구별 지자체 출산지원금이 먼저 합산되고, 가정양육수당처럼 조건에 따라 달라지는 금액은 별도로 확인할 수 있어요. 2026년 전국 공통 출산·육아 지원금과 제주·경남·경북·전남·전북·충남·충북·경기·강원·세종·울산·대전·광주·인천·대구·부산·서울 지역 데이터를 반영해 보여드려요.
+              전국 공통 지원금과 지자체 출산지원금을 참고용으로 합산해 보여드려요.
             </p>
           </div>
           <div className="rounded-3xl bg-white/80 p-4 text-sm text-slate-600 shadow-sm ring-1 ring-amber-100">

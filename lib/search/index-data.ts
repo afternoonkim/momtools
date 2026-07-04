@@ -2,6 +2,8 @@ import { familyHealthCategories, familyHealthQnaData, type FamilyHealthQnaCatego
 import { governmentPolicies, governmentPolicyCategories } from "@/data/governmentPolicy";
 import { familyFinanceArticles } from "@/data/familyFinance";
 import { babyFoodRecipes, stageLabels } from "@/data/babyFood";
+import { babyNameRankings, rankingYears } from "@/data/babyNames";
+import { meaningPureKoreanNames } from "@/data/koreanNames";
 import { birthSupportRegions } from "@/data/birthSupportCalculator";
 import { monthlyGuideItems } from "@/data/monthlyGuide";
 import { healthGuideItems } from "@/data/healthGuides";
@@ -18,6 +20,7 @@ export type SearchEntryType =
   | "tool"
   | "info"
   | "checklist"
+  | "record"
   | "birth-support-region"
   | "monthly-guide"
   | "health-guide"
@@ -66,6 +69,46 @@ const familyFinanceEntries: SearchEntry[] = familyFinanceArticles.map((article) 
   topic: article.topic,
   keywords: [...(article.keywords ?? []), article.topic].filter(Boolean) as string[],
 }));
+
+
+const babyNameEntries: SearchEntry[] = [
+  {
+    type: "info" as const,
+    categoryLabel: "아기 이름 참고",
+    href: "/baby-names",
+    title: "아기 이름과 뜻",
+    description: "순우리말 이름 뜻, 인기 이름 흐름, 이름 고를 때 볼 기준을 부모가 가볍게 참고할 수 있어요.",
+    topic: "아기 이름",
+    keywords: ["아기 이름", "아기 이름 뜻", "아이 이름 뜻", "순우리말 이름", "인기 아기 이름", "예쁜 아기 이름"],
+  },
+  {
+    type: "info" as const,
+    categoryLabel: "아기 이름 참고",
+    href: "/baby-names/meanings",
+    title: "순우리말 이름 뜻 모음",
+    description: "순우리말 아기 이름과 뜻을 검색하고 비교할 수 있어요.",
+    topic: "이름 뜻",
+    keywords: ["순우리말 이름", "뜻 좋은 이름", "한글 이름", "아기 이름 뜻", "이름 뜻 모음"],
+  },
+  {
+    type: "info" as const,
+    categoryLabel: "아기 이름 참고",
+    href: `/baby-names/rankings/${rankingYears[0]}`,
+    title: `${rankingYears[0]} 인기 아기 이름 순위`,
+    description: "최근 부모들이 많이 참고하는 남아·여아 이름 흐름을 볼 수 있어요.",
+    topic: "인기 이름",
+    keywords: ["인기 아기 이름", "아기 이름 순위", "남자 아기 이름", "여자 아기 이름", "아이 이름 추천", ...babyNameRankings[rankingYears[0]].boy, ...babyNameRankings[rankingYears[0]].girl],
+  },
+  ...meaningPureKoreanNames.slice(0, 80).map((name) => ({
+    type: "info" as const,
+    categoryLabel: "아기 이름 뜻",
+    href: `/baby-names/meanings/${name.slug}`,
+    title: `${name.name} 이름 뜻`,
+    description: `${name.name} 이름의 뜻은 ${name.meaning}입니다.`,
+    topic: name.name,
+    keywords: [name.name, `${name.name} 뜻`, `${name.name} 이름 뜻`, name.meaning, "아기 이름", "순우리말 이름"],
+  })),
+];
 
 const babyFoodEntries: SearchEntry[] = babyFoodRecipes.map((recipe) => ({
   type: "baby-food" as const,
@@ -300,6 +343,14 @@ const staticPageEntries: SearchEntry[] = [
     keywords: ["출산 가계", "육아 가계부", "부모급여 활용", "자녀 적금", "주택청약", "자녀세액공제"],
   },
   {
+    type: "record",
+    categoryLabel: "기록하기",
+    href: "/development-check",
+    title: "발달 체크",
+    description: "등록한 아이 기준으로 움직임, 감각, 말·소통, 먹기·생활 발달 흐름을 기록할 수 있어요.",
+    keywords: ["발달 체크", "아기 발달", "아이 발달 기록", "월령별 발달", "운동 발달", "언어 발달", "감각 발달"],
+  },
+  {
     type: "checklist",
     categoryLabel: "체크리스트",
     href: "/checklists/birth",
@@ -340,6 +391,7 @@ export const STATIC_SEARCH_INDEX: SearchEntry[] = [
   ...familyFinanceEntries,
   ...childcarePortalEntries,
   ...childcarePortalGuideEntries,
+  ...babyNameEntries,
   ...babyFoodEntries,
   ...birthSupportRegionEntries,
   ...monthlyGuideEntries,

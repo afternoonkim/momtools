@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 import { babyFoodRecipes as koBabyFoodRecipes } from "@/data/babyFood";
+import { rankingYears } from "@/data/babyNames";
+import { meaningPureKoreanNames } from "@/data/koreanNames";
 import { qnaData, qnaCategories, type QnaCategory } from "@/data/qna";
 import { getFamilyHealthSitemapPaths } from "@/lib/repositories/family-health-qna-db";
 import { governmentPolicies } from "@/data/governmentPolicy";
@@ -57,6 +59,9 @@ const staticRoutes: RouteConfig[] = [
   route("/baby-food/early", 0.8, "weekly"),
   route("/baby-food/middle", 0.8, "weekly"),
   route("/baby-food/late", 0.8, "weekly"),
+  route("/baby-names", 0.8, "weekly"),
+  route("/baby-names/meanings", 0.78, "weekly"),
+  route("/baby-names/rankings", 0.76, "weekly"),
   route("/checklists", 0.8, "weekly"),
   route("/checklists/birth", 0.75, "monthly"),
   route("/checklists/newborn", 0.75, "monthly"),
@@ -76,6 +81,8 @@ const dynamicKoreanQnaRoutes = (Object.keys(qnaCategories) as QnaCategory[]).fla
 );
 const dynamicKoreanPolicyRoutes = governmentPolicies.map((policy) => route(`/policy/${policy.category}/${policy.slug}`, 0.8, "daily"));
 const dynamicKoreanBabyFoodRoutes = koBabyFoodRecipes.map((recipe) => route(`/baby-food/recipes/${recipe.slug}`, 0.68, "weekly"));
+const dynamicKoreanBabyNameMeaningRoutes = meaningPureKoreanNames.map((name) => route(`/baby-names/meanings/${name.slug}`, 0.72, "monthly"));
+const dynamicKoreanBabyNameRankingRoutes = rankingYears.map((year) => route(`/baby-names/rankings/${year}`, 0.74, "monthly"));
 const dynamicMoonlightHospitalAreaRoutes = moonlightHospitalAreas.map((area) =>
   route(getMoonlightHospitalAreaPath(area), area.kind === "region" ? 0.84 : 0.8, "weekly"),
 );
@@ -111,6 +118,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...dynamicKoreanFamilyHealthRoutes,
     ...dynamicKoreanPolicyRoutes,
     ...dynamicKoreanBabyFoodRoutes,
+    ...dynamicKoreanBabyNameMeaningRoutes,
+    ...dynamicKoreanBabyNameRankingRoutes,
     ...dynamicMoonlightHospitalAreaRoutes,
     ...dynamicKoreanBirthSupportRoutes,
     ...dynamicKoreanFamilyFinanceRoutes,

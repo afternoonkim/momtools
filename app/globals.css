@@ -2396,3 +2396,109 @@ html[data-momtools-theme="dark"] .mt-search-suggestion-item small {
   background: rgba(37, 99, 235, 0.18) !important;
   color: #bfdbfe !important;
 }
+
+
+/* 테마 정리: 라이트 모드에서는 진한 네이비 버튼/선택 상태가 섞여 보이지 않도록 보정 */
+html[data-momtools-theme="light"] .mt-page :where(a, button)[class*="bg-slate-900"]:not(.mt-scroll-top-button),
+html:not([data-momtools-theme="dark"]) .mt-page :where(a, button)[class*="bg-slate-900"]:not(.mt-scroll-top-button) {
+  background: linear-gradient(135deg, #f59e0b 0%, #fb923c 100%) !important;
+  border-color: rgba(245, 158, 11, 0.28) !important;
+  color: #ffffff !important;
+}
+
+html[data-momtools-theme="light"] .mt-page :where(a, button)[class*="border-slate-900"],
+html:not([data-momtools-theme="dark"]) .mt-page :where(a, button)[class*="border-slate-900"] {
+  border-color: rgba(245, 158, 11, 0.35) !important;
+}
+
+html[data-momtools-theme="light"] .mt-page :where(a, button)[aria-current="page"],
+html:not([data-momtools-theme="dark"]) .mt-page :where(a, button)[aria-current="page"] {
+  border-color: rgba(245, 158, 11, 0.36) !important;
+}
+
+html[data-momtools-theme="light"] .mt-button-primary,
+html:not([data-momtools-theme="dark"]) .mt-button-primary {
+  background: linear-gradient(135deg, #f59e0b 0%, #fb923c 100%) !important;
+  border-color: rgba(245, 158, 11, 0.28) !important;
+  color: #ffffff !important;
+}
+
+/* 테마 정리: 다크 모드에서는 밝은 선택 칩이 뜨지 않고 네이비 표면 안에서 보이도록 보정 */
+html[data-momtools-theme="dark"] .mt-button-primary {
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%) !important;
+  border-color: rgba(96, 165, 250, 0.32) !important;
+  color: #eff6ff !important;
+  box-shadow: none !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page :where(a, button)[aria-current="page"],
+html[data-momtools-theme="dark"] .mt-page :where(a, button)[aria-pressed="true"] {
+  background-color: rgba(37, 99, 235, 0.18) !important;
+  background-image: none !important;
+  border-color: rgba(96, 165, 250, 0.34) !important;
+  color: #bfdbfe !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page :where(a, button)[class*="bg-amber-50"],
+html[data-momtools-theme="dark"] .mt-page :where(a, button)[class*="bg-amber-100"] {
+  background-color: rgba(37, 99, 235, 0.14) !important;
+  background-image: none !important;
+  border-color: rgba(96, 165, 250, 0.28) !important;
+  color: #bfdbfe !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page :where(input, select, textarea).mt-input {
+  background-color: #0f1b2f !important;
+  border-color: rgba(71, 85, 105, 0.48) !important;
+  color: #e5edf7 !important;
+  box-shadow: none !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page :where(input, select, textarea).mt-input::placeholder {
+  color: #74869c !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page :where(input, select, textarea).mt-input:focus {
+  border-color: rgba(96, 165, 250, 0.5) !important;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.14) !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page .mt-card,
+html[data-momtools-theme="dark"] .mt-page .mt-page-hero,
+html[data-momtools-theme="dark"] .mt-page .mt-simple-list,
+html[data-momtools-theme="dark"] .mt-page .mt-app-stack,
+html[data-momtools-theme="dark"] .mt-page .mt-app-link-list,
+html[data-momtools-theme="dark"] .mt-page .mt-result-list {
+  background-color: #0e1728 !important;
+  border-color: rgba(71, 85, 105, 0.36) !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page .mt-card :where(.border-b, .border-t, .divide-y > *),
+html[data-momtools-theme="dark"] .mt-page .mt-simple-list :where(.border-b, .border-t, .divide-y > *) {
+  border-color: rgba(71, 85, 105, 0.32) !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page .rounded-2xl[class*="bg-slate-50"],
+html[data-momtools-theme="dark"] .mt-page details[class*="bg-slate-50"],
+html[data-momtools-theme="dark"] .mt-page p[class*="bg-slate-50"] {
+  background-color: rgba(15, 27, 47, 0.86) !important;
+  border-color: rgba(71, 85, 105, 0.34) !important;
+  color: #cbd5e1 !important;
+}
+
+
+/* 증상별 가이드: 다크 모드에서 '먼저 결론' 카드의 제목과 본문이 배경에 묻히지 않도록 보정 */
+html[data-momtools-theme="dark"] .mt-page .mt-health-quick-conclusion {
+  background-color: rgba(244, 63, 94, 0.14) !important;
+  border: 1px solid rgba(251, 113, 133, 0.28) !important;
+  color: #fecdd3 !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page .mt-health-quick-conclusion :where(div, p, span, strong) {
+  color: #fecdd3 !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page .mt-health-quick-conclusion .text-rose-700,
+html[data-momtools-theme="dark"] .text-rose-950 {
+  color: #fda4af !important;
+}

@@ -323,60 +323,63 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
             <h2 className="mt-app-section-title">먼저 볼 기준</h2>
             <p className="mt-app-section-desc">하나의 증상만 보지 말고 아래 항목을 같이 확인해 주세요.</p>
             <ol className="mt-app-list">
-              {firstChecks.map((point, index) => (
+              {firstChecks.slice(0, 4).map((point, index) => (
                 <li key={`${point}-${index}`} className="mt-app-list-item">
                   <span className="font-extrabold text-amber-700">{index + 1}. </span>{point}
                 </li>
               ))}
             </ol>
           </section>
-
-          <section id="home-actions" className="mt-app-stack-section">
-            <h2 className="mt-app-section-title">집에서 오늘 할 일</h2>
-            <p className="mt-app-section-desc">상태를 안전하게 확인하고 상담 때 설명할 수 있게 정리하는 데 집중하세요.</p>
-            <ul className="mt-app-list">
-              {homeActions.map((point, index) => (
-                <li key={`${point}-${index}`} className="mt-app-list-item">{point}</li>
-              ))}
-            </ul>
-          </section>
-
-          <section id="when-help" className="mt-app-stack-section">
-            <h2 className="mt-app-section-title-danger">상담을 서두를 신호</h2>
-            <p className="mt-app-section-desc text-rose-900">{item.caution}</p>
-            <div className="mt-mobile-note mt-3">
-              <strong className="text-slate-900">응급실을 고민할 신호</strong>
-              <p className="mt-1">{emergencyMessage}</p>
-            </div>
-          </section>
-
-          <section className="mt-app-stack-section">
-            <h2 className="mt-app-section-title">피하면 좋은 대응</h2>
-            <ul className="mt-app-list">
-              {content.avoidItems.map((point, index) => (
-                <li key={`${point}-${index}`} className="mt-app-list-item">{point}</li>
-              ))}
-            </ul>
-          </section>
-
-          <section className="mt-app-stack-section">
-            <h2 className="mt-app-section-title">기록해두면 좋은 것</h2>
-            <p className="mt-app-section-desc">{content.recordDescription}</p>
-            <ul className="mt-app-list">
-              {content.recordItems.map((point, index) => (
-                <li key={`${point}-${index}`} className="mt-app-list-item">{point}</li>
-              ))}
-            </ul>
-          </section>
         </div>
 
+        <details className="mt-section-details">
+          <summary className="mt-section-summary">
+            <span>
+              <span className="block text-base font-extrabold text-slate-900">집에서 할 일과 상담 신호 보기</span>
+              <span className="mt-1 block text-sm leading-6 text-slate-500">필요할 때만 열어 확인할 수 있게 접어두었습니다.</span>
+            </span>
+            <span className="text-xs font-bold text-amber-700">열기</span>
+          </summary>
+          <div className="mt-detail-body space-y-4">
+            <section id="home-actions" className="rounded-2xl bg-white px-4 py-3">
+              <h2 className="mt-app-section-title">집에서 오늘 할 일</h2>
+              <ul className="mt-app-list mt-2">
+                {homeActions.slice(0, 4).map((point, index) => (
+                  <li key={`${point}-${index}`} className="mt-app-list-item">{point}</li>
+                ))}
+              </ul>
+            </section>
+            <section id="when-help" className="rounded-2xl bg-rose-50 px-4 py-3">
+              <h2 className="mt-app-section-title-danger">상담을 서두를 신호</h2>
+              <p className="mt-app-section-desc text-rose-900">{item.caution}</p>
+              <p className="mt-2 text-[13px] leading-6 text-rose-900">{emergencyMessage}</p>
+            </section>
+            <section className="rounded-2xl bg-white px-4 py-3">
+              <h2 className="mt-app-section-title">피하면 좋은 대응</h2>
+              <ul className="mt-app-list mt-2">
+                {content.avoidItems.slice(0, 4).map((point, index) => (
+                  <li key={`${point}-${index}`} className="mt-app-list-item">{point}</li>
+                ))}
+              </ul>
+            </section>
+            <section className="rounded-2xl bg-white px-4 py-3">
+              <h2 className="mt-app-section-title">기록해두면 좋은 것</h2>
+              <p className="mt-app-section-desc">{content.recordDescription}</p>
+              <ul className="mt-app-list mt-2">
+                {content.recordItems.slice(0, 4).map((point, index) => (
+                  <li key={`${point}-${index}`} className="mt-app-list-item">{point}</li>
+                ))}
+              </ul>
+            </section>
+          </div>
+        </details>
         <AdFitAd {...ADFIT_UNITS.mobileResult} />
 
         <details className="mt-section-details">
           <summary className="mt-section-summary">
             <span>
               <span className="block text-base font-extrabold text-slate-900">자세한 설명 보기</span>
-              <span className="mt-1 block text-sm leading-6 text-slate-500">검색 사용자를 위한 추가 설명은 접어서 화면을 줄였습니다.</span>
+              <span className="mt-1 block text-sm leading-6 text-slate-500">더 자세히 보고 싶을 때 열어 확인하세요.</span>
             </span>
             <span className="text-xs font-bold text-amber-700">열기</span>
           </summary>
@@ -398,13 +401,13 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
         <section id="related-tools" className="space-y-3">
           <h2 className="mt-app-section-title">함께 볼 도구와 정보</h2>
           <div className="mt-app-link-list">
-            {relatedLinks[typed].map((link) => (
+            {relatedLinks[typed].slice(0, 3).map((link) => (
               <Link key={link.href} href={link.href} className="mt-app-link-item">
                 <div className="mt-app-link-title">{link.label}</div>
                 <div className="mt-app-link-desc">{link.description}</div>
               </Link>
             ))}
-            {relatedHealthGuides.map((guide) => (
+            {relatedHealthGuides.slice(0, 1).map((guide) => (
               <Link key={guide.slug} href={`/health/${guide.slug}`} className="mt-app-link-item">
                 <div className="mt-app-link-title">{guide.title}</div>
                 <div className="mt-app-link-desc">{guide.summary}</div>
@@ -431,7 +434,7 @@ export default async function QnaDetailPage({ params }: { params: Promise<Params
         <section className="space-y-3">
           <h2 className="mt-app-section-title">같이 이어서 보면 좋은 질문</h2>
           <div className="mt-app-link-list">
-            {related.slice(0, 5).map((entry) => (
+            {related.slice(0, 4).map((entry) => (
               <Link key={entry.slug} href={`/qna/${typed}/${entry.slug}`} className="mt-app-link-item">
                 <div className="text-[11px] font-bold text-amber-600">{entry.topic}</div>
                 <div className="mt-app-link-title mt-1">{entry.question}</div>

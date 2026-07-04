@@ -196,41 +196,40 @@ export default async function BabyProductQnaDetailPage({ params }: { params: Pro
           </div>
         </section>
 
-        <section className="mt-card p-6 md:p-8">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">상품 페이지에서 확인한 정보</div>
-          <h2 className="mt-title-md mt-3">구매 전 기본 정보</h2>
-          <p className="mt-3 text-sm leading-7 text-slate-600">
-            아래 내용은 상품 정보 URL에서 확인한 표시 정보를 기준으로 정리했습니다. 색상, 옵션, 가격, 재고는 바뀔 수 있으니 최종 구매 전에는 반드시 판매처 상세페이지를 다시 확인해 주세요.
-          </p>
-          <div className="mt-5 overflow-hidden rounded-3xl border border-amber-100 bg-white shadow-sm">
-            {item.productFacts.map((fact, index) => (
-              <div key={`${fact.label}-${index}`} className="grid gap-2 border-b border-amber-50 px-5 py-4 last:border-b-0 md:grid-cols-[180px_1fr]">
-                <div className="text-sm font-bold text-slate-800">{fact.label}</div>
-                <div className="text-sm leading-7 text-slate-600">
-                  <div className="font-semibold text-slate-800">{fact.value}</div>
-                  {fact.note ? <div className="mt-1 text-slate-500">{fact.note}</div> : null}
-                </div>
+        <details className="mt-section-details">
+          <summary className="mt-section-summary"><span>구매 전 세부 기준 보기</span><span className="text-xs font-bold text-amber-700">열기</span></summary>
+          <div className="mt-detail-body space-y-4">
+            <section className="rounded-2xl bg-white px-4 py-3">
+              <h2 className="mt-title-md">구매 전 기본 정보</h2>
+              <div className="mt-4 overflow-hidden rounded-3xl border border-amber-100 bg-white shadow-sm">
+                {item.productFacts.map((fact, index) => (
+                  <div key={`${fact.label}-${index}`} className="grid gap-2 border-b border-amber-50 px-5 py-4 last:border-b-0 md:grid-cols-[160px_1fr]">
+                    <div className="text-sm font-bold text-slate-800">{fact.label}</div>
+                    <div className="text-sm leading-7 text-slate-600">
+                      <div className="font-semibold text-slate-800">{fact.value}</div>
+                      {fact.note ? <div className="mt-1 text-slate-500">{fact.note}</div> : null}
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </section>
+            <section className="grid gap-4 lg:grid-cols-2">
+              <InfoCard title="이런 집이라면 잘 맞을 수 있어요" items={item.goodFor} />
+              <InfoCard title="구매 전에 꼭 확인해 보세요" items={item.checkPoints} />
+            </section>
+            <section className="grid gap-4 lg:grid-cols-2">
+              <InfoCard title="바로 사기 전에 한 번 더 생각할 점" items={item.beforeBuy} />
+              <InfoCard title="주의할 점" items={item.caution} tone="caution" />
+            </section>
           </div>
-        </section>
-
-        <section className="grid gap-6 lg:grid-cols-2">
-          <InfoCard title="이런 집이라면 잘 맞을 수 있어요" items={item.goodFor} />
-          <InfoCard title="구매 전에 꼭 확인해 보세요" items={item.checkPoints} />
-        </section>
-
-        <section className="grid gap-6 lg:grid-cols-2">
-          <InfoCard title="바로 사기 전에 한 번 더 생각할 점" items={item.beforeBuy} />
-          <InfoCard title="주의할 점" items={item.caution} tone="caution" />
-        </section>
+        </details>
 
         <section className="mt-card-soft p-6 md:p-8">
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">비교 기준</div>
           <h2 className="mt-title-md mt-3">다른 제품과 비교할 때</h2>
           <p className="mt-4 text-sm leading-8 text-slate-700 md:text-base">{item.compareWith}</p>
           <div className="mt-5 flex flex-wrap gap-2">
-            {item.keywords.map((keyword) => (
+            {item.keywords.slice(0, 4).map((keyword) => (
               <span key={keyword} className="rounded-full bg-white px-3 py-1 text-xs font-semibold text-slate-500 shadow-sm">#{keyword}</span>
             ))}
           </div>
@@ -240,7 +239,7 @@ export default async function BabyProductQnaDetailPage({ params }: { params: Pro
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">관련 질문</div>
           <h2 className="mt-title-md mt-3">함께 보면 좋은 육아용품 Q&A</h2>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
-            {related.map((relatedItem) => (
+            {related.slice(0, 4).map((relatedItem) => (
               <Link
                 key={relatedItem.slug}
                 href={`/items/essential/${relatedItem.slug}`}

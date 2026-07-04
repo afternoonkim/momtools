@@ -3,85 +3,136 @@ import Link from "next/link";
 import { rankingYears } from "@/data/babyNames";
 import { meaningPureKoreanNames } from "@/data/koreanNames";
 
+const featuredNames = meaningPureKoreanNames.slice(0, 16);
+const latestRankingYear = rankingYears[0];
+
 export const metadata: Metadata = {
-  title: "아이 이름 짓기 | 이름 생성기 순위 뜻",
-  description: "아이 이름 생성기, 인기 이름 순위, 이름 뜻 페이지를 한곳에서 볼 수 있는 MomTools 아이 이름 짓기 메뉴입니다.",
+  title: "아기 이름과 뜻 | 순우리말 이름, 인기 이름 참고",
+  description:
+    "아기 이름을 고민하는 부모를 위해 순우리말 이름 뜻, 인기 이름 흐름, 이름을 고를 때 확인할 기준을 모바일에서 보기 쉽게 정리했습니다.",
+  keywords: [
+    "아기 이름",
+    "아기 이름 뜻",
+    "아이 이름 뜻",
+    "순우리말 이름",
+    "예쁜 아기 이름",
+    "남자 아기 이름",
+    "여자 아기 이름",
+    "인기 아기 이름",
+  ],
   alternates: { canonical: "https://momtools.kr/baby-names" },
+  openGraph: {
+    title: "아기 이름과 뜻",
+    description: "순우리말 이름 뜻과 인기 이름 흐름을 부모가 가볍게 참고할 수 있게 정리했어요.",
+    url: "https://momtools.kr/baby-names",
+    siteName: "MomTools",
+    type: "website",
+  },
 };
 
 export default function BabyNamesHubPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: "아기 이름과 뜻",
+    description: "아기 이름 뜻, 순우리말 이름, 인기 이름 흐름을 참고할 수 있는 페이지",
+    url: "https://momtools.kr/baby-names",
+  };
+
   return (
     <div className="mt-page">
-      <div className="mt-container space-y-8">
-        <section className="mt-card p-8 md:p-10">
-          <span className="mt-badge">아이 이름 짓기</span>
-          <h1 className="mt-title-xl mt-5">복잡하지 않게, 바로 비교할 수 있게 구성한 이름 메뉴</h1>
-          <p className="mt-text-main mt-4 max-w-4xl">
-            이름을 처음 정리할 때는 생성기, 인기 이름, 이름 뜻을 따로 보는 것이 더 편합니다.
-            성씨에 어울리는 이름을 빠르게 보고 싶다면 생성기부터, 많이 찾는 이름 흐름을 알고 싶다면 연도별 순위를,
-            특정 이름의 인상과 분위기가 궁금하다면 이름 뜻 페이지를 먼저 보세요.
+      <div className="mt-container-narrow space-y-4 md:space-y-6">
+        <section className="mt-card px-4 py-5 md:px-7 md:py-8">
+          <span className="mt-badge">아기 이름 참고</span>
+          <h1 className="mt-title-xl mt-3">아기 이름과 뜻을 가볍게 살펴보세요</h1>
+          <p className="mt-text-main mt-3">
+            이름을 정할 때는 뜻, 발음, 성씨와 붙였을 때의 느낌을 함께 보는 것이 좋아요.
+            MomTools는 작명을 대신하지 않고, 부모가 이름 후보를 좁혀갈 때 참고할 수 있는 자료만 간단히 모았습니다.
           </p>
-        </section>
 
-        <section className="mt-card-soft p-6 md:p-8">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">이용 전 안내</div>
-          <h2 className="mt-title-lg mt-3">이름 메뉴는 참고용 아이디어를 넓혀보는 공간입니다</h2>
-          <p className="mt-text-main mt-3 max-w-4xl">
-            이름은 가족의 기준, 발음, 느낌, 성씨와의 조합, 실제 사용 편의까지 여러 요소가 함께 고려됩니다.
-            MomTools 이름 메뉴는 법적 판단이나 작명 확정 서비스가 아니라, 부모가 먼저 이름 후보를 넓혀 보고
-            분위기와 흐름을 비교할 수 있도록 돕는 참고형 구성입니다. 생성기, 순위, 뜻 페이지를 나눠 둔 이유도
-            한 가지 기준에 치우치지 않고 여러 방향으로 이름을 살펴볼 수 있게 하기 위해서입니다.
-          </p>
-          <div className="mt-5 grid gap-4 md:grid-cols-3">
-            <div className="rounded-3xl bg-white p-5 shadow-sm">
-              <div className="font-bold text-slate-800">후보 넓히기</div>
-              <p className="mt-2 text-sm leading-7 text-slate-600">생성기로 참고용 이름을 보고, 비슷한 어감과 분위기의 이름을 빠르게 찾아볼 수 있습니다.</p>
-            </div>
-            <div className="rounded-3xl bg-white p-5 shadow-sm">
-              <div className="font-bold text-slate-800">흐름 확인</div>
-              <p className="mt-2 text-sm leading-7 text-slate-600">연도별 인기 이름 흐름을 따로 모아 현재 많이 찾는 분위기를 참고할 수 있습니다.</p>
-            </div>
-            <div className="rounded-3xl bg-white p-5 shadow-sm">
-              <div className="font-bold text-slate-800">의미 비교</div>
-              <p className="mt-2 text-sm leading-7 text-slate-600">이름 뜻과 인상을 함께 보며 발음과 느낌이 맞는지 비교하는 데 도움이 됩니다.</p>
-            </div>
-          </div>
-          <div className="mt-5 flex flex-wrap gap-3 text-sm font-semibold">
-            <Link href="/about" className="rounded-full bg-amber-50 px-4 py-2 text-amber-800">사이트 소개</Link>
-            <Link href="/faq" className="rounded-full bg-white px-4 py-2 text-slate-700 shadow-sm">FAQ</Link>
-            <Link href="/contact" className="rounded-full bg-white px-4 py-2 text-slate-700 shadow-sm">문의하기</Link>
+          <form action="/baby-names/meanings" className="mt-4 flex gap-2">
+            <input
+              name="q"
+              className="mt-input min-w-0 flex-1"
+              placeholder="예: 라온, 도담, 하람"
+              aria-label="이름 검색"
+            />
+            <button type="submit" className="mt-button-primary shrink-0 px-4">
+              찾기
+            </button>
+          </form>
+
+          <div className="mt-4 grid grid-cols-2 gap-2 text-[13px] font-bold md:grid-cols-3">
+            <Link href="/baby-names/meanings" className="mt-button-secondary min-h-10 px-3 py-2">
+              이름 뜻 보기
+            </Link>
+            <Link href={`/baby-names/rankings/${latestRankingYear}`} className="mt-button-secondary min-h-10 px-3 py-2">
+              인기 이름 보기
+            </Link>
+            <Link href="/tools/due-date" className="mt-button-secondary col-span-2 min-h-10 px-3 py-2 md:col-span-1">
+              출산 예정일
+            </Link>
           </div>
         </section>
 
-        <section className="grid gap-5 md:grid-cols-3">
-          <Link href="/baby-names/generator" className="mt-card p-6 transition hover:-translate-y-0.5">
-            <div className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-600">Generator</div>
-            <h2 className="mt-3 text-xl font-bold text-slate-800">이름 생성기</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-500">성씨, 성별 느낌, 원하는 분위기를 선택하면 참고용 이름 조합을 바로 보여줍니다.</p>
-          </Link>
-          <Link href={`/baby-names/rankings/${rankingYears[0]}`} className="mt-card p-6 transition hover:-translate-y-0.5">
-            <div className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-600">Ranking</div>
-            <h2 className="mt-3 text-xl font-bold text-slate-800">연도별 인기 이름 순위</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-500">2025, 2024, 2023처럼 연도별 페이지를 분리해 흐름을 쉽게 비교할 수 있게 했습니다.</p>
-          </Link>
-          <Link href="/baby-names/meanings" className="mt-card p-6 transition hover:-translate-y-0.5">
-            <div className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-600">Meaning</div>
-            <h2 className="mt-3 text-xl font-bold text-slate-800">이름 뜻 보기</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-500">이름의 인상, 어감, 분위기를 먼저 살펴보고 비슷한 이름으로 이어서 비교할 수 있습니다.</p>
-          </Link>
-        </section>
-
-        <section className="mt-card-soft p-6 md:p-8">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">많이 보는 이름 바로가기</div>
-          <div className="mt-4 flex flex-wrap gap-3">
-            {meaningPureKoreanNames.slice(0, 12).map((item) => (
-              <Link key={item.slug} href={`/baby-names/meanings/${item.slug}`} className="rounded-full bg-white px-4 py-2 text-sm text-slate-600 shadow-sm">
-                {item.name}
+        <section className="mt-card px-4 py-4 md:px-6 md:py-6">
+          <div className="flex items-start justify-between gap-3">
+            <div>
+              <h2 className="mt-title-md">많이 찾는 순우리말 이름</h2>
+              <p className="mt-text-sub mt-1">뜻이 궁금한 이름을 눌러 바로 확인해보세요.</p>
+            </div>
+            <Link href="/baby-names/meanings" className="mt-chip-link shrink-0">
+              전체 보기
+            </Link>
+          </div>
+          <div className="mt-4 grid grid-cols-2 gap-2 sm:grid-cols-4">
+            {featuredNames.map((item) => (
+              <Link
+                key={item.slug}
+                href={`/baby-names/meanings/${item.slug}`}
+                className="rounded-2xl border border-amber-100 bg-white px-3 py-3 active:bg-amber-50"
+              >
+                <div className="text-[15px] font-extrabold text-slate-900">{item.name}</div>
+                <p className="mt-1 line-clamp-2 text-[12px] leading-5 text-slate-500">{item.meaning}</p>
               </Link>
             ))}
           </div>
         </section>
+
+        <section className="mt-card-soft px-4 py-4 md:px-6 md:py-6">
+          <h2 className="mt-title-md">이름을 고를 때 먼저 볼 기준</h2>
+          <div className="mt-3 grid gap-2 text-[13px] leading-6 text-slate-600 md:grid-cols-2">
+            <div className="rounded-2xl border border-amber-100 bg-white px-4 py-3">
+              <strong className="block text-slate-900">부르기 쉬운지</strong>
+              성씨와 붙여 여러 번 불렀을 때 입에 자연스럽게 붙는지 확인해요.
+            </div>
+            <div className="rounded-2xl border border-amber-100 bg-white px-4 py-3">
+              <strong className="block text-slate-900">뜻이 마음에 드는지</strong>
+              이름 뜻이 가족이 바라는 이미지와 잘 맞는지 살펴봐요.
+            </div>
+            <div className="rounded-2xl border border-amber-100 bg-white px-4 py-3">
+              <strong className="block text-slate-900">너무 헷갈리지 않는지</strong>
+              발음이 비슷한 단어, 놀림이 될 수 있는 소리가 없는지 봐요.
+            </div>
+            <div className="rounded-2xl border border-amber-100 bg-white px-4 py-3">
+              <strong className="block text-slate-900">오래 불러도 좋은지</strong>
+              아기 때뿐 아니라 자라서도 자연스러운 이름인지 생각해요.
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-simple-list">
+          <Link href="/checklists/birth" className="mt-simple-list-item">
+            <strong className="text-slate-900">출산 준비 체크리스트</strong>
+            <span className="mt-1 block text-slate-500">이름을 고민하는 시기에 함께 준비하면 좋은 항목을 확인해요.</span>
+          </Link>
+          <Link href="/checklists/newborn" className="mt-simple-list-item">
+            <strong className="text-slate-900">신생아 준비 체크리스트</strong>
+            <span className="mt-1 block text-slate-500">아기 맞이 전 꼭 필요한 준비물을 간단히 정리해요.</span>
+          </Link>
+        </section>
       </div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     </div>
   );
 }

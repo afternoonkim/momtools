@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import TopbarAuthButton from "@/components/auth/TopbarAuthButton";
 
 export default function Topbar() {
   return (
@@ -15,12 +16,15 @@ export default function Topbar() {
             <div className="truncate text-[11px] text-slate-500">아이를 키우는 모든 순간을 더 쉽게</div>
           </div>
         </Link>
-        <Link
-          href="/search"
-          className="inline-flex min-h-10 items-center rounded-full border border-amber-100 bg-amber-50 px-3 text-xs font-bold text-amber-800"
-        >
-          검색
-        </Link>
+        <div className="flex shrink-0 items-center gap-1.5">
+          <Link
+            href="/search"
+            className="inline-flex min-h-10 items-center rounded-full border border-amber-100 bg-amber-50 px-3 text-xs font-bold text-amber-800"
+          >
+            검색
+          </Link>
+          <TopbarAuthButton />
+        </div>
       </div>
     </header>
   );

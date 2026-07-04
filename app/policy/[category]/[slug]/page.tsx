@@ -165,24 +165,44 @@ export default async function PolicyDetailPage({ params }: { params: Promise<Par
           note="정책은 공식자료 확인일 기준으로 다시 점검했습니다. 신청 전 실제 대상 여부, 금액, 서류, 기한은 담당 기관의 최신 안내를 최종 기준으로 확인해 주세요."
         />
 
+        <section className="mt-card-soft p-6 md:p-8">
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">한눈에 보기</div>
+          <h2 className="mt-title-md mt-3">대상, 지원 내용, 신청처를 먼저 확인해요</h2>
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            <div className="rounded-3xl bg-white p-5 shadow-sm">
+              <h3 className="text-base font-bold text-slate-800">대상</h3>
+              <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-600">
+                {policy.target.slice(0, 4).map((item) => <li key={item}>• {item}</li>)}
+              </ul>
+            </div>
+            <div className="rounded-3xl bg-white p-5 shadow-sm">
+              <h3 className="text-base font-bold text-slate-800">지원 내용</h3>
+              <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-600">
+                {policy.benefit.slice(0, 4).map((item) => <li key={item}>• {item}</li>)}
+              </ul>
+            </div>
+            <div className="rounded-3xl bg-white p-5 shadow-sm">
+              <h3 className="text-base font-bold text-slate-800">신청처</h3>
+              <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-600">
+                {policy.apply.slice(0, 4).map((item) => <li key={item}>• {item}</li>)}
+              </ul>
+            </div>
+          </div>
+        </section>
+
         {hasDetailedData ? (
           <section className="mt-card p-6 md:p-8">
             <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">금액과 조건</div>
             <h2 className="mt-title-md mt-3">
               {policy.regionName ? policy.regionName + " 기준으로 먼저 볼 지원 내용" : policy.shortTitle + " 신청 전에 볼 실제 기준"}
             </h2>
-            <p className="mt-3 text-sm leading-8 text-slate-600 md:text-base">
-              지원금은 이름만 보면 비슷해 보여도 금액, 신청 기한, 거주 기간, 아이 나이 기준이 서로 다를 수 있습니다.
-              아래 내용을 먼저 확인한 뒤 우리 집 상황과 맞는지 공식 창구에서 마지막으로 확인해 주세요.
-            </p>
-
             {policy.amountCards?.length ? (
               <div className="mt-5 grid gap-4 md:grid-cols-3">
-                {policy.amountCards.map((item) => (
+                {policy.amountCards.slice(0, 3).map((item) => (
                   <div key={item.label + "-" + item.amount} className="rounded-3xl border border-amber-100 bg-amber-50/70 p-5 shadow-sm">
                     <div className="text-sm font-bold text-amber-800">{item.label}</div>
                     <div className="mt-2 text-2xl font-extrabold text-slate-900">{item.amount}</div>
-                    <p className="mt-3 text-sm leading-7 text-slate-600">{item.description}</p>
+                    <p className="mt-3 line-clamp-2 text-sm leading-7 text-slate-600">{item.description}</p>
                   </div>
                 ))}
               </div>
@@ -190,12 +210,12 @@ export default async function PolicyDetailPage({ params }: { params: Promise<Par
 
             {policy.dataRows?.length ? (
               <div className="mt-6 overflow-hidden rounded-3xl border border-amber-100 bg-white shadow-sm">
-                {policy.dataRows.map((row, index) => (
-                  <div key={row.label + "-" + index} className="grid gap-2 border-b border-amber-50 px-5 py-4 last:border-b-0 md:grid-cols-[170px_1fr]">
+                {policy.dataRows.slice(0, 4).map((row, index) => (
+                  <div key={row.label + "-" + index} className="grid gap-2 border-b border-amber-50 px-5 py-4 last:border-b-0 md:grid-cols-[140px_1fr]">
                     <div className="text-sm font-bold text-slate-800">{row.label}</div>
                     <div className="text-sm leading-7 text-slate-600">
                       <div className="font-semibold text-slate-800">{row.value}</div>
-                      {row.note ? <div className="mt-1 text-slate-500">{row.note}</div> : null}
+                      {row.note ? <div className="mt-1 line-clamp-2 text-slate-500">{row.note}</div> : null}
                     </div>
                   </div>
                 ))}
@@ -204,82 +224,50 @@ export default async function PolicyDetailPage({ params }: { params: Promise<Par
           </section>
         ) : null}
 
-        <section className="mt-card-soft p-6 md:p-8">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">공식자료에서 확인한 기준</div>
-          <h2 className="mt-title-md mt-3">먼저 믿고 볼 수 있는 핵심 정보</h2>
-          <div className="mt-5 grid gap-3 md:grid-cols-2">
-            {policy.verifiedFacts.map((fact, index) => (
-              <div key={fact} className="rounded-2xl bg-white px-4 py-4 text-sm leading-7 text-slate-700 shadow-sm">
-                <span className="font-semibold text-amber-700">확인 {index + 1}. </span>{fact}
+        <details className="mt-section-details">
+          <summary className="mt-section-summary"><span>상세 조건과 신청 전 확인할 점</span><span className="text-xs font-bold text-amber-700">열기</span></summary>
+          <div className="mt-detail-body space-y-5">
+            <section className="rounded-2xl bg-white px-4 py-3">
+              <h2 className="mt-app-section-title">공식자료에서 확인한 기준</h2>
+              <div className="mt-3 grid gap-3 md:grid-cols-2">
+                {policy.verifiedFacts.map((fact, index) => (
+                  <div key={fact} className="rounded-2xl bg-slate-50 px-4 py-3 text-sm leading-7 text-slate-700">
+                    <span className="font-semibold text-amber-700">확인 {index + 1}. </span>{fact}
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="mt-card-soft p-6 md:p-8">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">한눈에 보기</div>
-          <h2 className="mt-title-md mt-3">먼저 확인해야 할 핵심 기준</h2>
-          <div className="mt-5 grid gap-4 md:grid-cols-3">
-            <div className="rounded-3xl bg-white p-5 shadow-sm">
-              <h3 className="text-base font-bold text-slate-800">누가 확인하면 좋나요?</h3>
-              <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-600">
-                {policy.target.map((item) => <li key={item}>• {item}</li>)}
-              </ul>
-            </div>
-            <div className="rounded-3xl bg-white p-5 shadow-sm">
-              <h3 className="text-base font-bold text-slate-800">무엇을 받을 수 있나요?</h3>
-              <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-600">
-                {policy.benefit.map((item) => <li key={item}>• {item}</li>)}
-              </ul>
-            </div>
-            <div className="rounded-3xl bg-white p-5 shadow-sm">
-              <h3 className="text-base font-bold text-slate-800">어디서 신청하나요?</h3>
-              <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-600">
-                {policy.apply.map((item) => <li key={item}>• {item}</li>)}
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-md">신청 전에 꼭 확인할 점</h2>
-          <p className="mt-3 text-sm leading-8 text-slate-600 md:text-base">
-            같은 정책이라도 아이 나이, 출생월, 회사 재직 조건, 이용 기관, 거주 지역에 따라 결과가 달라질 수 있습니다.
-            아래 항목을 먼저 확인하면 신청 과정에서 놓치는 부분을 줄일 수 있습니다.
-          </p>
-          <div className="mt-5 grid gap-3 md:grid-cols-2">
-            {policy.checkBefore.map((item, index) => (
-              <div key={item} className="rounded-2xl border border-amber-100 bg-amber-50/60 px-4 py-4 text-sm leading-7 text-slate-700">
-                <span className="font-semibold text-amber-700">{index + 1}. </span>{item}
+            </section>
+            <section className="rounded-2xl bg-white px-4 py-3">
+              <h2 className="mt-app-section-title">신청 전에 꼭 확인할 점</h2>
+              <div className="mt-3 grid gap-3 md:grid-cols-2">
+                {policy.checkBefore.map((item, index) => (
+                  <div key={item} className="rounded-2xl border border-amber-100 bg-amber-50/60 px-4 py-3 text-sm leading-7 text-slate-700">
+                    <span className="font-semibold text-amber-700">{index + 1}. </span>{item}
+                  </div>
+                ))}
               </div>
-            ))}
+            </section>
+            <section className="rounded-2xl bg-white px-4 py-3">
+              <h2 className="mt-app-section-title">준비할 때 도움이 되는 팁</h2>
+              <div className="mt-3 space-y-3 text-sm leading-7 text-slate-600">
+                {policy.userTip.map((tip) => <p key={tip}>{tip}</p>)}
+              </div>
+            </section>
+            <section className="rounded-2xl border border-red-100 bg-red-50 px-4 py-3">
+              <h2 className="text-base font-bold text-red-900">주의해서 볼 부분</h2>
+              <p className="mt-2 text-sm leading-7 text-red-900">{policy.caution}</p>
+            </section>
+            <section className="rounded-2xl bg-white px-4 py-3">
+              <h2 className="mt-app-section-title">공식자료 확인처</h2>
+              <SourceList sources={policy.sources} />
+            </section>
           </div>
-        </section>
-
-        <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-md">실제로 준비할 때 도움이 되는 팁</h2>
-          <div className="mt-4 space-y-4 text-sm leading-8 text-slate-600 md:text-base">
-            {policy.userTip.map((tip) => <p key={tip}>{tip}</p>)}
-          </div>
-        </section>
-
-        <section className="rounded-[32px] border border-red-100 bg-red-50/80 p-6 md:p-8">
-          <h2 className="text-xl font-bold text-red-900">주의해서 볼 부분</h2>
-          <p className="mt-3 text-sm leading-8 text-red-900 md:text-base">{policy.caution}</p>
-        </section>
-
-        <section className="mt-card-soft p-6 md:p-8">
-          <h2 className="mt-title-md">공식자료 확인처</h2>
-          <p className="mt-3 text-sm leading-7 text-slate-600">
-            아래 자료를 기준으로 정리했지만, 정책은 예산과 법령 변경으로 달라질 수 있습니다. 신청 직전에는 공식자료를 한 번 더 확인해 주세요.
-          </p>
-          <SourceList sources={policy.sources} />
-        </section>
+        </details>
 
         <section className="mt-card p-6 md:p-8">
           <h2 className="mt-title-md">함께 확인하면 좋은 정책</h2>
           <div className="mt-5 grid gap-4 md:grid-cols-2">
-            {related.map((item) => (
+            {related.slice(0, 4).map((item) => (
               <Link key={item.slug} href={`/policy/${item.category}/${item.slug}`} className="rounded-[28px] border border-amber-100 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-amber-200">
                 <div className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-600">{governmentPolicyCategories[item.category].shortLabel}</div>
                 <h3 className="mt-3 text-lg font-bold text-slate-800">{item.shortTitle}</h3>

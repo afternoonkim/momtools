@@ -19,6 +19,8 @@ export const COUPANG_PARTNERS = {
     process.env.NEXT_PUBLIC_COUPANG_PARTNERS_CATEGORY_BANNER_HTML?.trim() ?? "",
   dynamicBannerHtml:
     process.env.NEXT_PUBLIC_COUPANG_PARTNERS_DYNAMIC_BANNER_HTML?.trim() ?? "",
+  legacyBannerEnabled:
+    process.env.NEXT_PUBLIC_COUPANG_PARTNERS_LEGACY_BANNER_ENABLED === "true",
   categoryBanner: {
     ...COUPANG_PARTNERS_BANNER_SIZE,
     label: "로켓 출산/유아동",
@@ -33,10 +35,15 @@ export const COUPANG_PARTNERS_DISCLOSURE =
   "이 게시물은 쿠팡 파트너스 활동의 일환으로, 이에 따른 일정액의 수수료를 제공받습니다.";
 
 const GLOBAL_COUPANG_EXCLUDED_PATH_PREFIXES = [
+  "/auth",
   "/cal",
+  "/child",
   "/content",
   "/db-check",
+  "/development-check",
   "/en",
+  "/family",
+  "/my",
   "/tools",
 ] as const;
 
@@ -45,6 +52,7 @@ const GLOBAL_COUPANG_EXCLUDED_PATHS = new Set<string>([
   "/about",
   "/contact",
   "/faq",
+  "/login",
   "/privacy",
   "/search",
   "/terms",
@@ -59,6 +67,8 @@ export function normalizeCoupangPathname(pathname: string) {
 }
 
 export function shouldShowGlobalCoupangPartnersAd(pathname: string) {
+  if (!COUPANG_PARTNERS.enabled || !COUPANG_PARTNERS.legacyBannerEnabled) return false;
+
   const normalizedPathname = normalizeCoupangPathname(pathname);
 
   if (GLOBAL_COUPANG_EXCLUDED_PATHS.has(normalizedPathname)) return false;
@@ -78,9 +88,14 @@ export function shouldShowGlobalCoupangPartnersAd(pathname: string) {
 
 
 const PRODUCT_AD_EXCLUDED_PATH_PREFIXES = [
+  "/auth",
+  "/child",
   "/content",
   "/db-check",
+  "/development-check",
   "/en",
+  "/family",
+  "/my",
 ] as const;
 
 const PRODUCT_AD_EXCLUDED_PATHS = new Set<string>([
@@ -88,6 +103,7 @@ const PRODUCT_AD_EXCLUDED_PATHS = new Set<string>([
   "/about",
   "/contact",
   "/faq",
+  "/login",
   "/privacy",
   "/search",
   "/terms",

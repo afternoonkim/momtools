@@ -49,7 +49,7 @@ export default function BottomTabNav({ onMenuClick }: { onMenuClick: () => void 
       label: "홈",
       href: "/",
       icon: Home,
-      active: (path) => path === "/",
+      active: (path) => path === "/" || path.startsWith("/my"),
     },
     {
       label: "계산",
@@ -65,9 +65,9 @@ export default function BottomTabNav({ onMenuClick }: { onMenuClick: () => void 
     },
     {
       label: "기록",
-      href: "/checklists",
+      href: "/records",
       icon: ClipboardList,
-      active: (path) => path.startsWith("/checklists"),
+      active: (path) => path.startsWith("/records") || path.startsWith("/child") || path.startsWith("/development-check") || path.startsWith("/checklists"),
     },
     {
       label: "메뉴",

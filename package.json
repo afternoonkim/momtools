@@ -30,7 +30,15 @@
     "db:quality:progress": "tsx scripts/check-content-quality-progress.ts",
     "db:quality:page": "tsx scripts/audit-page-detail-sections.ts",
     "check:deploy": "npm run lint && npm run build",
-    "cleanup:korean-only": "node scripts/cleanup-korean-only-before-deploy.mjs"
+    "cleanup:korean-only": "node scripts/cleanup-korean-only-before-deploy.mjs",
+    "db:normalize:qna": "tsx scripts/normalize-qna-display-text.ts",
+    "db:normalize:qna:apply": "tsx scripts/normalize-qna-display-text.ts --apply",
+    "db:seed:coupang-categories": "tsx prisma/seed-coupang-product-ads.ts",
+    "db:seed:coupang-links": "tsx prisma/seed-coupang-product-links.ts",
+    "db:seed:coupang-mappings": "tsx prisma/seed-coupang-page-mappings.ts",
+    "db:seed:coupang-mappings:dry": "tsx prisma/seed-coupang-page-mappings.ts --dry-run",
+    "db:seed:coupang-mappings:sync": "tsx prisma/seed-coupang-page-mappings.ts --sync",
+    "db:seed:coupang-ads": "npm run db:seed:coupang-categories && npm run db:seed:coupang-links && npm run db:seed:coupang-mappings"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",

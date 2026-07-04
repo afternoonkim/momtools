@@ -158,6 +158,7 @@ export function groupResultsByType(results: SearchResult[]): Array<{ type: Searc
     "baby-food",
     "info",
     "checklist",
+    "record",
     "monthly-guide",
     "health-guide",
   ];
@@ -182,6 +183,7 @@ export const TYPE_LABELS: Record<SearchEntryType, string> = {
   "baby-food": "이유식 메뉴",
   info: "육아 정보",
   checklist: "체크리스트",
+  record: "기록하기",
   "monthly-guide": "월령별 육아 로드맵",
   "health-guide": "증상별 건강 가이드",
 };

@@ -50,14 +50,20 @@ export default async function MonthlyGuideDetailPage({ params }: { params: Promi
         <MedicalDisclaimer lang="ko" variant="compact" />
 
         <div className="mt-app-stack">
-          <InfoSection title="오늘 먼저 확인할 것" items={item.keyChecks} />
-          <InfoSection title="바로 상담이 필요한 신호" items={item.dangerSigns} tone="danger" />
-          <InfoSection title="발달 흐름" items={item.development} />
-          <InfoSection title="수유·식사 기준" items={item.feeding} />
-          <InfoSection title="수면과 하루 루틴" items={item.sleep} />
-          <InfoSection title="집에서 해볼 수 있는 놀이" items={item.play} />
-          <InfoSection title="부모가 기억하면 좋은 팁" items={item.parentTips} />
+          <InfoSection title="오늘 먼저 확인할 것" items={item.keyChecks.slice(0, 4)} />
+          <InfoSection title="바로 상담이 필요한 신호" items={item.dangerSigns.slice(0, 4)} tone="danger" />
         </div>
+
+        <details className="mt-section-details">
+          <summary className="mt-section-summary"><span>발달·수유·수면·놀이 더 보기</span><span className="text-xs font-bold text-amber-700">열기</span></summary>
+          <div className="mt-detail-body space-y-4">
+            <InfoSection title="발달 흐름" items={item.development} />
+            <InfoSection title="수유·식사 기준" items={item.feeding} />
+            <InfoSection title="수면과 하루 루틴" items={item.sleep} />
+            <InfoSection title="집에서 해볼 수 있는 놀이" items={item.play} />
+            <InfoSection title="부모가 기억하면 좋은 팁" items={item.parentTips} />
+          </div>
+        </details>
 
         <section className="mt-section-details" id="faq">
           <details>
@@ -79,7 +85,7 @@ export default async function MonthlyGuideDetailPage({ params }: { params: Promi
         <section className="space-y-3">
           <h2 className="text-xl font-extrabold text-slate-900 md:text-2xl">함께 확인하면 좋은 페이지</h2>
           <div className="mt-3 flex flex-wrap gap-2">
-            {item.relatedLinks.map((link) => (
+            {item.relatedLinks.slice(0, 4).map((link) => (
               <Link key={link.href} className="mt-chip-link" href={link.href}>{link.label}</Link>
             ))}
           </div>

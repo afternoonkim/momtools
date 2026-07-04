@@ -28,8 +28,6 @@ const nextConfig: NextConfig = {
       { source: "/en/checklists/daycare-prep", destination: "/en/checklists/daycare", permanent: true },
 
       // 정체성 개편으로 제외한 기능은 기존 URL을 깨지 않도록 관련 상위 페이지로 301 이동합니다.
-      { source: "/baby-names", destination: "/", permanent: true },
-      { source: "/baby-names/:path*", destination: "/", permanent: true },
       { source: "/play", destination: "/", permanent: true },
       { source: "/play/:path*", destination: "/", permanent: true },
       { source: "/items", destination: "/checklists/newborn", permanent: true },

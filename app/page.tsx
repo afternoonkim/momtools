@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Search } from "lucide-react";
+import { redirect } from "next/navigation";
 import SearchBox from "@/components/layout/SearchBox";
 import RecentViewedPages from "@/components/common/RecentViewedPages";
+import MyChildHome from "@/components/child/MyChildHome";
+import { getCurrentUser } from "@/lib/auth/session";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "아이를 키우는 모든 순간을 더 쉽게 | MomTools",
@@ -20,7 +24,7 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "아이를 키우는 모든 순간을 더 쉽게 | MomTools",
-    description: "계산하기, 기록하기, 확인하기, 참고하기로 필요한 육아 정보를 빠르게 찾아보세요.",
+    description: "필요한 육아 정보를 검색하고, 최근 확인한 페이지로 빠르게 이어서 볼 수 있습니다.",
     url: "https://momtools.kr/",
     siteName: "MomTools",
     locale: "ko_KR",
@@ -37,14 +41,7 @@ const quickLinks = [
   { label: "정부지원정책", href: "/policy" },
 ];
 
-const sections = [
-  { label: "계산하기", href: "/tools", description: "개월수·예방접종·이유식·성장" },
-  { label: "기록하기", href: "/checklists", description: "출산·신생아·이유식·어린이집 준비" },
-  { label: "확인하기", href: "/qna", description: "건강·성장·행동 질문" },
-  { label: "참고하기", href: "/info", description: "임신·신생아·이유식·정책 정보" },
-];
-
-export default function HomePage() {
+function PublicHome() {
   return (
     <div className="mt-page">
       <div className="mt-container space-y-6 md:space-y-8">
@@ -68,27 +65,19 @@ export default function HomePage() {
           </div>
         </section>
 
-
-        <RecentViewedPages />
-
-        <section className="mt-card-soft p-4 md:p-6">
-          <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.16em] text-amber-600">
-            <Search size={14} /> 사이트 구조
-          </div>
-          <h2 className="mt-2 text-xl font-extrabold text-slate-900 md:text-2xl">필요한 일만 골라서 보세요</h2>
-          <div className="mt-4 grid gap-2 sm:grid-cols-2">
-            {sections.map((item) => (
-              <Link key={item.href} href={item.href} className="flex items-center justify-between rounded-2xl border border-amber-100 bg-white px-4 py-3 transition hover:bg-amber-50">
-                <span>
-                  <strong className="block text-sm font-extrabold text-slate-900">{item.label}</strong>
-                  <span className="mt-0.5 block text-xs leading-5 text-slate-500">{item.description}</span>
-                </span>
-                <span className="text-amber-700">→</span>
-              </Link>
-            ))}
-          </div>
-        </section>
+        <RecentViewedPages limit={3} className="shrink-0" />
       </div>
     </div>
   );
+}
+
+export default async function HomePage({ searchParams }: { searchParams?: Promise<{ childId?: string }> }) {
+  const user = await getCurrentUser();
+
+  if (!user) return <PublicHome />;
+  if (!user.children.length) redirect("/child/new");
+
+  const params = await searchParams;
+
+  return <MyChildHome user={user} selectedChildId={params?.childId} baseHref="/" showLogout={false} />;
 }

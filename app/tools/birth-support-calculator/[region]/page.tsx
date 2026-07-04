@@ -244,14 +244,16 @@ export default async function RegionalBirthSupportCalculatorPage({ params }: { p
           <span className="mt-badge">{region.sido} 출산지원금</span>
           <h1 className="mt-title-xl mt-5">{shortName} 출산지원금 2026 첫째·둘째·셋째 얼마 받을 수 있나요?</h1>
           <p className="mt-text-main mt-4">
-            {displayName} 출산지원금은 전국 공통 기본 지원금(첫만남이용권, 부모급여, 아동수당)과 {displayName}이 자체적으로 지급하는 출산축하금·출산장려금·다자녀지원금을 합쳐서 봐야 실제 받을 수 있는 금액에 가까워요. 출생 순위별 합산 예상 금액을 한 번에 보고, {shortName} 지자체 지원 항목까지 같이 살펴보세요.
-          </p>
-          <p className="mt-text-sub mt-4">
-            이 지역의 지원금은 출생순위, 거주기간, 신청기한에 따라 달라질 수 있어요. 결과 카드 아래 항목별 조건을 함께 확인해 주세요.
+            출생 순위를 선택하면 전국 공통 지원금과 {shortName} 지자체 지원금을 참고용으로 합산해 보여드려요.
           </p>
         </section>
 
-        <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <BirthSupportCalculatorClient
+          initialRegionCode={region.regionCode}
+          initialBirthOrder="first"
+        />
+
+        <section className="grid gap-3 md:grid-cols-2 xl:grid-cols-4">
           <article className="mt-card p-6">
             <div className="text-sm font-semibold text-amber-600">첫째아 예상</div>
             <h2 className="mt-3 text-2xl font-black text-slate-900">{firstResult.formattedTotal}</h2>
@@ -274,11 +276,6 @@ export default async function RegionalBirthSupportCalculatorPage({ params }: { p
           </article>
         </section>
 
-        <BirthSupportCalculatorClient
-          initialRegionCode={region.regionCode}
-          initialBirthOrder="first"
-        />
-
         <ContentUpdateNote
           publishedOn={pageDates.published}
           updatedOn={region.updatedAt ?? pageDates.updated}
@@ -286,7 +283,9 @@ export default async function RegionalBirthSupportCalculatorPage({ params }: { p
         />
 
         {localBenefits.length > 0 ? (
-          <section className="mt-card p-6 md:p-8">
+          <details className="mt-section-details">
+            <summary className="mt-section-summary"><span>{shortName} 지자체 지원 항목 자세히 보기</span><span className="text-xs font-bold text-amber-700">열기</span></summary>
+            <section className="mt-detail-body">
             <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">{shortName} 지자체 지원 항목</div>
             <h2 className="mt-title-md mt-3">{displayName} 출산지원금 항목별 자세히 보기</h2>
             <div className="mt-5 space-y-4">
@@ -319,11 +318,14 @@ export default async function RegionalBirthSupportCalculatorPage({ params }: { p
                 </article>
               ))}
             </div>
-          </section>
+            </section>
+          </details>
         ) : null}
 
-        <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-md">{shortName} 출산지원금 신청 전 자주 묻는 질문</h2>
+        <details className="mt-section-details">
+          <summary className="mt-section-summary"><span>{shortName} 출산지원금 신청 전 자주 묻는 질문</span><span className="text-xs font-bold text-amber-700">열기</span></summary>
+          <section className="mt-detail-body">
+          <h2 className="sr-only">{shortName} 출산지원금 신청 전 자주 묻는 질문</h2>
           <div className="mt-5 space-y-4">
             <article className="rounded-3xl border border-slate-100 bg-white p-5">
               <h3 className="text-base font-semibold text-slate-900">{shortName} 출산지원금은 어떻게 신청하나요?</h3>
@@ -348,7 +350,8 @@ export default async function RegionalBirthSupportCalculatorPage({ params }: { p
               </p>
             </article>
           </div>
-        </section>
+          </section>
+        </details>
 
         <section className="mt-card-soft p-6 md:p-8">
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">함께 확인하기</div>

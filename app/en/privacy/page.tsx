@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 const sections = [
   {
     title: "What this page covers",
-    body: "MomTools English is designed to be used without creating an account. This page explains what limited information may be processed when someone visits a page, uses a tool, or sends a message through the contact channel.",
+    body: "MomTools English can be used without creating an account. If a child profile feature is used, only a child's display nickname, birth date, optional gender, and—when entered for corrected-age guidance—an expected due date are used to show age-based guidance. This page explains what limited information may be processed when someone visits a page, uses a tool, or sends a message through the contact channel.",
   },
   {
     title: "Information that may be handled",
@@ -35,7 +35,7 @@ const sections = [
   },
   {
     title: "Sensitive information",
-    body: "Please do not send private medical details, full birth dates, test results, photos of a child, or other sensitive personal information by email. The site is not a medical record system and is not meant for urgent health communication.",
+    body: "MomTools does not ask for a child's national ID number, home address, phone number, photo, medical record, or detailed health history. Please do not send private medical details, test results, photos of a child, or other sensitive personal information by email. The site is not a medical record system and is not meant for urgent health communication.",
   },
   {
     title: "Policy updates",

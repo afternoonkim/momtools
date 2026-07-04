@@ -165,16 +165,21 @@ export default async function ChildcarePortalDetailPage({ params }: { params: Pr
           </div>
         </section>
 
-        {guide.sections.map((section) => (
-          <section key={section.heading} className="mt-card p-6 md:p-8">
-            <h2 className="mt-title-md">{section.heading}</h2>
-            <div className="mt-4 space-y-4 text-sm leading-8 text-slate-700 md:text-base">
-              {section.paragraphs.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-          </section>
-        ))}
+        <details className="mt-section-details">
+          <summary className="mt-section-summary"><span>세부 설명 더 보기</span><span className="text-xs font-bold text-amber-700">열기</span></summary>
+          <div className="mt-detail-body space-y-4">
+            {guide.sections.map((section) => (
+              <section key={section.heading} className="rounded-2xl bg-white px-4 py-3">
+                <h2 className="mt-title-md">{section.heading}</h2>
+                <div className="mt-3 space-y-3 text-sm leading-7 text-slate-700 md:text-base">
+                  {section.paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              </section>
+            ))}
+          </div>
+        </details>
 
         <section className="mt-card-soft p-6 md:p-8">
           <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr]">
@@ -205,21 +210,21 @@ export default async function ChildcarePortalDetailPage({ params }: { params: Pr
           </div>
         </section>
 
-        <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-md">공식 사이트에서 최종 확인할 항목</h2>
-          <div className="mt-5 space-y-3">
+        <details className="mt-section-details">
+          <summary className="mt-section-summary"><span>공식 사이트에서 최종 확인할 항목</span><span className="text-xs font-bold text-amber-700">열기</span></summary>
+          <div className="mt-detail-body space-y-3">
             {guide.beforeYouGo.map((item) => (
               <div key={item} className="rounded-2xl border border-slate-100 bg-white px-4 py-3 text-sm leading-7 text-slate-700">
                 {item}
               </div>
             ))}
           </div>
-        </section>
+        </details>
 
         <section className="mt-card-soft p-6 md:p-8">
           <h2 className="mt-title-md">MomTools에서 이어서 볼 수 있어요</h2>
           <div className="mt-5 grid gap-4 md:grid-cols-3">
-            {guide.momtoolsLinks.map((link) => (
+            {guide.momtoolsLinks.slice(0, 4).map((link) => (
               <Link key={link.href} href={link.href} className="mt-list-card">
                 <div className="font-semibold text-slate-900">{link.label}</div>
                 <div className="mt-2 text-sm leading-6 text-slate-500">{link.description}</div>
@@ -228,9 +233,9 @@ export default async function ChildcarePortalDetailPage({ params }: { params: Pr
           </div>
         </section>
 
-        <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-md">자주 묻는 질문</h2>
-          <div className="mt-5 space-y-4">
+        <details className="mt-section-details">
+          <summary className="mt-section-summary"><span>자주 묻는 질문</span><span className="text-xs font-bold text-amber-700">열기</span></summary>
+          <div className="mt-detail-body space-y-3">
             {guide.faq.map((item) => (
               <article key={item.q} className="rounded-3xl border border-slate-100 bg-slate-50 p-5">
                 <h3 className="text-base font-semibold text-slate-900">{item.q}</h3>
@@ -238,7 +243,7 @@ export default async function ChildcarePortalDetailPage({ params }: { params: Pr
               </article>
             ))}
           </div>
-        </section>
+        </details>
 
         <section className="mt-card p-6 md:p-8">
           <h2 className="mt-title-md">다른 아이사랑 활용 가이드</h2>

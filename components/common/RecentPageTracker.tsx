@@ -10,8 +10,16 @@ export interface RecentPageItem {
   viewedAt: number;
 }
 
-export const RECENT_PAGES_STORAGE_KEY = "momtools:recent-pages";
+export type RecentPagesScope =
+  | { type: "guest"; storageKey: string }
+  | { type: "user"; userId: string; storageKey: string };
+
+const RECENT_PAGES_LEGACY_STORAGE_KEY = "momtools:recent-pages";
+const RECENT_PAGES_GUEST_STORAGE_KEY = "momtools:recent-pages:guest";
+const RECENT_PAGES_USER_STORAGE_PREFIX = "momtools:recent-pages:user:";
+
 export const RECENT_PAGES_UPDATED_EVENT = "momtools:recent-pages-updated";
+export const RECENT_PAGES_AUTH_CHANGED_EVENT = "momtools:recent-pages-auth-changed";
 
 const MAX_RECENT_PAGES = 8;
 
@@ -19,6 +27,7 @@ function getCategory(pathname: string) {
   if (pathname.startsWith("/tools") || pathname.startsWith("/cal")) return "계산하기";
   if (pathname.startsWith("/qna") || pathname.startsWith("/health") || pathname.startsWith("/family-health-qna")) return "확인하기";
   if (pathname.startsWith("/moonlight-hospitals")) return "달빛아동병원";
+  if (pathname.startsWith("/development-check")) return "발달 체크";
   if (pathname.startsWith("/checklists")) return "기록하기";
   if (pathname.startsWith("/baby-food")) return "이유식";
   if (pathname.startsWith("/monthly-guide")) return "월령 가이드";
@@ -30,6 +39,7 @@ function getCategory(pathname: string) {
 function shouldTrack(pathname: string) {
   if (!pathname || pathname === "/") return false;
   if (pathname.startsWith("/api")) return false;
+  if (pathname.startsWith("/auth") || pathname.startsWith("/login")) return false;
   if (pathname.startsWith("/db-check")) return false;
   if (pathname.startsWith("/en")) return false;
   if (["/search", "/feedback", "/privacy", "/terms", "/about", "/contact", "/faq"].includes(pathname)) return false;
@@ -47,29 +57,78 @@ function getReadableTitle() {
   return title ? title.slice(0, 48) : "최근 본 페이지";
 }
 
-function readRecentPages(): RecentPageItem[] {
+function getUserStorageKey(userId: string) {
+  return `${RECENT_PAGES_USER_STORAGE_PREFIX}${encodeURIComponent(userId)}`;
+}
+
+function cleanupLegacyRecentPages() {
   try {
-    const raw = window.localStorage.getItem(RECENT_PAGES_STORAGE_KEY);
+    window.localStorage.removeItem(RECENT_PAGES_LEGACY_STORAGE_KEY);
+  } catch {
+    // localStorage를 사용할 수 없는 환경에서는 조용히 무시합니다.
+  }
+}
+
+function dispatchRecentPagesUpdated() {
+  window.dispatchEvent(new Event(RECENT_PAGES_UPDATED_EVENT));
+}
+
+export function notifyRecentPagesAuthChanged() {
+  window.dispatchEvent(new Event(RECENT_PAGES_AUTH_CHANGED_EVENT));
+  dispatchRecentPagesUpdated();
+}
+
+export async function resolveRecentPagesScope(): Promise<RecentPagesScope> {
+  cleanupLegacyRecentPages();
+
+  try {
+    const response = await fetch("/api/auth/me", { cache: "no-store" });
+    const data = (await response.json().catch(() => null)) as { loggedIn?: boolean; user?: { id?: unknown } } | null;
+    const userId = typeof data?.user?.id === "string" ? data.user.id : "";
+
+    if (response.ok && data?.loggedIn && userId) {
+      return { type: "user", userId, storageKey: getUserStorageKey(userId) };
+    }
+  } catch {
+    // 인증 상태 확인 실패 시에는 비회원 저장소만 사용합니다.
+  }
+
+  return { type: "guest", storageKey: RECENT_PAGES_GUEST_STORAGE_KEY };
+}
+
+export function readRecentPagesFromScope(scope: RecentPagesScope): RecentPageItem[] {
+  try {
+    const raw = window.localStorage.getItem(scope.storageKey);
     if (!raw) return [];
     const parsed = JSON.parse(raw);
     if (!Array.isArray(parsed)) return [];
-    return parsed.filter((item) => item?.href && item?.title);
+    return parsed.filter((item) => item?.href && item?.title && item?.category && item?.viewedAt);
   } catch {
     return [];
   }
 }
 
-function writeRecentPages(items: RecentPageItem[]) {
-  window.localStorage.setItem(RECENT_PAGES_STORAGE_KEY, JSON.stringify(items.slice(0, MAX_RECENT_PAGES)));
-  window.dispatchEvent(new Event(RECENT_PAGES_UPDATED_EVENT));
+export function writeRecentPagesToScope(scope: RecentPagesScope, items: RecentPageItem[]) {
+  window.localStorage.setItem(scope.storageKey, JSON.stringify(items.slice(0, MAX_RECENT_PAGES)));
+  dispatchRecentPagesUpdated();
+}
+
+export function clearRecentPagesFromScope(scope: RecentPagesScope) {
+  window.localStorage.removeItem(scope.storageKey);
+  dispatchRecentPagesUpdated();
 }
 
 export default function RecentPageTracker() {
   const pathname = usePathname();
+
   useEffect(() => {
     if (!pathname || !shouldTrack(pathname)) return;
 
-    const timer = window.setTimeout(() => {
+    let cancelled = false;
+    const timer = window.setTimeout(async () => {
+      const scope = await resolveRecentPagesScope();
+      if (cancelled) return;
+
       const params = window.location.search.replace(/^\?/, "");
       const href = params && pathname.startsWith("/moonlight-hospitals") ? `${pathname}?${params}` : pathname;
       const item: RecentPageItem = {
@@ -79,12 +138,15 @@ export default function RecentPageTracker() {
         viewedAt: Date.now(),
       };
 
-      const current = readRecentPages();
+      const current = readRecentPagesFromScope(scope);
       const next = [item, ...current.filter((entry) => entry.href !== item.href)].slice(0, MAX_RECENT_PAGES);
-      writeRecentPages(next);
+      writeRecentPagesToScope(scope, next);
     }, 220);
 
-    return () => window.clearTimeout(timer);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(timer);
+    };
   }, [pathname]);
 
   return null;

@@ -20,15 +20,21 @@ export type AdFitUnit = (typeof ADFIT_UNITS)[keyof typeof ADFIT_UNITS];
 export type GlobalAdFitPosition = "top" | "bottom";
 
 const GLOBAL_ADFIT_EXCLUDED_PATH_PREFIXES = [
+  "/auth",
+  "/child",
   "/en",
   "/content",
   "/db-check",
+  "/development-check",
+  "/family",
+  "/my",
   "/tools",
   "/cal",
 ] as const;
 
 const GLOBAL_ADFIT_EXCLUDED_PATHS = new Set<string>([
   "/",
+  "/login",
   "/privacy",
   "/terms",
   "/contact",

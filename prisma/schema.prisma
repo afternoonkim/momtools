@@ -35,6 +35,20 @@ enum PublishStatus {
   HIDDEN
 }
 
+
+enum AuthProvider {
+  KAKAO
+  GOOGLE
+  APPLE
+  PHONE
+}
+
+enum ChildGender {
+  MALE
+  FEMALE
+  UNKNOWN
+}
+
 model ContentCategory {
   id          String      @id @default(cuid())
   locale      Locale      @default(ko)
@@ -278,4 +292,149 @@ model PageProductAdMapping {
   @@index([pagePath])
   @@index([enabled])
   @@index([priority])
+}
+
+model User {
+  id          String    @id @default(cuid())
+  email       String?
+  nickname    String?
+
+  lastLoginAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deletedAt   DateTime?
+
+  accounts    UserAccount[]
+  children    Child[]
+  familyMemberships FamilyMember[]
+
+  @@index([deletedAt])
+  @@index([lastLoginAt])
+}
+
+model UserAccount {
+  id                String       @id @default(cuid())
+  userId            String
+  provider          AuthProvider
+  providerAccountId String
+
+  email             String?
+  profileImageUrl   String?
+
+  createdAt         DateTime     @default(now())
+  updatedAt         DateTime     @updatedAt
+
+  user              User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@index([userId])
+}
+
+
+model FamilyGroup {
+  id          String   @id @default(cuid())
+  name        String   @default("우리 가족")
+  inviteCode  String   @unique
+  inviteCodeUpdatedAt DateTime @default(now())
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  members     FamilyMember[]
+  children    Child[]
+
+  @@index([inviteCode])
+}
+
+model FamilyMember {
+  id            String   @id @default(cuid())
+  familyGroupId String
+  userId        String
+
+  role          String   @default("CAREGIVER")
+  status        String   @default("ACTIVE")
+  joinedAt      DateTime @default(now())
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  familyGroup   FamilyGroup @relation(fields: [familyGroupId], references: [id], onDelete: Cascade)
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([familyGroupId, userId])
+  @@index([userId])
+  @@index([familyGroupId])
+  @@index([status])
+}
+
+model Child {
+  id          String       @id @default(cuid())
+  userId      String
+  familyGroupId String?
+
+  nickname    String?
+  birthDate   DateTime     @db.Date
+  expectedDueDate DateTime? @db.Date
+  useCorrectedAge Boolean   @default(false)
+  gender      ChildGender?
+  isPrimary   Boolean      @default(false)
+
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  deletedAt   DateTime?
+
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  familyGroup FamilyGroup? @relation(fields: [familyGroupId], references: [id], onDelete: SetNull)
+  developmentRecords ChildDevelopmentRecord[]
+  developmentCheckLogs ChildDevelopmentCheckLog[]
+
+  @@index([userId])
+  @@index([familyGroupId])
+  @@index([userId, isPrimary])
+  @@index([deletedAt])
+}
+
+model ChildDevelopmentRecord {
+  id          String   @id @default(cuid())
+  childId     String
+
+  ageRangeKey String
+  domainKey   String
+  itemKey     String
+  status      String   @default("not_started")
+  note        String?
+  observedAt  DateTime? @db.Date
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  child       Child    @relation(fields: [childId], references: [id], onDelete: Cascade)
+
+  @@unique([childId, itemKey])
+  @@index([childId])
+  @@index([childId, ageRangeKey])
+  @@index([childId, status])
+}
+
+
+model ChildDevelopmentCheckLog {
+  id             String   @id @default(cuid())
+  childId        String
+
+  ageRangeKey    String
+  domainKey      String
+  itemKey        String
+  previousStatus String?
+  status         String
+  note           String?
+  observedAt     DateTime @db.Date
+
+  createdAt      DateTime @default(now())
+
+  child          Child    @relation(fields: [childId], references: [id], onDelete: Cascade)
+
+  @@index([childId])
+  @@index([childId, itemKey])
+  @@index([childId, ageRangeKey])
+  @@index([childId, createdAt])
 }

@@ -60,8 +60,8 @@ export default async function HealthGuideDetailPage({ params }: { params: Promis
           <span className="mt-badge">증상별 확인 가이드</span>
           <h1 className="mt-title-xl mt-4">{item.title}</h1>
           <p className="mt-text-main mt-3">{item.summary}</p>
-          <div className="mt-5 rounded-2xl bg-rose-50 px-4 py-4 text-sm leading-7 text-rose-950">
-            <div className="font-extrabold">먼저 결론</div>
+          <div className="mt-health-quick-conclusion mt-5 rounded-2xl bg-rose-50 px-4 py-4 text-sm leading-7 text-rose-950">
+            <div className="font-extrabold text-rose-700">먼저 결론</div>
             <p className="mt-1">{item.quickConclusion}</p>
           </div>
         </section>
@@ -69,12 +69,18 @@ export default async function HealthGuideDetailPage({ params }: { params: Promis
         <MedicalDisclaimer lang="ko" variant="compact" />
 
         <div className="mt-app-stack">
-          <InfoSection title="집에서 먼저 확인할 기준" items={item.firstCheck} />
-          <InfoSection title="집에서 도와줄 수 있는 방법" items={item.homeCare} />
-          <InfoSection title="개월수별로 다르게 볼 점" items={item.ageCriteria} />
-          <InfoSection title="바로 상담이 필요한 신호" items={item.dangerSigns} tone="danger" />
-          <InfoSection title="진료 전 기록하면 좋은 것" items={item.recordTips} />
+          <InfoSection title="바로 상담이 필요한 신호" items={item.dangerSigns.slice(0, 4)} tone="danger" />
+          <InfoSection title="집에서 먼저 확인할 기준" items={item.firstCheck.slice(0, 4)} />
         </div>
+
+        <details className="mt-section-details">
+          <summary className="mt-section-summary"><span>집에서 도와줄 방법과 기록할 점</span><span className="text-xs font-bold text-amber-700">열기</span></summary>
+          <div className="mt-detail-body space-y-4">
+            <InfoSection title="집에서 도와줄 수 있는 방법" items={item.homeCare} />
+            <InfoSection title="개월수별로 다르게 볼 점" items={item.ageCriteria} />
+            <InfoSection title="진료 전 기록하면 좋은 것" items={item.recordTips} />
+          </div>
+        </details>
 
         <section className="mt-section-details" id="faq">
           <details>
@@ -97,7 +103,7 @@ export default async function HealthGuideDetailPage({ params }: { params: Promis
           <section className="space-y-3">
             <h2 className="mt-app-section-title">이 증상과 함께 많이 보는 Q&amp;A</h2>
             <div className="mt-app-link-list">
-              {relatedQna.map((qna) => (
+              {relatedQna.slice(0, 4).map((qna) => (
                 <Link key={qna.slug} href={`/qna/health/${qna.slug}`} className="mt-app-link-item">
                   <div className="mt-app-link-title">{qna.question}</div>
                   <div className="mt-app-link-desc">{qna.summary}</div>
@@ -110,7 +116,7 @@ export default async function HealthGuideDetailPage({ params }: { params: Promis
         <section className="space-y-3">
           <h2 className="mt-app-section-title">함께 보면 좋은 페이지</h2>
           <div className="mt-3 flex flex-wrap gap-2">
-            {item.relatedLinks.map((link) => (
+            {item.relatedLinks.slice(0, 4).map((link) => (
               <Link key={link.href} className="mt-chip-link" href={link.href}>{link.label}</Link>
             ))}
           </div>

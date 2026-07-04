@@ -3,24 +3,20 @@
 import Link from "next/link";
 import { Clock3, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { RECENT_PAGES_STORAGE_KEY, RECENT_PAGES_UPDATED_EVENT, type RecentPageItem } from "@/components/common/RecentPageTracker";
+import {
+  RECENT_PAGES_AUTH_CHANGED_EVENT,
+  RECENT_PAGES_UPDATED_EVENT,
+  clearRecentPagesFromScope,
+  readRecentPagesFromScope,
+  resolveRecentPagesScope,
+  type RecentPageItem,
+  type RecentPagesScope,
+} from "@/components/common/RecentPageTracker";
 
 interface RecentViewedPagesProps {
   limit?: number;
   title?: string;
   className?: string;
-}
-
-function readRecentPages(): RecentPageItem[] {
-  try {
-    const raw = window.localStorage.getItem(RECENT_PAGES_STORAGE_KEY);
-    if (!raw) return [];
-    const parsed = JSON.parse(raw);
-    if (!Array.isArray(parsed)) return [];
-    return parsed.filter((item) => item?.href && item?.title);
-  } catch {
-    return [];
-  }
 }
 
 export default function RecentViewedPages({
@@ -29,24 +25,36 @@ export default function RecentViewedPages({
   className,
 }: RecentViewedPagesProps) {
   const [items, setItems] = useState<RecentPageItem[]>([]);
+  const [scope, setScope] = useState<RecentPagesScope | null>(null);
 
   useEffect(() => {
-    const refresh = () => setItems(readRecentPages().slice(0, limit));
+    let alive = true;
+
+    const refresh = async () => {
+      const resolvedScope = await resolveRecentPagesScope();
+      if (!alive) return;
+      setScope(resolvedScope);
+      setItems(readRecentPagesFromScope(resolvedScope).slice(0, limit));
+    };
+
     refresh();
     window.addEventListener("storage", refresh);
     window.addEventListener(RECENT_PAGES_UPDATED_EVENT, refresh);
+    window.addEventListener(RECENT_PAGES_AUTH_CHANGED_EVENT, refresh);
     return () => {
+      alive = false;
       window.removeEventListener("storage", refresh);
       window.removeEventListener(RECENT_PAGES_UPDATED_EVENT, refresh);
+      window.removeEventListener(RECENT_PAGES_AUTH_CHANGED_EVENT, refresh);
     };
   }, [limit]);
 
   if (items.length === 0) return null;
 
-  const clearItems = () => {
-    window.localStorage.removeItem(RECENT_PAGES_STORAGE_KEY);
+  const clearItems = async () => {
+    const currentScope = scope ?? await resolveRecentPagesScope();
+    clearRecentPagesFromScope(currentScope);
     setItems([]);
-    window.dispatchEvent(new Event(RECENT_PAGES_UPDATED_EVENT));
   };
 
   return (

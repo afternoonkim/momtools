@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   ChevronLeft,
-  Home,
   Calculator,
   Baby,
   ClipboardList,
@@ -39,9 +38,9 @@ export default function Sidebar({
   const hasPath = (path: string) => pathname === path || pathname.startsWith(`${path}/`);
 
   const isCalculateOpen = hasPath("/tools") || hasPath("/cal");
-  const isRecordOpen = hasPath("/checklists");
+  const isRecordOpen = hasPath("/records") || hasPath("/child") || hasPath("/checklists") || hasPath("/development-check");
   const isCheckOpen = hasPath("/qna") || hasPath("/health") || hasPath("/monthly-guide") || hasPath("/family-health-qna") || hasPath("/moonlight-hospitals");
-  const isReferenceOpen = hasPath("/info") || hasPath("/policy") || hasPath("/baby-food") || hasPath("/family-health-qna");
+  const isReferenceOpen = hasPath("/info") || hasPath("/policy") || hasPath("/baby-food") || hasPath("/baby-names") || hasPath("/family-health-qna");
 
   return (
     <>
@@ -80,22 +79,9 @@ export default function Sidebar({
 
         <div className="mt-sidebar-body flex-1 space-y-5 overflow-y-auto p-4">
           <div onClick={closeMobileSidebar}>
-            <SidebarItem href="/" label="홈" icon={Home} collapsed={collapsed} />
-          </div>
-
-          <div onClick={closeMobileSidebar}>
-            <SidebarGroup title="계산하기" collapsed={collapsed} defaultOpen={isCalculateOpen}>
-              <SidebarItem href="/tools/baby-age" label="아기 개월수" icon={Baby} collapsed={collapsed} />
-              <SidebarItem href="/tools/vaccine-schedule" label="예방접종 일정" icon={HeartPulse} collapsed={collapsed} />
-              <SidebarItem href="/tools/weaning-start" label="이유식 시작" icon={UtensilsCrossed} collapsed={collapsed} />
-              <SidebarItem href="/tools/growth-percentile" label="성장 백분위" icon={Calculator} collapsed={collapsed} />
-              <SidebarItem href="/tools/due-date" label="출산 예정일" icon={CalendarHeart} collapsed={collapsed} />
-              <SidebarItem href="/tools/birth-support-calculator" label="출산지원금" icon={Landmark} collapsed={collapsed} />
-            </SidebarGroup>
-          </div>
-
-          <div onClick={closeMobileSidebar}>
             <SidebarGroup title="기록하기" collapsed={collapsed} defaultOpen={isRecordOpen}>
+              <SidebarItem href="/child/new" label="아이 추가/등록" icon={NotebookPen} collapsed={collapsed} />
+              <SidebarItem href="/development-check" label="발달 체크" icon={Sparkles} collapsed={collapsed} />
               <SidebarItem href="/checklists/birth" label="출산 준비" icon={NotebookPen} collapsed={collapsed} />
               <SidebarItem href="/checklists/newborn" label="신생아 준비" icon={ClipboardList} collapsed={collapsed} />
               <SidebarItem href="/checklists/weaning" label="이유식 준비" icon={ClipboardList} collapsed={collapsed} />
@@ -116,6 +102,17 @@ export default function Sidebar({
           </div>
 
           <div onClick={closeMobileSidebar}>
+            <SidebarGroup title="계산하기" collapsed={collapsed} defaultOpen={isCalculateOpen}>
+              <SidebarItem href="/tools/baby-age" label="아기 개월수" icon={Baby} collapsed={collapsed} />
+              <SidebarItem href="/tools/vaccine-schedule" label="예방접종 일정" icon={HeartPulse} collapsed={collapsed} />
+              <SidebarItem href="/tools/weaning-start" label="이유식 시작" icon={UtensilsCrossed} collapsed={collapsed} />
+              <SidebarItem href="/tools/growth-percentile" label="성장 백분위" icon={Calculator} collapsed={collapsed} />
+              <SidebarItem href="/tools/due-date" label="출산 예정일" icon={CalendarHeart} collapsed={collapsed} />
+              <SidebarItem href="/tools/birth-support-calculator" label="출산지원금" icon={Landmark} collapsed={collapsed} />
+            </SidebarGroup>
+          </div>
+
+          <div onClick={closeMobileSidebar}>
             <SidebarGroup title="참고하기" collapsed={collapsed} defaultOpen={isReferenceOpen}>
               <SidebarItem href="/info" label="육아 정보" icon={BookOpen} collapsed={collapsed} />
               <SidebarItem href="/info/pregnancy" label="임신 정보" icon={BookOpen} collapsed={collapsed} />
@@ -124,6 +121,7 @@ export default function Sidebar({
               <SidebarItem href="/policy" label="정부지원정책" icon={Landmark} collapsed={collapsed} />
               <SidebarItem href="/info/family-finance" label="가계 가이드" icon={Landmark} collapsed={collapsed} />
               <SidebarItem href="/baby-food" label="이유식 레시피" icon={UtensilsCrossed} collapsed={collapsed} />
+              <SidebarItem href="/baby-names" label="아기 이름과 뜻" icon={Baby} collapsed={collapsed} />
               <SidebarItem href="/info/childcare-portal" label="아이사랑 활용" icon={BookOpen} collapsed={collapsed} />
             </SidebarGroup>
           </div>

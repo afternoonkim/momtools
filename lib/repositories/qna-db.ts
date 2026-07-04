@@ -1,4 +1,5 @@
 import { qnaCategories, qnaData, type QnaCategory, type QnaEntry } from "@/data/qna";
+import { normalizeQnaQuestion, normalizeStringList, normalizeUserVisibleText } from "@/lib/content-text-normalize";
 
 export type QnaCategorySummary = {
   key: QnaCategory;
@@ -80,34 +81,36 @@ function findSection(row: DbContentWithSections, sectionType: string) {
 }
 
 function rowToQnaListEntry(row: DbContentListRow): QnaEntry {
-  const keywords = row.keywords.map((item) => item.keyword).filter(Boolean);
+  const keywords = row.keywords.map((item) => normalizeUserVisibleText(item.keyword)).filter(Boolean);
+  const summary = normalizeUserVisibleText(row.summary);
 
   return {
     slug: row.slug,
-    question: row.question ?? row.title,
-    topic: row.topic ?? "육아 질문",
-    summary: row.summary,
-    answer: [row.summary],
+    question: normalizeQnaQuestion(row.question ?? row.title),
+    topic: normalizeUserVisibleText(row.topic ?? "육아 질문"),
+    summary,
+    answer: [summary],
     checklist: [],
     simpleAction: [],
-    caution: row.summary,
+    caution: summary,
     keywords,
   };
 }
 
 function rowToQnaEntry(row: DbContentWithSections): QnaEntry {
-  const answer = toStringArray(findSection(row, "answer")?.items);
-  const checklist = toStringArray(findSection(row, "checklist")?.items);
-  const simpleAction = toStringArray(findSection(row, "simpleAction")?.items);
-  const caution = findSection(row, "caution")?.body ?? checklist.at(-1) ?? row.summary;
-  const keywords = row.keywords.map((item) => item.keyword).filter(Boolean);
+  const answer = normalizeStringList(toStringArray(findSection(row, "answer")?.items));
+  const checklist = normalizeStringList(toStringArray(findSection(row, "checklist")?.items));
+  const simpleAction = normalizeStringList(toStringArray(findSection(row, "simpleAction")?.items));
+  const summary = normalizeUserVisibleText(row.summary);
+  const caution = normalizeUserVisibleText(findSection(row, "caution")?.body ?? checklist.at(-1) ?? summary);
+  const keywords = row.keywords.map((item) => normalizeUserVisibleText(item.keyword)).filter(Boolean);
 
   return {
     slug: row.slug,
-    question: row.question ?? row.title,
-    topic: row.topic ?? "육아 질문",
-    summary: row.summary,
-    answer: answer.length > 0 ? answer : [row.summary],
+    question: normalizeQnaQuestion(row.question ?? row.title),
+    topic: normalizeUserVisibleText(row.topic ?? "육아 질문"),
+    summary,
+    answer: answer.length > 0 ? answer : [summary],
     checklist,
     simpleAction,
     caution,
