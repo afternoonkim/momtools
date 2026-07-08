@@ -4,8 +4,8 @@ import { Baby, ClipboardList } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "기록하기",
-  description: "아이 정보 등록, 발달 체크, 출산·신생아·이유식·어린이집 체크리스트를 한곳에서 확인하세요.",
-  robots: { index: false, follow: true },
+  description: "아이 정보 등록, 이유식 기록, 발달 체크, 출산·신생아·이유식·어린이집 체크리스트를 한곳에서 확인하세요.",
+  robots: { index: false, follow: false },
 };
 
 const childItems = [
@@ -18,6 +18,16 @@ const childItems = [
     title: "발달 체크",
     description: "아이별로 움직임, 감각, 말·소통, 먹기·생활 발달 흐름을 기록해요.",
     href: "/development-check",
+  },
+  {
+    title: "이유식 기록",
+    description: "오늘 먹인 재료, 먹은 양, 반응을 아이별로 짧게 남겨요.",
+    href: "/weaning-record",
+  },
+  {
+    title: "예방접종 체크",
+    description: "아이 생년월일 기준으로 접종 예상 시기와 완료 여부를 확인해요.",
+    href: "/vaccine-check",
   },
   {
     title: "가족 연결",
@@ -70,7 +80,7 @@ export default function RecordsPage() {
         <section className="mt-card p-4">
           <span className="mt-badge">기록하기</span>
           <h1 className="mt-3 text-[20px] font-black leading-7 text-slate-950">기록할 기능을 바로 선택해요</h1>
-          <p className="mt-1.5 text-[12px] leading-5 text-slate-600">아이 등록, 발달 체크, 준비 체크리스트로 바로 이동할 수 있어요.</p>
+          <p className="mt-1.5 text-[12px] leading-5 text-slate-600">아이 등록, 이유식 기록, 예방접종 체크, 발달 체크로 바로 이동할 수 있어요.</p>
         </section>
 
         <section className="mt-simple-list" aria-labelledby="child-record-title">
@@ -78,7 +88,7 @@ export default function RecordsPage() {
             <div className="flex items-center gap-2">
               <Baby size={16} className="text-amber-600" aria-hidden />
               <h2 id="child-record-title" className="text-[14px] font-extrabold text-slate-900">
-                아이 정보와 발달 기록
+                아이 관리와 매일 기록
               </h2>
             </div>
           </div>

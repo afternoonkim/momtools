@@ -9,6 +9,7 @@ import ScrollToTopButton from "@/components/common/ScrollToTopButton";
 import RecentPageTracker from "@/components/common/RecentPageTracker";
 import GlobalAdFitAd from "@/components/ads/GlobalAdFitAd";
 import GlobalCoupangProductAd from "@/components/ads/GlobalCoupangProductAd";
+import PwaInstallGuide from "@/components/pwa/PwaInstallGuide";
 
 export default function ClientLayout({
   children,
@@ -39,8 +40,9 @@ export default function ClientLayout({
         <GlobalCoupangProductAd />
         <GlobalAdFitAd position="bottom" />
         <SiteFooter />
-        <div className="h-[calc(4.75rem+env(safe-area-inset-bottom))] lg:hidden" />
+        <div className="h-[calc(4.1rem+env(safe-area-inset-bottom))] lg:hidden" />
         <ScrollToTopButton />
+        <PwaInstallGuide />
         <BottomTabNav onMenuClick={() => setMobileMenuOpen(true)} />
       </div>
     </div>

@@ -19,5 +19,5 @@ export default async function MyPage({ searchParams }: { searchParams?: Promise<
 
   const params = await searchParams;
 
-  return <MyChildHome user={user} selectedChildId={params?.childId} baseHref="/my" showLogout />;
+  return <MyChildHome user={user} selectedChildId={params?.childId} baseHref="/my" showLogout={false} />;
 }

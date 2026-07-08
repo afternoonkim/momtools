@@ -57,7 +57,7 @@ function ActionLink({ href, label, description }: { href: string; label: string;
   );
 }
 
-export default function MyChildHome({ user, selectedChildId, baseHref = "/my", showLogout = true }: MyChildHomeProps) {
+export default function MyChildHome({ user, selectedChildId, baseHref = "/my", showLogout = false }: MyChildHomeProps) {
   const child = user.children.find((item) => item.id === selectedChildId) ?? user.children.find((item) => item.isPrimary) ?? user.children[0];
   const selectedIndex = user.children.findIndex((item) => item.id === child.id);
   const summary = getChildSummary(child.birthDate, new Date(), child.expectedDueDate, child.useCorrectedAge);
@@ -126,7 +126,8 @@ export default function MyChildHome({ user, selectedChildId, baseHref = "/my", s
             <h2 id="child-links-title" className="text-[14px] font-extrabold text-slate-900">자주 쓰는 기록</h2>
           </div>
           <ActionLink href={`/development-check?${childQuery}`} label="발달 체크" description="오늘 보이는 모습만 짧게 기록해요." />
-          <ActionLink href={`/tools/vaccine-schedule?${childQuery}`} label="예방접종 일정" description="생년월일 기준으로 확인해요." />
+          <ActionLink href={`/weaning-record?${childQuery}`} label="이유식 기록" description="먹은 것, 양, 반응만 빠르게 남겨요." />
+          <ActionLink href={`/vaccine-check?${childQuery}`} label="예방접종 체크" description="일정과 완료 여부를 함께 확인해요." />
           <ActionLink href={`${summary.monthlyGuideHref}?${childQuery}`} label={summary.monthlyGuideLabel} description="월령에 가까운 생활 흐름을 확인해요." />
           <ActionLink href={`/tools/weaning-start?${childQuery}`} label="이유식 시작" description="월령과 준비 신호를 함께 봐요." />
         </section>

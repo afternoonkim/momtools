@@ -30,13 +30,13 @@ export default function RelatedContent({
           {eyebrow ?? (locale === "en" ? "Related pages" : "관련 페이지")}
         </div>
         <h2 className="mt-1 text-[16px] font-extrabold leading-snug text-slate-900 md:text-xl">{title}</h2>
-        {description ? <p className="mt-1 text-[13px] leading-6 text-slate-500 md:text-sm">{description}</p> : null}
+        {description ? <p className="mt-1 text-[12px] leading-5 text-slate-500 md:text-sm">{description}</p> : null}
       </div>
       <div className="mt-simple-list">
         {items.map((item) => (
-          <Link key={item.href} href={item.href} className="block px-4 py-3.5 transition hover:bg-amber-50/60 active:bg-amber-50">
-            <div className="text-[14px] font-extrabold leading-6 text-slate-900 md:text-base">{item.title}</div>
-            <div className="mt-0.5 line-clamp-2 text-[13px] leading-6 text-slate-500 md:text-sm">{item.description}</div>
+          <Link key={item.href} href={item.href} className="block px-3.5 py-3 transition hover:bg-amber-50/60 active:bg-amber-50">
+            <div className="text-[13px] font-extrabold leading-5 text-slate-900 md:text-base">{item.title}</div>
+            <div className="mt-0.5 line-clamp-2 text-[12px] leading-5 text-slate-500 md:text-sm">{item.description}</div>
           </Link>
         ))}
       </div>

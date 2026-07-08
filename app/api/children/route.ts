@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
       useCorrectedAge: wantsCorrectedAge,
       gender,
       isPrimary: existingChildren === 0,
-    } as any,
+    },
   });
 
   return NextResponse.json({ childId: child.id, redirectTo: `/my?childId=${child.id}` });

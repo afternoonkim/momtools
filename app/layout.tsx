@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 import ClientLayout from "@/components/layout/ClientLayout";
@@ -11,6 +11,20 @@ export const metadata: Metadata = {
   description:
     "아기 개월수, 예방접종, 이유식, 건강 신호와 체크리스트를 부모가 바로 확인할 수 있게 정리한 MomTools",
   robots: { index: true, follow: true },
+  applicationName: "MomTools",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: "MomTools",
+    statusBarStyle: "default",
+  },
+  icons: {
+    icon: [
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
   alternates: {
     canonical: "https://momtools.kr/",
     languages: {
@@ -42,6 +56,12 @@ export const metadata: Metadata = {
       "msvalidate.01": "A0623C2A4E78687DE6334EBC6E9BBE67"
     }
   },
+};
+
+
+export const viewport: Viewport = {
+  themeColor: "#f59e0b",
+  colorScheme: "light",
 };
 
 export default function RootLayout({

@@ -32,7 +32,7 @@ export default function PageContextHero() {
   if (!content) return null;
 
   return (
-    <section className="mt-card p-6 md:p-8">
+    <section className="mt-card p-4 md:p-7">
       <div className="space-y-3">
         <span className="mt-badge">육아 계산기</span>
         <div>

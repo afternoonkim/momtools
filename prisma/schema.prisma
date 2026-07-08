@@ -387,12 +387,61 @@ model Child {
   familyGroup FamilyGroup? @relation(fields: [familyGroupId], references: [id], onDelete: SetNull)
   developmentRecords ChildDevelopmentRecord[]
   developmentCheckLogs ChildDevelopmentCheckLog[]
+  weaningRecords ChildWeaningRecord[]
+  vaccinationRecords ChildVaccinationRecord[]
 
   @@index([userId])
   @@index([familyGroupId])
   @@index([userId, isPrimary])
   @@index([deletedAt])
 }
+
+model ChildWeaningRecord {
+  id          String   @id @default(cuid())
+  childId     String
+
+  recordDate  DateTime @db.Date
+  mealSlot    String
+  foodNames   String
+  amount      String   @default("normal")
+  reaction    String   @default("ok")
+  hasNewFood  Boolean  @default(false)
+  note        String?
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  child       Child    @relation(fields: [childId], references: [id], onDelete: Cascade)
+
+  @@unique([childId, recordDate, mealSlot])
+  @@index([childId])
+  @@index([childId, recordDate])
+  @@index([childId, createdAt])
+  @@index([childId, reaction])
+}
+
+model ChildVaccinationRecord {
+  id            String   @id @default(cuid())
+  childId       String
+
+  vaccineKey    String
+  doseKey       String
+  scheduledDate DateTime @db.Date
+  completed     Boolean  @default(false)
+  completedAt   DateTime? @db.Date
+  note          String?
+
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  child         Child    @relation(fields: [childId], references: [id], onDelete: Cascade)
+
+  @@unique([childId, vaccineKey, doseKey])
+  @@index([childId])
+  @@index([childId, scheduledDate])
+  @@index([childId, completed])
+}
+
 
 model ChildDevelopmentRecord {
   id          String   @id @default(cuid())

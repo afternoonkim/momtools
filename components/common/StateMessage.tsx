@@ -38,13 +38,13 @@ export default function StateMessage({
   icon,
 }: StateMessageProps) {
   return (
-    <section className={`mt-card-soft border p-6 md:p-8 ${toneClasses[tone]}`}>
+    <section className={`mt-card-soft border p-4 md:p-7 ${toneClasses[tone]}`}>
       <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
         <div className="flex gap-3">
           <div className="mt-0.5 rounded-2xl bg-white/80 p-2 text-current">{icon ?? defaultIcon(tone)}</div>
           <div>
-            <h2 className="text-lg font-bold">{title}</h2>
-            <p className="mt-2 text-sm leading-7 text-slate-600">{description}</p>
+            <h2 className="text-[15px] font-bold">{title}</h2>
+            <p className="mt-1.5 text-[12px] leading-5 text-slate-600">{description}</p>
           </div>
         </div>
         {(actionLabel && (onAction || href)) || secondaryHref ? (

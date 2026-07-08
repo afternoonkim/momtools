@@ -1,7 +1,6 @@
 "use client";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   ChevronLeft,
   Calculator,
@@ -20,6 +19,7 @@ import {
 import SidebarItem from "./SidebarItem";
 import SidebarGroup from "./SidebarGroup";
 import SearchBox from "./SearchBox";
+import DesktopAuthActions from "@/components/auth/DesktopAuthActions";
 
 export default function Sidebar({
   collapsed,
@@ -33,12 +33,19 @@ export default function Sidebar({
   setMobileOpen: (v: boolean) => void;
 }) {
   const pathname = usePathname() || "/";
+  const router = useRouter();
   const closeMobileSidebar = () => setMobileOpen(false);
+
+  const handleLogoClick = () => {
+    const isDesktop = typeof window !== "undefined" && window.matchMedia("(min-width: 1024px)").matches;
+    closeMobileSidebar();
+    router.push(isDesktop ? "/?view=home" : "/my");
+  };
 
   const hasPath = (path: string) => pathname === path || pathname.startsWith(`${path}/`);
 
   const isCalculateOpen = hasPath("/tools") || hasPath("/cal");
-  const isRecordOpen = hasPath("/records") || hasPath("/child") || hasPath("/checklists") || hasPath("/development-check");
+  const isRecordOpen = hasPath("/records") || hasPath("/child") || hasPath("/checklists") || hasPath("/development-check") || hasPath("/weaning-record") || hasPath("/vaccine-check") || hasPath("/family");
   const isCheckOpen = hasPath("/qna") || hasPath("/health") || hasPath("/monthly-guide") || hasPath("/family-health-qna") || hasPath("/moonlight-hospitals");
   const isReferenceOpen = hasPath("/info") || hasPath("/policy") || hasPath("/baby-food") || hasPath("/baby-names") || hasPath("/family-health-qna");
 
@@ -54,21 +61,26 @@ export default function Sidebar({
         } ${mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}`}
       >
         <div className="mt-sidebar-header flex items-center justify-between border-b border-amber-100 p-4">
-          <Link href="/" onClick={closeMobileSidebar} className={`${collapsed ? "mx-auto" : ""} flex items-center gap-3`}>
-            {/* <div className="flex h-10 w-10 items-center justify-center rounded-2xl bg-amber-100 text-xl shadow-sm">👶</div> */}
+          <button
+            type="button"
+            onClick={handleLogoClick}
+            className={`${collapsed ? "mx-auto" : ""} flex min-w-0 items-center gap-3 text-left`}
+            aria-label="MomTools 로고 이동"
+          >
+            <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-amber-100 text-xl shadow-sm">👶</span>
             {!collapsed ? (
-              <div>
-                <div className="text-lg font-extrabold text-slate-900">MomTools</div>
-                {/* <div className="text-xs text-slate-500">계산 · 기록 · 확인 · 참고</div> */}
-              </div>
+              <span className="min-w-0">
+                <span className="block text-lg font-extrabold text-slate-900">MomTools</span>
+                {/* <span className="block text-xs text-slate-500">계산 · 기록 · 확인 · 참고</span> */}
+              </span>
             ) : null}
-          </Link>
+          </button>
 
-          <button onClick={() => setCollapsed(!collapsed)} className="hidden text-slate-400 hover:text-slate-700 lg:block" aria-label="사이드바 접기">
+          <button onClick={() => setCollapsed(!collapsed)} className="hidden shrink-0 text-slate-400 hover:text-slate-700 lg:block" aria-label="사이드바 접기">
             <ChevronLeft size={18} className={`transition-transform ${collapsed ? "rotate-180" : ""}`} />
           </button>
 
-          <button onClick={closeMobileSidebar} className="text-slate-400 hover:text-slate-700 lg:hidden" aria-label="메뉴 닫기">✕</button>
+          <button onClick={closeMobileSidebar} className="shrink-0 text-slate-400 hover:text-slate-700 lg:hidden" aria-label="메뉴 닫기">✕</button>
         </div>
 
         {!collapsed ? (
@@ -77,11 +89,17 @@ export default function Sidebar({
           </div>
         ) : null}
 
+        <div className="hidden border-b border-amber-100 px-4 py-2 lg:block">
+          <DesktopAuthActions compact={collapsed} />
+        </div>
+
         <div className="mt-sidebar-body flex-1 space-y-5 overflow-y-auto p-4">
           <div onClick={closeMobileSidebar}>
             <SidebarGroup title="기록하기" collapsed={collapsed} defaultOpen={isRecordOpen}>
               <SidebarItem href="/child/new" label="아이 추가/등록" icon={NotebookPen} collapsed={collapsed} />
               <SidebarItem href="/development-check" label="발달 체크" icon={Sparkles} collapsed={collapsed} />
+              <SidebarItem href="/weaning-record" label="이유식 기록" icon={UtensilsCrossed} collapsed={collapsed} />
+              <SidebarItem href="/vaccine-check" label="예방접종 체크" icon={HeartPulse} collapsed={collapsed} />
               <SidebarItem href="/checklists/birth" label="출산 준비" icon={NotebookPen} collapsed={collapsed} />
               <SidebarItem href="/checklists/newborn" label="신생아 준비" icon={ClipboardList} collapsed={collapsed} />
               <SidebarItem href="/checklists/weaning" label="이유식 준비" icon={ClipboardList} collapsed={collapsed} />

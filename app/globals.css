@@ -2502,3 +2502,431 @@ html[data-momtools-theme="dark"] .mt-page .mt-health-quick-conclusion .text-rose
 html[data-momtools-theme="dark"] .text-rose-950 {
   color: #fda4af !important;
 }
+
+/* Mobile compact pass: 부모가 한 손으로 빠르게 확인할 수 있도록
+   모바일에서 과한 제목·카드·여백을 공통으로 낮춘다. */
+@media (max-width: 640px) {
+  :root {
+    --mt-mobile-page-x: 0.625rem;
+    --mt-mobile-card-pad: 0.78rem;
+    --mt-mobile-card-radius: 13px;
+  }
+
+  body {
+    font-size: 12.75px;
+    line-height: 1.48;
+  }
+
+  .mt-page {
+    padding: 0.55rem var(--mt-mobile-page-x) 0.75rem !important;
+  }
+
+  .mt-page .mt-container,
+  .mt-page .mt-container-narrow {
+    max-width: 100% !important;
+  }
+
+  .mt-page .mt-title-xl,
+  .mt-page .mt-title-lg,
+  .mt-page h1,
+  .mt-page .text-5xl,
+  .mt-page .text-4xl,
+  .mt-page .text-3xl {
+    font-size: 1.12rem !important;
+    line-height: 1.28 !important;
+    letter-spacing: -0.035em !important;
+  }
+
+  .mt-page .mt-title-md,
+  .mt-page h2,
+  .mt-page .text-2xl,
+  .mt-page .text-xl {
+    font-size: 0.95rem !important;
+    line-height: 1.34 !important;
+    letter-spacing: -0.02em !important;
+  }
+
+  .mt-page h3,
+  .mt-page .text-lg,
+  .mt-page .text-base {
+    font-size: 0.86rem !important;
+    line-height: 1.42 !important;
+  }
+
+  .mt-page .mt-text-main,
+  .mt-page .mt-text-sub,
+  .mt-page p,
+  .mt-page li,
+  .mt-page summary,
+  .mt-page label,
+  .mt-page textarea,
+  .mt-page select,
+  .mt-page .text-sm {
+    font-size: 0.78rem !important;
+    line-height: 1.5 !important;
+  }
+
+  .mt-page .text-xs,
+  .mt-page small,
+  .mt-page [class*="text-[11px]"],
+  .mt-page [class*="text-[10px]"] {
+    font-size: 0.68rem !important;
+    line-height: 1.35 !important;
+  }
+
+  .mt-page [class*="text-[20px]"],
+  .mt-page [class*="text-[19px]"],
+  .mt-page [class*="text-[18px]"] {
+    font-size: 1rem !important;
+    line-height: 1.32 !important;
+  }
+
+  .mt-page [class*="text-[17px]"],
+  .mt-page [class*="text-[16px]"],
+  .mt-page [class*="text-[15px]"] {
+    font-size: 0.9rem !important;
+    line-height: 1.38 !important;
+  }
+
+  .mt-page [class*="text-[14px]"],
+  .mt-page [class*="text-[13px]"],
+  .mt-page [class*="text-[12px]"] {
+    font-size: 0.78rem !important;
+    line-height: 1.48 !important;
+  }
+
+  .mt-page input.mt-input,
+  .mt-page input[role="combobox"] {
+    font-size: 16px !important;
+    line-height: 1.25 !important;
+  }
+
+  .mt-page textarea.mt-input,
+  .mt-page select.mt-input {
+    font-size: 0.8125rem !important;
+    line-height: 1.42 !important;
+  }
+
+  .mt-page .mt-card,
+  .mt-page .mt-card-soft,
+  .mt-page .mt-page-hero,
+  .mt-page .mt-simple-list,
+  .mt-page .mt-result-list,
+  .mt-page .mt-app-stack,
+  .mt-page .mt-app-link-list,
+  .mt-page .mt-section-details,
+  .mt-page .rounded-3xl,
+  .mt-page .rounded-2xl,
+  .mt-page .rounded-\[28px\],
+  .mt-page .rounded-\[24px\],
+  .mt-page .rounded-\[2rem\] {
+    border-radius: var(--mt-mobile-card-radius) !important;
+  }
+
+  .mt-page .mt-card,
+  .mt-page .mt-card-soft,
+  .mt-page .mt-page-hero,
+  .mt-page .mt-app-stack-section,
+  .mt-page .p-10,
+  .mt-page .p-8,
+  .mt-page .p-7,
+  .mt-page .p-6,
+  .mt-page .p-5,
+  .mt-page .p-4,
+  .mt-page .p-3\.5,
+  .mt-page .p-3 {
+    padding: var(--mt-mobile-card-pad) !important;
+  }
+
+  .mt-page .px-10,
+  .mt-page .px-8,
+  .mt-page .px-7,
+  .mt-page .px-6,
+  .mt-page .px-5,
+  .mt-page .px-4,
+  .mt-page .px-3\.5,
+  .mt-page .px-3 {
+    padding-left: var(--mt-mobile-card-pad) !important;
+    padding-right: var(--mt-mobile-card-pad) !important;
+  }
+
+  .mt-page .py-16,
+  .mt-page .py-14,
+  .mt-page .py-12,
+  .mt-page .py-10,
+  .mt-page .py-8,
+  .mt-page .py-7,
+  .mt-page .py-6,
+  .mt-page .py-5,
+  .mt-page .py-4,
+  .mt-page .py-3\.5,
+  .mt-page .py-3 {
+    padding-top: 0.72rem !important;
+    padding-bottom: 0.72rem !important;
+  }
+
+  .mt-page .mt-8,
+  .mt-page .mt-7,
+  .mt-page .mt-6,
+  .mt-page .mt-5,
+  .mt-page .mt-4 {
+    margin-top: 0.75rem !important;
+  }
+
+  .mt-page .mt-3,
+  .mt-page .mt-2\.5,
+  .mt-page .mt-2 {
+    margin-top: 0.5rem !important;
+  }
+
+  .mt-page .mb-8,
+  .mt-page .mb-7,
+  .mt-page .mb-6,
+  .mt-page .mb-5,
+  .mt-page .mb-4 {
+    margin-bottom: 0.75rem !important;
+  }
+
+  .mt-page .space-y-8 > :not([hidden]) ~ :not([hidden]),
+  .mt-page .space-y-7 > :not([hidden]) ~ :not([hidden]),
+  .mt-page .space-y-6 > :not([hidden]) ~ :not([hidden]),
+  .mt-page .space-y-5 > :not([hidden]) ~ :not([hidden]),
+  .mt-page .space-y-4 > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0.7rem !important;
+  }
+
+  .mt-page .gap-10,
+  .mt-page .gap-9,
+  .mt-page .gap-8,
+  .mt-page .gap-7,
+  .mt-page .gap-6,
+  .mt-page .gap-5,
+  .mt-page .gap-4,
+  .mt-page .gap-3 {
+    gap: 0.6rem !important;
+  }
+
+  .mt-page .mt-input {
+    min-height: 2.5rem !important;
+    border-radius: 12px !important;
+    padding: 0.58rem 0.75rem !important;
+  }
+
+  .mt-page .mt-button-primary,
+  .mt-page .mt-button-secondary,
+  .mt-page button,
+  .mt-page a.mt-chip-link {
+    min-height: 2.25rem;
+  }
+
+  .mt-page .mt-button-primary,
+  .mt-page .mt-button-secondary {
+    border-radius: 12px !important;
+    padding: 0.55rem 0.85rem !important;
+    font-size: 0.78rem !important;
+  }
+
+  .mt-page .mt-badge {
+    padding: 0.22rem 0.55rem !important;
+    font-size: 0.64rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .mt-page .mt-chip-link {
+    min-height: 2rem !important;
+    padding: 0.36rem 0.62rem !important;
+    font-size: 0.68rem !important;
+  }
+
+  .mt-page .mt-list-card,
+  .mt-page .mt-simple-list-item,
+  .mt-page .mt-result-list-item,
+  .mt-page .mt-app-link-item {
+    min-height: 44px !important;
+    padding-top: 0.65rem !important;
+    padding-bottom: 0.65rem !important;
+  }
+
+  .mt-page [class*="min-h-[58vh]"],
+  .mt-page [class*="min-h-[50vh]"],
+  .mt-page [class*="min-h-[46vh]"] {
+    min-height: auto !important;
+  }
+
+  .mt-page [class*="h-44"],
+  .mt-page [class*="h-40"],
+  .mt-page [class*="h-36"] {
+    height: 7.5rem !important;
+  }
+
+  .mt-page [class*="shadow-xl"],
+  .mt-page [class*="shadow-2xl"],
+  .mt-page [class*="shadow-["] {
+    box-shadow: none !important;
+  }
+}
+
+@media (max-width: 640px) {
+  main :where(.mt-container, .mt-container-narrow) {
+    max-width: 100% !important;
+  }
+
+  main :where(.mt-title-xl, .mt-title-lg, h1) {
+    font-size: 1.12rem !important;
+    line-height: 1.28 !important;
+    letter-spacing: -0.035em !important;
+  }
+
+  main :where(.mt-title-md, h2, .text-2xl, .text-xl) {
+    font-size: 0.95rem !important;
+    line-height: 1.34 !important;
+  }
+
+  main :where(h3, .text-lg, .text-base) {
+    font-size: 0.86rem !important;
+    line-height: 1.42 !important;
+  }
+
+  main :where(.mt-text-main, .mt-text-sub, p, li, summary, label, .text-sm) {
+    font-size: 0.78rem !important;
+    line-height: 1.5 !important;
+  }
+
+  main :where(.mt-card, .mt-card-soft, .mt-page-hero, .mt-simple-list, .mt-result-list, .mt-app-stack, .mt-app-link-list, .mt-section-details) {
+    border-radius: var(--mt-mobile-card-radius) !important;
+  }
+
+  main :where(.mt-card, .mt-card-soft, .mt-page-hero, .mt-app-stack-section) {
+    padding: var(--mt-mobile-card-pad) !important;
+  }
+
+  main :where(.space-y-8, .space-y-7, .space-y-6, .space-y-5, .space-y-4) > :not([hidden]) ~ :not([hidden]) {
+    margin-top: 0.7rem !important;
+  }
+
+  main :where(.gap-8, .gap-7, .gap-6, .gap-5, .gap-4, .gap-3) {
+    gap: 0.6rem !important;
+  }
+}
+
+@media (max-width: 640px) {
+  main .mt-card.p-0,
+  main .mt-card-soft.p-0,
+  main .mt-page-hero.p-0 {
+    padding: 0 !important;
+  }
+}
+
+/* 선택형 버튼 상태 고정: 다크모드의 넓은 버튼 보정 규칙에 선택 상태가 묻히지 않게 마지막에 다시 지정합니다. */
+html[data-momtools-theme="dark"] .mt-page :where(a, button, label).mt-selectable-button[data-mt-selected="true"],
+html[data-momtools-theme="dark"] .mt-page :where(button).mt-selectable-button[aria-pressed="true"] {
+  background: rgba(251, 191, 36, 0.15) !important;
+  border-color: rgba(251, 191, 36, 0.46) !important;
+  color: #fbbf24 !important;
+  box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.18) !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page .mt-selectable-button[data-mt-selected="true"] :where(svg, span, strong) {
+  color: inherit !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page button.mt-selectable-button[data-mt-status="achieved"][data-mt-selected="true"] {
+  background: rgba(16, 185, 129, 0.15) !important;
+  border-color: rgba(94, 234, 212, 0.44) !important;
+  color: #5eead4 !important;
+  box-shadow: inset 0 0 0 1px rgba(94, 234, 212, 0.16) !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page button.mt-selectable-button[data-mt-status="concern"][data-mt-selected="true"] {
+  background: rgba(244, 63, 94, 0.15) !important;
+  border-color: rgba(253, 164, 175, 0.44) !important;
+  color: #fda4af !important;
+  box-shadow: inset 0 0 0 1px rgba(253, 164, 175, 0.16) !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page button.mt-selectable-button[data-mt-status="not_started"][data-mt-selected="true"] {
+  background: rgba(148, 163, 184, 0.15) !important;
+  border-color: rgba(203, 213, 225, 0.36) !important;
+  color: #e2e8f0 !important;
+  box-shadow: inset 0 0 0 1px rgba(203, 213, 225, 0.12) !important;
+}
+
+/* 이유식/발달 체크 선택 버튼: 항목별 선택 상태가 다크모드에서 서로 덮이지 않게 보정합니다. */
+html[data-momtools-theme="dark"] .mt-page .mt-choice-button[data-mt-selected="true"] {
+  background: rgba(251, 191, 36, 0.16) !important;
+  border-color: rgba(251, 191, 36, 0.58) !important;
+  color: #fbbf24 !important;
+  box-shadow:
+    inset 0 0 0 1px rgba(251, 191, 36, 0.22),
+    0 0 0 1px rgba(251, 191, 36, 0.06) !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page .mt-choice-button[data-mt-selected="false"] {
+  background: rgba(15, 23, 42, 0.42) !important;
+  border-color: rgba(148, 163, 184, 0.24) !important;
+  color: #cbd5e1 !important;
+  box-shadow: none !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page .mt-choice-button[data-mt-selected="false"][class*="text-emerald"] {
+  background: rgba(16, 185, 129, 0.1) !important;
+  border-color: rgba(94, 234, 212, 0.22) !important;
+  color: #6ee7b7 !important;
+}
+
+/* 카카오 로그인 버튼은 다크모드에서도 카카오 고유 노란색을 유지합니다. */
+.mt-kakao-login-button,
+html[data-momtools-theme="dark"] .mt-page .mt-kakao-login-button,
+html[data-momtools-theme="dark"] .mt-page a.mt-kakao-login-button,
+html[data-momtools-theme="dark"] .mt-page a.mt-kakao-login-button[class*="rounded"],
+html[data-momtools-theme="dark"] .mt-page a.mt-kakao-login-button[class*="bg-"] {
+  background: #fee500 !important;
+  background-color: #fee500 !important;
+  background-image: none !important;
+  border-color: #fee500 !important;
+  color: #191919 !important;
+  box-shadow: none !important;
+}
+
+.mt-kakao-login-button:hover,
+html[data-momtools-theme="dark"] .mt-page .mt-kakao-login-button:hover,
+html[data-momtools-theme="dark"] .mt-page a.mt-kakao-login-button:hover,
+html[data-momtools-theme="dark"] .mt-page a.mt-kakao-login-button[class*="rounded"]:hover,
+html[data-momtools-theme="dark"] .mt-page a.mt-kakao-login-button[class*="bg-"]:hover {
+  background: #fddc00 !important;
+  background-color: #fddc00 !important;
+  background-image: none !important;
+  color: #191919 !important;
+}
+
+.mt-kakao-login-button svg,
+.mt-kakao-login-button span,
+html[data-momtools-theme="dark"] .mt-page .mt-kakao-login-button svg,
+html[data-momtools-theme="dark"] .mt-page .mt-kakao-login-button span {
+  color: #191919 !important;
+}
+
+/* 공통 타임라인 이동 카드: 이유식·발달·예방접종에서 같은 형태로 사용합니다. */
+html[data-momtools-theme="dark"] .mt-timeline-link-card {
+  background-color: var(--dark-panel) !important;
+  border-color: rgba(148, 163, 184, 0.24) !important;
+  color: var(--dark-text-sub) !important;
+  box-shadow: none !important;
+}
+
+html[data-momtools-theme="dark"] .mt-timeline-link-card:hover {
+  background-color: var(--dark-panel-2) !important;
+  border-color: rgba(245, 158, 11, 0.34) !important;
+}
+
+html[data-momtools-theme="dark"] .mt-timeline-link-icon {
+  background-color: rgba(15, 23, 42, 0.88) !important;
+  border-color: rgba(148, 163, 184, 0.22) !important;
+  color: var(--dark-accent) !important;
+}
+
+html[data-momtools-theme="dark"] .mt-timeline-link-button {
+  background-color: rgba(245, 158, 11, 0.12) !important;
+  border-color: rgba(245, 158, 11, 0.34) !important;
+  color: var(--dark-accent) !important;
+}

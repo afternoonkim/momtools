@@ -5,6 +5,8 @@ import type { Prisma } from "@/lib/generated/prisma/client";
 export type FamilyMemberView = {
   id: string;
   role: string;
+  status: string;
+  userId: string;
   user: {
     id: string;
     nickname: string | null;
@@ -14,6 +16,7 @@ export type FamilyMemberView = {
 
 export type FamilyChildView = {
   id: string;
+  userId: string;
   nickname: string | null;
 };
 
@@ -21,6 +24,7 @@ export type FamilyGroupView = {
   id: string;
   name: string;
   inviteCode: string;
+  inviteCodeUpdatedAt: Date;
   members: FamilyMemberView[];
   children: FamilyChildView[];
 };
@@ -44,6 +48,29 @@ async function createUniqueInviteCode() {
   return `${Date.now().toString(36).toUpperCase()}${randomBytes(2).toString("hex").toUpperCase()}`.slice(0, 10);
 }
 
+export async function normalizeActiveFamilyMembershipsForUser(userId: string) {
+  const memberships = await prisma.familyMember.findMany({
+    where: { userId, status: "ACTIVE" },
+    orderBy: [{ joinedAt: "desc" }, { createdAt: "desc" }],
+    select: { id: true, familyGroupId: true },
+  });
+
+  if (memberships.length <= 1) return memberships[0] ?? null;
+
+  const [latest, ...staleMemberships] = memberships;
+  const staleIds = staleMemberships.map((membership) => membership.id);
+  const staleFamilyGroupIds = staleMemberships.map((membership) => membership.familyGroupId);
+
+  await prisma.$transaction([
+    prisma.familyMember.updateMany({ where: { id: { in: staleIds } }, data: { status: "LEFT" } }),
+    prisma.child.updateMany({
+      where: { userId, familyGroupId: { in: staleFamilyGroupIds }, deletedAt: null },
+      data: { familyGroupId: null },
+    }),
+  ]);
+
+  return latest;
+}
 
 async function getFamilyGroupWithDetails(familyGroupId: string): Promise<FamilyGroupView> {
   return prisma.familyGroup.findUniqueOrThrow({
@@ -54,7 +81,11 @@ async function getFamilyGroupWithDetails(familyGroupId: string): Promise<FamilyG
         include: { user: { select: { id: true, nickname: true, email: true } } },
         orderBy: { joinedAt: "asc" },
       },
-      children: { where: { deletedAt: null }, orderBy: [{ isPrimary: "desc" }, { createdAt: "asc" }] },
+      children: {
+        where: { deletedAt: null },
+        select: { id: true, userId: true, nickname: true },
+        orderBy: [{ isPrimary: "desc" }, { createdAt: "asc" }],
+      },
     },
   });
 }
@@ -79,6 +110,8 @@ export function getAccessibleChildWhere(userId: string): Prisma.ChildWhereInput 
 }
 
 export async function getAccessibleChildren(userId: string) {
+  await normalizeActiveFamilyMembershipsForUser(userId);
+
   const children = await prisma.child.findMany({
     where: getAccessibleChildWhere(userId),
     orderBy: [{ isPrimary: "desc" }, { createdAt: "asc" }],
@@ -93,11 +126,7 @@ export async function getAccessibleChildren(userId: string) {
 }
 
 export async function ensureFamilyGroupForUser(userId: string) {
-  const membership = await prisma.familyMember.findFirst({
-    where: { userId, status: "ACTIVE" },
-    orderBy: [{ joinedAt: "desc" }, { createdAt: "desc" }],
-    select: { familyGroupId: true },
-  });
+  const membership = await normalizeActiveFamilyMembershipsForUser(userId);
 
   if (membership?.familyGroupId) {
     await prisma.child.updateMany({ where: { userId, deletedAt: null, familyGroupId: null }, data: { familyGroupId: membership.familyGroupId } });
@@ -132,6 +161,22 @@ export async function joinFamilyGroupByCode({ userId, code, role, connectOwnChil
   if (!group) return { ok: false as const, message: "일치하는 가족 초대 코드를 찾지 못했어요." };
 
   const normalizedRole = role === "MOTHER" || role === "FATHER" || role === "CAREGIVER" ? role : "CAREGIVER";
+  const activeMemberships = await prisma.familyMember.findMany({
+    where: { userId, status: "ACTIVE", familyGroupId: { not: group.id } },
+    select: { id: true, familyGroupId: true },
+  });
+  const previousMembershipIds = activeMemberships.map((membership) => membership.id);
+  const previousFamilyGroupIds = activeMemberships.map((membership) => membership.familyGroupId);
+
+  if (previousMembershipIds.length) {
+    await prisma.$transaction([
+      prisma.familyMember.updateMany({ where: { id: { in: previousMembershipIds } }, data: { status: "LEFT" } }),
+      prisma.child.updateMany({
+        where: { userId, familyGroupId: { in: previousFamilyGroupIds }, deletedAt: null },
+        data: { familyGroupId: null },
+      }),
+    ]);
+  }
 
   await prisma.familyMember.upsert({
     where: { familyGroupId_userId: { familyGroupId: group.id, userId } },
@@ -144,4 +189,58 @@ export async function joinFamilyGroupByCode({ userId, code, role, connectOwnChil
   }
 
   return { ok: true as const, familyGroupId: group.id };
+}
+
+export async function regenerateFamilyInviteCode(userId: string) {
+  const membership = await normalizeActiveFamilyMembershipsForUser(userId);
+  if (!membership?.familyGroupId) {
+    return { ok: false as const, message: "가족 연결 정보를 다시 확인해 주세요." };
+  }
+
+  const inviteCode = await createUniqueInviteCode();
+  const group = await prisma.familyGroup.update({
+    where: { id: membership.familyGroupId },
+    data: { inviteCode, inviteCodeUpdatedAt: new Date() },
+    select: { inviteCode: true, inviteCodeUpdatedAt: true },
+  });
+
+  return { ok: true as const, inviteCode: group.inviteCode, inviteCodeUpdatedAt: group.inviteCodeUpdatedAt };
+}
+
+export async function disconnectFamilyMember({ userId, memberId }: { userId: string; memberId: string }) {
+  const membership = await normalizeActiveFamilyMembershipsForUser(userId);
+  if (!membership?.familyGroupId) {
+    return { ok: false as const, message: "가족 연결 정보를 다시 확인해 주세요.", selfDisconnected: false };
+  }
+
+  const targetMember = await prisma.familyMember.findFirst({
+    where: { id: memberId, familyGroupId: membership.familyGroupId, status: "ACTIVE" },
+    select: { id: true, userId: true, familyGroupId: true },
+  });
+
+  if (!targetMember) {
+    return { ok: false as const, message: "이미 해제됐거나 찾을 수 없는 보호자예요.", selfDisconnected: false };
+  }
+
+  const selfDisconnected = targetMember.userId === userId;
+
+  if (selfDisconnected) {
+    await prisma.$transaction([
+      prisma.familyMember.updateMany({ where: { userId, status: "ACTIVE" }, data: { status: "LEFT" } }),
+      prisma.child.updateMany({
+        where: { userId, deletedAt: null, familyGroupId: { not: null } },
+        data: { familyGroupId: null },
+      }),
+    ]);
+  } else {
+    await prisma.$transaction([
+      prisma.familyMember.update({ where: { id: targetMember.id }, data: { status: "LEFT" } }),
+      prisma.child.updateMany({
+        where: { userId: targetMember.userId, familyGroupId: targetMember.familyGroupId, deletedAt: null },
+        data: { familyGroupId: null },
+      }),
+    ]);
+  }
+
+  return { ok: true as const, selfDisconnected };
 }

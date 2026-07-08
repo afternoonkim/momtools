@@ -41,18 +41,18 @@ const quickLinks = [
   { label: "정부지원정책", href: "/policy" },
 ];
 
-function PublicHome() {
+function PublicHome({ showRecent = true }: { showRecent?: boolean }) {
   return (
     <div className="mt-page">
       <div className="mt-container space-y-6 md:space-y-8">
-        <section className="mx-auto flex min-h-[58vh] max-w-3xl flex-col items-center justify-center px-1 py-8 text-center md:py-14">
+        <section className="mx-auto flex min-h-[34vh] max-w-3xl flex-col items-center justify-center px-1 py-5 text-center md:min-h-[48vh] md:py-12">
           <span className="mt-badge">MomTools</span>
           {/* <h1 className="mt-home-slogan mt-5">아이를 키우는 모든 순간을 더 쉽게</h1> */}
 
-          <div className="mt-7 w-full max-w-2xl">
+          <div className="mt-5 w-full max-w-2xl">
             <SearchBox
               placeholder="아기 열, 개월수, 예방접종, 이유식 검색"
-              className="min-h-14 rounded-[24px] px-4 py-3 text-base shadow-[0_14px_28px_rgba(245,158,11,0.12)]"
+              className="min-h-12 rounded-2xl px-3.5 py-2.5 text-sm shadow-[0_8px_18px_rgba(245,158,11,0.08)]"
             />
           </div>
 
@@ -65,19 +65,20 @@ function PublicHome() {
           </div>
         </section>
 
-        <RecentViewedPages limit={3} className="shrink-0" />
+        {showRecent ? <RecentViewedPages limit={3} className="shrink-0" /> : null}
       </div>
     </div>
   );
 }
 
-export default async function HomePage({ searchParams }: { searchParams?: Promise<{ childId?: string }> }) {
+export default async function HomePage({ searchParams }: { searchParams?: Promise<{ childId?: string; view?: string }> }) {
+  const params = await searchParams;
+  const forcePublicHome = params?.view === "home";
   const user = await getCurrentUser();
 
-  if (!user) return <PublicHome />;
+  if (!user || forcePublicHome) return <PublicHome showRecent={!forcePublicHome} />;
   if (!user.children.length) redirect("/child/new");
-
-  const params = await searchParams;
 
   return <MyChildHome user={user} selectedChildId={params?.childId} baseHref="/" showLogout={false} />;
 }
+

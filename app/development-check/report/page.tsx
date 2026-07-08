@@ -4,7 +4,6 @@ import { redirect } from "next/navigation";
 import { Baby, ClipboardList, MessageCircle, Sparkles } from "lucide-react";
 import {
   developmentDomains,
-  developmentMilestones,
   developmentStatusLabels,
   getDevelopmentAgeRangeKey,
   getDevelopmentMilestone,

@@ -10,9 +10,9 @@ export default function LogoutButton() {
 
   async function handleLogout() {
     setPending(true);
-    await fetch("/api/auth/logout", { method: "POST" }).catch(() => null);
+    await fetch("/api/auth/logout", { method: "POST", credentials: "same-origin" }).catch(() => null);
     notifyRecentPagesAuthChanged();
-    router.replace("/");
+    router.replace("/?view=home");
     router.refresh();
   }
 

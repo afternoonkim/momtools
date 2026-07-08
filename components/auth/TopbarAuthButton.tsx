@@ -16,6 +16,8 @@ export default function TopbarAuthButton() {
   const [auth, setAuth] = useState<AuthState>({ loading: true, loggedIn: false });
   const [pending, setPending] = useState(false);
 
+  const isLoginPage = pathname === "/login" || pathname.startsWith("/login/");
+
   const loginHref = useMemo(() => {
     const safeNext = pathname.startsWith("/") && !pathname.startsWith("/api/") ? pathname : "/auth/after-login";
     return `/login?next=${encodeURIComponent(safeNext)}`;
@@ -43,10 +45,10 @@ export default function TopbarAuthButton() {
   async function handleLogout() {
     if (pending) return;
     setPending(true);
-    await fetch("/api/auth/logout", { method: "POST" }).catch(() => null);
+    await fetch("/api/auth/logout", { method: "POST", credentials: "same-origin" }).catch(() => null);
     notifyRecentPagesAuthChanged();
     setAuth({ loading: false, loggedIn: false });
-    router.replace("/");
+    router.replace("/?view=home");
     router.refresh();
   }
 
@@ -71,6 +73,8 @@ export default function TopbarAuthButton() {
       </button>
     );
   }
+
+  if (isLoginPage) return null;
 
   return (
     <Link

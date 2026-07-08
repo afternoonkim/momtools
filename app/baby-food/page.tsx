@@ -23,6 +23,10 @@ export default function BabyFoodHubPage() {
           <p className="mt-text-main mt-3 max-w-3xl">
             이유식 메뉴를 많이 보여주기보다, 지금 단계에서 볼 질감·흐름·메뉴 목록으로 바로 이동할 수 있게 정리했습니다.
           </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <Link href="/weaning-record" className="mt-button-primary">오늘 이유식 기록하기</Link>
+            <Link href="/checklists/weaning" className="mt-button-secondary">준비물 먼저 보기</Link>
+          </div>
         </section>
 
         <MedicalDisclaimer lang="ko" variant="compact" />
@@ -44,6 +48,7 @@ export default function BabyFoodHubPage() {
         <section className="mt-card-soft p-4 md:p-6">
           <h2 className="text-lg font-extrabold text-slate-900">함께 확인하면 좋은 페이지</h2>
           <div className="mt-3 flex flex-wrap gap-2">
+            <Link href="/weaning-record" className="mt-chip-link">이유식 기록하기</Link>
             <Link href="/tools/weaning-start" className="mt-chip-link">이유식 시작 계산기</Link>
             <Link href="/checklists/weaning" className="mt-chip-link">이유식 준비 체크리스트</Link>
           </div>
