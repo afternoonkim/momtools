@@ -23,7 +23,9 @@ export default async function DevelopmentCheckPage({ searchParams }: { searchPar
   if (!user.children.length) redirect("/child/new");
 
   const params = await searchParams;
-  const selectedChild = user.children.find((child) => child.id === params?.childId) ?? user.children.find((child) => child.isPrimary) ?? user.children[0];
+  const bornChildren = user.children.filter((child) => child.birthDate);
+  if (!bornChildren.length) redirect("/my");
+  const selectedChild = bornChildren.find((child) => child.id === params?.childId) ?? bornChildren.find((child) => child.isPrimary) ?? bornChildren[0];
 
   const [records, history] = await Promise.all([
     prisma.childDevelopmentRecord.findMany({
@@ -54,10 +56,10 @@ export default async function DevelopmentCheckPage({ searchParams }: { searchPar
   return (
     <DevelopmentCheckClient
       selectedChildId={selectedChild.id}
-      childrenOptions={user.children.map((child) => ({
+      childrenOptions={bornChildren.map((child) => ({
         id: child.id,
         nickname: child.nickname,
-        birthDate: toDateInputValue(child.birthDate),
+        birthDate: toDateInputValue(child.birthDate!),
         expectedDueDate: child.expectedDueDate ? toDateInputValue(child.expectedDueDate) : null,
         useCorrectedAge: child.useCorrectedAge,
         isPrimary: child.isPrimary,

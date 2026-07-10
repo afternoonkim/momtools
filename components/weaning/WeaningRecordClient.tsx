@@ -144,29 +144,32 @@ function splitFoodNames(value: string) {
     .slice(0, 10);
 }
 
-function OptionButton({
+function WeaningChoiceButton({
   active,
   label,
   onClick,
   group,
+  hasRecord = false,
+  className = "",
 }: {
   active: boolean;
   label: string;
   onClick: () => void;
   group: string;
+  hasRecord?: boolean;
+  className?: string;
 }) {
   return (
     <button
       type="button"
-      aria-pressed={active}
-      data-mt-selected={active ? "true" : "false"}
-      data-mt-choice-group={group}
+      role="radio"
+      aria-checked={active}
+      data-weaning-choice-group={group}
+      data-weaning-active={active ? "true" : "false"}
+      data-weaning-has-record={hasRecord ? "true" : "false"}
+      data-state={active ? "active" : hasRecord ? "complete" : "inactive"}
       onClick={onClick}
-      className={`mt-selectable-button mt-choice-button min-h-10 rounded-2xl border px-3 py-2 text-[12px] font-extrabold transition active:scale-[0.98] ${
-        active
-          ? "border-amber-300 bg-amber-100 text-amber-900 ring-1 ring-amber-200"
-          : "border-slate-200 bg-white text-slate-600"
-      }`}
+      className={`mt-choice-control mt-weaning-choice-button min-h-10 rounded-2xl border px-3 py-2 text-[12px] font-extrabold transition active:scale-[0.98] ${className}`}
     >
       {label}
     </button>
@@ -246,11 +249,8 @@ function FoodGuideCards({ guides }: { guides: WeaningFoodGuide[] }) {
                 onClick={() => setSelectedName(guide.name)}
                 aria-pressed={active}
                 data-mt-selected={active ? "true" : undefined}
-                className={`mt-selectable-button shrink-0 rounded-full border px-2.5 py-1.5 text-[11px] font-extrabold active:scale-[0.98] ${
-                  active
-                    ? "border-amber-200 bg-white text-amber-800"
-                    : "border-transparent bg-white/70 text-slate-600"
-                }`}
+                data-state={active ? "active" : "inactive"}
+                className="mt-choice-control mt-choice-control--chip mt-selectable-button shrink-0 rounded-full border px-2.5 py-1.5 text-[11px] font-extrabold active:scale-[0.98]"
               >
                 {guide.name}
               </button>
@@ -564,11 +564,8 @@ export default function WeaningRecordClient({
                   href={`/weaning-record?childId=${encodeURIComponent(child.id)}&date=${encodeURIComponent(selectedDate)}`}
                   aria-current={isSelected ? "page" : undefined}
                   data-mt-selected={isSelected ? "true" : undefined}
-                  className={`mt-selectable-button inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-2 text-[12px] font-extrabold transition active:scale-[0.98] ${
-                    isSelected
-                      ? "border-amber-200 bg-amber-50 text-amber-900"
-                      : "border-slate-200 bg-white text-slate-700"
-                  }`}
+                  data-state={isSelected ? "active" : "inactive"}
+                  className="mt-choice-control mt-choice-control--pill mt-selectable-button inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-2 text-[12px] font-extrabold transition active:scale-[0.98]"
                 >
                   <Baby size={13} aria-hidden />
                   {childDisplayName(child, index)}
@@ -577,7 +574,7 @@ export default function WeaningRecordClient({
             })}
             <Link
               href="/child/new"
-              className="inline-flex shrink-0 items-center gap-1 rounded-full border border-slate-200 bg-white px-3 py-2 text-[12px] font-extrabold text-slate-700 active:scale-[0.98]"
+              className="mt-button-secondary inline-flex shrink-0 items-center gap-1 rounded-full px-3 py-2 text-[12px] font-extrabold active:scale-[0.98]"
             >
               <Plus size={13} aria-hidden /> 추가
             </Link>
@@ -600,7 +597,7 @@ export default function WeaningRecordClient({
             <button
               type="button"
               onClick={() => changeDate(addDays(selectedDate, -1))}
-              className="h-10 rounded-2xl border border-slate-200 bg-white px-3 text-[12px] font-extrabold text-slate-600 active:scale-[0.98]"
+              className="mt-button-secondary h-10 rounded-2xl px-3 text-[12px] font-extrabold active:scale-[0.98]"
             >
               이전
             </button>
@@ -616,7 +613,7 @@ export default function WeaningRecordClient({
             <button
               type="button"
               onClick={() => changeDate(addDays(selectedDate, 1))}
-              className="h-10 rounded-2xl border border-slate-200 bg-white px-3 text-[12px] font-extrabold text-slate-600 active:scale-[0.98]"
+              className="mt-button-secondary h-10 rounded-2xl px-3 text-[12px] font-extrabold active:scale-[0.98]"
             >
               다음
             </button>
@@ -629,7 +626,7 @@ export default function WeaningRecordClient({
             <button
               type="button"
               onClick={() => changeDate(todayInputValue())}
-              className="rounded-full bg-slate-50 px-2.5 py-1 text-[11px] font-extrabold text-slate-600 active:scale-[0.98]"
+              className="mt-button-ghost rounded-full px-2.5 py-1 text-[11px] font-extrabold active:scale-[0.98]"
             >
               오늘로 이동
             </button>
@@ -680,29 +677,26 @@ export default function WeaningRecordClient({
             ) : null}
           </div>
 
-          <div className="mt-3 grid grid-cols-4 gap-1.5">
+          <div
+            className="mt-3 grid grid-cols-4 gap-1.5"
+            role="radiogroup"
+            aria-label="식사 시간 선택"
+          >
             {mealSlots.map((slot) => {
+              const active = mealSlot === slot.key;
               const hasRecord = selectedDateRecords.some(
                 (record) => record.mealSlot === slot.key,
               );
               return (
-                <button
+                <WeaningChoiceButton
                   key={slot.key}
-                  type="button"
+                  active={active}
+                  label={slot.label}
                   onClick={() => selectSlot(slot.key)}
-                  aria-pressed={mealSlot === slot.key}
-                  data-mt-selected={mealSlot === slot.key ? "true" : "false"}
-                  data-mt-choice-group="meal-slot"
-                  className={`mt-selectable-button mt-choice-button rounded-2xl border px-2 py-2 text-center text-[11px] font-extrabold transition active:scale-[0.98] ${
-                    mealSlot === slot.key
-                      ? "border-amber-300 bg-amber-100 text-amber-900 ring-1 ring-amber-200"
-                      : hasRecord
-                        ? "border-emerald-100 bg-emerald-50 text-emerald-700"
-                        : "border-slate-200 bg-white text-slate-600"
-                  }`}
-                >
-                  {slot.label}
-                </button>
+                  group="meal-slot"
+                  hasRecord={hasRecord}
+                  className="px-2 py-2 text-center text-[11px]"
+                />
               );
             })}
           </div>
@@ -733,7 +727,7 @@ export default function WeaningRecordClient({
                     key={example}
                     type="button"
                     onClick={() => setFoodNames(example)}
-                    className="rounded-full bg-white px-2.5 py-1 text-[10px] font-extrabold text-slate-600 active:scale-[0.98]"
+                    className="mt-choice-control mt-choice-control--chip rounded-full border px-2.5 py-1 text-[10px] font-extrabold active:scale-[0.98]"
                   >
                     {example}
                   </button>
@@ -767,9 +761,13 @@ export default function WeaningRecordClient({
 
           <div className="mt-3">
             <p className="text-[12px] font-extrabold text-slate-700">먹은 양</p>
-            <div className="mt-1.5 grid grid-cols-4 gap-1.5">
+            <div
+              className="mt-1.5 grid grid-cols-4 gap-1.5"
+              role="radiogroup"
+              aria-label="먹은 양 선택"
+            >
               {amountOptions.map((item) => (
-                <OptionButton
+                <WeaningChoiceButton
                   key={item.key}
                   active={amount === item.key}
                   label={item.label}
@@ -782,9 +780,13 @@ export default function WeaningRecordClient({
 
           <div className="mt-3">
             <p className="text-[12px] font-extrabold text-slate-700">반응</p>
-            <div className="mt-1.5 grid grid-cols-2 gap-1.5">
+            <div
+              className="mt-1.5 grid grid-cols-2 gap-1.5"
+              role="radiogroup"
+              aria-label="반응 선택"
+            >
               {reactionOptions.map((item) => (
-                <OptionButton
+                <WeaningChoiceButton
                   key={item.key}
                   active={reaction === item.key}
                   label={item.label}
@@ -796,9 +798,8 @@ export default function WeaningRecordClient({
           </div>
 
           <label
-            data-mt-selected={hasNewFood ? "true" : "false"}
-            data-mt-choice-group="new-food"
-            className="mt-selectable-button mt-choice-button mt-3 flex items-center gap-2 rounded-2xl border border-slate-100 bg-slate-50 px-3 py-2.5 text-[12px] font-extrabold text-slate-700"
+            data-weaning-active={hasNewFood ? "true" : "false"}
+            className="mt-choice-control mt-weaning-checkbox mt-3 flex items-center gap-2 rounded-2xl border px-3 py-2.5 text-[12px] font-extrabold transition active:scale-[0.99]"
           >
             <input
               type="checkbox"
@@ -908,7 +909,7 @@ export default function WeaningRecordClient({
                     <button
                       type="button"
                       onClick={() => selectSlot(safeMealSlot(record.mealSlot))}
-                      className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-[11px] font-extrabold text-slate-600 active:scale-[0.98]"
+                      className="mt-button-secondary rounded-full px-3 py-1.5 text-[11px] font-extrabold active:scale-[0.98]"
                     >
                       수정
                     </button>
@@ -916,7 +917,7 @@ export default function WeaningRecordClient({
                       type="button"
                       onClick={() => deleteRecord(record)}
                       disabled={deletingId === record.id}
-                      className="inline-flex items-center justify-center rounded-full border border-rose-100 bg-white px-3 py-1.5 text-[11px] font-extrabold text-rose-600 active:scale-[0.98] disabled:opacity-60"
+                      className="mt-button-danger inline-flex items-center justify-center rounded-full px-3 py-1.5 text-[11px] font-extrabold active:scale-[0.98] disabled:opacity-60"
                     >
                       <Trash2 size={12} aria-hidden />
                     </button>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Calculator, ClipboardList, Home, Menu, Stethoscope } from "lucide-react";
+import { Calculator, ClipboardList, Heart, Home, Menu } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 type TabItem = {
@@ -52,22 +52,22 @@ export default function BottomTabNav({ onMenuClick }: { onMenuClick: () => void 
       active: (path) => path === "/" || path.startsWith("/my"),
     },
     {
+      label: "마음",
+      href: "/feelings",
+      icon: Heart,
+      active: (path) => path.startsWith("/feelings"),
+    },
+    {
       label: "계산",
       href: "/tools",
       icon: Calculator,
       active: (path) => path === "/tools" || path.startsWith("/tools/") || path.startsWith("/cal/"),
     },
     {
-      label: "확인",
-      href: "/qna",
-      icon: Stethoscope,
-      active: (path) => path.startsWith("/qna") || path.startsWith("/health") || path.startsWith("/monthly-guide") || path.startsWith("/family-health-qna") || path.startsWith("/moonlight-hospitals"),
-    },
-    {
       label: "기록",
       href: "/records",
       icon: ClipboardList,
-      active: (path) => path.startsWith("/records") || path.startsWith("/child") || path.startsWith("/development-check") || path.startsWith("/weaning-record") || path.startsWith("/vaccine-check") || path.startsWith("/checklists"),
+      active: (path) => path.startsWith("/records") || path.startsWith("/child") || path.startsWith("/development-check") || path.startsWith("/weaning-record") || path.startsWith("/vaccine-check") || path.startsWith("/checklists") || path.startsWith("/family"),
     },
     {
       label: "메뉴",

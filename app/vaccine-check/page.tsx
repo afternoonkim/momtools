@@ -22,7 +22,9 @@ export default async function VaccineCheckPage({ searchParams }: { searchParams?
   if (!user.children.length) redirect("/child/new");
 
   const params = await searchParams;
-  const selectedChild = user.children.find((child) => child.id === params?.childId) ?? user.children.find((child) => child.isPrimary) ?? user.children[0];
+  const bornChildren = user.children.filter((child) => child.birthDate);
+  if (!bornChildren.length) redirect("/my");
+  const selectedChild = bornChildren.find((child) => child.id === params?.childId) ?? bornChildren.find((child) => child.isPrimary) ?? bornChildren[0];
 
   const records = await prisma.childVaccinationRecord.findMany({
     where: { childId: selectedChild.id },
@@ -44,10 +46,10 @@ export default async function VaccineCheckPage({ searchParams }: { searchParams?
   return (
     <VaccinationCheckClient
       selectedChildId={selectedChild.id}
-      childrenOptions={user.children.map((child) => ({
+      childrenOptions={bornChildren.map((child) => ({
         id: child.id,
         nickname: child.nickname,
-        birthDate: toDateInputValue(child.birthDate),
+        birthDate: toDateInputValue(child.birthDate!),
         isPrimary: child.isPrimary,
       }))}
       initialRecords={records.map((record) => ({

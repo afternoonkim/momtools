@@ -1,19 +1,12 @@
 const script = `
 (function () {
-  var DARK_START_HOUR = 21;
-  var DARK_END_HOUR = 6;
-  function shouldUseDarkMode(date) {
-    var hour = date.getHours();
-    return hour >= DARK_START_HOUR || hour < DARK_END_HOUR;
-  }
-  function applyMomToolsTheme() {
+  function applyMomToolsLightTheme() {
     var root = document.documentElement;
-    var isDark = shouldUseDarkMode(new Date());
-    root.setAttribute("data-momtools-theme", isDark ? "dark" : "light");
-    root.style.colorScheme = isDark ? "dark" : "light";
+    root.setAttribute("data-momtools-theme", "light");
+    root.classList.remove("dark");
+    root.style.colorScheme = "light";
   }
-  applyMomToolsTheme();
-  window.setInterval(applyMomToolsTheme, 60000);
+  applyMomToolsLightTheme();
 })();
 `;
 

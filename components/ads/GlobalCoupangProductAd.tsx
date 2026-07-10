@@ -209,7 +209,6 @@ export default function GlobalCoupangProductAd() {
 
     fetch(`/api/coupang-product-ads?path=${encodeURIComponent(pathname)}`, {
       signal: controller.signal,
-      cache: "no-store",
     })
       .then(async (response) => {
         if (!response.ok) return { items: [] } satisfies CoupangProductAdsResponse;

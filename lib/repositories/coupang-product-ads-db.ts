@@ -173,29 +173,14 @@ async function getPageCategoryCandidates(pagePath: string) {
 async function getApiProductAds(categories: CategoryCandidate[]): Promise<MatchedCoupangProductAd[]> {
   if (!isCoupangPartnersApiConfigured() || categories.length === 0) return [];
 
-  const ads: MatchedCoupangProductAd[] = [];
-  const seenProductUrls = new Set<string>();
+  const [representativeCategory] = categories;
+  if (!representativeCategory) return [];
 
-  for (const category of categories.slice(0, MAX_PRODUCT_AD_ITEMS)) {
-    const keyword = getCoupangSearchKeyword(category.slug);
-    const products = await searchCoupangProductsByKeyword(keyword, 3);
-    const firstUniqueProduct = products.find((product) => !seenProductUrls.has(product.productUrl));
-    if (!firstUniqueProduct) continue;
+  const keyword = getCoupangSearchKeyword(representativeCategory.slug);
+  const products = await searchCoupangProductsByKeyword(keyword, MAX_PRODUCT_AD_ITEMS);
 
-    seenProductUrls.add(firstUniqueProduct.productUrl);
-    ads.push(apiProductToMatchedAd(firstUniqueProduct, category, ads.length));
-
-    if (ads.length >= MAX_PRODUCT_AD_ITEMS) break;
-  }
-
-  if (ads.length > 0) return ads.slice(0, MAX_PRODUCT_AD_ITEMS);
-
-  const [firstCategory] = categories;
-  if (!firstCategory) return [];
-
-  const products = await searchCoupangProductsByKeyword(getCoupangSearchKeyword(firstCategory.slug), MAX_PRODUCT_AD_ITEMS);
   return products
-    .map((product, index) => apiProductToMatchedAd(product, firstCategory, index))
+    .map((product, index) => apiProductToMatchedAd(product, representativeCategory, index))
     .slice(0, MAX_PRODUCT_AD_ITEMS);
 }
 

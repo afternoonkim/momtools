@@ -70,7 +70,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ko" suppressHydrationWarning>
+    <html lang="ko" data-momtools-theme="light" suppressHydrationWarning>
       <body suppressHydrationWarning>
         <TimeBasedThemeScript />
         <HydrationCleanupScript />

@@ -373,10 +373,18 @@ model Child {
   familyGroupId String?
 
   nickname    String?
-  birthDate   DateTime     @db.Date
+  birthDate   DateTime?    @db.Date
+  birthTime   String?
+  birthWeightGram Int?
+  birthHeightCm Float?
   expectedDueDate DateTime? @db.Date
+  birthOrder  Int?
   useCorrectedAge Boolean   @default(false)
   gender      ChildGender?
+  hospital    String?
+  city        String?
+  district    String?
+  photoUrl    String?
   isPrimary   Boolean      @default(false)
 
   createdAt   DateTime     @default(now())
@@ -389,11 +397,68 @@ model Child {
   developmentCheckLogs ChildDevelopmentCheckLog[]
   weaningRecords ChildWeaningRecord[]
   vaccinationRecords ChildVaccinationRecord[]
+  pregnancySchedules PregnancySchedule[]
+  fetalMovements FetalMovementRecord[]
+  feelingRecords FeelingRecord[]
 
   @@index([userId])
   @@index([familyGroupId])
   @@index([userId, isPrimary])
   @@index([deletedAt])
+  @@index([expectedDueDate])
+  @@index([birthDate])
+}
+
+
+model PregnancySchedule {
+  id            String   @id @default(cuid())
+  childId       String
+  title         String
+  description   String?
+  week          Int?
+  scheduledDate DateTime @db.Date
+  status        String   @default("UPCOMING")
+  memo          String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  child         Child    @relation(fields: [childId], references: [id], onDelete: Cascade)
+
+  @@index([childId, scheduledDate])
+  @@index([childId, status])
+}
+
+model FetalMovementRecord {
+  id              String   @id @default(cuid())
+  childId         String
+  measuredAt      DateTime
+  durationMinutes Int
+  count           Int
+  memo            String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  child           Child    @relation(fields: [childId], references: [id], onDelete: Cascade)
+
+  @@index([childId, measuredAt])
+}
+
+model PregnancySymptom {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  category    String
+  severity    String
+  summary     String
+  detail      String
+  actionGuide String
+  caution     String?
+  relatedQnaSlug String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([category])
+  @@index([severity])
 }
 
 model ChildWeaningRecord {
@@ -486,4 +551,80 @@ model ChildDevelopmentCheckLog {
   @@index([childId, itemKey])
   @@index([childId, ageRangeKey])
   @@index([childId, createdAt])
+}
+
+
+model FeelingRecord {
+  id        String   @id @default(cuid())
+  childId   String
+  userId    String?
+
+  stage     String
+  baseValue Int
+
+  emotions  String[]
+  content   String
+  momentPromptId String?
+
+  visibility String @default("PUBLIC")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  child     Child    @relation(fields: [childId], references: [id], onDelete: Cascade)
+
+  reactions FeelingReaction[]
+  reports   FeelingReport[]
+
+  @@index([stage, baseValue, visibility])
+  @@index([childId, createdAt])
+  @@index([userId, createdAt])
+  @@index([momentPromptId])
+}
+
+model FeelingReaction {
+  id           String   @id @default(cuid())
+  recordId     String
+  userId       String?
+  reactionType String
+  createdAt    DateTime @default(now())
+
+  record       FeelingRecord @relation(fields: [recordId], references: [id], onDelete: Cascade)
+
+  @@unique([recordId, userId, reactionType])
+  @@index([recordId])
+  @@index([userId])
+}
+
+model FeelingReport {
+  id        String   @id @default(cuid())
+  recordId  String
+  userId    String?
+  reason    String
+  memo      String?
+  createdAt DateTime @default(now())
+
+  record    FeelingRecord @relation(fields: [recordId], references: [id], onDelete: Cascade)
+
+  @@index([recordId])
+  @@index([userId])
+}
+
+model MomentPrompt {
+  id           String   @id @default(cuid())
+
+  stage        String
+  triggerType  String
+  triggerValue Int
+
+  title        String
+  question     String
+  placeholder  String?
+
+  isActive     Boolean @default(true)
+
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([stage, triggerType, triggerValue, isActive])
 }

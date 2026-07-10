@@ -6,8 +6,11 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const EMPTY_RESPONSE_HEADERS = { "Cache-Control": "no-store" };
-const PRODUCT_RESPONSE_HEADERS = {
-  "Cache-Control": "public, s-maxage=1800, stale-while-revalidate=3600",
+const API_PRODUCT_RESPONSE_HEADERS = {
+  "Cache-Control": "public, s-maxage=604800, stale-while-revalidate=86400",
+};
+const MANUAL_FALLBACK_RESPONSE_HEADERS = {
+  "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
 };
 
 export async function GET(request: NextRequest) {
@@ -20,7 +23,15 @@ export async function GET(request: NextRequest) {
 
   try {
     const items = await getMatchedCoupangProductAds(pathname);
-    return NextResponse.json({ items }, { headers: PRODUCT_RESPONSE_HEADERS });
+    if (items.length === 0) {
+      return NextResponse.json({ items: [] }, { headers: EMPTY_RESPONSE_HEADERS });
+    }
+
+    const hasApiItem = items.some((item) => item.source === "api");
+    return NextResponse.json(
+      { items },
+      { headers: hasApiItem ? API_PRODUCT_RESPONSE_HEADERS : MANUAL_FALLBACK_RESPONSE_HEADERS },
+    );
   } catch (error) {
     console.error("쿠팡 맞춤 상품 광고 조회 실패", error);
     return NextResponse.json({ items: [] }, { status: 200, headers: EMPTY_RESPONSE_HEADERS });

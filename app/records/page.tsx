@@ -30,8 +30,8 @@ const childItems = [
     href: "/vaccine-check",
   },
   {
-    title: "가족 연결",
-    description: "엄마와 아빠가 같은 아이 정보와 기록을 함께 볼 수 있게 연결해요.",
+    title: "가족 초대/연결",
+    description: "초대 코드를 발급하거나 입력해서 같은 아이 기록을 함께 봐요.",
     href: "/family",
   },
 ] as const;

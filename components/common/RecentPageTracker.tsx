@@ -27,6 +27,7 @@ function getCategory(pathname: string) {
   if (pathname.startsWith("/tools") || pathname.startsWith("/cal")) return "계산하기";
   if (pathname.startsWith("/qna") || pathname.startsWith("/health") || pathname.startsWith("/family-health-qna")) return "확인하기";
   if (pathname.startsWith("/moonlight-hospitals")) return "달빛아동병원";
+  if (pathname.startsWith("/feelings")) return "마음";
   if (pathname.startsWith("/development-check")) return "발달 체크";
   if (pathname.startsWith("/checklists")) return "기록하기";
   if (pathname.startsWith("/baby-food")) return "이유식";

@@ -28,13 +28,21 @@ type CachedProducts = {
   products: CoupangPartnersApiProduct[];
 };
 
+type CoupangApiCooldown = {
+  reason: string;
+  status: number;
+  expiresAt: number;
+};
+
 type CoupangApiCacheGlobal = typeof globalThis & {
   __momtoolsCoupangApiCache?: Map<string, CachedProducts>;
+  __momtoolsCoupangApiCooldown?: CoupangApiCooldown | null;
 };
 
 const COUPANG_API_DOMAIN = "https://api-gateway.coupang.com";
 const COUPANG_PRODUCT_SEARCH_PATH = "/v2/providers/affiliate_open_api/apis/openapi/products/search";
-const COUPANG_API_CACHE_TTL_MS = 1000 * 60 * 60;
+const COUPANG_API_CACHE_TTL_MS = 1000 * 60 * 60 * 24 * 7;
+const COUPANG_API_COOLDOWN_MS = 1000 * 60 * 60;
 const COUPANG_API_TIMEOUT_MS = 4500;
 
 const CATEGORY_SEARCH_KEYWORDS: Record<string, string> = {
@@ -64,6 +72,36 @@ function getCache() {
   const cacheGlobal = globalThis as CoupangApiCacheGlobal;
   cacheGlobal.__momtoolsCoupangApiCache ??= new Map<string, CachedProducts>();
   return cacheGlobal.__momtoolsCoupangApiCache;
+}
+
+function getCooldownState() {
+  const cacheGlobal = globalThis as CoupangApiCacheGlobal;
+  const cooldown = cacheGlobal.__momtoolsCoupangApiCooldown;
+  if (!cooldown) return null;
+
+  if (cooldown.expiresAt <= Date.now()) {
+    cacheGlobal.__momtoolsCoupangApiCooldown = null;
+    return null;
+  }
+
+  return cooldown;
+}
+
+function setCooldownState(status: number, reason: string) {
+  const cacheGlobal = globalThis as CoupangApiCacheGlobal;
+  cacheGlobal.__momtoolsCoupangApiCooldown = {
+    status,
+    reason,
+    expiresAt: Date.now() + COUPANG_API_COOLDOWN_MS,
+  };
+}
+
+export function isCoupangApiCoolingDown() {
+  return Boolean(getCooldownState());
+}
+
+export function getCoupangApiCooldownUntil() {
+  return getCooldownState()?.expiresAt ?? null;
 }
 
 function getEnvValue(...names: string[]) {
@@ -188,6 +226,7 @@ export async function searchCoupangProductsByKeyword(keyword: string, limit = 3)
   const cache = getCache();
   const cached = cache.get(cacheKey);
   if (cached && cached.expiresAt > Date.now()) return cached.products;
+  if (isCoupangApiCoolingDown()) return [];
 
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), COUPANG_API_TIMEOUT_MS);
@@ -204,12 +243,19 @@ export async function searchCoupangProductsByKeyword(keyword: string, limit = 3)
     });
 
     if (!response.ok) {
-      console.error("쿠팡 파트너스 API 상품 검색 실패", response.status, await response.text());
+      const message = await response.text();
+      if (response.status === 403) {
+        setCooldownState(response.status, "쿠팡 파트너스 API 403 응답");
+      }
+      console.error("쿠팡 파트너스 API 상품 검색 실패", response.status, message);
       return [];
     }
 
     const payload = (await response.json()) as CoupangPartnersSearchResponse;
     if (payload.rCode && payload.rCode !== "0") {
+      if (payload.rCode === "403") {
+        setCooldownState(403, payload.rMessage ?? "쿠팡 파트너스 API 403 응답");
+      }
       console.error("쿠팡 파트너스 API 상품 검색 오류", payload.rCode, payload.rMessage);
       return [];
     }

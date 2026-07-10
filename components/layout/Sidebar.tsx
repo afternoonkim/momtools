@@ -15,6 +15,8 @@ import {
   NotebookPen,
   Stethoscope,
   Moon,
+  UsersRound,
+  Heart,
 } from "lucide-react";
 import SidebarItem from "./SidebarItem";
 import SidebarGroup from "./SidebarGroup";
@@ -94,9 +96,14 @@ export default function Sidebar({
         </div>
 
         <div className="mt-sidebar-body flex-1 space-y-5 overflow-y-auto p-4">
+          <div onClick={closeMobileSidebar} className="space-y-2">
+            <SidebarItem href="/feelings" label="마음" icon={Heart} collapsed={collapsed} />
+          </div>
+
           <div onClick={closeMobileSidebar}>
             <SidebarGroup title="기록하기" collapsed={collapsed} defaultOpen={isRecordOpen}>
               <SidebarItem href="/child/new" label="아이 추가/등록" icon={NotebookPen} collapsed={collapsed} />
+              <SidebarItem href="/family" label="가족 초대/연결" icon={UsersRound} collapsed={collapsed} />
               <SidebarItem href="/development-check" label="발달 체크" icon={Sparkles} collapsed={collapsed} />
               <SidebarItem href="/weaning-record" label="이유식 기록" icon={UtensilsCrossed} collapsed={collapsed} />
               <SidebarItem href="/vaccine-check" label="예방접종 체크" icon={HeartPulse} collapsed={collapsed} />

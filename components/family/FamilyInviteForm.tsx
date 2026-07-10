@@ -3,9 +3,13 @@
 import { type FormEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function FamilyInviteForm() {
+function normalizeCode(value: string) {
+  return value.replace(/[^0-9A-Za-z]/g, "").toUpperCase().slice(0, 10);
+}
+
+export default function FamilyInviteForm({ initialCode = "" }: { initialCode?: string }) {
   const router = useRouter();
-  const [code, setCode] = useState("");
+  const [code, setCode] = useState(() => normalizeCode(initialCode));
   const [role, setRole] = useState("CAREGIVER");
   const [connectOwnChildren, setConnectOwnChildren] = useState(true);
   const [pending, setPending] = useState(false);
@@ -36,16 +40,21 @@ export default function FamilyInviteForm() {
 
   return (
     <form onSubmit={onSubmit} className="space-y-3">
+      <div className="rounded-2xl border border-amber-100 bg-amber-50/70 px-3 py-2.5 text-[12px] leading-5 text-amber-900">
+        초대받은 보호자는 카카오 로그인 후 전달받은 초대 코드를 아래에 입력하면 돼요. 연결되면 같은 아이 홈과 기록을 함께 볼 수 있어요.
+      </div>
+
       <label className="block">
-        <span className="text-[12px] font-extrabold text-slate-700">가족 초대 코드</span>
+        <span className="text-[12px] font-extrabold text-slate-700">전달받은 가족 초대 코드</span>
         <input
           value={code}
-          onChange={(event) => setCode(event.target.value.toUpperCase())}
+          onChange={(event) => setCode(normalizeCode(event.target.value))}
           inputMode="text"
           autoCapitalize="characters"
           placeholder="예: AB12CD34"
           className="mt-input mt-1 text-center font-extrabold tracking-[0.18em]"
         />
+        <span className="mt-1 block text-[11px] leading-4 text-slate-500">카톡이나 문자로 받은 영문·숫자 코드를 그대로 붙여넣어도 돼요.</span>
       </label>
 
       <fieldset className="space-y-2">
@@ -60,7 +69,8 @@ export default function FamilyInviteForm() {
               key={value}
               type="button"
               onClick={() => setRole(value)}
-              className={`rounded-2xl border px-2 py-2 text-[12px] font-extrabold transition active:scale-[0.98] ${
+              data-mt-selected={role === value ? "true" : "false"}
+              className={`mt-choice-button rounded-2xl border px-2 py-2 text-[12px] font-extrabold transition active:scale-[0.98] ${
                 role === value ? "border-amber-200 bg-amber-50 text-amber-900" : "border-slate-200 bg-white text-slate-700"
               }`}
             >
@@ -83,7 +93,7 @@ export default function FamilyInviteForm() {
       {message ? <p className="rounded-2xl bg-rose-50 px-3 py-2 text-[12px] font-bold leading-5 text-rose-700">{message}</p> : null}
 
       <button type="submit" disabled={pending || code.trim().length < 6} className="mt-button-primary w-full disabled:opacity-60">
-        {pending ? "연결 중..." : "가족 데이터 연결하기"}
+        {pending ? "연결 중..." : "초대 코드로 가족 연결하기"}
       </button>
     </form>
   );

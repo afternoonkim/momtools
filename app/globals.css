@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #fffdf8;
@@ -14,6 +15,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  color-scheme: light;
 }
 
 body {
@@ -2929,4 +2931,691 @@ html[data-momtools-theme="dark"] .mt-timeline-link-button {
   background-color: rgba(245, 158, 11, 0.12) !important;
   border-color: rgba(245, 158, 11, 0.34) !important;
   color: var(--dark-accent) !important;
+}
+
+/* 데스크탑 스크롤바 테마 보정: 라이트/다크 테마에 자연스럽게 섞이도록 마지막에 적용합니다. */
+@media (min-width: 1024px) {
+  html,
+  body,
+  * {
+    scrollbar-width: thin;
+  }
+
+  html:not([data-momtools-theme="dark"]),
+  html:not([data-momtools-theme="dark"]) body {
+    color-scheme: light;
+    scrollbar-color: rgba(245, 158, 11, 0.28) rgba(255, 250, 242, 0.82);
+  }
+
+  html[data-momtools-theme="dark"],
+  html[data-momtools-theme="dark"] body {
+    color-scheme: dark;
+    scrollbar-color: rgba(251, 191, 36, 0.42) rgba(8, 17, 31, 0.9);
+  }
+
+  html:not([data-momtools-theme="dark"]) * {
+    scrollbar-color: rgba(245, 158, 11, 0.24) rgba(255, 250, 242, 0.34);
+  }
+
+  html[data-momtools-theme="dark"] * {
+    scrollbar-color: rgba(251, 191, 36, 0.38) rgba(8, 17, 31, 0.48);
+  }
+
+  html::-webkit-scrollbar,
+  body::-webkit-scrollbar,
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  html:not([data-momtools-theme="dark"])::-webkit-scrollbar-track,
+  html:not([data-momtools-theme="dark"]) body::-webkit-scrollbar-track,
+  html:not([data-momtools-theme="dark"]) *::-webkit-scrollbar-track {
+    background: rgba(255, 250, 242, 0.72);
+  }
+
+  html[data-momtools-theme="dark"]::-webkit-scrollbar-track,
+  html[data-momtools-theme="dark"] body::-webkit-scrollbar-track,
+  html[data-momtools-theme="dark"] *::-webkit-scrollbar-track {
+    background: rgba(8, 17, 31, 0.72);
+  }
+
+  html:not([data-momtools-theme="dark"])::-webkit-scrollbar-thumb,
+  html:not([data-momtools-theme="dark"]) body::-webkit-scrollbar-thumb,
+  html:not([data-momtools-theme="dark"]) *::-webkit-scrollbar-thumb {
+    background-color: rgba(245, 158, 11, 0.28);
+    border: 3px solid rgba(255, 250, 242, 0.82);
+    border-radius: 999px;
+  }
+
+  html[data-momtools-theme="dark"]::-webkit-scrollbar-thumb,
+  html[data-momtools-theme="dark"] body::-webkit-scrollbar-thumb,
+  html[data-momtools-theme="dark"] *::-webkit-scrollbar-thumb {
+    background-color: rgba(251, 191, 36, 0.38);
+    border: 3px solid rgba(8, 17, 31, 0.82);
+    border-radius: 999px;
+  }
+
+  html:not([data-momtools-theme="dark"])::-webkit-scrollbar-thumb:hover,
+  html:not([data-momtools-theme="dark"]) body::-webkit-scrollbar-thumb:hover,
+  html:not([data-momtools-theme="dark"]) *::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(245, 158, 11, 0.48);
+  }
+
+  html[data-momtools-theme="dark"]::-webkit-scrollbar-thumb:hover,
+  html[data-momtools-theme="dark"] body::-webkit-scrollbar-thumb:hover,
+  html[data-momtools-theme="dark"] *::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(251, 191, 36, 0.58);
+  }
+
+  html:not([data-momtools-theme="dark"]) .mt-sidebar,
+  html:not([data-momtools-theme="dark"]) .mt-sidebar-body,
+  html:not([data-momtools-theme="dark"]) .mt-sidebar-search-wrap {
+    scrollbar-color: rgba(245, 158, 11, 0.22) transparent;
+  }
+
+  html[data-momtools-theme="dark"] .mt-sidebar,
+  html[data-momtools-theme="dark"] .mt-sidebar-body,
+  html[data-momtools-theme="dark"] .mt-sidebar-search-wrap {
+    scrollbar-color: rgba(251, 191, 36, 0.34) transparent;
+  }
+
+  html:not([data-momtools-theme="dark"]) .mt-sidebar::-webkit-scrollbar-track,
+  html:not([data-momtools-theme="dark"]) .mt-sidebar-body::-webkit-scrollbar-track,
+  html:not([data-momtools-theme="dark"]) .mt-sidebar-search-wrap::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  html[data-momtools-theme="dark"] .mt-sidebar::-webkit-scrollbar-track,
+  html[data-momtools-theme="dark"] .mt-sidebar-body::-webkit-scrollbar-track,
+  html[data-momtools-theme="dark"] .mt-sidebar-search-wrap::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  html:not([data-momtools-theme="dark"]) .mt-sidebar::-webkit-scrollbar-thumb,
+  html:not([data-momtools-theme="dark"]) .mt-sidebar-body::-webkit-scrollbar-thumb,
+  html:not([data-momtools-theme="dark"]) .mt-sidebar-search-wrap::-webkit-scrollbar-thumb {
+    background-color: rgba(245, 158, 11, 0.22);
+    border: 3px solid rgba(255, 250, 242, 0.92);
+  }
+
+  html[data-momtools-theme="dark"] .mt-sidebar::-webkit-scrollbar-thumb,
+  html[data-momtools-theme="dark"] .mt-sidebar-body::-webkit-scrollbar-thumb,
+  html[data-momtools-theme="dark"] .mt-sidebar-search-wrap::-webkit-scrollbar-thumb {
+    background-color: rgba(251, 191, 36, 0.34);
+    border: 3px solid rgba(8, 17, 31, 0.92);
+  }
+}
+
+/* 이유식 기록 선택 버튼: 식사 시간/먹은 양/반응은 서로 다른 라디오 그룹처럼 보이도록 별도 스타일을 둡니다. */
+.mt-page .mt-weaning-choice-button {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #475569 !important;
+  box-shadow: none !important;
+}
+
+.mt-page .mt-weaning-choice-button[data-mt-selected="true"] {
+  background: #f59e0b !important;
+  border-color: #d97706 !important;
+  color: #ffffff !important;
+  box-shadow:
+    0 8px 18px rgba(245, 158, 11, 0.22),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.28) !important;
+}
+
+.mt-page .mt-weaning-choice-button[data-mt-selected="false"][data-mt-has-record="true"] {
+  background: #ecfdf5 !important;
+  border-color: #a7f3d0 !important;
+  color: #047857 !important;
+}
+
+.mt-page .mt-weaning-choice-button:focus-visible,
+.mt-page .mt-weaning-checkbox:focus-within {
+  outline: 2px solid rgba(245, 158, 11, 0.6);
+  outline-offset: 2px;
+}
+
+.mt-page .mt-weaning-checkbox {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+  color: #334155 !important;
+}
+
+.mt-page .mt-weaning-checkbox[data-mt-selected="true"] {
+  background: #fff7ed !important;
+  border-color: #f59e0b !important;
+  color: #92400e !important;
+  box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.16) !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page .mt-weaning-choice-button {
+  background: rgba(15, 23, 42, 0.46) !important;
+  border-color: rgba(148, 163, 184, 0.26) !important;
+  color: #cbd5e1 !important;
+  box-shadow: none !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page .mt-weaning-choice-button[data-mt-selected="true"] {
+  background: #fbbf24 !important;
+  border-color: #f59e0b !important;
+  color: #0f172a !important;
+  box-shadow:
+    0 0 0 2px rgba(251, 191, 36, 0.16),
+    0 10px 24px rgba(245, 158, 11, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.22) !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page .mt-weaning-choice-button[data-mt-selected="false"][data-mt-has-record="true"] {
+  background: rgba(16, 185, 129, 0.12) !important;
+  border-color: rgba(94, 234, 212, 0.28) !important;
+  color: #6ee7b7 !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page .mt-weaning-checkbox {
+  background: rgba(15, 23, 42, 0.46) !important;
+  border-color: rgba(148, 163, 184, 0.22) !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page .mt-weaning-checkbox[data-mt-selected="true"] {
+  background: rgba(251, 191, 36, 0.15) !important;
+  border-color: rgba(251, 191, 36, 0.5) !important;
+  color: #fbbf24 !important;
+  box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.18) !important;
+}
+
+/* 이유식 기록 선택 상태 최종 보정: 식사 시간/먹은 양/반응/새 재료를 서로 독립된 그룹으로 보여줍니다. */
+.mt-page .mt-weaning-choice-button[data-weaning-choice-group] {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  color: #475569 !important;
+  box-shadow: none !important;
+}
+
+.mt-page .mt-weaning-choice-button[data-weaning-choice-group][data-weaning-active="true"] {
+  background: #f59e0b !important;
+  border-color: #d97706 !important;
+  color: #ffffff !important;
+  box-shadow:
+    0 8px 18px rgba(245, 158, 11, 0.24),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.28) !important;
+}
+
+.mt-page .mt-weaning-choice-button[data-weaning-choice-group][data-weaning-active="false"][data-weaning-has-record="true"] {
+  background: #ecfdf5 !important;
+  border-color: #a7f3d0 !important;
+  color: #047857 !important;
+}
+
+.mt-page .mt-weaning-checkbox {
+  background: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+  color: #334155 !important;
+  box-shadow: none !important;
+}
+
+.mt-page .mt-weaning-checkbox[data-weaning-active="true"] {
+  background: #fff7ed !important;
+  border-color: #f59e0b !important;
+  color: #92400e !important;
+  box-shadow: inset 0 0 0 1px rgba(245, 158, 11, 0.16) !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page .mt-weaning-choice-button[data-weaning-choice-group] {
+  background: rgba(15, 23, 42, 0.46) !important;
+  border-color: rgba(148, 163, 184, 0.26) !important;
+  color: #cbd5e1 !important;
+  box-shadow: none !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page .mt-weaning-choice-button[data-weaning-choice-group][data-weaning-active="true"] {
+  background: #fbbf24 !important;
+  border-color: #f59e0b !important;
+  color: #0f172a !important;
+  box-shadow:
+    0 0 0 2px rgba(251, 191, 36, 0.16),
+    0 10px 24px rgba(245, 158, 11, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.22) !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page .mt-weaning-choice-button[data-weaning-choice-group][data-weaning-active="false"][data-weaning-has-record="true"] {
+  background: rgba(16, 185, 129, 0.12) !important;
+  border-color: rgba(94, 234, 212, 0.28) !important;
+  color: #6ee7b7 !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page .mt-weaning-checkbox {
+  background: rgba(15, 23, 42, 0.46) !important;
+  border-color: rgba(148, 163, 184, 0.22) !important;
+  color: #cbd5e1 !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page .mt-weaning-checkbox[data-weaning-active="true"] {
+  background: rgba(251, 191, 36, 0.15) !important;
+  border-color: rgba(251, 191, 36, 0.5) !important;
+  color: #fbbf24 !important;
+  box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.18) !important;
+}
+
+/* MomTools 공통 버튼 시스템 v1: 마음 페이지의 네이비 표면 + 앰버 포인트를 전역 기준으로 사용합니다. */
+:root {
+  --mt-button-primary-bg: linear-gradient(135deg, #f59e0b 0%, #fb923c 100%);
+  --mt-button-primary-text: #ffffff;
+  --mt-button-primary-border: rgba(245, 158, 11, 0.34);
+  --mt-button-primary-shadow: 0 10px 24px rgba(245, 158, 11, 0.18);
+  --mt-button-secondary-bg: #ffffff;
+  --mt-button-secondary-text: #334155;
+  --mt-button-secondary-border: #e2e8f0;
+  --mt-button-secondary-hover-bg: #fff7ed;
+  --mt-button-ghost-bg: transparent;
+  --mt-button-ghost-text: #64748b;
+  --mt-button-ghost-hover-bg: #f8fafc;
+  --mt-choice-bg: #ffffff;
+  --mt-choice-text: #475569;
+  --mt-choice-border: #e2e8f0;
+  --mt-choice-hover-bg: #fff7ed;
+  --mt-choice-active-bg: linear-gradient(135deg, #f59e0b 0%, #fb923c 100%);
+  --mt-choice-active-text: #ffffff;
+  --mt-choice-active-border: rgba(245, 158, 11, 0.56);
+  --mt-choice-active-shadow: 0 8px 18px rgba(245, 158, 11, 0.18);
+  --mt-choice-complete-bg: #ecfdf5;
+  --mt-choice-complete-text: #047857;
+  --mt-choice-complete-border: #a7f3d0;
+  --mt-action-card-bg: #fff7ed;
+  --mt-action-card-border: #fed7aa;
+  --mt-action-card-hover-bg: #ffedd5;
+  --mt-danger-bg: #fff1f2;
+  --mt-danger-text: #be123c;
+  --mt-danger-border: #fecdd3;
+}
+
+html[data-momtools-theme="dark"] {
+  --mt-button-primary-bg: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  --mt-button-primary-text: #08111f;
+  --mt-button-primary-border: rgba(251, 191, 36, 0.52);
+  --mt-button-primary-shadow: none;
+  --mt-button-secondary-bg: #111c2f;
+  --mt-button-secondary-text: #d7e0ec;
+  --mt-button-secondary-border: rgba(148, 163, 184, 0.22);
+  --mt-button-secondary-hover-bg: #162238;
+  --mt-button-ghost-bg: transparent;
+  --mt-button-ghost-text: #93a4b8;
+  --mt-button-ghost-hover-bg: rgba(148, 163, 184, 0.08);
+  --mt-choice-bg: #111c2f;
+  --mt-choice-text: #d7e0ec;
+  --mt-choice-border: rgba(148, 163, 184, 0.22);
+  --mt-choice-hover-bg: #162238;
+  --mt-choice-active-bg: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  --mt-choice-active-text: #08111f;
+  --mt-choice-active-border: rgba(251, 191, 36, 0.58);
+  --mt-choice-active-shadow: 0 0 0 1px rgba(251, 191, 36, 0.10);
+  --mt-choice-complete-bg: rgba(16, 185, 129, 0.12);
+  --mt-choice-complete-text: #6ee7b7;
+  --mt-choice-complete-border: rgba(94, 234, 212, 0.28);
+  --mt-action-card-bg: #111c2f;
+  --mt-action-card-border: rgba(148, 163, 184, 0.18);
+  --mt-action-card-hover-bg: #162238;
+  --mt-danger-bg: rgba(244, 63, 94, 0.12);
+  --mt-danger-text: #fda4af;
+  --mt-danger-border: rgba(253, 164, 175, 0.28);
+}
+
+.mt-button-primary,
+.mt-page .mt-button-primary,
+.mt-page :where(a, button).mt-button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 2.75rem;
+  border: 1px solid var(--mt-button-primary-border) !important;
+  background: var(--mt-button-primary-bg) !important;
+  background-color: #f59e0b !important;
+  color: var(--mt-button-primary-text) !important;
+  font-weight: 900;
+  box-shadow: var(--mt-button-primary-shadow) !important;
+  transition: transform 150ms ease, filter 150ms ease, background-color 150ms ease, border-color 150ms ease;
+}
+
+.mt-button-primary:hover,
+.mt-page .mt-button-primary:hover {
+  filter: brightness(0.98);
+}
+
+.mt-button-primary:active,
+.mt-page .mt-button-primary:active {
+  transform: scale(0.985);
+}
+
+.mt-button-primary:disabled,
+.mt-page .mt-button-primary:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.mt-button-secondary,
+.mt-page .mt-button-secondary,
+.mt-page :where(a, button).mt-button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-height: 2.5rem;
+  border: 1px solid var(--mt-button-secondary-border) !important;
+  background: var(--mt-button-secondary-bg) !important;
+  background-image: none !important;
+  color: var(--mt-button-secondary-text) !important;
+  box-shadow: none !important;
+  transition: transform 150ms ease, background-color 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.mt-button-secondary:hover,
+.mt-page .mt-button-secondary:hover {
+  background: var(--mt-button-secondary-hover-bg) !important;
+  border-color: var(--mt-choice-active-border) !important;
+}
+
+.mt-button-ghost,
+.mt-page .mt-button-ghost,
+.mt-page :where(a, button).mt-button-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border: 1px solid transparent !important;
+  background: var(--mt-button-ghost-bg) !important;
+  background-image: none !important;
+  color: var(--mt-button-ghost-text) !important;
+  box-shadow: none !important;
+}
+
+.mt-button-ghost:hover,
+.mt-page .mt-button-ghost:hover {
+  background: var(--mt-button-ghost-hover-bg) !important;
+  color: var(--mt-button-secondary-text) !important;
+}
+
+.mt-button-danger,
+.mt-page .mt-button-danger,
+.mt-page :where(a, button).mt-button-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border: 1px solid var(--mt-danger-border) !important;
+  background: var(--mt-danger-bg) !important;
+  background-image: none !important;
+  color: var(--mt-danger-text) !important;
+  box-shadow: none !important;
+}
+
+.mt-action-card,
+.mt-page .mt-action-card,
+html[data-momtools-theme="dark"] .mt-page .mt-action-card {
+  background: var(--mt-action-card-bg) !important;
+  background-image: none !important;
+  border-color: var(--mt-action-card-border) !important;
+  color: inherit !important;
+  box-shadow: none !important;
+}
+
+.mt-action-card:hover,
+.mt-page .mt-action-card:hover {
+  background: var(--mt-action-card-hover-bg) !important;
+}
+
+.mt-choice-control,
+.mt-choice-button,
+.mt-selectable-button,
+.mt-weaning-choice-button,
+.mt-weaning-checkbox,
+.mt-page .mt-choice-control,
+.mt-page .mt-choice-button,
+.mt-page .mt-selectable-button,
+.mt-page .mt-weaning-choice-button,
+.mt-page .mt-weaning-checkbox {
+  border-color: var(--mt-choice-border) !important;
+  background: var(--mt-choice-bg) !important;
+  background-image: none !important;
+  color: var(--mt-choice-text) !important;
+  box-shadow: none !important;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 150ms ease, background-color 150ms ease, border-color 150ms ease, color 150ms ease, box-shadow 150ms ease;
+}
+
+.mt-choice-control:hover,
+.mt-choice-button:hover,
+.mt-selectable-button:hover,
+.mt-weaning-choice-button:hover,
+.mt-weaning-checkbox:hover,
+.mt-page .mt-choice-control:hover,
+.mt-page .mt-choice-button:hover,
+.mt-page .mt-selectable-button:hover,
+.mt-page .mt-weaning-choice-button:hover,
+.mt-page .mt-weaning-checkbox:hover {
+  background: var(--mt-choice-hover-bg) !important;
+  border-color: var(--mt-choice-active-border) !important;
+}
+
+.mt-choice-control[data-state="active"],
+.mt-choice-control[aria-pressed="true"],
+.mt-choice-control[aria-checked="true"],
+.mt-choice-button[data-mt-selected="true"],
+.mt-selectable-button[data-mt-selected="true"],
+.mt-selectable-button[aria-current="page"],
+.mt-selectable-button[aria-pressed="true"],
+.mt-selectable-button[aria-checked="true"],
+.mt-weaning-choice-button[data-weaning-active="true"],
+.mt-weaning-checkbox[data-weaning-active="true"],
+.mt-page .mt-choice-control[data-state="active"],
+.mt-page .mt-choice-control[aria-pressed="true"],
+.mt-page .mt-choice-control[aria-checked="true"],
+.mt-page .mt-choice-button[data-mt-selected="true"],
+.mt-page .mt-selectable-button[data-mt-selected="true"],
+.mt-page .mt-selectable-button[aria-current="page"],
+.mt-page .mt-selectable-button[aria-pressed="true"],
+.mt-page .mt-selectable-button[aria-checked="true"],
+.mt-page .mt-weaning-choice-button[data-weaning-active="true"],
+.mt-page .mt-weaning-checkbox[data-weaning-active="true"] {
+  background: var(--mt-choice-active-bg) !important;
+  background-color: #f59e0b !important;
+  border-color: var(--mt-choice-active-border) !important;
+  color: var(--mt-choice-active-text) !important;
+  box-shadow: var(--mt-choice-active-shadow) !important;
+}
+
+.mt-choice-control[data-state="complete"],
+.mt-weaning-choice-button[data-weaning-active="false"][data-weaning-has-record="true"],
+.mt-page .mt-choice-control[data-state="complete"],
+.mt-page .mt-weaning-choice-button[data-weaning-active="false"][data-weaning-has-record="true"] {
+  background: var(--mt-choice-complete-bg) !important;
+  background-image: none !important;
+  border-color: var(--mt-choice-complete-border) !important;
+  color: var(--mt-choice-complete-text) !important;
+  box-shadow: none !important;
+}
+
+.mt-choice-control :where(svg, span, strong),
+.mt-choice-button :where(svg, span, strong),
+.mt-selectable-button :where(svg, span, strong),
+.mt-weaning-choice-button :where(svg, span, strong),
+.mt-weaning-checkbox :where(svg, span, strong),
+.mt-page .mt-choice-control :where(svg, span, strong),
+.mt-page .mt-choice-button :where(svg, span, strong),
+.mt-page .mt-selectable-button :where(svg, span, strong),
+.mt-page .mt-weaning-choice-button :where(svg, span, strong),
+.mt-page .mt-weaning-checkbox :where(svg, span, strong) {
+  color: inherit !important;
+}
+
+.mt-choice-control:focus-visible,
+.mt-choice-button:focus-visible,
+.mt-selectable-button:focus-visible,
+.mt-weaning-choice-button:focus-visible,
+.mt-weaning-checkbox:focus-within,
+.mt-button-primary:focus-visible,
+.mt-button-secondary:focus-visible,
+.mt-button-ghost:focus-visible,
+.mt-button-danger:focus-visible {
+  outline: 2px solid rgba(245, 158, 11, 0.58) !important;
+  outline-offset: 2px !important;
+}
+
+.mt-choice-control--chip,
+.mt-page .mt-choice-control--chip {
+  min-height: 2rem;
+}
+
+.mt-choice-control--pill,
+.mt-page .mt-choice-control--pill {
+  min-height: 2.25rem;
+}
+
+.mt-floating-action,
+.mt-page .mt-floating-action,
+html[data-momtools-theme="dark"] .mt-floating-action {
+  border-color: var(--mt-button-primary-border) !important;
+  background: var(--mt-button-primary-bg) !important;
+  color: var(--mt-button-primary-text) !important;
+  box-shadow: 0 12px 28px rgba(245, 158, 11, 0.26) !important;
+}
+
+/* 공통 버튼 시스템: 이전 다크모드 보정에서 들어간 파란 active/primary를 마음 페이지 기준 앰버로 되돌립니다. */
+html[data-momtools-theme="dark"] .mt-page :where(a, button).mt-button-primary,
+html[data-momtools-theme="dark"] .mt-button-primary {
+  background: var(--mt-button-primary-bg) !important;
+  border-color: var(--mt-button-primary-border) !important;
+  color: var(--mt-button-primary-text) !important;
+}
+
+html[data-momtools-theme="dark"] .mt-page :where(a, button, label).mt-choice-control[data-state="active"],
+html[data-momtools-theme="dark"] .mt-page :where(a, button, label).mt-choice-control[aria-pressed="true"],
+html[data-momtools-theme="dark"] .mt-page :where(a, button, label).mt-choice-control[aria-checked="true"],
+html[data-momtools-theme="dark"] .mt-page :where(a, button, label).mt-selectable-button[data-mt-selected="true"],
+html[data-momtools-theme="dark"] .mt-page :where(a, button, label).mt-choice-button[data-mt-selected="true"],
+html[data-momtools-theme="dark"] .mt-page .mt-weaning-choice-button[data-weaning-active="true"],
+html[data-momtools-theme="dark"] .mt-page .mt-weaning-checkbox[data-weaning-active="true"] {
+  background: var(--mt-choice-active-bg) !important;
+  border-color: var(--mt-choice-active-border) !important;
+  color: var(--mt-choice-active-text) !important;
+  box-shadow: var(--mt-choice-active-shadow) !important;
+}
+
+/* 사이드바와 하단 탭도 같은 앰버 포인트로 정리합니다. */
+.mt-sidebar .mt-sidebar-item[data-active="true"],
+.mt-sidebar .mt-sidebar-item[data-active="true"] .mt-sidebar-item-icon {
+  border-color: var(--mt-choice-active-border) !important;
+  background: var(--mt-action-card-bg) !important;
+  background-image: none !important;
+  color: #b45309 !important;
+  box-shadow: none !important;
+}
+
+html[data-momtools-theme="dark"] .mt-sidebar .mt-sidebar-item[data-active="true"],
+html[data-momtools-theme="dark"] .mt-sidebar .mt-sidebar-item[data-active="true"] .mt-sidebar-item-icon {
+  border-color: rgba(251, 191, 36, 0.32) !important;
+  background: rgba(251, 191, 36, 0.12) !important;
+  background-image: none !important;
+  color: #fbbf24 !important;
+  box-shadow: none !important;
+}
+
+html[data-momtools-theme="dark"] nav[aria-label="하단 주요 메뉴"] :where(a[aria-current="page"], a[class*="bg-amber"], button[class*="bg-amber"]) {
+  background: rgba(251, 191, 36, 0.12) !important;
+  color: #fbbf24 !important;
+}
+
+@media (max-width: 640px) {
+  .mt-page .mt-choice-control,
+  .mt-page .mt-choice-button,
+  .mt-page .mt-selectable-button,
+  .mt-page .mt-weaning-choice-button,
+  .mt-page .mt-weaning-checkbox {
+    min-height: 2.25rem;
+  }
+}
+
+/* 공통 버튼 시스템 보정: 아직 개별 페이지에 남아 있는 직접 색상 버튼도 같은 기준으로 보여줍니다. */
+.mt-page :where(a, button)[class*="bg-amber-500"],
+.mt-page :where(a, button)[class*="bg-amber-600"],
+.mt-page :where(a, button)[class*="bg-slate-900"]:not(.mt-scroll-top-button),
+.mt-page :where(a, button)[class*="bg-blue-600"],
+.mt-page :where(a, button)[class*="bg-blue-500"] {
+  border: 1px solid var(--mt-button-primary-border) !important;
+  background: var(--mt-button-primary-bg) !important;
+  color: var(--mt-button-primary-text) !important;
+  box-shadow: var(--mt-button-primary-shadow) !important;
+}
+
+.mt-page :where(a, button)[class*="border"][class*="bg-white"]:not(.mt-kakao-login-button):not(.mt-choice-control):not(.mt-choice-button):not(.mt-selectable-button):not(.mt-weaning-choice-button):not(.mt-scroll-top-button) {
+  border-color: var(--mt-button-secondary-border) !important;
+  background: var(--mt-button-secondary-bg) !important;
+  background-image: none !important;
+  color: var(--mt-button-secondary-text) !important;
+  box-shadow: none !important;
+}
+
+.mt-page :where(a, button)[class*="border"][class*="bg-white"]:not(.mt-kakao-login-button):not(.mt-choice-control):not(.mt-choice-button):not(.mt-selectable-button):not(.mt-weaning-choice-button):not(.mt-scroll-top-button):hover {
+  background: var(--mt-button-secondary-hover-bg) !important;
+  border-color: var(--mt-choice-active-border) !important;
+}
+
+/* 공통 버튼 시스템 v1.1: 다크모드 선택 버튼은 마음 페이지의 감정 배지처럼 은은한 앰버 칩으로 표시 */
+html[data-momtools-theme="dark"] {
+  --mt-choice-active-bg: rgba(251, 191, 36, 0.12);
+  --mt-choice-active-text: #fbbf24;
+  --mt-choice-active-border: rgba(251, 191, 36, 0.36);
+  --mt-choice-active-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.08);
+}
+
+html[data-momtools-theme="dark"] .mt-choice-control[data-state="active"],
+html[data-momtools-theme="dark"] .mt-choice-control[aria-pressed="true"],
+html[data-momtools-theme="dark"] .mt-choice-control[aria-checked="true"],
+html[data-momtools-theme="dark"] .mt-choice-button[data-mt-selected="true"],
+html[data-momtools-theme="dark"] .mt-selectable-button[data-mt-selected="true"],
+html[data-momtools-theme="dark"] .mt-selectable-button[aria-current="page"],
+html[data-momtools-theme="dark"] .mt-selectable-button[aria-pressed="true"],
+html[data-momtools-theme="dark"] .mt-selectable-button[aria-checked="true"],
+html[data-momtools-theme="dark"] .mt-weaning-choice-button[data-weaning-active="true"],
+html[data-momtools-theme="dark"] .mt-weaning-checkbox[data-weaning-active="true"],
+html[data-momtools-theme="dark"] .mt-page .mt-choice-control[data-state="active"],
+html[data-momtools-theme="dark"] .mt-page .mt-choice-control[aria-pressed="true"],
+html[data-momtools-theme="dark"] .mt-page .mt-choice-control[aria-checked="true"],
+html[data-momtools-theme="dark"] .mt-page .mt-choice-button[data-mt-selected="true"],
+html[data-momtools-theme="dark"] .mt-page .mt-selectable-button[data-mt-selected="true"],
+html[data-momtools-theme="dark"] .mt-page .mt-selectable-button[aria-current="page"],
+html[data-momtools-theme="dark"] .mt-page .mt-selectable-button[aria-pressed="true"],
+html[data-momtools-theme="dark"] .mt-page .mt-selectable-button[aria-checked="true"],
+html[data-momtools-theme="dark"] .mt-page .mt-weaning-choice-button[data-weaning-active="true"],
+html[data-momtools-theme="dark"] .mt-page .mt-weaning-checkbox[data-weaning-active="true"],
+html[data-momtools-theme="dark"] .mt-page :where(a, button, label).mt-choice-control[data-state="active"],
+html[data-momtools-theme="dark"] .mt-page :where(a, button, label).mt-choice-control[aria-pressed="true"],
+html[data-momtools-theme="dark"] .mt-page :where(a, button, label).mt-choice-control[aria-checked="true"],
+html[data-momtools-theme="dark"] .mt-page :where(a, button, label).mt-selectable-button[data-mt-selected="true"],
+html[data-momtools-theme="dark"] .mt-page :where(a, button, label).mt-choice-button[data-mt-selected="true"] {
+  background: rgba(251, 191, 36, 0.12) !important;
+  background-color: rgba(251, 191, 36, 0.12) !important;
+  background-image: none !important;
+  border-color: rgba(251, 191, 36, 0.36) !important;
+  color: #fbbf24 !important;
+  box-shadow: inset 0 0 0 1px rgba(251, 191, 36, 0.08) !important;
+}
+
+html[data-momtools-theme="dark"] .mt-choice-control[data-state="active"]:hover,
+html[data-momtools-theme="dark"] .mt-choice-control[aria-pressed="true"]:hover,
+html[data-momtools-theme="dark"] .mt-choice-control[aria-checked="true"]:hover,
+html[data-momtools-theme="dark"] .mt-choice-button[data-mt-selected="true"]:hover,
+html[data-momtools-theme="dark"] .mt-selectable-button[data-mt-selected="true"]:hover,
+html[data-momtools-theme="dark"] .mt-weaning-choice-button[data-weaning-active="true"]:hover,
+html[data-momtools-theme="dark"] .mt-page .mt-choice-control[data-state="active"]:hover,
+html[data-momtools-theme="dark"] .mt-page .mt-choice-control[aria-pressed="true"]:hover,
+html[data-momtools-theme="dark"] .mt-page .mt-choice-control[aria-checked="true"]:hover,
+html[data-momtools-theme="dark"] .mt-page .mt-choice-button[data-mt-selected="true"]:hover,
+html[data-momtools-theme="dark"] .mt-page .mt-selectable-button[data-mt-selected="true"]:hover,
+html[data-momtools-theme="dark"] .mt-page .mt-weaning-choice-button[data-weaning-active="true"]:hover {
+  background: rgba(251, 191, 36, 0.16) !important;
+  background-color: rgba(251, 191, 36, 0.16) !important;
+  border-color: rgba(251, 191, 36, 0.48) !important;
+  color: #fcd34d !important;
 }

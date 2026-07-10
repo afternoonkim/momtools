@@ -85,8 +85,10 @@ export default async function DevelopmentTimelinePage({ searchParams }: { search
   if (!user.children.length) redirect("/child/new");
 
   const params = await searchParams;
-  const selectedChild = user.children.find((child) => child.id === params?.childId) ?? user.children.find((child) => child.isPrimary) ?? user.children[0];
-  const selectedIndex = user.children.findIndex((child) => child.id === selectedChild.id);
+  const bornChildren = user.children.filter((child) => child.birthDate);
+  if (!bornChildren.length) redirect("/my");
+  const selectedChild = bornChildren.find((child) => child.id === params?.childId) ?? bornChildren.find((child) => child.isPrimary) ?? bornChildren[0];
+  const selectedIndex = bornChildren.findIndex((child) => child.id === selectedChild.id);
   const selectedName = childDisplayName(selectedChild, Math.max(selectedIndex, 0));
 
   const logs = await prisma.childDevelopmentCheckLog.findMany({
@@ -125,7 +127,7 @@ export default async function DevelopmentTimelinePage({ searchParams }: { search
 
         <section className="mt-simple-list" aria-label="아이 선택">
           <div className="flex gap-2 overflow-x-auto px-4 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {user.children.map((child, index) => {
+            {bornChildren.map((child, index) => {
               const isSelected = child.id === selectedChild.id;
               return (
                 <Link

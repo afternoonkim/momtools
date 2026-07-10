@@ -154,11 +154,14 @@ export default async function WeaningTimelinePage({
   if (!user.children.length) redirect("/child/new");
 
   const params = await searchParams;
+  const bornChildren = user.children.filter((child) => child.birthDate);
+  if (!bornChildren.length) redirect("/my");
+
   const selectedChild =
-    user.children.find((child) => child.id === params?.childId) ??
-    user.children.find((child) => child.isPrimary) ??
-    user.children[0];
-  const selectedChildIndex = user.children.findIndex(
+    bornChildren.find((child) => child.id === params?.childId) ??
+    bornChildren.find((child) => child.isPrimary) ??
+    bornChildren[0];
+  const selectedChildIndex = bornChildren.findIndex(
     (child) => child.id === selectedChild.id,
   );
   const selectedChildName = childDisplayName(
@@ -223,7 +226,7 @@ export default async function WeaningTimelinePage({
 
         <section className="mt-card p-3" aria-label="아이 선택">
           <div className="flex gap-2 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {user.children.map((child, index) => {
+            {bornChildren.map((child, index) => {
               const isSelected = child.id === selectedChild.id;
               return (
                 <Link

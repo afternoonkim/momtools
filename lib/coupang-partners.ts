@@ -19,8 +19,8 @@ export const COUPANG_PARTNERS = {
     process.env.NEXT_PUBLIC_COUPANG_PARTNERS_CATEGORY_BANNER_HTML?.trim() ?? "",
   dynamicBannerHtml:
     process.env.NEXT_PUBLIC_COUPANG_PARTNERS_DYNAMIC_BANNER_HTML?.trim() ?? "",
-  legacyBannerEnabled:
-    process.env.NEXT_PUBLIC_COUPANG_PARTNERS_LEGACY_BANNER_ENABLED === "true",
+  bannerEnabled:
+    process.env.NEXT_PUBLIC_COUPANG_PARTNERS_BANNER_ENABLED !== "false",
   categoryBanner: {
     ...COUPANG_PARTNERS_BANNER_SIZE,
     label: "로켓 출산/유아동",
@@ -67,7 +67,7 @@ export function normalizeCoupangPathname(pathname: string) {
 }
 
 export function shouldShowGlobalCoupangPartnersAd(pathname: string) {
-  if (!COUPANG_PARTNERS.enabled || !COUPANG_PARTNERS.legacyBannerEnabled) return false;
+  if (!COUPANG_PARTNERS.enabled || !COUPANG_PARTNERS.bannerEnabled) return false;
 
   const normalizedPathname = normalizeCoupangPathname(pathname);
 

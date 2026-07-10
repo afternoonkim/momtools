@@ -38,8 +38,10 @@ export default async function VaccineTimelinePage({ searchParams }: { searchPara
   if (!user.children.length) redirect("/child/new");
 
   const params = await searchParams;
-  const selectedChild = user.children.find((child) => child.id === params?.childId) ?? user.children.find((child) => child.isPrimary) ?? user.children[0];
-  const schedule = getVaccinationScheduleForBirthDate(selectedChild.birthDate);
+  const bornChildren = user.children.filter((child) => child.birthDate);
+  if (!bornChildren.length) redirect("/my");
+  const selectedChild = bornChildren.find((child) => child.id === params?.childId) ?? bornChildren.find((child) => child.isPrimary) ?? bornChildren[0];
+  const schedule = getVaccinationScheduleForBirthDate(selectedChild.birthDate!);
   const scheduleMap = new Map(schedule.map((item) => [`${item.vaccineKey}__${item.doseKey}`, item]));
 
   const records = await prisma.childVaccinationRecord.findMany({
@@ -77,7 +79,7 @@ export default async function VaccineTimelinePage({ searchParams }: { searchPara
 
         <section className="mt-simple-list" aria-label="아이 선택">
           <div className="flex gap-2 overflow-x-auto px-4 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-            {user.children.map((child, index) => {
+            {bornChildren.map((child, index) => {
               const active = child.id === selectedChild.id;
               return (
                 <Link
