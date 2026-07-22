@@ -11,6 +11,9 @@ import { childcarePortalGuides } from "@/data/childcarePortalGuides";
 import { getHealthGuideSitemapPathsFromDb, getMonthlyGuideSitemapPathsFromDb } from "@/lib/repositories/guides-db";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
 import { getMoonlightHospitalAreaPath, moonlightHospitalAreas } from "@/data/moonlightHospitals";
+import { getPublishedParentingProductGuides } from "@/data/parentingProductGuides";
+
+export const revalidate = 3600;
 
 type ChangeFrequency = "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
 type RouteConfig = { path: string; priority: number; changeFrequency: ChangeFrequency };
@@ -56,6 +59,7 @@ const staticRoutes: RouteConfig[] = [
   route("/info/weaning", 0.8, "weekly"),
   route("/info/toddler", 0.8, "weekly"),
   route("/baby-food", 0.85, "weekly"),
+  route("/parenting-products", 0.84, "daily"),
   route("/baby-food/early", 0.8, "weekly"),
   route("/baby-food/middle", 0.8, "weekly"),
   route("/baby-food/late", 0.8, "weekly"),
@@ -111,6 +115,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const dynamicKoreanFamilyHealthRoutes = familyHealthPaths.map((path) => route(path, 0.78, "weekly"));
   const dynamicMonthlyGuideRoutes = monthlyGuidePaths.map((path) => route(path, 0.82, "weekly"));
   const dynamicHealthGuideRoutes = healthGuidePaths.map((path) => route(path, 0.82, "weekly"));
+  const dynamicParentingProductRoutes = getPublishedParentingProductGuides().map((guide) =>
+    route(`/parenting-products/${guide.slug}`, 0.8, "weekly"),
+  );
   const deduped = new Map<string, RouteConfig>();
   [
     ...staticRoutes,
@@ -124,6 +131,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...dynamicKoreanBirthSupportRoutes,
     ...dynamicKoreanFamilyFinanceRoutes,
     ...dynamicChildcarePortalGuideRoutes,
+    ...dynamicParentingProductRoutes,
     ...dynamicMonthlyGuideRoutes,
     ...dynamicHealthGuideRoutes,
   ].forEach((item) => deduped.set(item.path, item));

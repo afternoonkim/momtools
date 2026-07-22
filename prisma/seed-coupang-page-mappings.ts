@@ -9,6 +9,7 @@ dotenv.config(dotenvOptions(".env"));
 import { babyFoodRecipes, stageLabels } from "../data/babyFood";
 import { babyProductQnaItems, type BabyProductCategory } from "../data/babyProductQna";
 import { playCategories, playItems } from "../data/play";
+import { parentingProductGuides } from "../data/parentingProductGuides";
 import type { ContentType, PrismaClient } from "../lib/generated/prisma/client";
 
 const MAX_CATEGORIES_PER_PAGE = 3;
@@ -448,6 +449,23 @@ function buildStaticCandidates(): PageCandidate[] {
       titleText: `${item.title} ${item.question} ${item.kind}`,
       bodyText: text,
       explicitCategories: categoriesForProductCategory(item.category, text),
+      source: "static-route",
+    });
+  }
+
+  for (const guide of parentingProductGuides) {
+    candidates.push({
+      pagePath: `/parenting-products/${guide.slug}`,
+      titleText: `${guide.title} ${guide.shortTitle} ${guide.keywords.join(" ")}`,
+      bodyText: [
+        guide.summary,
+        guide.quickAnswer,
+        guide.coupangKeywords.join(" "),
+        guide.sections
+          .map((section) => `${section.title} ${section.paragraphs.join(" ")} ${(section.items ?? []).join(" ")}`)
+          .join(" "),
+      ].join(" "),
+      explicitCategories: [...guide.productCategorySlugs],
       source: "static-route",
     });
   }

@@ -17,6 +17,7 @@ import {
   Moon,
   UsersRound,
   Heart,
+  ShoppingBag,
 } from "lucide-react";
 import SidebarItem from "./SidebarItem";
 import SidebarGroup from "./SidebarGroup";
@@ -49,7 +50,7 @@ export default function Sidebar({
   const isCalculateOpen = hasPath("/tools") || hasPath("/cal");
   const isRecordOpen = hasPath("/records") || hasPath("/child") || hasPath("/checklists") || hasPath("/development-check") || hasPath("/weaning-record") || hasPath("/vaccine-check") || hasPath("/family");
   const isCheckOpen = hasPath("/qna") || hasPath("/health") || hasPath("/monthly-guide") || hasPath("/family-health-qna") || hasPath("/moonlight-hospitals");
-  const isReferenceOpen = hasPath("/info") || hasPath("/policy") || hasPath("/baby-food") || hasPath("/baby-names") || hasPath("/family-health-qna");
+  const isReferenceOpen = hasPath("/info") || hasPath("/policy") || hasPath("/baby-food") || hasPath("/baby-names") || hasPath("/parenting-products") || hasPath("/family-health-qna");
 
   return (
     <>
@@ -146,6 +147,7 @@ export default function Sidebar({
               <SidebarItem href="/policy" label="정부지원정책" icon={Landmark} collapsed={collapsed} />
               <SidebarItem href="/info/family-finance" label="가계 가이드" icon={Landmark} collapsed={collapsed} />
               <SidebarItem href="/baby-food" label="이유식 레시피" icon={UtensilsCrossed} collapsed={collapsed} />
+              <SidebarItem href="/parenting-products" label="육아용품 가이드" icon={ShoppingBag} collapsed={collapsed} />
               <SidebarItem href="/baby-names" label="아기 이름과 뜻" icon={Baby} collapsed={collapsed} />
               <SidebarItem href="/info/childcare-portal" label="아이사랑 활용" icon={BookOpen} collapsed={collapsed} />
             </SidebarGroup>

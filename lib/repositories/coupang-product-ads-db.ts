@@ -6,6 +6,7 @@ import {
 } from "@/lib/coupang-partners-api";
 import { normalizeCoupangPathname } from "@/lib/coupang-partners";
 import { prisma } from "@/lib/db";
+import { getPublicParentingProductGuideByPath } from "@/data/parentingProductGuides";
 
 export type MatchedCoupangProductAd = {
   id: string;
@@ -25,6 +26,7 @@ type CategoryCandidate = {
   slug: string;
   name: string;
   priority: number;
+  searchKeywords?: string[];
 };
 
 const MAX_PRODUCT_AD_ITEMS = 3;
@@ -98,11 +100,11 @@ function apiProductToMatchedAd(
     id: `api-${category.slug}-${product.productId}-${index}`,
     categorySlug: category.slug,
     categoryName: category.name,
-    title: buildNativeProductTitle(category),
+    title: product.productName || buildNativeProductTitle(category),
     description: buildNativeProductDescription(category),
     partnerUrl: product.productUrl,
-    imageUrl: null,
-    price: null,
+    imageUrl: product.productImage,
+    price: product.productPrice,
     buttonText: "보기",
     priority: category.priority - index,
     source: "api",
@@ -165,6 +167,27 @@ async function getFallbackCategoryCandidates(pagePath: string): Promise<Category
 }
 
 async function getPageCategoryCandidates(pagePath: string) {
+  const productGuide = getPublicParentingProductGuideByPath(pagePath);
+  if (productGuide) {
+    const slugs = productGuide.productCategorySlugs.slice(0, MAX_PRODUCT_AD_ITEMS);
+    const categories = await prisma.coupangProductCategory.findMany({
+      where: { slug: { in: slugs }, enabled: true },
+      select: { slug: true, name: true },
+    });
+    const categoryBySlug = new Map(categories.map((category) => [category.slug, category]));
+    const guideCategories = slugs.flatMap<CategoryCandidate>((slug, index) => {
+      const category = categoryBySlug.get(slug);
+      if (!category) return [];
+      return [{
+        slug,
+        name: category.name,
+        priority: 120 - index * 10,
+        searchKeywords: index === 0 ? [...productGuide.coupangKeywords] : undefined,
+      }];
+    });
+    if (guideCategories.length > 0) return guideCategories;
+  }
+
   const mappedCategories = await getCategoryCandidatesFromMappings(pagePath);
   if (mappedCategories.length > 0) return mappedCategories.slice(0, MAX_PRODUCT_AD_ITEMS);
   return getFallbackCategoryCandidates(pagePath);
@@ -176,8 +199,14 @@ async function getApiProductAds(categories: CategoryCandidate[]): Promise<Matche
   const [representativeCategory] = categories;
   if (!representativeCategory) return [];
 
-  const keyword = getCoupangSearchKeyword(representativeCategory.slug);
-  const products = await searchCoupangProductsByKeyword(keyword, MAX_PRODUCT_AD_ITEMS);
+  const keywords = representativeCategory.searchKeywords?.length
+    ? representativeCategory.searchKeywords.slice(0, 3)
+    : [getCoupangSearchKeyword(representativeCategory.slug)];
+  let products: CoupangPartnersApiProduct[] = [];
+  for (const keyword of keywords) {
+    products = await searchCoupangProductsByKeyword(keyword, MAX_PRODUCT_AD_ITEMS);
+    if (products.length > 0) break;
+  }
 
   return products
     .map((product, index) => apiProductToMatchedAd(product, representativeCategory, index))

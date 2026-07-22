@@ -34,6 +34,7 @@ export const SEARCH_SUGGESTIONS: SearchSuggestion[] = [
   { query: "신생아 준비물", label: "신생아 준비물", description: "수유·수면·위생 준비 체크", category: "체크리스트" },
   { query: "출산 준비물", label: "출산 준비물", description: "입원 가방과 출산 전 준비", category: "체크리스트" },
   { query: "어린이집 준비물", label: "어린이집 준비물", description: "등원 전 준비물과 적응 포인트", category: "체크리스트" },
+  { query: "육아용품", label: "육아용품 가이드", description: "제품을 사기 전 선택·안전 기준 확인", category: "참고하기" },
   { query: "출산지원금", label: "출산지원금", description: "지역별 출산지원금 예상 확인", category: "정책" },
   { query: "부모급여", label: "부모급여", description: "지원 대상과 신청 흐름 확인", category: "정책" },
   { query: "아동수당", label: "아동수당", description: "지원금과 신청 정보 확인", category: "정책" },

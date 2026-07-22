@@ -13,7 +13,7 @@ type AdFitRegistryWindow = Window & {
   __momtoolsAdFitUnitOwners?: Map<string, string>;
 };
 
-const ADFIT_SCRIPT_SRC = "https://t1.daumcdn.net/kas/static/ba.min.js";
+const ADFIT_SCRIPT_SRC = "https://t1.kakaocdn.net/kas/static/ba.min.js";
 
 function getAdFitUnitOwners() {
   const browserWindow = window as AdFitRegistryWindow;

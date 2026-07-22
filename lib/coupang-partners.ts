@@ -45,6 +45,7 @@ const GLOBAL_COUPANG_EXCLUDED_PATH_PREFIXES = [
   "/family",
   "/my",
   "/tools",
+  "/parenting-products",
 ] as const;
 
 const GLOBAL_COUPANG_EXCLUDED_PATHS = new Set<string>([
@@ -56,6 +57,7 @@ const GLOBAL_COUPANG_EXCLUDED_PATHS = new Set<string>([
   "/privacy",
   "/search",
   "/terms",
+  "/parenting-products",
 ] as const);
 
 const GLOBAL_COUPANG_EXCLUDED_PATH_PATTERNS = [
@@ -107,6 +109,7 @@ const PRODUCT_AD_EXCLUDED_PATHS = new Set<string>([
   "/privacy",
   "/search",
   "/terms",
+  "/parenting-products",
 ] as const);
 
 export function shouldShowCoupangProductAds(pathname: string) {

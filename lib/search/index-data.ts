@@ -24,6 +24,7 @@ export type SearchEntryType =
   | "birth-support-region"
   | "monthly-guide"
   | "health-guide"
+  | "parenting-product"
   | "moonlight-hospital";
 
 export interface SearchEntry {

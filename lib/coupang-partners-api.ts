@@ -261,7 +261,9 @@ export async function searchCoupangProductsByKeyword(keyword: string, limit = 3)
     }
 
     const products = extractProducts(payload).slice(0, limit);
-    cache.set(cacheKey, { products, expiresAt: Date.now() + COUPANG_API_CACHE_TTL_MS });
+    if (products.length > 0) {
+      cache.set(cacheKey, { products, expiresAt: Date.now() + COUPANG_API_CACHE_TTL_MS });
+    }
     return products;
   } catch (error) {
     if ((error as { name?: string }).name !== "AbortError") {

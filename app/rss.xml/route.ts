@@ -6,6 +6,7 @@ import { governmentPolicies, governmentPolicyCategories } from "@/data/governmen
 import { familyFinanceArticles } from "@/data/familyFinance";
 import { babyFoodRecipes, stageLabels } from "@/data/babyFood";
 import { SITE_DATES } from "@/lib/content-meta";
+import { getPublishedParentingProductGuides } from "@/data/parentingProductGuides";
 import { buildRssXml, RSS_RESPONSE_HEADERS, type FeedItem } from "@/lib/rss/feed";
 
 export const dynamic = "force-dynamic";
@@ -93,6 +94,16 @@ function pickBabyFoodItems(): FeedItem[] {
   }));
 }
 
+function pickParentingProductItems(): FeedItem[] {
+  return getPublishedParentingProductGuides().map((guide) => ({
+    link: `/parenting-products/${guide.slug}`,
+    title: guide.title,
+    description: guide.description,
+    pubDate: guide.publishAt,
+    category: `육아용품 가이드 · ${guide.category}`,
+  }));
+}
+
 function pickFeaturedToolItems(): FeedItem[] {
   return [
     {
@@ -164,6 +175,7 @@ export async function GET() {
     ...healthGuideItems,
     ...pickQnaItems(),
     ...pickBabyFoodItems(),
+    ...pickParentingProductItems(),
     ...pickFeaturedToolItems(),
   ]).slice(0, MAX_TOTAL);
 

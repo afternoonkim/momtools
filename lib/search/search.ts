@@ -2,6 +2,7 @@ import { SEARCH_INDEX, type SearchEntry, type SearchEntryType } from "./index-da
 import { familyHealthCategories } from "@/data/familyHealthQna";
 import { getFamilyHealthSearchEntriesFromDb } from "@/lib/repositories/family-health-qna-db";
 import { getHealthGuideSearchEntriesFromDb, getMonthlyGuideSearchEntriesFromDb } from "@/lib/repositories/guides-db";
+import { getPublishedParentingProductGuides } from "@/data/parentingProductGuides";
 
 export interface SearchResult extends SearchEntry {
   score: number;
@@ -120,11 +121,22 @@ async function buildSearchIndex(): Promise<SearchEntry[]> {
     keywords: entry.keywords,
   }));
 
+  const parentingProductEntries: SearchEntry[] = getPublishedParentingProductGuides().map((guide) => ({
+    type: "parenting-product" as const,
+    categoryLabel: `육아용품 · ${guide.category}`,
+    href: `/parenting-products/${guide.slug}`,
+    title: guide.title,
+    description: guide.description,
+    topic: guide.shortTitle,
+    keywords: [...guide.keywords, ...guide.coupangKeywords, "육아용품 가이드"],
+  }));
+
   const merged = new Map<string, SearchEntry>();
   for (const entry of SEARCH_INDEX) merged.set(entry.href, entry);
   for (const entry of dbFamilyEntries) merged.set(entry.href, entry);
   for (const entry of dbMonthlyEntries) merged.set(entry.href, entry);
   for (const entry of dbHealthEntries) merged.set(entry.href, entry);
+  for (const entry of parentingProductEntries) merged.set(entry.href, entry);
   return Array.from(merged.values());
 }
 
@@ -161,6 +173,7 @@ export function groupResultsByType(results: SearchResult[]): Array<{ type: Searc
     "record",
     "monthly-guide",
     "health-guide",
+    "parenting-product",
   ];
   const groups = new Map<SearchEntryType, SearchResult[]>();
   for (const r of results) {
@@ -186,4 +199,5 @@ export const TYPE_LABELS: Record<SearchEntryType, string> = {
   record: "기록하기",
   "monthly-guide": "월령별 육아 로드맵",
   "health-guide": "증상별 건강 가이드",
+  "parenting-product": "육아용품 가이드",
 };

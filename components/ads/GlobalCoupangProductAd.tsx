@@ -92,6 +92,10 @@ function findProductAnchor(pathname: string) {
   const main = document.querySelector<HTMLElement>("main");
   if (!main) return null;
 
+  if (pathname.startsWith("/parenting-products/")) {
+    return main.querySelector<HTMLElement>('[data-coupang-product-anchor="true"]');
+  }
+
   if (pathname.startsWith("/tools/")) {
     const calculatorAd = main.querySelector<HTMLElement>('aside[aria-label="광고"]');
     if (calculatorAd) return calculatorAd;
@@ -152,6 +156,9 @@ function ProductAdCard({ item }: { item: CoupangProductAdItem }) {
     item.description?.trim() ||
     "지금 보고 있는 내용과 함께 확인해볼 수 있는 육아 준비물이에요.";
   const buttonText = "보기";
+  const formattedPrice = typeof item.price === "number" && item.price > 0
+    ? `${item.price.toLocaleString("ko-KR")}원`
+    : null;
 
   return (
     <a
@@ -161,6 +168,15 @@ function ProductAdCard({ item }: { item: CoupangProductAdItem }) {
       className="group flex min-h-[112px] items-center gap-3 rounded-2xl border border-slate-200 bg-white/80 p-4 transition hover:-translate-y-0.5 hover:border-amber-200 hover:bg-white hover:shadow-sm"
       aria-label={`${item.categoryName} 관련 쿠팡 파트너스 링크 열기`}
     >
+      {item.imageUrl ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={item.imageUrl}
+          alt=""
+          className="h-20 w-20 shrink-0 rounded-xl border border-slate-100 bg-white object-cover md:h-24 md:w-24"
+          loading="lazy"
+        />
+      ) : null}
       <span className="flex min-w-0 flex-1 flex-col">
         <span className="inline-flex w-fit rounded-full border border-amber-200 bg-amber-50 px-2.5 py-1 text-[11px] font-bold text-amber-700">
           {item.categoryName}
@@ -171,6 +187,7 @@ function ProductAdCard({ item }: { item: CoupangProductAdItem }) {
         <span className="mt-1 line-clamp-2 text-xs leading-5 text-slate-500 md:text-sm md:leading-6">
           {description}
         </span>
+        {formattedPrice ? <span className="mt-1 text-sm font-extrabold text-slate-800">{formattedPrice}</span> : null}
       </span>
 
       <span className="shrink-0 rounded-full border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold text-amber-700 transition group-hover:border-amber-300 group-hover:bg-amber-100 group-hover:text-amber-800">
