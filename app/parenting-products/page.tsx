@@ -13,7 +13,7 @@ export const revalidate = 3600;
 export const metadata: Metadata = {
   title: "육아용품 가이드｜구매 전 선택 기준 | MomTools",
   description:
-    "기저귀, 젖병, 체온계, 카시트, 유모차, 수유쿠션, 아기침대 매트리스, 이유식 턱받이, 빨대컵처럼 자주 쓰는 육아용품의 구매 전 기준을 실제 생활 상황에 맞춰 정리했습니다.",
+    "기저귀, 젖병, 카시트, 유모차, 유축기, 바운서, 베이비룸, 이유식 조리도구처럼 자주 쓰는 육아용품의 구매 전 기준을 실제 생활 상황에 맞춰 정리했습니다.",
   keywords: [
     "육아용품 가이드",
     "신생아 용품",
@@ -41,6 +41,11 @@ export const metadata: Metadata = {
     "아기침대 매트리스",
     "이유식 턱받이",
     "빨대컵 스파우트컵 차이",
+    "수동 유축기 전동 유축기 차이",
+    "아기 바운서 락커 차이",
+    "베이비룸 고르는 법",
+    "기저귀 휴지통",
+    "이유식 믹서기 핸드블렌더 차이",
   ],
   alternates: { canonical: buildCanonical("/parenting-products") },
   openGraph: {
