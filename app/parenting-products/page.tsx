@@ -2,13 +2,15 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, ShoppingBag } from "lucide-react";
 import {
+  getParentingProductGuideModifiedAt,
   getPublishedParentingProductGuides,
   type ParentingProductGuide,
 } from "@/data/parentingProductGuides";
 import { buildCanonical } from "@/lib/content-meta";
 import { COUPANG_PARTNERS_DISCLOSURE } from "@/lib/coupang-partners";
 
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export const metadata: Metadata = {
   title: "육아용품 가이드｜구매 전 선택 기준 | MomTools",
@@ -136,6 +138,7 @@ export default function ParentingProductsPage() {
           headline: guide.title,
           url: buildCanonical(`/parenting-products/${guide.slug}`),
           datePublished: guide.publishAt,
+          dateModified: getParentingProductGuideModifiedAt(guide),
         })),
       },
       {

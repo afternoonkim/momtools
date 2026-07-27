@@ -1,8 +1,8 @@
 import { getPublishedParentingProductGuides } from "@/data/parentingProductGuides";
-import { buildRssXml, RSS_RESPONSE_HEADERS, type FeedItem } from "@/lib/rss/feed";
+import { buildRssXml, DYNAMIC_RSS_RESPONSE_HEADERS, type FeedItem } from "@/lib/rss/feed";
 
 export const dynamic = "force-dynamic";
-export const revalidate = 3600;
+export const revalidate = 0;
 
 export function GET() {
   const items: FeedItem[] = getPublishedParentingProductGuides().map((guide) => ({
@@ -23,5 +23,5 @@ export function GET() {
     items,
   );
 
-  return new Response(xml, { headers: RSS_RESPONSE_HEADERS });
+  return new Response(xml, { headers: DYNAMIC_RSS_RESPONSE_HEADERS });
 }

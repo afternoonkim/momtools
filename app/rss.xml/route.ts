@@ -7,10 +7,10 @@ import { familyFinanceArticles } from "@/data/familyFinance";
 import { babyFoodRecipes, stageLabels } from "@/data/babyFood";
 import { SITE_DATES } from "@/lib/content-meta";
 import { getPublishedParentingProductGuides } from "@/data/parentingProductGuides";
-import { buildRssXml, RSS_RESPONSE_HEADERS, type FeedItem } from "@/lib/rss/feed";
+import { buildRssXml, DYNAMIC_RSS_RESPONSE_HEADERS, type FeedItem } from "@/lib/rss/feed";
 
 export const dynamic = "force-dynamic";
-export const revalidate = 3600;
+export const revalidate = 0;
 
 const MAX_ITEMS_PER_SECTION = 40;
 const MAX_TOTAL = 80;
@@ -190,5 +190,5 @@ export async function GET() {
     items,
   );
 
-  return new Response(xml, { headers: RSS_RESPONSE_HEADERS });
+  return new Response(xml, { headers: DYNAMIC_RSS_RESPONSE_HEADERS });
 }

@@ -4,8 +4,8 @@ import { notFound } from "next/navigation";
 import { ArrowRight, Check, ExternalLink, ShieldAlert } from "lucide-react";
 import {
   getParentingProductGuideBySlug,
+  getParentingProductGuideModifiedAt,
   getPublicParentingProductGuideBySlug,
-  getPublishedParentingProductGuides,
   getRelatedParentingProductGuides,
   isParentingProductGuidePublic,
 } from "@/data/parentingProductGuides";
@@ -14,11 +14,8 @@ import { COUPANG_PARTNERS_DISCLOSURE } from "@/lib/coupang-partners";
 
 type Params = { slug: string };
 
-export const revalidate = 3600;
-
-export function generateStaticParams() {
-  return getPublishedParentingProductGuides().map((guide) => ({ slug: guide.slug }));
-}
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
@@ -28,6 +25,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   }
 
   const path = `/parenting-products/${guide.slug}`;
+  const modifiedTime = getParentingProductGuideModifiedAt(guide);
   return {
     title: `${guide.title} | MomTools`,
     description: guide.description,
@@ -41,7 +39,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       locale: "ko_KR",
       type: "article",
       publishedTime: guide.publishAt,
-      modifiedTime: guide.updatedAt,
+      modifiedTime,
     },
     twitter: { card: "summary_large_image", title: guide.title, description: guide.description },
     robots: { index: true, follow: true },
@@ -65,6 +63,7 @@ export default async function ParentingProductGuidePage({ params }: { params: Pr
   const relatedGuides = getRelatedParentingProductGuides(guide);
   const pagePath = `/parenting-products/${guide.slug}`;
   const pageUrl = buildCanonical(pagePath);
+  const modifiedTime = getParentingProductGuideModifiedAt(guide);
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -75,7 +74,7 @@ export default async function ParentingProductGuidePage({ params }: { params: Pr
         description: guide.description,
         inLanguage: "ko-KR",
         datePublished: guide.publishAt,
-        dateModified: guide.updatedAt,
+        dateModified: modifiedTime,
         author: { "@type": "Organization", name: "MomTools" },
         publisher: { "@type": "Organization", name: "MomTools" },
         mainEntityOfPage: pageUrl,

@@ -4,23 +4,50 @@ import { rankingYears } from "@/data/babyNames";
 import { meaningPureKoreanNames } from "@/data/koreanNames";
 import { qnaData, qnaCategories, type QnaCategory } from "@/data/qna";
 import { getFamilyHealthSitemapPaths } from "@/lib/repositories/family-health-qna-db";
-import { governmentPolicies } from "@/data/governmentPolicy";
+import { governmentPolicies, POLICY_VERIFIED_AT } from "@/data/governmentPolicy";
 import { birthSupportRegions } from "@/data/birthSupportCalculator";
 import { familyFinanceArticles } from "@/data/familyFinance";
 import { childcarePortalGuides } from "@/data/childcarePortalGuides";
 import { getHealthGuideSitemapPathsFromDb, getMonthlyGuideSitemapPathsFromDb } from "@/lib/repositories/guides-db";
-import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
+import { buildCanonical, PAGE_DATES } from "@/lib/content-meta";
 import { getMoonlightHospitalAreaPath, moonlightHospitalAreas } from "@/data/moonlightHospitals";
-import { getPublishedParentingProductGuides } from "@/data/parentingProductGuides";
+import {
+  getParentingProductGuideModifiedAt,
+  getPublishedParentingProductGuides,
+} from "@/data/parentingProductGuides";
 
-export const revalidate = 3600;
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 type ChangeFrequency = "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
-type RouteConfig = { path: string; priority: number; changeFrequency: ChangeFrequency };
-const now = new Date(SITE_DATES.updated);
+type RouteConfig = {
+  path: string;
+  priority: number;
+  changeFrequency: ChangeFrequency;
+  lastModified?: Date;
+};
 
-function route(path: string, priority: number, changeFrequency: ChangeFrequency): RouteConfig {
-  return { path, priority, changeFrequency };
+function toKoreanDate(value: string) {
+  return new Date(/^\d{4}-\d{2}-\d{2}$/.test(value) ? `${value}T00:00:00+09:00` : value);
+}
+
+function getPageLastModified(path: string) {
+  const dates = PAGE_DATES[path as keyof typeof PAGE_DATES];
+  return dates ? toKoreanDate(dates.updated) : undefined;
+}
+
+function route(
+  path: string,
+  priority: number,
+  changeFrequency: ChangeFrequency,
+  lastModified?: Date,
+): RouteConfig {
+  return {
+    path,
+    priority,
+    changeFrequency,
+    lastModified: lastModified ?? getPageLastModified(path),
+  };
 }
 
 const staticRoutes: RouteConfig[] = [
@@ -83,7 +110,9 @@ const staticRoutes: RouteConfig[] = [
 const dynamicKoreanQnaRoutes = (Object.keys(qnaCategories) as QnaCategory[]).flatMap((category) =>
   qnaData[category].map((entry) => route(`/qna/${category}/${entry.slug}`, 0.82, "daily")),
 );
-const dynamicKoreanPolicyRoutes = governmentPolicies.map((policy) => route(`/policy/${policy.category}/${policy.slug}`, 0.8, "daily"));
+const dynamicKoreanPolicyRoutes = governmentPolicies.map((policy) =>
+  route(`/policy/${policy.category}/${policy.slug}`, 0.8, "daily", toKoreanDate(POLICY_VERIFIED_AT)),
+);
 const dynamicKoreanBabyFoodRoutes = koBabyFoodRecipes.map((recipe) => route(`/baby-food/recipes/${recipe.slug}`, 0.68, "weekly"));
 const dynamicKoreanBabyNameMeaningRoutes = meaningPureKoreanNames.map((name) => route(`/baby-names/meanings/${name.slug}`, 0.72, "monthly"));
 const dynamicKoreanBabyNameRankingRoutes = rankingYears.map((year) => route(`/baby-names/rankings/${year}`, 0.74, "monthly"));
@@ -92,19 +121,45 @@ const dynamicMoonlightHospitalAreaRoutes = moonlightHospitalAreas.map((area) =>
 );
 // "[지역명] 출산지원금" 검색에 대응하기 위해 시·군·구별 지역 페이지를 sitemap에 노출합니다.
 const dynamicKoreanBirthSupportRoutes = birthSupportRegions.map((region) =>
-  route(`/tools/birth-support-calculator/${region.regionCode}`, 0.85, "weekly"),
+  route(
+    `/tools/birth-support-calculator/${region.regionCode}`,
+    0.85,
+    "weekly",
+    toKoreanDate(region.updatedAt),
+  ),
 );
 
 // 출산·육아 가계 가이드(부모급여·자녀 적금·연말정산 등) 콘텐츠
+const familyFinanceLastModified = familyFinanceArticles.reduce<Date | undefined>((latest, article) => {
+  const updatedAt = toKoreanDate(article.updatedOn);
+  return !latest || updatedAt.getTime() > latest.getTime() ? updatedAt : latest;
+}, undefined);
 const dynamicKoreanFamilyFinanceRoutes: RouteConfig[] = [
-  route("/info/family-finance", 0.82, "weekly"),
+  route("/info/family-finance", 0.82, "weekly", familyFinanceLastModified),
   ...familyFinanceArticles.map((article) =>
-    route(`/info/family-finance/${article.slug}`, 0.78, "weekly"),
+    route(
+      `/info/family-finance/${article.slug}`,
+      0.78,
+      "weekly",
+      toKoreanDate(article.updatedOn),
+    ),
   ),
 ];
-const dynamicChildcarePortalGuideRoutes = childcarePortalGuides.map((guide) =>
-  route(`/info/childcare-portal/${guide.slug}`, 0.8, "weekly"),
-);
+const childcarePortalLastModified = childcarePortalGuides.reduce<Date | undefined>((latest, guide) => {
+  const updatedAt = toKoreanDate(guide.updatedOn);
+  return !latest || updatedAt.getTime() > latest.getTime() ? updatedAt : latest;
+}, undefined);
+const dynamicChildcarePortalGuideRoutes: RouteConfig[] = [
+  route("/info/childcare-portal", 0.82, "weekly", childcarePortalLastModified),
+  ...childcarePortalGuides.map((guide) =>
+    route(
+      `/info/childcare-portal/${guide.slug}`,
+      0.8,
+      "weekly",
+      toKoreanDate(guide.updatedOn),
+    ),
+  ),
+];
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const [familyHealthPaths, monthlyGuidePaths, healthGuidePaths] = await Promise.all([
     getFamilyHealthSitemapPaths(),
@@ -115,8 +170,27 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const dynamicKoreanFamilyHealthRoutes = familyHealthPaths.map((path) => route(path, 0.78, "weekly"));
   const dynamicMonthlyGuideRoutes = monthlyGuidePaths.map((path) => route(path, 0.82, "weekly"));
   const dynamicHealthGuideRoutes = healthGuidePaths.map((path) => route(path, 0.82, "weekly"));
-  const dynamicParentingProductRoutes = getPublishedParentingProductGuides().map((guide) =>
-    route(`/parenting-products/${guide.slug}`, 0.8, "weekly"),
+  const publishedParentingProductGuides = getPublishedParentingProductGuides();
+  const dynamicParentingProductRoutes = publishedParentingProductGuides.map((guide) =>
+    route(
+      `/parenting-products/${guide.slug}`,
+      0.8,
+      "weekly",
+      new Date(getParentingProductGuideModifiedAt(guide)),
+    ),
+  );
+  const parentingProductIndexLastModified = publishedParentingProductGuides.reduce<Date | undefined>(
+    (latest, guide) => {
+      const modifiedAt = new Date(getParentingProductGuideModifiedAt(guide));
+      return !latest || modifiedAt.getTime() > latest.getTime() ? modifiedAt : latest;
+    },
+    undefined,
+  );
+  const dynamicParentingProductIndexRoute = route(
+    "/parenting-products",
+    0.84,
+    "daily",
+    parentingProductIndexLastModified,
   );
   const deduped = new Map<string, RouteConfig>();
   [
@@ -131,6 +205,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...dynamicKoreanBirthSupportRoutes,
     ...dynamicKoreanFamilyFinanceRoutes,
     ...dynamicChildcarePortalGuideRoutes,
+    dynamicParentingProductIndexRoute,
     ...dynamicParentingProductRoutes,
     ...dynamicMonthlyGuideRoutes,
     ...dynamicHealthGuideRoutes,
@@ -138,7 +213,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return Array.from(deduped.values()).map((item) => ({
     url: buildCanonical(item.path),
-    lastModified: now,
+    ...(item.lastModified ? { lastModified: item.lastModified } : {}),
     changeFrequency: item.changeFrequency,
     priority: item.priority,
   }));

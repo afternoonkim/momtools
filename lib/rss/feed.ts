@@ -95,3 +95,8 @@ export const RSS_RESPONSE_HEADERS = {
   "Content-Type": "application/rss+xml; charset=utf-8",
   "Cache-Control": "public, max-age=3600, s-maxage=86400",
 } as const;
+
+export const DYNAMIC_RSS_RESPONSE_HEADERS = {
+  ...RSS_RESPONSE_HEADERS,
+  "Cache-Control": "no-store, no-cache, max-age=0, must-revalidate",
+} as const;

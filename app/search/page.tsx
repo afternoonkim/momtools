@@ -9,6 +9,9 @@ interface PageProps {
   searchParams: Promise<{ q?: string }>;
 }
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
   const { q } = await searchParams;
   const query = (q ?? "").trim();

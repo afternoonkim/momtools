@@ -6098,6 +6098,22 @@ export const parentingProductGuides: ParentingProductGuide[] = [
 
 ];
 
+function normalizeParentingProductGuideDate(value: string) {
+  return /^\d{4}-\d{2}-\d{2}$/.test(value)
+    ? `${value}T00:00:00+09:00`
+    : value;
+}
+
+/**
+ * SEO의 수정일이 게시일보다 앞서지 않도록 실제 공개 시각과 수정일 중
+ * 더 늦은 값을 ISO 8601 형식으로 반환합니다.
+ */
+export function getParentingProductGuideModifiedAt(guide: ParentingProductGuide) {
+  const publishedAt = new Date(normalizeParentingProductGuideDate(guide.publishAt)).getTime();
+  const updatedAt = new Date(normalizeParentingProductGuideDate(guide.updatedAt)).getTime();
+  return new Date(Math.max(publishedAt, updatedAt)).toISOString();
+}
+
 export function isParentingProductGuidePublic(
   guide: ParentingProductGuide,
   now = new Date(),
