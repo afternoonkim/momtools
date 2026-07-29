@@ -15,7 +15,7 @@ export const revalidate = 0;
 export const metadata: Metadata = {
   title: "육아용품 가이드｜구매 전 선택 기준 | MomTools",
   description:
-    "기저귀, 젖병, 카시트와 유모차부터 수유패드, 아기 모빌, 걸음마 신발, 카시트 후방 확인용품과 콘센트 안전커버까지 자주 쓰는 육아용품의 구매 전 기준을 실제 생활 상황에 맞춰 정리했습니다.",
+    "기저귀, 젖병, 카시트와 유모차부터 아기 선크림, 모기장, 욕실 미끄럼방지 매트, 러닝타워와 젖꼭지 단계까지 자주 쓰는 육아용품의 구매 전 기준을 실제 생활 상황에 맞춰 정리했습니다.",
   keywords: [
     "육아용품 가이드",
     "신생아 용품",
@@ -78,6 +78,11 @@ export const metadata: Metadata = {
     "걸음마 신발 고르는 법",
     "카시트 후방거울 카메라 차이",
     "아기 콘센트 안전커버",
+    "아기 선크림 무기자차 유기자차",
+    "유모차 침대 모기장",
+    "아기 욕실 미끄럼방지 매트",
+    "유아 러닝타워 발판 차이",
+    "젖병 젖꼭지 단계",
   ],
   alternates: { canonical: buildCanonical("/parenting-products") },
   openGraph: {
