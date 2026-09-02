@@ -1,3 +1,5 @@
+import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import {
   familyHealthCategories,
   familyHealthQnaData,
@@ -144,7 +146,7 @@ export async function getFamilyHealthCategorySummaries(): Promise<FamilyHealthCa
   }
 }
 
-export async function getFamilyHealthEntriesForCategory(category: FamilyHealthQnaCategory): Promise<FamilyHealthQnaEntry[]> {
+const getFamilyHealthEntriesForCategoryUncached = async (category: FamilyHealthQnaCategory): Promise<FamilyHealthQnaEntry[]> => {
   const prisma = await getPrismaOrNull();
   if (!prisma) return familyHealthQnaData[category];
 
@@ -157,8 +159,17 @@ export async function getFamilyHealthEntriesForCategory(category: FamilyHealthQn
         category: { slug: category },
       },
       orderBy: [{ topic: "asc" }, { createdAt: "asc" }, { slug: "asc" }],
-      include: {
-        keywords: { orderBy: { keyword: "asc" } },
+      select: {
+        slug: true,
+        title: true,
+        question: true,
+        topic: true,
+        summary: true,
+        path: true,
+        keywords: {
+          orderBy: { keyword: "asc" },
+          select: { keyword: true },
+        },
       },
     });
 
@@ -169,12 +180,23 @@ export async function getFamilyHealthEntriesForCategory(category: FamilyHealthQn
     }
     return familyHealthQnaData[category];
   }
+};
+
+const getFamilyHealthEntriesForCategoryDataCached = unstable_cache(
+  getFamilyHealthEntriesForCategoryUncached,
+  ["family-health-category-entries-v2"],
+  { revalidate: 3600 },
+);
+const getFamilyHealthEntriesForCategoryCached = cache(getFamilyHealthEntriesForCategoryDataCached);
+
+export async function getFamilyHealthEntriesForCategory(category: FamilyHealthQnaCategory): Promise<FamilyHealthQnaEntry[]> {
+  return getFamilyHealthEntriesForCategoryCached(category);
 }
 
-export async function getFamilyHealthEntryFromDb(
+const getFamilyHealthEntryFromDbUncached = async (
   category: FamilyHealthQnaCategory,
   slug: string,
-): Promise<FamilyHealthQnaEntry | null> {
+): Promise<FamilyHealthQnaEntry | null> => {
   const prisma = await getPrismaOrNull();
   if (!prisma) return getFamilyHealthEntry(category, slug) ?? null;
 
@@ -187,9 +209,21 @@ export async function getFamilyHealthEntryFromDb(
         status: "PUBLISHED",
         category: { slug: category },
       },
-      include: {
-        sections: { orderBy: { sortOrder: "asc" } },
-        keywords: { orderBy: { keyword: "asc" } },
+      select: {
+        slug: true,
+        title: true,
+        question: true,
+        topic: true,
+        summary: true,
+        path: true,
+        sections: {
+          orderBy: { sortOrder: "asc" },
+          select: { sectionType: true, body: true, items: true, sortOrder: true },
+        },
+        keywords: {
+          orderBy: { keyword: "asc" },
+          select: { keyword: true },
+        },
       },
     });
 
@@ -200,6 +234,20 @@ export async function getFamilyHealthEntryFromDb(
     }
     return getFamilyHealthEntry(category, slug) ?? null;
   }
+};
+
+const getFamilyHealthEntryFromDbDataCached = unstable_cache(
+  getFamilyHealthEntryFromDbUncached,
+  ["family-health-entry-v2"],
+  { revalidate: 3600 },
+);
+const getFamilyHealthEntryFromDbCached = cache(getFamilyHealthEntryFromDbDataCached);
+
+export async function getFamilyHealthEntryFromDb(
+  category: FamilyHealthQnaCategory,
+  slug: string,
+): Promise<FamilyHealthQnaEntry | null> {
+  return getFamilyHealthEntryFromDbCached(category, slug);
 }
 
 export async function getRelatedFamilyHealthFromDb(
@@ -252,9 +300,18 @@ export async function getFamilyHealthSearchEntriesFromDb(): Promise<Array<Family
     const rows = await prisma.content.findMany({
       where: { locale: "ko", type: "FAMILY_HEALTH_QNA", status: "PUBLISHED" },
       orderBy: [{ createdAt: "desc" }, { slug: "asc" }],
-      include: {
-        category: true,
-        keywords: { orderBy: { keyword: "asc" } },
+      select: {
+        slug: true,
+        title: true,
+        question: true,
+        topic: true,
+        summary: true,
+        path: true,
+        category: { select: { slug: true } },
+        keywords: {
+          orderBy: { keyword: "asc" },
+          select: { keyword: true },
+        },
       },
     });
 

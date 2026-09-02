@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { unstable_cache } from "next/cache";
 import { normalizeCoupangPathname, shouldShowCoupangProductAds } from "@/lib/coupang-partners";
 import { getMatchedCoupangProductAds } from "@/lib/repositories/coupang-product-ads-db";
 
@@ -13,6 +14,13 @@ const MANUAL_FALLBACK_RESPONSE_HEADERS = {
   "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
 };
 
+// pathname별 결과를 서버 캐시에 보관해 동일 페이지 요청이 반복되어도 DB를 매번 조회하지 않습니다.
+const getCachedMatchedCoupangProductAds = unstable_cache(
+  async (pathname: string) => getMatchedCoupangProductAds(pathname),
+  ["coupang-product-ads-v1"],
+  { revalidate: 3600 },
+);
+
 export async function GET(request: NextRequest) {
   const rawPathname = request.nextUrl.searchParams.get("path") ?? "/";
   const pathname = normalizeCoupangPathname(rawPathname);
@@ -22,7 +30,7 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const items = await getMatchedCoupangProductAds(pathname);
+    const items = await getCachedMatchedCoupangProductAds(pathname);
     if (items.length === 0) {
       return NextResponse.json({ items: [] }, { headers: EMPTY_RESPONSE_HEADERS });
     }

@@ -16,8 +16,9 @@ import {
   getPublishedParentingProductGuides,
 } from "@/data/parentingProductGuides";
 
-export const dynamic = "force-dynamic";
-export const revalidate = 0;
+// 공개 URL 목록은 자주 바뀌지 않으므로 정적 캐시 + ISR로 DB 재조회를 줄입니다.
+export const dynamic = "force-static";
+export const revalidate = 21600;
 
 type ChangeFrequency = "always" | "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "never";
 type RouteConfig = {
@@ -98,7 +99,6 @@ const staticRoutes: RouteConfig[] = [
   route("/checklists/newborn", 0.75, "monthly"),
   route("/checklists/weaning", 0.75, "monthly"),
   route("/checklists/daycare", 0.75, "monthly"),
-  route("/search", 0.62, "weekly"),
   route("/family-health-qna", 0.86, "weekly"),
   route("/about", 0.55, "monthly"),
   route("/faq", 0.5, "monthly"),

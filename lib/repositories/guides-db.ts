@@ -1,3 +1,5 @@
+import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import { healthGuideItems, type HealthGuideItem } from "@/data/healthGuides";
 import { monthlyGuideItems, type MonthlyGuideItem } from "@/data/monthlyGuide";
 
@@ -17,20 +19,12 @@ type DbGuideRow = {
   shortTitle: string | null;
   topic: string | null;
   summary: string;
-  ageMinMonth?: number | null;
-  ageMaxMonth?: number | null;
-  reviewStatus?: string;
-  editorMemo?: string | null;
-  duplicateMemo?: string | null;
   sections?: Array<{
     sectionType: string;
-    title: string | null;
     body: string | null;
     items: unknown;
-    sortOrder: number;
   }>;
   keywords?: Array<{ keyword: string }>;
-  sources?: Array<{ name: string; url: string | null; description: string | null }>;
 };
 
 type LinkItem = { label: string; href: string };
@@ -134,27 +128,40 @@ const guideRowSelect = {
   shortTitle: true,
   topic: true,
   summary: true,
-  ageMinMonth: true,
-  ageMaxMonth: true,
-  reviewStatus: true,
-  editorMemo: true,
-  duplicateMemo: true,
   sections: {
     orderBy: { sortOrder: "asc" as const },
     select: {
       sectionType: true,
-      title: true,
       body: true,
       items: true,
-      sortOrder: true,
     },
   },
   keywords: {
     orderBy: { keyword: "asc" as const },
     select: { keyword: true },
   },
-  sources: {
-    select: { name: true, url: true, description: true },
+};
+
+type DbGuideSearchRow = {
+  slug: string;
+  path: string;
+  title: string;
+  shortTitle: string | null;
+  topic: string | null;
+  summary: string;
+  keywords: Array<{ keyword: string }>;
+};
+
+const guideSearchRowSelect = {
+  slug: true,
+  path: true,
+  title: true,
+  shortTitle: true,
+  topic: true,
+  summary: true,
+  keywords: {
+    orderBy: { keyword: "asc" as const },
+    select: { keyword: true },
   },
 };
 
@@ -192,6 +199,45 @@ async function findGuideRows(type: "MONTHLY_GUIDE" | "HEALTH_GUIDE"): Promise<Db
   }
 }
 
+async function findGuideSearchRows(type: "MONTHLY_GUIDE" | "HEALTH_GUIDE"): Promise<DbGuideSearchRow[]> {
+  const prisma = await getPrismaOrNull();
+  if (!prisma) return [];
+
+  try {
+    return await prisma.content.findMany({
+      where: { locale: "ko", type, status: "PUBLISHED" },
+      orderBy: type === "MONTHLY_GUIDE"
+        ? [{ ageMinMonth: "asc" }, { slug: "asc" }]
+        : [{ createdAt: "asc" }, { slug: "asc" }],
+      select: guideSearchRowSelect,
+    });
+  } catch (error) {
+    if (process.env.NODE_ENV === "development") {
+      console.warn(`[guides-db] ${type} 검색 인덱스 조회 실패. 정적 데이터로 대체합니다.`, error);
+    }
+    return [];
+  }
+}
+
+async function findGuideSitemapPaths(type: "MONTHLY_GUIDE" | "HEALTH_GUIDE"): Promise<string[]> {
+  const prisma = await getPrismaOrNull();
+  if (!prisma) return [];
+
+  try {
+    const rows = await prisma.content.findMany({
+      where: { locale: "ko", type, status: "PUBLISHED" },
+      orderBy: [{ path: "asc" }],
+      select: { path: true },
+    });
+    return rows.map((row) => row.path);
+  } catch (error) {
+    if (process.env.NODE_ENV === "development") {
+      console.warn(`[guides-db] ${type} sitemap 경로 조회 실패. 정적 데이터로 대체합니다.`, error);
+    }
+    return [];
+  }
+}
+
 async function findGuideRow(type: "MONTHLY_GUIDE" | "HEALTH_GUIDE", slug: string): Promise<DbGuideRow | null> {
   const prisma = await getPrismaOrNull();
   if (!prisma) return null;
@@ -204,36 +250,7 @@ async function findGuideRow(type: "MONTHLY_GUIDE" | "HEALTH_GUIDE", slug: string
         slug,
         status: "PUBLISHED",
       },
-      select: {
-        slug: true,
-        path: true,
-        title: true,
-        shortTitle: true,
-        topic: true,
-        summary: true,
-        ageMinMonth: true,
-        ageMaxMonth: true,
-        reviewStatus: true,
-        editorMemo: true,
-        duplicateMemo: true,
-        sections: {
-          orderBy: { sortOrder: "asc" },
-          select: {
-            sectionType: true,
-            title: true,
-            body: true,
-            items: true,
-            sortOrder: true,
-          },
-        },
-        keywords: {
-          orderBy: { keyword: "asc" },
-          select: { keyword: true },
-        },
-        sources: {
-          select: { name: true, url: true, description: true },
-        },
-      },
+      select: guideRowSelect,
     });
   } catch (error) {
     if (process.env.NODE_ENV === "development") {
@@ -243,58 +260,120 @@ async function findGuideRow(type: "MONTHLY_GUIDE" | "HEALTH_GUIDE", slug: string
   }
 }
 
+const getMonthlyGuidesFromDbDataCached = unstable_cache(
+  async (): Promise<MonthlyGuideItem[]> => {
+    const rows = await findGuideRows("MONTHLY_GUIDE");
+    return rows.length > 0 ? rows.map(rowToMonthlyGuide) : monthlyGuideItems;
+  },
+  ["monthly-guides-v2"],
+  { revalidate: 3600 },
+);
+const getMonthlyGuidesFromDbCached = cache(getMonthlyGuidesFromDbDataCached);
+
 export async function getMonthlyGuidesFromDb(): Promise<MonthlyGuideItem[]> {
-  const rows = await findGuideRows("MONTHLY_GUIDE");
-  return rows.length > 0 ? rows.map(rowToMonthlyGuide) : monthlyGuideItems;
+  return getMonthlyGuidesFromDbCached();
 }
+
+const getMonthlyGuideFromDbDataCached = unstable_cache(
+  async (slug: string): Promise<MonthlyGuideItem | null> => {
+    const row = await findGuideRow("MONTHLY_GUIDE", slug);
+    return row ? rowToMonthlyGuide(row) : monthlyGuideItems.find((item) => item.slug === slug) ?? null;
+  },
+  ["monthly-guide-v2"],
+  { revalidate: 3600 },
+);
+const getMonthlyGuideFromDbCached = cache(getMonthlyGuideFromDbDataCached);
 
 export async function getMonthlyGuideFromDb(slug: string): Promise<MonthlyGuideItem | null> {
-  const row = await findGuideRow("MONTHLY_GUIDE", slug);
-  return row ? rowToMonthlyGuide(row) : monthlyGuideItems.find((item) => item.slug === slug) ?? null;
+  return getMonthlyGuideFromDbCached(slug);
 }
+
+const getHealthGuidesFromDbDataCached = unstable_cache(
+  async (): Promise<HealthGuideItem[]> => {
+    const rows = await findGuideRows("HEALTH_GUIDE");
+    return rows.length > 0 ? rows.map(rowToHealthGuide) : healthGuideItems;
+  },
+  ["health-guides-v2"],
+  { revalidate: 3600 },
+);
+const getHealthGuidesFromDbCached = cache(getHealthGuidesFromDbDataCached);
 
 export async function getHealthGuidesFromDb(): Promise<HealthGuideItem[]> {
-  const rows = await findGuideRows("HEALTH_GUIDE");
-  return rows.length > 0 ? rows.map(rowToHealthGuide) : healthGuideItems;
+  return getHealthGuidesFromDbCached();
 }
 
+const getHealthGuideFromDbDataCached = unstable_cache(
+  async (slug: string): Promise<HealthGuideItem | null> => {
+    const row = await findGuideRow("HEALTH_GUIDE", slug);
+    return row ? rowToHealthGuide(row) : healthGuideItems.find((item) => item.slug === slug) ?? null;
+  },
+  ["health-guide-v2"],
+  { revalidate: 3600 },
+);
+const getHealthGuideFromDbCached = cache(getHealthGuideFromDbDataCached);
+
 export async function getHealthGuideFromDb(slug: string): Promise<HealthGuideItem | null> {
-  const row = await findGuideRow("HEALTH_GUIDE", slug);
-  return row ? rowToHealthGuide(row) : healthGuideItems.find((item) => item.slug === slug) ?? null;
+  return getHealthGuideFromDbCached(slug);
 }
 
 export async function getMonthlyGuideSearchEntriesFromDb(): Promise<GuideSearchEntry[]> {
-  const items = await getMonthlyGuidesFromDb();
-  return items.map((item) => ({
-    slug: item.slug,
-    path: `/monthly-guide/${item.slug}`,
-    title: item.title,
-    summary: item.summary,
-    topic: item.ageLabel,
-    keywords: [...item.keywords, item.ageLabel, "월령별 육아", "아기 발달"],
-  }));
+  const rows = await findGuideSearchRows("MONTHLY_GUIDE");
+  if (rows.length === 0) {
+    return monthlyGuideItems.map((item) => ({
+      slug: item.slug,
+      path: `/monthly-guide/${item.slug}`,
+      title: item.title,
+      summary: item.summary,
+      topic: item.ageLabel,
+      keywords: [...item.keywords, item.ageLabel, "월령별 육아", "아기 발달"],
+    }));
+  }
+
+  return rows.map((row) => {
+    const ageLabel = row.shortTitle ?? row.topic ?? "월령별 가이드";
+    const keywords = row.keywords.map((item) => item.keyword).filter(Boolean);
+    return {
+      slug: row.slug,
+      path: row.path,
+      title: row.title,
+      summary: row.summary,
+      topic: ageLabel,
+      keywords: [...keywords, ageLabel, "월령별 육아", "아기 발달"],
+    };
+  });
 }
 
 export async function getHealthGuideSearchEntriesFromDb(): Promise<GuideSearchEntry[]> {
-  const items = await getHealthGuidesFromDb();
-  return items.map((item) => ({
-    slug: item.slug,
-    path: `/health/${item.slug}`,
-    title: item.title,
-    summary: item.summary,
-    topic: item.title,
-    keywords: [...item.keywords, "아기 증상", "아이 건강", "병원 상담 신호"],
+  const rows = await findGuideSearchRows("HEALTH_GUIDE");
+  if (rows.length === 0) {
+    return healthGuideItems.map((item) => ({
+      slug: item.slug,
+      path: `/health/${item.slug}`,
+      title: item.title,
+      summary: item.summary,
+      topic: item.title,
+      keywords: [...item.keywords, "아기 증상", "아이 건강", "병원 상담 신호"],
+    }));
+  }
+
+  return rows.map((row) => ({
+    slug: row.slug,
+    path: row.path,
+    title: row.title,
+    summary: row.summary,
+    topic: row.title,
+    keywords: [...row.keywords.map((item) => item.keyword).filter(Boolean), "아기 증상", "아이 건강", "병원 상담 신호"],
   }));
 }
 
 export async function getMonthlyGuideSitemapPathsFromDb(): Promise<string[]> {
-  const rows = await findGuideRows("MONTHLY_GUIDE");
-  return rows.length > 0 ? rows.map((row) => row.path) : monthlyGuideItems.map((item) => `/monthly-guide/${item.slug}`);
+  const paths = await findGuideSitemapPaths("MONTHLY_GUIDE");
+  return paths.length > 0 ? paths : monthlyGuideItems.map((item) => `/monthly-guide/${item.slug}`);
 }
 
 export async function getHealthGuideSitemapPathsFromDb(): Promise<string[]> {
-  const rows = await findGuideRows("HEALTH_GUIDE");
-  return rows.length > 0 ? rows.map((row) => row.path) : healthGuideItems.map((item) => `/health/${item.slug}`);
+  const paths = await findGuideSitemapPaths("HEALTH_GUIDE");
+  return paths.length > 0 ? paths : healthGuideItems.map((item) => `/health/${item.slug}`);
 }
 
 export async function getGuidesDbStatus() {

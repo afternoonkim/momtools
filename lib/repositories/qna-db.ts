@@ -1,3 +1,5 @@
+import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import { qnaCategories, qnaData, type QnaCategory, type QnaEntry } from "@/data/qna";
 import { normalizeQnaQuestion, normalizeStringList, normalizeUserVisibleText } from "@/lib/content-text-normalize";
 
@@ -175,7 +177,7 @@ export async function getQnaCategorySummaries(): Promise<QnaCategorySummary[]> {
   }
 }
 
-export async function getQnaEntriesForCategory(category: QnaCategory): Promise<QnaEntry[]> {
+const getQnaEntriesForCategoryUncached = async (category: QnaCategory): Promise<QnaEntry[]> => {
   const prisma = await getPrismaOrNull();
   if (!prisma) return qnaData[category];
 
@@ -211,9 +213,20 @@ export async function getQnaEntriesForCategory(category: QnaCategory): Promise<Q
 
     return qnaData[category];
   }
+};
+
+const getQnaEntriesForCategoryDataCached = unstable_cache(
+  getQnaEntriesForCategoryUncached,
+  ["qna-category-entries-v2"],
+  { revalidate: 3600 },
+);
+const getQnaEntriesForCategoryCached = cache(getQnaEntriesForCategoryDataCached);
+
+export async function getQnaEntriesForCategory(category: QnaCategory): Promise<QnaEntry[]> {
+  return getQnaEntriesForCategoryCached(category);
 }
 
-export async function getQnaEntryFromDb(category: QnaCategory, slug: string): Promise<QnaEntry | null> {
+const getQnaEntryFromDbUncached = async (category: QnaCategory, slug: string): Promise<QnaEntry | null> => {
   const prisma = await getPrismaOrNull();
   if (!prisma) return qnaData[category].find((item) => item.slug === slug) ?? null;
 
@@ -258,6 +271,17 @@ export async function getQnaEntryFromDb(category: QnaCategory, slug: string): Pr
 
     return qnaData[category].find((item) => item.slug === slug) ?? null;
   }
+};
+
+const getQnaEntryFromDbDataCached = unstable_cache(
+  getQnaEntryFromDbUncached,
+  ["qna-entry-v2"],
+  { revalidate: 3600 },
+);
+const getQnaEntryFromDbCached = cache(getQnaEntryFromDbDataCached);
+
+export async function getQnaEntryFromDb(category: QnaCategory, slug: string): Promise<QnaEntry | null> {
+  return getQnaEntryFromDbCached(category, slug);
 }
 
 export async function getRelatedQnaFromDb(category: QnaCategory, slug: string, limit = 6): Promise<QnaSearchEntry[]> {

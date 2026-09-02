@@ -3,6 +3,7 @@ import { familyHealthCategories } from "@/data/familyHealthQna";
 import { getFamilyHealthSearchEntriesFromDb } from "@/lib/repositories/family-health-qna-db";
 import { getHealthGuideSearchEntriesFromDb, getMonthlyGuideSearchEntriesFromDb } from "@/lib/repositories/guides-db";
 import { getPublishedParentingProductGuides } from "@/data/parentingProductGuides";
+import { unstable_cache } from "next/cache";
 
 export interface SearchResult extends SearchEntry {
   score: number;
@@ -84,7 +85,7 @@ function scoreEntry(entry: SearchEntry, tokens: string[]): number {
   return anyHit ? score : 0;
 }
 
-async function buildSearchIndex(): Promise<SearchEntry[]> {
+async function buildSearchIndexUncached(): Promise<SearchEntry[]> {
   const [familyHealthEntries, monthlyGuideEntries, healthGuideEntries] = await Promise.all([
     getFamilyHealthSearchEntriesFromDb(),
     getMonthlyGuideSearchEntriesFromDb(),
@@ -140,11 +141,18 @@ async function buildSearchIndex(): Promise<SearchEntry[]> {
   return Array.from(merged.values());
 }
 
+// 검색어마다 같은 전체 DB 인덱스를 다시 만들지 않도록 서버 Data Cache에 보관합니다.
+const getCachedSearchIndex = unstable_cache(
+  buildSearchIndexUncached,
+  ["momtools-search-index-v1"],
+  { revalidate: 3600 },
+);
+
 export async function searchSite(query: string, limit = 60): Promise<SearchResult[]> {
   const tokens = tokenize(query);
   if (tokens.length === 0) return [];
 
-  const index = await buildSearchIndex();
+  const index = await getCachedSearchIndex();
   const scored: SearchResult[] = [];
   for (const entry of index) {
     const score = scoreEntry(entry, tokens);

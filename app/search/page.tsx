@@ -26,9 +26,8 @@ export async function generateMetadata({ searchParams }: PageProps): Promise<Met
     title,
     description,
     alternates: { canonical: buildCanonical("/search") },
-    robots: query
-      ? { index: false, follow: true }
-      : { index: true, follow: true },
+    // 내부 검색 결과는 색인 대상이 아니며, 검색어별 크롤링으로 DB 조회가 반복되지 않게 합니다.
+    robots: { index: false, follow: true },
     openGraph: {
       title,
       description,
