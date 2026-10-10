@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/", "/db-check/", "/search", "/en/"],
+      disallow: ["/api/", "/db-check/", "/search"],
     },
     sitemap: "https://momtools.kr/sitemap.xml",
     host: "https://momtools.kr",

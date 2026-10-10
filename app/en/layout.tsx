@@ -1,13 +1,24 @@
 import type { Metadata } from "next";
-import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "MomTools",
-  description: "MomTools는 한국어 육아 계산기와 육아 정보를 먼저 정리하고 있습니다.",
-  robots: { index: false, follow: false },
-  alternates: { canonical: "https://momtools.kr/" },
+  title: { default: "MomTools English", template: "%s | MomTools" },
+  description:
+    "Practical U.S. parenting tools, checklists, and baby guides for pregnancy, newborn care, feeding, growth, and everyday family questions.",
+  robots: { index: true, follow: true },
+  alternates: {
+    languages: {
+      "en-US": "https://momtools.kr/en",
+      "ko-KR": "https://momtools.kr/",
+      "x-default": "https://momtools.kr/",
+    },
+  },
+  openGraph: {
+    siteName: "MomTools",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
-export default function EnglishLayout() {
-  redirect("/");
+export default function EnglishLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return <div lang="en-US">{children}</div>;
 }

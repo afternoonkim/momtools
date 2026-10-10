@@ -29,6 +29,7 @@ export const metadata: Metadata = {
     canonical: "https://momtools.kr/",
     languages: {
       "ko-KR": "https://momtools.kr/",
+      "en-US": "https://momtools.kr/en",
       "x-default": "https://momtools.kr/",
     },
     types: {
@@ -57,7 +58,6 @@ export const metadata: Metadata = {
     }
   },
 };
-
 
 export const viewport: Viewport = {
   themeColor: "#f59e0b",

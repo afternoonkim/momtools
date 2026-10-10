@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { HOME_CARD_UPDATED_LABEL_EN } from "@/lib/content-meta";
 import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
 
 export const metadata: Metadata = {
@@ -16,7 +15,23 @@ export const metadata: Metadata = {
     "toddler routine help",
     "parenting questions",
   ],
-  alternates: { canonical: "https://momtools.kr/en" },
+  alternates: {
+    canonical: "https://momtools.kr/en",
+    languages: {
+      "en-US": "https://momtools.kr/en",
+      "ko-KR": "https://momtools.kr/",
+      "x-default": "https://momtools.kr/",
+    },
+  },
+  openGraph: {
+    title: "U.S. parenting tools and practical baby guides | MomTools English",
+    description:
+      "Due date planning, baby age, vaccine timing, starting solids, newborn care, and everyday U.S. parenting guidance.",
+    url: "https://momtools.kr/en",
+    siteName: "MomTools",
+    locale: "en_US",
+    type: "website",
+  },
 };
 
 const quickActions = [
@@ -32,7 +47,7 @@ const quickActions = [
   },
   {
     title: "Vaccine schedule",
-    description: "Review a parent-friendly U.S. routine schedule overview before you compare it with your pediatrician's office plan.",
+    description: "Plan routine visit windows, then compare them with the current CDC schedule and your child's official vaccine record.",
     href: "/en/cal/vaccine-schedule",
   },
   {
@@ -41,8 +56,8 @@ const quickActions = [
     href: "/en/cal/weaning-start",
   },
   {
-    title: "Growth percentile",
-    description: "See where a measurement falls and learn why one number matters less than the growth pattern over time.",
+    title: "Growth chart helper",
+    description: "Organize age, sex, length, and weight before checking the appropriate WHO or CDC growth chart with your pediatrician.",
     href: "/en/cal/growth-percentile",
   },
   {
@@ -58,49 +73,43 @@ const featuredGuides = [
     description: "Trimester priorities, visit planning, symptom questions, and birth preparation in a simpler order.",
     href: "/en/info/pregnancy",
     tag: "Planning",
-    updatedAt: HOME_CARD_UPDATED_LABEL_EN,
   },
   {
     title: "Newborn guide",
-    description: "Feeding, diaper output, sleep basics, and the patterns parents usually watch in the first weeks.",
+    description: "Feeding, diaper output, safe sleep basics, and the patterns parents usually watch in the first weeks.",
     href: "/en/info/newborn",
     tag: "Newborn",
-    updatedAt: HOME_CARD_UPDATED_LABEL_EN,
   },
   {
     title: "Starting solids guide",
     description: "Readiness signs, first-food ideas, texture progression, and how to keep meals simple.",
     href: "/en/info/weaning",
     tag: "Feeding",
-    updatedAt: HOME_CARD_UPDATED_LABEL_EN,
   },
   {
     title: "Toddler guide",
     description: "Daily routines, picky eating, sleep struggles, big feelings, and smoother transitions at home and daycare.",
     href: "/en/info/toddler",
     tag: "Toddler",
-    updatedAt: HOME_CARD_UPDATED_LABEL_EN,
   },
   {
     title: "Checklists hub",
     description: "Keep birth prep, newborn setup, starting solids, and daycare planning organized without a giant shopping list.",
     href: "/en/checklists",
     tag: "Checklist",
-    updatedAt: HOME_CARD_UPDATED_LABEL_EN,
   },
   {
     title: "FAQ and site policies",
     description: "Review how to use the site, what its limits are, and where to send a correction or content suggestion.",
     href: "/en/faq",
     tag: "Trust",
-    updatedAt: HOME_CARD_UPDATED_LABEL_EN,
   },
 ];
 
 const searchIntent = [
   "How is due date calculated from the first day of the last menstrual period?",
   "What is my baby's age in months and weeks today?",
-  "What vaccines are usually due by age in the United States?",
+  "How do I check the current U.S. vaccine schedule for my child?",
   "When should I start solids and what are the readiness signs?",
   "What is normal for newborn poop, spit-up, and sleep?",
   "How do I prepare for daycare without forgetting the basics?",
@@ -217,7 +226,6 @@ export default function EnglishHomePage() {
                 <div className="text-xs font-semibold uppercase tracking-[0.16em] text-sky-700">{item.tag}</div>
                 <h3 className="mt-3 text-lg font-bold text-slate-900">{item.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-slate-600">{item.description}</p>
-                <div className="mt-5 text-xs font-semibold text-slate-400">{item.updatedAt}</div>
               </Link>
             ))}
           </div>

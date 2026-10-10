@@ -7,14 +7,29 @@ import {
   getGovernmentPolicies,
   getGovernmentPolicy,
   getRelatedGovernmentPolicies,
-  POLICY_VERIFIED_AT,
-  POLICY_VERIFIED_LABEL,
   type GovernmentPolicyCategory,
 } from "@/data/governmentPolicy";
 import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
 import FeedbackPrompt from "@/components/common/FeedbackPrompt";
 
 type Params = { category: string; slug: string };
+type GovernmentPolicy = NonNullable<ReturnType<typeof getGovernmentPolicy>>;
+
+function getPolicyReviewDate(policy: GovernmentPolicy) {
+  return (
+    policy.sources
+      .map((source) => source.checkedAt)
+      .filter((value) => /^\d{4}-\d{2}-\d{2}$/.test(value))
+      .sort()
+      .at(-1) ?? SITE_DATES.updated
+  );
+}
+
+function getPolicyReviewLabel(reviewDate: string) {
+  const [year, month, day] = reviewDate.split("-").map(Number);
+  if (!year || !month || !day) return "공식자료 확인일 기준";
+  return `${year}년 ${month}월 ${day}일 공식자료 확인 기준`;
+}
 
 export async function generateStaticParams() {
   return (Object.keys(governmentPolicyCategories) as GovernmentPolicyCategory[]).flatMap((category) =>
@@ -29,6 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   const policy = getGovernmentPolicy(typed, slug);
   if (!policy) return {};
   const info = governmentPolicyCategories[typed];
+  const reviewDate = getPolicyReviewDate(policy);
   const title = `${policy.shortTitle} | ${info.shortLabel} 정부지원정책 공식자료 확인`;
   const description = `${policy.summary.slice(0, 135)}...`;
   const canonicalPath = `/policy/${typed}/${policy.slug}`;
@@ -46,12 +62,12 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
       locale: "ko_KR",
       type: "article",
       publishedTime: SITE_DATES.published,
-      modifiedTime: POLICY_VERIFIED_AT,
+      modifiedTime: reviewDate,
     },
   };
 }
 
-function SourceList({ sources }: { sources: NonNullable<ReturnType<typeof getGovernmentPolicy>>["sources"] }) {
+function SourceList({ sources }: { sources: GovernmentPolicy["sources"] }) {
   return (
     <div className="mt-5 grid gap-3 md:grid-cols-2">
       {sources.map((source) => (
@@ -81,6 +97,8 @@ export default async function PolicyDetailPage({ params }: { params: Promise<Par
 
   const info = governmentPolicyCategories[typed];
   const related = getRelatedGovernmentPolicies(policy, 6);
+  const reviewDate = getPolicyReviewDate(policy);
+  const reviewLabel = getPolicyReviewLabel(reviewDate);
   const hasDetailedData = (policy.amountCards?.length ?? 0) > 0 || (policy.dataRows?.length ?? 0) > 0;
   const pageUrl = buildCanonical(`/policy/${typed}/${policy.slug}`);
   const jsonLd = {
@@ -93,7 +111,7 @@ export default async function PolicyDetailPage({ params }: { params: Promise<Par
         description: policy.summary,
         inLanguage: "ko-KR",
         datePublished: SITE_DATES.published,
-        dateModified: POLICY_VERIFIED_AT,
+        dateModified: reviewDate,
         author: { "@type": "Organization", name: "MomTools" },
         publisher: { "@type": "Organization", name: "MomTools" },
         mainEntityOfPage: pageUrl,
@@ -150,7 +168,7 @@ export default async function PolicyDetailPage({ params }: { params: Promise<Par
           <div className="flex flex-wrap items-center gap-3">
             <span className="mt-badge">{info.label}</span>
             <span className="rounded-full bg-slate-50 px-3 py-1 text-xs text-slate-500">{policy.status}</span>
-            <span className="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700">{POLICY_VERIFIED_LABEL}</span>
+            <span className="rounded-full bg-amber-50 px-3 py-1 text-xs font-semibold text-amber-700">{reviewLabel}</span>
           </div>
           <h1 className="mt-title-xl mt-5">{policy.title}</h1>
           <p className="mt-text-main mt-4">{policy.summary}</p>
@@ -161,8 +179,8 @@ export default async function PolicyDetailPage({ params }: { params: Promise<Par
 
         <ContentUpdateNote
           publishedOn={SITE_DATES.published}
-          updatedOn={POLICY_VERIFIED_AT}
-          note="정책은 공식자료 확인일 기준으로 다시 점검했습니다. 신청 전 실제 대상 여부, 금액, 서류, 기한은 담당 기관의 최신 안내를 최종 기준으로 확인해 주세요."
+          updatedOn={reviewDate}
+          note="각 정책에 연결된 공식자료의 실제 확인일을 표시합니다. 신청 전 대상 여부, 금액, 서류, 기한은 담당 기관의 최신 안내를 최종 기준으로 확인해 주세요."
         />
 
         <section className="mt-card-soft p-6 md:p-8">

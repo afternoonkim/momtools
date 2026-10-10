@@ -1,10 +1,16 @@
 import type { MetadataRoute } from "next";
 import { babyFoodRecipes as koBabyFoodRecipes } from "@/data/babyFood";
+import { babyFoodRecipes as enBabyFoodRecipes } from "@/data/en/babyFood";
 import { rankingYears } from "@/data/babyNames";
 import { meaningPureKoreanNames } from "@/data/koreanNames";
 import { qnaData, qnaCategories, type QnaCategory } from "@/data/qna";
+import {
+  qnaData as enQnaData,
+  qnaCategories as enQnaCategories,
+  type QnaCategory as EnQnaCategory,
+} from "@/data/en/qna";
 import { getFamilyHealthSitemapPaths } from "@/lib/repositories/family-health-qna-db";
-import { governmentPolicies, POLICY_VERIFIED_AT } from "@/data/governmentPolicy";
+import { governmentPolicies } from "@/data/governmentPolicy";
 import { birthSupportRegions } from "@/data/birthSupportCalculator";
 import { familyFinanceArticles } from "@/data/familyFinance";
 import { childcarePortalGuides } from "@/data/childcarePortalGuides";
@@ -35,6 +41,15 @@ function toKoreanDate(value: string) {
 function getPageLastModified(path: string) {
   const dates = PAGE_DATES[path as keyof typeof PAGE_DATES];
   return dates ? toKoreanDate(dates.updated) : undefined;
+}
+
+function getPolicyLastModified(policy: (typeof governmentPolicies)[number]) {
+  const latest = policy.sources
+    .map((source) => source.checkedAt)
+    .filter((value) => /^\d{4}-\d{2}-\d{2}$/.test(value))
+    .sort()
+    .at(-1);
+  return latest ? toKoreanDate(latest) : undefined;
 }
 
 function route(
@@ -105,15 +120,51 @@ const staticRoutes: RouteConfig[] = [
   route("/contact", 0.4, "monthly"),
   route("/privacy", 0.3, "yearly"),
   route("/terms", 0.3, "yearly"),
+
+  // English public section: independently maintained for U.S. users.
+  route("/en", 0.9, "weekly"),
+  route("/en/cal", 0.86, "weekly"),
+  route("/en/cal/due-date", 0.84, "weekly"),
+  route("/en/cal/baby-age", 0.84, "weekly"),
+  route("/en/cal/vaccine-schedule", 0.84, "weekly"),
+  route("/en/cal/weaning-start", 0.84, "weekly"),
+  route("/en/cal/growth-percentile", 0.84, "weekly"),
+  route("/en/info", 0.8, "weekly"),
+  route("/en/info/pregnancy", 0.78, "weekly"),
+  route("/en/info/newborn", 0.78, "weekly"),
+  route("/en/info/weaning", 0.76, "weekly"),
+  route("/en/info/toddler", 0.76, "weekly"),
+  route("/en/baby-food", 0.8, "weekly"),
+  route("/en/baby-food/early", 0.76, "weekly"),
+  route("/en/baby-food/middle", 0.76, "weekly"),
+  route("/en/baby-food/late", 0.76, "weekly"),
+  route("/en/qna", 0.8, "weekly"),
+  route("/en/qna/health", 0.76, "weekly"),
+  route("/en/qna/growth", 0.76, "weekly"),
+  route("/en/qna/behavior", 0.76, "weekly"),
+  route("/en/checklists", 0.72, "monthly"),
+  route("/en/checklists/birth", 0.7, "monthly"),
+  route("/en/checklists/newborn", 0.7, "monthly"),
+  route("/en/checklists/weaning", 0.7, "monthly"),
+  route("/en/checklists/daycare", 0.7, "monthly"),
+  route("/en/about", 0.5, "monthly"),
+  route("/en/faq", 0.48, "monthly"),
+  route("/en/contact", 0.38, "monthly"),
+  route("/en/privacy", 0.28, "yearly"),
+  route("/en/terms", 0.28, "yearly"),
 ];
 
 const dynamicKoreanQnaRoutes = (Object.keys(qnaCategories) as QnaCategory[]).flatMap((category) =>
   qnaData[category].map((entry) => route(`/qna/${category}/${entry.slug}`, 0.82, "daily")),
 );
+const dynamicEnglishQnaRoutes = (Object.keys(enQnaCategories) as EnQnaCategory[]).flatMap((category) =>
+  enQnaData[category].map((entry) => route(`/en/qna/${category}/${entry.slug}`, 0.72, "weekly")),
+);
 const dynamicKoreanPolicyRoutes = governmentPolicies.map((policy) =>
-  route(`/policy/${policy.category}/${policy.slug}`, 0.8, "daily", toKoreanDate(POLICY_VERIFIED_AT)),
+  route(`/policy/${policy.category}/${policy.slug}`, 0.8, "daily", getPolicyLastModified(policy)),
 );
 const dynamicKoreanBabyFoodRoutes = koBabyFoodRecipes.map((recipe) => route(`/baby-food/recipes/${recipe.slug}`, 0.68, "weekly"));
+const dynamicEnglishBabyFoodRoutes = enBabyFoodRecipes.map((recipe) => route(`/en/baby-food/recipes/${recipe.slug}`, 0.66, "weekly"));
 const dynamicKoreanBabyNameMeaningRoutes = meaningPureKoreanNames.map((name) => route(`/baby-names/meanings/${name.slug}`, 0.72, "monthly"));
 const dynamicKoreanBabyNameRankingRoutes = rankingYears.map((year) => route(`/baby-names/rankings/${year}`, 0.74, "monthly"));
 const dynamicMoonlightHospitalAreaRoutes = moonlightHospitalAreas.map((area) =>
@@ -196,9 +247,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   [
     ...staticRoutes,
     ...dynamicKoreanQnaRoutes,
+    ...dynamicEnglishQnaRoutes,
     ...dynamicKoreanFamilyHealthRoutes,
     ...dynamicKoreanPolicyRoutes,
     ...dynamicKoreanBabyFoodRoutes,
+    ...dynamicEnglishBabyFoodRoutes,
     ...dynamicKoreanBabyNameMeaningRoutes,
     ...dynamicKoreanBabyNameRankingRoutes,
     ...dynamicMoonlightHospitalAreaRoutes,

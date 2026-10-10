@@ -10,11 +10,13 @@ export const PAGE_DATES = {
   "/about": { published: "2026-04-09", updated: "2026-04-10" },
   "/info": { published: "2026-04-10", updated: "2026-04-10" },
   "/info/newborn": { published: "2026-04-10", updated: "2026-10-10" },
+  "/baby-food": { published: "2026-04-10", updated: "2026-10-10" },
   "/tools/due-date": { published: "2026-04-10", updated: "2026-04-10" },
   "/tools/baby-age": { published: "2026-04-10", updated: "2026-04-10" },
   "/tools/vaccine-schedule": { published: "2026-04-10", updated: "2026-10-10" },
   "/tools/weaning-start": { published: "2026-04-10", updated: "2026-10-10" },
   "/tools/growth-percentile": { published: "2026-04-10", updated: "2026-10-10" },
+  "/en": { published: "2026-04-09", updated: "2026-10-10" },
   "/en/cal/due-date": { published: "2026-04-10", updated: "2026-10-10" },
   "/en/cal/baby-age": { published: "2026-04-10", updated: "2026-04-10" },
   "/en/cal/vaccine-schedule": { published: "2026-04-10", updated: "2026-10-10" },
@@ -35,7 +37,7 @@ export const PAGE_DATES = {
 } as const satisfies Record<string, { published: string; updated: string }>;
 
 export const HOME_CARD_UPDATED_LABEL_KO = "2026.10 주요 변동정보 검토";
-export const HOME_CARD_UPDATED_LABEL_EN = "Core guidance reviewed Oct 2026";
+export const HOME_CARD_UPDATED_LABEL_EN = "Core safety pages reviewed Oct 2026";
 
 export function buildCanonical(path: string) {
   if (!path.startsWith("/")) return `${SITE_BASE_URL}/${path}`;
