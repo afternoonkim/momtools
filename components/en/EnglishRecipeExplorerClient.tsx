@@ -52,7 +52,7 @@ export default function EnglishRecipeExplorerClient({
             <span className="mt-badge">{stageLabels[stage]}</span>
             <h2 className="mt-title-lg mt-4">Browse {stageLabels[stage].toLowerCase()} by ingredient and category</h2>
             <p className="mt-text-sub mt-3 max-w-3xl">
-              This English version is organized around how US parents usually search: first foods, stage 2 combinations, finger foods, iron-rich options, and quick meal ideas.
+              Search by an ingredient you already have, or narrow the list by feeding style such as first foods, iron-rich options, combinations, and finger foods.
             </p>
           </div>
           <div className="rounded-3xl border border-amber-100 bg-amber-50 px-5 py-4 text-sm text-amber-700">

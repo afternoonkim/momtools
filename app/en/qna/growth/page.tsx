@@ -60,8 +60,8 @@ export default function GrowthTopicPage() {
               <div className="mt-2 text-sm leading-7 text-slate-500">Use exact age in months and weeks before comparing a milestone question.</div>
             </Link>
             <Link href="/en/cal/growth-percentile" className="rounded-2xl bg-white px-5 py-5 shadow-sm transition hover:-translate-y-0.5">
-              <div className="font-semibold text-slate-800">Growth percentile calculator</div>
-              <div className="mt-2 text-sm leading-7 text-slate-500">Pair milestone questions with a growth reference instead of guessing from memory.</div>
+              <div className="font-semibold text-slate-800">Growth chart helper</div>
+              <div className="mt-2 text-sm leading-7 text-slate-500">Organize recent measurements before checking the appropriate WHO or CDC growth chart.</div>
             </Link>
             <Link href="/en/info/toddler" className="rounded-2xl bg-white px-5 py-5 shadow-sm transition hover:-translate-y-0.5">
               <div className="font-semibold text-slate-800">Toddler guide</div>

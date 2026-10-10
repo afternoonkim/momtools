@@ -5,8 +5,8 @@ export const dynamic = "force-static";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: "Page not found | MomTools English",
-    description: "This URL is not part of the public English site structure.",
+    title: "Page not found | MomTools",
+    description: "We could not find that MomTools page. Use the main tools and guides to continue browsing.",
     robots: {
       index: false,
       follow: false,

@@ -12,8 +12,8 @@ const topicMeta = {
     searchLabel: "baby health questions",
     guides: [
       { href: "/en/info/newborn", label: "Newborn guide", note: "Feeding, spit-up, congestion, diapering, and first-week routines." },
-      { href: "/en/cal/vaccine-schedule", label: "Vaccine schedule", note: "Use your baby’s birth date to preview routine CDC visit timing." },
-      { href: "/en/cal/weaning-start", label: "Starting solids calculator", note: "Helpful when feeding questions turn into solids-timing questions." },
+      { href: "/en/cal/vaccine-schedule", label: "Vaccine schedule reference", note: "Use your baby’s birth date to preview routine visit timing, then compare it with current CDC guidance and your child’s vaccine record." },
+      { href: "/en/cal/weaning-start", label: "Starting solids readiness", note: "Helpful when feeding questions turn into age-and-readiness questions about solids." },
     ],
   },
   Growth: {
@@ -23,7 +23,7 @@ const topicMeta = {
     guides: [
       { href: "/en/info/toddler", label: "Toddler guide", note: "Daily routines, language growth, big feelings, and behavior patterns." },
       { href: "/en/cal/baby-age", label: "Baby age calculator", note: "Useful for milestone windows, forms, and exact-age check-ins." },
-      { href: "/en/cal/growth-percentile", label: "Growth percentile calculator", note: "Turn recent visit measurements into a clearer growth reference." },
+      { href: "/en/cal/growth-percentile", label: "Growth chart helper", note: "Organize recent measurements before checking the appropriate WHO or CDC growth reference." },
     ],
   },
   Behavior: {
@@ -92,8 +92,7 @@ export default async function EnQnaDetailPage({ params }: { params: Promise<{ sl
         <section className="mt-card-soft p-6 md:p-8">
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Short answer</div>
           <p className="mt-3 text-sm leading-7 text-slate-600 md:text-base">
-            {entry.summary} This page is written for real home decisions: what parents usually notice first,
-            what is often okay to observe, what you can try at home, and when it is smarter to call your pediatrician.
+            {entry.summary} Focus on what changed, what you can observe at home, and whether any warning signs mean a clinician should be contacted.
           </p>
         </section>
 
@@ -150,9 +149,7 @@ export default async function EnQnaDetailPage({ params }: { params: Promise<{ sl
         <section className="mt-card-soft p-6 md:p-8">
           <h2 className="mt-title-md">Related questions parents also search</h2>
           <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">
-            Most parent concerns do not stop at one question. Reading nearby questions often helps you
-            compare patterns, notice what changed, and decide what details are worth writing down before
-            you call your pediatrician.
+            Most parent concerns do not stop at one question. Reading nearby questions often helps you compare patterns, notice what changed, and decide what details are worth writing down before you call your pediatrician.
           </p>
           <div className="mt-5 grid gap-4 md:grid-cols-3">
             {entry.related.map((item) => (
@@ -177,7 +174,6 @@ export default async function EnQnaDetailPage({ params }: { params: Promise<{ sl
             </Link>
           </div>
         </section>
-      
 
         <RelatedContent
           locale="en"

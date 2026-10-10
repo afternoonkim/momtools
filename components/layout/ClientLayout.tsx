@@ -15,8 +15,12 @@ import GlobalCoupangPartnersAd from "@/components/ads/GlobalCoupangPartnersAd";
 import PwaInstallGuide from "@/components/pwa/PwaInstallGuide";
 import FeelingFab from "@/components/feelings/FeelingFab";
 import RouteHtmlLang from "@/components/layout/RouteHtmlLang";
+import { getLanguagePath } from "@/lib/language-routes";
 
 function EnglishShell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname() || "/en";
+  const koreanHref = getLanguagePath(pathname, "ko");
+
   return (
     <div className="min-h-screen bg-transparent text-slate-700">
       <RouteHtmlLang lang="en-US" />
@@ -34,7 +38,7 @@ function EnglishShell({ children }: { children: React.ReactNode }) {
             <Link href="/en/baby-food" className="transition hover:text-amber-700">Baby food</Link>
             <Link href="/en/about" className="transition hover:text-amber-700">About</Link>
           </nav>
-          <Link href="/" className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-600 transition hover:border-amber-200 hover:text-amber-700">
+          <Link href={koreanHref} className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-bold text-slate-600 transition hover:border-amber-200 hover:text-amber-700">
             한국어
           </Link>
         </div>

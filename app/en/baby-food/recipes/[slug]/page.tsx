@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { babyFoodRecipes, getRecipe, stageLabels } from "@/data/en/babyFood";
+import { babyFoodRecipes, getRecipe, stageGuides, stageLabels } from "@/data/en/babyFood";
 import { notFound } from "next/navigation";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
 import RelatedContent from "@/components/common/RelatedContent";
@@ -19,7 +19,7 @@ export async function generateMetadata({
 
   return {
     title: `${recipe.title} | ${stageLabels[recipe.stage]}`,
-    description: `${recipe.title} with ingredients, simple prep, texture notes, storage, and serving tips for babies.`,
+    description: `${recipe.title} with ingredients, preparation guidance, texture notes, storage, and serving reminders for babies.`,
     alternates: { canonical: `https://momtools.kr/en/baby-food/recipes/${slug}` },
   };
 }
@@ -36,6 +36,14 @@ export default async function BabyFoodRecipeDetailPage({
   const related = babyFoodRecipes
     .filter((item) => item.stage === recipe.stage && item.slug !== slug)
     .slice(0, 4);
+
+  const ingredients = recipe.ingredients.join(", ");
+  const stageGuide = stageGuides[recipe.stage];
+  const preparationSteps = [
+    `Prepare ${ingredients} according to normal cooking or package directions. Any ingredient that needs cooking should be fully cooked and soft before serving.`,
+    `Adjust the food to your baby's current skills. For ${stageLabels[recipe.stage].toLowerCase()}, use this texture as the guide: ${stageGuide.texture}`,
+    "Serve a small portion while your baby is seated upright and directly supervised. Slow down or change the texture if a bite seems difficult to manage.",
+  ];
 
   return (
     <div className="mt-page">
@@ -66,9 +74,12 @@ export default async function BabyFoodRecipeDetailPage({
           </article>
 
           <article className="mt-card p-6 md:p-8">
-            <h2 className="mt-title-md">How to make it</h2>
+            <h2 className="mt-title-md">Prepare it safely</h2>
+            <p className="mt-3 text-sm leading-7 text-slate-500">
+              Use these steps as a texture and serving framework rather than a strict recipe. Adjust preparation to the specific ingredients and your baby&apos;s feeding skills.
+            </p>
             <ol className="mt-4 space-y-4 text-sm leading-7 text-slate-600">
-              {recipe.howToMake.map((step, index) => (
+              {preparationSteps.map((step, index) => (
                 <li
                   key={step}
                   className="rounded-2xl border border-amber-100 bg-white px-4 py-4"
@@ -85,35 +96,41 @@ export default async function BabyFoodRecipeDetailPage({
 
         <section className="grid gap-6 md:grid-cols-2">
           <article className="mt-card-soft p-6 md:p-8">
-            <h2 className="text-lg font-bold text-slate-800">Best age fit</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-600">{recipe.ageFit}</p>
+            <h2 className="text-lg font-bold text-slate-800">Typical stage</h2>
+            <p className="mt-3 text-sm leading-7 text-slate-600">{stageGuide.age}</p>
           </article>
 
           <article className="mt-card-soft p-6 md:p-8">
             <h2 className="text-lg font-bold text-slate-800">Texture guide</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-600">{recipe.textureGuide}</p>
+            <p className="mt-3 text-sm leading-7 text-slate-600">{stageGuide.texture}</p>
           </article>
 
           <article className="mt-card-soft p-6 md:p-8">
-            <h2 className="text-lg font-bold text-slate-800">Serving tip</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-600">{recipe.servingTip}</p>
+            <h2 className="text-lg font-bold text-slate-800">Serving reminder</h2>
+            <p className="mt-3 text-sm leading-7 text-slate-600">
+              Start with a small amount, let your baby set the pace, and change the texture or piece size when the food is harder to manage than expected.
+            </p>
           </article>
 
           <article className="mt-card-soft p-6 md:p-8">
             <h2 className="text-lg font-bold text-slate-800">Storage</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-600">{recipe.storageTip}</p>
+            <p className="mt-3 text-sm leading-7 text-slate-600">
+              Refrigerate perishable ingredients promptly and follow package or ingredient-specific storage guidance. Keep only untouched portions and discard leftovers from your baby&apos;s bowl after feeding.
+            </p>
           </article>
 
           <article className="mt-card-soft p-6 md:p-8 md:col-span-2">
             <h2 className="text-lg font-bold text-slate-800">Safety note</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-600">{recipe.safetyTip}</p>
+            <p className="mt-3 text-sm leading-7 text-slate-600">
+              Check every bite for hard, round, sticky, dry, tough, or slippery pieces that are difficult to manage. Remove pits, bones, seeds, and firm skins when relevant, keep your baby upright and supervised, and follow your clinician&apos;s plan for known food allergies or feeding and swallowing concerns.
+            </p>
           </article>
         </section>
 
         <RelatedContent
           locale="en"
           title="More meal ideas around the same feeding stage"
-          description="Use nearby recipes to compare textures, serving ideas, and simple ingredient combinations for the same solids stage."
+          description="Use nearby recipes to compare ingredients and stage-appropriate textures for the same solids stage."
           items={related.map((item) => ({ href: `/en/baby-food/recipes/${item.slug}`, title: item.title, description: `${item.category} · ${stageLabels[item.stage]}` }))}
         />
       </div>

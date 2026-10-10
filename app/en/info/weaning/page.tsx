@@ -74,8 +74,8 @@ export default function WeaningPage() {
         <section className="mt-card-soft p-6 md:p-8">
           <h2 className="text-lg font-bold text-slate-900">Helpful next steps</h2>
           <div className="mt-4 grid gap-3 md:grid-cols-3">
-            <RelatedLink href="/en/cal/weaning-start" title="Starting solids calculator" description="See a simple starting point based on age and readiness." />
-            <RelatedLink href="/en/baby-food" title="Baby food by age" description="Move from timing questions to actual food ideas and recipes." />
+            <RelatedLink href="/en/cal/weaning-start" title="Starting solids readiness" description="Check age alongside readiness signs instead of relying on one exact start date." />
+            <RelatedLink href="/en/baby-food" title="Baby food by stage" description="Move from readiness questions to first foods, textures, and meal ideas." />
             <RelatedLink href="/en/checklists/weaning" title="Solids prep checklist" description="Keep bibs, spoons, trays, and cleanup items organized." />
           </div>
         </section>
@@ -85,8 +85,8 @@ export default function WeaningPage() {
           title="Helpful next pages"
           description="Use the related tools, guides, and checklists below to turn one answer into a clearer next step."
           items={[
-            { href: "/en/cal/weaning-start", title: "Starting solids calculator", description: "Estimate a realistic solids window based on age and readiness." },
-            { href: "/en/baby-food", title: "Baby food ideas", description: "Open recipe ideas, first foods, and texture-based meal planning." },
+            { href: "/en/cal/weaning-start", title: "Starting solids readiness", description: "Check a realistic starting window using age and readiness together." },
+            { href: "/en/baby-food", title: "Baby food ideas", description: "Open first-food ideas and stage-appropriate texture guidance." },
             { href: "/en/checklists/weaning", title: "Solids checklist", description: "Keep feeding tools, allergen planning, and prep basics together." },
             { href: "/en/qna/growth", title: "Growth Q&A", description: "Compare feeding concerns with milestone and growth questions." }
           ]}

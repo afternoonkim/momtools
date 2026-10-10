@@ -22,6 +22,7 @@ import {
 import SidebarItem from "./SidebarItem";
 import SidebarGroup from "./SidebarGroup";
 import SearchBox from "./SearchBox";
+import LanguageSwitch from "./LanguageSwitch";
 import DesktopAuthActions from "@/components/auth/DesktopAuthActions";
 
 export default function Sidebar({
@@ -155,7 +156,10 @@ export default function Sidebar({
 
         {!collapsed ? (
           <div className="mt-sidebar-footer border-t border-amber-100 p-4 text-xs leading-5 text-slate-500">
-            필요한 육아 정보를 빠르게 확인하세요.
+            <div>필요한 육아 정보를 빠르게 확인하세요.</div>
+            <div className="mt-3">
+              <LanguageSwitch mobile />
+            </div>
           </div>
         ) : null}
       </aside>

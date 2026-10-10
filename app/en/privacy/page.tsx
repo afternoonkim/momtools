@@ -2,44 +2,40 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Privacy | how MomTools handles basic technical information",
+  title: "Privacy | technical information and contact messages | MomTools",
   description:
-    "Read how MomTools may handle limited technical information, cookies, and contact details to keep the site working and improve parent-facing pages.",
+    "Read how MomTools may handle limited technical information, cookies, and contact details when you use the U.S. parenting pages.",
   alternates: { canonical: "https://momtools.kr/en/privacy" },
 };
 
 const sections = [
   {
-    title: "What this page covers",
-    body: "MomTools can be used without creating an account. If a child profile feature is used, only a child's display nickname, birth date, optional gender, and—when entered for corrected-age guidance—an expected due date are used to show age-based guidance. This page explains what limited information may be processed when someone visits a page, uses a tool, or sends a message through the contact channel.",
+    title: "Using these pages",
+    body: "You can browse the English parenting pages and use their public tools without creating a separate account. Some calculators ask for dates, age, or measurements so they can show an on-page result. Only enter the information needed for the tool you are using.",
   },
   {
-    title: "Information that may be handled",
-    body: "Like most websites, the site may process basic technical details such as device type, browser type, page activity, referral source, and error logs. If you contact the site, your email address and the message you send may also be reviewed so the issue can be answered or fixed.",
+    title: "Technical information",
+    body: "Like most websites, MomTools may process limited technical details such as device type, browser type, page activity, referral source, and error logs. This information can help keep pages working, identify broken links, and improve site stability and usability.",
   },
   {
-    title: "Why that information may be used",
-    body: "These details may be used to keep pages working, understand which sections are useful, spot broken links, review display problems, improve site stability, and respond to contact requests. The aim is site maintenance and usability, not collecting more personal information than needed.",
+    title: "Contact messages",
+    body: "If you email MomTools, the email address and message you send may be reviewed so the question, correction request, or site issue can be handled. Please avoid including information that is not necessary for the request.",
   },
   {
     title: "Cookies and similar browser tools",
-    body: "Cookies or similar technologies may be used for basic settings, site performance, analytics, and simple traffic understanding. You can manage cookies in your browser settings, although some parts of the site may work less smoothly if cookies are blocked.",
+    body: "Cookies or similar technologies may be used for basic settings, site performance, analytics, and traffic understanding. You can manage cookies in your browser settings, although some site behavior may be less convenient when cookies are blocked.",
   },
   {
-    title: "Advertising and affiliate links",
-    body: "MomTools may show Kakao AdFit ads and Coupang Partners affiliate links. These ads and links help support the site and may send you to an external advertising or shopping service. Once you leave MomTools, the external service's own privacy policy, pricing, delivery, return, and purchase terms apply. If a purchase is made through a Coupang Partners link, MomTools may receive a commission.",
-  },
-  {
-    title: "Third-party services and links",
-    body: "Some pages may link to outside services such as videos, public resources, shopping pages, or embedded content. Once you leave MomTools, the other service's own privacy policy and terms control what happens there.",
+    title: "External resources",
+    body: "Some pages link to outside resources such as CDC guidance, public health information, videos, or other websites. Once you follow an external link, that service's own privacy policy and terms apply.",
   },
   {
     title: "Sensitive information",
-    body: "MomTools does not ask for a child's national ID number, home address, phone number, photo, medical record, or detailed health history. Please do not send private medical details, test results, photos of a child, or other sensitive personal information by email. The site is not a medical record system and is not meant for urgent health communication.",
+    body: "Please do not send private medical records, full birth dates, photos of a child, test results, home addresses, or other sensitive personal information by email. MomTools is not a medical record system and is not an urgent health communication channel.",
   },
   {
     title: "Policy updates",
-    body: "This page may be revised as the site changes or as privacy practices need to be clarified. The latest version shown here should be treated as the current reference.",
+    body: "This page may be updated when the site changes or when the way technical information and contact messages are handled changes. The version shown here should be treated as the current reference for these pages.",
   },
 ];
 
@@ -51,7 +47,7 @@ export default function EnglishPrivacyPage() {
           <span className="mt-badge">Privacy</span>
           <h1 className="mt-title-lg mt-4">How MomTools handles basic technical and contact information</h1>
           <p className="mt-text-main mt-4">
-            Most visitors can read pages and use tools without logging in. Some limited technical information may still be processed to keep the site working, understand page performance, and respond to contact messages.
+            Most people can read the parenting pages and use the public tools without signing in. Limited technical information may still be processed to keep the site working, understand page performance, and respond to messages you choose to send.
           </p>
         </section>
 

@@ -57,12 +57,12 @@ export default function HealthTopicPage() {
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Helpful related pages</div>
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             <Link href="/en/cal/vaccine-schedule" className="rounded-2xl bg-white px-5 py-5 shadow-sm transition hover:-translate-y-0.5">
-              <div className="font-semibold text-slate-800">Vaccine schedule</div>
-              <div className="mt-2 text-sm leading-7 text-slate-500">Compare age-based timing before you confirm the real schedule with your clinic.</div>
+              <div className="font-semibold text-slate-800">Vaccine schedule reference</div>
+              <div className="mt-2 text-sm leading-7 text-slate-500">Preview age-based timing, then confirm the current schedule with CDC guidance, your child’s record, and your clinic.</div>
             </Link>
             <Link href="/en/cal/weaning-start" className="rounded-2xl bg-white px-5 py-5 shadow-sm transition hover:-translate-y-0.5">
-              <div className="font-semibold text-slate-800">Starting solids calculator</div>
-              <div className="mt-2 text-sm leading-7 text-slate-500">Use it when feeding and digestion questions overlap with age and readiness.</div>
+              <div className="font-semibold text-slate-800">Starting solids readiness</div>
+              <div className="mt-2 text-sm leading-7 text-slate-500">Use age and readiness together when feeding and digestion questions overlap with starting solids.</div>
             </Link>
             <Link href="/en/info/newborn" className="rounded-2xl bg-white px-5 py-5 shadow-sm transition hover:-translate-y-0.5">
               <div className="font-semibold text-slate-800">Newborn guide</div>

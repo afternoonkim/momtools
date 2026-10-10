@@ -18,7 +18,7 @@ const COPY = {
   en: {
     label: "Medical notice",
     compact:
-      "This is general parent reference. For diagnosis, treatment, medication, or vaccination decisions, check with a clinician.",
+      "This is general information for parents. For diagnosis, treatment, medication, or vaccination decisions, check with a clinician.",
     fullTitle: "Reference only, not a substitute for medical care",
     fullParagraph:
       "If your child seems much sicker than usual, has trouble breathing, or you are worried about an urgent symptom, contact a clinician or local emergency services first.",
