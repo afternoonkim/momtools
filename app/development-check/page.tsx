@@ -30,11 +30,7 @@ export default async function DevelopmentCheckPage({ searchParams }: { searchPar
   const [records, history] = await Promise.all([
     prisma.childDevelopmentRecord.findMany({
       where: { childId: selectedChild.id },
-      select: {
-        itemKey: true,
-        status: true,
-        note: true,
-      },
+      select: { itemKey: true, status: true, note: true },
     }),
     prisma.childDevelopmentCheckLog.findMany({
       where: { childId: selectedChild.id },
@@ -54,29 +50,34 @@ export default async function DevelopmentCheckPage({ searchParams }: { searchPar
   ]);
 
   return (
-    <DevelopmentCheckClient
-      selectedChildId={selectedChild.id}
-      childrenOptions={bornChildren.map((child) => ({
-        id: child.id,
-        nickname: child.nickname,
-        birthDate: toDateInputValue(child.birthDate!),
-        expectedDueDate: child.expectedDueDate ? toDateInputValue(child.expectedDueDate) : null,
-        useCorrectedAge: child.useCorrectedAge,
-        isPrimary: child.isPrimary,
-      }))}
-      initialRecords={Object.fromEntries(
-        records.map((record) => [record.itemKey, { status: record.status as DevelopmentStatus, note: record.note }]),
-      )}
-      initialHistory={history.map((item) => ({
-        itemKey: item.itemKey,
-        ageRangeKey: item.ageRangeKey as DevelopmentAgeRangeKey,
-        domainKey: item.domainKey as DevelopmentDomainKey,
-        previousStatus: item.previousStatus as DevelopmentStatus | null,
-        status: item.status as DevelopmentStatus,
-        note: item.note,
-        observedAt: item.observedAt.toISOString(),
-        createdAt: item.createdAt.toISOString(),
-      }))}
-    />
+    <>
+      <div className="mx-auto mb-4 max-w-5xl rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-7 text-amber-950">
+        <strong>발달 관찰 기록용입니다.</strong> 이 체크 항목은 K-DST 같은 표준화된 발달선별검사를 대신하지 않으며, 항목 하나의 달성 여부만으로 발달지연을 판단하지 않습니다. 영유아 건강검진의 K-DST는 9~71개월에 시행되는 선별검사이고, 결과상 심화평가가 권고되거나 이전에 하던 기능이 줄어드는 등 걱정되는 변화가 있으면 의료진과 상담하세요.
+      </div>
+      <DevelopmentCheckClient
+        selectedChildId={selectedChild.id}
+        childrenOptions={bornChildren.map((child) => ({
+          id: child.id,
+          nickname: child.nickname,
+          birthDate: toDateInputValue(child.birthDate!),
+          expectedDueDate: child.expectedDueDate ? toDateInputValue(child.expectedDueDate) : null,
+          useCorrectedAge: child.useCorrectedAge,
+          isPrimary: child.isPrimary,
+        }))}
+        initialRecords={Object.fromEntries(
+          records.map((record) => [record.itemKey, { status: record.status as DevelopmentStatus, note: record.note }]),
+        )}
+        initialHistory={history.map((item) => ({
+          itemKey: item.itemKey,
+          ageRangeKey: item.ageRangeKey as DevelopmentAgeRangeKey,
+          domainKey: item.domainKey as DevelopmentDomainKey,
+          previousStatus: item.previousStatus as DevelopmentStatus | null,
+          status: item.status as DevelopmentStatus,
+          note: item.note,
+          observedAt: item.observedAt.toISOString(),
+          createdAt: item.createdAt.toISOString(),
+        }))}
+      />
+    </>
   );
 }

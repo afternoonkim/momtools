@@ -9,11 +9,12 @@ export const PAGE_DATES = {
   "/": { published: "2026-04-09", updated: "2026-04-10" },
   "/about": { published: "2026-04-09", updated: "2026-04-10" },
   "/info": { published: "2026-04-10", updated: "2026-04-10" },
+  "/info/newborn": { published: "2026-04-10", updated: "2026-10-10" },
   "/tools/due-date": { published: "2026-04-10", updated: "2026-04-10" },
   "/tools/baby-age": { published: "2026-04-10", updated: "2026-04-10" },
   "/tools/vaccine-schedule": { published: "2026-04-10", updated: "2026-10-10" },
-  "/tools/weaning-start": { published: "2026-04-10", updated: "2026-04-10" },
-  "/tools/growth-percentile": { published: "2026-04-10", updated: "2026-04-10" },
+  "/tools/weaning-start": { published: "2026-04-10", updated: "2026-10-10" },
+  "/tools/growth-percentile": { published: "2026-04-10", updated: "2026-10-10" },
   "/en/cal/due-date": { published: "2026-04-10", updated: "2026-04-10" },
   "/en/cal/baby-age": { published: "2026-04-10", updated: "2026-04-10" },
   "/en/cal/vaccine-schedule": { published: "2026-04-10", updated: "2026-04-10" },
@@ -34,9 +35,7 @@ export const HOME_CARD_UPDATED_LABEL_KO = "2026.10 주요 변동정보 검토";
 export const HOME_CARD_UPDATED_LABEL_EN = "Reviewed April 2026";
 
 export function buildCanonical(path: string) {
-  if (!path.startsWith("/")) {
-    return `${SITE_BASE_URL}/${path}`;
-  }
+  if (!path.startsWith("/")) return `${SITE_BASE_URL}/${path}`;
   return `${SITE_BASE_URL}${path}`;
 }
 

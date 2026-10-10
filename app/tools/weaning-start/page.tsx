@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import WeaningStartCalculatorClient from "@/app/cal/weaning-start/WeaningStartCalculatorClient";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
+import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
 import NextStepLinks from "@/components/common/NextStepLinks";
 import { buildCanonical, getPageDates } from "@/lib/content-meta";
 import AdFitAd from "@/components/ads/AdFitAd";
@@ -10,40 +11,34 @@ import { ADFIT_UNITS } from "@/lib/adfit";
 const pageDates = getPageDates("/tools/weaning-start");
 
 export const metadata: Metadata = {
-  title: "이유식 시작 계산기 | 시작 시기와 준비 순서 정리 | MomTools",
+  title: "이유식 시작 시기 | 생후 6개월과 준비 신호 확인 | MomTools",
   description:
-    "생년월일을 기준으로 이유식 시작 시기를 참고용으로 확인하고, 첫 재료·준비 도구·진행 순서까지 함께 살펴볼 수 있는 MomTools 계산기입니다.",
+    "이유식은 달력상 날짜만으로 결정하지 않습니다. 생후 약 6개월을 참고하되 목 가누기, 지지해 앉기, 삼키기, 음식 관심 등 발달 준비 상태를 함께 확인하세요.",
   alternates: { canonical: buildCanonical("/tools/weaning-start") },
 };
-
 
 const nextStepItems = [
   { href: "/baby-food/early", label: "초기 이유식", description: "첫 재료와 부드러운 질감부터 살펴봐요.", tag: "초기" },
   { href: "/checklists/weaning", label: "이유식 준비물", description: "조리도구와 보관용품을 체크해요.", tag: "준비" },
-  { href: "/qna/health", label: "알레르기 체크", description: "새 재료 뒤 피부·구토·설사 신호를 확인해요.", tag: "관찰" }
+  { href: "/qna/health", label: "알레르기 체크", description: "새 재료 뒤 피부·구토·설사·호흡 신호를 확인해요.", tag: "관찰" },
 ] as const;
 
 const firstLookItems = [
   "아이가 고개와 목을 비교적 안정적으로 가누는지 봅니다.",
-  "먹는 모습을 보며 관심을 보이거나 입을 벌리는 반응이 있는지 확인합니다.",
-  "처음부터 양을 늘리기보다 재료와 질감을 천천히 늘릴 계획을 세웁니다."
+  "도움을 받아 몸을 지지해 앉을 수 있고 음식을 삼키는 준비가 되었는지 확인합니다.",
+  "어른이 먹는 모습을 보고 음식에 관심을 보이는지 함께 봅니다.",
 ] as const;
 
 const cautionItems = [
-  "아이가 아직 앉는 자세를 유지하기 어렵습니다.",
-  "구토, 설사, 발진처럼 컨디션 변화가 있습니다.",
-  "미숙아, 질환, 알레르기 이력 등으로 병원 안내가 필요한 상황입니다."
+  "아이가 아직 머리와 몸통을 지지하기 어렵거나 음식을 계속 밀어냅니다.",
+  "구토, 설사, 발진, 호흡 이상처럼 컨디션 변화가 있습니다.",
+  "미숙아, 성장 문제, 질환, 이전 알레르기 반응 등으로 개별 안내가 필요한 상황입니다.",
 ] as const;
 
 const faqItems = [
-  { question: "처음부터 하루 두 번 먹여도 되나요?", answer: "적은 양으로 천천히 시작해 아이 반응을 확인하는 편이 부담이 적습니다." },
-  { question: "새 재료는 얼마나 천천히 늘리면 좋을까요?", answer: "새로운 재료를 한꺼번에 많이 추가하기보다 보호자가 반응을 관찰할 수 있는 속도로 진행하는 것이 좋습니다." }
-] as const;
-
-const relatedItems = [
-  { href: "/baby-food/early", title: "초기 이유식 메뉴", description: "첫 재료와 질감 흐름을 이어서 봐요." },
-  { href: "/checklists/weaning", title: "이유식 준비 체크리스트", description: "도구와 준비 순서를 실제 항목으로 정리해요." },
-  { href: "/tools/baby-age", title: "아기 개월수 계산기", description: "월령 기준을 함께 맞춰요." }
+  { question: "정확히 생후 6개월 되는 날 시작해야 하나요?", answer: "아니요. 생후 약 6개월은 참고 시점이고 실제 시작은 아이의 발달 준비 상태를 함께 봐야 합니다." },
+  { question: "미숙아는 180일이 되면 시작하면 되나요?", answer: "그렇게 단순 계산하면 안 됩니다. 교정연령은 출생 주수에 따라 달라지므로 의료진이 안내한 교정연령과 성장·발달 상태를 우선하세요." },
+  { question: "알레르기 가능 식품은 최대한 늦게 먹이는 게 안전한가요?", answer: "특별한 이유 없이 무조건 늦출 필요는 없습니다. 다만 이전 반응, 심한 아토피 피부염, 강한 알레르기 병력이 있으면 도입 전에 의료진과 상의하는 것이 좋습니다." },
 ] as const;
 
 export default function Page() {
@@ -51,13 +46,13 @@ export default function Page() {
     <div className="mt-page">
       <div className="mt-container-narrow space-y-5 md:space-y-6">
         <section className="mt-card p-4 md:p-6">
-          <span className="mt-badge">이유식 준비 흐름</span>
-          <h1 className="mt-title-lg mt-4">이유식은 시작 날짜보다 준비 신호를 함께 봅니다</h1>
-          <p className="mt-text-main mt-3">생년월일로 시작 시기를 참고하고, 앉는 자세·목 가누기·음식 관심·알레르기 관찰을 함께 정리합니다.</p>
+          <span className="mt-badge">이유식 안전 기준 재검토</span>
+          <h1 className="mt-title-lg mt-4">이유식은 날짜보다 준비 신호를 함께 봅니다</h1>
+          <p className="mt-text-main mt-3">질병관리청 최신 영유아 영양 안내처럼 보통 생후 약 6개월을 참고하되, 머리·몸통 조절과 삼키기 준비 상태를 함께 확인하세요.</p>
         </section>
 
+        <MedicalDisclaimer lang="ko" variant="compact" />
         <WeaningStartCalculatorClient />
-
         <AdFitAd {...ADFIT_UNITS.mobileResult} />
 
         <NextStepLinks
@@ -70,28 +65,20 @@ export default function Page() {
         <ContentUpdateNote
           publishedOn={pageDates.published}
           updatedOn={pageDates.updated}
-          note="이유식 시작 페이지는 단순 날짜 계산이 아니라, 보호자가 실제 준비 순서를 이해할 수 있도록 단계별 설명과 연결 메뉴를 다듬었습니다."
+          note="2026년 10월 안전성 재검토에서 미숙아를 일괄 180일로 계산하던 로직을 제거하고, 생후 약 6개월 참고 시점과 발달 준비 신호를 함께 보도록 수정했습니다."
         />
 
         <section className="mt-card p-4 md:p-6">
           <h2 className="mt-title-md">먼저 볼 기준</h2>
           <ul className="mt-result-list mt-4">
-            {firstLookItems.map((item) => (
-              <li key={item} className="mt-result-list-item">
-                <span className="mt-result-value">{item}</span>
-              </li>
-            ))}
+            {firstLookItems.map((item) => <li key={item} className="mt-result-list-item"><span className="mt-result-value">{item}</span></li>)}
           </ul>
         </section>
 
         <section className="mt-card p-4 md:p-6">
           <h2 className="mt-title-md">시작을 서두르지 말아야 할 때</h2>
           <ul className="mt-result-list mt-4">
-            {cautionItems.map((item) => (
-              <li key={item} className="mt-result-list-item border-amber-100 bg-amber-50/60">
-                <span className="mt-result-value text-amber-900">{item}</span>
-              </li>
-            ))}
+            {cautionItems.map((item) => <li key={item} className="mt-result-list-item border-amber-100 bg-amber-50/60"><span className="mt-result-value text-amber-900">{item}</span></li>)}
           </ul>
         </section>
 
@@ -108,14 +95,16 @@ export default function Page() {
         </section>
 
         <section className="mt-card-soft p-4 md:p-6">
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">공식 안내</div>
+          <p className="mt-text-sub mt-3">질병관리청 국가건강정보포털의 영유아 식이영양 자료는 이유 보충식을 보통 생후 약 6개월에 아이의 발달 준비 상태를 보고 시작하도록 안내합니다.</p>
+          <a href="https://health.kdca.go.kr/healthinfo/biz/health/gnrlzHealthInfo/gnrlzHealthInfo/gnrlzHealthInfoView.do?cntnts_sn=5212" target="_blank" rel="noreferrer" className="mt-chip-link mt-4 inline-flex">질병관리청 영유아 식이영양</a>
+        </section>
+
+        <section className="mt-card-soft p-4 md:p-6">
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">이어서 보기</div>
           <div className="mt-result-list mt-4">
-            {relatedItems.map((item) => (
-              <Link key={item.href} href={item.href} className="mt-list-card">
-                <div className="font-semibold text-slate-800">{item.title}</div>
-                <div className="mt-1 text-sm leading-6 text-slate-500">{item.description}</div>
-              </Link>
-            ))}
+            <Link href="/baby-food/early" className="mt-list-card"><div className="font-semibold text-slate-800">초기 이유식 메뉴</div><div className="mt-1 text-sm leading-6 text-slate-500">첫 재료와 질감 흐름을 이어서 봐요.</div></Link>
+            <Link href="/checklists/weaning" className="mt-list-card"><div className="font-semibold text-slate-800">이유식 준비 체크리스트</div><div className="mt-1 text-sm leading-6 text-slate-500">도구와 준비 순서를 실제 항목으로 정리해요.</div></Link>
           </div>
         </section>
       </div>
