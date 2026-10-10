@@ -15,8 +15,8 @@ const points = [
 
 const faq = [
   {
-    q: "Why doesn’t this tool calculate a percentile anymore?",
-    a: "A real percentile requires the official age- and sex-specific reference data and correct measurement method. MomTools now organizes your measurements and points you to the correct U.S. reference instead of generating a simplified estimate that could look more precise than it really is.",
+    q: "Does this tool calculate a percentile?",
+    a: "No. A real percentile requires official age- and sex-specific reference data and the correct measurement method. This tool organizes your measurements and points you to the appropriate U.S. growth reference instead of creating a simplified estimate.",
   },
   {
     q: "Which chart is used for babies in the U.S.?",
@@ -39,12 +39,12 @@ const faqJsonLd = {
 };
 
 export const metadata: Metadata = {
-  title: "Growth Chart Check | WHO and CDC references for U.S. children | MomTools",
+  title: "Growth Chart Helper | WHO and CDC references for U.S. children | MomTools",
   description:
     "Organize age, sex, length or height, and weight, then use the correct U.S. growth reference: WHO standards under age 2 and CDC growth charts from age 2 through 20.",
   alternates: { canonical },
   openGraph: {
-    title: "Growth Chart Check | MomTools",
+    title: "Growth Chart Helper | MomTools",
     description: "Prepare growth measurements and use the correct WHO or CDC reference for your child’s age.",
     url: canonical,
     siteName: "MomTools",
@@ -59,12 +59,11 @@ export default function Page() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
         <section className="mt-card p-8 md:p-10">
-          <span className="mt-badge">U.S. growth reference</span>
-          <h1 className="mt-title-xl mt-5">Use the right growth chart before interpreting a percentile</h1>
+          <span className="mt-badge">U.S. growth charts</span>
+          <h1 className="mt-title-xl mt-5">Choose the right growth chart before reading a percentile</h1>
           <p className="mt-text-main mt-4">
-            In U.S. pediatric care, the reference changes with age. CDC and AAP recommend WHO growth standards from birth to under age 2,
-            then CDC growth charts from age 2 through 20. This tool now helps you organize measurements and choose the correct reference
-            instead of estimating a percentile with a simplified formula.
+            The reference changes with age. CDC and AAP recommend WHO growth standards from birth to under age 2,
+            then CDC growth charts from age 2 through 20. Enter the measurements below to organize them before checking the appropriate chart.
           </p>
         </section>
 
@@ -78,7 +77,7 @@ export default function Page() {
         />
 
         <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-lg">What parents should know before reading a percentile</h2>
+          <h2 className="mt-title-lg">What to keep in mind when reading a percentile</h2>
           <ul className="mt-5 space-y-3 text-sm leading-7 text-slate-600 md:text-base">
             {points.map((item) => (
               <li key={item} className="rounded-2xl bg-sky-50/80 px-4 py-4 text-slate-700">{item}</li>
@@ -106,7 +105,7 @@ export default function Page() {
             </Link>
             <Link href="/en/qna/growth" className="mt-list-card">
               <div className="font-semibold text-slate-800">Growth Q&amp;A</div>
-              <div className="mt-2 text-sm text-slate-500">Read parent-friendly guidance about growth trends and development.</div>
+              <div className="mt-2 text-sm text-slate-500">Read practical guidance about growth trends and development.</div>
             </Link>
             <a href="https://www.cdc.gov/growthcharts/index.htm" target="_blank" rel="noreferrer" className="mt-list-card">
               <div className="font-semibold text-slate-800">CDC growth charts</div>

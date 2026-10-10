@@ -25,8 +25,8 @@ export default function GrowthPercentileCalculatorClient() {
     const lengthIn = Number(lengthInches);
     const weightLb = Number(weightPounds);
 
-    if ([m, lengthIn, weightLb].some((n) => Number.isNaN(n) || n <= 0)) {
-      return { status: "error" as const, message: "Enter age, length, and weight to organize the measurement for a growth-chart check." };
+    if (Number.isNaN(m) || m < 0 || Number.isNaN(lengthIn) || lengthIn <= 0 || Number.isNaN(weightLb) || weightLb <= 0) {
+      return { status: "error" as const, message: "Enter an age from 0 months and positive length and weight measurements." };
     }
 
     if (m > 240) {
@@ -61,10 +61,9 @@ export default function GrowthPercentileCalculatorClient() {
           <div className="inline-flex items-center rounded-full bg-violet-100 px-3 py-1 text-xs font-semibold text-violet-700">
             Growth chart prep
           </div>
-          <h1 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">Growth Chart Check</h1>
+          <h1 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">Growth Chart Helper</h1>
           <p className="text-sm leading-7 text-slate-600 md:text-base">
-            Enter age, sex, length or height, and weight to organize the measurements you can compare with the official growth chart used for your child&apos;s age.
-            MomTools no longer generates a made-up percentile from a simplified formula.
+            Enter age, sex, length or height, and weight to organize the measurements you can compare with the official growth chart used for your child&apos;s age. This tool does not calculate a percentile.
           </p>
         </div>
       </header>
@@ -94,11 +93,11 @@ export default function GrowthPercentileCalculatorClient() {
                 </div>
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-slate-800">Length / height (inches)</label>
-                  <input type="number" step="0.1" value={lengthInches} onChange={(e) => setLengthInches(e.target.value)} className="mt-input" />
+                  <input type="number" step="0.1" min="0.1" value={lengthInches} onChange={(e) => setLengthInches(e.target.value)} className="mt-input" />
                 </div>
                 <div className="space-y-2">
                   <label className="block text-sm font-semibold text-slate-800">Weight (pounds)</label>
-                  <input type="number" step="0.1" value={weightPounds} onChange={(e) => setWeightPounds(e.target.value)} className="mt-input" />
+                  <input type="number" step="0.1" min="0.1" value={weightPounds} onChange={(e) => setWeightPounds(e.target.value)} className="mt-input" />
                 </div>
               </div>
             </div>
@@ -123,7 +122,7 @@ export default function GrowthPercentileCalculatorClient() {
                 </div>
 
                 <div className="rounded-3xl border border-sky-100 bg-sky-50 p-5 text-sm leading-7 text-slate-700">
-                  A growth chart is not a stand-alone diagnosis. The useful question is how measurements track over time alongside feeding, development, health history, and your pediatrician&apos;s assessment.
+                  A growth chart is not a stand-alone diagnosis. What matters most is how measurements track over time alongside feeding, development, health history, and your pediatrician&apos;s assessment.
                 </div>
 
                 <a

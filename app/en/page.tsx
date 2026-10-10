@@ -3,9 +3,9 @@ import Link from "next/link";
 import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
 
 export const metadata: Metadata = {
-  title: "U.S. parenting tools, checklists, and practical baby guides | MomTools English",
+  title: "U.S. parenting tools, checklists, and practical baby guides | MomTools",
   description:
-    "MomTools English helps U.S. parents with due date planning, baby age tracking, vaccine timing, starting solids, checklists, and everyday baby and toddler questions.",
+    "MomTools helps U.S. parents with due date planning, baby age tracking, vaccine timing, starting solids, checklists, and everyday baby and toddler questions.",
   keywords: [
     "due date calculator",
     "baby age calculator",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "U.S. parenting tools and practical baby guides | MomTools English",
+    title: "U.S. parenting tools and practical baby guides | MomTools",
     description:
       "Due date planning, baby age, vaccine timing, starting solids, newborn care, and everyday U.S. parenting guidance.",
     url: "https://momtools.kr/en",
@@ -62,7 +62,7 @@ const quickActions = [
   },
   {
     title: "Parent Q&A",
-    description: "Open fuller answers to the real questions parents search, from newborn sleep and spit-up to tantrums and daycare transitions.",
+    description: "Find practical answers to common questions, from newborn sleep and spit-up to tantrums and daycare transitions.",
     href: "/en/qna",
   },
 ];
@@ -93,21 +93,21 @@ const featuredGuides = [
     tag: "Toddler",
   },
   {
-    title: "Checklists hub",
+    title: "Checklists",
     description: "Keep birth prep, newborn setup, starting solids, and daycare planning organized without a giant shopping list.",
     href: "/en/checklists",
     tag: "Checklist",
   },
   {
-    title: "FAQ and site policies",
-    description: "Review how to use the site, what its limits are, and where to send a correction or content suggestion.",
+    title: "FAQ",
+    description: "See how to use the tools safely, where their limits are, and how to report a problem or correction.",
     href: "/en/faq",
-    tag: "Trust",
+    tag: "Help",
   },
 ];
 
 const searchIntent = [
-  "How is due date calculated from the first day of the last menstrual period?",
+  "How is a due date calculated from the first day of the last menstrual period?",
   "What is my baby's age in months and weeks today?",
   "How do I check the current U.S. vaccine schedule for my child?",
   "When should I start solids and what are the readiness signs?",
@@ -117,19 +117,19 @@ const searchIntent = [
 
 const trustPoints = [
   {
-    title: "Tools that don't stop at a number",
+    title: "Tools that lead to the next useful step",
     description:
-      "Every calculator links straight to a practical guide, Q&A topic, or checklist for the question that usually comes next, so you aren't left starting a new search every time.",
+      "Each tool connects to a guide, Q&A topic, or checklist so you can keep going without starting a new search every time.",
   },
   {
-    title: "Written for everyday U.S. parents",
+    title: "Built around everyday U.S. parenting questions",
     description:
-      "The pages cover the things you'd actually type into Google as a parent here: due date timing, vaccines by age, starting solids, newborn sleep, toddler behavior, and daycare prep.",
+      "Find help with due dates, vaccine timing, starting solids, newborn sleep, toddler behavior, daycare prep, and other questions that come up at home.",
   },
   {
-    title: "Honest about what this site can do",
+    title: "Clear about medical limits",
     description:
-      "Use MomTools as a planning and learning reference. It won't diagnose a symptom or replace your pediatrician, OB office, or urgent medical advice — and it won't pretend to.",
+      "Use MomTools for planning and learning. It does not diagnose symptoms or replace your pediatrician, OB office, or urgent medical care.",
   },
 ];
 
@@ -140,14 +140,11 @@ export default function EnglishHomePage() {
         <section className="mt-card overflow-hidden p-8 md:p-10 lg:p-12">
           <div className="grid gap-8 lg:grid-cols-[1.12fr_0.88fr] lg:items-center">
             <div>
-              <span className="mt-badge">MomTools English · U.S. parenting help</span>
-              <h1 className="mt-title-xl mt-5">
-                Parenting tools and guides that help you get to the next step faster
-              </h1>
+              <span className="mt-badge">MomTools · U.S. parenting tools</span>
+              <h1 className="mt-title-xl mt-5">Parenting tools and guides that help you get to the next step faster</h1>
               <p className="mt-text-main mt-5 max-w-3xl">
-                If you&apos;re tired of opening ten tabs every time a parenting question comes up, you&apos;re in the
-                right place. Start with a calculator, jump into a short guide, and grab a checklist or Q&amp;A
-                for whatever comes next. Less searching, more answers in one place.
+                Start with the question you have now. Use a calculator when timing matters, open a short guide for context,
+                or grab a checklist when you need to get organized. The goal is simple: less searching and a clearer next step.
               </p>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link href="/en/cal/due-date" className="mt-button-primary">Start with a popular tool</Link>
@@ -186,19 +183,16 @@ export default function EnglishHomePage() {
           <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
             <div className="max-w-3xl">
               <span className="mt-badge">Common starting points</span>
-              <h2 className="mt-title-lg mt-4">Popular questions parents start with</h2>
+              <h2 className="mt-title-lg mt-4">Start with the question that sounds most like yours</h2>
               <p className="mt-text-sub mt-3">
-                If one of these sounds like the question you came in with, jump straight to the page that
-                walks through it. You don&apos;t have to dig through unrelated articles to find the answer.
+                Jump straight to the topic you need, then follow the related guide or tool if you want more context.
               </p>
             </div>
             <Link href="/en/info" className="mt-button-secondary">Open all guides</Link>
           </div>
           <div className="mt-6 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
             {searchIntent.map((item) => (
-              <div key={item} className="rounded-2xl border border-slate-100 bg-white px-5 py-4 text-sm leading-7 text-slate-600">
-                {item}
-              </div>
+              <div key={item} className="rounded-2xl border border-slate-100 bg-white px-5 py-4 text-sm leading-7 text-slate-600">{item}</div>
             ))}
           </div>
         </section>
@@ -216,7 +210,7 @@ export default function EnglishHomePage() {
           <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <div className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Featured guides</div>
-              <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-800">Take a deeper look at the topics parents come back to</h2>
+              <h2 className="mt-3 text-2xl font-bold tracking-tight text-slate-800">Go deeper when you need more than a quick answer</h2>
             </div>
             <Link href="/en/about" className="mt-button-secondary">About MomTools</Link>
           </div>

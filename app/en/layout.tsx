@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: { default: "MomTools English", template: "%s | MomTools" },
+  title: { default: "MomTools", template: "%s | MomTools" },
   description:
     "Practical U.S. parenting tools, checklists, and baby guides for pregnancy, newborn care, feeding, growth, and everyday family questions.",
   robots: { index: true, follow: true },

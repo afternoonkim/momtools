@@ -2,16 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Privacy | how MomTools English handles basic technical information",
+  title: "Privacy | how MomTools handles basic technical information",
   description:
-    "Read how MomTools English may handle limited technical information, cookies, and contact details to keep the site working and improve parent-facing pages.",
+    "Read how MomTools may handle limited technical information, cookies, and contact details to keep the site working and improve parent-facing pages.",
   alternates: { canonical: "https://momtools.kr/en/privacy" },
 };
 
 const sections = [
   {
     title: "What this page covers",
-    body: "MomTools English can be used without creating an account. If a child profile feature is used, only a child's display nickname, birth date, optional gender, and—when entered for corrected-age guidance—an expected due date are used to show age-based guidance. This page explains what limited information may be processed when someone visits a page, uses a tool, or sends a message through the contact channel.",
+    body: "MomTools can be used without creating an account. If a child profile feature is used, only a child's display nickname, birth date, optional gender, and—when entered for corrected-age guidance—an expected due date are used to show age-based guidance. This page explains what limited information may be processed when someone visits a page, uses a tool, or sends a message through the contact channel.",
   },
   {
     title: "Information that may be handled",
@@ -27,11 +27,11 @@ const sections = [
   },
   {
     title: "Advertising and affiliate links",
-    body: "MomTools English may show Kakao AdFit ads and Coupang Partners affiliate links. These ads and links help support the site and may send you to an external advertising or shopping service. Once you leave MomTools, the external service's own privacy policy, pricing, delivery, return, and purchase terms apply. If a purchase is made through a Coupang Partners link, MomTools may receive a commission.",
+    body: "MomTools may show Kakao AdFit ads and Coupang Partners affiliate links. These ads and links help support the site and may send you to an external advertising or shopping service. Once you leave MomTools, the external service's own privacy policy, pricing, delivery, return, and purchase terms apply. If a purchase is made through a Coupang Partners link, MomTools may receive a commission.",
   },
   {
     title: "Third-party services and links",
-    body: "Some pages may link to outside services such as videos, public resources, shopping pages, or embedded content. Once you leave MomTools English, the other service's own privacy policy and terms control what happens there.",
+    body: "Some pages may link to outside services such as videos, public resources, shopping pages, or embedded content. Once you leave MomTools, the other service's own privacy policy and terms control what happens there.",
   },
   {
     title: "Sensitive information",
@@ -39,7 +39,7 @@ const sections = [
   },
   {
     title: "Policy updates",
-    body: "This page may be revised as the site changes, expands, or improves how it handles technical operations and contact requests. The latest version on the site should be treated as the current reference.",
+    body: "This page may be revised as the site changes or as privacy practices need to be clarified. The latest version shown here should be treated as the current reference.",
   },
 ];
 
@@ -49,11 +49,9 @@ export default function EnglishPrivacyPage() {
       <div className="mt-container-narrow space-y-8">
         <section className="mt-card p-8 md:p-10">
           <span className="mt-badge">Privacy</span>
-          <h1 className="mt-title-lg mt-4">How MomTools English handles basic technical and contact information</h1>
+          <h1 className="mt-title-lg mt-4">How MomTools handles basic technical and contact information</h1>
           <p className="mt-text-main mt-4">
-            MomTools English is built to be simple to use. Most visitors read pages and use tools without logging in or creating an account.
-            Even so, some limited technical information may still be processed to keep the site working, understand page performance,
-            and respond to messages sent through the contact channel.
+            Most visitors can read pages and use tools without logging in. Some limited technical information may still be processed to keep the site working, understand page performance, and respond to contact messages.
           </p>
         </section>
 

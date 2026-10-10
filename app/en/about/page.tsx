@@ -2,41 +2,40 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About MomTools English | practical U.S. parenting tools with clear limits",
+  title: "About MomTools | practical U.S. parenting tools with clear limits",
   description:
-    "Learn what MomTools English is built for, how the English pages are structured for U.S. parents, and why the site focuses on planning support instead of false medical certainty.",
+    "See how MomTools helps parents move from a quick question to a useful next step with practical tools, checklists, and plain-language guides.",
   alternates: { canonical: "https://momtools.kr/en/about" },
 };
 
 const pillars = [
   {
-    title: "Plain-language help first",
+    title: "Start with the question you have",
     description:
-      "The site is written for tired parents, not for people who want to decode technical wording. Pages aim to answer the first useful question clearly, then link to the next step.",
+      "Use a calculator when timing matters, a guide when you need context, or a checklist when you need to get organized.",
   },
   {
-    title: "U.S.-focused structure",
+    title: "Use U.S. guidance when it matters",
     description:
-      "The English version is built around the types of questions English-speaking parents search in the United States, including due dates, newborn routines, vaccine timing, solids, and daycare transitions.",
+      "Vaccine timing, growth charts, pregnancy care, and other health topics point you toward current U.S. references and your own clinician when individual advice is needed.",
   },
   {
-    title: "Reference, not diagnosis",
+    title: "Know when online information is not enough",
     description:
-      "MomTools English is meant for planning and understanding. It is not a substitute for a pediatrician, OB office, emergency evaluation, or individualized medical advice.",
+      "MomTools can help with planning and understanding, but it cannot diagnose symptoms, make medication decisions, or replace urgent medical care.",
   },
 ];
 
-const principles = [
-  "Major tools are connected to related guides, Q&A pages, and checklists so parents can keep moving without starting over.",
-  "Pages try to explain what is common, what is worth watching, and when online reading should stop and a clinician should come first.",
-  "Site policies, contact information, and usage limits are visible because trust matters as much as convenience.",
-  "Pages favor clear structure and useful next steps over filler — so you spend less time reading and more time deciding.",
+const simpleFlow = [
+  "Start with the tool, guide, or parent question that matches what you need right now.",
+  "Use the related links to check age, timing, preparation, or a broader stage guide without starting a new search.",
+  "For medical decisions, current schedules, or anything specific to your child’s history, confirm with an official source or clinician.",
 ];
 
 const bestFor = [
-  "Parents who want a faster starting point before digging into official guidance.",
-  "Families trying to organize timelines, checklists, and common routine questions.",
-  "Users who prefer a simpler explanation before comparing it with their pediatrician or OB guidance.",
+  "Checking timing such as due dates, baby age, vaccine windows, or starting solids.",
+  "Getting organized for birth, newborn care, feeding, or daycare transitions.",
+  "Understanding a common parenting question before deciding what to watch or ask next.",
 ];
 
 const notFor = [
@@ -51,17 +50,12 @@ export default function EnglishAboutPage() {
       <div className="mt-container-narrow space-y-8">
         <section className="mt-card p-8 md:p-10">
           <span className="mt-badge">About MomTools</span>
-          <h1 className="mt-title-lg mt-4">MomTools English is built to make the next parenting step clearer</h1>
+          <h1 className="mt-title-lg mt-4">A clearer path from a parenting question to the next useful step</h1>
           <p className="mt-text-main mt-4">
-            MomTools English organizes common parenting questions into one clearer path. Instead of leaving you
-            with a single calculator or a short answer, the site connects the result, the plain-language
-            explanation, and the next practical page. The goal is simple: help you decide what to check,
-            what to prepare, and what to ask next — without ten browser tabs.
+            MomTools brings practical calculators, checklists, Q&amp;A, and stage-based guides together so you can find what you need without opening a long chain of unrelated pages.
           </p>
           <p className="mt-text-sub mt-4">
-            The English version is especially focused on U.S. parent searches and everyday family use. At the same time,
-            the site stays clear about its limits. It is a reference for planning and education, not a medical service,
-            urgent care channel, or replacement for professional judgment.
+            The focus is everyday parenting in the U.S. — due dates, newborn routines, vaccine timing, starting solids, growth charts, toddler behavior, and daycare prep — with clear limits around medical advice.
           </p>
         </section>
 
@@ -75,37 +69,32 @@ export default function EnglishAboutPage() {
         </section>
 
         <section className="mt-card p-8 md:p-10">
-          <h2 className="text-2xl font-bold tracking-tight text-slate-800">What you can find on the site</h2>
+          <h2 className="text-2xl font-bold tracking-tight text-slate-800">What you can find here</h2>
           <div className="mt-6 space-y-4 text-sm leading-8 text-slate-600 md:text-base">
             <p>
-              <strong className="text-slate-800">Calculators</strong> help with timing questions such as due date,
-              exact baby age, vaccine schedule reference, starting solids, and growth percentile checks.
+              <strong className="text-slate-800">Tools</strong> help with timing questions such as due date, exact baby age, vaccine schedule reference, starting solids, and choosing the right growth chart.
             </p>
             <p>
-              <strong className="text-slate-800">Guide pages</strong> turn those results into fuller explanations so
-              parents can understand the situation before comparing it with official or clinical guidance.
+              <strong className="text-slate-800">Guides</strong> add context around pregnancy, newborn care, feeding, toddler routines, and other stage-based questions.
             </p>
             <p>
-              <strong className="text-slate-800">Q&amp;A and checklists</strong> cover the practical follow-up questions
-              that usually appear right after the first search, such as newborn routines, feeding concerns, or daycare prep.
+              <strong className="text-slate-800">Q&amp;A and checklists</strong> help with the practical follow-up questions that come next, from sleep and feeding concerns to daycare preparation.
             </p>
           </div>
         </section>
 
         <section className="mt-card-soft p-8 md:p-10">
-          <h2 className="text-xl font-bold text-slate-800">Editorial principles</h2>
+          <h2 className="text-xl font-bold text-slate-800">A simple way to use MomTools</h2>
           <div className="mt-5 space-y-3 text-sm leading-8 text-slate-600 md:text-base">
-            {principles.map((item) => (
-              <div key={item} className="rounded-2xl border border-slate-100 bg-white px-5 py-4">
-                {item}
-              </div>
+            {simpleFlow.map((item) => (
+              <div key={item} className="rounded-2xl border border-slate-100 bg-white px-5 py-4">{item}</div>
             ))}
           </div>
         </section>
 
         <section className="grid gap-4 md:grid-cols-2">
           <article className="mt-card p-8">
-            <h2 className="text-2xl font-bold tracking-tight text-slate-800">Best use of MomTools English</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-slate-800">MomTools is useful when you want to...</h2>
             <div className="mt-5 space-y-3 text-sm leading-8 text-slate-600 md:text-base">
               {bestFor.map((item) => (
                 <div key={item} className="rounded-2xl bg-slate-50 px-5 py-4">{item}</div>
@@ -113,7 +102,7 @@ export default function EnglishAboutPage() {
             </div>
           </article>
           <article className="mt-card p-8">
-            <h2 className="text-2xl font-bold tracking-tight text-slate-800">When MomTools is not enough</h2>
+            <h2 className="text-2xl font-bold tracking-tight text-slate-800">When to go beyond MomTools</h2>
             <div className="mt-5 space-y-3 text-sm leading-8 text-slate-600 md:text-base">
               {notFor.map((item) => (
                 <div key={item} className="rounded-2xl bg-slate-50 px-5 py-4">{item}</div>
@@ -123,50 +112,27 @@ export default function EnglishAboutPage() {
         </section>
 
         <section className="mt-card p-8 md:p-10">
-          <h2 className="text-2xl font-bold tracking-tight text-slate-800">How MomTools stays useful for parents</h2>
+          <h2 className="text-2xl font-bold tracking-tight text-slate-800">Found something unclear or outdated?</h2>
           <p className="mt-4 text-sm leading-8 text-slate-600 md:text-base">
-            MomTools brings practical calculators, checklists, and plain-language guides together so parents can
-            move from a quick answer to the next helpful step without digging through scattered pages. Corrections,
-            edits, and content suggestions can be sent through the contact page.
+            Send the page URL and a short note about what looks wrong or confusing. That is usually enough to understand the issue and make the page more useful.
           </p>
-          <div className="mt-5 grid gap-3 md:grid-cols-2">
-            <a
-              href="https://blog.naver.com/afterchan"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200"
-            >
-              <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">Naver Blog</div>
-              <div className="mt-2 font-semibold text-slate-800">blog.naver.com/afterchan</div>
-              <p className="mt-2 text-sm leading-7 text-slate-500">Parenting notes, everyday family tips, and related updates.</p>
-            </a>
-            <a
-              href="https://github.com/afternoonkim"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200"
-            >
-              <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-700">GitHub</div>
-              <div className="mt-2 font-semibold text-slate-800">github.com/afternoonkim</div>
-              <p className="mt-2 text-sm leading-7 text-slate-500">Public profile for related open projects and resources.</p>
-            </a>
-          </div>
+          <Link href="/en/contact" className="mt-button-primary mt-5 inline-flex">Contact MomTools</Link>
         </section>
 
         <section className="mt-card-soft p-8 md:p-10">
           <h2 className="text-xl font-bold text-slate-800">Useful next pages</h2>
           <div className="mt-5 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <Link href="/en/cal" className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200">
-              <div className="font-semibold text-slate-800">Tool hub</div>
-              <div className="mt-2 text-sm leading-7 text-slate-500">Browse the core calculators used most often by parents.</div>
+              <div className="font-semibold text-slate-800">Tools</div>
+              <div className="mt-2 text-sm leading-7 text-slate-500">Check timing, age, vaccine references, solids readiness, and growth-chart guidance.</div>
             </Link>
             <Link href="/en/info" className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200">
-              <div className="font-semibold text-slate-800">Guide hub</div>
+              <div className="font-semibold text-slate-800">Guides</div>
               <div className="mt-2 text-sm leading-7 text-slate-500">Move from one question into broader stage-by-stage guidance.</div>
             </Link>
             <Link href="/en/qna" className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200">
               <div className="font-semibold text-slate-800">Parent Q&amp;A</div>
-              <div className="mt-2 text-sm leading-7 text-slate-500">Read fuller answers to the questions parents type into Google.</div>
+              <div className="mt-2 text-sm leading-7 text-slate-500">Browse practical answers to common baby and toddler questions.</div>
             </Link>
             <Link href="/en/contact" className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200">
               <div className="font-semibold text-slate-800">Contact</div>

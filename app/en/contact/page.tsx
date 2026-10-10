@@ -2,32 +2,28 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Contact MomTools English | report an issue or suggest a better guide",
+  title: "Contact MomTools | report an issue or suggest a better guide",
   description:
-    "Contact MomTools English to report a broken page, request a correction, suggest a new guide, or ask for a clearer explanation on an existing page.",
+    "Contact MomTools to report a broken page, request a correction, suggest a new guide, or ask for a clearer explanation on an existing page.",
   alternates: { canonical: "https://momtools.kr/en/contact" },
 };
 
 const contactReasons = [
   {
     title: "Report a page problem",
-    description:
-      "Use this when a calculator does not respond, a layout breaks on mobile, or a link goes to the wrong place.",
+    description: "Use this when a tool does not respond, a layout breaks on mobile, or a link goes to the wrong place.",
   },
   {
     title: "Request a wording or content fix",
-    description:
-      "Send a note when a sentence feels unclear, a section seems incomplete, or a page should be corrected for parent use.",
+    description: "Send a note when a sentence feels unclear, a section seems incomplete, or a page needs a correction.",
   },
   {
     title: "Suggest a helpful new page",
-    description:
-      "Parents usually notice the missing topics first. Suggestions for a checklist, calculator, or guide are useful when they solve a real next-step problem.",
+    description: "Suggest a checklist, tool, or guide when you keep running into a parenting question that is hard to answer clearly.",
   },
   {
-    title: "Editorial or partnership inquiry",
-    description:
-      "For collaboration or editorial questions, include the purpose of the message and the page or topic it relates to.",
+    title: "Partnership or content inquiry",
+    description: "For collaboration or content questions, include the purpose of the message and the page or topic it relates to.",
   },
 ];
 
@@ -39,9 +35,9 @@ const includeItems = [
 ];
 
 const boundaries = [
-  "MomTools English is not a medical contact channel. Urgent health concerns should go to your pediatrician, OB office, nurse line, or emergency care first.",
+  "MomTools is not a medical contact channel. Urgent health concerns should go to your pediatrician, OB office, nurse line, or emergency care first.",
   "Please do not send private medical records, full birth dates, photos of a child, or other sensitive personal information by email.",
-  "Clear bug reports, correction requests, and practical content suggestions are usually the fastest messages to review.",
+  "A short description plus the page URL is usually enough to understand a site problem or correction request.",
 ];
 
 export default function EnglishContactPage() {
@@ -50,16 +46,15 @@ export default function EnglishContactPage() {
       <div className="mt-container-narrow space-y-8">
         <section className="mt-card p-8 md:p-10">
           <span className="mt-badge">Contact</span>
-          <h1 className="mt-title-lg mt-4">Contact MomTools English</h1>
+          <h1 className="mt-title-lg mt-4">Contact MomTools</h1>
           <p className="mt-text-main mt-4">
-            This page is for practical site feedback. You can use it to report a broken page, request a correction,
-            suggest a missing guide, or share an idea that would make the English version more useful for parents.
+            Report a broken page, request a correction, suggest a missing guide, or share an idea that would make MomTools more useful for parents.
           </p>
 
           <div className="mt-6 rounded-2xl border border-amber-100 bg-amber-50 p-5">
             <div className="text-sm font-semibold text-slate-800">Email: afternoonkim93@gmail.com</div>
             <p className="mt-2 text-sm leading-7 text-slate-600">
-              Including the page URL and a short description of the issue usually makes it much easier to review and fix.
+              Include the page URL and a short description of what happened or what looks unclear.
             </p>
           </div>
         </section>
@@ -68,15 +63,13 @@ export default function EnglishContactPage() {
           <h2 className="text-xl font-bold text-slate-800">Before you send a message</h2>
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             {boundaries.map((item) => (
-              <div key={item} className="rounded-2xl border border-slate-100 bg-white p-5 text-sm leading-7 text-slate-600">
-                {item}
-              </div>
+              <div key={item} className="rounded-2xl border border-slate-100 bg-white p-5 text-sm leading-7 text-slate-600">{item}</div>
             ))}
           </div>
         </section>
 
         <section className="mt-card p-8 md:p-10">
-          <h2 className="text-2xl font-bold tracking-tight text-slate-800">Good reasons to contact the site</h2>
+          <h2 className="text-2xl font-bold tracking-tight text-slate-800">What you can contact us about</h2>
           <div className="mt-6 grid gap-5 md:grid-cols-2">
             {contactReasons.map((item) => (
               <article key={item.title} className="rounded-2xl border border-amber-100 bg-white p-5">

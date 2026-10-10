@@ -4,14 +4,14 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Terms | informational use and planning support only",
   description:
-    "Review the general terms for using MomTools English, including informational use, site limitations, outside links, and page updates.",
+    "Review the general terms for using MomTools, including informational use, site limitations, outside links, and page updates.",
   alternates: { canonical: "https://momtools.kr/en/terms" },
 };
 
 const sections = [
   {
     title: "Informational use",
-    body: "MomTools English is designed to help parents organize common timelines, compare routines, and understand everyday questions more clearly. The site should be used as a reference, not as a substitute for diagnosis, treatment, or professional judgment.",
+    body: "MomTools is designed to help parents organize common timelines, compare routines, and understand everyday questions more clearly. The site should be used as a reference, not as a substitute for diagnosis, treatment, or professional judgment.",
   },
   {
     title: "Medical limits",
@@ -19,15 +19,15 @@ const sections = [
   },
   {
     title: "Tool and checklist limitations",
-    body: "Calculators, guides, Q&A pages, and checklists simplify real-life situations. Personal history, prematurity, chronic conditions, specialist guidance, daycare rules, clinic processes, and local practices can all change what is appropriate for a family.",
+    body: "Tools, guides, Q&A pages, and checklists simplify real-life situations. Personal history, prematurity, chronic conditions, specialist guidance, daycare rules, clinic processes, and local practices can all change what is appropriate for a family.",
   },
   {
     title: "Outside links and services",
-    body: "Some pages may connect to outside resources for convenience. Once you leave the site, product details, service quality, availability, privacy practices, and outside content are controlled by that provider, not by MomTools English.",
+    body: "Some pages may connect to outside resources for convenience. Once you leave the site, product details, service quality, availability, privacy practices, and outside content are controlled by that provider, not by MomTools.",
   },
   {
     title: "Content updates",
-    body: "Pages may be revised as the site grows, explanations improve, and new sections are added. Content may change when a page is corrected, expanded, reorganized, or updated for better clarity.",
+    body: "Pages may be corrected or updated when guidance changes, a clearer explanation is needed, or a link no longer works. The version shown on the site should be treated as the current one.",
   },
   {
     title: "User responsibility",
@@ -43,9 +43,7 @@ export default function EnglishTermsPage() {
           <span className="mt-badge">Terms</span>
           <h1 className="mt-title-lg mt-4">General parent information and planning support only</h1>
           <p className="mt-text-main mt-4">
-            MomTools English is meant to make everyday parenting information easier to use. The site can help with planning,
-            observation, and next-step organization, but the final medical, legal, and purchasing decisions stay with the parent
-            or the appropriate professional.
+            MomTools can help with planning, observation, and next-step organization, but medical, legal, insurance, and purchasing decisions still depend on your own situation and the appropriate professional guidance.
           </p>
         </section>
 

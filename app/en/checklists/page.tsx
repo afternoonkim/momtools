@@ -4,7 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Parenting checklists | birth, newborn, solids, and daycare prep",
   description:
-    "Use practical parenting checklists for birth prep, newborn setup, starting solids, and daycare preparation. Built for parents in the United States.",
+    "Use practical parenting checklists for birth prep, newborn setup, starting solids, and daycare preparation for families in the United States.",
   alternates: { canonical: "https://momtools.kr/en/checklists" },
 };
 
@@ -31,10 +31,10 @@ const cards = [
   },
 ];
 
-const checklistPrinciples = [
-  "These checklists focus on the items and steps parents usually need first, not on building the biggest possible shopping cart.",
-  "Each page is designed to reduce last-minute stress by grouping together the tasks that are easiest to forget.",
-  "Use the lists as planning tools, then adjust for your own pediatrician, daycare, birth setting, or family routine.",
+const checklistTips = [
+  "Start with the basics you will need first instead of trying to buy or prepare everything at once.",
+  "Use the list to catch easy-to-forget tasks, then remove anything that does not fit your hospital, daycare, home, or routine.",
+  "For safety or medical questions, follow your pediatrician, hospital, daycare policy, and current official guidance.",
 ];
 
 export default function EnChecklistsPage() {
@@ -43,10 +43,9 @@ export default function EnChecklistsPage() {
       <div className="mt-container space-y-8">
         <section className="mt-card p-8 md:p-10">
           <span className="mt-badge">Parenting checklists</span>
-          <h1 className="mt-title-xl mt-5">The checklists parents actually reuse</h1>
+          <h1 className="mt-title-xl mt-5">Keep the next transition organized without overbuying</h1>
           <p className="mt-text-main mt-4 max-w-4xl">
-            This section keeps preparation practical. Instead of huge gear lists, the English pages focus on the steps,
-            documents, and everyday items that usually make the biggest difference in real life.
+            Choose the checklist that matches what you are preparing for now. Focus on the essentials first, then adjust the list for your family, care setting, and routine.
           </p>
         </section>
 
@@ -61,9 +60,9 @@ export default function EnChecklistsPage() {
         </section>
 
         <section className="mt-card-soft p-6 md:p-8">
-          <h2 className="text-xl font-bold text-slate-800">How to use these lists well</h2>
+          <h2 className="text-xl font-bold text-slate-800">Use the lists your way</h2>
           <div className="mt-5 space-y-3 text-sm leading-8 text-slate-600 md:text-base">
-            {checklistPrinciples.map((item) => (
+            {checklistTips.map((item) => (
               <div key={item} className="rounded-2xl border border-slate-100 bg-white px-5 py-4">{item}</div>
             ))}
           </div>
