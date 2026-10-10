@@ -12,10 +12,9 @@ const pageDates = getPageDates("/tools/vaccine-schedule");
 export const metadata: Metadata = {
   title: "예방접종 일정 계산기 | 월령 기준 접종 흐름 참고 | MomTools",
   description:
-    "아기 월령을 기준으로 예방접종 흐름을 참고용으로 확인하고, 병원 예약 전에 함께 체크하면 좋은 포인트까지 정리한 MomTools 계산기입니다.",
+    "아기 월령을 기준으로 예방접종 흐름을 참고하고, 2026-2027절기 어린이 인플루엔자 국가예방접종 일정과 병원 예약 전 확인할 포인트를 함께 정리한 MomTools 계산기입니다.",
   alternates: { canonical: buildCanonical("/tools/vaccine-schedule") },
 };
-
 
 const nextStepItems = [
   { href: "/qna/health/after-vaccine-fever", label: "접종 후 열 Q&A", description: "접종 뒤 열이 날 때 먼저 볼 신호를 확인해요.", tag: "발열" },
@@ -37,7 +36,8 @@ const cautionItems = [
 
 const faqItems = [
   { question: "접종 일정이 조금 늦어지면 어떻게 보나요?", answer: "개별 상황에 따라 보완 접종이나 일정 조정이 가능할 수 있으므로 병원에 문의하는 편이 안전합니다." },
-  { question: "여러 접종을 같은 날 할 수 있나요?", answer: "세부 시행 여부는 의료기관 판단이 중요합니다. 계산기는 큰 흐름을 이해하는 용도로 활용해 주세요." }
+  { question: "여러 접종을 같은 날 할 수 있나요?", answer: "세부 시행 여부는 의료기관 판단이 중요합니다. 계산기는 큰 흐름을 이해하는 용도로 활용해 주세요." },
+  { question: "2026-2027절기 어린이 독감 무료접종은 언제부터인가요?", answer: "질병관리청의 2026년 9월 16일 조정 안내 기준으로 생후 6개월~14세 어린이는 1회·2회 접종 대상 모두 2026년 9월 21일부터 접종을 시작하며, 사업 기간은 2027년 4월 30일까지입니다. 방문 전 위탁의료기관의 접종 가능 여부를 확인해 주세요." }
 ] as const;
 
 const relatedItems = [
@@ -58,6 +58,37 @@ export default function Page() {
 
         <VaccineScheduleCalculatorClient />
 
+        <section className="mt-card-soft p-4 md:p-6">
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">2026-2027절기 최신 안내</div>
+          <h2 className="mt-title-md mt-3">어린이 인플루엔자 무료접종 일정이 앞당겨졌어요</h2>
+          <p className="mt-text-main mt-3">
+            질병관리청은 이른 인플루엔자 유행에 대응해 2026년 9월 16일 접종 시작일을 조정했습니다. 현재 기준으로 생후 6개월~14세 어린이는 1회·2회 접종 대상 모두 2026년 9월 21일부터 접종할 수 있습니다.
+          </p>
+          <div className="mt-4 grid gap-3 md:grid-cols-2">
+            <div className="rounded-2xl bg-white px-4 py-4 text-sm leading-7 text-slate-700 shadow-sm">
+              <div className="font-bold text-slate-800">무료접종 대상</div>
+              <div className="mt-1">생후 6개월~14세 어린이</div>
+              <div className="text-slate-500">2012.1.1.~2026.8.31. 출생아</div>
+            </div>
+            <div className="rounded-2xl bg-white px-4 py-4 text-sm leading-7 text-slate-700 shadow-sm">
+              <div className="font-bold text-slate-800">현재 사업 기간</div>
+              <div className="mt-1">2026.9.21.~2027.4.30.</div>
+              <div className="text-slate-500">전국 위탁의료기관·보건소에서 시행</div>
+            </div>
+          </div>
+          <p className="mt-4 text-sm leading-7 text-slate-600">
+            과거 접종력이 없거나 기존에 1회만 접종한 생후 6개월 이상 9세 미만 어린이는 2회 접종 대상이 될 수 있습니다. 실제 횟수와 간격은 예방접종 기록과 의료기관 안내를 기준으로 확인해 주세요.
+          </p>
+          <a
+            href="https://nip.kdca.go.kr/irhp/infm/goVcntInfo.do?menuCd=134&menuLv=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex font-semibold text-amber-700 hover:text-amber-800"
+          >
+            질병관리청 예방접종도우미에서 최신 일정 확인하기
+          </a>
+        </section>
+
         <AdFitAd {...ADFIT_UNITS.mobileResult} />
 
         <NextStepLinks
@@ -70,7 +101,7 @@ export default function Page() {
         <ContentUpdateNote
           publishedOn={pageDates.published}
           updatedOn={pageDates.updated}
-          note="예방접종 일정 페이지는 참고용 계산 결과와 함께, 병원 예약 전에 무엇을 함께 확인하면 좋은지 부모 관점의 설명을 보완했습니다."
+          note="질병관리청의 2026년 9월 16일 조정 안내를 반영해 2026-2027절기 어린이 인플루엔자 국가예방접종 대상과 최신 시작일을 다시 확인했습니다."
         />
 
         <section className="mt-card p-4 md:p-6">

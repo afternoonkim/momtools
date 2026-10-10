@@ -46,6 +46,9 @@ export default async function PolicyCategoryPage({ params }: { params: Promise<P
   const typed = category as GovernmentPolicyCategory;
   const info = governmentPolicyCategories[typed];
   const entries = getGovernmentPolicies(typed);
+  const isChildcareBenefit = typed === "childcare-benefit";
+  const categoryVerifiedAt = isChildcareBenefit ? "2026-10-10" : POLICY_VERIFIED_AT;
+  const categoryVerifiedLabel = isChildcareBenefit ? "2026.10.10 공식자료 확인" : POLICY_VERIFIED_LABEL;
   const featured = entries
     .filter((policy) => (policy.amountCards?.length ?? 0) > 0 || (policy.dataRows?.length ?? 0) > 0)
     .slice(0, 4);
@@ -85,7 +88,7 @@ export default async function PolicyCategoryPage({ params }: { params: Promise<P
     description: info.description,
     inLanguage: "ko-KR",
     url: buildCanonical(`/policy/${typed}`),
-    dateModified: POLICY_VERIFIED_AT,
+    dateModified: categoryVerifiedAt,
   };
 
   return (
@@ -102,7 +105,7 @@ export default async function PolicyCategoryPage({ params }: { params: Promise<P
         </nav>
 
         <section className="mt-card p-8 md:p-10">
-          <span className="mt-badge">{info.label} · {POLICY_VERIFIED_LABEL}</span>
+          <span className="mt-badge">{info.label} · {categoryVerifiedLabel}</span>
           <h1 className="mt-title-xl mt-5">{info.label}을 필요한 상황별로 확인해 보세요</h1>
           <p className="mt-text-main mt-4 max-w-4xl">{info.heroLead}</p>
           <div className="mt-5 inline-flex rounded-full bg-amber-50 px-4 py-2 text-sm font-semibold text-amber-800">
@@ -112,9 +115,50 @@ export default async function PolicyCategoryPage({ params }: { params: Promise<P
 
         <ContentUpdateNote
           publishedOn={SITE_DATES.published}
-          updatedOn={POLICY_VERIFIED_AT}
-          note="정책 기준은 공식자료 확인일 기준으로 정리했습니다. 실제 신청 전에는 복지로, 정부24, 고용24, 주민센터, 보건소 등 공식 창구에서 최종 조건을 확인해 주세요."
+          updatedOn={categoryVerifiedAt}
+          note={isChildcareBenefit
+            ? "2026년 아동수당 확대 기준을 보건복지부 공식자료로 다시 확인했습니다. 다른 정책은 각 상세페이지의 공식자료 확인일과 최신 안내를 함께 확인해 주세요."
+            : "정책 기준은 공식자료 확인일 기준으로 정리했습니다. 실제 신청 전에는 복지로, 정부24, 고용24, 주민센터, 보건소 등 공식 창구에서 최종 조건을 확인해 주세요."}
         />
+
+        {isChildcareBenefit ? (
+          <section className="mt-card-soft p-6 md:p-8">
+            <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">2026 아동수당 최신 확인</div>
+            <h2 className="mt-title-md mt-3">만 9세 미만으로 확대됐고, 거주 지역에 따라 월 지급액이 달라집니다</h2>
+            <p className="mt-text-main mt-3">
+              보건복지부 최신 안내 기준으로 2026년 아동수당은 만 9세 미만 모든 아동이 대상입니다. 기본 지급액은 수도권 월 10만원이며, 비수도권과 인구감소지역은 추가 지원이 반영됩니다.
+            </p>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+              <div className="rounded-2xl bg-white p-4 shadow-sm">
+                <div className="text-sm font-bold text-slate-800">수도권</div>
+                <div className="mt-2 text-xl font-extrabold text-slate-900">월 10만원</div>
+              </div>
+              <div className="rounded-2xl bg-white p-4 shadow-sm">
+                <div className="text-sm font-bold text-slate-800">비수도권</div>
+                <div className="mt-2 text-xl font-extrabold text-slate-900">월 10.5만원</div>
+              </div>
+              <div className="rounded-2xl bg-white p-4 shadow-sm">
+                <div className="text-sm font-bold text-slate-800">인구감소 우대지역</div>
+                <div className="mt-2 text-xl font-extrabold text-slate-900">월 11만원</div>
+              </div>
+              <div className="rounded-2xl bg-white p-4 shadow-sm">
+                <div className="text-sm font-bold text-slate-800">인구감소 특별지역</div>
+                <div className="mt-2 text-xl font-extrabold text-slate-900">월 12만원</div>
+              </div>
+            </div>
+            <p className="mt-4 text-sm leading-7 text-slate-600">
+              인구감소지역에서 지역사랑상품권으로 지급하는 경우 월 1만원 상당이 추가될 수 있어 최대 월 13만원까지 받을 수 있습니다. 실제 지급 방식과 지역 구분은 거주지 기준 안내를 최종 확인해 주세요.
+            </p>
+            <a
+              href="https://www.mohw.go.kr/menu.es?mid=a10711030100"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 inline-flex font-semibold text-amber-700 hover:text-amber-800"
+            >
+              보건복지부 아동수당 최신 기준 확인하기
+            </a>
+          </section>
+        ) : null}
 
         <section className="mt-card-soft p-6 md:p-8">
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">이 카테고리 활용법</div>
