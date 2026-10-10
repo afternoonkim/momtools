@@ -39,10 +39,12 @@ function addMonthsSafe(date: Date, months: number) {
   return new Date(targetYear, normalizedTargetMonth, Math.min(day, lastDay));
 }
 
+function dateOnlySerial(date: Date) {
+  return Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
+}
+
 function diffInDays(from: Date, to: Date) {
-  const start = new Date(from.getFullYear(), from.getMonth(), from.getDate()).getTime();
-  const end = new Date(to.getFullYear(), to.getMonth(), to.getDate()).getTime();
-  return Math.floor((end - start) / (1000 * 60 * 60 * 24));
+  return Math.floor((dateOnlySerial(to) - dateOnlySerial(from)) / 86_400_000);
 }
 
 function getMonthDiffWithDayAdjustment(from: Date, to: Date) {
@@ -89,7 +91,7 @@ export default function VaccineScheduleCalculatorClient() {
             <div className="space-y-5">
               <div className="space-y-2">
                 <label htmlFor="birthDate" className="block text-sm font-semibold text-slate-800">Birth date</label>
-                <UsDateInput id="birthDate" max={new Date().toISOString().split("T")[0]} value={birthDate} onChange={setBirthDate} />
+                <UsDateInput id="birthDate" label="Birth date" max={new Date().toISOString().split("T")[0]} value={birthDate} onChange={setBirthDate} />
               </div>
               <div className="rounded-2xl border border-amber-100 bg-amber-50 p-4 text-sm leading-7 text-slate-700">
                 <div className="font-semibold text-slate-900">Important</div>

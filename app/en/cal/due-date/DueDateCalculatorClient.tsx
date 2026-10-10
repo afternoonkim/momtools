@@ -21,10 +21,12 @@ function addDays(date: Date, days: number) {
   return next;
 }
 
+function dateOnlySerial(date: Date) {
+  return Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
+}
+
 function diffInDays(from: Date, to: Date) {
-  const start = new Date(from.getFullYear(), from.getMonth(), from.getDate()).getTime();
-  const end = new Date(to.getFullYear(), to.getMonth(), to.getDate()).getTime();
-  return Math.floor((end - start) / (1000 * 60 * 60 * 24));
+  return Math.floor((dateOnlySerial(to) - dateOnlySerial(from)) / 86_400_000);
 }
 
 function formatDate(date: Date | null) {
@@ -103,7 +105,7 @@ export default function DueDateCalculatorClient() {
             <div className="space-y-5">
               <div className="space-y-2">
                 <label htmlFor="lmp" className="block text-sm font-semibold text-slate-800">First day of your last menstrual period</label>
-                <UsDateInput id="lmp" max={new Date().toISOString().split("T")[0]} value={lmp} onChange={setLmp} />
+                <UsDateInput id="lmp" label="Last menstrual period" max={new Date().toISOString().split("T")[0]} value={lmp} onChange={setLmp} />
               </div>
               <div className="rounded-2xl border border-rose-100 bg-rose-50 p-4 text-sm leading-7 text-slate-700">
                 <div className="font-semibold text-slate-900">Good to know</div>

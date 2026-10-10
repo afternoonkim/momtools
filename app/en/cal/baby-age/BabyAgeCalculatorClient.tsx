@@ -9,13 +9,23 @@ function parseLocalDate(value: string) {
   const [year, month, day] = value.split("-").map(Number);
   if (!year || !month || !day) return null;
   const date = new Date(year, month - 1, day);
-  return Number.isNaN(date.getTime()) ? null : date;
+  if (
+    Number.isNaN(date.getTime()) ||
+    date.getFullYear() !== year ||
+    date.getMonth() !== month - 1 ||
+    date.getDate() !== day
+  ) {
+    return null;
+  }
+  return date;
+}
+
+function dateOnlySerial(date: Date) {
+  return Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
 }
 
 function diffInDays(from: Date, to: Date) {
-  const start = new Date(from.getFullYear(), from.getMonth(), from.getDate()).getTime();
-  const end = new Date(to.getFullYear(), to.getMonth(), to.getDate()).getTime();
-  return Math.floor((end - start) / (1000 * 60 * 60 * 24));
+  return Math.floor((dateOnlySerial(to) - dateOnlySerial(from)) / 86_400_000);
 }
 
 function getMonthDiffWithDayAdjustment(from: Date, to: Date) {
@@ -25,11 +35,11 @@ function getMonthDiffWithDayAdjustment(from: Date, to: Date) {
 }
 
 function addMonthsSafe(date: Date, months: number) {
-  const target = new Date(date.getFullYear(), date.getMonth() + months, date.getDate());
-  if (target.getDate() !== date.getDate()) {
-    return new Date(target.getFullYear(), target.getMonth() + 1, 0);
-  }
-  return target;
+  const targetMonthIndex = date.getMonth() + months;
+  const targetYear = date.getFullYear() + Math.floor(targetMonthIndex / 12);
+  const targetMonth = ((targetMonthIndex % 12) + 12) % 12;
+  const lastDay = new Date(targetYear, targetMonth + 1, 0).getDate();
+  return new Date(targetYear, targetMonth, Math.min(date.getDate(), lastDay));
 }
 
 function formatDate(date: Date | null) {
@@ -61,8 +71,7 @@ export default function BabyAgeCalculatorClient() {
     if (!birthDate) {
       return {
         status: "idle" as const,
-        message:
-          "Enter your baby’s birth date to see their exact age and the next milestone checkpoint.",
+        message: "Enter your baby’s birth date to see their exact age and the next milestone checkpoint.",
       };
     }
 
@@ -102,12 +111,10 @@ export default function BabyAgeCalculatorClient() {
             <div className="inline-flex items-center rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold text-sky-700">
               Baby milestones
             </div>
-            <h1 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">
-              Baby Age Calculator
-            </h1>
+            <h1 className="text-2xl font-bold tracking-tight text-slate-900 md:text-3xl">Baby Age Calculator</h1>
             <p className="text-sm leading-7 text-slate-600 md:text-base">
-              Find your baby’s exact age in months, weeks, and days. This is useful for milestone
-              visits, feeding stages, vaccine timing, and growth tracking.
+              Find your baby’s exact age in months, weeks, and days. This is useful for milestone visits,
+              feeding stages, vaccine timing, and growth tracking.
             </p>
           </div>
 
@@ -115,18 +122,12 @@ export default function BabyAgeCalculatorClient() {
             <div className="font-semibold text-slate-900">Common next tool</div>
             <p className="mt-2">
               Many parents use this together with the{" "}
-              <Link
-                href="/en/cal/vaccine-schedule"
-                className="font-semibold text-sky-700 underline underline-offset-4"
-              >
-                vaccine schedule
+              <Link href="/en/cal/vaccine-schedule" className="font-semibold text-sky-700 underline underline-offset-4">
+                vaccine schedule reference
               </Link>{" "}
               or the{" "}
-              <Link
-                href="/en/cal/weaning-start"
-                className="font-semibold text-sky-700 underline underline-offset-4"
-              >
-                solids readiness calculator
+              <Link href="/en/cal/weaning-start" className="font-semibold text-sky-700 underline underline-offset-4">
+                solids readiness check
               </Link>
               .
             </p>
@@ -141,21 +142,13 @@ export default function BabyAgeCalculatorClient() {
               <div>
                 <h2 className="text-lg font-bold text-slate-900">Enter birth date</h2>
                 <p className="mt-2 text-sm leading-6 text-slate-600">
-                  Use the exact birth date to get a quick age view for doctor visits, feeding,
-                  and developmental planning.
+                  Use the exact birth date to get a quick age view for doctor visits, feeding, and developmental planning.
                 </p>
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="birthDate" className="block text-sm font-semibold text-slate-800">
-                  Birth date
-                </label>
-                <UsDateInput
-                  id="birthDate"
-                  max={new Date().toISOString().split("T")[0]}
-                  value={birthDate}
-                  onChange={setBirthDate}
-                />
+                <label htmlFor="birthDate" className="block text-sm font-semibold text-slate-800">Birth date</label>
+                <UsDateInput id="birthDate" max={new Date().toISOString().split("T")[0]} value={birthDate} onChange={setBirthDate} label="Birth date" />
               </div>
 
               <div className="rounded-2xl border border-sky-100 bg-sky-50 p-4 text-sm leading-7 text-slate-700">
@@ -172,20 +165,14 @@ export default function BabyAgeCalculatorClient() {
 
         <div className="space-y-6">
           <section className="mt-card p-6 md:p-7">
-            {result.status === "idle" && (
-              <p className="text-sm leading-7 text-slate-600">{result.message}</p>
-            )}
+            {result.status === "idle" && <p className="text-sm leading-7 text-slate-600">{result.message}</p>}
             {result.status === "error" && (
-              <p className="rounded-2xl bg-rose-50 px-4 py-4 text-sm font-medium text-rose-700">
-                {result.message}
-              </p>
+              <p className="rounded-2xl bg-rose-50 px-4 py-4 text-sm font-medium text-rose-700">{result.message}</p>
             )}
             {result.status === "ready" && (
               <div className="space-y-6">
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">
-                    Current age
-                  </div>
+                  <div className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-600">Current age</div>
                   <h2 className="mt-2 text-2xl font-bold text-slate-900">{result.months} months</h2>
                   <p className="mt-2 text-sm leading-7 text-slate-600">
                     Born on <span className="font-semibold text-slate-900">{formatDate(result.birth)}</span>

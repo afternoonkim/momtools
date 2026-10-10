@@ -10,7 +10,7 @@ const canonical = buildCanonical("/en/cal/baby-age");
 const highlights = [
   "Parents often need age in months, weeks, and days for pediatric visits, forms, milestone check-ins, daycare paperwork, and routine planning.",
   "Exact age matters because feeding, sleep expectations, vaccination timing, and growth references can change quickly during the first year.",
-  "A simple age result becomes much more useful when it leads you to the next page you need, such as growth, vaccines, or a newborn guide.",
+  "An age result becomes more useful when it leads to the next thing you need, such as a growth chart, vaccine reference, or newborn guide.",
 ];
 
 const faq = [
@@ -24,7 +24,7 @@ const faq = [
   },
   {
     q: "What can I do after I calculate my baby’s age?",
-    a: "Most parents use it to connect the age result to a vaccine schedule, growth chart review, feeding changes, or a milestone check-in. The age itself is most helpful when it supports the next parenting decision.",
+    a: "Most parents use it to connect the age result to a vaccine schedule reference, growth chart review, feeding changes, or a milestone check-in. The age itself is most helpful when it supports the next parenting decision.",
   },
   {
     q: "Can age in weeks still matter after the newborn stage?",
@@ -94,8 +94,7 @@ export default function Page() {
             vaccine planning, forms, daycare paperwork, or just daily routines at home.
           </p>
           <p className="mt-text-sub mt-4">
-            This page is designed to turn age into something practical. Instead of stopping at a number, you can use the result to move
-            into the next question parents usually have: growth, vaccines, feeding, or milestone timing.
+            Use the result as a starting point for the next question you have, whether that is growth, vaccines, feeding, or milestone timing.
           </p>
         </section>
 
@@ -105,7 +104,7 @@ export default function Page() {
           locale="en"
           publishedOn={pageDates.published}
           updatedOn={pageDates.updated}
-          note="This page is reviewed so families can see when the age guidance was first added and when the practical planning notes were most recently checked."
+          note="Age calculations and month-based milestone dates were rechecked for calendar boundaries and date handling."
         />
 
         <section className="mt-card p-6 md:p-8">
@@ -130,9 +129,8 @@ export default function Page() {
                 of change is so fast.
               </p>
               <p>
-                This is also why parents often recalculate age many times. One result can support several tasks at once: checking a
-                vaccine schedule, comparing a new measurement on a growth chart, deciding whether solids are close, or preparing for a
-                daycare conversation. The number becomes most useful when it helps you move confidently into the next step.
+                One age result can support several tasks at once: checking a vaccine schedule reference, comparing a new measurement on a
+                growth chart, deciding whether solids are close, or preparing for a daycare conversation.
               </p>
             </div>
           </article>
@@ -146,28 +144,10 @@ export default function Page() {
                 situations, your care team may use adjusted age or a more individualized schedule.
               </p>
               <p>
-                Parents do not need to memorize every clinical detail. The practical approach is to use this calculator for quick home
-                reference and then match the result to the guidance you were given by your pediatrician, therapist, or specialist. That
-                keeps the page useful without replacing personalized care.
+                Use this calculator for quick home reference and match the result to guidance from your pediatrician, therapist, or specialist when individualized care is involved.
               </p>
             </div>
           </article>
-        </section>
-
-        <section className="mt-card p-6 md:p-8">
-          <h2 className="mt-title-lg">References parents commonly encounter</h2>
-          <div className="mt-4 space-y-4 text-sm leading-8 text-slate-600 md:text-base">
-            <p>
-              This page is written for everyday family use and fits naturally with the kinds of age-based guidance parents often see from
-              pediatric clinics, AAP-style developmental handouts, and U.S. routine care schedules. The page is not a diagnosis tool.
-              It simply helps translate a birth date into the age formats parents are most often asked to use.
-            </p>
-            <p>
-              When your baby&apos;s age connects to growth concerns, feeding trouble, missed vaccines, or developmental worries, use the
-              result as a starting point and bring the question to your pediatrician. Exact timing helps, but professional context still
-              matters.
-            </p>
-          </div>
         </section>
 
         <section className="mt-card p-6 md:p-8">
@@ -186,20 +166,20 @@ export default function Page() {
           <div className="text-xs font-semibold uppercase tracking-[0.18em] text-sky-700">Use the age result next</div>
           <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             <Link href="/en/info/newborn" className="mt-list-card">
-              <div className="font-semibold text-slate-800">Related guide: Newborn care</div>
+              <div className="font-semibold text-slate-800">Newborn guide</div>
               <div className="mt-2 text-sm text-slate-500">See routines and practical guidance for the first weeks and months.</div>
             </Link>
             <Link href="/en/qna/growth" className="mt-list-card">
-              <div className="font-semibold text-slate-800">Parenting Q&amp;A: Growth</div>
+              <div className="font-semibold text-slate-800">Growth Q&amp;A</div>
               <div className="mt-2 text-sm text-slate-500">Read common parent questions about measurements, growth, and milestones.</div>
             </Link>
             <Link href="/en/cal/growth-percentile" className="mt-list-card">
-              <div className="font-semibold text-slate-800">Recommended tool: Growth percentile</div>
-              <div className="mt-2 text-sm text-slate-500">Take the age result into a growth reference check with weight and length.</div>
+              <div className="font-semibold text-slate-800">Growth chart helper</div>
+              <div className="mt-2 text-sm text-slate-500">Use age with recent measurements and open the appropriate growth-chart reference.</div>
             </Link>
             <Link href="/en/cal/vaccine-schedule" className="mt-list-card">
-              <div className="font-semibold text-slate-800">Recommended tool: Vaccine schedule</div>
-              <div className="mt-2 text-sm text-slate-500">Use your baby&apos;s age to review routine visit and vaccine timing.</div>
+              <div className="font-semibold text-slate-800">Vaccine schedule reference</div>
+              <div className="mt-2 text-sm text-slate-500">Use your baby&apos;s age to review routine visit checkpoints and the current CDC schedule.</div>
             </Link>
           </div>
         </section>

@@ -9,24 +9,31 @@ function parseLocalDate(value: string) {
   const [year, month, day] = value.split("-").map(Number);
   if (!year || !month || !day) return null;
   const date = new Date(year, month - 1, day);
-  return Number.isNaN(date.getTime()) ? null : date;
+  if (
+    Number.isNaN(date.getTime()) ||
+    date.getFullYear() !== year ||
+    date.getMonth() !== month - 1 ||
+    date.getDate() !== day
+  ) {
+    return null;
+  }
+  return date;
 }
 
 function addMonthsSafe(date: Date, months: number) {
-  const next = new Date(date);
-  const targetMonth = next.getMonth() + months;
-  const day = next.getDate();
-  next.setDate(1);
-  next.setMonth(targetMonth);
-  const lastDay = new Date(next.getFullYear(), next.getMonth() + 1, 0).getDate();
-  next.setDate(Math.min(day, lastDay));
-  return next;
+  const targetMonthIndex = date.getMonth() + months;
+  const targetYear = date.getFullYear() + Math.floor(targetMonthIndex / 12);
+  const targetMonth = ((targetMonthIndex % 12) + 12) % 12;
+  const lastDay = new Date(targetYear, targetMonth + 1, 0).getDate();
+  return new Date(targetYear, targetMonth, Math.min(date.getDate(), lastDay));
+}
+
+function dateOnlySerial(date: Date) {
+  return Date.UTC(date.getFullYear(), date.getMonth(), date.getDate());
 }
 
 function diffInDays(from: Date, to: Date) {
-  const start = new Date(from.getFullYear(), from.getMonth(), from.getDate()).getTime();
-  const end = new Date(to.getFullYear(), to.getMonth(), to.getDate()).getTime();
-  return Math.floor((end - start) / (1000 * 60 * 60 * 24));
+  return Math.floor((dateOnlySerial(to) - dateOnlySerial(from)) / 86_400_000);
 }
 
 function formatDate(date: Date | null) {
@@ -85,7 +92,7 @@ export default function WeaningStartCalculatorClient() {
             <div className="space-y-5">
               <div className="space-y-2">
                 <label htmlFor="birthDate" className="block text-sm font-semibold text-slate-800">Birth date</label>
-                <UsDateInput id="birthDate" max={new Date().toISOString().split("T")[0]} value={birthDate} onChange={setBirthDate} />
+                <UsDateInput id="birthDate" label="Birth date" max={new Date().toISOString().split("T")[0]} value={birthDate} onChange={setBirthDate} />
               </div>
 
               <div className="space-y-3">
