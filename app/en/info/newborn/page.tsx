@@ -2,15 +2,18 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
 import RelatedContent from "@/components/common/RelatedContent";
+import { getPageDates } from "@/lib/content-meta";
+
+const pageDates = getPageDates("/en/info/newborn");
 
 export const metadata: Metadata = {
-  title: "Newborn guide | feeding, sleep, diapers, and daily patterns",
+  title: "Newborn guide | feeding, safe sleep, diapers, and when to call",
   description:
-    "A practical newborn guide for parents in the U.S., covering feeding patterns, sleep basics, diaper output, temperature questions, and when to call the pediatrician.",
+    "A practical U.S. newborn guide covering feeding patterns, safe sleep, diaper output, temperature questions, and signs that should be discussed with a pediatric clinician.",
   alternates: { canonical: "https://momtools.kr/en/info/newborn" },
   openGraph: {
     title: "Newborn guide | MomTools",
-    description: "Feeding, sleep, diaper output, and the daily questions that matter most in the newborn stage.",
+    description: "Feeding, safe sleep, diaper output, and the daily questions that matter most in the newborn stage.",
     url: "https://momtools.kr/en/info/newborn",
     locale: "en_US",
     type: "website",
@@ -18,23 +21,23 @@ export const metadata: Metadata = {
 };
 
 const cards = [
-  { title: "Feeding", text: "Look at feeding frequency, comfort at the breast or bottle, and whether your baby seems satisfied after feeds instead of judging one difficult session alone." },
-  { title: "Sleep", text: "Newborn sleep is fragmented. Focus on safe sleep setup, short patterns across 24 hours, and what helps the next stretch go more smoothly." },
-  { title: "Diaper output", text: "Wet and dirty diapers often tell parents more than one fussy feed does on its own, especially when they are watching hydration and intake." },
+  { title: "Feeding", text: "Look at feeding frequency, comfort at the breast or bottle, diaper output, and overall alertness rather than judging one difficult feed by itself." },
+  { title: "Safe sleep", text: "Place baby on the back for every sleep on a firm, flat, noninclined infant sleep surface with only a fitted sheet. Keep pillows, blankets, toys, and other soft objects out." },
+  { title: "Diaper output", text: "Wet and dirty diapers are useful clues about intake and hydration, especially when they are considered together with feeding and alertness." },
 ];
 
 const details = [
   {
+    title: "Safe sleep setup matters more than sleep duration",
+    text: "AAP guidance recommends back sleeping for every sleep, a firm flat noninclined surface, and room sharing without bed sharing. Keep loose bedding and soft objects out of the sleep area and avoid overheating.",
+  },
+  {
     title: "Track patterns, not one hard moment",
-    text: "Many newborn worries become easier to understand when parents zoom out to a full day. Feeds, spit-up, diapers, alert periods, and sleep stretches often make more sense together than separately.",
+    text: "Feeds, spit-up, diapers, alert periods, and sleep stretches often make more sense when viewed across a full day instead of one stressful moment.",
   },
   {
-    title: "Write questions down before visits",
-    text: "A short note on your phone can help more than trying to remember everything while tired. Feeding concerns, diaper changes, fever worries, and sleep questions are easier to discuss when they are listed clearly.",
-  },
-  {
-    title: "Call sooner when a baby seems unlike themselves",
-    text: "A newborn who is unusually hard to wake, feeding far less than usual, breathing differently, or acting significantly less responsive than usual deserves a lower threshold for contacting a clinician.",
+    title: "Keep a low threshold for calling with a newborn",
+    text: "A newborn who is unusually hard to wake, feeding far less than usual, breathing differently, or acting much less responsive than usual deserves prompt clinical advice. A temperature of 100.4°F (38°C) or higher in a baby younger than 3 months should be discussed with a clinician right away.",
   },
 ];
 
@@ -44,10 +47,10 @@ export default function NewbornPage() {
       <div className="mt-container space-y-8">
         <section className="mt-card p-8 md:p-10">
           <span className="mt-badge">Newborn guide</span>
-          <h1 className="mt-title-xl mt-5">The first weeks feel less overwhelming when you watch the basics well</h1>
+          <h1 className="mt-title-xl mt-5">The first weeks feel safer when the basics are clear</h1>
           <p className="mt-text-main mt-4 max-w-4xl">
-            Newborn life is full of repeated questions about feeds, diapers, sleep stretches, spit-up, and what is still normal.
-            This guide keeps the focus on the patterns parents actually watch from day to day.
+            Newborn life brings repeated questions about feeds, diapers, sleep, temperature, spit-up, and what is still normal.
+            This page focuses on the parts parents can observe at home while keeping safe-sleep and urgent-care guidance easy to find.
           </p>
         </section>
 
@@ -60,7 +63,12 @@ export default function NewbornPage() {
           ))}
         </section>
 
-        <ContentUpdateNote publishedOn="2026-04-09" updatedOn="2026-04-11" locale="en" />
+        <ContentUpdateNote
+          publishedOn={pageDates.published}
+          updatedOn={pageDates.updated}
+          locale="en"
+          note="Reviewed with current U.S. safe-sleep guidance, including back sleeping, a firm flat noninclined surface, room sharing without bed sharing, and keeping soft objects out of the sleep area."
+        />
 
         <section className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="mt-card p-6 md:p-8 space-y-5">
@@ -72,12 +80,13 @@ export default function NewbornPage() {
             ))}
           </div>
           <aside className="mt-card-soft p-6 md:p-8">
-            <h2 className="text-lg font-bold text-slate-900">Related tools and pages</h2>
+            <h2 className="text-lg font-bold text-slate-900">Helpful next pages</h2>
             <div className="mt-4 grid gap-3">
-              <RelatedLink href="/en/cal/baby-age" title="Baby age calculator" description="Check exact age in weeks and months before comparing routines." />
-              <RelatedLink href="/en/cal/vaccine-schedule" title="Vaccine schedule" description="See common age-based timing in the U.S. routine schedule." />
+              <RelatedLink href="/en/cal/baby-age" title="Baby age calculator" description="Check exact age before comparing routines or health guidance." />
+              <RelatedLink href="/en/cal/vaccine-schedule" title="Vaccine visit planner" description="Organize age-based checkups and open the current CDC schedule." />
               <RelatedLink href="/en/qna/health" title="Health Q&A" description="Move into question-by-question answers about common newborn concerns." />
             </div>
+            <a href="https://publications.aap.org/pediatrics/article/150/1/e2022057990/188304/Sleep-Related-Infant-Deaths-Updated-2022" target="_blank" rel="noreferrer" className="mt-4 inline-flex text-sm font-semibold text-sky-700 underline underline-offset-4">AAP safe sleep recommendations</a>
           </aside>
         </section>
 
