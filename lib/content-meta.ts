@@ -30,7 +30,7 @@ export const PAGE_DATES = {
   "/policy/birth-support-calculator": { published: "2026-04-28", updated: "2026-04-28" },
 } as const satisfies Record<string, { published: string; updated: string }>;
 
-export const HOME_CARD_UPDATED_LABEL_KO = "2026.04 최신 검토";
+export const HOME_CARD_UPDATED_LABEL_KO = "2026.10 주요 변동정보 검토";
 export const HOME_CARD_UPDATED_LABEL_EN = "Reviewed April 2026";
 
 export function buildCanonical(path: string) {

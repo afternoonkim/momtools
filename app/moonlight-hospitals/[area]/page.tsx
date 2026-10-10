@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MapPin, PhoneCall } from "lucide-react";
 import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
+import ContentUpdateNote from "@/components/common/ContentUpdateNote";
 import { buildCanonical } from "@/lib/content-meta";
 import {
   getMoonlightHospitalAreaBySlug,
@@ -13,6 +14,9 @@ import {
 } from "@/data/moonlightHospitals";
 
 type Params = { area: string };
+
+const REVIEWED_AT = "2026-10-10";
+const EGEN_MOONLIGHT_URL = "https://www.e-gen.or.kr/moonlight/main.do";
 
 function getMapUrl(hospital: MoonlightHospital) {
   return `https://map.naver.com/p/search/${encodeURIComponent(hospital.mapQuery)}`;
@@ -28,16 +32,17 @@ export async function generateMetadata({ params }: { params: Promise<Params> }):
   if (!area) return {};
 
   const pagePath = getMoonlightHospitalAreaPath(area);
-  const title = `${area.label} 달빛아동병원 | 주소 전화번호 바로 확인 | MomTools`;
+  const title = `${area.label} 달빛어린이병원 | 주소 전화번호·공식 운영정보 확인 | MomTools`;
+  const description = `${area.label} 달빛어린이병원 주소와 전화번호를 찾고, 방문 전 E-Gen 공식 운영정보와 병원 전화로 당일 진료 가능 여부를 다시 확인하세요.`;
 
   return {
     title,
-    description: area.description,
-    keywords: area.keywords,
+    description,
+    keywords: [...area.keywords, "달빛어린이병원", "E-Gen 달빛어린이병원"],
     alternates: { canonical: buildCanonical(pagePath) },
     openGraph: {
       title,
-      description: area.description,
+      description,
       url: buildCanonical(pagePath),
       siteName: "MomTools",
       locale: "ko_KR",
@@ -57,11 +62,12 @@ export default async function MoonlightHospitalAreaPage({ params }: { params: Pr
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "@id": `${buildCanonical(pagePath)}#webpage`,
-    name: `${area.label} 달빛아동병원`,
-    description: area.description,
+    name: `${area.label} 달빛어린이병원`,
+    description: `${area.label} 달빛어린이병원의 주소와 전화번호를 확인하고 공식 운영정보를 함께 확인하는 페이지입니다.`,
     inLanguage: "ko-KR",
     url: buildCanonical(pagePath),
-    about: ["달빛아동병원", "소아 야간진료", "휴일 소아진료"],
+    dateModified: REVIEWED_AT,
+    about: ["달빛어린이병원", "소아 야간진료", "휴일 소아진료"],
     mainEntity: {
       "@type": "ItemList",
       itemListElement: area.hospitals.map((hospital, index) => ({
@@ -88,32 +94,54 @@ export default async function MoonlightHospitalAreaPage({ params }: { params: Pr
           <span>/</span>
           <Link href="/qna" className="hover:text-amber-700">확인하기</Link>
           <span>/</span>
-          <Link href="/moonlight-hospitals" className="hover:text-amber-700">달빛아동병원</Link>
+          <Link href="/moonlight-hospitals" className="hover:text-amber-700">달빛어린이병원</Link>
           <span>/</span>
           <span className="text-slate-700">{area.label}</span>
         </nav>
 
         <section className="mt-page-hero">
-          <span className="mt-badge">{area.label} 달빛아동병원</span>
-          <h1 className="mt-title-xl mt-4">{area.label} 달빛아동병원 주소와 전화번호</h1>
+          <span className="mt-badge">{area.label} 달빛어린이병원</span>
+          <h1 className="mt-title-xl mt-4">{area.label} 달빛어린이병원 주소와 전화번호</h1>
           <p className="mt-text-main mt-3 max-w-3xl">
-            {area.label}에서 야간이나 휴일에 아이 진료가 필요할 때 확인할 수 있는 달빛아동병원입니다. 모바일에서는 전화번호를 누르면 바로 연결할 수 있어요.
+            가까운 병원의 주소와 전화번호를 찾은 뒤, 이동 전에는 E-Gen 공식 운영정보와 병원 전화로 오늘 진료 가능한지 다시 확인하세요.
           </p>
         </section>
 
         <MedicalDisclaimer lang="ko" variant="compact" />
 
+        <ContentUpdateNote
+          publishedOn="2026-04-10"
+          updatedOn={REVIEWED_AT}
+          note="병원 명칭·주소·전화번호는 찾기 편하도록 정리했지만 진료일·진료시간·접수마감은 수시로 바뀔 수 있습니다. E-Gen 공식정보와 병원 전화 확인을 최종 기준으로 이용해 주세요."
+        />
+
+        <section className="mt-card-soft p-4 md:p-6">
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">공식 운영정보 우선 확인</div>
+          <h2 className="mt-title-md mt-3">목록에 있어도 오늘 바로 진료할 수 있다는 뜻은 아닙니다</h2>
+          <p className="mt-text-main mt-3">
+            달빛어린이병원은 야간·휴일 소아 진료를 돕는 의료기관이지만 병원별 운영시간과 접수마감은 다르고 변경될 수 있습니다. E-Gen도 진료시간이 불규칙할 수 있으므로 전화 확인 후 방문하도록 안내합니다.
+          </p>
+          <a
+            href={EGEN_MOONLIGHT_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-4 inline-flex rounded-full border border-amber-200 bg-white px-4 py-2 text-sm font-semibold text-amber-700 hover:border-amber-300"
+          >
+            E-Gen 달빛어린이병원 공식정보 확인하기
+          </a>
+        </section>
+
         <section className="mt-mobile-note">
           <strong className="text-slate-900">방문 전 먼저 확인하세요</strong>
           <p className="mt-1">
-            운영일, 접수 마감, 진료 가능 연령은 병원 사정에 따라 달라질 수 있습니다. 이동하기 전에 전화로 운영 여부를 먼저 확인하는 것이 안전합니다.
+            운영일, 접수 마감, 진료 가능 연령과 진료과는 병원 사정에 따라 달라질 수 있습니다. 공식정보와 전화로 먼저 확인하고, 응급 증상이 의심되면 달빛어린이병원 검색보다 119 또는 응급실 이용 판단을 우선하세요.
           </p>
         </section>
 
-        <section className="mt-app-stack" aria-label={`${area.label} 달빛아동병원 목록`}>
+        <section className="mt-app-stack" aria-label={`${area.label} 달빛어린이병원 목록`}>
           <div className="mt-app-stack-section">
             <h2 className="mt-app-section-title">{area.label}에서 확인할 수 있는 병원</h2>
-            <p className="mt-app-section-desc">주소를 확인한 뒤 전화로 운영 여부와 접수 시간을 먼저 문의해 주세요.</p>
+            <p className="mt-app-section-desc">주소를 확인한 뒤 E-Gen과 병원 전화로 운영 여부와 접수 시간을 먼저 확인해 주세요.</p>
           </div>
 
           <div className="divide-y divide-slate-100">
@@ -159,10 +187,10 @@ export default async function MoonlightHospitalAreaPage({ params }: { params: Pr
           </div>
         </section>
 
-        <section className="mt-app-stack" aria-label="다른 지역 달빛아동병원">
+        <section className="mt-app-stack" aria-label="다른 지역 달빛어린이병원">
           <div className="mt-app-stack-section">
             <h2 className="mt-app-section-title">다른 지역도 확인하기</h2>
-            <p className="mt-app-section-desc">가까운 생활권이나 같은 시·도의 달빛아동병원도 함께 확인해 보세요.</p>
+            <p className="mt-app-section-desc">가까운 생활권이나 같은 시·도의 달빛어린이병원도 함께 확인해 보세요.</p>
           </div>
           <div className="flex flex-wrap gap-2 px-4 pb-4">
             <Link href="/moonlight-hospitals" className="rounded-full border border-amber-100 bg-white px-3 py-1.5 text-[12px] font-bold text-slate-700">
