@@ -13,33 +13,25 @@ import { ADFIT_UNITS } from "@/lib/adfit";
 
 const REVIEWED_AT = "2026-10-10";
 
-const reviewHighlights = [
+const checkOrder = [
   {
-    title: "임신·출산",
-    text: "첫만남이용권, 임신·출산 진료비, 난임 시술비처럼 금액·횟수를 잘못 기억하기 쉬운 전국 공통 제도를 공식자료와 다시 대조했습니다.",
+    title: "아이 나이와 출생 시점",
+    text: "부모급여, 아동수당, 보육료처럼 아이의 개월수·연령에 따라 대상과 금액이 달라지는 제도가 많아요.",
   },
   {
-    title: "양육·보육",
-    text: "2026년 아동수당 확대 기준, 부모급여, 보육료와 차액 지급처럼 아이 나이와 기관 이용 여부에 따라 달라지는 기준을 다시 확인했습니다.",
+    title: "가구·재직·이용 조건",
+    text: "소득, 건강보험 자격, 회사 재직 여부, 어린이집·유치원 이용 여부에 따라 받을 수 있는 지원이 달라질 수 있어요.",
   },
   {
-    title: "일·육아",
-    text: "육아휴직급여, 배우자 출산휴가, 출산전후휴가, 육아기 근로시간 단축의 2026년 급여 상한과 사용 조건을 최신 고시와 대조했습니다.",
-  },
-  {
-    title: "돌봄·교육",
-    text: "2026년 아이돌봄서비스 시간제 요금, 정부지원 소득구간, 시간제·영아종일제 대상 연령을 공식 안내와 다시 확인했습니다.",
-  },
-  {
-    title: "의료·건강",
-    text: "영유아 건강검진 8회 일정, 미숙아·선천성이상아 의료비 지원, 저소득층 기저귀·조제분유 지원의 현재 중앙정부 기준을 재확인했습니다.",
+    title: "거주 지역과 신청 시점",
+    text: "지역 지원금과 일부 돌봄 제도는 거주기간, 예산, 신청기한이 다르므로 신청 직전에 공식 창구에서 최종 확인하세요.",
   },
 ] as const;
 
 export const metadata: Metadata = {
-  title: "정부지원정책 | 임신 출산 육아 지원금 최신 정리 | MomTools",
+  title: "2026 임신 출산 육아 지원정책 | MomTools",
   description:
-    "2026년 10월 기준 변동 가능성이 큰 임신·출산, 양육·보육, 일·육아 병행, 돌봄·교육, 의료·건강 핵심 정책을 공식자료와 다시 대조하고, 지역별 지원은 신청 직전 공식 창구 확인이 필요하도록 구분해 정리했습니다.",
+    "임신·출산, 양육·보육, 일·육아 병행, 돌봄·교육, 의료·건강 지원을 대상과 신청 조건 중심으로 확인하고 필요한 정책을 빠르게 찾아보세요.",
   keywords: [
     "정부지원정책",
     "육아 지원금",
@@ -54,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "정부지원정책 | MomTools",
     description:
-      "임신·출산부터 양육, 보육, 일·육아 병행까지 가족이 실제로 확인해야 할 지원정책을 공식자료 기준으로 정리했습니다.",
+      "임신·출산부터 양육, 보육, 일·육아 병행까지 우리 가족이 확인할 지원정책을 한곳에서 찾아보세요.",
     url: buildCanonical("/policy"),
     siteName: "MomTools",
     locale: "ko_KR",
@@ -94,10 +86,10 @@ export default function PolicyHubPage() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
         <section className="mt-page-hero">
-          <span className="mt-badge">주요 변동정보 · 2026.10.10 재확인</span>
-          <h1 className="mt-title-xl mt-4">임신·출산·육아 지원정책을 먼저 확인하세요</h1>
+          <span className="mt-badge">2026년 기준 확인</span>
+          <h1 className="mt-title-xl mt-4">우리 가족에게 필요한 지원부터 찾아보세요</h1>
           <p className="mt-text-main mt-3 max-w-3xl">
-            지원금 이름보다 중요한 것은 대상, 아이 나이, 신청 시점, 거주 지역입니다. 변경 가능성이 큰 핵심 기준은 공식자료로 다시 확인했고, 지역별 제도는 신청 직전 재확인이 필요하도록 따로 구분했습니다.
+            같은 지원금도 아이 나이, 신청 시점, 가구 조건, 거주 지역에 따라 달라질 수 있어요. 먼저 우리 상황과 가까운 분야를 고른 뒤 세부 조건을 확인해 보세요.
           </p>
         </section>
 
@@ -105,23 +97,21 @@ export default function PolicyHubPage() {
         <ContentUpdateNote
           publishedOn={SITE_DATES.published}
           updatedOn={REVIEWED_AT}
-          note="전국 공통 제도 중 변경 가능성이 큰 금액·대상·기간은 2026년 10월 10일 기준 공식자료와 재대조했습니다. 지자체 지원금은 수시로 바뀔 수 있어 주소지 주민센터·복지로·지자체 공고를 최종 기준으로 확인해 주세요."
+          note="전국 공통 제도 중 변경 가능성이 큰 금액·대상·기간은 2026년 10월 10일 기준 공식자료와 다시 확인했습니다. 지자체 지원금은 수시로 바뀔 수 있어 주소지 주민센터·복지로·지자체 공고를 최종 기준으로 확인해 주세요."
         />
 
         <section className="mt-card-soft p-4 md:p-6">
-          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">이번 재검토 범위</div>
-          <h2 className="mt-title-md mt-3">최신화가 특히 중요한 5개 영역을 먼저 다시 확인했습니다</h2>
-          <div className="mt-4 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-            {reviewHighlights.map((item) => (
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">신청 전에 먼저 볼 것</div>
+          <h2 className="mt-title-md mt-3">지원금을 찾을 때는 이 세 가지부터 확인하세요</h2>
+          <div className="mt-4 grid gap-3 md:grid-cols-3">
+            {checkOrder.map((item, index) => (
               <div key={item.title} className="rounded-2xl bg-white p-4 shadow-sm">
-                <div className="text-sm font-extrabold text-slate-900">{item.title}</div>
+                <div className="text-xs font-bold text-amber-700">{index + 1}</div>
+                <div className="mt-2 text-sm font-extrabold text-slate-900">{item.title}</div>
                 <p className="mt-2 text-sm leading-7 text-slate-600">{item.text}</p>
               </div>
             ))}
           </div>
-          <p className="mt-4 text-sm leading-7 text-slate-600">
-            지역별 출산지원금은 같은 지역도 조례·예산·거주기간 조건이 바뀔 수 있어 정적 목록만으로 최신 여부를 단정하지 않습니다. 계산 결과와 함께 신청 직전 공식 안내를 확인하는 것을 전제로 사용해 주세요.
-          </p>
         </section>
 
         <section className="mt-simple-list" aria-label="정부지원정책 카테고리">
@@ -157,13 +147,13 @@ export default function PolicyHubPage() {
         </section>
 
         <section className="mt-card-soft p-4 md:p-6">
-          <h2 className="text-lg font-extrabold text-slate-900">신청 전 꼭 기억할 점</h2>
+          <h2 className="text-lg font-extrabold text-slate-900">신청 직전에 한 번 더 확인하세요</h2>
           <p className="mt-2 text-sm leading-7 text-slate-600">
-            이름이 같은 정책도 아이 나이, 출생월, 회사 재직 조건, 건강보험 자격, 거주 지역에 따라 달라질 수 있습니다. 신청 직전에는 정부24, 복지로, 고용24, 주민센터 등 공식 창구에서 최종 조건을 확인해 주세요.
+            정책은 아이 나이, 출생월, 회사 재직 조건, 건강보험 자격, 거주 지역에 따라 달라질 수 있습니다. 신청 전에는 정부24, 복지로, 고용24, 주민센터 등 공식 창구에서 실제 대상 여부와 신청기한을 확인해 주세요.
           </p>
           <div className="mt-3 flex flex-wrap gap-2">
             <Link href="/info/childcare-portal" className="mt-chip-link">아이사랑 활용 가이드</Link>
-            <Link href="/tools/birth-support-calculator" className="mt-chip-link">출산지원금 계산기</Link>
+            <Link href="/tools/birth-support-calculator" className="mt-chip-link">출산지원금 확인</Link>
           </div>
         </section>
       </div>

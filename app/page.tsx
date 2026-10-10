@@ -34,7 +34,7 @@ export const metadata: Metadata = {
 
 const quickLinks = [
   { label: "출산 예정일", href: "/tools/due-date" },
-  { label: "성장 백분위", href: "/tools/growth-percentile" },
+  { label: "성장도표 확인", href: "/tools/growth-percentile" },
   { label: "아이 건강", href: "/qna/health" },
   { label: "월령별 가이드", href: "/monthly-guide" },
   { label: "체크리스트", href: "/checklists" },
@@ -47,7 +47,6 @@ function PublicHome({ showRecent = true }: { showRecent?: boolean }) {
       <div className="mt-container space-y-6 md:space-y-8">
         <section className="mx-auto flex min-h-[34vh] max-w-3xl flex-col items-center justify-center px-1 py-5 text-center md:min-h-[48vh] md:py-12">
           <span className="mt-badge">MomTools</span>
-          {/* <h1 className="mt-home-slogan mt-5">아이를 키우는 모든 순간을 더 쉽게</h1> */}
 
           <div className="mt-5 w-full max-w-2xl">
             <SearchBox
@@ -81,4 +80,3 @@ export default async function HomePage({ searchParams }: { searchParams?: Promis
 
   return <MyChildHome user={user} selectedChildId={params?.childId} baseHref="/" showLogout={false} />;
 }
-

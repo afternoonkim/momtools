@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, CheckCircle2, ShoppingBag } from "lucide-react";
+import { ArrowRight, ShoppingBag } from "lucide-react";
 import {
   getParentingProductGuideModifiedAt,
   getPublishedParentingProductGuides,
@@ -50,15 +50,6 @@ export function generateMetadata(): Metadata {
   };
 }
 
-function formatPublishedAt(value: string) {
-  return new Intl.DateTimeFormat("ko-KR", {
-    timeZone: "Asia/Seoul",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(new Date(value));
-}
-
 function GuideRow({ guide }: { guide: ParentingProductGuide }) {
   return (
     <Link
@@ -69,7 +60,6 @@ function GuideRow({ guide }: { guide: ParentingProductGuide }) {
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2 text-xs font-bold">
             <span className="rounded-full bg-amber-50 px-2.5 py-1 text-amber-700">{guide.category}</span>
-            {/* <span className="text-slate-400">{formatPublishedAt(guide.publishAt)}</span> */}
           </div>
           <h2 className="mt-3 text-[17px] font-extrabold leading-7 text-slate-900 transition group-hover:text-amber-700 md:text-xl md:leading-8">
             {guide.title}
@@ -131,47 +121,25 @@ export default function ParentingProductsPage() {
             <ShoppingBag size={16} /> 육아용품 가이드
           </div>
           <h1 className="mt-title-xl mt-3">사기 전에 우리 집에 맞는지 먼저 확인해요</h1>
-          {/* <p className="mt-text-main mt-3 max-w-3xl">
-            유명한 제품이나 판매 순위를 나열하지 않습니다. 아이의 시기, 집의 동선, 세척과 보관 방식처럼
-            실제로 오래 쓰게 만드는 조건을 먼저 정리했어요.
-          </p> */}
+          <p className="mt-text-main mt-3 max-w-3xl">
+            유명한 제품 순위보다 아이의 시기, 집에서 쓰는 방식, 세척과 보관처럼 실제 선택에 필요한 기준부터 확인해 보세요.
+          </p>
         </header>
 
-        {/* <section className="rounded-2xl border border-amber-100 bg-amber-50/60 p-4 md:p-5">
-          <div className="grid gap-3 text-sm leading-6 text-slate-700 md:grid-cols-3">
-            <div className="flex gap-2"><CheckCircle2 className="mt-0.5 shrink-0 text-amber-600" size={17} /> 제품보다 사용 상황부터 확인</div>
-            <div className="flex gap-2"><CheckCircle2 className="mt-0.5 shrink-0 text-amber-600" size={17} /> 안전·세척·교체 기준 함께 점검</div>
-            <div className="flex gap-2"><CheckCircle2 className="mt-0.5 shrink-0 text-amber-600" size={17} /> 필요한 경우에만 관련 상품 비교</div>
-          </div>
-        </section> */}
-
         <section className="mt-card p-4 md:p-6">
-          {/* <div className="flex items-end justify-between gap-4 border-b border-slate-100 px-1 pb-4 md:px-2"> */}
-            {/* <div>
-              <h2 className="text-lg font-extrabold text-slate-900 md:text-xl">최근 공개된 가이드</h2>
-              <p className="mt-1 text-xs leading-5 text-slate-500 md:text-sm">공개 시간이 지난 글만 목록에 표시됩니다.</p>
-            </div> */}
-            {/* <span className="shrink-0 rounded-full bg-slate-50 px-3 py-1 text-xs font-bold text-slate-500">{guides.length}개</span> */}
-          {/* </div> */}
-
           {guides.length > 0 ? (
             <div>
               {guides.map((guide) => <GuideRow key={guide.slug} guide={guide} />)}
             </div>
           ) : (
             <div className="px-2 py-10 text-center text-sm leading-7 text-slate-500">
-              첫 육아용품 가이드를 준비하고 있어요. 공개 시간이 되면 이곳에 표시됩니다.
+              지금 확인할 수 있는 육아용품 가이드가 없어요. 다른 육아 정보나 체크리스트를 먼저 살펴보세요.
             </div>
           )}
         </section>
 
         <section className="rounded-2xl border border-orange-100 bg-orange-50/70 p-4 text-xs leading-6 text-slate-600 md:p-5 md:text-sm">
-          {/* <p className="font-bold text-orange-800">상품 연결 안내</p>
-          <p className="mt-1">
-            글의 선택 기준을 먼저 읽은 뒤 관련 상품을 비교할 수 있도록 쿠팡 검색 결과를 최대 3개만 보여드립니다.
-            특정 상품의 만족도나 안전성을 보증하지 않으며, 가격·구성·사용 가능 범위는 판매처에서 다시 확인해 주세요.
-          </p> */}
-          <p className="mt-2 font-semibold text-orange-800">{COUPANG_PARTNERS_DISCLOSURE}</p>
+          <p className="font-semibold text-orange-800">{COUPANG_PARTNERS_DISCLOSURE}</p>
         </section>
       </div>
     </div>

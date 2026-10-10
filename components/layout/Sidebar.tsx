@@ -68,13 +68,12 @@ export default function Sidebar({
             type="button"
             onClick={handleLogoClick}
             className={`${collapsed ? "mx-auto" : ""} flex min-w-0 items-center gap-3 text-left`}
-            aria-label="MomTools 로고 이동"
+            aria-label="MomTools 홈으로 이동"
           >
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-amber-100 text-xl shadow-sm">👶</span>
             {!collapsed ? (
               <span className="min-w-0">
                 <span className="block text-lg font-extrabold text-slate-900">MomTools</span>
-                {/* <span className="block text-xs text-slate-500">계산 · 기록 · 확인 · 참고</span> */}
               </span>
             ) : null}
           </button>
@@ -121,7 +120,7 @@ export default function Sidebar({
               <SidebarItem href="/qna/growth" label="성장·발달" icon={Baby} collapsed={collapsed} />
               <SidebarItem href="/qna/behavior" label="행동·수면" icon={Sparkles} collapsed={collapsed} />
               <SidebarItem href="/health" label="증상별 가이드" icon={HeartPulse} collapsed={collapsed} />
-              <SidebarItem href="/moonlight-hospitals" label="달빛아동병원" icon={Moon} collapsed={collapsed} />
+              <SidebarItem href="/moonlight-hospitals" label="달빛어린이병원" icon={Moon} collapsed={collapsed} />
               <SidebarItem href="/monthly-guide" label="월령별 가이드" icon={CalendarHeart} collapsed={collapsed} />
               <SidebarItem href="/family-health-qna/family" label="가족 건강 확인" icon={HeartPulse} collapsed={collapsed} />
             </SidebarGroup>
@@ -132,7 +131,7 @@ export default function Sidebar({
               <SidebarItem href="/tools/baby-age" label="아기 개월수" icon={Baby} collapsed={collapsed} />
               <SidebarItem href="/tools/vaccine-schedule" label="예방접종 일정" icon={HeartPulse} collapsed={collapsed} />
               <SidebarItem href="/tools/weaning-start" label="이유식 시작" icon={UtensilsCrossed} collapsed={collapsed} />
-              <SidebarItem href="/tools/growth-percentile" label="성장 백분위" icon={Calculator} collapsed={collapsed} />
+              <SidebarItem href="/tools/growth-percentile" label="성장도표 확인" icon={Calculator} collapsed={collapsed} />
               <SidebarItem href="/tools/due-date" label="출산 예정일" icon={CalendarHeart} collapsed={collapsed} />
               <SidebarItem href="/tools/birth-support-calculator" label="출산지원금" icon={Landmark} collapsed={collapsed} />
             </SidebarGroup>
@@ -152,20 +151,13 @@ export default function Sidebar({
               <SidebarItem href="/info/childcare-portal" label="아이사랑 활용" icon={BookOpen} collapsed={collapsed} />
             </SidebarGroup>
           </div>
-
         </div>
 
-        <div className="mt-sidebar-footer border-t border-amber-100 p-4 text-xs text-slate-500">
-          {!collapsed ? (
-            <div className="space-y-1">
-              <div className="font-semibold text-slate-700">MomTools</div>
-              {/* <div>모바일에서 빠르게 확인하는 육아 도구</div> */}
-              <div>v1.4.0</div>
-            </div>
-          ) : (
-            <div className="text-center">v1.4</div>
-          )}
-        </div>
+        {!collapsed ? (
+          <div className="mt-sidebar-footer border-t border-amber-100 p-4 text-xs leading-5 text-slate-500">
+            필요한 육아 정보를 빠르게 확인하세요.
+          </div>
+        ) : null}
       </aside>
     </>
   );

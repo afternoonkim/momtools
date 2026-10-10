@@ -31,7 +31,7 @@ export default function GrowthPercentileCalculatorClient() {
     }
 
     if (m > 36) {
-      return { status: "error" as const, message: "현재 도구는 0~36개월 입력값 정리용으로 제공하고 있어요." };
+      return { status: "error" as const, message: "현재 도구는 0~36개월 아이의 측정값을 정리할 때 사용할 수 있어요." };
     }
 
     return {
@@ -49,12 +49,12 @@ export default function GrowthPercentileCalculatorClient() {
       <header className="mt-card p-4 md:p-6">
         <div className="max-w-3xl space-y-3">
           <div className="inline-flex items-center rounded-full bg-violet-100 px-3 py-1 text-xs font-semibold text-violet-700">
-            MomTools 성장 기록 도구
+            아이 성장 기록 정리
           </div>
-          <h1 className="mt-title-lg">성장 백분위 확인 전 입력값 정리</h1>
+          <h1 className="mt-title-lg">성장도표를 보기 전에 측정값을 정리하세요</h1>
           <p className="text-sm leading-7 text-slate-600 md:text-base">
             성별, 월령, 키, 몸무게를 한 번에 정리한 뒤 질병관리청 공식 성장도표와 비교해 보세요.
-            MomTools가 임의 추정식으로 백분위나 정상·비정상을 계산하지 않습니다.
+            이 도구는 정상·비정상을 자체 판정하지 않습니다.
           </p>
         </div>
       </header>
@@ -87,15 +87,15 @@ export default function GrowthPercentileCalculatorClient() {
           </div>
 
           <div className="mt-5 rounded-2xl border border-violet-100 bg-violet-50 p-4 text-sm leading-7 text-slate-700">
-            <div className="font-semibold text-slate-900">왜 자체 백분위를 계산하지 않나요?</div>
+            <div className="font-semibold text-slate-900">왜 성장도표를 직접 확인해야 하나요?</div>
             <p className="mt-1">
-              성장 백분위는 성별·정확한 월령과 공식 성장도표의 분포값을 이용해야 합니다. 단순 평균식이나 임의 공식으로 만든 값은 실제 백분위처럼 해석하면 안 됩니다.
+              성장 위치는 성별과 정확한 월령에 맞는 공식 성장도표의 분포를 함께 봐야 합니다. 단순 평균이나 임의 추정값 하나만으로 아이의 성장을 판단하지 마세요.
             </p>
           </div>
         </section>
 
         <section className="mt-card p-4 md:p-6">
-          <h2 className="text-lg font-bold text-slate-900">공식 성장도표 확인용 정리</h2>
+          <h2 className="text-lg font-bold text-slate-900">성장도표 확인용 측정값</h2>
           {result.status !== "ready" ? (
             <div className="mt-5 rounded-2xl border border-slate-200 bg-slate-50 p-5 text-sm leading-7 text-slate-600">{result.message}</div>
           ) : (
@@ -125,11 +125,11 @@ export default function GrowthPercentileCalculatorClient() {
       </div>
 
       <section className="mt-card-soft p-4 md:p-6">
-        <h2 className="font-bold text-slate-900">성장 수치는 이렇게 해석하세요</h2>
+        <h2 className="font-bold text-slate-900">성장 기록은 이렇게 살펴보세요</h2>
         <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-600">
           <li>• 현재 공식 기준은 질병관리청이 제공하는 2017 소아청소년 성장도표입니다.</li>
           <li>• 3세 미만은 WHO 성장표준을 도입한 국내 성장도표를 사용합니다.</li>
-          <li>• 한 번의 백분위보다 여러 시점의 성장곡선 흐름과 실제 진료 측정값이 중요합니다.</li>
+          <li>• 한 번의 위치보다 여러 시점의 성장곡선 흐름과 실제 진료 측정값이 중요합니다.</li>
           <li>• 키·몸무게 증가가 멈추거나 감소하고 식사량 저하, 반복 구토·설사, 처짐 등이 함께 있으면 진료 상담을 우선하세요.</li>
         </ul>
         <Link href="/qna/growth" className="mt-4 inline-flex font-semibold text-amber-700 underline underline-offset-4">성장 Q&A 이어서 보기</Link>

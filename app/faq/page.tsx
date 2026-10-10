@@ -2,124 +2,109 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "FAQ",
+  title: "자주 묻는 질문 | MomTools",
   description:
-    "MomTools 자주 묻는 질문 페이지입니다. 계산기 활용 범위, 정보 콘텐츠의 성격, 외부 링크와 제휴, 문의 방법, 개인정보와 정책 페이지 관련 내용을 확인할 수 있습니다.",
+    "계산 결과를 어떻게 봐야 하는지, 건강·육아 정보는 어디까지 참고해야 하는지, 외부 링크와 문의는 어떻게 이용하는지 확인해 보세요.",
 };
 
 const faqSections = [
   {
-    title: "계산기 이용 관련",
+    title: "계산·확인 도구",
     items: [
       {
-        question: "MomTools의 계산 결과는 정확한 진단인가요?",
+        question: "MomTools의 계산 결과는 진단 결과인가요?",
         answer:
-          "아니요. MomTools의 계산 결과는 빠른 참고를 위한 보조 정보입니다. 실제 의료적 판단, 진단, 치료 결정은 반드시 의료진 상담 또는 공공기관 안내를 기준으로 확인해 주세요.",
+          "아니요. 계산 결과는 날짜나 기준을 빠르게 정리하기 위한 참고 정보입니다. 증상, 성장, 약 복용, 예방접종처럼 의료적 판단이 필요한 내용은 의료진과 공식 기관 안내를 우선해 주세요.",
       },
       {
-        question: "MomTools 계산기는 무료인가요?",
+        question: "MomTools의 기본 도구는 무료로 이용할 수 있나요?",
         answer:
-          "네. MomTools에서 제공하는 계산기와 기본 정보 페이지는 무료로 이용할 수 있습니다. 다만 제공 범위나 안내 방식은 필요에 따라 달라질 수 있습니다.",
+          "네. MomTools에서 제공하는 계산·확인 도구와 기본 정보 페이지는 무료로 이용할 수 있습니다.",
       },
       {
-        question: "출산 예정일 계산기는 어떤 용도로 보면 되나요?",
+        question: "출산 예정일 계산 결과는 어떻게 봐야 하나요?",
         answer:
-          "마지막 생리 시작일 또는 임신 주수를 기준으로 예정일과 현재 임신 주차를 대략 확인하는 용도입니다. 실제 진료 중 수정된 예정일이 있다면 병원에서 안내받은 날짜를 우선해 주세요.",
+          "마지막 생리 시작일 등을 기준으로 예상 일정을 확인하는 용도입니다. 진료 중 의료진이 예정일을 따로 정하거나 수정했다면 병원에서 안내받은 날짜를 우선해 주세요.",
       },
       {
-        question: "아기 개월수 계산기는 왜 필요한가요?",
+        question: "아기 개월수는 왜 정확히 확인하는 게 좋나요?",
         answer:
-          "예방접종, 이유식, 성장 발달, 생활 습관 정보는 개월수 기준으로 안내되는 경우가 많습니다. 아기의 생년월일 기준 현재 개월 단계를 빠르게 확인하는 참고 도구로 사용할 수 있습니다.",
+          "예방접종, 이유식, 성장·발달, 생활 습관 정보는 개월수 기준으로 안내되는 경우가 많습니다. 생년월일을 기준으로 현재 월령을 확인하면 관련 정보를 찾기 쉬워져요.",
       },
       {
-        question: "예방접종 일정 계산기는 그대로 따라도 되나요?",
+        question: "예방접종 일정은 계산 결과대로 진행하면 되나요?",
         answer:
-          "월령 기준 흐름을 빠르게 보는 용도입니다. 실제 접종 가능 여부와 일정은 질병관리청 예방접종 안내, 보건소, 병원 일정, 아이의 건강 상태를 함께 고려해 확인해야 합니다.",
+          "아니요. 월령별 접종 시기를 미리 확인하는 참고용입니다. 실제 접종 일정은 질병관리청 예방접종 안내, 아이의 기존 접종 기록, 병원·보건소 안내와 건강 상태를 함께 확인해 주세요.",
       },
       {
-        question: "성장 백분위 계산 결과만으로 정상 여부를 판단해도 되나요?",
+        question: "성장도표에서 낮거나 높게 보이면 바로 문제가 있는 건가요?",
         answer:
-          "아니요. 성장 백분위는 참고용 지표일 뿐이며, 아이의 성장 속도, 출생 이력, 건강 상태, 진료 기록 등을 함께 봐야 합니다. 지속적으로 걱정되는 경우 소아청소년과 상담이 필요합니다.",
+          "한 번의 위치만으로 정상·비정상을 판단할 수는 없습니다. 같은 조건에서 측정한 이전 기록과 비교해 성장 흐름이 이어지는지 보는 것이 중요하며, 증가가 멈추거나 감소하는 흐름이 반복되거나 다른 증상이 함께 있으면 소아청소년과 상담을 고려하세요.",
       },
     ],
   },
   {
-    title: "정보 콘텐츠 관련",
+    title: "육아·건강 정보",
     items: [
       {
-        question: "정보 페이지는 의료 기관 공식 자료인가요?",
+        question: "정보 페이지는 병원이나 공공기관의 공식 자료인가요?",
         answer:
-          "MomTools의 정보 페이지는 부모가 이해하기 쉬운 형태로 핵심 내용을 정리한 안내형 콘텐츠입니다. 공식 진료 지침이나 법적 효력을 가진 문서가 아니며, 최종 판단 전에는 반드시 공식 기관과 전문가 정보를 확인해 주세요.",
+          "아니요. MomTools는 부모가 이해하기 쉽게 내용을 정리한 참고용 서비스입니다. 건강, 진료, 지원정책처럼 중요한 결정은 연결된 공식 기관이나 전문가의 최신 안내를 최종 기준으로 확인해 주세요.",
       },
       {
-        question: "임신, 신생아, 이유식, 유아 정보는 누구에게 도움이 되나요?",
+        question: "임신, 신생아, 이유식, 유아 정보는 어떻게 활용하면 좋나요?",
         answer:
-          "초보 부모, 출산을 준비하는 가정, 육아 흐름을 빠르게 정리하고 싶은 분들도 쉽게 볼 수 있도록 구성했습니다. 긴 논문형 설명보다는 실제로 자주 궁금해하는 내용을 이해하기 쉽게 정리하는 데 초점을 두고 있습니다.",
+          "지금 시기에 먼저 확인할 기준을 빠르게 파악하는 용도로 활용해 보세요. 아이의 건강 상태나 성장 이력처럼 개인차가 큰 내용은 일반적인 안내만으로 판단하지 않는 것이 좋습니다.",
       },
       {
-        question: "체크리스트는 그대로 사용해도 되나요?",
+        question: "체크리스트에 있는 항목을 모두 준비해야 하나요?",
         answer:
-          "체크리스트는 일반적인 준비 흐름을 바탕으로 구성된 참고 자료입니다. 가정 환경, 계절, 병원 출산 준비물 정책, 어린이집 규정 등에 따라 필요한 항목은 달라질 수 있습니다.",
-      },
-      {
-        question: "정보 페이지는 계속 보강되나요?",
-        answer:
-          "네. 부모가 자주 찾는 계산기, Q&A, 월령별 가이드, 체크리스트를 중심으로 필요한 내용을 계속 다듬고 보강합니다. 새로 추가되는 내용도 실제 상황에서 바로 참고하기 쉬운 형태를 우선합니다.",
+          "아니요. 체크리스트는 빠뜨리기 쉬운 항목을 확인하기 위한 참고용입니다. 계절, 가정 환경, 병원 안내, 어린이집 규정에 따라 필요한 항목만 골라 사용하세요.",
       },
     ],
   },
   {
-    title: "외부 링크 및 안내 관련",
+    title: "외부 링크와 육아용품",
     items: [
       {
-        question: "육아용품 페이지의 링크는 어떤 성격인가요?",
+        question: "육아용품 가이드의 외부 링크는 왜 제공하나요?",
         answer:
-          "육아용품 페이지의 링크는 부모가 제품 정보를 더 쉽게 확인하도록 연결한 외부 안내 링크입니다. 일부 링크에는 별도 안내가 함께 표시될 수 있으며, 실제 조건은 연결된 판매처 페이지를 기준으로 확인해 주세요.",
+          "선택 기준을 확인한 뒤 필요한 경우 상품 정보를 이어서 비교할 수 있도록 연결합니다. 가격, 구성, 배송, 사용 조건은 연결된 판매처의 최신 정보를 기준으로 확인해 주세요.",
       },
       {
-        question: "제휴 링크가 있으면 사용자에게 불이익이 있나요?",
+        question: "제휴 링크를 이용하면 가격이 더 비싸지나요?",
         answer:
-          "일반적으로 사용자가 별도 비용을 더 부담하는 구조는 아니지만, 실제 가격과 혜택은 판매처 정책에 따라 달라질 수 있습니다. 구매 전에는 판매처의 최신 상품 페이지를 반드시 확인해 주세요.",
+          "일반적으로 링크 이용 때문에 별도 비용이 추가되는 방식은 아니지만, 실제 가격과 혜택은 판매처 정책에 따라 달라질 수 있습니다. 결제 전 판매처의 최종 가격을 확인해 주세요.",
       },
       {
-        question: "MomTools가 특정 상품의 품질을 보증하나요?",
+        question: "MomTools가 특정 상품의 품질이나 안전성을 보증하나요?",
         answer:
-          "아니요. MomTools는 육아용품 탐색 편의를 위한 정보 연결 역할을 할 수 있으나, 특정 상품의 성능, 안전성, 만족도를 보증하지 않습니다. 최종 선택은 상품 상세정보와 후기, 판매처 정책을 충분히 확인한 뒤 진행해 주세요.",
-      },
-      {
-        question: "화면에 외부 안내가 보이면 사이트 추천으로 봐도 되나요?",
-        answer:
-          "아닙니다. 화면에 외부 안내나 소개가 보이더라도, 그것만으로 MomTools가 해당 상품이나 서비스를 품질 보증하거나 최종 추천한다는 뜻은 아닙니다.",
+          "아니요. 육아용품 가이드는 구매 전에 확인할 기준을 정리하는 데 도움을 주기 위한 정보입니다. 실제 제품의 규격, 사용 연령, 주의사항, 리콜 여부 등은 제조사와 공식 판매처의 최신 안내를 확인해 주세요.",
       },
     ],
   },
   {
-    title: "문의 / 개인정보 / 정책 관련",
+    title: "문의와 개인정보",
     items: [
       {
-        question: "문의는 어떻게 보내면 되나요?",
+        question: "오류나 잘못된 내용은 어디로 알려주면 되나요?",
         answer:
-          "문의하기 페이지에 안내된 이메일 또는 문의 채널을 이용하면 됩니다. 오류 제보의 경우 사용 기기, 브라우저, 페이지 주소, 오류 발생 순서를 함께 남기면 확인에 도움이 됩니다.",
+          "문의하기 페이지를 이용해 주세요. 페이지 주소와 어떤 내용이 잘못 보이는지 함께 적어주면 확인하는 데 도움이 됩니다.",
       },
       {
-        question: "개인정보를 많이 입력해야 하나요?",
+        question: "문의할 때 개인정보를 많이 적어야 하나요?",
         answer:
-          "아니요. MomTools는 기본적으로 회원가입 없이 이용할 수 있습니다. 문의가 필요한 경우에도 가능한 한 꼭 필요한 정보만 남기는 것을 권장합니다.",
+          "아니요. 꼭 필요한 내용만 남겨 주세요. 특히 아이 실명, 전체 생년월일, 상세 진료기록, 검사 결과, 사진처럼 민감한 정보는 보내지 않는 것을 권장합니다.",
       },
       {
-        question: "아이의 건강 상태를 자세히 적어 문의해도 되나요?",
+        question: "아이의 건강 문제를 문의하면 상담받을 수 있나요?",
         answer:
-          "권장하지 않습니다. 아이 실명, 전체 생년월일, 상세 진료기록, 사진, 검사 결과처럼 민감한 정보는 가능한 한 보내지 말아 주세요. 건강 문제는 반드시 의료기관에 직접 문의해야 합니다.",
+          "개인별 진단이나 치료 상담은 제공하지 않습니다. 아이가 아프거나 상태가 걱정된다면 문의 페이지보다 의료기관이나 필요한 경우 응급의료 안내를 우선해 주세요.",
       },
       {
-        question: "개인정보처리방침과 이용약관은 왜 필요한가요?",
+        question: "개인정보처리방침과 이용약관은 어디서 확인하나요?",
         answer:
-          "사이트가 정보를 제공하고 외부 서비스와 연결될 수 있기 때문에, 이용자가 참고 범위와 정보 처리 원칙을 쉽게 확인할 수 있도록 기본 정책 페이지를 두고 있습니다.",
-      },
-      {
-        question: "정책 내용은 변경될 수 있나요?",
-        answer:
-          "네. 외부 서비스 연결 방식이나 관련 기준이 달라지면 개인정보처리방침과 이용약관도 함께 수정될 수 있습니다. 중요한 변경이 있을 경우 페이지의 개정일을 함께 갱신합니다.",
+          "페이지 하단의 개인정보처리방침과 이용약관에서 정보 처리 방식, 서비스 이용 범위, 외부 서비스 관련 안내를 확인할 수 있습니다.",
       },
     ],
   },
@@ -133,25 +118,21 @@ export default function FAQPage() {
           <span className="mt-badge">FAQ</span>
           <h1 className="mt-title-lg mt-4">자주 묻는 질문</h1>
           <p className="mt-text-main mt-4">
-            MomTools를 이용하면서 자주 궁금해할 수 있는 내용을 한곳에 정리했습니다.
-            계산기 결과의 의미, 정보 콘텐츠의 활용 범위, 외부 링크 안내, 문의 기준,
-            개인정보와 정책 페이지 관련 내용을 한 번에 확인할 수 있습니다.
+            계산 결과를 어떻게 봐야 하는지, 건강·육아 정보는 어디까지 참고하면 되는지, 외부 링크와 문의는 어떻게 이용하는지 궁금한 내용을 찾아보세요.
           </p>
         </section>
 
         <section className="mt-card-soft p-6 md:p-8">
-          <h2 className="text-xl font-bold text-slate-800">빠르게 확인할 핵심</h2>
+          <h2 className="text-xl font-bold text-slate-800">먼저 기억해 주세요</h2>
           <div className="mt-4 grid gap-4 md:grid-cols-3">
             <div className="rounded-2xl border border-slate-100 bg-white p-5 text-sm leading-7 text-slate-600">
-              계산기와 정보 페이지는 참고용이며, 의료 판단이나 법적 판단을 대신하지
-              않습니다.
+              계산과 정보 페이지는 빠르게 기준을 확인하기 위한 참고용입니다.
             </div>
             <div className="rounded-2xl border border-slate-100 bg-white p-5 text-sm leading-7 text-slate-600">
-              외부 링크는 편의를 위한 연결이며, 실제 상품 정보와 정책은 연결된 페이지 기준이 적용됩니다.
+              상품 정보와 지원정책은 구매·신청 직전에 공식 페이지의 최신 내용을 확인해 주세요.
             </div>
             <div className="rounded-2xl border border-slate-100 bg-white p-5 text-sm leading-7 text-slate-600">
-              오류 제보, 정보 수정 요청은 문의하기로 받을 수 있지만, 개인별 의료 상담은
-              답변 대상이 아닙니다.
+              아이의 건강 문제가 걱정될 때는 사이트 문의보다 의료기관 상담을 우선해 주세요.
             </div>
           </div>
         </section>
@@ -159,19 +140,11 @@ export default function FAQPage() {
         {faqSections.map((section) => (
           <section key={section.title} className="mt-card p-8 md:p-10">
             <h2 className="text-2xl font-bold tracking-tight text-slate-800">{section.title}</h2>
-
             <div className="mt-6 space-y-4">
               {section.items.map((item) => (
-                <article
-                  key={item.question}
-                  className="rounded-2xl border border-amber-100 bg-white p-5"
-                >
-                  <h3 className="text-base font-semibold text-slate-800 md:text-lg">
-                    {item.question}
-                  </h3>
-                  <p className="mt-3 text-sm leading-8 text-slate-600 md:text-base">
-                    {item.answer}
-                  </p>
+                <article key={item.question} className="rounded-2xl border border-amber-100 bg-white p-5">
+                  <h3 className="text-base font-semibold text-slate-800 md:text-lg">{item.question}</h3>
+                  <p className="mt-3 text-sm leading-8 text-slate-600 md:text-base">{item.answer}</p>
                 </article>
               ))}
             </div>
@@ -179,34 +152,19 @@ export default function FAQPage() {
         ))}
 
         <section className="mt-card-soft p-8 md:p-10">
-          <h2 className="text-xl font-bold text-slate-800">관련 페이지 바로가기</h2>
+          <h2 className="text-xl font-bold text-slate-800">더 확인하기</h2>
           <div className="mt-5 grid gap-4 md:grid-cols-3">
-            <Link
-              href="/privacy"
-              className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200"
-            >
+            <Link href="/privacy" className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200">
               <div className="font-semibold text-slate-800">개인정보처리방침</div>
-              <div className="mt-2 text-sm leading-7 text-slate-500">
-                정보 수집, 쿠키, 외부 서비스, 이용자 권리를 확인해 보세요.
-              </div>
+              <div className="mt-2 text-sm leading-7 text-slate-500">어떤 정보를 어떻게 다루는지 확인해 보세요.</div>
             </Link>
-            <Link
-              href="/terms"
-              className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200"
-            >
+            <Link href="/terms" className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200">
               <div className="font-semibold text-slate-800">이용약관</div>
-              <div className="mt-2 text-sm leading-7 text-slate-500">
-                서비스 활용 범위, 참고 기준, 외부 링크 안내 원칙을 볼 수 있어요.
-              </div>
+              <div className="mt-2 text-sm leading-7 text-slate-500">서비스 이용 범위와 참고 기준을 확인해 보세요.</div>
             </Link>
-            <Link
-              href="/contact"
-              className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200"
-            >
+            <Link href="/contact" className="rounded-2xl border border-slate-100 bg-white p-5 transition hover:-translate-y-0.5 hover:border-amber-200">
               <div className="font-semibold text-slate-800">문의하기</div>
-              <div className="mt-2 text-sm leading-7 text-slate-500">
-                오류 제보, 정보 수정 요청, 제휴 문의를 보내는 방법을 확인하세요.
-              </div>
+              <div className="mt-2 text-sm leading-7 text-slate-500">오류 제보나 내용 수정 요청을 보낼 수 있어요.</div>
             </Link>
           </div>
         </section>
