@@ -10,11 +10,14 @@ import { ADFIT_UNITS } from "@/lib/adfit";
 const pageDates = getPageDates("/tools/birth-support-calculator");
 const firstResult = calculateBirthSupport("jeju", "first");
 const secondResult = calculateBirthSupport("jeju", "second");
+const CHILDCARE_BIRTH_SUPPORT_URL = "https://www.childcare.go.kr/?menuno=279";
+const MOHW_CHILD_ALLOWANCE_URL = "https://www.mohw.go.kr/menu.es?mid=a10711030100";
+const MOHW_BIRTH_POLICY_URL = "https://www.mohw.go.kr/menu.es?mid=a10711020100";
 
 export const metadata: Metadata = {
   title: "출산지원금 계산기 | 지역별 첫째 둘째 지원금 예상 금액 | MomTools",
   description:
-    "2026년 전국 공통 출산·육아 지원금과 제주도·경남·경북·전남·전북·충남·충북·경기·강원·세종·울산·대전·광주·인천·대구·부산·서울 지역별 출산지원금 자료를 반영해 첫만남이용권, 부모급여, 아동수당, 지자체 출산지원금을 먼저 합산하고 가정양육수당처럼 조건에 따라 달라지는 지원은 별도로 안내합니다.",
+    "2026년 전국 공통 출산·육아 지원금과 지역별 출산지원금 자료를 참고해 예상 금액을 계산합니다. 지자체 금액·거주기간·신청기한은 수시로 바뀔 수 있어 아이사랑과 관할 주민센터 최신 안내를 최종 기준으로 확인해야 합니다.",
   keywords: [
     "출산지원금 계산기",
     "지역별 출산지원금",
@@ -43,7 +46,7 @@ export const metadata: Metadata = {
   alternates: { canonical: buildCanonical("/tools/birth-support-calculator") },
   openGraph: {
     title: "출산지원금 계산기 | 지역별 첫째 둘째 지원금 예상 금액",
-    description: "사는 지역과 출생 순위를 선택해 전국 공통 지원금과 지자체 출산지원금을 나누어 확인하세요.",
+    description: "사는 지역과 출생 순위를 선택해 전국 공통 지원금과 지자체 출산지원금을 참고용으로 나누어 확인하세요.",
     url: buildCanonical("/tools/birth-support-calculator"),
     siteName: "MomTools",
     locale: "ko_KR",
@@ -57,16 +60,20 @@ const faq = [
     a: "첫만남이용권, 부모급여, 아동수당, 그리고 선택한 지역의 지자체 출산지원금이 기본 예상 금액으로 먼저 합산돼요. 가정양육수당은 어린이집·유치원 이용 여부에 따라 달라지는 조건부 지원이라 별도 항목으로 확인할 수 있어요.",
   },
   {
+    q: "계산기에 나온 지자체 금액이 현재 확정 금액인가요?",
+    a: "아닙니다. 계산기는 각 지역 데이터의 기준일에 확인된 내용을 바탕으로 한 참고용 예상치입니다. 아이사랑 출산지원금 게시판은 2026년 전체 업데이트 이후에도 일부 지역이 개별 갱신되고 있으므로 신청 직전에는 해당 지역 최신 게시물과 관할 주민센터 안내를 다시 확인해야 합니다.",
+  },
+  {
     q: "지자체 출산지원금은 한 번에 지급되나요?",
-    a: "지역마다 다릅니다. 일부 지역은 일시금, 일부 지역은 2년~9년 분할, 지역화폐·선불카드·현물 지원으로 지급됩니다. 실제 지급 일정은 신청 시 주민센터에서 다시 확인하는 것이 좋습니다.",
+    a: "지역마다 다릅니다. 일부 지역은 일시금, 일부 지역은 수년간 분할 지급하고 지역화폐·선불카드·현물 지원을 제공하기도 합니다. 실제 지급 일정은 신청 시 최신 공고와 주민센터에서 다시 확인하세요.",
   },
   {
     q: "가정양육수당도 무조건 받을 수 있나요?",
-    a: "가정양육수당은 어린이집이나 유치원 등 보육·교육 서비스를 이용하지 않고 가정에서 양육하는 경우에 확인해야 하는 조건부 지원입니다. 계산기에서는 기본 예상 합계에 넣지 않고, 24개월 이상~86개월 미만 일반 아동 기준 월 10만 원을 조건 충족 시 추가 가능 금액으로 따로 보여줍니다.",
+    a: "가정양육수당은 어린이집이나 유치원 등 보육·교육 서비스를 이용하지 않고 가정에서 양육하는 경우에 확인해야 하는 조건부 지원입니다. 계산기에서는 기본 예상 합계에 넣지 않고 조건 충족 시 추가 가능 금액으로 따로 보여줍니다.",
   },
   {
     q: "전입한 지 얼마 안 됐으면 받을 수 있나요?",
-    a: "지역마다 거주기간 기준이 다릅니다. 3개월, 6개월, 12개월 거주 조건이 있는 곳도 있고 출생신고일 기준 주소만 보는 곳도 있으므로 계산 결과와 함께 각 지역의 거주 조건을 확인해야 합니다.",
+    a: "지역마다 거주기간 기준이 다릅니다. 일정 기간 계속 거주해야 하거나 출생신고일·신청일 주소를 보는 등 기준이 다르므로 계산 결과와 함께 해당 지자체의 최신 거주 조건을 확인해야 합니다.",
   },
 ];
 
@@ -90,10 +97,10 @@ export default function Page() {
   ] as const;
 
   const checkRows = [
-    "거주기간 조건은 지역마다 3개월, 6개월, 12개월 등으로 다를 수 있습니다.",
-    "첫째, 둘째, 셋째 이상에 따라 금액과 지급 방식이 달라집니다.",
-    "출생 후 60일, 90일, 180일, 1년 이내처럼 신청기한이 있는 지역이 있습니다.",
-    "신청 직전에는 관할 주민센터나 공식 안내에서 최신 금액과 조건을 다시 확인해야 합니다.",
+    "지역 데이터마다 기준일이 다르므로 계산 결과의 자료 기준일을 먼저 확인합니다.",
+    "거주기간, 출생 순위, 신청기한, 지급 방식은 지자체 공고가 바뀌면 계산 결과와 달라질 수 있습니다.",
+    "첫만남이용권·아동수당처럼 전국 공통 제도와 지자체 자체 지원을 구분해서 확인합니다.",
+    "신청 직전에는 아이사랑 최신 게시물과 관할 주민센터·보건소 안내를 최종 기준으로 확인합니다.",
   ] as const;
 
   return (
@@ -104,7 +111,7 @@ export default function Page() {
           <h1 className="mt-title-lg mt-4">지역별 출산지원금은 조건 확인이 먼저입니다</h1>
           <p className="mt-text-main mt-3">
             거주 지역과 출생 순위를 선택해 전국 공통 지원금과 지자체 출산지원금을 참고용으로 합산합니다.
-            실제 지급 여부는 거주기간, 신청기한, 지급 방식에 따라 달라질 수 있어요.
+            실제 지급 여부는 거주기간, 신청기한, 지급 방식과 최신 지자체 공고에 따라 달라질 수 있어요.
           </p>
         </section>
 
@@ -115,8 +122,22 @@ export default function Page() {
         <ContentUpdateNote
           publishedOn={pageDates.published}
           updatedOn={pageDates.updated}
-          note="2026년 전국 공통 출산·육아 지원금과 지역별 안내 자료를 기준으로 합산해 보여드려요. 신청 직전엔 관할 주민센터에서 최신 금액·조건을 다시 확인해 주세요."
+          note="2026년 10월 10일 전국 공통 제도와 아이사랑 출산지원금 게시판의 최신 갱신 흐름을 다시 확인했습니다. 계산기의 지자체 금액은 각 지역 데이터 기준일의 참고치이므로 신청 직전 최신 공고와 관할 주민센터 안내를 최종 기준으로 확인해 주세요."
         />
+
+        <section className="mt-card-soft p-4 md:p-6">
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">공식자료 우선 확인</div>
+          <h2 className="mt-title-md mt-3">지역 지원금은 계산 결과보다 최신 공고가 우선입니다</h2>
+          <p className="mt-text-main mt-3">
+            아이사랑 출산지원금 게시판은 2026년 3월 전체 업데이트 후에도 일부 시·군·구 게시물이 추가로 갱신되고 있습니다.
+            그래서 계산기에 저장된 지역별 기준일과 실제 신청일 사이에 금액·거주기간·신청기한이 달라질 수 있습니다.
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <a href={CHILDCARE_BIRTH_SUPPORT_URL} target="_blank" rel="noopener noreferrer" className="mt-chip-link">아이사랑 지역별 출산지원금</a>
+            <a href={MOHW_BIRTH_POLICY_URL} target="_blank" rel="noopener noreferrer" className="mt-chip-link">보건복지부 첫만남이용권</a>
+            <a href={MOHW_CHILD_ALLOWANCE_URL} target="_blank" rel="noopener noreferrer" className="mt-chip-link">보건복지부 아동수당</a>
+          </div>
+        </section>
 
         <details className="mt-section-details">
           <summary className="mt-section-summary"><span>예상 금액 기준과 신청 전 확인할 조건</span><span className="text-xs font-bold text-amber-700">열기</span></summary>
@@ -226,7 +247,7 @@ function RegionIndexSection() {
       <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">지역별 바로가기</div>
       <h2 className="mt-title-md mt-3">시·군·구별 출산지원금 페이지</h2>
       <p className="mt-text-sub mt-3">
-        지역명을 누르면 해당 지자체 출산지원금 페이지로 이동합니다. 모바일에서는 시·도별로 접어서 확인할 수 있게 정리했습니다.
+        지역명을 누르면 해당 지자체 출산지원금 페이지로 이동합니다. 각 지역 페이지의 자료 기준일을 확인한 뒤 최신 공고와 다시 대조해 주세요.
       </p>
       <div className="mt-4 space-y-3">
         {ordered.map(([sido, regions]) => (

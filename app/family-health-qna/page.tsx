@@ -2,12 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import ContentUpdateNote from "@/components/common/ContentUpdateNote";
 import MedicalDisclaimer from "@/components/common/MedicalDisclaimer";
-import { buildCanonical, SITE_DATES } from "@/lib/content-meta";
+import { buildCanonical, getPageDates } from "@/lib/content-meta";
 import {
   familyHealthCategories,
   type FamilyHealthQnaCategory,
 } from "@/data/familyHealthQna";
 import { getFamilyHealthCategorySummaries } from "@/lib/repositories/family-health-qna-db";
+
+const pageDates = getPageDates("/family-health-qna");
+const NEDRUG_URL = "https://nedrug.mfds.go.kr";
+const DRUGSAFE_URL = "https://www.drugsafe.or.kr";
 
 export const metadata: Metadata = {
   title: "가족건강 Q&A | 엄마 아빠 생활 건강 약 영양제 질문 모음 | MomTools",
@@ -47,6 +51,7 @@ export default async function FamilyHealthQnaHubPage() {
     description: metadata.description,
     inLanguage: "ko-KR",
     url: buildCanonical("/family-health-qna"),
+    dateModified: pageDates.updated,
     mainEntity: categories.map((category) => ({
       "@type": "ItemList",
       name: familyHealthCategories[category as FamilyHealthQnaCategory].label,
@@ -70,10 +75,24 @@ export default async function FamilyHealthQnaHubPage() {
 
         <MedicalDisclaimer lang="ko" variant="compact" />
         <ContentUpdateNote
-          publishedOn={SITE_DATES.published}
-          updatedOn={SITE_DATES.updated}
-          note="가족이 일상에서 먼저 확인할 수 있는 관찰 기준과 병원·약국 상담에 도움이 되는 기록 항목을 중심으로 정리했습니다."
+          publishedOn={pageDates.published}
+          updatedOn={pageDates.updated}
+          note="2026년 10월 기준으로 건강정보의 표현과 약·영양제 안전 안내를 다시 점검했습니다. 개별 제품의 성분·용량·임신·수유·소아 사용 여부는 최신 제품 설명서와 의약품안전나라, 약사·의료진 안내를 최종 기준으로 확인해 주세요."
         />
+
+        <section className="mt-card-soft p-4 md:p-6">
+          <div className="text-xs font-semibold uppercase tracking-[0.18em] text-amber-600">약·영양제 확인 원칙</div>
+          <h2 className="mt-title-md mt-3">제품명보다 성분과 현재 복용 상황을 먼저 확인하세요</h2>
+          <ul className="mt-result-list mt-4">
+            <li className="mt-result-list-item"><span className="mt-result-value">감기약·진통제·영양제처럼 익숙한 제품도 같은 성분이나 비슷한 효능군을 중복해서 먹지 않는지 확인합니다.</span></li>
+            <li className="mt-result-list-item"><span className="mt-result-value">임신·수유 중이거나 아이가 복용할 때는 연령·체중·기존 질환과 다른 약을 함께 확인한 뒤 약사나 의료진에게 문의하는 것이 안전합니다.</span></li>
+            <li className="mt-result-list-item"><span className="mt-result-value">제품명·함량·제형은 바뀔 수 있으므로 실제 복용 전 최신 포장지와 허가사항을 다시 확인합니다.</span></li>
+          </ul>
+          <div className="mt-4 flex flex-wrap gap-2">
+            <a href={NEDRUG_URL} target="_blank" rel="noopener noreferrer" className="mt-chip-link">의약품안전나라 확인</a>
+            <a href={DRUGSAFE_URL} target="_blank" rel="noopener noreferrer" className="mt-chip-link">의약품안전관리원 DUR 확인</a>
+          </div>
+        </section>
 
         <section className="mt-simple-list" aria-label="가족건강 Q&A 카테고리">
           {categories.map((category) => {
