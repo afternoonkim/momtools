@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   alternates: { canonical: buildCanonical("/tools/birth-support-calculator") },
   openGraph: {
     title: "출산지원금 계산기 | 지역별 첫째 둘째 지원금 예상 금액",
-    description: "사는 지역과 출생 순위를 선택해 전국 공통 지원금과 지자체 출산지원금을 참고용으로 나누어 확인하세요.",
+    description: "사는 지역과 출생 순위를 선택해 여러 해에 걸친 지원금의 등록 기준액을 비교하세요. 실제 수령액·즉시 지급액과 다릅니다.",
     url: buildCanonical("/tools/birth-support-calculator"),
     siteName: "MomTools",
     locale: "ko_KR",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
 const faq = [
   {
     q: "지역별 출산지원금 계산기는 어떤 금액을 합산하나요?",
-    a: "첫만남이용권, 부모급여, 아동수당, 그리고 선택한 지역의 지자체 출산지원금이 기본 예상 금액으로 먼저 합산돼요. 가정양육수당은 어린이집·유치원 이용 여부에 따라 달라지는 조건부 지원이라 별도 항목으로 확인할 수 있어요.",
+    a: "첫만남이용권, 부모급여, 아동수당의 108개월 비교 시나리오, 선택 지역의 지자체 출산지원금 등록액이 합산돼요. 현금 지급 예상액이나 평생 최대액이 아니며, 인구감소지역 아동수당 가산 등은 별도로 확인해야 합니다. 가정양육수당은 어린이집·유치원 이용 여부에 따라 달라지는 조건부 지원이라 별도 항목으로 확인할 수 있어요.",
   },
   {
     q: "계산기에 나온 지자체 금액이 현재 확정 금액인가요?",

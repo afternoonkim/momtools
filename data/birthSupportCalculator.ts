@@ -111,7 +111,7 @@ const childAllowance: BirthSupportBenefit = {
   paymentType: "계좌입금",
   // 실제 계산 금액은 region.sido 기준으로 아래 후처리에서 다시 적용합니다.
   amountByBirthOrder: { first: 11_340_000, second: 11_340_000, third: 11_340_000, fourthPlus: 11_340_000 },
-  displayValue: "비수도권 월 10.5만 원, 만 9세 미만 기준 최대 1,134만 원",
+  displayValue: "비수도권 월 10.5만 원, 2026년 9세 미만 연령 기준 108개월 비교액 1,134만 원",
   includedInTotal: true,
   isRecurring: true,
   periodLabel: "0~8세 월 지급",
@@ -1774,7 +1774,7 @@ birthSupportRegions.push(...extraBirthSupportRegions);
 const METROPOLITAN_SIDO = new Set(["서울특별시", "경기도", "인천광역시"]);
 const METROPOLITAN_MONTHLY = 100_000;
 const NON_METROPOLITAN_MONTHLY = 105_000;
-const CHILD_ALLOWANCE_MONTHS = 108; // 0~8세까지 9년 × 12개월
+const CHILD_ALLOWANCE_MONTHS = 108; // 2026년 지급연령(9세 미만)만 108개월에 적용한 비교 시나리오. 2030년 13세 미만 확대 시 전체 수급액이 아님.
 
 for (const region of birthSupportRegions) {
   const isMetro = METROPOLITAN_SIDO.has(region.sido);
@@ -1786,7 +1786,7 @@ for (const region of birthSupportRegions) {
     return {
       ...benefit,
       amountByBirthOrder: { first: total, second: total, third: total, fourthPlus: total },
-      displayValue: `${tierLabel} 월 ${(monthly / 10_000).toFixed(monthly % 10_000 === 0 ? 0 : 1)}만 원, 만 9세 미만 기준 최대 ${(total / 10_000).toLocaleString("ko-KR")}만 원`,
+      displayValue: `${tierLabel} 월 ${(monthly / 10_000).toFixed(monthly % 10_000 === 0 ? 0 : 1)}만 원, 2026년 연령 상한만 적용한 9년 비교액 ${(total / 10_000).toLocaleString("ko-KR")}만 원`,
     };
   });
 }

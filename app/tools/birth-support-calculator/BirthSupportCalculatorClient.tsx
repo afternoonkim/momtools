@@ -230,7 +230,7 @@ export default function BirthSupportCalculatorClient({
           <div className="rounded-3xl border border-slate-100 bg-slate-50 p-5 text-sm leading-7 text-slate-600">
             <div className="font-semibold text-slate-800">계산 기준</div>
             <p className="mt-2">
-              총액은 첫만남이용권, 부모급여, 아동수당, 선택한 지역의 지자체 지원금을 더한 값이에요. 부모급여는 0세 월 100만 원·1세 월 50만 원 기준이며, 아동수당은 거주 시·도에 따라 수도권 월 10만 원 또는 비수도권 월 10.5만 원 기준으로 적용됩니다. 가정양육수당은 어린이집·유치원 이용 여부에 따라 달라져 별도로 안내해요.
+              표시된 합계는 첫만남이용권, 부모급여, 아동수당(108개월 비교 시나리오), 선택 지역의 지자체 지원액을 여러 해에 걸쳐 더한 값이며 실제 수령액은 아닙니다. 부모급여는 0세 월 100만 원·1세 월 50만 원 기준이며, 아동수당은 거주 시·도에 따라 수도권 월 10만 원 또는 비수도권 월 10.5만 원 기준으로 적용됩니다. 가정양육수당은 별도로 안내해요. 아동수당은 2030년까지 13세 미만으로 연령 상한이 단계적으로 확대되므로 108개월 비교액이 평생 최대액을 뜻하지 않습니다. 인구감소지역 우대·특별지역 가산액과 지역화폐 추가 지급도 기본 비교 합계에는 적용되지 않았습니다.
             </p>
           </div>
         </div>
@@ -240,11 +240,11 @@ export default function BirthSupportCalculatorClient({
             <>
           <div className="rounded-[2rem] bg-slate-900 p-6 text-white shadow-xl">
             <div className="flex items-center gap-3 text-sm font-semibold text-amber-200">
-              <Calculator size={18} /> 기본 예상 지원금
+              <Calculator size={18} /> 장기 지원액 비교 합계
             </div>
             <div className="mt-5 text-4xl font-black tracking-tight md:text-5xl">{result.formattedTotal}</div>
             <p className="mt-3 text-sm leading-7 text-slate-300">
-              {result.region.sido} {result.region.sigungu === "전체" ? "" : result.region.sigungu} 기준 {result.birthOrderLabel} 출산·양육 과정에서 받을 수 있는 전국 공통 기본 지원과 지자체 지원을 합산한 예상 금액입니다. 조건부 지원은 아래 항목에서 따로 확인해 주세요.
+              {result.region.sido} {result.region.sigungu === "전체" ? "" : result.region.sigungu} 기준 {result.birthOrderLabel} 출생 이후 여러 해에 걸쳐 받을 수 있는 공통 지원과 지역 지원의 등록 금액을 더한 비교값입니다. 지금 받을 현금이나 확정 수령액이 아닙니다. 아래의 거주기간·신청기한·월 지급 조건과 지역 공고를 확인해 주세요.
             </p>
             <div className="mt-6 grid gap-3 sm:grid-cols-2">
               <div className="rounded-3xl bg-white/10 p-4">
@@ -280,11 +280,11 @@ export default function BirthSupportCalculatorClient({
                     <h3 className="mt-1 text-lg font-bold text-slate-900">{item.name}</h3>
                     <p className="mt-2 text-sm leading-7 text-slate-600">{item.displayValue}</p>
                     {item.isConditional ? (
-                      <p className="mt-2 inline-flex rounded-full bg-rose-50 px-3 py-1 text-xs font-semibold text-rose-700">조건 충족 시 추가 가능: 어린이집·유치원 이용 여부에 따라 달라져요</p>
+                      <p className="mt-2 inline-flex rounded-full bg-rose-50 px-3 py-1 text-xs font-semibold text-rose-700">조건 충족 시 지급 가능: 거주기간·출생순위·신청기한 등 아래 조건 확인</p>
                     ) : null}
                   </div>
                   <div className="shrink-0 rounded-2xl bg-amber-50 px-4 py-3 text-right">
-                    <div className="text-xs text-slate-500">선택 기준</div>
+                    <div className="text-xs text-slate-500">장기 등록 기준액</div>
                     <div className="text-xl font-black text-slate-900">{item.formattedAmount}</div>
                   </div>
                 </div>
