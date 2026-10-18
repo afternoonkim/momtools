@@ -61,13 +61,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A classic US first food that adds iron while keeping texture very smooth.",
     "howToMake": [
-      "Stir the infant oatmeal cereal, breast milk or formula together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Let oatmeal stand briefly, then thin it again if it tightens into a paste as it cools.",
-      "Offer one spoonful of oatmeal first, then pause because cereal can feel thicker after a few bites."
+      "Gather infant oatmeal cereal, breast milk or formula. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Prepare infant cereal or other grains according to package instructions. Mix in properly stored breast milk or correctly prepared formula without unsafe reheating; offer immediately following milk-specific safety guidance.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Infant Oatmeal with Breast Milk or Formula works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Offer Infant Oatmeal with Breast Milk or Formula while it is freshly softened; grains thicken as they stand, so check the spoonful before giving more.",
-    "storageTip": "Prepare a fresh portion with safely stored breast milk or prepared infant formula. Follow milk-specific handling times and discard food remaining in the baby's bowl after feeding.",
+    "storageTip": "Prepare using safely stored breast milk or correctly prepared infant formula and serve promptly. Do not return leftovers from your baby's bowl to storage. Follow CDC breast-milk or formula handling instructions; never use a general homemade-food storage limit for mixed milk.",
     "safetyTip": "Avoid dense clumps of infant oatmeal cereal; spread or break the food apart so each bite is easy to swallow.",
     "ageFit": "Best around 6 months, after your baby can sit with support and shows clear readiness for solids.",
     "searchTerms": [
@@ -88,13 +89,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Creamy avocado is easy to mash and works well as a first spoon-fed food.",
     "howToMake": [
-      "Peel the ripe avocado and mash it with a fork until no firm pieces remain.",
-      "For Avocado Mash, add liquid slowly until the mash slides from the spoon without forming a sticky clump.",
-      "Offer one small spoonful of Avocado Mash, then pause to watch swallowing, interest, and comfort."
+      "Gather ripe avocado. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Peel and prepare the ripe fruit. Mash until smooth or soft enough for your baby's feeding skills; raw ripe avocado or banana does not need cooking.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Avocado Mash should feel soft and moist on the tongue; prepare ripe avocado so it stays tender, moist, and easy to break apart.",
     "servingTip": "Serve ripe avocado in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved ripe avocado covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade avocado mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Check ripe avocado for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "A good first-food option for many 6-month-old babies who are ready for spoon-fed textures.",
     "searchTerms": [
@@ -115,13 +117,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Banana mixed with infant oatmeal makes a thicker first meal with familiar flavor.",
     "howToMake": [
-      "Stir the ripe banana, infant oatmeal cereal together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Check the texture after it cools slightly, then loosen it with breast milk, formula, or water if it becomes too thick.",
-      "Begin with a small taste and pause between bites so your baby can show comfort with the texture."
+      "Gather ripe banana, infant oatmeal cereal. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Banana Oat Mash should feel soft and moist on the tongue; prepare ripe banana so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair ripe banana with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Banana Oat Mash until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade banana oat mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Check ripe banana and infant oatmeal cereal for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "Offer near the start of solids, usually around 6 months, while breast milk or formula remains the main nutrition source.",
     "searchTerms": [
@@ -142,13 +145,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Sweet potato is naturally soft and easy to puree for early solids.",
     "howToMake": [
-      "Steam or bake the sweet potato until it is soft enough to squash easily between your fingers.",
-      "Shred, mash, or blend the protein with enough moisture to keep every bite tender.",
-      "Start with a small protein portion and pause often because these foods can feel dense to new eaters."
+      "Gather sweet potato. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Sweet Potato Puree should feel soft and moist on the tongue; prepare sweet potato so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of sweet potato alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Sweet Potato Puree quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade sweet potato puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of sweet potato; every bite should flatten easily between your fingers.",
     "ageFit": "Appropriate for the first weeks of solids when your baby is practicing small tastes and smooth textures.",
     "searchTerms": [
@@ -168,13 +172,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A gentle fruit puree that many families use after a few simple starter foods.",
     "howToMake": [
-      "Steam or bake the ripe pear until it is soft enough to squash easily between your fingers.",
-      "For Pear Puree, break the protein into very small pieces and add moisture so it does not feel dry in the mouth.",
-      "Start with a small protein portion and pause often because these foods can feel dense to new eaters."
+      "Gather ripe pear. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Pear Puree should feel soft and moist on the tongue; prepare ripe pear so it stays tender, moist, and easy to break apart.",
     "servingTip": "Serve ripe pear in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved ripe pear covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade pear puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Check ripe pear for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal. Avoid hard raw chunks; cook firm produce until mashable or prepare in a developmentally safe form.",
     "ageFit": "Use once readiness signs are present, such as steady head control, interest in food, and ability to sit with support.",
     "searchTerms": [
@@ -194,13 +199,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Cooked apple puree offers a smooth spoon texture and mild flavor.",
     "howToMake": [
-      "Steam or bake the apple until it is soft enough to squash easily between your fingers.",
-      "Remove any firm bits, then mince or blend until the texture is safe for your baby’s stage.",
-      "Cool until warm, then offer a few moist bites and watch chewing and swallowing closely."
+      "Gather apple. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Apple Puree should feel soft and moist on the tongue; prepare apple so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair apple with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Apple Puree until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade apple puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Check apple for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal. Avoid hard raw chunks; cook firm produce until mashable or prepare in a developmentally safe form.",
     "ageFit": "Best around 6 months, after your baby can sit with support and shows clear readiness for solids.",
     "searchTerms": [
@@ -220,13 +226,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A smooth orange puree with a naturally sweet taste.",
     "howToMake": [
-      "Steam or bake the butternut squash until it is soft enough to squash easily between your fingers.",
-      "With Butternut Squash Puree, mix the protein into puree, broth, or yogurt until each bite stays soft and cohesive.",
-      "Serve in small amounts with a familiar food if that helps your baby manage the texture."
+      "Gather butternut squash. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Butternut Squash Puree should feel soft and moist on the tongue; prepare butternut squash so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of butternut squash alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Butternut Squash Puree quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade butternut squash puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of butternut squash; every bite should flatten easily between your fingers.",
     "ageFit": "A good first-food option for many 6-month-old babies who are ready for spoon-fed textures.",
     "searchTerms": [
@@ -246,13 +253,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Pumpkin puree can be served smooth and thin for early practice.",
     "howToMake": [
-      "Steam or bake the pumpkin until it is soft enough to squash easily between your fingers.",
-      "Serve Pumpkin Puree with enough moisture to prevent crumbly bits, especially for babies still learning to chew.",
-      "Start with a small protein portion and pause often because these foods can feel dense to new eaters."
+      "Gather pumpkin. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Pumpkin Puree should feel soft and moist on the tongue; prepare pumpkin so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of pumpkin alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Pumpkin Puree quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade pumpkin puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of pumpkin; every bite should flatten easily between your fingers.",
     "ageFit": "Offer near the start of solids, usually around 6 months, while breast milk or formula remains the main nutrition source.",
     "searchTerms": [
@@ -272,13 +280,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Cooked carrots blend into a smooth puree with a mild sweetness.",
     "howToMake": [
-      "Steam or bake the carrots until it is soft enough to squash easily between your fingers.",
-      "Remove any firm bits, then mince or blend until the texture is safe for your baby’s stage.",
-      "Cool until warm, then offer a few moist bites and watch chewing and swallowing closely."
+      "Gather carrots. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Carrot Puree should feel soft and moist on the tongue; prepare carrots so it stays tender, moist, and easy to break apart.",
     "servingTip": "Serve carrots in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved carrots covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade carrot puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Check carrots for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal. Avoid hard raw chunks; cook firm produce until mashable or prepare in a developmentally safe form.",
     "ageFit": "Appropriate for the first weeks of solids when your baby is practicing small tastes and smooth textures.",
     "searchTerms": [
@@ -298,13 +307,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Pea puree adds vegetable variety once your baby handles smooth textures well.",
     "howToMake": [
-      "Steam or bake the green peas until it is soft enough to squash easily between your fingers.",
-      "Shred, mash, or blend the protein with enough moisture to keep every bite tender.",
-      "Serve in small amounts with a familiar food if that helps your baby manage the texture."
+      "Gather green peas. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Pea Puree should feel soft and moist on the tongue; prepare green peas so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair green peas with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Pea Puree until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade pea puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Check green peas for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "Use once readiness signs are present, such as steady head control, interest in food, and ability to sit with support.",
     "searchTerms": [
@@ -324,13 +334,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Green beans can be blended smooth for an easy vegetable starter.",
     "howToMake": [
-      "Cook the green beans completely and keep the texture moist so it is not dry or crumbly.",
-      "For egg, serve it fully cooked and soft, such as finely mashed yolk or small tender pieces mixed into another moist food.",
-      "Give egg in a small baby-safe amount at first and watch for any reaction during and after the meal."
+      "Gather green beans. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Green Bean Puree should feel soft and moist on the tongue; mash until skins are broken down and add liquid until the texture is easy to swallow.",
     "servingTip": "Start with a small spoonful of green beans alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Green Bean Puree quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade green bean puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of green beans; every bite should flatten easily between your fingers. Mash whole beans or chickpeas until no firm round pieces remain.",
     "ageFit": "Best around 6 months, after your baby can sit with support and shows clear readiness for solids.",
     "searchTerms": [
@@ -350,13 +361,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Zucchini cooks quickly and blends into a mild early puree.",
     "howToMake": [
-      "Steam or bake the zucchini until it is soft enough to squash easily between your fingers.",
-      "For Zucchini Puree, check the protein texture with your fingers and soften it more if it feels firm or grainy.",
-      "Cool until warm, then offer a few moist bites and watch chewing and swallowing closely."
+      "Gather zucchini. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Zucchini Puree should feel soft and moist on the tongue; prepare zucchini so it stays tender, moist, and easy to break apart.",
     "servingTip": "Serve zucchini in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved zucchini covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade zucchini puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Check zucchini for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "A good first-food option for many 6-month-old babies who are ready for spoon-fed textures.",
     "searchTerms": [
@@ -376,13 +388,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Prune puree is often used in tiny amounts when parents want a fruit option with fiber.",
     "howToMake": [
-      "Prepare the pitted prunes until every ingredient is soft, mild, and easy for your baby to manage.",
-      "Prepare Prune Puree for your baby's current skill level: smooth, mashed, shredded, or soft pieces as needed.",
-      "For Prune Puree, begin with a small serving and thin the food if it clings to the spoon or feels heavy."
+      "Gather pitted prunes. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Prune Puree should be ripe, peeled when needed, and mashed or cut so the fruit collapses with gentle pressure.",
     "servingTip": "Start with a few soft bites of Prune Puree, then wait before offering more if the fruit is new to your baby.",
-    "storageTip": "If saving pitted prunes, cover it tightly and expect the texture to soften further by the next meal.",
+    "storageTip": "Refrigerate untouched homemade prune puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For berries or grapes, flatten or quarter appropriately and never serve firm round pieces whole.",
     "ageFit": "Offer near the start of solids, usually around 6 months, while breast milk or formula remains the main nutrition source.",
     "searchTerms": [
@@ -402,13 +415,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Cooked peach puree brings a soft texture and bright fruit flavor.",
     "howToMake": [
-      "Steam or bake the ripe peach until it is soft enough to squash easily between your fingers.",
-      "Mash the ripe fruit with a fork, leaving only tiny soft bits if your baby is ready for texture.",
-      "Start with a small portion and stop if the texture or tart flavor seems uncomfortable."
+      "Gather ripe peach. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Peach Puree should be ripe, peeled when needed, and mashed or cut so the fruit collapses with gentle pressure.",
     "servingTip": "Offer a small taste of ripe peach first; tart fruits can surprise babies, so mix with yogurt or cereal if needed.",
-    "storageTip": "Fruit like ripe peach can brown or release juice, so store a small covered portion and check smell and texture before reusing.",
+    "storageTip": "Refrigerate untouched homemade peach puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Remove peels, pits, seeds, and firm edges from ripe peach; slippery pieces should be sized so they are easy to control.",
     "ageFit": "Appropriate for the first weeks of solids when your baby is practicing small tastes and smooth textures.",
     "searchTerms": [
@@ -428,13 +442,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Very ripe mango can be blended smooth for a simple fruit puree.",
     "howToMake": [
-      "Prepare the ripe mango until every ingredient is soft, mild, and easy for your baby to manage.",
-      "For Mango Puree, use the recipe as a guide but adjust thickness and piece size to how your baby eats this week.",
-      "Serve Mango Puree in a modest portion first, then add moisture if the texture feels dense, sticky, or tiring."
+      "Gather ripe mango. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Mango Puree should be ripe, peeled when needed, and mashed or cut so the fruit collapses with gentle pressure.",
     "servingTip": "Offer a small taste of ripe mango first; tart fruits can surprise babies, so mix with yogurt or cereal if needed.",
-    "storageTip": "Fruit like ripe mango can brown or release juice, so store a small covered portion and check smell and texture before reusing.",
+    "storageTip": "Refrigerate untouched homemade mango puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Remove peels, pits, seeds, and firm edges from ripe mango; slippery pieces should be sized so they are easy to control.",
     "ageFit": "Use once readiness signs are present, such as steady head control, interest in food, and ability to sit with support.",
     "searchTerms": [
@@ -455,13 +470,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Blueberries mixed with oatmeal make a thicker spoon-fed breakfast.",
     "howToMake": [
-      "Stir the blueberries, infant oatmeal cereal together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Let oatmeal stand briefly, then thin it again if it tightens into a paste as it cools.",
-      "Offer one spoonful of oatmeal first, then pause because cereal can feel thicker after a few bites."
+      "Gather blueberries, infant oatmeal cereal. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Blueberry Oat Puree works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Keep the first serving of Blueberry Oat Puree small and slow, especially if the food contains pasta, rice, or oatmeal that can become sticky.",
-    "storageTip": "Store Blueberry Oat Puree in a shallow covered container and recheck thickness after warming, since grains often absorb liquid.",
+    "storageTip": "Refrigerate untouched homemade blueberry oat puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For pasta or rice dishes, cut long shapes and separate sticky pieces before serving. Do not serve firm round berries or whole grapes; mash or cut appropriately for your baby's feeding skills.",
     "ageFit": "Best around 6 months, after your baby can sit with support and shows clear readiness for solids.",
     "searchTerms": [
@@ -482,13 +498,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Unsweetened whole milk yogurt is a common US baby food for early variety.",
     "howToMake": [
-      "Prepare the plain whole milk yogurt until every ingredient is soft, mild, and easy for your baby to manage.",
-      "Before serving Plain Whole Milk Yogurt, test whether the food mashes easily between your fingers and resize it if needed.",
-      "With Plain Whole Milk Yogurt, stay close during the first bites and soften the texture further if chewing looks difficult."
+      "Gather plain whole milk yogurt. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Plain Whole Milk Yogurt should feel soft and moist on the tongue; prepare plain whole milk yogurt so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair plain whole milk yogurt with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Plain Whole Milk Yogurt until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade plain whole milk yogurt promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Check plain whole milk yogurt for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "A good first-food option for many 6-month-old babies who are ready for spoon-fed textures.",
     "searchTerms": [
@@ -508,13 +525,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft cooked egg gives protein and fits current early-allergen guidance for many babies.",
     "howToMake": [
-      "Cook the egg completely and keep the texture moist so it is not dry or crumbly.",
-      "For egg, serve it fully cooked and soft, such as finely mashed yolk or small tender pieces mixed into another moist food.",
-      "Give egg in a small baby-safe amount at first and watch for any reaction during and after the meal."
+      "Gather egg. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook the egg fully; if other ingredients also require cooking, prepare them safely until soft. Do not serve runny or undercooked egg.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Soft Scrambled Egg Mash should feel soft and moist on the tongue; cook it fully, offer a soft texture, and watch for rash, vomiting, or breathing changes after introduction.",
     "servingTip": "Start with a small spoonful of egg alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Soft Scrambled Egg Mash quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade soft scrambled egg mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of egg; every bite should flatten easily between your fingers.",
     "ageFit": "Offer near the start of solids, usually around 6 months, while breast milk or formula remains the main nutrition source.",
     "searchTerms": [
@@ -535,13 +553,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A small amount of smooth peanut butter thinned into oatmeal is an age-appropriate way many families introduce peanut.",
     "howToMake": [
-      "Stir the smooth peanut butter, infant oatmeal cereal together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Check the texture after it cools slightly, then loosen it with breast milk, formula, or water if it becomes too thick.",
-      "Begin with a small taste and pause between bites so your baby can show comfort with the texture."
+      "Gather smooth peanut butter, infant oatmeal cereal. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Stir the smooth nut butter thoroughly into the other soft ingredients until no thick, sticky clumps remain. Never serve a spoonful of nut butter on its own.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Thinned Peanut Butter Oatmeal works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Keep the first serving of Thinned Peanut Butter Oatmeal small and slow, especially if the food contains pasta, rice, or oatmeal that can become sticky.",
-    "storageTip": "Store Thinned Peanut Butter Oatmeal in a shallow covered container and recheck thickness after warming, since grains often absorb liquid.",
+    "storageTip": "Refrigerate untouched homemade thinned peanut butter oatmeal promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For pasta or rice dishes, cut long shapes and separate sticky pieces before serving. Thin smooth nut butter well into other soft food; never offer sticky spoonfuls or thick clumps. For severe eczema or egg allergy, seek your clinician's peanut-introduction plan.",
     "ageFit": "Appropriate for the first weeks of solids when your baby is practicing small tastes and smooth textures.",
     "searchTerms": [
@@ -563,13 +582,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "This offers a nut exposure option when your pediatrician says it is appropriate.",
     "howToMake": [
-      "Stir the smooth almond butter, infant oatmeal cereal together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Let oatmeal stand briefly, then thin it again if it tightens into a paste as it cools.",
-      "Offer one spoonful of oatmeal first, then pause because cereal can feel thicker after a few bites."
+      "Gather smooth almond butter, infant oatmeal cereal. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Thinned Almond Butter Oatmeal works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Serve Thinned Almond Butter Oatmeal with enough moisture to separate the grains or pieces easily on the spoon.",
-    "storageTip": "For leftovers, loosen Thinned Almond Butter Oatmeal with water, breast milk, formula, or sauce and test that it is soft all the way through.",
+    "storageTip": "Refrigerate untouched homemade thinned almond butter oatmeal promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Skip dry crusty pieces and offer grains in a moist, spoonable, or soft finger-food form. Thin smooth nut butter well into other soft food; never offer sticky spoonfuls or thick clumps. For severe eczema or egg allergy, seek your clinician's peanut-introduction plan.",
     "ageFit": "Use once readiness signs are present, such as steady head control, interest in food, and ability to sit with support.",
     "searchTerms": [
@@ -591,13 +611,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Ricotta and pear make a soft spoon-fed combo with dairy exposure.",
     "howToMake": [
-      "Steam or bake the whole milk ricotta, pear puree until it is soft enough to squash easily between your fingers.",
-      "Blend briefly or mash by hand so the fruit stays moist rather than watery or stringy.",
-      "Start with a small portion and stop if the texture or tart flavor seems uncomfortable."
+      "Gather whole milk ricotta, pear puree. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Ricotta and Pear Mash should feel soft and moist on the tongue; prepare whole milk ricotta so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of whole milk ricotta alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Ricotta and Pear Mash quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade ricotta and pear mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of whole milk ricotta; every bite should flatten easily between your fingers. Avoid hard raw chunks; cook firm produce until mashable or prepare in a developmentally safe form. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Best around 6 months, after your baby can sit with support and shows clear readiness for solids.",
     "searchTerms": [
@@ -619,13 +640,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Smooth blended cottage cheese with peach works well for babies already trying dairy.",
     "howToMake": [
-      "Steam or bake the small curd cottage cheese, peach puree until it is soft enough to squash easily between your fingers.",
-      "For Cottage Cheese Peach Mash, break the protein into very small pieces and add moisture so it does not feel dry in the mouth.",
-      "Serve in small amounts with a familiar food if that helps your baby manage the texture."
+      "Gather small curd cottage cheese, peach puree. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Cottage Cheese Peach Mash should feel soft and moist on the tongue; prepare small curd cottage cheese so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of small curd cottage cheese alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Cottage Cheese Peach Mash quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade cottage cheese peach mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of small curd cottage cheese; every bite should flatten easily between your fingers. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "A good first-food option for many 6-month-old babies who are ready for spoon-fed textures.",
     "searchTerms": [
@@ -646,13 +668,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Mashed beans are an easy iron-rich option for early solids.",
     "howToMake": [
-      "Prepare black beans following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
-      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
-      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
+      "Gather black beans. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Mashed Black Beans should feel soft and moist on the tongue; mash until skins are broken down and add liquid until the texture is easy to swallow.",
     "servingTip": "Serve black beans in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved black beans covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade mashed black beans promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Chicken can become stringy when dry, so remove tough edges and keep every piece soft, moist, and finely shredded. Mash whole beans or chickpeas until no firm round pieces remain.",
     "ageFit": "Offer near the start of solids, usually around 6 months, while breast milk or formula remains the main nutrition source.",
     "searchTerms": [
@@ -672,13 +695,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft cooked lentils mash easily and add iron and protein.",
     "howToMake": [
-      "Prepare red lentils following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
-      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
-      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
+      "Gather red lentils. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Mashed Lentils should feel soft and moist on the tongue; cook until very soft and loosen the mash so it does not become pasty.",
     "servingTip": "Pair red lentils with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Mashed Lentils until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade mashed lentils promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For Mashed Lentils, keep the texture baby-safe and watch for hives, swelling, repeated vomiting, coughing, wheezing, or breathing changes. Mash whole beans or chickpeas until no firm round pieces remain.",
     "ageFit": "Appropriate for the first weeks of solids when your baby is practicing small tastes and smooth textures.",
     "searchTerms": [
@@ -699,13 +723,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Pureed chicken is a practical meat option once you want to add iron-rich foods.",
     "howToMake": [
-      "Cook the chicken thigh, water or broth completely and keep the texture moist so it is not dry or crumbly.",
-      "For chicken, keep the meat very moist and pull it into tiny soft shreds, or fold it into a puree so it does not feel dry in the mouth.",
-      "With Chicken Puree, pause after the first few shreds so you can see whether your baby moves the meat comfortably."
+      "Gather chicken thigh, water or broth. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Chicken Puree should feel soft and moist on the tongue; shred it very small and keep it moist with cooking liquid, breast milk, formula, or a mild sauce.",
     "servingTip": "Start with a small spoonful of chicken thigh alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Chicken Puree quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade chicken puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of chicken thigh; every bite should flatten easily between your fingers. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "Use once readiness signs are present, such as steady head control, interest in food, and ability to sit with support.",
     "searchTerms": [
@@ -727,13 +752,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Turkey can be blended smooth into an iron-rich puree.",
     "howToMake": [
-      "Cook the ground turkey, water or broth completely and keep the texture moist so it is not dry or crumbly.",
-      "For chicken, keep the meat very moist and pull it into tiny soft shreds, or fold it into a puree so it does not feel dry in the mouth.",
-      "Serve Turkey Puree in tiny soft pieces and add cooking liquid if the chicken starts to feel dry."
+      "Gather ground turkey, water or broth. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Turkey Puree should feel soft and moist on the tongue; break it into tiny moist pieces so it does not clump in the mouth.",
     "servingTip": "Serve ground turkey in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved ground turkey covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade turkey puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Chicken can become stringy when dry, so remove tough edges and keep every piece soft, moist, and finely shredded. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "Best around 6 months, after your baby can sit with support and shows clear readiness for solids.",
     "searchTerms": [
@@ -755,13 +781,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Beef puree offers iron and zinc in a texture that works for early spoon feeding.",
     "howToMake": [
-      "Prepare ground beef and water or broth following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
-      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
-      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
+      "Gather ground beef, water or broth. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Beef Puree should feel soft and moist on the tongue; cook until tender, mince finely, and keep each bite soft instead of dry or chewy.",
     "servingTip": "Pair ground beef with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Beef Puree until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade beef puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "When serving Beef Puree, introduce it in a calm window and monitor for rash, facial swelling, vomiting, cough, wheeze, or breathing changes. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "A good first-food option for many 6-month-old babies who are ready for spoon-fed textures.",
     "searchTerms": [
@@ -783,13 +810,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft cooked salmon can be blended into a smooth puree for variety.",
     "howToMake": [
-      "Prepare salmon and water following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
-      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
-      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
+      "Gather salmon, water. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook salmon, water as appropriate; fish must be fully cooked. Carefully check for and remove all bones, skin, and tough pieces before mashing.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Salmon Puree should feel soft and moist on the tongue; flake carefully, remove bones, and keep the fish moist so pieces separate easily.",
     "servingTip": "Start with a small spoonful of salmon alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Salmon Puree quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade salmon puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of salmon; every bite should flatten easily between your fingers. Cook fish thoroughly and inspect every bite for bones before serving.",
     "ageFit": "Offer near the start of solids, usually around 6 months, while breast milk or formula remains the main nutrition source.",
     "searchTerms": [
@@ -811,13 +839,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Silken tofu and avocado make a smooth plant-forward puree.",
     "howToMake": [
-      "Peel the silken tofu, avocado and mash it with a fork until no firm pieces remain.",
-      "With Tofu Avocado Blend, keep the texture thinner for new eaters and leave more body only when your baby handles lumps well.",
-      "Serve Tofu Avocado Blend slowly; turning away, coughing, or losing energy means it is time to stop or thin the texture."
+      "Gather silken tofu, avocado. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Peel and prepare the ripe fruit. Mash until smooth or soft enough for your baby's feeding skills; raw ripe avocado or banana does not need cooking.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Tofu Avocado Blend should feel soft and moist on the tongue; press lightly, crumble or cube it softly, and avoid firm slippery chunks that are hard to manage.",
     "servingTip": "Start with a small spoonful of silken tofu alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Tofu Avocado Blend quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade tofu avocado blend promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of silken tofu; every bite should flatten easily between your fingers.",
     "ageFit": "Appropriate for the first weeks of solids when your baby is practicing small tastes and smooth textures.",
     "searchTerms": [
@@ -839,13 +868,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Greek yogurt with banana gives a creamy texture and more protein.",
     "howToMake": [
-      "Peel the plain whole milk Greek yogurt, banana and mash it with a fork until no firm pieces remain.",
-      "Adjust Plain Greek Yogurt with Banana with breast milk, formula, water, or yogurt based on whether the food feels dry, dense, or chalky.",
-      "Keep the first serving of Plain Greek Yogurt with Banana brief so your baby can practice without getting tired."
+      "Gather plain whole milk Greek yogurt, banana. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Peel and prepare the ripe fruit. Mash until smooth or soft enough for your baby's feeding skills; raw ripe avocado or banana does not need cooking.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Plain Greek Yogurt with Banana should feel soft and moist on the tongue; prepare plain whole milk Greek yogurt so it stays tender, moist, and easy to break apart.",
     "servingTip": "Serve plain whole milk Greek yogurt in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved plain whole milk Greek yogurt covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade plain greek yogurt with banana promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Tofu is soft but can break into uneven chunks, so keep pieces small and avoid firm cubes that could slip back whole. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Use once readiness signs are present, such as steady head control, interest in food, and ability to sit with support.",
     "searchTerms": [
@@ -867,13 +897,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Apple oatmeal is a simple starter breakfast.",
     "howToMake": [
-      "Stir the infant oatmeal cereal, apple puree together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Check the texture after it cools slightly, then loosen it with breast milk, formula, or water if it becomes too thick.",
-      "Begin with a small taste and pause between bites so your baby can show comfort with the texture."
+      "Gather infant oatmeal cereal, apple puree. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Oatmeal with Apple works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Serve Oatmeal with Apple with enough moisture to separate the grains or pieces easily on the spoon.",
-    "storageTip": "For leftovers, loosen Oatmeal with Apple with water, breast milk, formula, or sauce and test that it is soft all the way through.",
+    "storageTip": "Refrigerate untouched homemade oatmeal with apple promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Skip dry crusty pieces and offer grains in a moist, spoonable, or soft finger-food form. Avoid hard raw chunks; cook firm produce until mashable or prepare in a developmentally safe form.",
     "ageFit": "Best around 6 months, after your baby can sit with support and shows clear readiness for solids.",
     "searchTerms": [
@@ -895,13 +926,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A small prune mix can add variety to oatmeal.",
     "howToMake": [
-      "Stir the infant oatmeal cereal, prune puree together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Let oatmeal stand briefly, then thin it again if it tightens into a paste as it cools.",
-      "Offer one spoonful of oatmeal first, then pause because cereal can feel thicker after a few bites."
+      "Gather infant oatmeal cereal, prune puree. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Oatmeal with Prunes works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Offer Oatmeal with Prunes while it is freshly softened; grains thicken as they stand, so check the spoonful before giving more.",
-    "storageTip": "When saving Oatmeal with Prunes, add moisture during reheating and stop using it if the texture turns gummy.",
+    "storageTip": "Refrigerate untouched homemade oatmeal with prunes promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid dense clumps of infant oatmeal cereal; spread or break the food apart so each bite is easy to swallow.",
     "ageFit": "A good first-food option for many 6-month-old babies who are ready for spoon-fed textures.",
     "searchTerms": [
@@ -923,13 +955,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Pumpkin oatmeal is an easy seasonal baby food idea.",
     "howToMake": [
-      "Stir the infant oatmeal cereal, pumpkin puree together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Let oatmeal stand briefly, then thin it again if it tightens into a paste as it cools.",
-      "Offer one spoonful of oatmeal first, then pause because cereal can feel thicker after a few bites."
+      "Gather infant oatmeal cereal, pumpkin puree. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Oatmeal with Pumpkin works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Keep the first serving of Oatmeal with Pumpkin small and slow, especially if the food contains pasta, rice, or oatmeal that can become sticky.",
-    "storageTip": "Store Oatmeal with Pumpkin in a shallow covered container and recheck thickness after warming, since grains often absorb liquid.",
+    "storageTip": "Refrigerate untouched homemade oatmeal with pumpkin promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For pasta or rice dishes, cut long shapes and separate sticky pieces before serving.",
     "ageFit": "Offer near the start of solids, usually around 6 months, while breast milk or formula remains the main nutrition source.",
     "searchTerms": [
@@ -951,13 +984,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Peach oatmeal is a soft breakfast option with mild sweetness.",
     "howToMake": [
-      "Stir the infant oatmeal cereal, peach puree together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Let oatmeal stand briefly, then thin it again if it tightens into a paste as it cools.",
-      "Offer one spoonful of oatmeal first, then pause because cereal can feel thicker after a few bites."
+      "Gather infant oatmeal cereal, peach puree. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Oatmeal with Peach works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Serve Oatmeal with Peach with enough moisture to separate the grains or pieces easily on the spoon.",
-    "storageTip": "For leftovers, loosen Oatmeal with Peach with water, breast milk, formula, or sauce and test that it is soft all the way through.",
+    "storageTip": "Refrigerate untouched homemade oatmeal with peach promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Skip dry crusty pieces and offer grains in a moist, spoonable, or soft finger-food form.",
     "ageFit": "Appropriate for the first weeks of solids when your baby is practicing small tastes and smooth textures.",
     "searchTerms": [
@@ -979,13 +1013,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Smooth wheat cereal is used by some US families once wheat introduction fits their plan.",
     "howToMake": [
-      "Prepare the plain Cream of Wheat cereal, breast milk or formula until every ingredient is soft, mild, and easy for your baby to manage.",
-      "Move Cream of Wheat for Babies from puree to soft pieces gradually instead of changing thickness and size at the same time.",
-      "Keep Cream of Wheat for Babies flexible at serving time because some foods thicken, dry out, or get sticky as they cool."
+      "Gather plain Cream of Wheat cereal, breast milk or formula. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Prepare infant cereal or other grains according to package instructions. Mix in properly stored breast milk or correctly prepared formula without unsafe reheating; offer immediately following milk-specific safety guidance.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Cream of Wheat for Babies works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Offer Cream of Wheat for Babies while it is freshly softened; grains thicken as they stand, so check the spoonful before giving more.",
-    "storageTip": "Prepare a fresh portion with safely stored breast milk or prepared infant formula. Follow milk-specific handling times and discard food remaining in the baby's bowl after feeding.",
+    "storageTip": "Prepare using safely stored breast milk or correctly prepared infant formula and serve promptly. Do not return leftovers from your baby's bowl to storage. Follow CDC breast-milk or formula handling instructions; never use a general homemade-food storage limit for mixed milk.",
     "safetyTip": "Avoid dense clumps of plain Cream of Wheat cereal; spread or break the food apart so each bite is easy to swallow.",
     "ageFit": "Use once readiness signs are present, such as steady head control, interest in food, and ability to sit with support.",
     "searchTerms": [
@@ -1007,13 +1042,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Very soft quinoa blended smooth adds grain variety.",
     "howToMake": [
-      "Stir the plain cooked quinoa, water together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Let oatmeal stand briefly, then thin it again if it tightens into a paste as it cools.",
-      "Offer one spoonful of oatmeal first, then pause because cereal can feel thicker after a few bites."
+      "Gather plain cooked quinoa, water. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Quinoa Cereal Mash works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Offer Quinoa Cereal Mash while it is freshly softened; grains thicken as they stand, so check the spoonful before giving more.",
-    "storageTip": "When saving Quinoa Cereal Mash, add moisture during reheating and stop using it if the texture turns gummy.",
+    "storageTip": "Refrigerate untouched homemade quinoa cereal mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid dense clumps of plain cooked quinoa; spread or break the food apart so each bite is easy to swallow.",
     "ageFit": "Best around 6 months, after your baby can sit with support and shows clear readiness for solids.",
     "searchTerms": [
@@ -1035,13 +1071,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Barley cereal can be served thin and smooth like oatmeal.",
     "howToMake": [
-      "Stir the baby barley cereal, breast milk or formula together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Let oatmeal stand briefly, then thin it again if it tightens into a paste as it cools.",
-      "Offer one spoonful of oatmeal first, then pause because cereal can feel thicker after a few bites."
+      "Gather baby barley cereal, breast milk or formula. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Prepare infant cereal or other grains according to package instructions. Mix in properly stored breast milk or correctly prepared formula without unsafe reheating; offer immediately following milk-specific safety guidance.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Barley Cereal Mash works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Keep the first serving of Barley Cereal Mash small and slow, especially if the food contains pasta, rice, or oatmeal that can become sticky.",
-    "storageTip": "Prepare a fresh portion with safely stored breast milk or prepared infant formula. Follow milk-specific handling times and discard food remaining in the baby's bowl after feeding.",
+    "storageTip": "Prepare using safely stored breast milk or correctly prepared infant formula and serve promptly. Do not return leftovers from your baby's bowl to storage. Follow CDC breast-milk or formula handling instructions; never use a general homemade-food storage limit for mixed milk.",
     "safetyTip": "For pasta or rice dishes, cut long shapes and separate sticky pieces before serving.",
     "ageFit": "A good first-food option for many 6-month-old babies who are ready for spoon-fed textures.",
     "searchTerms": [
@@ -1063,13 +1100,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "For families comfortable with fish, sardines with sweet potato add fats and iron.",
     "howToMake": [
-      "Steam or bake the boneless sardines, sweet potato until it is soft enough to squash easily between your fingers.",
-      "Steam the vegetables until very tender, then mash with a little cooking liquid if the mixture feels thick.",
-      "Cool completely enough for feeding and watch how your baby handles the fiber and mouthfeel."
+      "Gather boneless sardines, sweet potato. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook boneless sardines, sweet potato as appropriate; fish must be fully cooked. Carefully check for and remove all bones, skin, and tough pieces before mashing.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Mashed Sardine with Sweet Potato should be cooked until tender enough to mash smoothly, with fibrous skins or strings broken down for your baby’s stage.",
     "servingTip": "Pair boneless sardines with a familiar food if the vegetable flavor is strong, but keep the texture soft and simple.",
-    "storageTip": "Store Mashed Sardine with Sweet Potato in a clean covered container and discard leftovers that were handled during feeding.",
+    "storageTip": "Refrigerate untouched homemade mashed sardine with sweet potato promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Check for skins, fibers, and dry edges that could make Mashed Sardine with Sweet Potato harder to swallow. Cook fish thoroughly and inspect every bite for bones before serving.",
     "ageFit": "Offer near the start of solids, usually around 6 months, while breast milk or formula remains the main nutrition source.",
     "searchTerms": [
@@ -1091,13 +1129,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Egg yolk mashed into avocado creates a rich spoon-fed blend.",
     "howToMake": [
-      "Peel the hard cooked egg yolk, avocado and mash it with a fork until no firm pieces remain.",
-      "For Egg Yolk and Avocado Mash, thickness should match your baby's current stage rather than the recipe label.",
-      "With Egg Yolk and Avocado Mash, wait between bites and adjust the next spoonful if the texture seems hard to manage."
+      "Gather hard cooked egg yolk, avocado. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook the egg fully; if other ingredients also require cooking, prepare them safely until soft. Do not serve runny or undercooked egg.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Egg Yolk and Avocado Mash should feel soft and moist on the tongue; cook it fully, offer a soft texture, and watch for rash, vomiting, or breathing changes after introduction.",
     "servingTip": "Start with a small spoonful of hard cooked egg yolk alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Egg Yolk and Avocado Mash quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade egg yolk and avocado mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of hard cooked egg yolk; every bite should flatten easily between your fingers.",
     "ageFit": "Appropriate for the first weeks of solids when your baby is practicing small tastes and smooth textures.",
     "searchTerms": [
@@ -1118,13 +1157,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "White beans blend into a smooth and mild puree.",
     "howToMake": [
-      "Cook the cannellini beans completely and keep the texture moist so it is not dry or crumbly.",
-      "For egg, serve it fully cooked and soft, such as finely mashed yolk or small tender pieces mixed into another moist food.",
-      "Give egg in a small baby-safe amount at first and watch for any reaction during and after the meal."
+      "Gather cannellini beans. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "White Bean Puree should feel soft and moist on the tongue; mash until skins are broken down and add liquid until the texture is easy to swallow.",
     "servingTip": "Serve cannellini beans in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved cannellini beans covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade white bean puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Check cannellini beans for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal. Mash whole beans or chickpeas until no firm round pieces remain.",
     "ageFit": "Use once readiness signs are present, such as steady head control, interest in food, and ability to sit with support.",
     "searchTerms": [
@@ -1145,13 +1185,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Broccoli and potato make a thicker vegetable puree.",
     "howToMake": [
-      "Steam or bake the broccoli, potato until it is soft enough to squash easily between your fingers.",
-      "With Broccoli Potato Puree, mix the protein into puree, broth, or yogurt until each bite stays soft and cohesive.",
-      "Cool until warm, then offer a few moist bites and watch chewing and swallowing closely."
+      "Gather broccoli, potato. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Broccoli Potato Puree should feel soft and moist on the tongue; prepare broccoli so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair broccoli with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Broccoli Potato Puree until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade broccoli potato puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Check broccoli and potato for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "Best around 6 months, after your baby can sit with support and shows clear readiness for solids.",
     "searchTerms": [
@@ -1172,13 +1213,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft cauliflower can be blended smooth for another vegetable option.",
     "howToMake": [
-      "Prepare the cauliflower until every ingredient is soft, mild, and easy for your baby to manage.",
-      "Prepare Cauliflower Puree for your baby's current skill level: smooth, mashed, shredded, or soft pieces as needed.",
-      "For Cauliflower Puree, begin with a small serving and thin the food if it clings to the spoon or feels heavy."
+      "Gather cauliflower. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Cauliflower Puree should feel soft and moist on the tongue; prepare cauliflower so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of cauliflower alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Cauliflower Puree quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade cauliflower puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of cauliflower; every bite should flatten easily between your fingers.",
     "ageFit": "A good first-food option for many 6-month-old babies who are ready for spoon-fed textures.",
     "searchTerms": [
@@ -1199,13 +1241,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A spinach and potato blend adds more savory vegetable flavor.",
     "howToMake": [
-      "Steam or bake the spinach, potato until it is soft enough to squash easily between your fingers.",
-      "Remove any firm bits, then mince or blend until the texture is safe for your baby’s stage.",
-      "Start with a small protein portion and pause often because these foods can feel dense to new eaters."
+      "Gather spinach, potato. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Spinach Potato Puree should feel soft and moist on the tongue; prepare spinach so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of spinach alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Spinach Potato Puree quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade spinach potato puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of spinach; every bite should flatten easily between your fingers.",
     "ageFit": "Offer near the start of solids, usually around 6 months, while breast milk or formula remains the main nutrition source.",
     "searchTerms": [
@@ -1227,13 +1270,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Beet and apple puree adds variety once basics are going well.",
     "howToMake": [
-      "Steam or bake the beets, apple until it is soft enough to squash easily between your fingers.",
-      "Blend briefly or mash by hand so the fruit stays moist rather than watery or stringy.",
-      "Start with a small portion and stop if the texture or tart flavor seems uncomfortable."
+      "Gather beets, apple. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Beet Apple Puree should be ripe, peeled when needed, and mashed or cut so the fruit collapses with gentle pressure.",
     "servingTip": "Serve beets at a soft ripe stage and watch how your baby handles the natural acidity and slippery texture.",
-    "storageTip": "Keep leftover Beet Apple Puree cold and use the smoothest portion first, discarding anything that became watery or touched the spoon.",
+    "storageTip": "Refrigerate untouched homemade beet apple puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid hard raw chunks of fruit and round pieces that can block the airway. Avoid hard raw chunks; cook firm produce until mashable or prepare in a developmentally safe form.",
     "ageFit": "Appropriate for the first weeks of solids when your baby is practicing small tastes and smooth textures.",
     "searchTerms": [
@@ -1254,13 +1298,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Cooked apricot puree offers another fruit flavor for rotation.",
     "howToMake": [
-      "Prepare the ripe apricot until every ingredient is soft, mild, and easy for your baby to manage.",
-      "For Apricot Puree, use the recipe as a guide but adjust thickness and piece size to how your baby eats this week.",
-      "Serve Apricot Puree in a modest portion first, then add moisture if the texture feels dense, sticky, or tiring."
+      "Gather ripe apricot. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Apricot Puree should be ripe, peeled when needed, and mashed or cut so the fruit collapses with gentle pressure.",
     "servingTip": "Start with a few soft bites of Apricot Puree, then wait before offering more if the fruit is new to your baby.",
-    "storageTip": "If saving ripe apricot, cover it tightly and expect the texture to soften further by the next meal.",
+    "storageTip": "Refrigerate untouched homemade apricot puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For berries or grapes, flatten or quarter appropriately and never serve firm round pieces whole.",
     "ageFit": "Use once readiness signs are present, such as steady head control, interest in food, and ability to sit with support.",
     "searchTerms": [
@@ -1280,13 +1325,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Mashed chickpeas work well when blended very smooth.",
     "howToMake": [
-      "Steam or bake the chickpeas until it is soft enough to squash easily between your fingers.",
-      "Steam the vegetables until very tender, then mash with a little cooking liquid if the mixture feels thick.",
-      "Cool completely enough for feeding and watch how your baby handles the fiber and mouthfeel."
+      "Gather chickpeas. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Mashed Chickpeas should be cooked until tender enough to mash smoothly, with fibrous skins or strings broken down for your baby’s stage.",
     "servingTip": "Serve chickpeas warm or room temperature and keep the first portion small while your baby gets used to the flavor.",
-    "storageTip": "Cool cooked chickpeas before storing and reheat only the portion you plan to serve.",
+    "storageTip": "Refrigerate untouched homemade mashed chickpeas promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Steam or roast chickpeas until there is no hard center, and mash any stringy pieces before serving. Mash whole beans or chickpeas until no firm round pieces remain.",
     "ageFit": "Best around 6 months, after your baby can sit with support and shows clear readiness for solids.",
     "searchTerms": [
@@ -1307,13 +1353,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A creamy fruit-and-yogurt bowl for babies already trying dairy.",
     "howToMake": [
-      "Prepare the plain whole milk yogurt, mango puree until every ingredient is soft, mild, and easy for your baby to manage.",
-      "Before serving Plain Yogurt with Mango, test whether the food mashes easily between your fingers and resize it if needed.",
-      "With Plain Yogurt with Mango, stay close during the first bites and soften the texture further if chewing looks difficult."
+      "Gather plain whole milk yogurt, mango puree. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Plain Yogurt with Mango should feel soft and moist on the tongue; prepare plain whole milk yogurt so it stays tender, moist, and easy to break apart.",
     "servingTip": "Serve plain whole milk yogurt in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved plain whole milk yogurt covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade plain yogurt with mango promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid dry, chewy, round, or firm protein pieces that do not break down quickly with gentle pressure. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "A good first-food option for many 6-month-old babies who are ready for spoon-fed textures.",
     "searchTerms": [
@@ -1336,13 +1383,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A thicker breakfast bowl with grain, fruit, and dairy.",
     "howToMake": [
-      "Stir the infant oatmeal cereal, blueberry puree, plain whole milk yogurt together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Check the texture after it cools slightly, then loosen it with breast milk, formula, or water if it becomes too thick.",
-      "Begin with a small taste and pause between bites so your baby can show comfort with the texture."
+      "Gather infant oatmeal cereal, blueberry puree, plain whole milk yogurt. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Oatmeal with Blueberries and Yogurt should feel soft and moist on the tongue; prepare infant oatmeal cereal so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair infant oatmeal cereal with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Oatmeal with Blueberries and Yogurt until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade oatmeal with blueberries and yogurt promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Soy foods such as tofu can be allergens for some babies; serve a small soft portion and get medical advice for hives, swelling, repeated vomiting, or breathing symptoms. Do not serve firm round berries or whole grapes; mash or cut appropriately for your baby's feeding skills. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Offer near the start of solids, usually around 6 months, while breast milk or formula remains the main nutrition source.",
     "searchTerms": [
@@ -1365,13 +1413,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Silken tofu and pear make a smooth protein-forward puree.",
     "howToMake": [
-      "Steam or bake the silken tofu, pear puree until it is soft enough to squash easily between your fingers.",
-      "Remove any firm bits, then mince or blend until the texture is safe for your baby’s stage.",
-      "Cool until warm, then offer a few moist bites and watch chewing and swallowing closely."
+      "Gather silken tofu, pear puree. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Tofu Pear Puree should feel soft and moist on the tongue; press lightly, crumble or cube it softly, and avoid firm slippery chunks that are hard to manage.",
     "servingTip": "Start with a small spoonful of silken tofu alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Tofu Pear Puree quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade tofu pear puree promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of silken tofu; every bite should flatten easily between your fingers. Avoid hard raw chunks; cook firm produce until mashable or prepare in a developmentally safe form.",
     "ageFit": "Appropriate for the first weeks of solids when your baby is practicing small tastes and smooth textures.",
     "searchTerms": [
@@ -1392,13 +1441,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Pinto beans mash easily and fit many family meal patterns in the US.",
     "howToMake": [
-      "Prepare pinto beans following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
-      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
-      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
+      "Gather pinto beans. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Mashed Pinto Beans should feel soft and moist on the tongue; mash until skins are broken down and add liquid until the texture is easy to swallow.",
     "servingTip": "Start with a small spoonful of pinto beans alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Mashed Pinto Beans quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade mashed pinto beans promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of pinto beans; every bite should flatten easily between your fingers. Mash whole beans or chickpeas until no firm round pieces remain.",
     "ageFit": "Use once readiness signs are present, such as steady head control, interest in food, and ability to sit with support.",
     "searchTerms": [
@@ -1419,13 +1469,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A thicker oatmeal bowl for babies moving beyond very thin purees.",
     "howToMake": [
-      "Stir the infant oatmeal cereal, banana together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Check the texture after it cools slightly, then loosen it with breast milk, formula, or water if it becomes too thick.",
-      "Begin with a small taste and pause between bites so your baby can show comfort with the texture."
+      "Gather infant oatmeal cereal, banana. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Thick Oatmeal with Banana works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Keep the first serving of Thick Oatmeal with Banana small and slow, especially if the food contains pasta, rice, or oatmeal that can become sticky.",
-    "storageTip": "Store Thick Oatmeal with Banana in a shallow covered container and recheck thickness after warming, since grains often absorb liquid.",
+    "storageTip": "Refrigerate untouched homemade thick oatmeal with banana promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For pasta or rice dishes, cut long shapes and separate sticky pieces before serving.",
     "ageFit": "Often fits the 7 to 9 month stage, when babies are ready for thicker mashes and simple combinations.",
     "searchTerms": [
@@ -1447,13 +1498,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A simple fruit-and-yogurt bowl with a thicker spoon texture.",
     "howToMake": [
-      "Prepare the plain whole milk Greek yogurt, strawberries until every ingredient is soft, mild, and easy for your baby to manage.",
-      "Move Greek Yogurt with Strawberry from puree to soft pieces gradually instead of changing thickness and size at the same time.",
-      "Keep Greek Yogurt with Strawberry flexible at serving time because some foods thicken, dry out, or get sticky as they cool."
+      "Gather plain whole milk Greek yogurt, strawberries. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Greek Yogurt with Strawberry should feel soft and moist on the tongue; prepare plain whole milk Greek yogurt so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair plain whole milk Greek yogurt with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Greek Yogurt with Strawberry until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade greek yogurt with strawberry promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "With Greek Yogurt with Strawberry, use a soft texture first and stop for medical advice if breathing changes, swelling, or repeated vomiting appears. Do not serve firm round berries or whole grapes; mash or cut appropriately for your baby's feeding skills. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Use after your baby has handled a few single foods and is starting to manage more texture.",
     "searchTerms": [
@@ -1476,13 +1528,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "This stage 2 breakfast combines iron-fortified cereal with peanut and banana.",
     "howToMake": [
-      "Stir the infant oatmeal cereal, smooth peanut butter, banana together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Let oatmeal stand briefly, then thin it again if it tightens into a paste as it cools.",
-      "Offer one spoonful of oatmeal first, then pause because cereal can feel thicker after a few bites."
+      "Gather infant oatmeal cereal, smooth peanut butter, banana. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Stir the smooth nut butter thoroughly into the other soft ingredients until no thick, sticky clumps remain. Never serve a spoonful of nut butter on its own.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Oatmeal with Peanut Butter and Banana works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Offer Oatmeal with Peanut Butter and Banana while it is freshly softened; grains thicken as they stand, so check the spoonful before giving more.",
-    "storageTip": "When saving Oatmeal with Peanut Butter and Banana, add moisture during reheating and stop using it if the texture turns gummy.",
+    "storageTip": "Refrigerate untouched homemade oatmeal with peanut butter and banana promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid dense clumps of infant oatmeal cereal; spread or break the food apart so each bite is easy to swallow. Thin smooth nut butter well into other soft food; never offer sticky spoonfuls or thick clumps. For severe eczema or egg allergy, seek your clinician's peanut-introduction plan.",
     "ageFit": "Usually works in the middle stage of solids, when spoon skills and texture tolerance are improving.",
     "searchTerms": [
@@ -1505,13 +1558,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft egg and avocado make an easy protein-rich combo meal.",
     "howToMake": [
-      "Peel the soft scrambled egg, avocado and mash it with a fork until no firm pieces remain.",
-      "For Egg and Avocado Mash, add liquid slowly until the mash slides from the spoon without forming a sticky clump.",
-      "Offer one small spoonful of Egg and Avocado Mash, then pause to watch swallowing, interest, and comfort."
+      "Gather soft scrambled egg, avocado. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook the egg fully; if other ingredients also require cooking, prepare them safely until soft. Do not serve runny or undercooked egg.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Egg and Avocado Mash should feel soft and moist on the tongue; cook it fully, offer a soft texture, and watch for rash, vomiting, or breathing changes after introduction.",
     "servingTip": "Serve soft scrambled egg in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved soft scrambled egg covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade egg and avocado mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For egg, avoid rubbery chunks and large slippery pieces; keep it soft, fully cooked, and easy to mash.",
     "ageFit": "A practical stage 2 meal for babies who are comfortable with soft mashed foods and mixed flavors.",
     "searchTerms": [
@@ -1533,13 +1587,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Ricotta with mashed blueberries creates a thick breakfast bowl.",
     "howToMake": [
-      "Prepare the whole milk ricotta, blueberries until every ingredient is soft, mild, and easy for your baby to manage.",
-      "Prepare Ricotta Blueberry Bowl for your baby's current skill level: smooth, mashed, shredded, or soft pieces as needed.",
-      "For Ricotta Blueberry Bowl, begin with a small serving and thin the food if it clings to the spoon or feels heavy."
+      "Gather whole milk ricotta, blueberries. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Ricotta Blueberry Bowl should feel soft and moist on the tongue; prepare whole milk ricotta so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair whole milk ricotta with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Ricotta Blueberry Bowl until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade ricotta blueberry bowl promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Check whole milk ricotta and blueberries for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal. Do not serve firm round berries or whole grapes; mash or cut appropriately for your baby's feeding skills. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Best once your baby can move food around the mouth a little better and is ready for gentle variety.",
     "searchTerms": [
@@ -1562,13 +1617,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A filling breakfast that mixes dairy, fruit, and grain.",
     "howToMake": [
-      "Stir the plain whole milk yogurt, oatmeal, peach together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Check the texture after it cools slightly, then loosen it with breast milk, formula, or water if it becomes too thick.",
-      "Begin with a small taste and pause between bites so your baby can show comfort with the texture."
+      "Gather plain whole milk yogurt, oatmeal, peach. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Yogurt Oat and Peach Bowl should feel soft and moist on the tongue; prepare plain whole milk yogurt so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of plain whole milk yogurt alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Yogurt Oat and Peach Bowl quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade yogurt oat and peach bowl promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of plain whole milk yogurt; every bite should flatten easily between your fingers. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Often fits the 7 to 9 month stage, when babies are ready for thicker mashes and simple combinations.",
     "searchTerms": [
@@ -1591,13 +1647,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A soft breakfast option for babies already handling dairy.",
     "howToMake": [
-      "Peel the small curd cottage cheese, banana and mash it with a fork until no firm pieces remain.",
-      "With Cottage Cheese Banana Bowl, keep the texture thinner for new eaters and leave more body only when your baby handles lumps well.",
-      "Serve Cottage Cheese Banana Bowl slowly; turning away, coughing, or losing energy means it is time to stop or thin the texture."
+      "Gather small curd cottage cheese, banana. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Peel and prepare the ripe fruit. Mash until smooth or soft enough for your baby's feeding skills; raw ripe avocado or banana does not need cooking.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Cottage Cheese Banana Bowl should feel soft and moist on the tongue; prepare small curd cottage cheese so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of small curd cottage cheese alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Cottage Cheese Banana Bowl quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade cottage cheese banana bowl promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of small curd cottage cheese; every bite should flatten easily between your fingers. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Use after your baby has handled a few single foods and is starting to manage more texture.",
     "searchTerms": [
@@ -1619,13 +1676,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Pumpkin oatmeal is a thick spoon-fed meal with familiar fall flavors.",
     "howToMake": [
-      "Stir the pumpkin puree, oatmeal together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Let oatmeal stand briefly, then thin it again if it tightens into a paste as it cools.",
-      "Offer one spoonful of oatmeal first, then pause because cereal can feel thicker after a few bites."
+      "Gather pumpkin puree, oatmeal. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Pumpkin Oatmeal Bowl works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Keep the first serving of Pumpkin Oatmeal Bowl small and slow, especially if the food contains pasta, rice, or oatmeal that can become sticky.",
-    "storageTip": "Store Pumpkin Oatmeal Bowl in a shallow covered container and recheck thickness after warming, since grains often absorb liquid.",
+    "storageTip": "Refrigerate untouched homemade pumpkin oatmeal bowl promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For pasta or rice dishes, cut long shapes and separate sticky pieces before serving.",
     "ageFit": "Usually works in the middle stage of solids, when spoon skills and texture tolerance are improving.",
     "searchTerms": [
@@ -1648,13 +1706,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A mild cinnamon note can add variety once your baby has handled the basics.",
     "howToMake": [
-      "Stir the apple puree, oatmeal, cinnamon together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Let oatmeal stand briefly, then thin it again if it tightens into a paste as it cools.",
-      "Offer one spoonful of oatmeal first, then pause because cereal can feel thicker after a few bites."
+      "Gather apple puree, oatmeal, cinnamon. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Apple Cinnamon Oatmeal Bowl works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Serve Apple Cinnamon Oatmeal Bowl with enough moisture to separate the grains or pieces easily on the spoon.",
-    "storageTip": "For leftovers, loosen Apple Cinnamon Oatmeal Bowl with water, breast milk, formula, or sauce and test that it is soft all the way through.",
+    "storageTip": "Refrigerate untouched homemade apple cinnamon oatmeal bowl promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Skip dry crusty pieces and offer grains in a moist, spoonable, or soft finger-food form. Avoid hard raw chunks; cook firm produce until mashable or prepare in a developmentally safe form.",
     "ageFit": "A practical stage 2 meal for babies who are comfortable with soft mashed foods and mixed flavors.",
     "searchTerms": [
@@ -1678,13 +1737,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A thicker bowl with yogurt and fruit once textures are going well.",
     "howToMake": [
-      "Prepare the plain whole milk yogurt, mango, soft soaked chia until every ingredient is soft, mild, and easy for your baby to manage.",
-      "For Chia Yogurt Mango Bowl, use the recipe as a guide but adjust thickness and piece size to how your baby eats this week.",
-      "Serve Chia Yogurt Mango Bowl in a modest portion first, then add moisture if the texture feels dense, sticky, or tiring."
+      "Gather plain whole milk yogurt, mango, soft soaked chia. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Chia Yogurt Mango Bowl should feel soft and moist on the tongue; prepare plain whole milk yogurt so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of plain whole milk yogurt alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Chia Yogurt Mango Bowl quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade chia yogurt mango bowl promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of plain whole milk yogurt; every bite should flatten easily between your fingers. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Best once your baby can move food around the mouth a little better and is ready for gentle variety.",
     "searchTerms": [
@@ -1707,13 +1767,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A classic stage 2 combo with soft starch and tender chicken.",
     "howToMake": [
-      "Steam or bake the sweet potato, chicken thigh until it is soft enough to squash easily between your fingers.",
-      "Shred, mash, or blend the protein with enough moisture to keep every bite tender.",
-      "Cool until warm, then offer a few moist bites and watch chewing and swallowing closely."
+      "Gather sweet potato, chicken thigh. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Sweet Potato and Chicken Mash should feel soft and moist on the tongue; shred it very small and keep it moist with cooking liquid, breast milk, formula, or a mild sauce.",
     "servingTip": "Serve sweet potato in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved sweet potato covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade sweet potato and chicken mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Chicken can become stringy when dry, so remove tough edges and keep every piece soft, moist, and finely shredded. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "Often fits the 7 to 9 month stage, when babies are ready for thicker mashes and simple combinations.",
     "searchTerms": [
@@ -1735,13 +1796,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Chicken and peas make a simple savory combination.",
     "howToMake": [
-      "Steam or bake the peas, chicken until it is soft enough to squash easily between your fingers.",
-      "Serve Peas and Chicken Mash with enough moisture to prevent crumbly bits, especially for babies still learning to chew.",
-      "Start with a small protein portion and pause often because these foods can feel dense to new eaters."
+      "Gather peas, chicken. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Peas and Chicken Mash should feel soft and moist on the tongue; shred it very small and keep it moist with cooking liquid, breast milk, formula, or a mild sauce.",
     "servingTip": "Pair peas with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Peas and Chicken Mash until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade peas and chicken mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For Peas and Chicken Mash, offer a small first portion and watch closely for skin, stomach, cough, wheeze, or breathing symptoms. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "Use after your baby has handled a few single foods and is starting to manage more texture.",
     "searchTerms": [
@@ -1763,13 +1825,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Red lentils cook down quickly and blend well with carrots.",
     "howToMake": [
-      "Steam or bake the carrots, red lentils until it is soft enough to squash easily between your fingers.",
-      "For Carrot Lentil Mash, check the protein texture with your fingers and soften it more if it feels firm or grainy.",
-      "Cool until warm, then offer a few moist bites and watch chewing and swallowing closely."
+      "Gather carrots, red lentils. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Carrot Lentil Mash should feel soft and moist on the tongue; cook until very soft and loosen the mash so it does not become pasty.",
     "servingTip": "Start with a small spoonful of carrots alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Carrot Lentil Mash quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade carrot lentil mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of carrots; every bite should flatten easily between your fingers. Mash whole beans or chickpeas until no firm round pieces remain. Avoid hard raw chunks; cook firm produce until mashable or prepare in a developmentally safe form.",
     "ageFit": "Usually works in the middle stage of solids, when spoon skills and texture tolerance are improving.",
     "searchTerms": [
@@ -1791,13 +1854,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Turkey adds protein to a smooth squash base.",
     "howToMake": [
-      "Steam or bake the butternut squash, ground turkey until it is soft enough to squash easily between your fingers.",
-      "Shred, mash, or blend the protein with enough moisture to keep every bite tender.",
-      "Cool until warm, then offer a few moist bites and watch chewing and swallowing closely."
+      "Gather butternut squash, ground turkey. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Butternut Squash and Turkey Mash should feel soft and moist on the tongue; break it into tiny moist pieces so it does not clump in the mouth.",
     "servingTip": "Start with a small spoonful of butternut squash alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Butternut Squash and Turkey Mash quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade butternut squash and turkey mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of butternut squash; every bite should flatten easily between your fingers. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "A practical stage 2 meal for babies who are comfortable with soft mashed foods and mixed flavors.",
     "searchTerms": [
@@ -1820,13 +1884,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A thicker savory mash with iron-rich beef.",
     "howToMake": [
-      "Steam or bake the broccoli, potato, ground beef until it is soft enough to squash easily between your fingers.",
-      "Shred, mash, or blend the protein with enough moisture to keep every bite tender.",
-      "Cool until warm, then offer a few moist bites and watch chewing and swallowing closely."
+      "Gather broccoli, potato, ground beef. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Broccoli Potato and Beef Mash should feel soft and moist on the tongue; cook until tender, mince finely, and keep each bite soft instead of dry or chewy.",
     "servingTip": "Serve broccoli in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved broccoli covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade broccoli potato and beef mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Beef needs extra attention because chewy pieces linger in the mouth; trim gristle and blend or mince until very tender. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "Best once your baby can move food around the mouth a little better and is ready for gentle variety.",
     "searchTerms": [
@@ -1849,13 +1914,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Salmon and sweet potato make a soft combo with healthy fats.",
     "howToMake": [
-      "Steam or bake the salmon, sweet potato until it is soft enough to squash easily between your fingers.",
-      "For Salmon and Sweet Potato Mash, break the protein into very small pieces and add moisture so it does not feel dry in the mouth.",
-      "Start with a small protein portion and pause often because these foods can feel dense to new eaters."
+      "Gather salmon, sweet potato. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook salmon, sweet potato as appropriate; fish must be fully cooked. Carefully check for and remove all bones, skin, and tough pieces before mashing.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Salmon and Sweet Potato Mash should feel soft and moist on the tongue; flake carefully, remove bones, and keep the fish moist so pieces separate easily.",
     "servingTip": "Pair salmon with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Salmon and Sweet Potato Mash until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade salmon and sweet potato mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For Salmon and Sweet Potato Mash, keep the texture baby-safe and watch for hives, swelling, repeated vomiting, coughing, wheezing, or breathing changes. Cook fish thoroughly and inspect every bite for bones before serving.",
     "ageFit": "Often fits the 7 to 9 month stage, when babies are ready for thicker mashes and simple combinations.",
     "searchTerms": [
@@ -1877,13 +1943,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A gentle plant-based stage 2 meal.",
     "howToMake": [
-      "Steam or bake the zucchini, white beans until it is soft enough to squash easily between your fingers.",
-      "With Zucchini and White Bean Mash, mix the protein into puree, broth, or yogurt until each bite stays soft and cohesive.",
-      "Cool until warm, then offer a few moist bites and watch chewing and swallowing closely."
+      "Gather zucchini, white beans. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Zucchini and White Bean Mash should feel soft and moist on the tongue; mash until skins are broken down and add liquid until the texture is easy to swallow.",
     "servingTip": "Start with a small spoonful of zucchini alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Zucchini and White Bean Mash quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade zucchini and white bean mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of zucchini; every bite should flatten easily between your fingers. Mash whole beans or chickpeas until no firm round pieces remain.",
     "ageFit": "Use after your baby has handled a few single foods and is starting to manage more texture.",
     "searchTerms": [
@@ -1905,13 +1972,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Chickpeas and cauliflower make a thicker spoon-fed blend.",
     "howToMake": [
-      "Steam or bake the cauliflower, chickpeas until it is soft enough to squash easily between your fingers.",
-      "Press the vegetable with a fork first; if it does not squash easily, cook it longer before serving.",
-      "Let it cool to a warm, baby-safe temperature, then offer a small spoonful before increasing the portion."
+      "Gather cauliflower, chickpeas. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Cauliflower and Chickpea Mash should be cooked until tender enough to mash smoothly, with fibrous skins or strings broken down for your baby’s stage.",
     "servingTip": "If Cauliflower and Chickpea Mash feels thick, loosen it gradually so the spoonful stays smooth without becoming watery.",
-    "storageTip": "Vegetable purees can thicken in the refrigerator, so stir well and check for smoothness after warming.",
+    "storageTip": "Refrigerate untouched homemade cauliflower and chickpea mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Do not serve firm raw vegetable coins or chunks; they should squash easily between two fingers. Mash whole beans or chickpeas until no firm round pieces remain.",
     "ageFit": "Usually works in the middle stage of solids, when spoon skills and texture tolerance are improving.",
     "searchTerms": [
@@ -1934,13 +2002,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A savory mash with greens, egg, and a soft potato base.",
     "howToMake": [
-      "Steam or bake the spinach, potato, egg until it is soft enough to squash easily between your fingers.",
-      "Remove any firm bits, then mince or blend until the texture is safe for your baby’s stage.",
-      "Start with a small protein portion and pause often because these foods can feel dense to new eaters."
+      "Gather spinach, potato, egg. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook the egg fully; if other ingredients also require cooking, prepare them safely until soft. Do not serve runny or undercooked egg.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Spinach Potato and Egg Mash should feel soft and moist on the tongue; cook it fully, offer a soft texture, and watch for rash, vomiting, or breathing changes after introduction.",
     "servingTip": "Pair spinach with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Spinach Potato and Egg Mash until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade spinach potato and egg mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "When serving Spinach Potato and Egg Mash, introduce it in a calm window and monitor for rash, facial swelling, vomiting, cough, wheeze, or breathing changes.",
     "ageFit": "A practical stage 2 meal for babies who are comfortable with soft mashed foods and mixed flavors.",
     "searchTerms": [
@@ -1964,13 +2033,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A spoon-fed version of a family-style meal.",
     "howToMake": [
-      "Steam or bake the ground turkey, rice, peas until it is soft enough to squash easily between your fingers.",
-      "Serve Turkey Rice and Pea Mash with enough moisture to prevent crumbly bits, especially for babies still learning to chew.",
-      "Cool until warm, then offer a few moist bites and watch chewing and swallowing closely."
+      "Gather ground turkey, rice, peas. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Turkey Rice and Pea Mash should feel soft and moist on the tongue; break it into tiny moist pieces so it does not clump in the mouth.",
     "servingTip": "Start with a small spoonful of ground turkey alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Turkey Rice and Pea Mash quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade turkey rice and pea mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of ground turkey; every bite should flatten easily between your fingers. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "Best once your baby can move food around the mouth a little better and is ready for gentle variety.",
     "searchTerms": [
@@ -1994,13 +2064,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A very soft stew with lentils and vegetables.",
     "howToMake": [
-      "Cook the red lentils, carrots, tomato completely and keep the texture moist so it is not dry or crumbly.",
-      "For beef, choose a tender slow-cooked piece and blend or mince it finely with cooking liquid so no chewy strands remain.",
-      "Offer beef in a very small serving first because the texture can feel dense, and stay nearby while your baby practices chewing."
+      "Gather red lentils, carrots, tomato. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Lentil Vegetable Stew should feel soft and moist on the tongue; cook until very soft and loosen the mash so it does not become pasty.",
     "servingTip": "Start with a small spoonful of red lentils alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Lentil Vegetable Stew quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade lentil vegetable stew promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of red lentils; every bite should flatten easily between your fingers. Mash whole beans or chickpeas until no firm round pieces remain. Do not serve firm round berries or whole grapes; mash or cut appropriately for your baby's feeding skills. Avoid hard raw chunks; cook firm produce until mashable or prepare in a developmentally safe form.",
     "ageFit": "Often fits the 7 to 9 month stage, when babies are ready for thicker mashes and simple combinations.",
     "searchTerms": [
@@ -2023,13 +2094,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "This thick mash fits many US weeknight meal ingredients.",
     "howToMake": [
-      "Steam or bake the black beans, sweet potato until it is soft enough to squash easily between your fingers.",
-      "For Black Bean Sweet Potato Bowl, check the protein texture with your fingers and soften it more if it feels firm or grainy.",
-      "Serve in small amounts with a familiar food if that helps your baby manage the texture."
+      "Gather black beans, sweet potato. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Black Bean Sweet Potato Bowl should feel soft and moist on the tongue; mash until skins are broken down and add liquid until the texture is easy to swallow.",
     "servingTip": "Serve black beans in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved black beans covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade black bean sweet potato bowl promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Tofu is soft but can break into uneven chunks, so keep pieces small and avoid firm cubes that could slip back whole. Mash whole beans or chickpeas until no firm round pieces remain.",
     "ageFit": "Use after your baby has handled a few single foods and is starting to manage more texture.",
     "searchTerms": [
@@ -2052,13 +2124,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A soft bowl built from common family staples.",
     "howToMake": [
-      "Steam or bake the tofu, broccoli, rice until it is soft enough to squash easily between your fingers.",
-      "For Tofu Broccoli Rice Bowl, break the protein into very small pieces and add moisture so it does not feel dry in the mouth.",
-      "Cool until warm, then offer a few moist bites and watch chewing and swallowing closely."
+      "Gather tofu, broccoli, rice. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Tofu Broccoli Rice Bowl should feel soft and moist on the tongue; press lightly, crumble or cube it softly, and avoid firm slippery chunks that are hard to manage.",
     "servingTip": "Pair tofu with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Tofu Broccoli Rice Bowl until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade tofu broccoli rice bowl promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "With Tofu Broccoli Rice Bowl, use a soft texture first and stop for medical advice if breathing changes, swelling, or repeated vomiting appears.",
     "ageFit": "Usually works in the middle stage of solids, when spoon skills and texture tolerance are improving.",
     "searchTerms": [
@@ -2082,13 +2155,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A mild combo with protein, grain, and healthy fat.",
     "howToMake": [
-      "Peel the chicken, avocado, rice and mash it with a fork until no firm pieces remain.",
-      "Adjust Chicken Avocado Rice Bowl with breast milk, formula, water, or yogurt based on whether the food feels dry, dense, or chalky.",
-      "Keep the first serving of Chicken Avocado Rice Bowl brief so your baby can practice without getting tired."
+      "Gather chicken, avocado, rice. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Chicken Avocado Rice Bowl should feel soft and moist on the tongue; shred it very small and keep it moist with cooking liquid, breast milk, formula, or a mild sauce.",
     "servingTip": "Start with a small spoonful of chicken alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Chicken Avocado Rice Bowl quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade chicken avocado rice bowl promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of chicken; every bite should flatten easily between your fingers. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "A practical stage 2 meal for babies who are comfortable with soft mashed foods and mixed flavors.",
     "searchTerms": [
@@ -2112,13 +2186,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A thicker stage 2 bowl that brings in beef and grain.",
     "howToMake": [
-      "Prepare ground beef and quinoa and carrots following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
-      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
-      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
+      "Gather ground beef, quinoa, carrots. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Beef Quinoa Veggie Bowl should feel soft and moist on the tongue; cook until tender, mince finely, and keep each bite soft instead of dry or chewy.",
     "servingTip": "Serve ground beef in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved ground beef covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade beef quinoa veggie bowl promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Chicken can become stringy when dry, so remove tough edges and keep every piece soft, moist, and finely shredded. Avoid hard raw chunks; cook firm produce until mashable or prepare in a developmentally safe form. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "Best once your baby can move food around the mouth a little better and is ready for gentle variety.",
     "searchTerms": [
@@ -2142,13 +2217,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Well-cooked pasta can work once your baby handles thicker textures.",
     "howToMake": [
-      "Steam or bake the small pasta, ricotta, peas until it is soft enough to squash easily between your fingers.",
-      "Adjust the grain texture so it stays moist and spoonable rather than gluey.",
-      "Offer a small warm portion first and thin it if it becomes too sticky after sitting."
+      "Gather small pasta, ricotta, peas. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Pasta with Ricotta and Peas should feel soft and moist on the tongue; prepare small pasta so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair small pasta with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Pasta with Ricotta and Peas until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade pasta with ricotta and peas promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For Pasta with Ricotta and Peas, offer a small first portion and watch closely for skin, stomach, cough, wheeze, or breathing symptoms. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Often fits the 7 to 9 month stage, when babies are ready for thicker mashes and simple combinations.",
     "searchTerms": [
@@ -2172,13 +2248,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A smooth savory pasta bowl with turkey.",
     "howToMake": [
-      "Steam or bake the ground turkey, pumpkin, small pasta until it is soft enough to squash easily between your fingers.",
-      "With Turkey Pumpkin Pasta, mix the protein into puree, broth, or yogurt until each bite stays soft and cohesive.",
-      "Serve in small amounts with a familiar food if that helps your baby manage the texture."
+      "Gather ground turkey, pumpkin, small pasta. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Turkey Pumpkin Pasta should feel soft and moist on the tongue; break it into tiny moist pieces so it does not clump in the mouth.",
     "servingTip": "Start with a small spoonful of ground turkey alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Turkey Pumpkin Pasta quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade turkey pumpkin pasta promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of ground turkey; every bite should flatten easily between your fingers. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "Use after your baby has handled a few single foods and is starting to manage more texture.",
     "searchTerms": [
@@ -2202,13 +2279,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A baby version of simple noodle soup flavors.",
     "howToMake": [
-      "Cook the soft egg noodles, chicken, broth completely and keep the texture moist so it is not dry or crumbly.",
-      "For chicken, keep the meat very moist and pull it into tiny soft shreds, or fold it into a puree so it does not feel dry in the mouth.",
-      "Serve Egg Noodle Chicken Bowl in tiny soft pieces and add cooking liquid if the chicken starts to feel dry."
+      "Gather soft egg noodles, chicken, broth. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Egg Noodle Chicken Bowl should feel soft and moist on the tongue; shred it very small and keep it moist with cooking liquid, breast milk, formula, or a mild sauce.",
     "servingTip": "Start with a small spoonful of soft egg noodles alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Egg Noodle Chicken Bowl quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade egg noodle chicken bowl promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of soft egg noodles; every bite should flatten easily between your fingers. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "Usually works in the middle stage of solids, when spoon skills and texture tolerance are improving.",
     "searchTerms": [
@@ -2231,13 +2309,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A thick spoon-fed bowl with chickpeas and sweet potato.",
     "howToMake": [
-      "Steam or bake the hummus, sweet potato until it is soft enough to squash easily between your fingers.",
-      "Blend or mash the cooked vegetable until fibers are smooth enough for your baby’s current stage.",
-      "Cool completely enough for feeding and watch how your baby handles the fiber and mouthfeel."
+      "Gather hummus, sweet potato. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Hummus and Sweet Potato Bowl should be cooked until tender enough to mash smoothly, with fibrous skins or strings broken down for your baby’s stage.",
     "servingTip": "If Hummus and Sweet Potato Bowl feels thick, loosen it gradually so the spoonful stays smooth without becoming watery.",
-    "storageTip": "Vegetable purees can thicken in the refrigerator, so stir well and check for smoothness after warming.",
+    "storageTip": "Refrigerate untouched homemade hummus and sweet potato bowl promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Do not serve firm raw vegetable coins or chunks; they should squash easily between two fingers.",
     "ageFit": "A practical stage 2 meal for babies who are comfortable with soft mashed foods and mixed flavors.",
     "searchTerms": [
@@ -2260,13 +2339,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A very soft baby-friendly take on mac and cheese.",
     "howToMake": [
-      "Prepare the soft macaroni, cauliflower, cheese until every ingredient is soft, mild, and easy for your baby to manage.",
-      "Before serving Mac and Cauliflower Mash, test whether the food mashes easily between your fingers and resize it if needed.",
-      "With Mac and Cauliflower Mash, stay close during the first bites and soften the texture further if chewing looks difficult."
+      "Gather soft macaroni, cauliflower, cheese. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Mac and Cauliflower Mash should feel soft and moist on the tongue; prepare soft macaroni so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair soft macaroni with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Mac and Cauliflower Mash until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade mac and cauliflower mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For Mac and Cauliflower Mash, keep the texture baby-safe and watch for hives, swelling, repeated vomiting, coughing, wheezing, or breathing changes. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Best once your baby can move food around the mouth a little better and is ready for gentle variety.",
     "searchTerms": [
@@ -2289,13 +2369,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A quick snack bowl with fruit and dairy.",
     "howToMake": [
-      "Prepare the blueberries, ricotta until every ingredient is soft, mild, and easy for your baby to manage.",
-      "Move Mashed Blueberries and Ricotta from puree to soft pieces gradually instead of changing thickness and size at the same time.",
-      "Keep Mashed Blueberries and Ricotta flexible at serving time because some foods thicken, dry out, or get sticky as they cool."
+      "Gather blueberries, ricotta. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Mashed Blueberries and Ricotta should feel soft and moist on the tongue; prepare blueberries so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of blueberries alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Mashed Blueberries and Ricotta quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade mashed blueberries and ricotta promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of blueberries; every bite should flatten easily between your fingers. Do not serve firm round berries or whole grapes; mash or cut appropriately for your baby's feeding skills. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Often fits the 7 to 9 month stage, when babies are ready for thicker mashes and simple combinations.",
     "searchTerms": [
@@ -2317,13 +2398,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Extra-soft eggs with cottage cheese stay moist and easy to eat.",
     "howToMake": [
-      "Cook the egg, small curd cottage cheese completely and keep the texture moist so it is not dry or crumbly.",
-      "For egg, serve it fully cooked and soft, such as finely mashed yolk or small tender pieces mixed into another moist food.",
-      "Give egg in a small baby-safe amount at first and watch for any reaction during and after the meal."
+      "Gather egg, small curd cottage cheese. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook the egg fully; if other ingredients also require cooking, prepare them safely until soft. Do not serve runny or undercooked egg.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Soft Scrambled Eggs with Cottage Cheese should feel soft and moist on the tongue; cook it fully, offer a soft texture, and watch for rash, vomiting, or breathing changes after introduction.",
     "servingTip": "Serve egg in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved egg covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade soft scrambled eggs with cottage cheese promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For egg, avoid rubbery chunks and large slippery pieces; keep it soft, fully cooked, and easy to mash. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Use after your baby has handled a few single foods and is starting to manage more texture.",
     "searchTerms": [
@@ -2345,13 +2427,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A simple avocado mash with a little brightness for older babies.",
     "howToMake": [
-      "Peel the avocado, lime and mash it with a fork until no firm pieces remain.",
-      "For Mashed Avocado with Lime, thickness should match your baby's current stage rather than the recipe label.",
-      "With Mashed Avocado with Lime, wait between bites and adjust the next spoonful if the texture seems hard to manage."
+      "Gather avocado, lime. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Peel and prepare the ripe fruit. Mash until smooth or soft enough for your baby's feeding skills; raw ripe avocado or banana does not need cooking.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Mashed Avocado with Lime should be ripe, peeled when needed, and mashed or cut so the fruit collapses with gentle pressure.",
     "servingTip": "Start with a few soft bites of Mashed Avocado with Lime, then wait before offering more if the fruit is new to your baby.",
-    "storageTip": "If saving avocado, cover it tightly and expect the texture to soften further by the next meal.",
+    "storageTip": "Refrigerate untouched homemade mashed avocado with lime promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For berries or grapes, flatten or quarter appropriately and never serve firm round pieces whole.",
     "ageFit": "Usually works in the middle stage of solids, when spoon skills and texture tolerance are improving.",
     "searchTerms": [
@@ -2373,13 +2456,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Prune yogurt is a simple snack idea many families keep in rotation.",
     "howToMake": [
-      "Prepare the plain whole milk yogurt, prune puree until every ingredient is soft, mild, and easy for your baby to manage.",
-      "Prepare Yogurt with Prunes for your baby's current skill level: smooth, mashed, shredded, or soft pieces as needed.",
-      "For Yogurt with Prunes, begin with a small serving and thin the food if it clings to the spoon or feels heavy."
+      "Gather plain whole milk yogurt, prune puree. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Yogurt with Prunes should feel soft and moist on the tongue; prepare plain whole milk yogurt so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of plain whole milk yogurt alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Yogurt with Prunes quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade yogurt with prunes promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of plain whole milk yogurt; every bite should flatten easily between your fingers. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "A practical stage 2 meal for babies who are comfortable with soft mashed foods and mixed flavors.",
     "searchTerms": [
@@ -2401,13 +2485,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Banana and ricotta create a thick and creamy snack.",
     "howToMake": [
-      "Peel the banana, ricotta and mash it with a fork until no firm pieces remain.",
-      "For Banana Ricotta Mash, add liquid slowly until the mash slides from the spoon without forming a sticky clump.",
-      "Offer one small spoonful of Banana Ricotta Mash, then pause to watch swallowing, interest, and comfort."
+      "Gather banana, ricotta. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Peel and prepare the ripe fruit. Mash until smooth or soft enough for your baby's feeding skills; raw ripe avocado or banana does not need cooking.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Banana Ricotta Mash should feel soft and moist on the tongue; prepare banana so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of banana alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Banana Ricotta Mash quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade banana ricotta mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of banana; every bite should flatten easily between your fingers. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Best once your baby can move food around the mouth a little better and is ready for gentle variety.",
     "searchTerms": [
@@ -2430,13 +2515,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A simple dairy snack with soft fruit.",
     "howToMake": [
-      "Steam or bake the pear, small curd cottage cheese, cinnamon until it is soft enough to squash easily between your fingers.",
-      "Serve Pear and Cinnamon Cottage Cheese with enough moisture to prevent crumbly bits, especially for babies still learning to chew.",
-      "Start with a small protein portion and pause often because these foods can feel dense to new eaters."
+      "Gather pear, small curd cottage cheese, cinnamon. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Pear and Cinnamon Cottage Cheese should feel soft and moist on the tongue; prepare pear so it stays tender, moist, and easy to break apart.",
     "servingTip": "Serve pear in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved pear covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade pear and cinnamon cottage cheese promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Tofu is soft but can break into uneven chunks, so keep pieces small and avoid firm cubes that could slip back whole. Avoid hard raw chunks; cook firm produce until mashable or prepare in a developmentally safe form. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Often fits the 7 to 9 month stage, when babies are ready for thicker mashes and simple combinations.",
     "searchTerms": [
@@ -2459,13 +2545,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A soft high-fiber snack with healthy fat.",
     "howToMake": [
-      "Peel the black beans, avocado and mash it with a fork until no firm pieces remain.",
-      "With Mashed Black Beans with Avocado, keep the texture thinner for new eaters and leave more body only when your baby handles lumps well.",
-      "Serve Mashed Black Beans with Avocado slowly; turning away, coughing, or losing energy means it is time to stop or thin the texture."
+      "Gather black beans, avocado. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Peel and prepare the ripe fruit. Mash until smooth or soft enough for your baby's feeding skills; raw ripe avocado or banana does not need cooking.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Mashed Black Beans with Avocado should feel soft and moist on the tongue; mash until skins are broken down and add liquid until the texture is easy to swallow.",
     "servingTip": "Pair black beans with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Mashed Black Beans with Avocado until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade mashed black beans with avocado promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Soy foods such as tofu can be allergens for some babies; serve a small soft portion and get medical advice for hives, swelling, repeated vomiting, or breathing symptoms. Mash whole beans or chickpeas until no firm round pieces remain.",
     "ageFit": "Use after your baby has handled a few single foods and is starting to manage more texture.",
     "searchTerms": [
@@ -2487,13 +2574,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Thinned peanut butter mixed into yogurt is easy to serve by spoon.",
     "howToMake": [
-      "Steam or bake the smooth peanut butter, plain whole milk yogurt until it is soft enough to squash easily between your fingers.",
-      "Shred, mash, or blend the protein with enough moisture to keep every bite tender.",
-      "Cool until warm, then offer a few moist bites and watch chewing and swallowing closely."
+      "Gather smooth peanut butter, plain whole milk yogurt. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Stir the smooth nut butter thoroughly into the other soft ingredients until no thick, sticky clumps remain. Never serve a spoonful of nut butter on its own.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Peanut Butter Yogurt Dip should feel soft and moist on the tongue; prepare smooth peanut butter so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of smooth peanut butter alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Peanut Butter Yogurt Dip quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade peanut butter yogurt dip promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of smooth peanut butter; every bite should flatten easily between your fingers. Thin smooth nut butter well into other soft food; never offer sticky spoonfuls or thick clumps. For severe eczema or egg allergy, seek your clinician's peanut-introduction plan. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Usually works in the middle stage of solids, when spoon skills and texture tolerance are improving.",
     "searchTerms": [
@@ -2515,13 +2603,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A seed-butter oatmeal bowl for another allergen-friendly option.",
     "howToMake": [
-      "Stir the sunflower seed butter, oatmeal together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Let oatmeal stand briefly, then thin it again if it tightens into a paste as it cools.",
-      "Offer one spoonful of oatmeal first, then pause because cereal can feel thicker after a few bites."
+      "Gather sunflower seed butter, oatmeal. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Sunflower Butter Oatmeal works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Keep the first serving of Sunflower Butter Oatmeal small and slow, especially if the food contains pasta, rice, or oatmeal that can become sticky.",
-    "storageTip": "Store Sunflower Butter Oatmeal in a shallow covered container and recheck thickness after warming, since grains often absorb liquid.",
+    "storageTip": "Refrigerate untouched homemade sunflower butter oatmeal promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For pasta or rice dishes, cut long shapes and separate sticky pieces before serving.",
     "ageFit": "A practical stage 2 meal for babies who are comfortable with soft mashed foods and mixed flavors.",
     "searchTerms": [
@@ -2544,13 +2633,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft oats with apple and a little cheese can work for babies already doing well with dairy.",
     "howToMake": [
-      "Stir the apple puree, oatmeal, mild cheddar together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Let oatmeal stand briefly, then thin it again if it tightens into a paste as it cools.",
-      "Offer one spoonful of oatmeal first, then pause because cereal can feel thicker after a few bites."
+      "Gather apple puree, oatmeal, mild cheddar. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Apple and White Cheddar Oats works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Serve Apple and White Cheddar Oats with enough moisture to separate the grains or pieces easily on the spoon.",
-    "storageTip": "For leftovers, loosen Apple and White Cheddar Oats with water, breast milk, formula, or sauce and test that it is soft all the way through.",
+    "storageTip": "Refrigerate untouched homemade apple and white cheddar oats promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Skip dry crusty pieces and offer grains in a moist, spoonable, or soft finger-food form. Avoid hard raw chunks; cook firm produce until mashable or prepare in a developmentally safe form.",
     "ageFit": "Best once your baby can move food around the mouth a little better and is ready for gentle variety.",
     "searchTerms": [
@@ -2574,13 +2664,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Very soft pancake strips help babies practice self-feeding.",
     "howToMake": [
-      "Stir the banana, egg, oats together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Check the texture after it cools slightly, then loosen it with breast milk, formula, or water if it becomes too thick.",
-      "Begin with a small taste and pause between bites so your baby can show comfort with the texture."
+      "Gather banana, egg, oats. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook the egg fully; if other ingredients also require cooking, prepare them safely until soft. Do not serve runny or undercooked egg.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Banana Oat Pancake Strips should feel soft and moist on the tongue; prepare banana so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of banana alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Banana Oat Pancake Strips quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade banana oat pancake strips promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of banana; every bite should flatten easily between your fingers.",
     "ageFit": "Often fits the 7 to 9 month stage, when babies are ready for thicker mashes and simple combinations.",
     "searchTerms": [
@@ -2602,13 +2693,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Ripe avocado spears are one of the easiest first finger foods.",
     "howToMake": [
-      "Peel the ripe avocado and mash it with a fork until no firm pieces remain.",
-      "Adjust Soft Avocado Spears with breast milk, formula, water, or yogurt based on whether the food feels dry, dense, or chalky.",
-      "Keep the first serving of Soft Avocado Spears brief so your baby can practice without getting tired."
+      "Gather ripe avocado. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Peel and prepare the ripe fruit. Mash until smooth or soft enough for your baby's feeding skills; raw ripe avocado or banana does not need cooking.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Soft Avocado Spears should be ripe, peeled when needed, and mashed or cut so the fruit collapses with gentle pressure.",
     "servingTip": "Offer a small taste of ripe avocado first; tart fruits can surprise babies, so mix with yogurt or cereal if needed.",
-    "storageTip": "Fruit like ripe avocado can brown or release juice, so store a small covered portion and check smell and texture before reusing.",
+    "storageTip": "Refrigerate untouched homemade soft avocado spears promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Remove peels, pits, seeds, and firm edges from ripe avocado; slippery pieces should be sized so they are easy to control.",
     "ageFit": "Use after your baby has handled a few single foods and is starting to manage more texture.",
     "searchTerms": [
@@ -2628,13 +2720,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Very soft broccoli florets are a common baby-led weaning vegetable.",
     "howToMake": [
-      "Steam or bake the broccoli until it is soft enough to squash easily between your fingers.",
-      "Cut or shape the food into soft, grabbable pieces that squash easily between your fingers.",
-      "Place just a few pieces on the tray and stay close while your baby practices picking them up."
+      "Gather broccoli. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Steamed Broccoli Florets should be cooked until tender enough to mash smoothly, with fibrous skins or strings broken down for your baby’s stage.",
     "servingTip": "If Steamed Broccoli Florets feels thick, loosen it gradually so the spoonful stays smooth without becoming watery.",
-    "storageTip": "Vegetable purees can thicken in the refrigerator, so stir well and check for smoothness after warming.",
+    "storageTip": "Refrigerate untouched homemade steamed broccoli florets promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Do not serve firm raw vegetable coins or chunks; they should squash easily between two fingers.",
     "ageFit": "Usually works in the middle stage of solids, when spoon skills and texture tolerance are improving.",
     "searchTerms": [
@@ -2654,13 +2747,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft sweet potato spears are easy to grasp and gum.",
     "howToMake": [
-      "Steam or bake the sweet potato until it is soft enough to squash easily between your fingers.",
-      "Prepare pieces in a size your baby can manage, keeping every edge soft and tender.",
-      "Offer one or two pieces at a time so your baby can pace the meal safely."
+      "Gather sweet potato. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Roasted Sweet Potato Spears should be ripe, peeled when needed, and mashed or cut so the fruit collapses with gentle pressure.",
     "servingTip": "Start with a few soft bites of Roasted Sweet Potato Spears, then wait before offering more if the fruit is new to your baby.",
-    "storageTip": "If saving sweet potato, cover it tightly and expect the texture to soften further by the next meal.",
+    "storageTip": "Refrigerate untouched homemade roasted sweet potato spears promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For berries or grapes, flatten or quarter appropriately and never serve firm round pieces whole.",
     "ageFit": "A practical stage 2 meal for babies who are comfortable with soft mashed foods and mixed flavors.",
     "searchTerms": [
@@ -2680,13 +2774,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Small soft egg pieces work for babies ready to pick up food.",
     "howToMake": [
-      "Cook the egg completely and keep the texture moist so it is not dry or crumbly.",
-      "For egg, serve it fully cooked and soft, such as finely mashed yolk or small tender pieces mixed into another moist food.",
-      "Give egg in a small baby-safe amount at first and watch for any reaction during and after the meal."
+      "Gather egg. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook the egg fully; if other ingredients also require cooking, prepare them safely until soft. Do not serve runny or undercooked egg.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Scrambled Egg Pieces should feel soft and moist on the tongue; cook it fully, offer a soft texture, and watch for rash, vomiting, or breathing changes after introduction.",
     "servingTip": "Start with a small spoonful of egg alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Scrambled Egg Pieces quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade scrambled egg pieces promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of egg; every bite should flatten easily between your fingers.",
     "ageFit": "Best once your baby can move food around the mouth a little better and is ready for gentle variety.",
     "searchTerms": [
@@ -2706,13 +2801,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Seared or steamed tofu cut into sticks stays soft and easy to chew.",
     "howToMake": [
-      "Cook the firm tofu completely and keep the texture moist so it is not dry or crumbly.",
-      "For egg, serve it fully cooked and soft, such as finely mashed yolk or small tender pieces mixed into another moist food.",
-      "Give egg in a small baby-safe amount at first and watch for any reaction during and after the meal."
+      "Gather firm tofu. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Soft Tofu Sticks should feel soft and moist on the tongue; press lightly, crumble or cube it softly, and avoid firm slippery chunks that are hard to manage.",
     "servingTip": "Serve firm tofu in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved firm tofu covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade soft tofu sticks promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Check firm tofu for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "Often fits the 7 to 9 month stage, when babies are ready for thicker mashes and simple combinations.",
     "searchTerms": [
@@ -2732,13 +2828,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Steamed pear spears can be served soft enough to mash between fingers.",
     "howToMake": [
-      "Steam or bake the ripe pear until it is soft enough to squash easily between your fingers.",
-      "Prepare pieces in a size your baby can manage, keeping every edge soft and tender.",
-      "Place just a few pieces on the tray and stay close while your baby practices picking them up."
+      "Gather ripe pear. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Soft Pear Spears should be ripe, peeled when needed, and mashed or cut so the fruit collapses with gentle pressure.",
     "servingTip": "Start with a few soft bites of Soft Pear Spears, then wait before offering more if the fruit is new to your baby.",
-    "storageTip": "If saving ripe pear, cover it tightly and expect the texture to soften further by the next meal.",
+    "storageTip": "Refrigerate untouched homemade soft pear spears promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For berries or grapes, flatten or quarter appropriately and never serve firm round pieces whole. Avoid hard raw chunks; cook firm produce until mashable or prepare in a developmentally safe form.",
     "ageFit": "Use after your baby has handled a few single foods and is starting to manage more texture.",
     "searchTerms": [
@@ -2758,13 +2855,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Banana spears are a low-prep self-feeding option.",
     "howToMake": [
-      "Peel the banana and mash it with a fork until no firm pieces remain.",
-      "For Ripe Banana Spears, thickness should match your baby's current stage rather than the recipe label.",
-      "With Ripe Banana Spears, wait between bites and adjust the next spoonful if the texture seems hard to manage."
+      "Gather banana. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Peel and prepare the ripe fruit. Mash until smooth or soft enough for your baby's feeding skills; raw ripe avocado or banana does not need cooking.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Ripe Banana Spears should be ripe, peeled when needed, and mashed or cut so the fruit collapses with gentle pressure.",
     "servingTip": "Offer a small taste of banana first; tart fruits can surprise babies, so mix with yogurt or cereal if needed.",
-    "storageTip": "Fruit like banana can brown or release juice, so store a small covered portion and check smell and texture before reusing.",
+    "storageTip": "Refrigerate untouched homemade ripe banana spears promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Remove peels, pits, seeds, and firm edges from banana; slippery pieces should be sized so they are easy to control.",
     "ageFit": "Usually works in the middle stage of solids, when spoon skills and texture tolerance are improving.",
     "searchTerms": [
@@ -2784,13 +2882,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft pasta gives babies another texture to explore.",
     "howToMake": [
-      "Cook the small pasta until very soft, then cut or mash it into pieces that match your baby’s chewing stage.",
-      "Mix with a moist ingredient such as vegetable puree, yogurt, or sauce so the food is easier to swallow.",
-      "Serve a small portion and check that each piece squashes easily before offering more."
+      "Gather small pasta. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Well-Cooked Pasta Spirals works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Offer Well-Cooked Pasta Spirals while it is freshly softened; grains thicken as they stand, so check the spoonful before giving more.",
-    "storageTip": "When saving Well-Cooked Pasta Spirals, add moisture during reheating and stop using it if the texture turns gummy.",
+    "storageTip": "Refrigerate untouched homemade well-cooked pasta spirals promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid dense clumps of small pasta; spread or break the food apart so each bite is easy to swallow.",
     "ageFit": "A practical stage 2 meal for babies who are comfortable with soft mashed foods and mixed flavors.",
     "searchTerms": [
@@ -2811,13 +2910,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Lightly toasted bread spread thinly with avocado can work once bread is going well.",
     "howToMake": [
-      "Peel the soft toast, avocado and mash it with a fork until no firm pieces remain.",
-      "For Soft Toast with Avocado, add liquid slowly until the mash slides from the spoon without forming a sticky clump.",
-      "Offer one small spoonful of Soft Toast with Avocado, then pause to watch swallowing, interest, and comfort."
+      "Gather soft toast, avocado. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Peel and prepare the ripe fruit. Mash until smooth or soft enough for your baby's feeding skills; raw ripe avocado or banana does not need cooking.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Soft Toast with Avocado works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Keep the first serving of Soft Toast with Avocado small and slow, especially if the food contains pasta, rice, or oatmeal that can become sticky.",
-    "storageTip": "Store Soft Toast with Avocado in a shallow covered container and recheck thickness after warming, since grains often absorb liquid.",
+    "storageTip": "Refrigerate untouched homemade soft toast with avocado promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For pasta or rice dishes, cut long shapes and separate sticky pieces before serving.",
     "ageFit": "Best once your baby can move food around the mouth a little better and is ready for gentle variety.",
     "searchTerms": [
@@ -2840,13 +2940,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft waffle strips are easy to hold and fit self-feeding practice.",
     "howToMake": [
-      "Stir the banana, egg, oats together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Check the texture after it cools slightly, then loosen it with breast milk, formula, or water if it becomes too thick.",
-      "Begin with a small taste and pause between bites so your baby can show comfort with the texture."
+      "Gather banana, egg, oats. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook the egg fully; if other ingredients also require cooking, prepare them safely until soft. Do not serve runny or undercooked egg.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Banana Oat Waffle Strips should feel soft and moist on the tongue; prepare banana so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair banana with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Banana Oat Waffle Strips until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade banana oat waffle strips promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Egg is a common allergen, so offer it fully cooked in a baby-safe texture and seek medical advice for hives, swelling, repeated vomiting, or breathing symptoms.",
     "ageFit": "Often fits 9 to 12 months, when soft finger foods and small family-style meals become more realistic.",
     "searchTerms": [
@@ -2870,13 +2971,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft baked egg muffins cut into small pieces work well for older babies.",
     "howToMake": [
-      "Cook the egg, spinach, cheese completely and keep the texture moist so it is not dry or crumbly.",
-      "For egg, serve it fully cooked and soft, such as finely mashed yolk or small tender pieces mixed into another moist food.",
-      "Give egg in a small baby-safe amount at first and watch for any reaction during and after the meal."
+      "Gather egg, spinach, cheese. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook the egg fully; if other ingredients also require cooking, prepare them safely until soft. Do not serve runny or undercooked egg.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Mini Egg Muffins with Spinach should feel soft and moist on the tongue; cook it fully, offer a soft texture, and watch for rash, vomiting, or breathing changes after introduction.",
     "servingTip": "Start with a small spoonful of egg alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Mini Egg Muffins with Spinach quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade mini egg muffins with spinach promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of egg; every bite should flatten easily between your fingers. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Use in the later baby-food stage once your baby is practicing self-feeding with safe, soft pieces.",
     "searchTerms": [
@@ -2900,13 +3002,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A thick breakfast bowl with dairy, fruit, and grain.",
     "howToMake": [
-      "Stir the plain whole milk Greek yogurt, berries, oats together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Check the texture after it cools slightly, then loosen it with breast milk, formula, or water if it becomes too thick.",
-      "Begin with a small taste and pause between bites so your baby can show comfort with the texture."
+      "Gather plain whole milk Greek yogurt, berries, oats. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Greek Yogurt with Berries and Oats should feel soft and moist on the tongue; prepare plain whole milk Greek yogurt so it stays tender, moist, and easy to break apart.",
     "servingTip": "Serve plain whole milk Greek yogurt in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved plain whole milk Greek yogurt covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade greek yogurt with berries and oats promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Check plain whole milk Greek yogurt and berries and oats for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal. Do not serve firm round berries or whole grapes; mash or cut appropriately for your baby's feeding skills. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "A good option for older babies who can handle thicker textures and very soft bite-size foods.",
     "searchTerms": [
@@ -2930,13 +3033,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Thinly spread peanut butter on soft toast strips is a common US breakfast-style baby meal.",
     "howToMake": [
-      "Peel the soft toast, smooth peanut butter, banana and mash it with a fork until no firm pieces remain.",
-      "With Peanut Butter Banana Toast Strips, keep the texture thinner for new eaters and leave more body only when your baby handles lumps well.",
-      "Serve Peanut Butter Banana Toast Strips slowly; turning away, coughing, or losing energy means it is time to stop or thin the texture."
+      "Gather soft toast, smooth peanut butter, banana. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Peel and prepare the ripe fruit. Mash until smooth or soft enough for your baby's feeding skills; raw ripe avocado or banana does not need cooking.",
+      "Stir the smooth nut butter thoroughly into the other soft ingredients until no thick, sticky clumps remain. Never serve a spoonful of nut butter on its own.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Peanut Butter Banana Toast Strips works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Serve Peanut Butter Banana Toast Strips with enough moisture to separate the grains or pieces easily on the spoon.",
-    "storageTip": "For leftovers, loosen Peanut Butter Banana Toast Strips with water, breast milk, formula, or sauce and test that it is soft all the way through.",
+    "storageTip": "Refrigerate untouched homemade peanut butter banana toast strips promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Skip dry crusty pieces and offer grains in a moist, spoonable, or soft finger-food form. Thin smooth nut butter well into other soft food; never offer sticky spoonfuls or thick clumps. For severe eczema or egg allergy, seek your clinician's peanut-introduction plan.",
     "ageFit": "Works well as your baby moves toward table foods while still needing soft, easy-to-mash textures.",
     "searchTerms": [
@@ -2960,13 +3064,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft pancake pieces make a higher-protein finger food.",
     "howToMake": [
-      "Cook the cottage cheese, egg, oats until very soft, then cut or mash it into pieces that match your baby’s chewing stage.",
-      "Mix with a moist ingredient such as vegetable puree, yogurt, or sauce so the food is easier to swallow.",
-      "Serve a small portion and check that each piece squashes easily before offering more."
+      "Gather cottage cheese, egg, oats. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook the egg fully; if other ingredients also require cooking, prepare them safely until soft. Do not serve runny or undercooked egg.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Cottage Cheese Pancake Pieces should feel soft and moist on the tongue; prepare cottage cheese so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of cottage cheese alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Cottage Cheese Pancake Pieces quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade cottage cheese pancake pieces promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of cottage cheese; every bite should flatten easily between your fingers. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Best for babies who are building pincer grasp and chewing practice with closely supervised meals.",
     "searchTerms": [
@@ -2990,13 +3095,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft French toast strips can be served in baby-size pieces.",
     "howToMake": [
-      "Steam or bake the whole grain bread, egg, apple until it is soft enough to squash easily between your fingers.",
-      "Remove any firm bits, then mince or blend until the texture is safe for your baby’s stage.",
-      "Cool until warm, then offer a few moist bites and watch chewing and swallowing closely."
+      "Gather whole grain bread, egg, apple. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook the egg fully; if other ingredients also require cooking, prepare them safely until soft. Do not serve runny or undercooked egg.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Apple Cinnamon French Toast Strips should feel soft and moist on the tongue; prepare whole grain bread so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of whole grain bread alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Apple Cinnamon French Toast Strips quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade apple cinnamon french toast strips promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of whole grain bread; every bite should flatten easily between your fingers. Avoid hard raw chunks; cook firm produce until mashable or prepare in a developmentally safe form.",
     "ageFit": "Often fits 9 to 12 months, when soft finger foods and small family-style meals become more realistic.",
     "searchTerms": [
@@ -3020,13 +3126,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A soft toast option with mild dairy and fruit.",
     "howToMake": [
-      "Steam or bake the soft toast, ricotta, peach until it is soft enough to squash easily between your fingers.",
-      "Adjust the grain texture so it stays moist and spoonable rather than gluey.",
-      "Serve a few bites and check whether the grain texture stays easy to swallow."
+      "Gather soft toast, ricotta, peach. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Ricotta Toast with Peach should feel soft and moist on the tongue; prepare soft toast so it stays tender, moist, and easy to break apart.",
     "servingTip": "Serve soft toast in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved soft toast covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade ricotta toast with peach promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Check soft toast and ricotta and peach for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Use in the later baby-food stage once your baby is practicing self-feeding with safe, soft pieces.",
     "searchTerms": [
@@ -3049,13 +3156,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Very soft breakfast potatoes with egg create a family-style baby meal.",
     "howToMake": [
-      "Steam or bake the potato, egg until it is soft enough to squash easily between your fingers.",
-      "For Soft Breakfast Potatoes with Egg, check the protein texture with your fingers and soften it more if it feels firm or grainy.",
-      "Start with a small protein portion and pause often because these foods can feel dense to new eaters."
+      "Gather potato, egg. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook the egg fully; if other ingredients also require cooking, prepare them safely until soft. Do not serve runny or undercooked egg.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Soft Breakfast Potatoes with Egg should feel soft and moist on the tongue; cook it fully, offer a soft texture, and watch for rash, vomiting, or breathing changes after introduction.",
     "servingTip": "Pair potato with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Soft Breakfast Potatoes with Egg until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade soft breakfast potatoes with egg promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Egg is a common allergen, so offer it fully cooked in a baby-safe texture and seek medical advice for hives, swelling, repeated vomiting, or breathing symptoms.",
     "ageFit": "A good option for older babies who can handle thicker textures and very soft bite-size foods.",
     "searchTerms": [
@@ -3078,13 +3186,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A thick yogurt bowl with banana and soaked chia.",
     "howToMake": [
-      "Peel the plain whole milk yogurt, banana, soft soaked chia and mash it with a fork until no firm pieces remain.",
-      "Adjust Yogurt Chia Banana Bowl with breast milk, formula, water, or yogurt based on whether the food feels dry, dense, or chalky.",
-      "Keep the first serving of Yogurt Chia Banana Bowl brief so your baby can practice without getting tired."
+      "Gather plain whole milk yogurt, banana, soft soaked chia. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Peel and prepare the ripe fruit. Mash until smooth or soft enough for your baby's feeding skills; raw ripe avocado or banana does not need cooking.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Yogurt Chia Banana Bowl should feel soft and moist on the tongue; prepare plain whole milk yogurt so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of plain whole milk yogurt alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Yogurt Chia Banana Bowl quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade yogurt chia banana bowl promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of plain whole milk yogurt; every bite should flatten easily between your fingers. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Works well as your baby moves toward table foods while still needing soft, easy-to-mash textures.",
     "searchTerms": [
@@ -3108,13 +3217,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A soft baked square that can be cut into baby-safe pieces.",
     "howToMake": [
-      "Stir the ricotta, blueberries, oats together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Check the texture after it cools slightly, then loosen it with breast milk, formula, or water if it becomes too thick.",
-      "Begin with a small taste and pause between bites so your baby can show comfort with the texture."
+      "Gather ricotta, blueberries, oats. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Blueberry Ricotta Oat Bake should feel soft and moist on the tongue; prepare ricotta so it stays tender, moist, and easy to break apart.",
     "servingTip": "Serve ricotta in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved ricotta covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade blueberry ricotta oat bake promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Beef needs extra attention because chewy pieces linger in the mouth; trim gristle and blend or mince until very tender. Do not serve firm round berries or whole grapes; mash or cut appropriately for your baby's feeding skills. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Best for babies who are building pincer grasp and chewing practice with closely supervised meals.",
     "searchTerms": [
@@ -3138,13 +3248,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft turkey meatballs in tiny pieces work well for older babies.",
     "howToMake": [
-      "Cook the ground turkey, oats, egg completely and keep the texture moist so it is not dry or crumbly.",
-      "For beef, choose a tender slow-cooked piece and blend or mince it finely with cooking liquid so no chewy strands remain.",
-      "Offer beef in a very small serving first because the texture can feel dense, and stay nearby while your baby practices chewing."
+      "Gather ground turkey, oats, egg. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Turkey Meatball Pieces should feel soft and moist on the tongue; break it into tiny moist pieces so it does not clump in the mouth.",
     "servingTip": "Pair ground turkey with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Turkey Meatball Pieces until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade turkey meatball pieces promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "When serving Turkey Meatball Pieces, introduce it in a calm window and monitor for rash, facial swelling, vomiting, cough, wheeze, or breathing changes. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "Often fits 9 to 12 months, when soft finger foods and small family-style meals become more realistic.",
     "searchTerms": [
@@ -3168,13 +3279,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Moist beef meatballs can be broken into small pieces for self-feeding.",
     "howToMake": [
-      "Cook the ground beef, breadcrumbs, egg completely and keep the texture moist so it is not dry or crumbly.",
-      "For beef, choose a tender slow-cooked piece and blend or mince it finely with cooking liquid so no chewy strands remain.",
-      "Offer beef in a very small serving first because the texture can feel dense, and stay nearby while your baby practices chewing."
+      "Gather ground beef, breadcrumbs, egg. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Beef Meatball Pieces should feel soft and moist on the tongue; cook until tender, mince finely, and keep each bite soft instead of dry or chewy.",
     "servingTip": "Start with a small spoonful of ground beef alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Beef Meatball Pieces quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade beef meatball pieces promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of ground beef; every bite should flatten easily between your fingers. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "Use in the later baby-food stage once your baby is practicing self-feeding with safe, soft pieces.",
     "searchTerms": [
@@ -3198,13 +3310,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft salmon cakes bring fish into a finger-food format.",
     "howToMake": [
-      "Cook the salmon, potato, egg completely and keep the texture moist so it is not dry or crumbly.",
-      "For beef, choose a tender slow-cooked piece and blend or mince it finely with cooking liquid so no chewy strands remain.",
-      "For Salmon Cakes, use tender inner meat, shred across the grain, and keep the first portion small."
+      "Gather salmon, potato, egg. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook the egg fully; if other ingredients also require cooking, prepare them safely until soft. Do not serve runny or undercooked egg.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Salmon Cakes should feel soft and moist on the tongue; flake carefully, remove bones, and keep the fish moist so pieces separate easily.",
     "servingTip": "Start with a small spoonful of salmon alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Salmon Cakes quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade salmon cakes promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of salmon; every bite should flatten easily between your fingers. Cook fish thoroughly and inspect every bite for bones before serving.",
     "ageFit": "A good option for older babies who can handle thicker textures and very soft bite-size foods.",
     "searchTerms": [
@@ -3227,13 +3340,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Tender shredded chicken and avocado make a simple lunch.",
     "howToMake": [
-      "Peel the chicken thigh, avocado and mash it with a fork until no firm pieces remain.",
-      "For Shredded Chicken with Avocado, thickness should match your baby's current stage rather than the recipe label.",
-      "With Shredded Chicken with Avocado, wait between bites and adjust the next spoonful if the texture seems hard to manage."
+      "Gather chicken thigh, avocado. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Peel and prepare the ripe fruit. Mash until smooth or soft enough for your baby's feeding skills; raw ripe avocado or banana does not need cooking.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Shredded Chicken with Avocado should feel soft and moist on the tongue; shred it very small and keep it moist with cooking liquid, breast milk, formula, or a mild sauce.",
     "servingTip": "Serve chicken thigh in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved chicken thigh covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade shredded chicken with avocado promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Chicken can become stringy when dry, so remove tough edges and keep every piece soft, moist, and finely shredded. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "Works well as your baby moves toward table foods while still needing soft, easy-to-mash textures.",
     "searchTerms": [
@@ -3256,13 +3370,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Quesadilla strips are a realistic family meal adaptation for older babies.",
     "howToMake": [
-      "Prepare soft tortilla and black beans and cheese following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
-      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
-      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
+      "Gather soft tortilla, black beans, cheese. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Black Bean Quesadilla Strips should feel soft and moist on the tongue; mash until skins are broken down and add liquid until the texture is easy to swallow.",
     "servingTip": "Pair soft tortilla with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Black Bean Quesadilla Strips until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade black bean quesadilla strips promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "With Black Bean Quesadilla Strips, use a soft texture first and stop for medical advice if breathing changes, swelling, or repeated vomiting appears. Mash whole beans or chickpeas until no firm round pieces remain. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Best for babies who are building pincer grasp and chewing practice with closely supervised meals.",
     "searchTerms": [
@@ -3286,13 +3401,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A soft bowl built from pantry staples many US families already use.",
     "howToMake": [
-      "Prepare black beans and rice and mild cheddar following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
-      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
-      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
+      "Gather black beans, rice, mild cheddar. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Cheesy Bean Rice Bowl should feel soft and moist on the tongue; mash until skins are broken down and add liquid until the texture is easy to swallow.",
     "servingTip": "Start with a small spoonful of black beans alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Cheesy Bean Rice Bowl quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade cheesy bean rice bowl promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of black beans; every bite should flatten easily between your fingers. Mash whole beans or chickpeas until no firm round pieces remain.",
     "ageFit": "Often fits 9 to 12 months, when soft finger foods and small family-style meals become more realistic.",
     "searchTerms": [
@@ -3316,13 +3432,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A soft version of a basic family dinner.",
     "howToMake": [
-      "Cook the chicken, rice, broccoli completely and keep the texture moist so it is not dry or crumbly.",
-      "For chicken, keep the meat very moist and pull it into tiny soft shreds, or fold it into a puree so it does not feel dry in the mouth.",
-      "Serve Chicken and Rice Bowl in tiny soft pieces and add cooking liquid if the chicken starts to feel dry."
+      "Gather chicken, rice, broccoli. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Chicken and Rice Bowl should feel soft and moist on the tongue; shred it very small and keep it moist with cooking liquid, breast milk, formula, or a mild sauce.",
     "servingTip": "Serve chicken in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved chicken covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade chicken and rice bowl promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Chicken can become stringy when dry, so remove tough edges and keep every piece soft, moist, and finely shredded. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "Use in the later baby-food stage once your baby is practicing self-feeding with safe, soft pieces.",
     "searchTerms": [
@@ -3346,13 +3463,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Mild turkey chili can be served thick and soft for older babies.",
     "howToMake": [
-      "Cook the ground turkey, beans, tomato completely and keep the texture moist so it is not dry or crumbly.",
-      "For chicken, keep the meat very moist and pull it into tiny soft shreds, or fold it into a puree so it does not feel dry in the mouth.",
-      "For Turkey Chili, use tender inner meat, shred across the grain, and keep the first portion small."
+      "Gather ground turkey, beans, tomato. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Turkey Chili should feel soft and moist on the tongue; break it into tiny moist pieces so it does not clump in the mouth.",
     "servingTip": "Pair ground turkey with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Turkey Chili until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade turkey chili promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For Turkey Chili, offer a small first portion and watch closely for skin, stomach, cough, wheeze, or breathing symptoms. Mash whole beans or chickpeas until no firm round pieces remain. Do not serve firm round berries or whole grapes; mash or cut appropriately for your baby's feeding skills. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "A good option for older babies who can handle thicker textures and very soft bite-size foods.",
     "searchTerms": [
@@ -3376,13 +3494,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A soft meat sauce can be mixed with tiny pasta or served alone.",
     "howToMake": [
-      "Prepare ground beef and lentils and tomato sauce following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
-      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
-      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
+      "Gather ground beef, lentils, tomato sauce. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Beef and Lentil Bolognese should feel soft and moist on the tongue; cook until tender, mince finely, and keep each bite soft instead of dry or chewy.",
     "servingTip": "Start with a small spoonful of ground beef alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Beef and Lentil Bolognese quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade beef and lentil bolognese promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of ground beef; every bite should flatten easily between your fingers. Mash whole beans or chickpeas until no firm round pieces remain. Do not serve firm round berries or whole grapes; mash or cut appropriately for your baby's feeding skills. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "Works well as your baby moves toward table foods while still needing soft, easy-to-mash textures.",
     "searchTerms": [
@@ -3406,13 +3525,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A baby-friendly soft mac and cheese with peas.",
     "howToMake": [
-      "Steam or bake the small pasta, cheese, peas until it is soft enough to squash easily between your fingers.",
-      "Adjust the grain texture so it stays moist and spoonable rather than gluey.",
-      "Serve a few bites and check whether the grain texture stays easy to swallow."
+      "Gather small pasta, cheese, peas. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Mac and Cheese with Peas should feel soft and moist on the tongue; prepare small pasta so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of small pasta alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Mac and Cheese with Peas quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade mac and cheese with peas promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of small pasta; every bite should flatten easily between your fingers. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Best for babies who are building pincer grasp and chewing practice with closely supervised meals.",
     "searchTerms": [
@@ -3436,13 +3556,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Well-cooked pasta with broccoli and cheese is easy to adapt for babies.",
     "howToMake": [
-      "Steam or bake the small pasta, broccoli, mild cheese until it is soft enough to squash easily between your fingers.",
-      "Cook the grain until tender, then mash or chop any dense pieces so they do not clump.",
-      "Let it cool and stir well so there are no hot spots or thick clumps before feeding."
+      "Gather small pasta, broccoli, mild cheese. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Broccoli Cheese Pasta should feel soft and moist on the tongue; prepare small pasta so it stays tender, moist, and easy to break apart.",
     "servingTip": "Serve small pasta in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved small pasta covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade broccoli cheese pasta promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Chicken can become stringy when dry, so remove tough edges and keep every piece soft, moist, and finely shredded. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Often fits 9 to 12 months, when soft finger foods and small family-style meals become more realistic.",
     "searchTerms": [
@@ -3466,13 +3587,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft buttered noodles with chicken fit many family dinners.",
     "howToMake": [
-      "Cook the egg noodles, chicken, butter completely and keep the texture moist so it is not dry or crumbly.",
-      "For chicken, keep the meat very moist and pull it into tiny soft shreds, or fold it into a puree so it does not feel dry in the mouth.",
-      "With Butter Noodles with Chicken, pause after the first few shreds so you can see whether your baby moves the meat comfortably."
+      "Gather egg noodles, chicken, butter. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Butter Noodles with Chicken should feel soft and moist on the tongue; shred it very small and keep it moist with cooking liquid, breast milk, formula, or a mild sauce.",
     "servingTip": "Pair egg noodles with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Butter Noodles with Chicken until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade butter noodles with chicken promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For Butter Noodles with Chicken, keep the texture baby-safe and watch for hives, swelling, repeated vomiting, coughing, wheezing, or breathing changes. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "Use in the later baby-food stage once your baby is practicing self-feeding with safe, soft pieces.",
     "searchTerms": [
@@ -3496,13 +3618,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A soft bowl with fiber, fat, and flavor.",
     "howToMake": [
-      "Steam or bake the sweet potato, black beans, avocado until it is soft enough to squash easily between your fingers.",
-      "Remove any firm bits, then mince or blend until the texture is safe for your baby’s stage.",
-      "Serve in small amounts with a familiar food if that helps your baby manage the texture."
+      "Gather sweet potato, black beans, avocado. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Peel and prepare the ripe fruit. Mash until smooth or soft enough for your baby's feeding skills; raw ripe avocado or banana does not need cooking.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Sweet Potato Black Bean Bowl should feel soft and moist on the tongue; mash until skins are broken down and add liquid until the texture is easy to swallow.",
     "servingTip": "Start with a small spoonful of sweet potato alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Sweet Potato Black Bean Bowl quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade sweet potato black bean bowl promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of sweet potato; every bite should flatten easily between your fingers. Mash whole beans or chickpeas until no firm round pieces remain.",
     "ageFit": "A good option for older babies who can handle thicker textures and very soft bite-size foods.",
     "searchTerms": [
@@ -3526,13 +3649,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A gentle plant-based bowl for self-feeding or preloaded spoon use.",
     "howToMake": [
-      "Cook the tofu, rice, zucchini completely and keep the texture moist so it is not dry or crumbly.",
-      "For egg, serve it fully cooked and soft, such as finely mashed yolk or small tender pieces mixed into another moist food.",
-      "Give egg in a small baby-safe amount at first and watch for any reaction during and after the meal."
+      "Gather tofu, rice, zucchini. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Tofu Rice Veggie Bowl should feel soft and moist on the tongue; cook it fully, offer a soft texture, and watch for rash, vomiting, or breathing changes after introduction.",
     "servingTip": "Serve tofu in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved tofu covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade tofu rice veggie bowl promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Check tofu and rice and zucchini for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "Works well as your baby moves toward table foods while still needing soft, easy-to-mash textures.",
     "searchTerms": [
@@ -3556,13 +3680,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A soft lunch-style meal inspired by common lunch foods.",
     "howToMake": [
-      "Prepare the soft pita, hummus, plain yogurt until every ingredient is soft, mild, and easy for your baby to manage.",
-      "For Hummus Pita Strips and Cucumber Yogurt, use the recipe as a guide but adjust thickness and piece size to how your baby eats this week.",
-      "Serve Hummus Pita Strips and Cucumber Yogurt in a modest portion first, then add moisture if the texture feels dense, sticky, or tiring."
+      "Gather soft pita, hummus, plain yogurt. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Hummus Pita Strips and Cucumber Yogurt should feel soft and moist on the tongue; prepare soft pita so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair soft pita with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Hummus Pita Strips and Cucumber Yogurt until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade hummus pita strips and cucumber yogurt promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "When serving Hummus Pita Strips and Cucumber Yogurt, introduce it in a calm window and monitor for rash, facial swelling, vomiting, cough, wheeze, or breathing changes. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Best for babies who are building pincer grasp and chewing practice with closely supervised meals.",
     "searchTerms": [
@@ -3586,13 +3711,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Skip the crust and serve the soft filling for an older baby.",
     "howToMake": [
-      "Cook the chicken, peas, carrots completely and keep the texture moist so it is not dry or crumbly.",
-      "For chicken, keep the meat very moist and pull it into tiny soft shreds, or fold it into a puree so it does not feel dry in the mouth.",
-      "Serve Chicken Pot Pie Filling in tiny soft pieces and add cooking liquid if the chicken starts to feel dry."
+      "Gather chicken, peas, carrots. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Chicken Pot Pie Filling should feel soft and moist on the tongue; shred it very small and keep it moist with cooking liquid, breast milk, formula, or a mild sauce.",
     "servingTip": "Start with a small spoonful of chicken alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Chicken Pot Pie Filling quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade chicken pot pie filling promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of chicken; every bite should flatten easily between your fingers. Avoid hard raw chunks; cook firm produce until mashable or prepare in a developmentally safe form. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "Often fits 9 to 12 months, when soft finger foods and small family-style meals become more realistic.",
     "searchTerms": [
@@ -3615,13 +3741,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Moist burger pieces can work when cooked soft and served in small bits.",
     "howToMake": [
-      "Cook the ground turkey, oats completely and keep the texture moist so it is not dry or crumbly.",
-      "For chicken, keep the meat very moist and pull it into tiny soft shreds, or fold it into a puree so it does not feel dry in the mouth.",
-      "For Mini Turkey Burger Pieces, use tender inner meat, shred across the grain, and keep the first portion small."
+      "Gather ground turkey, oats. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Mini Turkey Burger Pieces should feel soft and moist on the tongue; break it into tiny moist pieces so it does not clump in the mouth.",
     "servingTip": "Start with a small spoonful of ground turkey alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Mini Turkey Burger Pieces quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade mini turkey burger pieces promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of ground turkey; every bite should flatten easily between your fingers. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "Use in the later baby-food stage once your baby is practicing self-feeding with safe, soft pieces.",
     "searchTerms": [
@@ -3644,13 +3771,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A taco-bowl style meal without crunchy toppings.",
     "howToMake": [
-      "Prepare ground beef and rice and avocado following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
-      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
-      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
+      "Gather ground beef, rice, avocado. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Soft Beef Taco Bowl should feel soft and moist on the tongue; cook until tender, mince finely, and keep each bite soft instead of dry or chewy.",
     "servingTip": "Serve ground beef in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved ground beef covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade soft beef taco bowl promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Chicken can become stringy when dry, so remove tough edges and keep every piece soft, moist, and finely shredded. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "A good option for older babies who can handle thicker textures and very soft bite-size foods.",
     "searchTerms": [
@@ -3674,13 +3802,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Thick lentil soup works well on a preloaded spoon.",
     "howToMake": [
-      "Prepare lentils and carrots and tomato following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
-      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
-      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
+      "Gather lentils, carrots, tomato. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Lentil Soup Thickened should feel soft and moist on the tongue; cook until very soft and loosen the mash so it does not become pasty.",
     "servingTip": "Pair lentils with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Lentil Soup Thickened until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade lentil soup thickened promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "With Lentil Soup Thickened, use a soft texture first and stop for medical advice if breathing changes, swelling, or repeated vomiting appears. Mash whole beans or chickpeas until no firm round pieces remain. Do not serve firm round berries or whole grapes; mash or cut appropriately for your baby's feeding skills. Avoid hard raw chunks; cook firm produce until mashable or prepare in a developmentally safe form.",
     "ageFit": "Works well as your baby moves toward table foods while still needing soft, easy-to-mash textures.",
     "searchTerms": [
@@ -3704,13 +3833,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Use the soft solids from soup as a baby meal.",
     "howToMake": [
-      "Cook the chicken, small noodles, carrots completely and keep the texture moist so it is not dry or crumbly.",
-      "For chicken, keep the meat very moist and pull it into tiny soft shreds, or fold it into a puree so it does not feel dry in the mouth.",
-      "Serve Chicken Noodle Soup Solids in tiny soft pieces and add cooking liquid if the chicken starts to feel dry."
+      "Gather chicken, small noodles, carrots. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Chicken Noodle Soup Solids should feel soft and moist on the tongue; shred it very small and keep it moist with cooking liquid, breast milk, formula, or a mild sauce.",
     "servingTip": "Start with a small spoonful of chicken alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Chicken Noodle Soup Solids quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade chicken noodle soup solids promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of chicken; every bite should flatten easily between your fingers. Avoid hard raw chunks; cook firm produce until mashable or prepare in a developmentally safe form. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "Best for babies who are building pincer grasp and chewing practice with closely supervised meals.",
     "searchTerms": [
@@ -3733,13 +3863,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft toast cubes with avocado are easy to pick up.",
     "howToMake": [
-      "Peel the soft toast, avocado and mash it with a fork until no firm pieces remain.",
-      "For Avocado Toast Cubes, add liquid slowly until the mash slides from the spoon without forming a sticky clump.",
-      "Offer one small spoonful of Avocado Toast Cubes, then pause to watch swallowing, interest, and comfort."
+      "Gather soft toast, avocado. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Peel and prepare the ripe fruit. Mash until smooth or soft enough for your baby's feeding skills; raw ripe avocado or banana does not need cooking.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Avocado Toast Cubes works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Keep the first serving of Avocado Toast Cubes small and slow, especially if the food contains pasta, rice, or oatmeal that can become sticky.",
-    "storageTip": "Store Avocado Toast Cubes in a shallow covered container and recheck thickness after warming, since grains often absorb liquid.",
+    "storageTip": "Refrigerate untouched homemade avocado toast cubes promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For pasta or rice dishes, cut long shapes and separate sticky pieces before serving.",
     "ageFit": "Often fits 9 to 12 months, when soft finger foods and small family-style meals become more realistic.",
     "searchTerms": [
@@ -3761,13 +3892,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A simple snack plate with soft fruit and cheese.",
     "howToMake": [
-      "Steam or bake the mild cheese, soft pear until it is soft enough to squash easily between your fingers.",
-      "Make the pieces soft enough for practice chewing, then remove any hard or chewy parts.",
-      "Place just a few pieces on the tray and stay close while your baby practices picking them up."
+      "Gather mild cheese, soft pear. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Cheese and Soft Pear Pieces should feel soft and moist on the tongue; prepare mild cheese so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair mild cheese with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Cheese and Soft Pear Pieces until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade cheese and soft pear pieces promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For Cheese and Soft Pear Pieces, offer a small first portion and watch closely for skin, stomach, cough, wheeze, or breathing symptoms. Avoid hard raw chunks; cook firm produce until mashable or prepare in a developmentally safe form. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Use in the later baby-food stage once your baby is practicing self-feeding with safe, soft pieces.",
     "searchTerms": [
@@ -3790,13 +3922,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A thinly spread tortilla roll cut into soft pieces.",
     "howToMake": [
-      "Peel the soft tortilla, smooth peanut butter, banana and mash it with a fork until no firm pieces remain.",
-      "With Banana Peanut Butter Roll-Ups, keep the texture thinner for new eaters and leave more body only when your baby handles lumps well.",
-      "Serve Banana Peanut Butter Roll-Ups slowly; turning away, coughing, or losing energy means it is time to stop or thin the texture."
+      "Gather soft tortilla, smooth peanut butter, banana. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Peel and prepare the ripe fruit. Mash until smooth or soft enough for your baby's feeding skills; raw ripe avocado or banana does not need cooking.",
+      "Stir the smooth nut butter thoroughly into the other soft ingredients until no thick, sticky clumps remain. Never serve a spoonful of nut butter on its own.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Banana Peanut Butter Roll-Ups should be ripe, peeled when needed, and mashed or cut so the fruit collapses with gentle pressure.",
     "servingTip": "Offer a small taste of soft tortilla first; tart fruits can surprise babies, so mix with yogurt or cereal if needed.",
-    "storageTip": "Fruit like soft tortilla can brown or release juice, so store a small covered portion and check smell and texture before reusing.",
+    "storageTip": "Refrigerate untouched homemade banana peanut butter roll-ups promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Remove peels, pits, seeds, and firm edges from soft tortilla; slippery pieces should be sized so they are easy to control. Thin smooth nut butter well into other soft food; never offer sticky spoonfuls or thick clumps. For severe eczema or egg allergy, seek your clinician's peanut-introduction plan.",
     "ageFit": "A good option for older babies who can handle thicker textures and very soft bite-size foods.",
     "searchTerms": [
@@ -3820,13 +3953,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft mini pasta with a mild sauce for older babies.",
     "howToMake": [
-      "Cook the small pasta, mild pesto, plain yogurt until very soft, then cut or mash it into pieces that match your baby’s chewing stage.",
-      "Mix with a moist ingredient such as vegetable puree, yogurt, or sauce so the food is easier to swallow.",
-      "Serve a small portion and check that each piece squashes easily before offering more."
+      "Gather small pasta, mild pesto, plain yogurt. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Mini Pasta with Pesto Yogurt should feel soft and moist on the tongue; prepare small pasta so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of small pasta alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Mini Pasta with Pesto Yogurt quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade mini pasta with pesto yogurt promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of small pasta; every bite should flatten easily between your fingers. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Works well as your baby moves toward table foods while still needing soft, easy-to-mash textures.",
     "searchTerms": [
@@ -3849,13 +3983,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Polenta can be chilled and cut into very soft squares.",
     "howToMake": [
-      "Prepare the polenta, parmesan until every ingredient is soft, mild, and easy for your baby to manage.",
-      "Before serving Soft Polenta Squares, test whether the food mashes easily between your fingers and resize it if needed.",
-      "With Soft Polenta Squares, stay close during the first bites and soften the texture further if chewing looks difficult."
+      "Gather polenta, parmesan. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Soft Polenta Squares should match your baby’s current chewing skills: soft, moist, and easy to mash with gentle finger pressure.",
     "servingTip": "Begin with a small amount of Soft Polenta Squares and adjust the size or thickness based on how your baby manages it.",
-    "storageTip": "Keep leftovers of Soft Polenta Squares covered and cold, and do not reuse food that has been mouthed or handled during feeding.",
+    "storageTip": "Refrigerate untouched homemade soft polenta squares promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Size, softness, and supervision matter most; adjust Soft Polenta Squares before serving if any piece feels firm or slippery.",
     "ageFit": "Best for babies who are building pincer grasp and chewing practice with closely supervised meals.",
     "searchTerms": [
@@ -3878,13 +4013,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Very soft fritter pieces add variety to self-feeding.",
     "howToMake": [
-      "Steam or bake the zucchini, egg, flour until it is soft enough to squash easily between your fingers.",
-      "Shred, mash, or blend the protein with enough moisture to keep every bite tender.",
-      "Start with a small protein portion and pause often because these foods can feel dense to new eaters."
+      "Gather zucchini, egg, flour. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook the egg fully; if other ingredients also require cooking, prepare them safely until soft. Do not serve runny or undercooked egg.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Soft Zucchini Fritters should feel soft and moist on the tongue; prepare zucchini so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair zucchini with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Soft Zucchini Fritters until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade soft zucchini fritters promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Egg is a common allergen, so offer it fully cooked in a baby-safe texture and seek medical advice for hives, swelling, repeated vomiting, or breathing symptoms.",
     "ageFit": "Often fits 9 to 12 months, when soft finger foods and small family-style meals become more realistic.",
     "searchTerms": [
@@ -3907,13 +4043,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A spoonable snack that can also be scooped by the baby.",
     "howToMake": [
-      "Steam or bake the cottage cheese, peach until it is soft enough to squash easily between your fingers.",
-      "For Cottage Cheese and Peach Bites, break the protein into very small pieces and add moisture so it does not feel dry in the mouth.",
-      "Cool until warm, then offer a few moist bites and watch chewing and swallowing closely."
+      "Gather cottage cheese, peach. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Cottage Cheese and Peach Bites should feel soft and moist on the tongue; prepare cottage cheese so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of cottage cheese alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Cottage Cheese and Peach Bites quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade cottage cheese and peach bites promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of cottage cheese; every bite should flatten easily between your fingers. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Use in the later baby-food stage once your baby is practicing self-feeding with safe, soft pieces.",
     "searchTerms": [
@@ -3936,13 +4073,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A soft sandwich-style lunch adapted for babies.",
     "howToMake": [
-      "Steam or bake the chickpeas, yogurt, soft toast until it is soft enough to squash easily between your fingers.",
-      "Remove any firm bits, then mince or blend until the texture is safe for your baby’s stage.",
-      "Start with a small protein portion and pause often because these foods can feel dense to new eaters."
+      "Gather chickpeas, yogurt, soft toast. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Use pasteurized dairy products. Prepare any fruit, grains, or other ingredients separately as needed; soften firm pieces before combining. Keep perishable ingredients cold until serving.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Mashed Chickpea Salad Toast should feel soft and moist on the tongue; prepare chickpeas so it stays tender, moist, and easy to break apart.",
     "servingTip": "Serve chickpeas in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved chickpeas covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade mashed chickpea salad toast promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid dry, chewy, round, or firm protein pieces that do not break down quickly with gentle pressure. Mash whole beans or chickpeas until no firm round pieces remain. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "A good option for older babies who can handle thicker textures and very soft bite-size foods.",
     "searchTerms": [
@@ -3965,13 +4103,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Very soft grilled cheese triangles can work in small pieces.",
     "howToMake": [
-      "Prepare the soft bread, mild cheddar until every ingredient is soft, mild, and easy for your baby to manage.",
-      "Move Mini Grilled Cheese Triangles from puree to soft pieces gradually instead of changing thickness and size at the same time.",
-      "Keep Mini Grilled Cheese Triangles flexible at serving time because some foods thicken, dry out, or get sticky as they cool."
+      "Gather soft bread, mild cheddar. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Mini Grilled Cheese Triangles should feel soft and moist on the tongue; prepare soft bread so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair soft bread with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Mini Grilled Cheese Triangles until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade mini grilled cheese triangles promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Check soft bread and mild cheddar for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "Works well as your baby moves toward table foods while still needing soft, easy-to-mash textures.",
     "searchTerms": [
@@ -3994,13 +4133,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft oat bars are easy to batch prep for snacks.",
     "howToMake": [
-      "Stir the oats, banana, egg together until the cereal is fully hydrated and loose enough to slide from a baby spoon.",
-      "Check the texture after it cools slightly, then loosen it with breast milk, formula, or water if it becomes too thick.",
-      "Begin with a small taste and pause between bites so your baby can show comfort with the texture."
+      "Gather oats, banana, egg. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook the egg fully; if other ingredients also require cooking, prepare them safely until soft. Do not serve runny or undercooked egg.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Soft Baked Oat Bars should feel soft and moist on the tongue; prepare oats so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of oats alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Soft Baked Oat Bars quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade soft baked oat bars promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of oats; every bite should flatten easily between your fingers.",
     "ageFit": "Best for babies who are building pincer grasp and chewing practice with closely supervised meals.",
     "searchTerms": [
@@ -4024,13 +4164,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft baked tots are popular with babies learning to self-feed.",
     "howToMake": [
-      "Steam or bake the broccoli, egg, cheese until it is soft enough to squash easily between your fingers.",
-      "Remove any firm bits, then mince or blend until the texture is safe for your baby’s stage.",
-      "Start with a small protein portion and pause often because these foods can feel dense to new eaters."
+      "Gather broccoli, egg, cheese. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook the egg fully; if other ingredients also require cooking, prepare them safely until soft. Do not serve runny or undercooked egg.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Soft Broccoli Tots should feel soft and moist on the tongue; prepare broccoli so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of broccoli alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Soft Broccoli Tots quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade soft broccoli tots promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of broccoli; every bite should flatten easily between your fingers. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Often fits 9 to 12 months, when soft finger foods and small family-style meals become more realistic.",
     "searchTerms": [
@@ -4054,13 +4195,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft mash bites bring vegetable variety.",
     "howToMake": [
-      "Prepare the cauliflower, cheese, egg until every ingredient is soft, mild, and easy for your baby to manage.",
-      "Prepare Cauliflower Cheese Mash Bites for your baby's current skill level: smooth, mashed, shredded, or soft pieces as needed.",
-      "For Cauliflower Cheese Mash Bites, begin with a small serving and thin the food if it clings to the spoon or feels heavy."
+      "Gather cauliflower, cheese, egg. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook the egg fully; if other ingredients also require cooking, prepare them safely until soft. Do not serve runny or undercooked egg.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Cauliflower Cheese Mash Bites should feel soft and moist on the tongue; prepare cauliflower so it stays tender, moist, and easy to break apart.",
     "servingTip": "Serve cauliflower in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved cauliflower covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade cauliflower cheese mash bites promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For egg, avoid rubbery chunks and large slippery pieces; keep it soft, fully cooked, and easy to mash. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Use in the later baby-food stage once your baby is practicing self-feeding with safe, soft pieces.",
     "searchTerms": [
@@ -4084,13 +4226,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Small pancake bites made with sweet potato stay soft inside.",
     "howToMake": [
-      "Steam or bake the sweet potato, egg, flour until it is soft enough to squash easily between your fingers.",
-      "With Sweet Potato Pancake Bites, mix the protein into puree, broth, or yogurt until each bite stays soft and cohesive.",
-      "Cool until warm, then offer a few moist bites and watch chewing and swallowing closely."
+      "Gather sweet potato, egg, flour. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook the egg fully; if other ingredients also require cooking, prepare them safely until soft. Do not serve runny or undercooked egg.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Sweet Potato Pancake Bites should feel soft and moist on the tongue; prepare sweet potato so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair sweet potato with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Sweet Potato Pancake Bites until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade sweet potato pancake bites promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Egg is a common allergen, so offer it fully cooked in a baby-safe texture and seek medical advice for hives, swelling, repeated vomiting, or breathing symptoms.",
     "ageFit": "A good option for older babies who can handle thicker textures and very soft bite-size foods.",
     "searchTerms": [
@@ -4114,13 +4257,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft muffin pieces work well when sugar is kept low.",
     "howToMake": [
-      "Prepare the blueberries, yogurt, flour until every ingredient is soft, mild, and easy for your baby to manage.",
-      "For Blueberry Yogurt Muffin Pieces, use the recipe as a guide but adjust thickness and piece size to how your baby eats this week.",
-      "Serve Blueberry Yogurt Muffin Pieces in a modest portion first, then add moisture if the texture feels dense, sticky, or tiring."
+      "Gather blueberries, yogurt, flour. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Blueberry Yogurt Muffin Pieces should feel soft and moist on the tongue; prepare blueberries so it stays tender, moist, and easy to break apart.",
     "servingTip": "Start with a small spoonful of blueberries alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Blueberry Yogurt Muffin Pieces quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade blueberry yogurt muffin pieces promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of blueberries; every bite should flatten easily between your fingers. Do not serve firm round berries or whole grapes; mash or cut appropriately for your baby's feeding skills. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Works well as your baby moves toward table foods while still needing soft, easy-to-mash textures.",
     "searchTerms": [
@@ -4144,13 +4288,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A soft pasta dinner adapted for older babies.",
     "howToMake": [
-      "Cook the small pasta shells, ricotta, spinach until very soft, then cut or mash it into pieces that match your baby’s chewing stage.",
-      "Mix with a moist ingredient such as vegetable puree, yogurt, or sauce so the food is easier to swallow.",
-      "Serve a small portion and check that each piece squashes easily before offering more."
+      "Gather small pasta shells, ricotta, spinach. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Spinach Ricotta Pasta Shells should feel soft and moist on the tongue; prepare small pasta shells so it stays tender, moist, and easy to break apart.",
     "servingTip": "Serve small pasta shells in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved small pasta shells covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade spinach ricotta pasta shells promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Beef needs extra attention because chewy pieces linger in the mouth; trim gristle and blend or mince until very tender. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months.",
     "ageFit": "Best for babies who are building pincer grasp and chewing practice with closely supervised meals.",
     "searchTerms": [
@@ -4174,13 +4319,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft roll-up pieces can work for lunch-style meals.",
     "howToMake": [
-      "Cook the turkey, mild cheese, soft tortilla completely and keep the texture moist so it is not dry or crumbly.",
-      "For beef, choose a tender slow-cooked piece and blend or mince it finely with cooking liquid so no chewy strands remain.",
-      "Offer beef in a very small serving first because the texture can feel dense, and stay nearby while your baby practices chewing."
+      "Gather turkey, mild cheese, soft tortilla. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Turkey and Cheese Roll-Ups should feel soft and moist on the tongue; break it into tiny moist pieces so it does not clump in the mouth.",
     "servingTip": "Pair turkey with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Turkey and Cheese Roll-Ups until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade turkey and cheese roll-ups promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "For Turkey and Cheese Roll-Ups, keep the texture baby-safe and watch for hives, swelling, repeated vomiting, coughing, wheezing, or breathing changes. Use pasteurized dairy products without added sugar where practical; cow's milk as a drink is not recommended before 12 months. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "Often fits 9 to 12 months, when soft finger foods and small family-style meals become more realistic.",
     "searchTerms": [
@@ -4204,13 +4350,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A baby-friendly take on pizza when crust stays soft.",
     "howToMake": [
-      "Prepare the soft flatbread, tomato sauce, mild mozzarella until every ingredient is soft, mild, and easy for your baby to manage.",
-      "Before serving Soft Mini Pizza Squares, test whether the food mashes easily between your fingers and resize it if needed.",
-      "With Soft Mini Pizza Squares, stay close during the first bites and soften the texture further if chewing looks difficult."
+      "Gather soft flatbread, tomato sauce, mild mozzarella. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Soft Mini Pizza Squares works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Offer Soft Mini Pizza Squares while it is freshly softened; grains thicken as they stand, so check the spoonful before giving more.",
-    "storageTip": "When saving Soft Mini Pizza Squares, add moisture during reheating and stop using it if the texture turns gummy.",
+    "storageTip": "Refrigerate untouched homemade soft mini pizza squares promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid dense clumps of soft flatbread; spread or break the food apart so each bite is easy to swallow. Do not serve firm round berries or whole grapes; mash or cut appropriately for your baby's feeding skills.",
     "ageFit": "Use in the later baby-food stage once your baby is practicing self-feeding with safe, soft pieces.",
     "searchTerms": [
@@ -4234,13 +4381,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A soft bowl that balances protein, grain, and healthy fat.",
     "howToMake": [
-      "Peel the salmon, rice, avocado and mash it with a fork until no firm pieces remain.",
-      "Adjust Salmon Rice Avocado Bowl with breast milk, formula, water, or yogurt based on whether the food feels dry, dense, or chalky.",
-      "Keep the first serving of Salmon Rice Avocado Bowl brief so your baby can practice without getting tired."
+      "Gather salmon, rice, avocado. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook salmon, rice, avocado as appropriate; fish must be fully cooked. Carefully check for and remove all bones, skin, and tough pieces before mashing.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Salmon Rice Avocado Bowl should feel soft and moist on the tongue; flake carefully, remove bones, and keep the fish moist so pieces separate easily.",
     "servingTip": "Start with a small spoonful of salmon alongside a familiar food, then pause so your baby can manage the richer texture.",
-    "storageTip": "Cool Salmon Rice Avocado Bowl quickly, store only the untouched portion, and warm it with a splash of liquid if it firms up.",
+    "storageTip": "Refrigerate untouched homemade salmon rice avocado bowl promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Avoid large, dry, or springy pieces of salmon; every bite should flatten easily between your fingers. Cook fish thoroughly and inspect every bite for bones before serving.",
     "ageFit": "A good option for older babies who can handle thicker textures and very soft bite-size foods.",
     "searchTerms": [
@@ -4263,13 +4411,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft cornbread crumbled into beans makes a Southern-style family meal adaptation.",
     "howToMake": [
-      "Prepare beans and soft cornbread following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
-      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
-      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
+      "Gather beans, soft cornbread. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook any raw meat, fish, eggs, grains, beans, or firm produce as needed until fully cooked and soft; do not assume every ingredient requires heating. Remove bones, tough skins, seeds, and hard pieces where applicable.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Beans and Cornbread Mash should feel soft and moist on the tongue; mash until skins are broken down and add liquid until the texture is easy to swallow.",
     "servingTip": "Serve beans in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
-    "storageTip": "Keep saved beans covered in the refrigerator and discard any portion that touched the serving spoon.",
+    "storageTip": "Refrigerate untouched homemade beans and cornbread mash promptly in a clean, sealed container at 40°F (4°C) or below; use within 1–2 days or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "Chicken can become stringy when dry, so remove tough edges and keep every piece soft, moist, and finely shredded. Mash whole beans or chickpeas until no firm round pieces remain.",
     "ageFit": "Works well as your baby moves toward table foods while still needing soft, easy-to-mash textures.",
     "searchTerms": [
@@ -4292,13 +4441,14 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft bite-size pieces with chicken, broccoli, and cheese.",
     "howToMake": [
-      "Steam or bake the chicken, broccoli, cheddar until it is soft enough to squash easily between your fingers.",
-      "Serve Chicken Broccoli Cheddar Bites with enough moisture to prevent crumbly bits, especially for babies still learning to chew.",
-      "Serve in small amounts with a familiar food if that helps your baby manage the texture."
+      "Gather chicken, broccoli, cheddar. Wash fresh produce under running water and prepare each ingredient according to its package instructions and food-safety requirements.",
+      "Cook all meat thoroughly to a safe internal temperature according to USDA guidance. Remove bones, skin, and gristle, then shred finely and moisten.",
+      "Mash, blend, shred, or cut the prepared ingredients into a moist texture appropriate for your baby's current feeding skills. Check for sticky, hard, round, or chewy pieces before serving.",
+      "Serve a small portion with your baby seated upright and supervised throughout. Stop and seek emergency help for choking or breathing difficulty."
     ],
     "textureGuide": "Chicken Broccoli Cheddar Bites should feel soft and moist on the tongue; shred it very small and keep it moist with cooking liquid, breast milk, formula, or a mild sauce.",
     "servingTip": "Pair chicken with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
-    "storageTip": "For the next meal, reheat Chicken Broccoli Cheddar Bites until warm throughout and check that it has not become dry or rubbery.",
+    "storageTip": "Refrigerate untouched homemade chicken broccoli cheddar bites promptly in a clean, sealed container at 40°F (4°C) or below; use within 24 hours or freeze promptly following FDA baby-food guidance. Discard any portion that your baby's spoon or mouth contacted, and never leave perishable food out for more than 2 hours. Reheat only the serving you need until steaming hot, then cool to a safe feeding temperature.",
     "safetyTip": "When serving Chicken Broccoli Cheddar Bites, introduce it in a calm window and monitor for rash, facial swelling, vomiting, cough, wheeze, or breathing changes. Cook meat thoroughly; remove bones and tough or chewy pieces, and keep portions moist.",
     "ageFit": "Best for babies who are building pincer grasp and chewing practice with closely supervised meals.",
     "searchTerms": [

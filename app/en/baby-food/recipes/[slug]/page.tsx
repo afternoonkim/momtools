@@ -37,13 +37,8 @@ export default async function BabyFoodRecipeDetailPage({
     .filter((item) => item.stage === recipe.stage && item.slug !== slug)
     .slice(0, 4);
 
-  const ingredients = recipe.ingredients.join(", ");
   const stageGuide = stageGuides[recipe.stage];
-  const preparationSteps = [
-    `Prepare ${ingredients} according to normal cooking or package directions. Any ingredient that needs cooking should be fully cooked and soft before serving.`,
-    `Adjust the food to your baby's current skills. For ${stageLabels[recipe.stage].toLowerCase()}, use this texture as the guide: ${stageGuide.texture}`,
-    "Serve a small portion while your baby is seated upright and directly supervised. Slow down or change the texture if a bite seems difficult to manage.",
-  ];
+  const preparationSteps = recipe.howToMake;
 
   return (
     <div className="mt-page">
