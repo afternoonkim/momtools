@@ -29,7 +29,7 @@ export const enQnaEntries: EnQnaEntry[] = [
     ],
     caution: "Call your pediatrician sooner if the crying is high-pitched, suddenly different, paired with fever, repeated vomiting, trouble breathing, a swollen belly, poor feeding, or fewer wet diapers. Seek urgent help if your baby is hard to wake, limp, blue around the lips, or not acting normally at all.",
     simpleAction: [
-      "Try one calming step at a time: feed, burp, diaper change, swaddle if age-appropriate, rocking, or white noise.",
+      "Try one calming step at a time: feed, burp, diaper change, holding, rocking, or gentle white noise. If using a swaddle, place baby on their back and stop swaddling as soon as they show signs of rolling.",
       "Move to a dim, quiet room if your baby seems overstimulated.",
       "Use a baby carrier or skin-to-skin contact for close body comfort.",
       "If you feel overwhelmed, place baby safely on their back in the crib and take a brief pause.",
@@ -114,7 +114,7 @@ export const enQnaEntries: EnQnaEntry[] = [
       "Count wet diapers and look for signs of dehydration.",
       "Think about whether your child's behavior is only a little off or clearly not normal for them.",
     ],
-    caution: "Seek same-day advice or urgent care for fever in a young infant, blue lips, hard or fast breathing, dehydration, repeated vomiting, a seizure, a widespread concerning rash, or a baby who is very hard to wake or cannot be consoled.",
+    caution: "A baby younger than 3 months with a rectal temperature of 100.4°F (38°C) or higher needs immediate medical evaluation. Blue lips, difficulty breathing, seizures, or inability to wake are emergencies. Seek urgent care for dehydration, repeated vomiting, a concerning rash, or a baby who is very hard to wake or cannot be consoled.",
     simpleAction: [
       "Have the temperature, symptom timeline, and diaper count ready before you call.",
       "Take a short video of breathing, coughing, or unusual movements if the symptom is hard to describe.",
