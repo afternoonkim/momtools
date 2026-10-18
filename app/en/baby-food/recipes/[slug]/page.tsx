@@ -54,7 +54,7 @@ export default async function BabyFoodRecipeDetailPage({
           <p className="mt-text-main mt-4">{recipe.summary}</p>
         </section>
 
-        <ContentUpdateNote reviewedOn="2026-04-09" locale="en" />
+        <ContentUpdateNote reviewedOn="2026-10-18" locale="en" />
 
         <section className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <article className="mt-card p-6 md:p-8">
@@ -71,7 +71,7 @@ export default async function BabyFoodRecipeDetailPage({
           <article className="mt-card p-6 md:p-8">
             <h2 className="mt-title-md">Prepare it safely</h2>
             <p className="mt-3 text-sm leading-7 text-slate-500">
-              Use these steps as a texture and serving framework rather than a strict recipe. Adjust preparation to the specific ingredients and your baby&apos;s feeding skills.
+              These are ingredient-specific safety checkpoints, not a tested recipe with fixed quantities or cooking times. Use a food thermometer for meat, poultry, fish, eggs, and reheated leftovers; follow the current USDA temperatures.
             </p>
             <ol className="mt-4 space-y-4 text-sm leading-7 text-slate-600">
               {preparationSteps.map((step, index) => (
@@ -110,7 +110,7 @@ export default async function BabyFoodRecipeDetailPage({
           <article className="mt-card-soft p-6 md:p-8">
             <h2 className="text-lg font-bold text-slate-800">Storage</h2>
             <p className="mt-3 text-sm leading-7 text-slate-600">
-              Refrigerate perishable ingredients promptly and follow package or ingredient-specific storage guidance. Keep only untouched portions and discard leftovers from your baby&apos;s bowl after feeding.
+              {recipe.storageTip}
             </p>
           </article>
 
@@ -120,6 +120,16 @@ export default async function BabyFoodRecipeDetailPage({
               Check every bite for hard, round, sticky, dry, tough, or slippery pieces that are difficult to manage. Remove pits, bones, seeds, and firm skins when relevant, keep your baby upright and supervised, and follow your clinician&apos;s plan for known food allergies or feeding and swallowing concerns.
             </p>
           </article>
+        </section>
+
+        <section className="mt-card-soft p-6 md:p-8">
+          <h2 className="text-lg font-bold text-slate-800">Official food-safety references</h2>
+          <p className="mt-2 text-sm leading-7 text-slate-600">Chicken, turkey, and reheated leftovers: 165°F (74°C). Ground beef: 160°F (71°C). Fish: 145°F (63°C). Check with a food thermometer. These temperatures are food-safety endpoints, not estimates of cooking time.</p>
+          <div className="mt-3 space-y-2 text-sm">
+            <a className="block underline" href="https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/safe-temperature-chart" target="_blank" rel="noopener noreferrer">USDA safe minimum internal temperatures</a>
+            <a className="block underline" href="https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/when-what-and-how-to-introduce-solid-foods.html" target="_blank" rel="noopener noreferrer">CDC preparing infant solid foods</a>
+            <a className="block underline" href="https://www.cdc.gov/infant-toddler-nutrition/foods-and-drinks/choking-hazards.html" target="_blank" rel="noopener noreferrer">CDC choking hazards</a>
+          </div>
         </section>
 
         <RelatedContent
