@@ -1778,9 +1778,12 @@ const CHILD_ALLOWANCE_MONTHS = 108; // 2026년 지급연령(9세 미만)만 108�
 
 for (const region of birthSupportRegions) {
   const isMetro = METROPOLITAN_SIDO.has(region.sido);
-  const monthly = isMetro ? METROPOLITAN_MONTHLY : NON_METROPOLITAN_MONTHLY;
+  // 부여군은 보건복지부 2026-04-24 현장 발표에서 특별지역 12만 원으로 확인됨.
+  // 다른 시·군·구는 최신 확정 고시·지역 지급형태 확인 전에는 기본 비교액 유지.
+  const isVerifiedSpecialBuyeo = region.sido === "충청남도" && region.sigungu === "부여군";
+  const monthly = isVerifiedSpecialBuyeo ? 120_000 : isMetro ? METROPOLITAN_MONTHLY : NON_METROPOLITAN_MONTHLY;
   const total = monthly * CHILD_ALLOWANCE_MONTHS;
-  const tierLabel = isMetro ? "수도권" : "비수도권";
+  const tierLabel = isVerifiedSpecialBuyeo ? "부여군 인구감소 특별지역(현금 기준)" : isMetro ? "수도권 일반" : "비수도권 일반 비교 기준";
   region.benefits = region.benefits.map((benefit) => {
     if (benefit.id !== "child-allowance") return benefit;
     return {
