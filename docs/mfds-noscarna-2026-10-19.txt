@@ -1,0 +1,3 @@
+2026-10-19 additional MFDS match
+p009 노스카나겔 20g: MFDS item 201301732, topical gel; 20g tube listed. Official: https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetailCache?cacheSeq=201301732aupdateTs2024-07-25+08%3A07%3A00.0b
+Review of this formulation does not validate all related health Q&A statements.
