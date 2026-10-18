@@ -67,7 +67,7 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "textureGuide": "Infant Oatmeal with Breast Milk or Formula works best when the grain is soft, hydrated, and loose enough that it does not form a sticky ball.",
     "servingTip": "Offer Infant Oatmeal with Breast Milk or Formula while it is freshly softened; grains thicken as they stand, so check the spoonful before giving more.",
-    "storageTip": "When saving Infant Oatmeal with Breast Milk or Formula, add moisture during reheating and stop using it if the texture turns gummy.",
+    "storageTip": "Prepare a fresh serving according to the cereal and milk handling directions. Discard leftovers from your baby's bowl after feeding.",
     "safetyTip": "Avoid dense clumps of infant oatmeal cereal; spread or break the food apart so each bite is easy to swallow.",
     "ageFit": "Best around 6 months, after your baby can sit with support and shows clear readiness for solids.",
     "searchTerms": [
@@ -95,7 +95,7 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     "textureGuide": "Avocado Mash should feel soft and moist on the tongue; prepare ripe avocado so it stays tender, moist, and easy to break apart.",
     "servingTip": "Serve ripe avocado in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
     "storageTip": "Keep saved ripe avocado covered in the refrigerator and discard any portion that touched the serving spoon.",
-    "safetyTip": "For egg, avoid rubbery chunks and large slippery pieces; keep it soft, fully cooked, and easy to mash.",
+    "safetyTip": "Check ripe avocado for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "A good first-food option for many 6-month-old babies who are ready for spoon-fed textures.",
     "searchTerms": [
       "avocado mash",
@@ -122,7 +122,7 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     "textureGuide": "Banana Oat Mash should feel soft and moist on the tongue; prepare ripe banana so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair ripe banana with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
     "storageTip": "For the next meal, reheat Banana Oat Mash until warm throughout and check that it has not become dry or rubbery.",
-    "safetyTip": "Egg is a common allergen, so offer it fully cooked in a baby-safe texture and seek medical advice for hives, swelling, repeated vomiting, or breathing symptoms.",
+    "safetyTip": "Check ripe banana and infant oatmeal cereal for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "Offer near the start of solids, usually around 6 months, while breast milk or formula remains the main nutrition source.",
     "searchTerms": [
       "banana oat mash",
@@ -175,7 +175,7 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     "textureGuide": "Pear Puree should feel soft and moist on the tongue; prepare ripe pear so it stays tender, moist, and easy to break apart.",
     "servingTip": "Serve ripe pear in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
     "storageTip": "Keep saved ripe pear covered in the refrigerator and discard any portion that touched the serving spoon.",
-    "safetyTip": "For egg, avoid rubbery chunks and large slippery pieces; keep it soft, fully cooked, and easy to mash.",
+    "safetyTip": "Check ripe pear for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "Use once readiness signs are present, such as steady head control, interest in food, and ability to sit with support.",
     "searchTerms": [
       "pear puree",
@@ -201,7 +201,7 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     "textureGuide": "Apple Puree should feel soft and moist on the tongue; prepare apple so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair apple with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
     "storageTip": "For the next meal, reheat Apple Puree until warm throughout and check that it has not become dry or rubbery.",
-    "safetyTip": "Egg is a common allergen, so offer it fully cooked in a baby-safe texture and seek medical advice for hives, swelling, repeated vomiting, or breathing symptoms.",
+    "safetyTip": "Check apple for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "Best around 6 months, after your baby can sit with support and shows clear readiness for solids.",
     "searchTerms": [
       "apple puree",
@@ -279,7 +279,7 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     "textureGuide": "Carrot Puree should feel soft and moist on the tongue; prepare carrots so it stays tender, moist, and easy to break apart.",
     "servingTip": "Serve carrots in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
     "storageTip": "Keep saved carrots covered in the refrigerator and discard any portion that touched the serving spoon.",
-    "safetyTip": "For egg, avoid rubbery chunks and large slippery pieces; keep it soft, fully cooked, and easy to mash.",
+    "safetyTip": "Check carrots for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "Appropriate for the first weeks of solids when your baby is practicing small tastes and smooth textures.",
     "searchTerms": [
       "carrot puree",
@@ -305,7 +305,7 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     "textureGuide": "Pea Puree should feel soft and moist on the tongue; prepare green peas so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair green peas with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
     "storageTip": "For the next meal, reheat Pea Puree until warm throughout and check that it has not become dry or rubbery.",
-    "safetyTip": "Egg is a common allergen, so offer it fully cooked in a baby-safe texture and seek medical advice for hives, swelling, repeated vomiting, or breathing symptoms.",
+    "safetyTip": "Check green peas for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "Use once readiness signs are present, such as steady head control, interest in food, and ability to sit with support.",
     "searchTerms": [
       "pea puree",
@@ -357,7 +357,7 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     "textureGuide": "Zucchini Puree should feel soft and moist on the tongue; prepare zucchini so it stays tender, moist, and easy to break apart.",
     "servingTip": "Serve zucchini in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
     "storageTip": "Keep saved zucchini covered in the refrigerator and discard any portion that touched the serving spoon.",
-    "safetyTip": "For egg, avoid rubbery chunks and large slippery pieces; keep it soft, fully cooked, and easy to mash.",
+    "safetyTip": "Check zucchini for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "A good first-food option for many 6-month-old babies who are ready for spoon-fed textures.",
     "searchTerms": [
       "zucchini puree",
@@ -489,7 +489,7 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     "textureGuide": "Plain Whole Milk Yogurt should feel soft and moist on the tongue; prepare plain whole milk yogurt so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair plain whole milk yogurt with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
     "storageTip": "For the next meal, reheat Plain Whole Milk Yogurt until warm throughout and check that it has not become dry or rubbery.",
-    "safetyTip": "Egg is a common allergen, so offer it fully cooked in a baby-safe texture and seek medical advice for hives, swelling, repeated vomiting, or breathing symptoms.",
+    "safetyTip": "Check plain whole milk yogurt for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "A good first-food option for many 6-month-old babies who are ready for spoon-fed textures.",
     "searchTerms": [
       "plain whole milk yogurt",
@@ -646,9 +646,9 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Mashed beans are an easy iron-rich option for early solids.",
     "howToMake": [
-      "Cook the black beans completely and keep the texture moist so it is not dry or crumbly.",
-      "For tofu, crumble soft tofu into very small pieces or mash it into vegetables so the texture stays smooth and easy to move around the mouth.",
-      "Begin with a few soft tofu crumbles or a small spoonful of tofu mash, then increase only if the texture is managed well."
+      "Prepare black beans following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
+      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
+      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
     ],
     "textureGuide": "Mashed Black Beans should feel soft and moist on the tongue; mash until skins are broken down and add liquid until the texture is easy to swallow.",
     "servingTip": "Serve black beans in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
@@ -672,9 +672,9 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft cooked lentils mash easily and add iron and protein.",
     "howToMake": [
-      "Cook the red lentils completely and keep the texture moist so it is not dry or crumbly.",
-      "For tofu, crumble soft tofu into very small pieces or mash it into vegetables so the texture stays smooth and easy to move around the mouth.",
-      "For Mashed Lentils, offer a pea-size taste first and make sure the chicken stays moist before adding more."
+      "Prepare red lentils following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
+      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
+      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
     ],
     "textureGuide": "Mashed Lentils should feel soft and moist on the tongue; cook until very soft and loosen the mash so it does not become pasty.",
     "servingTip": "Pair red lentils with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
@@ -755,9 +755,9 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Beef puree offers iron and zinc in a texture that works for early spoon feeding.",
     "howToMake": [
-      "Cook the ground beef, water or broth completely and keep the texture moist so it is not dry or crumbly.",
-      "For chicken, keep the meat very moist and pull it into tiny soft shreds, or fold it into a puree so it does not feel dry in the mouth.",
-      "For Beef Puree, use tender inner meat, shred across the grain, and keep the first portion small."
+      "Prepare ground beef and water or broth following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
+      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
+      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
     ],
     "textureGuide": "Beef Puree should feel soft and moist on the tongue; cook until tender, mince finely, and keep each bite soft instead of dry or chewy.",
     "servingTip": "Pair ground beef with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
@@ -783,9 +783,9 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft cooked salmon can be blended into a smooth puree for variety.",
     "howToMake": [
-      "Cook the salmon, water completely and keep the texture moist so it is not dry or crumbly.",
-      "For chicken, keep the meat very moist and pull it into tiny soft shreds, or fold it into a puree so it does not feel dry in the mouth.",
-      "For Salmon Puree, offer a pea-size taste first and make sure the chicken stays moist before adding more."
+      "Prepare salmon and water following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
+      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
+      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
     ],
     "textureGuide": "Salmon Puree should feel soft and moist on the tongue; flake carefully, remove bones, and keep the fish moist so pieces separate easily.",
     "servingTip": "Start with a small spoonful of salmon alongside a familiar food, then pause so your baby can manage the richer texture.",
@@ -1125,7 +1125,7 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     "textureGuide": "White Bean Puree should feel soft and moist on the tongue; mash until skins are broken down and add liquid until the texture is easy to swallow.",
     "servingTip": "Serve cannellini beans in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
     "storageTip": "Keep saved cannellini beans covered in the refrigerator and discard any portion that touched the serving spoon.",
-    "safetyTip": "For egg, avoid rubbery chunks and large slippery pieces; keep it soft, fully cooked, and easy to mash.",
+    "safetyTip": "Check cannellini beans for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "Use once readiness signs are present, such as steady head control, interest in food, and ability to sit with support.",
     "searchTerms": [
       "white bean puree",
@@ -1152,7 +1152,7 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     "textureGuide": "Broccoli Potato Puree should feel soft and moist on the tongue; prepare broccoli so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair broccoli with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
     "storageTip": "For the next meal, reheat Broccoli Potato Puree until warm throughout and check that it has not become dry or rubbery.",
-    "safetyTip": "Egg is a common allergen, so offer it fully cooked in a baby-safe texture and seek medical advice for hives, swelling, repeated vomiting, or breathing symptoms.",
+    "safetyTip": "Check broccoli and potato for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "Best around 6 months, after your baby can sit with support and shows clear readiness for solids.",
     "searchTerms": [
       "broccoli potato puree",
@@ -1392,9 +1392,9 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Pinto beans mash easily and fit many family meal patterns in the US.",
     "howToMake": [
-      "Cook the pinto beans completely and keep the texture moist so it is not dry or crumbly.",
-      "For tofu, crumble soft tofu into very small pieces or mash it into vegetables so the texture stays smooth and easy to move around the mouth.",
-      "Begin with a few soft tofu crumbles or a small spoonful of tofu mash, then increase only if the texture is managed well."
+      "Prepare pinto beans following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
+      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
+      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
     ],
     "textureGuide": "Mashed Pinto Beans should feel soft and moist on the tongue; mash until skins are broken down and add liquid until the texture is easy to swallow.",
     "servingTip": "Start with a small spoonful of pinto beans alongside a familiar food, then pause so your baby can manage the richer texture.",
@@ -1540,7 +1540,7 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     "textureGuide": "Ricotta Blueberry Bowl should feel soft and moist on the tongue; prepare whole milk ricotta so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair whole milk ricotta with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
     "storageTip": "For the next meal, reheat Ricotta Blueberry Bowl until warm throughout and check that it has not become dry or rubbery.",
-    "safetyTip": "Egg is a common allergen, so offer it fully cooked in a baby-safe texture and seek medical advice for hives, swelling, repeated vomiting, or breathing symptoms.",
+    "safetyTip": "Check whole milk ricotta and blueberries for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "Best once your baby can move food around the mouth a little better and is ready for gentle variety.",
     "searchTerms": [
       "ricotta blueberry bowl",
@@ -2112,9 +2112,9 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A thicker stage 2 bowl that brings in beef and grain.",
     "howToMake": [
-      "Cook the ground beef, quinoa, carrots completely and keep the texture moist so it is not dry or crumbly.",
-      "For chicken, keep the meat very moist and pull it into tiny soft shreds, or fold it into a puree so it does not feel dry in the mouth.",
-      "With Beef Quinoa Veggie Bowl, pause after the first few shreds so you can see whether your baby moves the meat comfortably."
+      "Prepare ground beef and quinoa and carrots following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
+      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
+      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
     ],
     "textureGuide": "Beef Quinoa Veggie Bowl should feel soft and moist on the tongue; cook until tender, mince finely, and keep each bite soft instead of dry or chewy.",
     "servingTip": "Serve ground beef in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
@@ -2713,7 +2713,7 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     "textureGuide": "Soft Tofu Sticks should feel soft and moist on the tongue; press lightly, crumble or cube it softly, and avoid firm slippery chunks that are hard to manage.",
     "servingTip": "Serve firm tofu in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
     "storageTip": "Keep saved firm tofu covered in the refrigerator and discard any portion that touched the serving spoon.",
-    "safetyTip": "For egg, avoid rubbery chunks and large slippery pieces; keep it soft, fully cooked, and easy to mash.",
+    "safetyTip": "Check firm tofu for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "Often fits the 7 to 9 month stage, when babies are ready for thicker mashes and simple combinations.",
     "searchTerms": [
       "soft tofu sticks",
@@ -2907,7 +2907,7 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     "textureGuide": "Greek Yogurt with Berries and Oats should feel soft and moist on the tongue; prepare plain whole milk Greek yogurt so it stays tender, moist, and easy to break apart.",
     "servingTip": "Serve plain whole milk Greek yogurt in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
     "storageTip": "Keep saved plain whole milk Greek yogurt covered in the refrigerator and discard any portion that touched the serving spoon.",
-    "safetyTip": "For egg, avoid rubbery chunks and large slippery pieces; keep it soft, fully cooked, and easy to mash.",
+    "safetyTip": "Check plain whole milk Greek yogurt and berries and oats for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "A good option for older babies who can handle thicker textures and very soft bite-size foods.",
     "searchTerms": [
       "greek yogurt with berries and oats",
@@ -3027,7 +3027,7 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     "textureGuide": "Ricotta Toast with Peach should feel soft and moist on the tongue; prepare soft toast so it stays tender, moist, and easy to break apart.",
     "servingTip": "Serve soft toast in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
     "storageTip": "Keep saved soft toast covered in the refrigerator and discard any portion that touched the serving spoon.",
-    "safetyTip": "For egg, avoid rubbery chunks and large slippery pieces; keep it soft, fully cooked, and easy to mash.",
+    "safetyTip": "Check soft toast and ricotta and peach for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "Use in the later baby-food stage once your baby is practicing self-feeding with safe, soft pieces.",
     "searchTerms": [
       "ricotta toast with peach",
@@ -3256,9 +3256,9 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Quesadilla strips are a realistic family meal adaptation for older babies.",
     "howToMake": [
-      "Cook the soft tortilla, black beans, cheese completely and keep the texture moist so it is not dry or crumbly.",
-      "For chicken, keep the meat very moist and pull it into tiny soft shreds, or fold it into a puree so it does not feel dry in the mouth.",
-      "For Black Bean Quesadilla Strips, offer a pea-size taste first and make sure the chicken stays moist before adding more."
+      "Prepare soft tortilla and black beans and cheese following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
+      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
+      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
     ],
     "textureGuide": "Black Bean Quesadilla Strips should feel soft and moist on the tongue; mash until skins are broken down and add liquid until the texture is easy to swallow.",
     "servingTip": "Pair soft tortilla with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
@@ -3286,9 +3286,9 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A soft bowl built from pantry staples many US families already use.",
     "howToMake": [
-      "Cook the black beans, rice, mild cheddar completely and keep the texture moist so it is not dry or crumbly.",
-      "For tofu, crumble soft tofu into very small pieces or mash it into vegetables so the texture stays smooth and easy to move around the mouth.",
-      "With Cheesy Bean Rice Bowl, pause after the first few shreds so you can see whether your baby moves the meat comfortably."
+      "Prepare black beans and rice and mild cheddar following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
+      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
+      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
     ],
     "textureGuide": "Cheesy Bean Rice Bowl should feel soft and moist on the tongue; mash until skins are broken down and add liquid until the texture is easy to swallow.",
     "servingTip": "Start with a small spoonful of black beans alongside a familiar food, then pause so your baby can manage the richer texture.",
@@ -3376,9 +3376,9 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A soft meat sauce can be mixed with tiny pasta or served alone.",
     "howToMake": [
-      "Cook the ground beef, lentils, tomato sauce completely and keep the texture moist so it is not dry or crumbly.",
-      "For chicken, keep the meat very moist and pull it into tiny soft shreds, or fold it into a puree so it does not feel dry in the mouth.",
-      "For Beef and Lentil Bolognese, offer a pea-size taste first and make sure the chicken stays moist before adding more."
+      "Prepare ground beef and lentils and tomato sauce following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
+      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
+      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
     ],
     "textureGuide": "Beef and Lentil Bolognese should feel soft and moist on the tongue; cook until tender, mince finely, and keep each bite soft instead of dry or chewy.",
     "servingTip": "Start with a small spoonful of ground beef alongside a familiar food, then pause so your baby can manage the richer texture.",
@@ -3533,7 +3533,7 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     "textureGuide": "Tofu Rice Veggie Bowl should feel soft and moist on the tongue; cook it fully, offer a soft texture, and watch for rash, vomiting, or breathing changes after introduction.",
     "servingTip": "Serve tofu in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
     "storageTip": "Keep saved tofu covered in the refrigerator and discard any portion that touched the serving spoon.",
-    "safetyTip": "For egg, avoid rubbery chunks and large slippery pieces; keep it soft, fully cooked, and easy to mash.",
+    "safetyTip": "Check tofu and rice and zucchini for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "Works well as your baby moves toward table foods while still needing soft, easy-to-mash textures.",
     "searchTerms": [
       "tofu rice veggie bowl",
@@ -3644,9 +3644,9 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "A taco-bowl style meal without crunchy toppings.",
     "howToMake": [
-      "Cook the ground beef, rice, avocado completely and keep the texture moist so it is not dry or crumbly.",
-      "For chicken, keep the meat very moist and pull it into tiny soft shreds, or fold it into a puree so it does not feel dry in the mouth.",
-      "For Soft Beef Taco Bowl, offer a pea-size taste first and make sure the chicken stays moist before adding more."
+      "Prepare ground beef and rice and avocado following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
+      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
+      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
     ],
     "textureGuide": "Soft Beef Taco Bowl should feel soft and moist on the tongue; cook until tender, mince finely, and keep each bite soft instead of dry or chewy.",
     "servingTip": "Serve ground beef in a calm meal window and offer water in a cup for older babies if the texture feels dense.",
@@ -3674,9 +3674,9 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Thick lentil soup works well on a preloaded spoon.",
     "howToMake": [
-      "Cook the lentils, carrots, tomato completely and keep the texture moist so it is not dry or crumbly.",
-      "For chicken, keep the meat very moist and pull it into tiny soft shreds, or fold it into a puree so it does not feel dry in the mouth.",
-      "With Lentil Soup Thickened, pause after the first few shreds so you can see whether your baby moves the meat comfortably."
+      "Prepare lentils and carrots and tomato following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
+      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
+      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
     ],
     "textureGuide": "Lentil Soup Thickened should feel soft and moist on the tongue; cook until very soft and loosen the mash so it does not become pasty.",
     "servingTip": "Pair lentils with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
@@ -3972,7 +3972,7 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     "textureGuide": "Mini Grilled Cheese Triangles should feel soft and moist on the tongue; prepare soft bread so it stays tender, moist, and easy to break apart.",
     "servingTip": "Pair soft bread with a soft vegetable or grain to make the bite less dry and easier to move around the mouth.",
     "storageTip": "For the next meal, reheat Mini Grilled Cheese Triangles until warm throughout and check that it has not become dry or rubbery.",
-    "safetyTip": "Egg is a common allergen, so offer it fully cooked in a baby-safe texture and seek medical advice for hives, swelling, repeated vomiting, or breathing symptoms.",
+    "safetyTip": "Check soft bread and mild cheddar for firm, slippery, round, or sticky pieces. Prepare a soft, moist texture that matches your baby's current chewing and swallowing skills; stay with your baby throughout the meal.",
     "ageFit": "Works well as your baby moves toward table foods while still needing soft, easy-to-mash textures.",
     "searchTerms": [
       "mini grilled cheese triangles",
@@ -4263,9 +4263,9 @@ export const babyFoodRecipes: EnglishBabyFoodRecipe[] = [
     ],
     "summary": "Soft cornbread crumbled into beans makes a Southern-style family meal adaptation.",
     "howToMake": [
-      "Cook the beans, soft cornbread completely and keep the texture moist so it is not dry or crumbly.",
-      "For tofu, crumble soft tofu into very small pieces or mash it into vegetables so the texture stays smooth and easy to move around the mouth.",
-      "For Beans and Cornbread Mash, use tender inner meat, shred across the grain, and keep the first portion small."
+      "Prepare beans and soft cornbread following ingredient-specific cooking directions; cook ingredients that require cooking until fully cooked and soft.",
+      "Mash, puree, or cut to a soft, manageable texture for your baby's feeding skills. Remove bones, pits, tough skins, and hard or round pieces as applicable.",
+      "Offer a small portion with your baby seated upright and directly supervised. Never leave a baby alone while eating."
     ],
     "textureGuide": "Beans and Cornbread Mash should feel soft and moist on the tongue; mash until skins are broken down and add liquid until the texture is easy to swallow.",
     "servingTip": "Serve beans in a calm meal window and offer water in a cup for older babies if the texture feels dense.",

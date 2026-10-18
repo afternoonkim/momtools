@@ -56,7 +56,7 @@ export const enQnaEntries: EnQnaEntry[] = [
       "Watch breathing when your baby is calm, not only when crying.",
       "Look for unusual sleepiness, limpness, persistent irritability, or a rash that is spreading.",
     ],
-    caution: "Call sooner if your baby is under 3 months with a fever, refuses repeated feeds, has fewer wet diapers, labored breathing, repeated vomiting, unusual sleepiness, or seems much less responsive than normal.",
+    caution: "Call your pediatrician immediately for a rectal temperature of 100.4°F (38°C) or higher in a baby younger than 3 months, even if otherwise well. Seek emergency care for difficulty breathing, blue lips, seizures, or trouble waking; call promptly for repeated feeding refusal, dehydration signs, or marked behavior changes.",
     simpleAction: [
       "Write down the time symptoms started and whether they are getting better or worse.",
       "Take a temperature if your baby feels warmer or colder than usual.",
@@ -85,12 +85,12 @@ export const enQnaEntries: EnQnaEntry[] = [
       "Pair the number with symptoms like poor feeding, unusual sleepiness, vomiting, or breathing trouble.",
       "Write down the time and method so you can tell the pediatrician clearly.",
     ],
-    caution: "In young infants, fever deserves quicker attention than in older children. Call your pediatrician if the reading is clearly elevated, if your baby looks unwell, or if the temperature concern comes with poor feeding, fewer wet diapers, or trouble breathing.",
+    caution: "For a baby younger than 3 months (12 weeks), a rectal temperature of 100.4°F (38°C) or higher means you should contact your pediatrician immediately, even if the baby otherwise looks well. Do not delay this call to repeat temperature measurements. Trouble breathing, blue lips, seizures, or difficulty waking require emergency care.",
     simpleAction: [
       "Remove extra layers and wait a few minutes before rechecking if your baby seems overheated.",
       "Use a reliable digital thermometer rather than guessing by touch.",
       "Focus on how your baby looks and acts, not only on a number.",
-      "If the reading seems odd, repeat it once before making decisions.",
+      "If your baby is younger than 3 months and has a fever of 100.4°F (38°C) or higher, contact your pediatrician immediately rather than delaying for repeat checks.",
     ],
     related: [
       { slug: "when-should-i-call-a-pediatrician", question: "When should I call a pediatrician?" },
