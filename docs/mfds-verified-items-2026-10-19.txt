@@ -1,0 +1,7 @@
+2026-10-19 MFDS exact product evidence additions
+
+p002 까스활명수큐액: authorization code 198900667; https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetailCache?cacheSeq=198900667aupdateTs2024-03-17+16%3A11%3A11.192815b
+p004 판피린큐액: authorization code 200700547; https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetailCache?cacheSeq=200700547aupdateTs2026-09-17+20%3A39%3A19.0b
+p007 아로나민골드프리미엄정: authorization code 202102039; 120 tablets packaging noted; https://nedrug.mfds.go.kr/pbp/CCBBB01/getItemDetailCache?cacheSeq=202102039aupdateTs2023-12-22+17%3A06%3A39.436203b
+
+Earlier verified p001,p010 acetaminophen 500mg tablet and p015 dexpanthenol ointment. Other items not verified. This is not evidence of sentence-by-sentence Q&A validation.
