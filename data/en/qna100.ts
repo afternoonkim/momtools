@@ -607,7 +607,7 @@ export const enQnaEntries: EnQnaEntry[] = [
       "Notice if your newborn is too sleepy to wake for feeds or falls asleep immediately every time.",
       "Ask whether your baby is regaining birth weight and growing as expected.",
     ],
-    caution: "Call if your newborn is difficult to wake for feeds, has too few wet diapers, is losing too much weight, or repeatedly feeds without seeming satisfied.",
+    caution: "Call if your newborn is difficult to wake for feeds, has too few wet diapers, is losing too much weight, or repeatedly feeds without seeming satisfied. Feeding schedules vary by baby and feeding method. CDC notes formula-fed newborns commonly feed 8–12 times in 24 hours in the first days; seek individual guidance for poor feeding, dehydration, or weight concerns.",
     simpleAction: [
       "Feed when hunger cues start rather than waiting for intense crying.",
       "Wake a very sleepy newborn for feeds if your clinician has advised that approach.",
@@ -1274,7 +1274,7 @@ export const enQnaEntries: EnQnaEntry[] = [
       "Make sure there are no pillows, blankets, loungers, or positioners in the sleep space.",
       "Think about where naps happen too, not just overnight sleep.",
     ],
-    caution: "Ask your pediatrician if your baby has a medical issue that affects positioning. Otherwise, safe-sleep basics should remain the routine starting point.",
+    caution: "Ask your pediatrician if your baby has a medical issue that affects positioning. Otherwise, safe-sleep basics should remain the routine starting point. Always place infants on their backs to start each sleep, on a firm, flat, noninclined surface free of soft bedding. Do not use wedges or inclined sleepers for reflux.",
     simpleAction: [
       "Keep the crib or bassinet simple and empty.",
       "Dress your baby for warmth instead of adding blankets.",
@@ -1390,7 +1390,7 @@ export const enQnaEntries: EnQnaEntry[] = [
       "Think about exhaustion, medications, smoking, alcohol, and other factors that increase risk.",
       "Plan for feeds at night so you are not improvising half asleep.",
     ],
-    caution: "This topic deserves a direct safety conversation with your pediatrician, especially if you are already bed-sharing or feel at risk of falling asleep unexpectedly with the baby.",
+    caution: "This topic deserves a direct safety conversation with your pediatrician, especially if you are already bed-sharing or feel at risk of falling asleep unexpectedly with the baby. The AAP recommends room-sharing without bed-sharing, ideally for at least the first 6 months. Use a separate firm, flat infant sleep surface.",
     simpleAction: [
       "Set up a separate safe sleep space close to your bed if possible.",
       "Avoid falling asleep with baby on a couch, recliner, or soft chair.",
@@ -1796,7 +1796,7 @@ export const enQnaEntries: EnQnaEntry[] = [
       "Think about clothing and floor time that allow movement.",
       "Look at the overall trend in strength and mobility.",
     ],
-    caution: "Ask about motor development if your baby is not building strength, seems very stiff or very floppy, or if rolling is one part of a bigger developmental concern.",
+    caution: "Ask about motor development if your baby is not building strength, seems very stiff or very floppy, or if rolling is one part of a bigger developmental concern. CDC lists rolling from tummy to back as a 6-month milestone, but individual timing varies. Rolling attempts mean swaddling should stop for sleep.",
     simpleAction: [
       "Give daily floor time and supervised tummy time.",
       "Place toys just off to one side to encourage turning.",
@@ -1883,7 +1883,7 @@ export const enQnaEntries: EnQnaEntry[] = [
       "Think about confidence as well as strength, because some children wait until they feel very stable.",
       "Check for symmetry in leg use and posture.",
     ],
-    caution: "Talk with your pediatrician if your child is not progressing in standing, cruising, or other gross-motor skills, or if there are concerns about muscle tone or asymmetry.",
+    caution: "Talk with your pediatrician if your child is not progressing in standing, cruising, or other gross-motor skills, or if there are concerns about muscle tone or asymmetry. CDC lists taking a few independent steps by 15 months and walking without holding on by 18 months. Discuss any concerns or loss of skills with your pediatrician rather than using a single age to diagnose delay.",
     simpleAction: [
       "Provide safe sturdy furniture for cruising.",
       "Let your child go barefoot or use flexible footwear indoors when safe.",
@@ -1912,7 +1912,7 @@ export const enQnaEntries: EnQnaEntry[] = [
       "Use milestones as conversation starters, not labels.",
       "Bring questions to regular well-child visits.",
     ],
-    caution: "Ask sooner when several milestones seem delayed, when skills are lost, or when your child is not continuing to gain new abilities over time.",
+    caution: "Ask sooner when several milestones seem delayed, when skills are lost, or when your child is not continuing to gain new abilities over time. CDC milestones describe skills seen in at least 75% of children by an age, not a diagnostic cutoff. Ask about formal developmental screening if concerned; do not wait when skills are lost.",
     simpleAction: [
       "Keep giving opportunities to practice age-appropriate skills.",
       "Read, talk, sing, and play every day.",
