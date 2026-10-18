@@ -291,7 +291,7 @@ export const enQnaEntries: EnQnaEntry[] = [
     caution: "Ask the pediatrician if crying is paired with poor weight gain, vomiting, blood in stool, fever, a distended belly, or a baby who seems sick rather than simply hard to soothe.",
     simpleAction: [
       "Simplify the environment with low light and less noise during the fussy window.",
-      "Try steady motion, swaddling if age-appropriate, white noise, and frequent burping.",
+      "Try gentle rocking, a calm room, white noise at a safe volume, and burping if needed. Swaddling is optional; place baby on their back and stop swaddling as soon as they show signs of rolling. Never use weighted swaddles.",
       "Take turns with another adult if possible so one person is not doing every hard evening alone.",
       "Ask about feeding technique or formula questions if crying seems strongly linked to feeds.",
     ],
