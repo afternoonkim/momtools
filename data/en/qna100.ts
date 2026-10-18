@@ -491,7 +491,7 @@ export const enQnaEntries: EnQnaEntry[] = [
       "Check whether your baby is still waking to feed.",
       "Note any other symptoms like rash, vomiting, cough, or unusual crying.",
     ],
-    caution: "A baby under 3 months with a fever usually needs prompt medical guidance. Also call or seek care for trouble breathing, poor feeding, dehydration, seizure, or a child who looks very ill.",
+    caution: "A baby younger than 3 months with a temperature of 100.4°F (38°C) or higher needs immediate medical assessment, even if otherwise well. Also call or seek care for trouble breathing, poor feeding, dehydration, seizure, or a child who looks very ill.",
     simpleAction: [
       "Dress your baby lightly and avoid over-bundling.",
       "Offer feeds frequently to support hydration.",
