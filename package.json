@@ -38,7 +38,10 @@
     "db:seed:coupang-mappings": "tsx prisma/seed-coupang-page-mappings.ts",
     "db:seed:coupang-mappings:dry": "tsx prisma/seed-coupang-page-mappings.ts --dry-run",
     "db:seed:coupang-mappings:sync": "tsx prisma/seed-coupang-page-mappings.ts --sync",
-    "db:seed:coupang-ads": "npm run db:seed:coupang-categories && npm run db:seed:coupang-links && npm run db:seed:coupang-mappings"
+    "db:seed:coupang-ads": "npm run db:seed:coupang-categories && npm run db:seed:coupang-links && npm run db:seed:coupang-mappings",
+    "check:parenting-products": "tsx scripts/check-parenting-product-guides.ts",
+    "check:parenting-product-schedule": "tsx scripts/check-parenting-product-schedule.ts",
+    "check:parenting-products:all": "npm run check:parenting-products && npm run check:parenting-product-schedule"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.8.0",
