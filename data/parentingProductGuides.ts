@@ -30907,8 +30907,7 @@ export const parentingProductGuides: ParentingProductGuide[] = [
   "status": "SCHEDULED",
   "publishAt": "2026-11-05T17:00:00+09:00",
   "updatedAt": "2026-09-26"
-}
-
+},
   ...parentingProductGuidesBatch055,
 ];
 
