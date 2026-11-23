@@ -1,0 +1,70 @@
+name: Weekly Release Readiness
+
+# A weekly release is always explicit: opening/updating a PR to main.
+# The push trigger below is limited to changes to this workflow itself, for bootstrap verification.
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - content/weekly
+    paths:
+      - ".github/workflows/weekly-release-readiness.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: weekly-readiness-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release-readiness:
+    name: Lint, TypeScript, production build, and content
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      CI: "true"
+      # This is deliberately a nonexistent local database, not production credentials.
+      # It is sufficient for Prisma schema generation; any accidental connection fails closed.
+      DATABASE_URL: "postgresql://ci:ci@127.0.0.1:5432/momtools_ci?schema=public"
+      DIRECT_URL: "postgresql://ci:ci@127.0.0.1:5432/momtools_ci?schema=public"
+    steps:
+      - name: Check out candidate release
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies without application lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Generate Prisma client without database writes
+        run: npx prisma generate
+
+      - name: Validate parenting guide content and publishing schedule
+        run: npm run check:parenting-products:all
+
+      - name: Lint all application code
+        run: npm run lint
+
+      - name: TypeScript typecheck
+        run: npx tsc --noEmit
+
+      - name: Next.js production build (no deploy)
+        run: npm run build
+
+      - name: Summarize results
+        if: always()
+        run: |
+          {
+            echo '## Weekly release readiness'
+            echo ''
+            echo '- Checks: parenting product data, schedule, ESLint, TypeScript, Next.js production build'
+            echo '- No production database credentials, seed commands, migrations, Git pushes, merges, or Vercel deploys are used.'
+            echo '- A successful check does not approve or deploy the release.'
+          } >> "$GITHUB_STEP_SUMMARY"
