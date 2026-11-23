@@ -1,0 +1,43 @@
+name: Parenting Product Content Checks
+
+on:
+  push:
+    branches:
+      - content/weekly
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "data/parentingProductGuides*.ts"
+      - "scripts/check-parenting-product-*.ts"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/parenting-product-content-check.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: parenting-products-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-content:
+    name: Validate parenting product guides and schedule
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+
+      - name: Validate all parenting product content and release dates
+        run: npm run check:parenting-products:all
