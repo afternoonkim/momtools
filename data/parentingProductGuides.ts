@@ -1,3 +1,4 @@
+import { parentingProductGuidesBatch055 } from "./parentingProductGuidesBatch055";
 export type ParentingProductGuideStatus = "PUBLISHED" | "SCHEDULED";
 
 export type ParentingProductCategorySlug =
@@ -30,7 +31,7 @@ export type ParentingProductGuideSection = {
 };
 
 export type ParentingProductGuide = {
-  batch: "batch-001" | "batch-002" | "batch-003" | "batch-004" | "batch-005" | "batch-006" | "batch-007" | "batch-008" | "batch-009" | "batch-010" | "batch-011" | "batch-012" | "batch-013" | "batch-014" | "batch-015" | "batch-016" | "batch-017" | "batch-018" | "batch-019" | "batch-020" | "batch-021" | "batch-022" | "batch-023" | "batch-024" | "batch-025" | "batch-026" | "batch-027" | "batch-028" | "batch-029" | "batch-030" | "batch-031" | "batch-032" | "batch-033" | "batch-034" | "batch-035" | "batch-036" | "batch-037" | "batch-038" | "batch-039" | "batch-040" | "batch-041" | "batch-042" | "batch-043" | "batch-044" | "batch-045" | "batch-046" | "batch-047" | "batch-048" | "batch-049" | "batch-050" | "batch-051" | "batch-052" | "batch-053" | "batch-054";
+  batch: "batch-001" | "batch-002" | "batch-003" | "batch-004" | "batch-005" | "batch-006" | "batch-007" | "batch-008" | "batch-009" | "batch-010" | "batch-011" | "batch-012" | "batch-013" | "batch-014" | "batch-015" | "batch-016" | "batch-017" | "batch-018" | "batch-019" | "batch-020" | "batch-021" | "batch-022" | "batch-023" | "batch-024" | "batch-025" | "batch-026" | "batch-027" | "batch-028" | "batch-029" | "batch-030" | "batch-031" | "batch-032" | "batch-033" | "batch-034" | "batch-035" | "batch-036" | "batch-037" | "batch-038" | "batch-039" | "batch-040" | "batch-041" | "batch-042" | "batch-043" | "batch-044" | "batch-045" | "batch-046" | "batch-047" | "batch-048" | "batch-049" | "batch-050" | "batch-051" | "batch-052" | "batch-053" | "batch-054" | "batch-055";
   slug: string;
   category: "신생아" | "수유" | "외출" | "이유식" | "어린이집" | "생활";
   title: string;
@@ -30908,6 +30909,7 @@ export const parentingProductGuides: ParentingProductGuide[] = [
   "updatedAt": "2026-09-26"
 }
 
+  ...parentingProductGuidesBatch055,
 ];
 
 function normalizeParentingProductGuideDate(value: string) {
